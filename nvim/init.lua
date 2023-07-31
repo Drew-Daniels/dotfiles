@@ -55,6 +55,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- FZF
 vim.keymap.set('n', '<C-p>', ':FZF<CR>', {noremap = false})
 
+-- lualine
+require('lualine').setup()
+
 -- general configs
 local set = vim.opt
 set.tabstop = 4
