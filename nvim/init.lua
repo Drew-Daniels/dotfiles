@@ -1,6 +1,17 @@
 require("plugins")
 require('mason').setup()
 
+-- nvim-tree configuration START
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+require("nvim-tree").setup()
+-- nvim-tree configuration END
+
 -- Language Server Configuration START
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup {}
