@@ -44,3 +44,6 @@ export XDG_CONFIG_HOME=~/projects/dotfiles
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files'
+
