@@ -1,6 +1,7 @@
 require("plugins")
 require('mason').setup()
 
+-- Language Server Configuration START
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup {}
 lspconfig.solargraph.setup {}
@@ -42,6 +43,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+-- Language Server Configuration END
 
 -- general configs
 local set = vim.opt
