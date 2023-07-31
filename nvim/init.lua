@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Language Server Configuration END
 
+-- FZF
+vim.keymap.set('n', '<C-p>', ':FZF<CR>', {noremap = false})
+
 -- general configs
 local set = vim.opt
 set.tabstop = 4
