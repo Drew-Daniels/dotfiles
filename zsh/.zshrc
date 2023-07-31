@@ -16,7 +16,14 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-source /Users/drew.daniels/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# docker
+if ! [[ $(finger drew.daniels 2>&1) =~ "no such user" ]]
+then
+	source /Users/drew.daniels/.docker/init-zsh.sh || true
+fi
+# docker end
+
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -34,3 +41,4 @@ autoload -Uz compinit && compinit
 # nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+
