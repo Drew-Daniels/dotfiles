@@ -18,7 +18,7 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # docker
-if ! [[ $(finger drew.daniels 2>&1) =~ "no such user" ]]
+if ! [[ $(finger -m drew.daniels 2>&1) =~ "no such user" ]]
 then
 	source /Users/drew.daniels/.docker/init-zsh.sh || true
 fi
