@@ -60,7 +60,7 @@ require('lualine').setup()
 
 -- general configs
 local set = vim.opt
-set.expandtab
+set.expandtab = true
 set.tabstop = 4
 set.shiftwidth = 4
 set.softtabstop = 4
