@@ -10,3 +10,4 @@
 /bin/tcsh
 /bin/zsh
 /opt/homebrew/bin/fish
+/usr/local/bin/fish
