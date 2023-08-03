@@ -1,4 +1,5 @@
 if status is-interactive
+    set -x PATH "$PATH:/opt/homebrew/bin"
 	set -x PATH "$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 	# pnpm
