@@ -1,2 +1,10 @@
 .DS_Store
 configstore
+
+# fish
+fish/*
+
+!fish/config.fish
+!fish/fish_plugins
+!fish/completions
+!fish/functions
