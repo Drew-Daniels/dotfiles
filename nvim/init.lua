@@ -10,6 +10,7 @@ require'nvim-treesitter.configs'.setup {
 -- Language Server Configuration START
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup {}
+lspconfig.eslint.setup {}
 lspconfig.solargraph.setup {}
 
 -- Global mappings.
