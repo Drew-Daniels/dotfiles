@@ -32,4 +32,6 @@ if status is-interactive
 	# fzf
 	set -gx FZF_DEFAULT_COMMAND 'rg --files'
 
+	# fisher
+	set -gx FISHER_PATH ~/projects/dotfiles/fish
 end
