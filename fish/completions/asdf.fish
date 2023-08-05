@@ -1,1 +1,0 @@
-/Users/drew/projects/dotfiles/asdf/.asdf/completions/asdf.fish
