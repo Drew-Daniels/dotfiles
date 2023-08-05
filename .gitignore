@@ -8,3 +8,4 @@ fish/*
 !fish/fish_plugins
 !fish/completions
 !fish/functions
+*tide*
