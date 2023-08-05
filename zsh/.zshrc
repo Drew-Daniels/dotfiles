@@ -33,7 +33,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # asdf
 export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
-. "$HOME/.asdf/asdf.sh"
+. "$HOME/projects/dotfiles/asdf/.asdf/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
