@@ -18,7 +18,7 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # docker
-source /Users/drew.daniels/.docker/init-zsh.sh || true
+source ~/.docker/init-zsh.sh || true
 # docker end
 
 # Android
@@ -30,7 +30,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # asdf
 export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
-. "$HOME/projects/dotfiles/asdf/.asdf/asdf.sh"
+. "$HOME/.asdf/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
