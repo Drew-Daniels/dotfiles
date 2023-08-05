@@ -34,4 +34,8 @@ if status is-interactive
 
 	# fisher
 	set -gx FISHER_PATH ~/projects/dotfiles/fish
+
+    # starship
+    set -gx STARSHIP_CONFIG ~/projects/dotfiles/starship/starship.toml
+    starship init fish | source
 end
