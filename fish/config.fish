@@ -38,4 +38,8 @@ if status is-interactive
     # starship
     set -gx STARSHIP_CONFIG ~/projects/dotfiles/starship/starship.toml
     starship init fish | source
+
+    # fzf.fish
+    fzf_configure_bindings --processes=\cp --git_status=\cs --git_log=\cl
+
 end
