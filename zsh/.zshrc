@@ -44,3 +44,7 @@ export VIMDATA=~/.local/share/nvim
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'
 
+# starship
+export STARSHIP_CONFIG=~/projects/dotfiles/starship/starship.toml
+eval "$(starship init zsh)"
+
