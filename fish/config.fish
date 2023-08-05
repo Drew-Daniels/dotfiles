@@ -40,6 +40,6 @@ if status is-interactive
     starship init fish | source
 
     # fzf.fish
-    fzf_configure_bindings --processes=\cp --git_status=\cs --git_log=\cl
+    fzf_configure_bindings --processes=\cp --git_status=\cs --git_log=\cl --directory=\ce
 
 end
