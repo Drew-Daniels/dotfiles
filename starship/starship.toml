@@ -82,6 +82,12 @@ $container\
 $shell\
 $character"""
 
+[nodejs]
+format = '[$symbol($version )]($style)'
+
+[ruby]
+format = '[$symbol($version )]($style)'
+
 [git_branch]
 style = 'bold green'
 
