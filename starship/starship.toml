@@ -82,6 +82,8 @@ $container\
 $shell\
 $character"""
 
+scan_timeout = 60
+
 [nodejs]
 format = '[$symbol($version )]($style)'
 
