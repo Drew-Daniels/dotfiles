@@ -12,6 +12,7 @@ local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup {}
 lspconfig.eslint.setup {}
 lspconfig.solargraph.setup {}
+lspconfig.cucumber_language_server.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
