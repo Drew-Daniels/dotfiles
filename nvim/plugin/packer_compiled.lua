@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/drew.daniels/.local/share/nvim/site/pack/packer/start/fzf.vim",
     url = "https://github.com/junegunn/fzf.vim"
   },
+  ["gv.vim"] = {
+    loaded = true,
+    path = "/Users/drew.daniels/.local/share/nvim/site/pack/packer/start/gv.vim",
+    url = "https://github.com/junegunn/gv.vim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/drew.daniels/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -123,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/drew.daniels/.local/share/nvim/site/pack/packer/start/vim-endwise",
     url = "https://github.com/tpope/vim-endwise"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/drew.daniels/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   }
 }
 
