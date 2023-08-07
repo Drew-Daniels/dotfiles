@@ -1,6 +1,8 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'williamboman/mason.nvim'
+  use 'tpope/vim-fugitive'
+  use 'junegunn/gv.vim'
   use 'neovim/nvim-lspconfig'
   use {
     'junegunn/fzf.vim',
