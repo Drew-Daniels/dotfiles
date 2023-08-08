@@ -4,6 +4,12 @@ root: <%= ENV["PROJECTS_DIR"] %>
 startup_window: admin
 
 windows:
+  - api:
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-api
+      layout: main-vertical
+      panes:
+        - ahoy up
+        - fish
   - admin:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
       layout: main-vertical
