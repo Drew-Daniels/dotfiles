@@ -1,0 +1,19 @@
+name: admin-docker
+root: ~/projects
+
+startup_window: admin
+
+windows:
+  - api:
+      root: ~/projects/keet-api
+      layout: main-vertical
+      panes:
+        - ahoy up
+        - fish
+  - admin:
+      root: ~/projects/keet-admin
+      layout: main-vertical
+      panes:
+        - nvim
+        - fish
+        - yarn env:docker && yarn start

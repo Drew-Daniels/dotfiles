@@ -1,0 +1,11 @@
+name: embedded-local
+root: ~/projects
+
+windows:
+  - embedded:
+      root: ~/projects/keet-embedded
+      layout: main-vertical
+      panes:
+        - nvim
+        - fish
+        - yarn env:local && yarn start

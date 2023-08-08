@@ -1,0 +1,11 @@
+name: admin-local
+root: ~/projects
+
+windows:
+  - admin:
+      root: ~/projects/keet-umi
+      layout: main-vertical
+      panes:
+        - nvim
+        - fish
+        - yarn env:local && yarn start

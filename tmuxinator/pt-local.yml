@@ -1,0 +1,11 @@
+name: pt-local
+root: ~/projects
+
+windows:
+  - pt:
+      root: ~/projects/keet-umi
+      layout: main-vertical
+      panes:
+        - nvim
+        - fish
+        - yarn env:local && yarn start
