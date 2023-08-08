@@ -1,9 +1,9 @@
 name: admin-local
-root: ~/projects
+root: <%= ENV["PROJECTS_DIR"] %>
 
 windows:
   - admin:
-      root: ~/projects/keet-umi
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
       layout: main-vertical
       panes:
         - nvim
