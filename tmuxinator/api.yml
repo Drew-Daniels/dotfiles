@@ -1,0 +1,15 @@
+name: api
+root: <%= ENV["PROJECTS_DIR"] %>
+
+windows:
+  - editor:
+      root: <%= ENV["PROJECTS_DIR"] %>
+      layout: main-horizontal
+      panes:
+        - nvim
+        - fish
+  - stack:
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-api
+      layout: main-vertical
+      panes:
+        - ahoy up
