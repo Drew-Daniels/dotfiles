@@ -41,6 +41,7 @@ autoload -Uz compinit && compinit
 
 # nvim
 export PROJECTS_DIR=~/projects
+alias mux=tmuxinator
 export XDG_CONFIG_HOME=~/projects/dotfiles
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
