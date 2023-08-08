@@ -2,6 +2,9 @@ if status is-interactive
 	fish_add_path "/opt/homebrew/bin"
 	fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+    # general
+    set -gx EDITOR "nvim"
+
 	# pnpm
 	set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
 

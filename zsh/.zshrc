@@ -7,6 +7,9 @@ COLOR_USR='%F{243}'
 COLOR_DIR='%F{197}'
 COLOR_GIT='%F{39}'
 NEWLINE=$'\n'
+
+export EDITOR="nvim"
+
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
