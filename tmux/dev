@@ -1,0 +1,29 @@
+# Create a new tmux session, name it 'editor' and detach
+tmux new-session -s dev -n editor -d
+
+# cd into the project directory
+tmux send-keys -t dev 'cd ~/projects/tmuxtestproj' C-m
+
+# Open nvim
+tmux send-keys -t dev 'nvim' C-m
+
+# Open small term window
+tmux split-window -v -t dev
+
+# Set layout
+tmux select-layout -t dev main-horizontal
+
+# cd into the project directory within the terminal pane
+tmux send-keys -t dev:1.2 'cd ~/projects/tmuxtestproj' C-m
+
+# Create another window displaying a full-screen console
+tmux new-window -n console -t dev
+
+# Since we only have one pane in this second window
+# we do not have to specifically target the pane
+tmux send-keys -t dev:2 'cd ~/projects/tmuxtestproj' C-m
+
+# set first window as active
+tmux select-window -t dev:1
+tmux attach -t dev
+
