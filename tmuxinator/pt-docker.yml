@@ -1,11 +1,8 @@
 name: pt-docker
-root: ~/projects
-
-startup_window: pt
+root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
 
 windows:
   - pt:
-      root: ~/projects/keet-umi
       layout: main-vertical
       panes:
         - nvim

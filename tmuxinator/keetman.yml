@@ -1,9 +1,8 @@
 name: keetman
-root: <%= ENV["PROJECTS_DIR"] %>
+root: <%= ENV["PROJECTS_DIR"] %>/keetman
 
 windows:
   - pt:
-      root: <%= ENV["PROJECTS_DIR"] %>/keetman
       layout: even-horizontal
       panes:
         - nvim

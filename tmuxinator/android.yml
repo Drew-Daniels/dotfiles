@@ -1,9 +1,8 @@
 name: android
-root: <%= ENV["PROJECTS_DIR"] %>
+root: <%= ENV["PROJECTS_DIR"] %>/keet-mobile
 
 windows:
   - admin:
-      root: <%= ENV["PROJECTS_DIR"] %>/keet-mobile
       layout: main-vertical
       panes:
         - nvim

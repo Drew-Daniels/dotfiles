@@ -1,11 +1,8 @@
 name: admin-docker
-root: <%= ENV["PROJECTS_DIR"] %>
-
-startup_window: admin
+root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
 
 windows:
   - admin:
-      root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
       layout: main-vertical
       panes:
         - nvim
