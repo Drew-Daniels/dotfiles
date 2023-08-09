@@ -49,7 +49,7 @@ export VIMDATA=~/.local/share/nvim
 export PROJECTS_DIR=~/projects
 alias mux=tmuxinator
 export MUX_LAYOUT=main-horizontal
-
+export EXPORT_E2E_CREDS_SCRIPT=~/projects/dotfiles/scripts/export_e2e_creds.sh
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'
 

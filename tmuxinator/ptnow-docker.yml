@@ -1,0 +1,10 @@
+name: ptnow-docker
+root: <%= ENV["PROJECTS_DIR"] %>/ptnow-patient
+
+windows:
+  - pt:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - nvim
+        - fish
+        - yarn env:docker && <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> ptnow && yarn start

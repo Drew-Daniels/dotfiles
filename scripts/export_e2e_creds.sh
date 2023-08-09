@@ -13,6 +13,10 @@ esac
 
 env_path=~/projects/${app}/.env
 
+echo "Adding E2E creds to ${env_path}"
+
 sed -i -E 's/E2E_LOGIN_USERNAME=.*/E2E_LOGIN_USERNAME='"$E2E_LOGIN_USERNAME"'/g' ${env_path}
 sed -i -E 's/E2E_LOGIN_PASSWORD=.*/E2E_LOGIN_PASSWORD='"$E2E_LOGIN_PASSWORD"'/g' ${env_path}
 
+
+echo "Added E2e creds to ${env_path}"
