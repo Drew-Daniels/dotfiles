@@ -1,6 +1,5 @@
 name: admin-docker-api
 root: <%= ENV["PROJECTS_DIR"] %>
-
 startup_window: admin
 
 windows:

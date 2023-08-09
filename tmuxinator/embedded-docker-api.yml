@@ -1,6 +1,5 @@
 name: embedded-docker-api
 root: <%= ENV["PROJECTS_DIR"] %>
-
 startup_window: embedded
 
 windows:

@@ -1,5 +1,5 @@
-name: pt-local
-root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
+name: ptnow-local
+root: <%= ENV["PROJECTS_DIR"] %>/ptnow-patient
 
 windows:
   - pt:

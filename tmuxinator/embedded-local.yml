@@ -1,11 +1,11 @@
 name: embedded-local
-root: <%= ENV["PROJECTS_DIR"] %>
+root: <%= ENV["PROJECTS_DIR"] %>/keet-embedded
 
 windows:
   - embedded:
-      root: <%= ENV["PROJECTS_DIR"] %>/keet-embedded
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - nvim
         - fish
         - yarn env:local && yarn start
+        - fish

@@ -1,4 +1,5 @@
 name: patient-docker
+
 root: <%= ENV["PROJECTS_DIR"] %>/keet-patient
 
 windows:

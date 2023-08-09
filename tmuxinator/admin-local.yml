@@ -1,11 +1,11 @@
 name: admin-local
-root: <%= ENV["PROJECTS_DIR"] %>
+root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
 
 windows:
   - admin:
-      root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - nvim
         - fish
         - yarn env:local && yarn start
+        - fish
