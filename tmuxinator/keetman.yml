@@ -1,0 +1,10 @@
+name: keetman
+root: ~/projects
+
+windows:
+  - pt:
+      root: ~/projects/keetman
+      layout: even-horizontal
+      panes:
+        - nvim
+        - fish

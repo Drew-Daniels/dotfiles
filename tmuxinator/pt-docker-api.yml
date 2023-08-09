@@ -1,9 +1,15 @@
-name: pt-docker
+name: pt-docker-api
 root: ~/projects
 
 startup_window: pt
 
 windows:
+  - api:
+      root: ~/projects/keet-api
+      layout: main-vertical
+      panes:
+        - ahoy up
+        - fish
   - pt:
       root: ~/projects/keet-umi
       layout: main-vertical

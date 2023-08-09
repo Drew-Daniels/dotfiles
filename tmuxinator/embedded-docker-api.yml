@@ -1,9 +1,15 @@
-name: embedded-docker
+name: embedded-docker-api
 root: ~/projects
 
 startup_window: embedded
 
 windows:
+  - api:
+      root: ~/projects/keet-api
+      layout: main-vertical
+      panes:
+        - ahoy up
+        - fish
   - embedded:
       root: ~/projects/keet-embedded
       layout: main-vertical
