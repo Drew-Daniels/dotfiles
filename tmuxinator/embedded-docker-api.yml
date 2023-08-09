@@ -6,13 +6,13 @@ startup_window: embedded
 windows:
   - api:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-api
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - ahoy up
         - fish
   - embedded:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-embedded
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - nvim
         - fish

@@ -6,13 +6,13 @@ startup_window: admin
 windows:
   - api:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-api
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - ahoy up
         - fish
   - admin:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - nvim
         - fish

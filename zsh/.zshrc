@@ -40,11 +40,14 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 # nvim
-export PROJECTS_DIR=~/projects
-alias mux=tmuxinator
 export XDG_CONFIG_HOME=~/projects/dotfiles
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+
+# tmuxinator
+export PROJECTS_DIR=~/projects
+alias mux=tmuxinator
+export MUX_LAYOUT=main-horizontal
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'

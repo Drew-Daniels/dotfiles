@@ -3,7 +3,7 @@ root: <%= ENV["PROJECTS_DIR"] %>/keet-mobile
 
 windows:
   - admin:
-      layout: main-vertical
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - nvim
         - fish
