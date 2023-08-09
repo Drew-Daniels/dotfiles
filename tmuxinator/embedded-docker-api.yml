@@ -1,17 +1,17 @@
 name: embedded-docker-api
-root: ~/projects
+root: <%= ENV["PROJECTS_DIR"] %>
 
 startup_window: embedded
 
 windows:
   - api:
-      root: ~/projects/keet-api
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-api
       layout: main-vertical
       panes:
         - ahoy up
         - fish
   - embedded:
-      root: ~/projects/keet-embedded
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-embedded
       layout: main-vertical
       panes:
         - nvim

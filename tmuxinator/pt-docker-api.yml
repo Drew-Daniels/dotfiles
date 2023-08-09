@@ -1,17 +1,17 @@
 name: pt-docker-api
-root: ~/projects
+root: <%= ENV["PROJECTS_DIR"] %>
 
 startup_window: pt
 
 windows:
   - api:
-      root: ~/projects/keet-api
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-api
       layout: main-vertical
       panes:
         - ahoy up
         - fish
   - pt:
-      root: ~/projects/keet-umi
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
       layout: main-vertical
       panes:
         - nvim

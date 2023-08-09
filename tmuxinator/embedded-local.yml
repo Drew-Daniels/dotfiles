@@ -1,9 +1,9 @@
 name: embedded-local
-root: ~/projects
+root: <%= ENV["PROJECTS_DIR"] %>
 
 windows:
   - embedded:
-      root: ~/projects/keet-embedded
+      root: <%= ENV["PROJECTS_DIR"] %>/keet-embedded
       layout: main-vertical
       panes:
         - nvim
