@@ -1,0 +1,10 @@
+name: auth
+root: <%= ENV["PROJECTS_DIR"] %>/keet-auth
+
+windows:
+  - editor:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - nvim
+        - fish
+        - fish

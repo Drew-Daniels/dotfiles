@@ -1,0 +1,10 @@
+name: api-client
+root: <%= ENV["PROJECTS_DIR"] %>/keet-api-client
+
+windows:
+  - pt:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - nvim
+        - fish
+        - fish
