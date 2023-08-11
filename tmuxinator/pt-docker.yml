@@ -7,5 +7,5 @@ windows:
       panes:
         - nvim
         - fish
-        - yarn env:docker && <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> pt && yarn start
+        - yarn env:docker && <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> pt && yarn && yarn start
         - fish

@@ -7,5 +7,5 @@ windows:
       panes:
         - nvim
         - fish
-        - yarn env:local && yarn start
+        - yarn env:local && yarn && yarn start
         - fish

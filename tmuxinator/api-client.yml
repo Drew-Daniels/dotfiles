@@ -6,5 +6,5 @@ windows:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - nvim
-        - fish
+        - yarn && fish
         - fish
