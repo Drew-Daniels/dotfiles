@@ -3,7 +3,7 @@ root: <%= ENV["PROJECTS_DIR"] %>
 
 windows:
   - editor:
-      layout: <%= ENV["MUX_LAYOUT"] %>
+      layout: <%= ENV["MUX_LAYOUT"] %>/keet-api
       panes:
         - nvim
         - fish
