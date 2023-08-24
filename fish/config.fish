@@ -45,4 +45,7 @@ if status is-interactive
     # fzf.fish
     fzf_configure_bindings --processes=\cp --git_status=\cs --git_log=\cl --directory=\cf
 
+    # homebrew
+    fish_add_path "/usr/local/sbin"
+
 end

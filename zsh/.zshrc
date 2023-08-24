@@ -57,3 +57,5 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export STARSHIP_CONFIG=~/projects/dotfiles/starship/starship.toml
 eval "$(starship init zsh)"
 
+# homebrew
+PATH="/usr/local/sbin:$PATH"
