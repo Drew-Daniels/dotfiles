@@ -45,6 +45,12 @@ export XDG_CONFIG_HOME=~/projects/dotfiles
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
+# general
+export PROJECTS_DIR=~/projects
+
+# tmuxp
+export TMUXP_LAYOUT=main-vertical
+
 # tmuxinator
 export PROJECTS_DIR=~/projects
 alias mux=tmuxinator
