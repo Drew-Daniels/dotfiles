@@ -1,5 +1,5 @@
 name: api
-root: <%= ENV["PROJECTS_DIR"] %>
+root: <%= ENV["PROJECTS_DIR"] %>/keet-api
 
 windows:
   - editor:
@@ -9,7 +9,6 @@ windows:
         - fish
         - fish
   - stack:
-      root: <%= ENV["PROJECTS_DIR"] %>/keet-api
       layout: <%= ENV["MUX_LAYOUT"] %> 
       panes:
         - ahoy up
