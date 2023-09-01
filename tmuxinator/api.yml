@@ -5,10 +5,20 @@ windows:
   - editor:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - nvim
-        - fish
-        - fish
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
   - stack:
       layout: <%= ENV["MUX_LAYOUT"] %> 
       panes:
-        - ahoy up
+        - services:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - ahoy up

@@ -55,6 +55,7 @@ export TMUXP_LAYOUT=main-vertical
 export PROJECTS_DIR=~/projects
 alias mux=tmuxinator
 export MUX_LAYOUT=main-horizontal
+export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 export EXPORT_E2E_CREDS_SCRIPT=~/projects/dotfiles/scripts/export_e2e_creds.sh
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'
