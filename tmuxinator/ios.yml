@@ -5,7 +5,17 @@ windows:
   - admin:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - nvim
-        - fish
-        - yarn && yarn ios
-        - fish
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - devserver:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - yarn
+          - yarn ios
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish

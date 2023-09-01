@@ -7,13 +7,27 @@ windows:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-api
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - ahoy up
-        - fish
+        - services:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - ahoy up
   - admin:
       root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - nvim
-        - fish
-        - yarn env:docker && <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> admin && yarn && yarn start
-        - fish
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - devserver:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - yarn env:docker
+          - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> admin
+          - yarn
+          - yarn start
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish

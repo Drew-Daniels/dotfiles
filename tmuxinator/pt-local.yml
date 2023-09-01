@@ -13,7 +13,9 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
         - devserver:
-          - yarn env:local && yarn && yarn start
+          - yarn env:local
+          - yarn
+          - yarn start
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish

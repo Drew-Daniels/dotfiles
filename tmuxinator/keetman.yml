@@ -5,5 +5,14 @@ windows:
   - pt:
       layout: even-horizontal
       panes:
-        - nvim
-        - fish
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - yarn
+          - fish
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish

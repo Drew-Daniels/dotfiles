@@ -14,7 +14,11 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
         - devserver:
-          - yarn env:docker && <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> patient && yarn && yarn start
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - yarn env:docker
+          - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> patient
+          - yarn
+          - yarn start
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
