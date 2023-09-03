@@ -5,12 +5,14 @@ require('nvim-tree').setup()
 
 require('transparent').setup()
 
+require('neodev').setup()
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Language Server Configuration START
 local lspconfig = require('lspconfig')
-local servers = { 'tsserver', 'eslint', 'solargraph', 'cucumber_language_server' }
+local servers = { 'lua_ls', 'tsserver', 'eslint', 'solargraph', 'cucumber_language_server' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
       capabilities = capabilities,
