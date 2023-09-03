@@ -7,18 +7,61 @@ require'nvim-treesitter.configs'.setup {
 }
 -- nvim-treesitter configuration END
 
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Language Server Configuration START
 local lspconfig = require('lspconfig')
-lspconfig.tsserver.setup {}
-lspconfig.eslint.setup {}
-lspconfig.solargraph.setup {}
-lspconfig.cucumber_language_server.setup {
-    settings = {
-        cucumber = {
-            features = { "**/*.feature" },
-            glue = { "**/cypress/integration/**/*.ts", "**/cypress/support/step_definitions/**/*.ts" }
-        }
+local servers = { 'tsserver', 'eslint', 'solargraph', 'cucumber_language_server' }
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+      capabilities = capabilities,
+    }
+end
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmpsetup
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+    ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+    -- C-b (back) C-f (forward) for snippet placeholder navigation.
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
     },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
 }
 
 -- Global mappings.
