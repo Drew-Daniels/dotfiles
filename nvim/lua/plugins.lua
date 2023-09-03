@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
   use 'joshdick/onedark.vim'
   use 'sheerun/vim-polyglot'
   use 'github/copilot.vim'
+  use 'xiyaowong/transparent.nvim'
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
