@@ -9,3 +9,5 @@ fish/*
 !fish/completions
 !fish/functions
 *tide*
+
+github-copilot
