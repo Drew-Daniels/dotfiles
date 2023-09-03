@@ -1,11 +1,7 @@
 require("plugins")
 require('mason').setup()
 
--- nvim-treesitter configuration START
-require'nvim-treesitter.configs'.setup {
-  highlight = { enable = true } 
-}
--- nvim-treesitter configuration END
+require('nvim-tree').setup()
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -118,3 +114,4 @@ set.shiftwidth = 4
 set.softtabstop = 4
 set.number = true
 set.hlsearch = false
+set.formatoptions = 'cro'
