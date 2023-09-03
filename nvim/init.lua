@@ -12,7 +12,17 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Language Server Configuration START
 local lspconfig = require('lspconfig')
-local servers = { 'lua_ls', 'jsonls', 'html', 'yamlls', 'tsserver', 'eslint', 'solargraph', 'cucumber_language_server' }
+local servers = {
+  'lua_ls',
+  'jsonls',
+  'html',
+  'yamlls',
+  'tsserver',
+  'eslint',
+  'solargraph',
+  'cucumber_language_server',
+  'tailwindcss'
+}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
       capabilities = capabilities,
