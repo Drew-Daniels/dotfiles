@@ -1,38 +1,56 @@
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'williamboman/mason.nvim'
-  use 'tpope/vim-rhubarb'
-  use 'tpope/vim-fugitive'
-  use 'junegunn/gv.vim'
-  use 'neovim/nvim-lspconfig'
-  use 'joshdick/onedark.vim'
-  use 'sheerun/vim-polyglot'
-  use 'github/copilot.vim'
-  use 'xiyaowong/transparent.nvim'
-  use 'mfussenegger/nvim-dap'
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  use 'folke/neodev.nvim' -- Typing, completion for neovim lua API
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use {
-    'junegunn/fzf.vim',
-    requires = { 'junegunn/fzf', run = ':call fzf#install()' }
-  }
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-  }
- use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
-  use 'tpope/vim-endwise'
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
-end)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- must map leader key before "lazy" setup
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+return require("lazy").setup({
+	"williamboman/mason.nvim",
+	"tpope/vim-rhubarb",
+	"tpope/vim-fugitive",
+	"junegunn/gv.vim",
+	"neovim/nvim-lspconfig",
+	"joshdick/onedark.vim",
+	"sheerun/vim-polyglot",
+	"github/copilot.vim",
+	"xiyaowong/transparent.nvim",
+	"mfussenegger/nvim-dap",
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	"folke/neodev.nvim", -- Typing, completion for neovim lua API
+	"hrsh7th/nvim-cmp", -- Autocompletion plugin
+	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+	"L3MON4D3/LuaSnip", -- Snippets plugin
+	{
+		"junegunn/fzf.vim",
+		dependencies = { "junegunn/fzf", build = ":call fzf#install()" },
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
+	},
+	"tpope/vim-endwise",
+	{
+		"iamcco/markdown-preview.nvim",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+})
