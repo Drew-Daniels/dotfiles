@@ -22,7 +22,6 @@ return require("lazy").setup({
 	"junegunn/gv.vim",
 	"neovim/nvim-lspconfig",
 	"joshdick/onedark.vim",
-	"sheerun/vim-polyglot",
 	"github/copilot.vim",
 	"xiyaowong/transparent.nvim",
 	"mfussenegger/nvim-dap",
@@ -45,7 +44,36 @@ return require("lazy").setup({
 			--         -- refer to the configuration section below
 		},
 	},
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								notes = "~/notes",
+							},
+						},
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		opts = {
+			highlight = { enable = true },
+		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
 	{
 		"junegunn/fzf.vim",
 		dependencies = { "junegunn/fzf", build = ":call fzf#install()" },
