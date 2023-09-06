@@ -136,5 +136,9 @@ set.hlsearch = false
 set.formatoptions = "cro"
 set.syntax = "on"
 
+-- Ensures we only generate 'tags' file in Ruby projects
+vim.cmd([[
+    let g:gutentags_project_root = ['Gemfile']
+]])
 vim.cmd([[colorscheme onedark]])
 vim.cmd([[NvimTreeOpen]])
