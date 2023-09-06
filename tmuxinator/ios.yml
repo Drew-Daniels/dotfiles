@@ -1,5 +1,6 @@
 name: ios
 root: <%= ENV["PROJECTS_DIR"] %>/keet-mobile
+on_project_exit: clear
 
 windows:
   - admin:

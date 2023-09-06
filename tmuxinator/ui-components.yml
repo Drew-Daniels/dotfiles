@@ -1,5 +1,6 @@
 name: ui-components
 root: <%= ENV["PROJECTS_DIR"] %>/ui-components
+on_project_exit: clear
 
 windows:
   - pt:

@@ -1,5 +1,6 @@
 name: pt-docker
 root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
+on_project_exit: clear
 
 windows:
   - pt:

@@ -1,5 +1,6 @@
 name: api-client
 root: <%= ENV["PROJECTS_DIR"] %>/keet-api-client
+on_project_exit: clear
 
 windows:
   - pt:

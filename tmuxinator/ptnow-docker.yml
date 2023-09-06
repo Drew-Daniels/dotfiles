@@ -1,5 +1,6 @@
 name: ptnow-docker
 root: <%= ENV["PROJECTS_DIR"] %>/ptnow-patient
+on_project_exit: clear
 
 windows:
   - ptnow:

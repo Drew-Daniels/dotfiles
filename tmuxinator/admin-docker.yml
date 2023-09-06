@@ -1,5 +1,6 @@
 name: admin-docker
 root: <%= ENV["PROJECTS_DIR"] %>/keet-admin
+on_project_exit: clear
 
 windows:
   - admin:

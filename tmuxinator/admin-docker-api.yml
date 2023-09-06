@@ -1,6 +1,7 @@
 name: admin-docker-api
 root: <%= ENV["PROJECTS_DIR"] %>
 startup_window: admin
+on_project_exit: clear
 
 windows:
   - api:

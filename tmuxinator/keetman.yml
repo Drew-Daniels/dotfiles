@@ -1,5 +1,6 @@
 name: keetman
 root: <%= ENV["PROJECTS_DIR"] %>/keetman
+on_project_exit: clear
 
 windows:
   - pt:

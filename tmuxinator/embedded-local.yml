@@ -1,5 +1,6 @@
 name: embedded-local
 root: <%= ENV["PROJECTS_DIR"] %>/keet-embedded
+on_project_exit: clear
 
 windows:
   - embedded:

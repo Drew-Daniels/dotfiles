@@ -1,5 +1,6 @@
 name: auth
 root: <%= ENV["PROJECTS_DIR"] %>/keet-auth
+on_project_exit: clear
 
 windows:
   - editor:

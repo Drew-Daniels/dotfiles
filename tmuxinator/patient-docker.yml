@@ -1,6 +1,6 @@
 name: patient-docker
-
 root: <%= ENV["PROJECTS_DIR"] %>/keet-patient
+on_project_exit: clear
 
 windows:
   - patient:
