@@ -25,7 +25,6 @@ local servers = {
 	"yamlls",
 	"tsserver",
 	"eslint",
-	"solargraph",
 	"cucumber_language_server",
 	"tailwindcss",
 }
