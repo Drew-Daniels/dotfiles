@@ -135,5 +135,6 @@ set.number = true
 set.hlsearch = false
 set.formatoptions = "cro"
 set.syntax = "on"
+
 vim.cmd([[colorscheme onedark]])
 vim.cmd([[NvimTreeOpen]])
