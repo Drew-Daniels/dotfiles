@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
+    "RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
 	"tpope/vim-rhubarb",
 	"tpope/vim-fugitive",
@@ -88,7 +89,6 @@ return require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	},
-	"tpope/vim-endwise",
 	{
 		"iamcco/markdown-preview.nvim",
 		build = function()

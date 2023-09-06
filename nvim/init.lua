@@ -7,6 +7,12 @@ require("transparent").setup()
 
 require("neodev").setup()
 
+require("nvim-treesitter.configs").setup {
+    endwise = {
+        enable = true,
+    }
+}
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
