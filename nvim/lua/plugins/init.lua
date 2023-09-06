@@ -16,8 +16,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
-    "ludovicchabant/vim-gutentags",
-    "RRethy/nvim-treesitter-endwise",
+	"ludovicchabant/vim-gutentags",
+	"RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
 	"tpope/vim-rhubarb",
 	"tpope/vim-fugitive",

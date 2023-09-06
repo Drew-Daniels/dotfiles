@@ -1,17 +1,21 @@
 require("plugins")
 require("mason").setup()
 
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+	filters = {
+		exclude = {".env"},
+	},
+})
 
 require("transparent").setup()
 
 require("neodev").setup()
 
-require("nvim-treesitter.configs").setup {
-    endwise = {
-        enable = true,
-    }
-}
+require("nvim-treesitter.configs").setup({
+	endwise = {
+		enable = true,
+	},
+})
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -143,8 +147,8 @@ vim.cmd([[
 vim.cmd([[colorscheme onedark]])
 
 local function open_nvim_tree()
-  -- open the tree
-  require("nvim-tree.api").tree.open()
+	-- open the tree
+	require("nvim-tree.api").tree.open()
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
