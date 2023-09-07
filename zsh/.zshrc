@@ -47,6 +47,7 @@ export VIMDATA=~/.local/share/nvim
 
 # general
 export PROJECTS_DIR=~/projects
+alias cls="printf '\33c\e[3J'"
 
 # tmuxp
 export TMUXP_LAYOUT=main-vertical
@@ -68,3 +69,5 @@ eval "$(starship init zsh)"
 PATH="/usr/local/sbin:$PATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+

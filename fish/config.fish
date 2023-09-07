@@ -4,6 +4,7 @@ if status is-interactive
 
     # general
     set -gx EDITOR "nvim"
+    alias cls "printf '\33c\e[3J'"
 
 	# pnpm
 	set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
