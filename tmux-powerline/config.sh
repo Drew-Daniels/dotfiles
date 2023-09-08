@@ -1,58 +1,56 @@
 # Default configuration file for tmux-powerline.
-# Modeline {
-#	 vi: foldmarker={,} foldmethod=marker foldlevel=0 tabstop=4 filetype=sh
-# }
+# Modeline 
 
-# General {
+# General 
 	# Show which segment fails and its exit code.
 	export TMUX_POWERLINE_DEBUG_MODE_ENABLED="false"
 	# Use patched font symbols.
 	export TMUX_POWERLINE_PATCHED_FONT_IN_USE="true"
 
 	# The theme to use.
-	export TMUX_POWERLINE_THEME="default"
+	export TMUX_POWERLINE_THEME="my-theme"
 	# Overlay directory to look for themes. There you can put your own themes outside the repo. Fallback will still be the "themes" directory in the repo.
-	export TMUX_POWERLINE_DIR_USER_THEMES="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-powerline/themes"
+	export TMUX_POWERLINE_DIR_USER_THEMES="$XDG_CONFIG_HOME/tmux-powerline/themes"
 	# Overlay directory to look for segments. There you can put your own segments outside the repo. Fallback will still be the "segments" directory in the repo.
-	export TMUX_POWERLINE_DIR_USER_SEGMENTS="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-powerline/segments"
+	export TMUX_POWERLINE_DIR_USER_SEGMENTS="$XDG_CONFIG_HOME/tmux-powerline/themes"
 
-	# The initial visibility of the status bar. Can be {"on, off"}.
+	# The initial visibility of the status bar. Can be "on, off".
 	export TMUX_POWERLINE_STATUS_VISIBILITY="on"
 	# The status bar refresh interval in seconds.
 	# Note that events that force-refresh the status bar (such as window renaming) will ignore this.
 	export TMUX_POWERLINE_STATUS_INTERVAL="1"
-	# The location of the window list. Can be {"absolute-centre, centre, left, right"}.
+	# The location of the window list. Can be "absolute-centre, centre, left, right".
 	export TMUX_POWERLINE_STATUS_JUSTIFICATION="centre"
 
 	# The maximum length of the left status bar.
-	export TMUX_POWERLINE_STATUS_LEFT_LENGTH="60"
+	export TMUX_POWERLINE_STATUS_LEFT_LENGTH="200"
 	# The maximum length of the right status bar.
-	export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="90"
+	export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="200"
 
 	# Uncomment these if you want to enable tmux bindings for muting (hiding) one of the status bars.
 	# E.g. this example binding would mute the left status bar when pressing <prefix> followed by Ctrl-[
 	#export TMUX_POWERLINE_MUTE_LEFT_KEYBINDING="C-["
 	#export TMUX_POWERLINE_MUTE_RIGHT_KEYBINDING="C-]"
-# }
 
-# battery.sh {
-	# How to display battery remaining. Can be {percentage, cute}.
+
+# battery.sh 
+	# How to display battery remaining. Can be percentage, cute.
 	export TMUX_POWERLINE_SEG_BATTERY_TYPE="percentage"
 	# How may hearts to show if cute indicators are used.
 	export TMUX_POWERLINE_SEG_BATTERY_NUM_HEARTS="5"
-# }
 
-# date.sh {
+
+# date.sh 
 	# date(1) format for the date. If you don't, for some reason, like ISO 8601 format you might want to have "%D" or "%m/%d/%Y".
 	export TMUX_POWERLINE_SEG_DATE_FORMAT="%F"
-# }
 
-# disk_usage.sh {
-	# Filesystem to retrieve disk space information. Any from the filesystems available (run "df | awk '{print }'" to check them).
+
+# disk_usage.sh 
+	# Filesystem to retrieve disk space information. Any from the filesystems available (run "df | awk 'print '" to check them).
 	export TMUX_POWERLINE_SEG_DISK_USAGE_FILESYSTEM="/"
-# }
 
-# earthquake.sh {
+
+# earthquake.sh 
 	# The data provider to use. Currently only "goo" is supported.
 	export TMUX_POWERLINE_SEG_EARTHQUAKE_DATA_PROVIDER="goo"
 	# How often to update the earthquake data in seconds.
@@ -67,14 +65,14 @@
 	export TMUX_POWERLINE_SEG_EARTHQUAKE_TIME_FORMAT='(%H:%M)'
 	# Display only if magnitude is greater or equal to this number
 	export TMUX_POWERLINE_SEG_EARTHQUAKE_MIN_MAGNITUDE="3"
-# }
 
-# hostname.sh {
-	# Use short or long format for the hostname. Can be {"short, long"}.
+
+# hostname.sh 
+	# Use short or long format for the hostname. Can be "short, long".
 	export TMUX_POWERLINE_SEG_HOSTNAME_FORMAT="short"
-# }
 
-# macos_notification_count.sh {
+
+# macos_notification_count.sh 
 	# App ids to query in notification center, separated by space
 	# To get the app id that is associated with a specific app run:
 	# sqlite3 -list "/var/folders/0h/dtknj8l11670rn34yf6psqt00000gn/0//com.apple.notificationcenter/db/db" 'select * from app_info'
@@ -84,10 +82,10 @@
 	export TMUX_POWERLINE_SEG_MACOS_NOTIFICATION_COUNT_APPIDS="5"
 	# Notification symbol
 	export TMUX_POWERLINE_SEG_MACOS_NOTIFICATION_COUNT_CHAR="💬"
-# }
 
-# mailcount.sh {
-	# Mailbox type to use. Can be any of {apple_mail, gmail, maildir, mbox, mailcheck}
+
+# mailcount.sh 
+	# Mailbox type to use. Can be any of apple_mail, gmail, maildir, mbox, mailcheck
 	export TMUX_POWERLINE_SEG_MAILCOUNT_MAILBOX_TYPE=""
 	
 	## Gmail
@@ -116,16 +114,16 @@
 	## mailcheck
 	# Optional path to mailcheckrc
 	export TMUX_POWERLINE_SEG_MAILCOUNT_MAILCHECKRC="/Users/drew/.mailcheckrc"
-# }
 
-# now_playing.sh {
-	# Music player to use. Can be any of {audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, pithos, playerctl, rdio, rhythmbox, spotify, spotify_wine, file}.
+
+# now_playing.sh 
+	# Music player to use. Can be any of audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, pithos, playerctl, rdio, rhythmbox, spotify, spotify_wine, file.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="spotify"
 	# File to be read in case the song is being read from a file
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_FILE_NAME=""
 	# Maximum output length.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="40"
-	# How to handle too long strings. Can be {trim, roll}.
+	# How to handle too long strings. Can be trim, roll.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_TRIM_METHOD="trim"
 	# Charcters per second to roll if rolling trim method is used.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_ROLL_SPEED="2"
@@ -137,7 +135,7 @@
 	# Song display format for mpd_simple. See mpc(1) for delimiters.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_MPD_SIMPLE_FORMAT="%artist% - %title%"
 	# Song display format for playerctl. see "Format Strings" in playerctl(1).
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_PLAYERCTL_FORMAT="{{ artist }} - {{ title }}"
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_PLAYERCTL_FORMAT=" artist  -  title "
 	# Song display format for rhythmbox. see "FORMATS" in rhythmbox-client(1).
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_RHYTHMBOX_FORMAT="%aa - %tt"
 	
@@ -154,39 +152,39 @@
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_UPDATE_PERIOD="30"
 	# Fancy char to display before now playing track
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_NOTE_CHAR="♫"
-# }
 
-# pwd.sh {
+
+# pwd.sh 
 	# Maximum length of output.
 	export TMUX_POWERLINE_SEG_PWD_MAX_LEN="40"
-# }
 
-# time.sh {
+
+# time.sh 
 	# date(1) format for the time. Americans might want to have "%I:%M %p".
-	export TMUX_POWERLINE_SEG_TIME_FORMAT="%H:%M"
-# }
+	export TMUX_POWERLINE_SEG_TIME_FORMAT="%I:%M %p"
 
-# tmux_session_info.sh {
+
+# tmux_session_info.sh 
 	# Session info format to feed into the command: tmux display-message -p
 	# For example, if FORMAT is '[ #S ]', the command is: tmux display-message -p '[ #S ]'
 	export TMUX_POWERLINE_SEG_TMUX_SESSION_INFO_FORMAT="#S:#I.#P"
-# }
 
-# utc_time.sh {
+
+# utc_time.sh 
 	# date(1) format for the UTC time.
 	export TMUX_POWERLINE_SEG_UTC_TIME_FORMAT="%H:%M %Z"
-# }
 
-# vcs_branch.sh {
+
+# vcs_branch.sh 
 	# Max length of the branch name.
 	export TMUX_POWERLINE_SEG_VCS_BRANCH_MAX_LEN="24"
-# }
 
-# weather.sh {
+
+# weather.sh 
 	# The data provider to use. Currently only "yahoo" is supported.
 	export TMUX_POWERLINE_SEG_WEATHER_DATA_PROVIDER="yrno"
-	# What unit to use. Can be any of {c,f,k}.
-	export TMUX_POWERLINE_SEG_WEATHER_UNIT="c"
+	# What unit to use. Can be any of c,f,k.
+	export TMUX_POWERLINE_SEG_WEATHER_UNIT="f"
 	# How often to update the weather in seconds.
 	export TMUX_POWERLINE_SEG_WEATHER_UPDATE_PERIOD="600"
 	# Name of GNU grep binary if in PATH, or path to it.
@@ -195,6 +193,6 @@
 	export TMUX_POWERLINE_SEG_WEATHER_JSON="jq"
 	# Your location
 	# Latitude and Longtitude for use with yr.no
-	TMUX_POWERLINE_SEG_WEATHER_LAT=""
-	TMUX_POWERLINE_SEG_WEATHER_LON=""
-# }
+	TMUX_POWERLINE_SEG_WEATHER_LAT="30.255630"
+	TMUX_POWERLINE_SEG_WEATHER_LON="-97.685990"
+
