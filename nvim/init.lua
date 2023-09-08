@@ -39,7 +39,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Language Server Configuration START
 local lspconfig = require("lspconfig")
 local servers = {
-	"lua_ls",
 	"jsonls",
 	"html",
     "cssls",
