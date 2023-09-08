@@ -174,7 +174,7 @@ set.shiftwidth = 4
 set.softtabstop = 4
 set.number = true
 set.hlsearch = false
-set.formatoptions = "cro"
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
 -- Ensures we only generate 'tags' file in Ruby projects
