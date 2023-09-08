@@ -49,4 +49,7 @@ if status is-interactive
     # homebrew
     fish_add_path "/usr/local/sbin"
 
+    # tmuxinator
+    alias mux=tmuxinator
+
 end
