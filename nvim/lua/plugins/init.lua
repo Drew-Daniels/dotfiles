@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
-    "ray-x/web-tools.nvim",
+	"ray-x/web-tools.nvim",
 	"ludovicchabant/vim-gutentags",
 	"RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
