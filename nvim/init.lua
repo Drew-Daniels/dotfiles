@@ -12,6 +12,7 @@ require("transparent").setup()
 require("neodev").setup()
 
 require("nvim-treesitter.configs").setup({
+    parser_install_dir = "$XDG_CONFIG_HOME",
 	endwise = {
 		enable = true,
 	},
