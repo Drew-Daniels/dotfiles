@@ -1,4 +1,4 @@
-name: ios
+name: devdocs
 root: <%= ENV["PROJECTS_DIR"] %>/devDocs
 on_project_exit: clear
 
