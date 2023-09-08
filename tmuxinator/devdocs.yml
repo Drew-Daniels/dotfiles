@@ -1,0 +1,18 @@
+name: ios
+root: <%= ENV["PROJECTS_DIR"] %>/devDocs
+on_project_exit: clear
+
+windows:
+  - devdocs:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
