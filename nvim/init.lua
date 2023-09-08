@@ -12,7 +12,28 @@ require("transparent").setup()
 require("neodev").setup()
 
 require("nvim-treesitter.configs").setup({
-    parser_install_dir = "$XDG_CONFIG_HOME",
+    ensure_installed = {
+        "bash",
+        "css",
+        "dockerfile",
+        "fish",
+        "html",
+        "http",
+        "javascript",
+        "jq",
+        "json",
+        "lua",
+        "markdown",
+        "ruby",
+        "scss",
+        "sql",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml"
+    },
 	endwise = {
 		enable = true,
 	},
