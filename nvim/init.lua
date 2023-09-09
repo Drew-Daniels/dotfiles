@@ -13,6 +13,11 @@ require("transparent").setup()
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
+        "c",
+		"lua",
+		"vim",
+		"vimdoc",
+        "query",
 		"bash",
 		"css",
 		"dockerfile",
@@ -22,7 +27,6 @@ require("nvim-treesitter.configs").setup({
 		"javascript",
 		"jq",
 		"json",
-		"lua",
 		"markdown",
 		"ruby",
 		"scss",
@@ -30,8 +34,6 @@ require("nvim-treesitter.configs").setup({
 		"toml",
 		"tsx",
 		"typescript",
-		"vim",
-		"vimdoc",
 		"yaml",
 	},
 	-- required by 'nvim-treesitter-endwise'
