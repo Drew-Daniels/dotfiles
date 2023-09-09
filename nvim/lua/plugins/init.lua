@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
+    "dmmulroy/tsc.nvim",
 	"ray-x/web-tools.nvim",
     {"rest-nvim/rest.nvim", 
         dependencies = {"nvim-lua/plenary.nvim"}

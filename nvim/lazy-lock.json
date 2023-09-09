@@ -23,6 +23,7 @@
   "plenary.nvim": { "branch": "master", "commit": "a56bf0071bf63d35274fdc4738bb1e8821cfd2ea" },
   "rest.nvim": { "branch": "main", "commit": "22673c848768ff25517154a5aebfebc0c77d0b4f" },
   "transparent.nvim": { "branch": "main", "commit": "3af6232c8d39d51062702e875ff6407c1eeb0391" },
+  "tsc.nvim": { "branch": "main", "commit": "37506bc64b5b463688352e3336ec6a962d94e350" },
   "vim-fugitive": { "branch": "master", "commit": "6fcb0ad03982de646e3fecb6915e585651b9a9fb" },
   "vim-gutentags": { "branch": "master", "commit": "aa47c5e29c37c52176c44e61c780032dfacef3dd" },
   "web-tools.nvim": { "branch": "master", "commit": "16730bd5867cec5ec681b250214ba0b41b7b63a7" },

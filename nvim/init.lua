@@ -7,6 +7,8 @@ require("nvim-tree").setup({
 	},
 })
 
+require("tsc").setup()
+
 require("transparent").setup()
 
 require("nvim-treesitter.configs").setup({
