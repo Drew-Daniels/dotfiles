@@ -1,9 +1,9 @@
-name: ptnow-docker
-root: <%= ENV["PROJECTS_DIR"] %>/ptnow-patient
+name: rails-proj
+root: <%= ENV["PROJECTS_DIR"] %>/<%= @args[0] %>
 on_project_exit: clear
 
 windows:
-  - ptnow:
+  - editor:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -13,13 +13,12 @@ windows:
         - git:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-        - devserver:
+        - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          - yarn env:docker
-          - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> ptnow
-          - yarn
-          - yarn start
-        - cmd:
+  - stack:
+      layout: <%= ENV["MUX_LAYOUT"] %> 
+      panes:
+        - services:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
