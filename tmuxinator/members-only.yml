@@ -1,0 +1,45 @@
+name: members-only
+root: <%= ENV["PROJECTS_DIR"] %>
+on_project_exit: clear
+
+windows:
+  - members-only-client:
+      root: <%= ENV["PROJECTS_DIR"] %>/members-only-client
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - mongosh:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - mongosh $MDB_CONN_STR
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - devserver:
+          - fish
+          - npm i
+          - npm start
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+  - members-only-api:
+      root: <%= ENV["PROJECTS_DIR"] %>/members-only-api
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - git:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - devserver:
+          - fish
+          - npm i
+          - npm run dev
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
