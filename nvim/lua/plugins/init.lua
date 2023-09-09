@@ -23,20 +23,20 @@ return require("lazy").setup({
 	"ludovicchabant/vim-gutentags",
 	"RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
-	"tpope/vim-rhubarb",
-	"tpope/vim-fugitive",
-	"junegunn/gv.vim",
-	"neovim/nvim-lspconfig",
+	"tpope/vim-fugitive", -- Git operations, tools in neovim
+	"junegunn/gv.vim", -- Pretty Git log
 	"joshdick/onedark.vim",
 	"github/copilot.vim",
 	"xiyaowong/transparent.nvim",
 	"mfussenegger/nvim-dap",
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-	"folke/neodev.nvim", -- Typing, completion for neovim lua API
+    -- recommended settings from 'nvim-lspconfig'
+	"neovim/nvim-lspconfig",
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
+    --
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",

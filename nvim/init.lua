@@ -9,8 +9,6 @@ require("nvim-tree").setup({
 
 require("transparent").setup()
 
-require("neodev").setup()
-
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
@@ -34,6 +32,7 @@ require("nvim-treesitter.configs").setup({
 		"vimdoc",
 		"yaml",
 	},
+    -- required by 'nvim-treesitter-endwise'
 	endwise = {
 		enable = true,
 	},
@@ -117,6 +116,7 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+-- RECOMMENDED 'nvim-lspconfig' SETUP START
 -- luasnip setup
 local luasnip = require("luasnip")
 
@@ -161,7 +161,9 @@ cmp.setup({
 		{ name = "luasnip" },
 	},
 })
+-- RECOMMENDED 'nvim-lspconfig' SETUP END
 
+-- 'nvim-lsp' suggested keymappings, completion
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
