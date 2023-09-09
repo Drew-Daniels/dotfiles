@@ -9,7 +9,6 @@
 	smudge = git-lfs smudge -- %f
 [user]
 	name = Drew Daniels
-	email = daniels_drew@protonmail.com
 [init]
 	defaultBranch = master
 [credential]
