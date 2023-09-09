@@ -3,7 +3,7 @@ require("mason").setup()
 
 require("nvim-tree").setup({
 	filters = {
-		exclude = { ".env" },
+		exclude = { ".env", "node_modules" },
 	},
 })
 
@@ -220,6 +220,8 @@ set.number = true
 set.hlsearch = false
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
+
+vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "source init.lua" })
 
 -- Ensures we only generate 'tags' file in Ruby projects
 vim.cmd([[
