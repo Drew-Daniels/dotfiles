@@ -16,11 +16,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
-    "dmmulroy/tsc.nvim",
+	{ "folke/neodev.nvim", opts = {} },
+	"dmmulroy/tsc.nvim",
 	"ray-x/web-tools.nvim",
-    {"rest-nvim/rest.nvim", 
-        dependencies = {"nvim-lua/plenary.nvim"}
-    },
+	{ "rest-nvim/rest.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	"ludovicchabant/vim-gutentags",
 	"RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
@@ -31,13 +30,13 @@ return require("lazy").setup({
 	"xiyaowong/transparent.nvim",
 	"mfussenegger/nvim-dap",
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-    -- recommended settings from 'nvim-lspconfig'
+	-- recommended settings from 'nvim-lspconfig'
 	"neovim/nvim-lspconfig",
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
-    --
+	--
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",

@@ -34,7 +34,7 @@ require("nvim-treesitter.configs").setup({
 		"vimdoc",
 		"yaml",
 	},
-    -- required by 'nvim-treesitter-endwise'
+	-- required by 'nvim-treesitter-endwise'
 	endwise = {
 		enable = true,
 	},
@@ -92,16 +92,22 @@ require("rest-nvim").setup({
 	yank_dry_run = true,
 })
 
-vim.keymap.set('n', '<leader>x', '<Plug>RestNvim', { desc = 'execute request' })
-vim.keymap.set('n', '<leader>p', '<Plug>RestNvimPreview', { desc = 'preview curl' })
-vim.keymap.set('n', '<leader>l', '<Plug>RestNvimLast', { desc = 'repeat last request' })
+vim.keymap.set("n", "<leader>x", "<Plug>RestNvim", { desc = "execute request" })
+vim.keymap.set("n", "<leader>p", "<Plug>RestNvimPreview", { desc = "preview curl" })
+vim.keymap.set("n", "<leader>l", "<Plug>RestNvimLast", { desc = "repeat last request" })
+
+-- 'neodev' configuration START - must be done before any lspconfig
+require("neodev").setup{}
+-- 'neodev' configuration END
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Language Server Configuration START
 local lspconfig = require("lspconfig")
+
 local servers = {
+	"lua_ls",
 	"jsonls",
 	"html",
 	"cssls",
