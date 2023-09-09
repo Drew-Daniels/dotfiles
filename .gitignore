@@ -11,3 +11,5 @@ fish/*
 *tide*
 
 github-copilot
+
+fish/completions/asdf.fish
