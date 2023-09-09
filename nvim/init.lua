@@ -223,10 +223,6 @@ set.syntax = "on"
 
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "source init.lua" })
 
--- Ensures we only generate 'tags' file in Ruby projects
-vim.cmd([[
-    let g:gutentags_project_root = ['Gemfile']
-]])
 vim.cmd([[colorscheme onedark]])
 
 local function open_nvim_tree()
