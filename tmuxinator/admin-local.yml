@@ -10,9 +10,6 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - nvim
-        - git:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
         - devserver:
           - yarn env:local
           - yarn

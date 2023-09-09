@@ -15,9 +15,6 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - mongosh $MDB_CONN_STR
-        - git:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
         - devserver:
           - fish
           - npm i
@@ -33,9 +30,6 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - nvim
-        - git:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
         - devserver:
           - fish
           - npm i
