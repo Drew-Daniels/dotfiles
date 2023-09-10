@@ -34,6 +34,10 @@ return require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
+	-- dap
+	"williamboman/mason.nvim",
+	"mfussenegger/nvim-dap",
+	"jay-babu/mason-nvim-dap.nvim",
 	--
 	{
 		"folke/which-key.nvim",
