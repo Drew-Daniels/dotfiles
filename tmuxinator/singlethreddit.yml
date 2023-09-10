@@ -1,0 +1,22 @@
+name: singlethreddit
+root: <%= ENV["PROJECTS_DIR"] %>/singlethreddit
+on_project_exit: clear
+
+windows:
+  - singlethreddit:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - gcloud:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+        - devserver:
+          - fish
+          - npm i
+          - npm start
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
