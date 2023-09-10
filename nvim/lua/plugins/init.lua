@@ -28,8 +28,6 @@ return require("lazy").setup({
 	"joshdick/onedark.vim",
 	"github/copilot.vim",
 	"xiyaowong/transparent.nvim",
-	"mfussenegger/nvim-dap",
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	-- recommended settings from 'nvim-lspconfig'
 	"neovim/nvim-lspconfig",
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
