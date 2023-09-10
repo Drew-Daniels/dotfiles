@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "folke/neodev.nvim", opts = {} },
 	"dmmulroy/tsc.nvim",
 	"ray-x/web-tools.nvim",
@@ -25,7 +26,7 @@ return require("lazy").setup({
 	"williamboman/mason.nvim",
 	"tpope/vim-fugitive", -- Git operations, tools in neovim
 	"junegunn/gv.vim", -- Pretty Git log
-  "navarasu/onedark.nvim",
+	"navarasu/onedark.nvim",
 	"github/copilot.vim",
 	"xiyaowong/transparent.nvim",
 	-- recommended settings from 'nvim-lspconfig'

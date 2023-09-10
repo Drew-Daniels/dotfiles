@@ -5,6 +5,19 @@ require("mason-nvim-dap").setup({
 	handlers = {},
 })
 
+require("dapui").setup()
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
+
 require("nvim-tree").setup({
 	filters = {
 		exclude = { ".env", "node_modules" },
@@ -278,9 +291,9 @@ set.syntax = "on"
 
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "source init.lua" })
 
-require("onedark").setup {
-  style = "darker"
-}
+require("onedark").setup({
+	style = "darker",
+})
 
 require("onedark").load()
 
