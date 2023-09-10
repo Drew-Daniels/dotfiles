@@ -278,7 +278,11 @@ set.syntax = "on"
 
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "source init.lua" })
 
-vim.cmd([[colorscheme onedark]])
+require("onedark").setup {
+  style = "darker"
+}
+
+require("onedark").load()
 
 local function open_nvim_tree()
 	-- open the tree
