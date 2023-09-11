@@ -33,6 +33,7 @@ windows:
         - devserver:
           - fish
           - npm i
+          - kill $(lsof -t -i:8080)
           - npm run dev
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
