@@ -13,3 +13,4 @@ fish/*
 github-copilot
 
 fish/completions/asdf.fish
+fish/completions/docker*
