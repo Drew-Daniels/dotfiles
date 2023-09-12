@@ -34,7 +34,7 @@ if status is-interactive
 	set -gx VIMDATA ~/.local/share/nvim
 
 	# fzf
-	set -gx FZF_DEFAULT_COMMAND 'rg --files'
+	set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden'
 
 	# fisher
 	set -gx FISHER_PATH ~/projects/dotfiles/fish
