@@ -126,7 +126,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 local servers = {
-  "emmet_ls",
+  "emmet_language_server",
 	"lua_ls",
 	"jsonls",
 	"html",
