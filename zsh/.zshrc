@@ -37,8 +37,6 @@ export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
 . "$HOME/.asdf/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
 
 # nvim
 export XDG_CONFIG_HOME=~/projects/dotfiles
@@ -68,6 +66,15 @@ eval "$(starship init zsh)"
 PATH="/usr/local/sbin:$PATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# homebrew shell completion
+if type brew &>/dev/null
+then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/path.zsh.inc'; fi
