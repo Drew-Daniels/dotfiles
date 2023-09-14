@@ -1,0 +1,15 @@
+name: ops-tools
+root: <%= ENV["PROJECTS_DIR"] %>/ops-tools
+on_project_exit: clear
+
+windows:
+  - ops-tools:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
