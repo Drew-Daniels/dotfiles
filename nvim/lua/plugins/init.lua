@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
-  "stevearc/conform.nvim",
+	"stevearc/conform.nvim",
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "folke/neodev.nvim", opts = {} },
 	"dmmulroy/tsc.nvim",

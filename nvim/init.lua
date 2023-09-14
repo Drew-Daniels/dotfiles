@@ -126,7 +126,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 local servers = {
-  "emmet_language_server",
+	"emmet_language_server",
 	"lua_ls",
 	"jsonls",
 	"html",
@@ -279,22 +279,34 @@ vim.keymap.set("n", "<C-p>", ":FZF<CR>", { noremap = false })
 require("lualine").setup()
 
 require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    javascript = { "eslint_d" },
-    javascriptreact = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
-    ruby = { "rubocop" },
-    yaml = { "yamlfmt" },
-    bash = { "beautysh" },
-    html = { "htmlbeautifier" },
-    erb = { "htmlbeautifier" },
-    fish = { "fish_indent" },
-    json = { "jq" },
-    postgresql = { "pgFormatter" }
-  }
+	formatters_by_ft = {
+		lua = { "stylua" },
+		javascript = { "eslint_d" },
+		javascriptreact = { "eslint_d" },
+		typescript = { "eslint_d" },
+		typescriptreact = { "eslint_d" },
+		ruby = { "rubocop" },
+		yaml = { "yamlfmt" },
+		bash = { "beautysh" },
+		html = { "htmlbeautifier" },
+		erb = { "htmlbeautifier" },
+		fish = { "fish_indent" },
+		json = { "jq" },
+		postgresql = { "pgFormatter" },
+	},
 })
+
+vim.api.nvim_create_user_command("Format", function(args)
+	local range = nil
+	if args.count ~= -1 then
+		local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+		range = {
+			start = { args.line1, 0 },
+			["end"] = { args.line2, end_line:len() },
+		}
+	end
+	require("conform").format({ async = true, lsp_fallback = true, range = range })
+end, { range = true })
 
 -- general configs
 local set = vim.opt
