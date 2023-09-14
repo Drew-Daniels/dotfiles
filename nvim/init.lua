@@ -284,7 +284,15 @@ require("conform").setup({
     javascript = { "eslint_d" },
     javascriptreact = { "eslint_d" },
     typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" }
+    typescriptreact = { "eslint_d" },
+    ruby = { "rubocop" },
+    yaml = { "yamlfmt" },
+    bash = { "beautysh" },
+    html = { "htmlbeautifier" },
+    erb = { "htmlbeautifier" },
+    fish = { "fish_indent" },
+    json = { "jq" },
+    postgresql = { "pgFormatter" }
   }
 })
 
