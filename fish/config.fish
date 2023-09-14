@@ -52,4 +52,6 @@ if status is-interactive
     # tmuxinator
     alias mux=tmuxinator
 
+    # go
+    . ~/.asdf/plugins/golang/set-env.fish
 end
