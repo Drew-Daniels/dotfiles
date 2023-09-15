@@ -317,6 +317,7 @@ set.shiftwidth = 2
 set.softtabstop = 2
 set.number = true
 set.hlsearch = false
+set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
