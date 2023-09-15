@@ -334,4 +334,8 @@ local function open_nvim_tree()
 	require("nvim-tree.api").tree.open()
 end
 
+require("capslock").setup()
+vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
+vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle")
+
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
