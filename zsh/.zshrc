@@ -73,6 +73,13 @@ then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
+# pip zsh completion start
+#compdef -P pip[0-9.]#
+#compadd $( COMP_WORDS="$words[*]" \
+#           COMP_CWORD=$((CURRENT-1)) \
+#           PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
+# pip zsh completion end
+
 # initialise completions with ZSH's compinit
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -88,3 +95,4 @@ if [ -f '/Users/drew/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/drew
 
 # golang
 . ~/.asdf/plugins/golang/set-env.zsh
+
