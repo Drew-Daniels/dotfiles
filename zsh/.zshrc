@@ -74,7 +74,11 @@ then
 fi
 
 # initialise completions with ZSH's compinit
+autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
+
+# aws cli
+complete -C '/usr/local/bin/aws_completer' aws
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/path.zsh.inc'; fi
