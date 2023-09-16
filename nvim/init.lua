@@ -1,9 +1,5 @@
 require("plugins")
 require("mason").setup()
-require("mason-nvim-dap").setup({
-	ensure_installed = { "firefox", "chrome" },
-	handlers = {},
-})
 
 require("dapui").setup()
 

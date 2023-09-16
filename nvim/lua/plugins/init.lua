@@ -40,7 +40,6 @@ return require("lazy").setup({
 	-- dap
 	"williamboman/mason.nvim",
 	"mfussenegger/nvim-dap",
-	"jay-babu/mason-nvim-dap.nvim",
 	--
 	{
 		"folke/which-key.nvim",
