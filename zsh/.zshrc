@@ -96,3 +96,8 @@ if [ -f '/Users/drew/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/drew
 # golang
 . ~/.asdf/plugins/golang/set-env.zsh
 
+# colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+alias lc='colorls -lA --sd'
+

@@ -1,43 +1,46 @@
 if status is-interactive
-	fish_add_path "/opt/homebrew/bin"
-	fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+    fish_add_path /opt/homebrew/bin
+    fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
     # general
-    set -gx EDITOR "nvim"
+    set -gx EDITOR nvim
     alias cls "printf '\33c\e[3J'"
 
-	# pnpm
-	set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
+    # colorls
+    alias lc "colorls -lA --sd"
 
-	fish_add_path PNPM_HOME
+    # pnpm
+    set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
 
-	# pnpm end
+    fish_add_path PNPM_HOME
 
-	# docker
+    # pnpm end
+
+    # docker
     source ~/.docker/init-zsh.sh || true
-	# docker end    
+    # docker end    
 
-	# Android
-	set -gx ANDROID_HOME $HOME/Library/Android/sdk
-	fish_add_path $ANDROID_HOME/emulator
-	fish_add_path $ANDROID_HOME/tools
-	fish_add_path $ANDROID_HOME/tools/bin
-	fish_add_path $ANDROID_HOME/platform-tools
+    # Android
+    set -gx ANDROID_HOME $HOME/Library/Android/sdk
+    fish_add_path $ANDROID_HOME/emulator
+    fish_add_path $ANDROID_HOME/tools
+    fish_add_path $ANDROID_HOME/tools/bin
+    fish_add_path $ANDROID_HOME/platform-tools
 
-	# asdf
-	set -gx ASDF_CONFIG_FILE ~/projects/dotfiles/asdf/.asdfrc
-	source ~/.asdf/asdf.fish
+    # asdf
+    set -gx ASDF_CONFIG_FILE ~/projects/dotfiles/asdf/.asdfrc
+    source ~/.asdf/asdf.fish
 
-	# nvim
-	set -gx XDG_CONFIG_HOME ~/projects/dotfiles
-	set -gx VIMCONFIG ~/.config/nvim
-	set -gx VIMDATA ~/.local/share/nvim
+    # nvim
+    set -gx XDG_CONFIG_HOME ~/projects/dotfiles
+    set -gx VIMCONFIG ~/.config/nvim
+    set -gx VIMDATA ~/.local/share/nvim
 
-	# fzf
-	set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --iglob !.git'
+    # fzf
+    set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --iglob !.git'
 
-	# fisher
-	set -gx FISHER_PATH ~/projects/dotfiles/fish
+    # fisher
+    set -gx FISHER_PATH ~/projects/dotfiles/fish
 
     # starship
     set -gx STARSHIP_CONFIG ~/projects/dotfiles/starship/starship.toml
@@ -47,7 +50,7 @@ if status is-interactive
     fzf_configure_bindings --processes=\cp --git_status=\cs --git_log=\cl --directory=\cf
 
     # homebrew
-    fish_add_path "/usr/local/sbin"
+    fish_add_path /usr/local/sbin
 
     # tmuxinator
     alias mux=tmuxinator
@@ -68,5 +71,3 @@ if status is-interactive
     # pip fish completion end
 
 end
-
-
