@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
+  "mxsdev/nvim-dap-vscode-js",
 	"barklan/capslock.nvim",
 	"stevearc/conform.nvim",
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
