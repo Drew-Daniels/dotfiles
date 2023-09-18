@@ -338,6 +338,9 @@ end)
 -- FZF
 vim.keymap.set("n", "<C-p>", ":FZF<CR>", { noremap = false })
 
+-- my custom commands (not included in default 'fzf.vim' config)
+vim.cmd([[command! -bang -nargs=* Rgi call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --iglob !yarn.lock --iglob !tags -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]])
+
 -- lualine
 require("lualine").setup()
 
