@@ -16,13 +16,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
-	{ "vuki656/package-info.nvim", dependencies = "MunifTanjim/nui.nvim" },
 	"mxsdev/nvim-dap-vscode-js",
 	"barklan/capslock.nvim",
 	"stevearc/conform.nvim",
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "folke/neodev.nvim", opts = {} },
-	"dmmulroy/tsc.nvim",
 	"ray-x/web-tools.nvim",
 	{ "rest-nvim/rest.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	"ludovicchabant/vim-gutentags",
@@ -31,7 +29,6 @@ return require("lazy").setup({
 	"tpope/vim-fugitive", -- Git operations, tools in neovim
 	"junegunn/gv.vim", -- Pretty Git log
 	"navarasu/onedark.nvim",
-	"github/copilot.vim",
 	"xiyaowong/transparent.nvim",
 	-- recommended settings from 'nvim-lspconfig'
 	"neovim/nvim-lspconfig",
@@ -50,11 +47,7 @@ return require("lazy").setup({
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-			-- your configuration comes here
-			--     -- or leave it empty to use the default settings
-			--         -- refer to the configuration section below
-		},
+		opts = {},
 	},
 	{
 		"nvim-neorg/neorg",

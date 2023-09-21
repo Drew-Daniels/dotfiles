@@ -87,8 +87,6 @@ require("nvim-tree").setup({
 	},
 })
 
-require("tsc").setup()
-
 require("transparent").setup()
 
 require("nvim-treesitter.configs").setup({
@@ -210,7 +208,7 @@ end
 -- luasnip setup
 local luasnip = require("luasnip")
 
--- nvim-cmpsetup
+-- nvim-cmp setup
 local cmp = require("cmp")
 cmp.setup({
 	snippet = {
@@ -252,6 +250,38 @@ cmp.setup({
 	},
 })
 -- RECOMMENDED 'nvim-lspconfig' SETUP END
+
+-- luasnip specific configuration
+-- specify luasnippets directory to save a few ms of startup time
+require("luasnip.loaders.from_lua").load({ paths = "./luasnippets/" })
+
+local ls = require("luasnip")
+
+ls.config.set_config({
+  -- Enable autotriggered snippets
+  enable_autosnippets = true,
+
+  -- Use Tab to trigger visual selection
+  store_selection_keys = "<Tab>",
+})
+
+-- TODO: Figure out what mappings I want to use, that are similar between here and what I have setup for nvim-cmp
+-- set recommended keymappings: https://github.com/L3MON4D3/LuaSnip#keymaps
+vim.keymap.set({ "i" }, "<C-K>", function()
+	ls.expand()
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-L>", function()
+	ls.jump(1)
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-J>", function()
+	ls.jump(-1)
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, { silent = true })
 
 -- 'nvim-lsp' suggested keymappings, completion
 -- Global mappings.
@@ -339,7 +369,9 @@ end)
 vim.keymap.set("n", "<C-p>", ":FZF<CR>", { noremap = false })
 
 -- my custom commands (not included in default 'fzf.vim' config)
-vim.cmd([[command! -bang -nargs=* Rgi call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --iglob !yarn.lock --iglob !tags -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]])
+vim.cmd(
+	[[command! -bang -nargs=* Rgi call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --iglob !yarn.lock --iglob !tags -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]]
+)
 
 -- lualine
 require("lualine").setup()
@@ -403,28 +435,5 @@ end
 require("capslock").setup()
 vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle")
-
-require("package-info").setup()
-
--- Show dependency versions
-vim.keymap.set({ "n" }, "<LEADER>ns", require("package-info").show, { silent = true, noremap = true })
-
--- Hide dependency versions
-vim.keymap.set({ "n" }, "<LEADER>nc", require("package-info").hide, { silent = true, noremap = true })
-
--- Toggle dependency versions
-vim.keymap.set({ "n" }, "<LEADER>nt", require("package-info").toggle, { silent = true, noremap = true })
-
--- Update dependency on the line
-vim.keymap.set({ "n" }, "<LEADER>nu", require("package-info").update, { silent = true, noremap = true })
-
--- Delete dependency on the line
-vim.keymap.set({ "n" }, "<LEADER>nd", require("package-info").delete, { silent = true, noremap = true })
-
--- Install a new dependency
-vim.keymap.set({ "n" }, "<LEADER>ni", require("package-info").install, { silent = true, noremap = true })
-
--- Install a different dependency version
-vim.keymap.set({ "n" }, "<LEADER>np", require("package-info").change_version, { silent = true, noremap = true })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
