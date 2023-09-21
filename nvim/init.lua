@@ -286,10 +286,10 @@ end, { silent = true })
 -- 'nvim-lsp' suggested keymappings, completion
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "open float" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "goto prev" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "goto next" })
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "set location list" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -302,71 +302,71 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
+		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
+		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { unpack(opts), desc = "add workspace folder" })
+		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { unpack(opts), desc = "remove workspace folder" })
 		vim.keymap.set("n", "<space>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, opts)
-		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		end, { unpack(opts), desc = "list workspace folders" })
+		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
+		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
+		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
 		vim.keymap.set("n", "<space>f", function()
 			vim.lsp.buf.format({ async = true })
-		end, opts)
+		end, { unpack(opts), desc = "format" })
 	end,
 })
 -- 'nvim-dap' rec mappings
 vim.keymap.set("n", "<F5>", function()
 	require("dap").continue()
-end)
+end, { desc = "continue" })
 vim.keymap.set("n", "<F10>", function()
 	require("dap").step_over()
-end)
+end, { desc = "step over" })
 vim.keymap.set("n", "<F11>", function()
 	require("dap").step_into()
-end)
+end, { desc = "step into" })
 vim.keymap.set("n", "<F12>", function()
 	require("dap").step_out()
-end)
+end, { desc = "step out" })
 vim.keymap.set("n", "<Leader>b", function()
 	require("dap").toggle_breakpoint()
-end)
+end, { desc = "toggle breakpoint" })
 vim.keymap.set("n", "<Leader>B", function()
 	require("dap").set_breakpoint()
-end)
+end, { desc = "set breakpoint" })
 vim.keymap.set("n", "<Leader>lp", function()
 	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end)
+end, { desc = "log point message" })
 vim.keymap.set("n", "<Leader>dr", function()
 	require("dap").repl.open()
-end)
+end, { desc = "open repl" })
 vim.keymap.set("n", "<Leader>dl", function()
 	require("dap").run_last()
-end)
+end, { desc = "run last" })
 vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
 	require("dap.ui.widgets").hover()
-end)
+end, { desc = "hover" })
 vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
 	require("dap.ui.widgets").preview()
-end)
+end, { desc = "preview" })
 vim.keymap.set("n", "<Leader>df", function()
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.frames)
-end)
+end, { desc = "frames" })
 vim.keymap.set("n", "<Leader>ds", function()
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.scopes)
-end)
+end, { desc = "scopes" })
 -- Language Server Configuration END
 
 -- FZF
-vim.keymap.set("n", "<C-p>", ":FZF<CR>", { noremap = false })
+vim.keymap.set("n", "<C-p>", ":FZF<CR>", { noremap = false, desc = "FZF" })
 
 -- my custom commands (not included in default 'fzf.vim' config)
 vim.cmd(
@@ -419,8 +419,6 @@ set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
-vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "source init.lua" })
-
 require("onedark").setup({
 	style = "darker",
 })
@@ -434,6 +432,6 @@ end
 
 require("capslock").setup()
 vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
-vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle")
+vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })

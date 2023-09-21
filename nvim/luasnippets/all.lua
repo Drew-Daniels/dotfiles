@@ -1,5 +1,7 @@
+---@diagnostic disable: undefined-global
+
 return {
-  require("luasnip").snippet(
+  s(
     { trig = "hi" },
     { t("Hello, world!") }
   ),
