@@ -270,6 +270,7 @@ ls.config.set_config({
 
 -- TODO: Figure out what mappings I want to use, that are similar between here and what I have setup for nvim-cmp
 -- set recommended keymappings: https://github.com/L3MON4D3/LuaSnip#keymaps
+-- TODO: change to 'jk', 'jl', 'jj', 'je'
 vim.keymap.set({ "i" }, "<C-K>", function()
 	ls.expand()
 end, { silent = true })
@@ -285,6 +286,8 @@ vim.keymap.set({ "i", "s" }, "<C-E>", function()
 		ls.change_choice(1)
 	end
 end, { silent = true })
+
+vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', { desc = "load snippets" })
 
 -- 'nvim-lsp' suggested keymappings, completion
 -- Global mappings.
