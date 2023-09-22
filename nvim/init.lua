@@ -425,9 +425,7 @@ set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
-require("onedark").setup({
-	style = "darker",
-})
+require("onedark").setup()
 
 require("onedark").load()
 
