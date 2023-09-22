@@ -4,6 +4,13 @@ return {
   -- TODO: place cursor in between brackets
   s(
     { trig = "tb" },
-    { t("{  }") }
-  )
+    fmt(
+      [[
+        { <> }
+      ]],
+      { i(1) },
+      { delimiters = "<>" }
+    )
+  ),
 }
+

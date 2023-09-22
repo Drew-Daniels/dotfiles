@@ -259,10 +259,13 @@ local ls = require("luasnip")
 
 ls.config.set_config({
   -- Enable autotriggered snippets
-  enable_autosnippets = true,
+  enable_autosnippets = false,
 
   -- Use Tab to trigger visual selection
   store_selection_keys = "<Tab>",
+
+  -- show repeated node text as it's typed
+  update_events = "TextChanged,TextChangedI",
 })
 
 -- TODO: Figure out what mappings I want to use, that are similar between here and what I have setup for nvim-cmp
@@ -431,7 +434,7 @@ local function open_nvim_tree()
 end
 
 require("capslock").setup()
-vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
-vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
+-- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
+-- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
