@@ -149,7 +149,7 @@
 	# API Key for the API.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_API_KEY=$LASTFM_API_KEY
 	# How often in seconds to update the data from last.fm.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_UPDATE_PERIOD="30"
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_UPDATE_PERIOD="15"
 	# Fancy char to display before now playing track
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_NOTE_CHAR="♫"
 
