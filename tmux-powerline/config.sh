@@ -118,7 +118,7 @@
 
 # now_playing.sh 
 	# Music player to use. Can be any of audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, pithos, playerctl, rdio, rhythmbox, spotify, spotify_wine, file.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="spotify"
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="lastfm"
 	# File to be read in case the song is being read from a file
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_FILE_NAME=""
 	# Maximum output length.
@@ -145,9 +145,9 @@
 	# 2. Create a new API application at https://www.last.fm/api/account/create (name it tmux-powerline) and copy the API key and insert it below in the setting TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_API_KEY
 	# 3. Make sure the API can access your recently played song by going to you user privacy settings https://www.last.fm/settings/privacy and make sure "Hide recent listening information" is UNCHECKED.
 	# Username for Last.fm if that music player is used.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_USERNAME=""
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_USERNAME=$LASTFM_USERNAME
 	# API Key for the API.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_API_KEY=""
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_API_KEY=$LASTFM_API_KEY
 	# How often in seconds to update the data from last.fm.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_UPDATE_PERIOD="30"
 	# Fancy char to display before now playing track
@@ -193,6 +193,6 @@
 	export TMUX_POWERLINE_SEG_WEATHER_JSON="jq"
 	# Your location
 	# Latitude and Longtitude for use with yr.no
-	TMUX_POWERLINE_SEG_WEATHER_LAT="30.255630"
-	TMUX_POWERLINE_SEG_WEATHER_LON="-97.685990"
+	export TMUX_POWERLINE_SEG_WEATHER_LAT="30.255630"
+	export TMUX_POWERLINE_SEG_WEATHER_LON="-97.685990"
 
