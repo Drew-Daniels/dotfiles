@@ -249,6 +249,23 @@ cmp.setup({
 		{ name = "luasnip" },
 	},
 })
+
+vim.o.updatetime = 250
+vim.api.nvim_create_autocmd("CursorHold", {
+	buffer = bufnr,
+	callback = function()
+		local opts = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = "rounded",
+			source = "always",
+			prefix = " ",
+			scope = "cursor",
+		}
+		vim.diagnostic.open_float(nil, opts)
+	end,
+})
+
 -- RECOMMENDED 'nvim-lspconfig' SETUP END
 
 -- luasnip specific configuration
@@ -258,14 +275,14 @@ require("luasnip.loaders.from_lua").load({ paths = "./luasnippets/" })
 local ls = require("luasnip")
 
 ls.config.set_config({
-  -- Enable autotriggered snippets
-  enable_autosnippets = false,
+	-- Enable autotriggered snippets
+	enable_autosnippets = false,
 
-  -- Use Tab to trigger visual selection
-  store_selection_keys = "<Tab>",
+	-- Use Tab to trigger visual selection
+	store_selection_keys = "<Tab>",
 
-  -- show repeated node text as it's typed
-  update_events = "TextChanged,TextChangedI",
+	-- show repeated node text as it's typed
+	update_events = "TextChanged,TextChangedI",
 })
 
 -- TODO: Figure out what mappings I want to use, that are similar between here and what I have setup for nvim-cmp
@@ -287,7 +304,14 @@ vim.keymap.set({ "i", "s" }, "<C-E>", function()
 	end
 end, { silent = true })
 
-vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', { desc = "load snippets" })
+vim.keymap.set(
+	"n",
+	"<Leader>L",
+	'<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>',
+	{ desc = "load snippets" }
+)
+
+ls.filetype_extend("typescriptreact", { "javascriptreact" })
 
 -- 'nvim-lsp' suggested keymappings, completion
 -- Global mappings.
@@ -313,8 +337,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
-		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { unpack(opts), desc = "add workspace folder" })
-		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { unpack(opts), desc = "remove workspace folder" })
+		vim.keymap.set(
+			"n",
+			"<space>wa",
+			vim.lsp.buf.add_workspace_folder,
+			{ unpack(opts), desc = "add workspace folder" }
+		)
+		vim.keymap.set(
+			"n",
+			"<space>wr",
+			vim.lsp.buf.remove_workspace_folder,
+			{ unpack(opts), desc = "remove workspace folder" }
+		)
 		vim.keymap.set("n", "<space>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, { unpack(opts), desc = "list workspace folders" })
