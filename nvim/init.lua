@@ -311,6 +311,10 @@ vim.keymap.set(
 	{ desc = "load snippets" }
 )
 
+ls.filetype_extend("javascriptreact", { "javascript" })
+
+ls.filetype_extend("typescript", { "javascript" });
+
 ls.filetype_extend("typescriptreact", { "javascriptreact" })
 
 -- 'nvim-lsp' suggested keymappings, completion
