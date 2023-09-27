@@ -16,3 +16,5 @@ fish/completions/asdf.fish
 fish/completions/docker*
 
 gitk
+
+secrets
