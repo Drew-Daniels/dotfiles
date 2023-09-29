@@ -11,6 +11,7 @@ windows:
           - fish
           - nvim
         - devserver:
+          - fish
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - yarn
           - yarn android
