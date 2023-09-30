@@ -38,6 +38,7 @@ export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 
+
 # nvim
 export XDG_CONFIG_HOME=~/projects/dotfiles
 export VIMCONFIG=~/.config/nvim
@@ -72,6 +73,9 @@ if type brew &>/dev/null
 then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
+
+# brew curl shell completion
+fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
 # pip zsh completion start
 #compdef -P pip[0-9.]#
