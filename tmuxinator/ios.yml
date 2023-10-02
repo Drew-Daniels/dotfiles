@@ -13,6 +13,7 @@ windows:
         - devserver:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - yarn setup qa
           - yarn
           - yarn ios
         - cmd:
