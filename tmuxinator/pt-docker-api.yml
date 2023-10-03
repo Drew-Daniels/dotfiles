@@ -18,7 +18,6 @@ windows:
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
           - nvim
         - devserver:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>

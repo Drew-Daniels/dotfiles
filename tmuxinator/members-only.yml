@@ -9,7 +9,6 @@ windows:
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
           - nvim
         - mongosh:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
