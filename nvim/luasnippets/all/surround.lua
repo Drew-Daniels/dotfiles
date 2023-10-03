@@ -12,7 +12,7 @@ return {
 	),
 	s(
 		"b",
-		fmta([[{<>}]], {
+		fmta([[{ <> }]], {
 			d(1, get_visual),
 		})
 	),
