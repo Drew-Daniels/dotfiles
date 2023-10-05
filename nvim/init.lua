@@ -120,6 +120,8 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+require("neoscroll").setup()
+
 require("web-tools").setup({
 	keymaps = {
 		rename = nil, -- by default use same setup of lspconfig
@@ -313,7 +315,7 @@ vim.keymap.set(
 
 ls.filetype_extend("javascriptreact", { "javascript" })
 
-ls.filetype_extend("typescript", { "javascript" });
+ls.filetype_extend("typescript", { "javascript" })
 
 ls.filetype_extend("typescriptreact", { "javascriptreact" })
 
