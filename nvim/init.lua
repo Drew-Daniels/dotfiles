@@ -120,7 +120,9 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-require("neoscroll").setup()
+require("neoscroll").setup({
+	easing_function = "quadratic",
+})
 
 require("web-tools").setup({
 	keymaps = {
