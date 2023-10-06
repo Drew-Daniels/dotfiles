@@ -1,0 +1,59 @@
+name: mr
+root: <%= ENV["PROJECTS_DIR"] %>/nx-monorepo-poc
+on_project_exit: clear
+
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+  - admin:
+      root: <%= ENV["PROJECTS_DIR"] %>/nx-monorepo-poc/apps/admin
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - nvim
+        - devserver:
+          - fish
+          - yarn env:local
+          - yarn
+          - yarn start
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+  - pt:
+      root: <%= ENV["PROJECTS_DIR"] %>/nx-monorepo-poc/apps/pt
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - nvim
+        - devserver:
+          - fish
+          - yarn env:local
+          - yarn
+          - yarn start
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+  - embedded:
+      root: <%= ENV["PROJECTS_DIR"] %>/nx-monorepo-poc/apps/embedded
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - nvim
+        - devserver:
+          - fish
+          - yarn env:local
+          - yarn
+          - yarn start
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
