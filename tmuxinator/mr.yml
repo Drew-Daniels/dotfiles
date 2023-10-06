@@ -9,6 +9,11 @@ windows:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - nvim
+        - devserver:
+          - fish
+          - yarn env:local
+          - yarn
+          - yarn start
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
@@ -21,7 +26,6 @@ windows:
           - nvim
         - devserver:
           - fish
-          - yarn env:local
           - yarn
           - yarn start
         - cmd:
@@ -36,7 +40,6 @@ windows:
           - nvim
         - devserver:
           - fish
-          - yarn env:local
           - yarn
           - yarn start
         - cmd:
@@ -51,7 +54,6 @@ windows:
           - nvim
         - devserver:
           - fish
-          - yarn env:local
           - yarn
           - yarn start
         - cmd:
