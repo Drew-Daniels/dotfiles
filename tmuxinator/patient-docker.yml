@@ -12,7 +12,7 @@ windows:
         - devserver:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          - yarn env:docker
+          - yarn env:keet:docker
           - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> patient
           - yarn
           - yarn start

@@ -1,5 +1,5 @@
 name: ptnow-local
-root: <%= ENV["PROJECTS_DIR"] %>/ptnow-patient
+root: <%= ENV["PROJECTS_DIR"] %>/keet-patient
 on_project_exit: clear
 
 windows:
@@ -11,7 +11,7 @@ windows:
           - nvim
         - devserver:
           - fish
-          - yarn env:local
+          - yarn env:ptnow:local
           - yarn
           - yarn start
         - cmd:

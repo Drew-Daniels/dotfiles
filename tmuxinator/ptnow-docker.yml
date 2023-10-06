@@ -1,5 +1,5 @@
 name: ptnow-docker
-root: <%= ENV["PROJECTS_DIR"] %>/ptnow-patient
+root: <%= ENV["PROJECTS_DIR"] %>/keet-patient
 on_project_exit: clear
 
 windows:
@@ -12,7 +12,7 @@ windows:
         - devserver:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          - yarn env:docker
+          - yarn env:ptnow:docker
           - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> ptnow
           - yarn
           - yarn start

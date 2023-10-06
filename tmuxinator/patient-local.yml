@@ -11,7 +11,7 @@ windows:
           - nvim
         - devserver:
           - fish
-          - yarn env:local
+          - yarn env:keet:local
           - yarn
           - yarn start
         - cmd:
