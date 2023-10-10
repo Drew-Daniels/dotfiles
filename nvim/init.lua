@@ -81,11 +81,12 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
-require("nvim-tree").setup({
-	filters = {
-		exclude = { ".env", "node_modules" },
-	},
-})
+-- figure out why nvim-tree slows down :q
+--require("nvim-tree").setup({
+--	filters = {
+--		exclude = { ".env", "node_modules" },
+--	},
+--})
 
 require("transparent").setup()
 
@@ -471,13 +472,13 @@ require("onedark").setup()
 
 require("onedark").load()
 
-local function open_nvim_tree()
-	-- open the tree
-	require("nvim-tree.api").tree.open()
-end
+--local function open_nvim_tree()
+--	-- open the tree
+--	require("nvim-tree.api").tree.open()
+--end
 
 require("capslock").setup()
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+--vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
