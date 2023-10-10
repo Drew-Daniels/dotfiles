@@ -47,6 +47,8 @@ export VIMDATA=~/.local/share/nvim
 # general
 export PROJECTS_DIR=~/projects
 alias cls="printf '\33c\e[3J'"
+alias arm="/usr/bin/env arch -arm64 zsh"
+alias intel="/usr/bin/env arch -x86_64 zsh"
 
 # tmuxp
 export TMUXP_LAYOUT=main-vertical

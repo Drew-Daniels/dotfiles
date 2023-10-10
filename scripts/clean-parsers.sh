@@ -6,11 +6,14 @@
 # x84_64 vs arm64
 # So when I actually try to use these parsers in neovim I get an error saying that I've installed these parsers using the wrong architecture.
 
-parsers_glob=~/.local/share/nvim/lazy/nvim-treesitter/parser/*.so
+parser_dir=~/.local/share/nvim/lazy/nvim-treesitter/parser
 
-echo "Deleting all 'nvim-treesitter' parsers"
-
-rm -r -v $parsers_glob
-
-echo "Deleted all 'nvim-treesitter' parsers"
+if test -n "$(find $parser_dir -name '*.so' -print -quit)"
+then
+  echo "Deleting all 'nvim-treesitter' parsers"
+  find $parser_dir -name '*.so' -delete
+  echo "Deleted all 'nvim-treesitter' parsers"
+else
+  echo "No parsers installed"
+fi
 
