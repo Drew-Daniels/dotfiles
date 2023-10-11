@@ -1,7 +1,7 @@
 [core]
 	editor = nvim
 	autocrlf = false
-    excludesfile = ~/projects/dotfiles/git/.gitignore_global
+  excludesfile = ~/projects/dotfiles/git/.gitignore
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
