@@ -478,6 +478,11 @@ require("onedark").load()
 --end
 
 require("capslock").setup()
+require("clipboard-image").setup({
+  default = {
+    img_dir = "images"
+  }
+})
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 

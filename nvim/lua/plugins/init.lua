@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
+  "dfendr/clipboard-image.nvim",
   "karb94/neoscroll.nvim",
 	"mxsdev/nvim-dap-vscode-js",
 	"barklan/capslock.nvim",
