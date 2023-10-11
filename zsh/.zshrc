@@ -1,5 +1,7 @@
 . ~/projects/dotfiles/zsh/secrets
 
+export XDG_CONFIG_HOME=~/projects/dotfiles
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
@@ -38,9 +40,10 @@ export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 
+# ripgrep
+RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 
 # nvim
-export XDG_CONFIG_HOME=~/projects/dotfiles
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
