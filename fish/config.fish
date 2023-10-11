@@ -36,9 +36,6 @@ if status is-interactive
     set -gx VIMCONFIG ~/.config/nvim
     set -gx VIMDATA ~/.local/share/nvim
 
-    # fzf
-    set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --iglob !.git'
-
     # fisher
     set -gx FISHER_PATH ~/projects/dotfiles/fish
 
