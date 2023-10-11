@@ -49,6 +49,7 @@ export PROJECTS_DIR=~/projects
 alias cls="printf '\33c\e[3J'"
 alias arm="/usr/bin/env arch -arm64 zsh"
 alias intel="/usr/bin/env arch -x86_64 zsh"
+alias pclean="$HOME/projects/dotfiles/scripts/clean-parsers.sh"
 
 # tmuxp
 export TMUXP_LAYOUT=main-vertical
