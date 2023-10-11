@@ -415,7 +415,7 @@ end, { desc = "scopes" })
 -- Language Server Configuration END
 
 -- FZF
-vim.keymap.set("n", "<C-p>", ":FZF<CR>", { noremap = false, desc = "FZF" })
+vim.keymap.set("n", "<C-p>", ":GFiles<CR>", { noremap = false, desc = "FZF" })
 
 -- my custom commands (not included in default 'fzf.vim' config)
 vim.cmd(
