@@ -478,10 +478,12 @@ require("onedark").load()
 --end
 
 require("capslock").setup()
+
+-- Figure out how to update the image path used in markdown links. Images are getting copied to /images/<image-name> correctly, but the markdown links reference /img/<image-name>.
 require("clipboard-image").setup({
   default = {
     img_dir = "images"
-  }
+  },
 })
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
