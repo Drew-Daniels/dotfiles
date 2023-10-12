@@ -2,6 +2,11 @@ if status is-interactive
     fish_add_path /opt/homebrew/bin
     fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+
+    # fish-specific
+    # turn off greeting
+    set -g fish_greeting
+
     # general
     set -gx EDITOR nvim
     alias cls "printf '\33c\e[3J'"
