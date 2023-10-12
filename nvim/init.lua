@@ -81,13 +81,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
--- figure out why nvim-tree slows down :q
---require("nvim-tree").setup({
---	filters = {
---		exclude = { ".env", "node_modules" },
---	},
---})
-
 require("transparent").setup()
 
 require("nvim-treesitter.configs").setup({
@@ -475,11 +468,6 @@ require("onedark").setup()
 
 require("onedark").load()
 
---local function open_nvim_tree()
---	-- open the tree
---	require("nvim-tree.api").tree.open()
---end
-
 require("capslock").setup()
 
 -- Figure out how to update the image path used in markdown links. Images are getting copied to /images/<image-name> correctly, but the markdown links reference /img/<image-name>.
@@ -491,4 +479,5 @@ require("clipboard-image").setup({
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
---vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- TODO: Figure out how to automatically select the previous window after neotree is opened
+vim.cmd([[autocmd VimEnter * Neotree]])
