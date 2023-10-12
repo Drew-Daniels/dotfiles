@@ -468,6 +468,9 @@ set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
+-- do not open folds when searching for text
+vim.cmd([[set foldopen-=search]])
+
 require("onedark").setup()
 
 require("onedark").load()
