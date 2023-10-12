@@ -18,6 +18,15 @@ vim.g.maplocalleader = " "
 return require("lazy").setup({
   "dfendr/clipboard-image.nvim",
   "karb94/neoscroll.nvim",
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+	},
 	"mxsdev/nvim-dap-vscode-js",
 	"barklan/capslock.nvim",
 	"stevearc/conform.nvim",
@@ -85,12 +94,12 @@ return require("lazy").setup({
 		"junegunn/fzf.vim",
 		dependencies = { "junegunn/fzf", build = ":call fzf#install()" },
 	},
---	{
---		"nvim-tree/nvim-tree.lua",
---		dependencies = {
---			"nvim-tree/nvim-web-devicons", -- optional
---		},
---	},
+	--	{
+	--		"nvim-tree/nvim-tree.lua",
+	--		dependencies = {
+	--			"nvim-tree/nvim-web-devicons", -- optional
+	--		},
+	--	},
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
