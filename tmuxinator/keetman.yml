@@ -1,10 +1,10 @@
-name: km
+name: keetman
 root: <%= ENV["PROJECTS_DIR"] %>/keetman
 on_project_exit: clear
 
 windows:
-  - keetman:
-      layout: <%= ENV["MUX_LAYOUT"] %>
+  - pt:
+      layout: even-horizontal
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
