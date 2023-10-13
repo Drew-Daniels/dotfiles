@@ -429,7 +429,7 @@ require("conform").setup({
 		yaml = { "yamlfmt" },
 		bash = { "beautysh" },
 		html = { "htmlbeautifier" },
-		erb = { "htmlbeautifier" },
+		eruby = { "htmlbeautifier" },
 		fish = { "fish_indent" },
 		json = { "jq" },
 		postgresql = { "pgFormatter" },
