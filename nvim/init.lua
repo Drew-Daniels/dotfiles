@@ -490,4 +490,5 @@ require("neo-tree").setup({
   }
 })
 -- TODO: Figure out how to automatically select the previous window after neotree is opened
-vim.cmd([[autocmd VimEnter * Neotree]])
+-- vim.cmd([[autocmd VimEnter * Neotree]])
+vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
