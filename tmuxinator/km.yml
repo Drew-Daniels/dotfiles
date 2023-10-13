@@ -1,4 +1,4 @@
-name: keetman
+name: km
 root: <%= ENV["PROJECTS_DIR"] %>/keetman
 on_project_exit: clear
 

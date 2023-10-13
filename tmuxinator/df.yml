@@ -1,4 +1,4 @@
-name: dotfiles
+name: df
 root: <%= ENV["PROJECTS_DIR"] %>/dotfiles
 on_project_exit: clear
 
