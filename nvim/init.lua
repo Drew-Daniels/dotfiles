@@ -486,7 +486,9 @@ require("neo-tree").setup({
     },
     follow_current_file = {
       enabled = true,
-    }
+    },
+    -- automatically refresh file tree
+    use_libuv_file_watcher = true,
   }
 })
 -- TODO: Figure out how to automatically select the previous window after neotree is opened
