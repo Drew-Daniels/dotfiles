@@ -16,8 +16,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
-  "dfendr/clipboard-image.nvim",
-  "karb94/neoscroll.nvim",
+	"dfendr/clipboard-image.nvim",
+	"karb94/neoscroll.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
