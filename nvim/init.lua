@@ -496,7 +496,7 @@ require("neo-tree").setup({
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
 
 -- harpoon
-vim.keymap.set("n", "<Leader>m", ":lua require('harpoon.mark').add_file()<CR>", { noremap = false, desc = "Harpoon file" })
+vim.keymap.set("n", "<Leader>h", ":lua require('harpoon.mark').add_file()<CR>", { noremap = false, desc = "Harpoon file" })
 vim.keymap.set(
 	"n",
 	"<Leader>s",
