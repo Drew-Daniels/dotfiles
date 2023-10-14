@@ -472,25 +472,46 @@ require("capslock").setup()
 
 -- Figure out how to update the image path used in markdown links. Images are getting copied to /images/<image-name> correctly, but the markdown links reference /img/<image-name>.
 require("clipboard-image").setup({
-  default = {
-    img_dir = "images"
-  },
+	default = {
+		img_dir = "images",
+	},
 })
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 require("neo-tree").setup({
-  filesystem = {
-    filtered_items = {
-      hide_dotfiles = false,
-      hide_gitignored = false,
-    },
-    follow_current_file = {
-      enabled = true,
-    },
-    -- automatically refresh file tree
-    use_libuv_file_watcher = true,
-  }
+	filesystem = {
+		filtered_items = {
+			hide_dotfiles = false,
+			hide_gitignored = false,
+		},
+		follow_current_file = {
+			enabled = true,
+		},
+		-- automatically refresh file tree
+		use_libuv_file_watcher = true,
+	},
 })
 -- TODO: Figure out how to automatically select the previous window after neotree is opened
 -- vim.cmd([[autocmd VimEnter * Neotree]])
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
+
+-- harpoon
+vim.keymap.set("n", "<Leader>m", ":lua require('harpoon.mark').add_file()<CR>", { noremap = false, desc = "Harpoon file" })
+vim.keymap.set(
+	"n",
+	"<Leader>s",
+	":lua require('harpoon.ui').toggle_quick_menu()<CR>",
+	{ noremap = false, desc = "Switch file" }
+)
+vim.keymap.set(
+	"n",
+	"<Leader>p",
+	":lua require('harpoon.ui').nav_prev()<CR>",
+	{ noremap = false, desc = "Navigate to Previous File" }
+)
+vim.keymap.set(
+	"n",
+	"<Leader>n",
+	":lua require('harpoon.ui').nav_next()<CR>",
+	{ noremap = false, desc = "Navigate to Next File" }
+)
