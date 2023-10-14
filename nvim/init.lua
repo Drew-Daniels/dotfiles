@@ -515,3 +515,10 @@ vim.keymap.set(
 	":lua require('harpoon.ui').nav_next()<CR>",
 	{ noremap = false, desc = "Navigate to Next File" }
 )
+vim.keymap.set(
+	"n",
+	"<Leader>da",
+	":lua require('harpoon.mark').clear_all()<CR>",
+	{ noremap = false, desc = "Delete all Harpoons" }
+)
+
