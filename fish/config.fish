@@ -9,6 +9,7 @@ if status is-interactive
 
     # general
     set -gx EDITOR nvim
+    set -gx VISUAL nvim
     alias cls "printf '\33c\e[3J'"
 
     # colorls
