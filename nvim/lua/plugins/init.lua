@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require("lazy").setup({
+	{ "ThePrimeagen/harpoon", dependencies = { "nvim-lua/plenary.nvim" } },
 	"dfendr/clipboard-image.nvim",
 	"karb94/neoscroll.nvim",
 	{
