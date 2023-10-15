@@ -1,4 +1,4 @@
-. ~/projects/dotfiles/zsh/secrets
+. ~/projects/dotfiles/secrets
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
@@ -44,5 +44,5 @@ export EXPORT_E2E_CREDS_SCRIPT=~/projects/dotfiles/scripts/export_e2e_creds.sh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --iglob !git'
 # starship
 export STARSHIP_CONFIG=~/projects/dotfiles/starship/starship.toml
-eval "$(starship init zsh)"
+eval "$(starship init bash)"
 
