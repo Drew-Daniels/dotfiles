@@ -114,6 +114,9 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+-- custom file associations
+require("vim.treesitter.language").register('http', 'hurl')
+
 require("neoscroll").setup({
 	easing_function = "quadratic",
 })
