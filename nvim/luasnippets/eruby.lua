@@ -4,6 +4,7 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-  -- TODO: Make snippet for <%= %> tags
-  -- TODO: Make snippet for <% %> tags
+	s("ex", fmt([[ <%= {} %> ]], { i(1) }, { desc = "eRuby expression" })),
+	s("sc", fmt([[ <% {} %> ]], { i(1) }), { desc = "eRuby scriptlet" }),
+	s("sce", { t("<% end %>") }),
 }
