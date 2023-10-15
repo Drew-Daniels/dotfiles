@@ -15,6 +15,10 @@ if status is-interactive
     # colorls
     alias lc "colorls -lA --sd"
 
+    # ripgrep
+    # search for pattern in filenames
+    alias rgf "rg --files | rg"
+
     # pnpm
     set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
 
