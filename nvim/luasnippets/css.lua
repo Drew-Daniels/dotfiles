@@ -14,7 +14,7 @@ return {
       ]],
 			--TODO: Update last node to be choice node that can enable '!important' rule if required
 			{
-				c(1, { sn(nil, { t("."), i(1, "class-name") }), sn(nil, { t("#"), i(1, "id") }), i(2, "element")}),
+				c(1, { sn(nil, { t("."), i(1, "class-name") }), sn(nil, { t("#"), i(1, "id") }), i(2, "element") }),
 				i(2, "attr"),
 				i(3, "value"),
 				c(4, { t(""), t(" !important") }),
