@@ -47,5 +47,5 @@ return {
   -- TODO: Determine how to get indentation working properly with these - when
   -- spanning multiple lines
 	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
-	s("jx", fmta([[ expect(<>);]], { i(1) }), { desc = "jest expect" }),
+	s("jx", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
 }
