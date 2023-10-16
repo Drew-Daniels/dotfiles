@@ -4,16 +4,17 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-  s("td", fmta("// TODO: <>", { i(1) }), { desc = "TODO" }),
-  s("mlc", 
-    fmta(
-      [[
+	s("td", fmta("// TODO: <>", { i(1) }), { desc = "TODO" }),
+	s(
+		"mlc",
+		fmta(
+			[[
         /*
         <>
         */
-      ]], 
-      { i(1) }
-    ),
-    { desc = "TODO" }
-  ),
+      ]],
+			{ i(1) }
+		),
+		{ desc = "TODO" }
+	),
 }
