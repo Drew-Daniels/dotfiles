@@ -115,7 +115,7 @@ require("nvim-treesitter.configs").setup({
 })
 
 -- custom file associations
-require("vim.treesitter.language").register('http', 'hurl')
+require("vim.treesitter.language").register("http", "hurl")
 
 require("neoscroll").setup({
 	easing_function = "quadratic",
@@ -220,30 +220,25 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
 		["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+		["<C-j>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<C-k>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 		-- C-b (back) C-f (forward) for snippet placeholder navigation.
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
 		}),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
 	}),
 	sources = {
 		{ name = "nvim_lsp" },
@@ -499,7 +494,12 @@ require("neo-tree").setup({
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
 
 -- harpoon
-vim.keymap.set("n", "<Leader>h", ":lua require('harpoon.mark').add_file()<CR>", { noremap = false, desc = "Harpoon file" })
+vim.keymap.set(
+	"n",
+	"<Leader>h",
+	":lua require('harpoon.mark').add_file()<CR>",
+	{ noremap = false, desc = "Harpoon file" }
+)
 vim.keymap.set(
 	"n",
 	"<Leader>s",
@@ -524,4 +524,3 @@ vim.keymap.set(
 	":lua require('harpoon.mark').clear_all()<CR>",
 	{ noremap = false, desc = "Delete all Harpoons" }
 )
-
