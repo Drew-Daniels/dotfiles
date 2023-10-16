@@ -198,6 +198,7 @@ local servers = {
 	"eslint",
 	"cucumber_language_server",
 	"tailwindcss",
+  "solargraph",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
