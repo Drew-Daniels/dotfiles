@@ -281,9 +281,6 @@ ls.config.set_config({
 	update_events = "TextChanged,TextChangedI",
 })
 
--- TODO: Figure out what mappings I want to use, that are similar between here and what I have setup for nvim-cmp
--- set recommended keymappings: https://github.com/L3MON4D3/LuaSnip#keymaps
--- TODO: change to 'jk', 'jl', 'jj', 'je'
 vim.keymap.set({ "i" }, "<C-K>", function()
 	ls.expand()
 end, { silent = true })
