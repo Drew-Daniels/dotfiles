@@ -5,7 +5,7 @@ local get_visual = helpers.get_visual
 
 return {
 	s(
-		"ml",
+		"mi",
 		fmta(
 			[[
         <>.map((<>, i), =>> {
