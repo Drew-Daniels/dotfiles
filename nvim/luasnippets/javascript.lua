@@ -4,7 +4,52 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-	s("rli", fmt([[ <li key={{{}}}>{{{}}}</li> ]], { i(1), i(2) })),
+  -- imports
+	s(
+		"esi",
+		fmta(
+			[[
+        import <> from '<>';
+      ]],
+			{ c(2, { sn(nil, { t"{ ", i(1), t" }" }), t"" }), i(1) },
+			{ desc = "ES Module Import" }
+		)
+	),
+	s(
+		"cji",
+		fmta(
+			[[
+        const <> = require('<>');
+      ]],
+			{ c(2, { sn(nil, { t"{ ", i(1), t" }" }), t"" }), i(1) },
+			{ desc = "CommonJS Module Import" }
+		)
+	),
+	s(
+		"nr",
+		fmta(
+			[[
+        const <> = require('<>');
+      ]],
+			{ i(2), i(1) },
+			{ desc = "Named require" }
+		)
+	),
+  -- exports
+	s("ese", fmta([[ export <><> ]], { c(1, { t"default ", t"" }), i(2) }), { desc = "ES Module export" }),
+	s(
+		"cjs",
+		fmta(
+			[[
+        module.exports = {
+          <>,
+        }
+      ]],
+			{ i(1) },
+      { desc = "CommonJS Export" }
+		)
+	),
+  -- eslint
 	s("dnl", fmt([[ // eslint-disable-next-line {} ]], { i(1, "rule-to-ignore") })),
 	s(
 		"des",
@@ -21,17 +66,7 @@ return {
 			}
 		)
 	),
-	s(
-		"pt",
-		fmt(
-			[[ 
-        {}.propTypes = {{
-          {}
-        }}
-      ]],
-			{ i(1), i(2) }
-		)
-	),
+  -- testing
 	s(
 		"jd",
 		fmta(
@@ -77,6 +112,7 @@ return {
 			{ c(1, { t("describe"), t("it"), t("beforeAll"), t("beforeEach") }), i(2), i(3) }
 		)
 	),
+  -- functions
 	s(
 		"nf",
 		fmta(
@@ -86,7 +122,7 @@ return {
         }
       ]],
 			{ i(1), i(2) },
-      { desc = "JS Named Function" } 
+			{ desc = "JS Named Function" }
 		)
 	),
 	s(
@@ -96,7 +132,7 @@ return {
         (<>) =>> {<>}
       ]],
 			{ i(1), i(2) },
-      { desc = "JS Arrow Function" } 
+			{ desc = "JS Arrow Function" }
 		)
 	),
 }
