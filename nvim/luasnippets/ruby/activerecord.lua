@@ -11,8 +11,7 @@ return {
         execute <<<<-SQL
           <>
         ;
-        SQL
-      ]],
+        SQL]],
 			{ i(1) },
 			{ desc = "ActiveRecord SQL Execute Statement" }
 		)
