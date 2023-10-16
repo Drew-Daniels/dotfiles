@@ -5,30 +5,47 @@ local get_visual = helpers.get_visual
 
 return {
 	s("rli", fmt([[ <li key={{{}}}>{{{}}}</li> ]], { i(1), i(2) })),
-  s("dnl", fmt([[ // eslint-disable-next-line {} ]], { i(1, "rule-to-ignore") })),
-  s("des",
-    fmt(
-      [[
+	s("dnl", fmt([[ // eslint-disable-next-line {} ]], { i(1, "rule-to-ignore") })),
+	s(
+		"des",
+		fmt(
+			[[
         /* eslint-disable {} */
         {}
         /* eslint-enable {} */
-      ]]
-      ,
-      {
-        i(1, "rule-to-ignore"),
-        d(2, get_visual),
-        r(1, "rule-to-ignore"),
-      })
-  ),
-  s("pt",
-    fmt(
-      [[ 
+      ]],
+			{
+				i(1, "rule-to-ignore"),
+				d(2, get_visual),
+				r(1, "rule-to-ignore"),
+			}
+		)
+	),
+	s(
+		"pt",
+		fmt(
+			[[ 
         {}.propTypes = {{
           {}
         }}
       ]],
-      { i(1), i(2) }
-    )),
-  -- TODO: Make snippets for jest tests, describe blocks
-  -- TODO: Make snippet for selecting code and commenting it out
+			{ i(1), i(2) }
+		)
+	),
+	s(
+		"jd",
+		fmta(
+			[[ 
+        describe('<>', () =>> {
+          <>
+        });
+      ]],
+			{ i(1), i(2) }
+		),
+		{ desc = "jest describe" }
+	),
+  -- TODO: Determine how to get indentation working properly with these - when
+  -- spanning multiple lines
+	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
+	s("jx", fmta([[ expect(<>);]], { i(1) }), { desc = "jest expect" }),
 }
