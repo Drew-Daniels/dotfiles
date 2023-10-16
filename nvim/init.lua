@@ -427,7 +427,7 @@ require("conform").setup({
 		eruby = { "htmlbeautifier" },
 		fish = { "fish_indent" },
 		json = { "jq" },
-		postgresql = { "pgFormatter" },
+    sql = { "sql_formatter" }
 	},
 })
 
