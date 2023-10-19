@@ -10,22 +10,19 @@ end
 local options = {
   ensure_installed = {
     "bash-language-server",
-    --TODO: Not included in server_configurations in nvim-lspconfig, but recommended by bash-language-server
-    -- "shellcheck",
     "css-lsp",
+    "cssmodules-language-server",
     "cucumber-language-server",
     "docker-compose-language-service",
     "dockerfile-language-server",
-    -- not included in server_configurations
-    -- "erb-lint",
-    -- --TODO: Do i need both?
+    "emmet-language-server",
     "eslint-lsp",
-    "eslint_d",
     "html-lsp",
     "json-lsp",
     "jsonlint",
     "lua-language-server",
     "solargraph",
+    "sqlls",
     "tailwindcss-language-server",
     "typescript-language-server",
     "vim-language-server",
@@ -233,14 +230,17 @@ local servers = {
   "html",
   "bashls",
   "cssls",
+  "cssmodules_ls",
   "docker_compose_language_service",
   "dockerls",
+  "emmet_language_server",
   "yamlls",
   "tsserver",
   "eslint",
   "cucumber_language_server",
   "tailwindcss",
   "solargraph",
+  "sqlls",
   "vimls",
 }
 for _, lsp in ipairs(servers) do
