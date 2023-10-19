@@ -62,9 +62,6 @@ if status is-interactive
     # tmuxinator
     alias mux=tmuxinator
 
-    # go
-    . ~/.asdf/plugins/golang/set-env.fish
-
     # pip fish completion start
     function __fish_complete_pip
         set -lx COMP_WORDS (commandline -o) ""

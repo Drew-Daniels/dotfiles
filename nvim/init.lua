@@ -7,8 +7,12 @@ if not present then
   return
 end
 
+-- Not all dependencies installed by Mason here are specifically for nvim-lspconfig
+-- some are installed here just for consistency across machines, and it's easier if
+-- things are installed in one place.
 local options = {
   ensure_installed = {
+    "beautysh",
     "bash-language-server",
     "css-lsp",
     "cssmodules-language-server",
@@ -20,9 +24,12 @@ local options = {
     "html-lsp",
     "json-lsp",
     "jsonlint",
+    "rubocop",
     "lua-language-server",
     "solargraph",
+    "stylua",
     "sqlls",
+    "marksman",
     "tailwindcss-language-server",
     "typescript-language-server",
     "vim-language-server",
@@ -237,6 +244,7 @@ local servers = {
   "yamlls",
   "tsserver",
   "eslint",
+  "marksman",
   "cucumber_language_server",
   "tailwindcss",
   "solargraph",
@@ -457,19 +465,10 @@ vim.cmd(
 -- lualine
 require("lualine").setup()
 
---TODO: Come back here to figure out which of these, I actually need - if nvim-lspconfig can actually interface with these formatters instead.
 require("conform").setup({
   formatters_by_ft = {
-    lua = { "stylua" },
-    javascript = { "eslint_d" },
-    javascriptreact = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
-    ruby = { "rubocop" },
-    yaml = { "yamlfmt" },
-    bash = { "beautysh" },
-		html = { "htmlbeautifier" },
-		eruby = { "htmlbeautifier" },
+    html = { "htmlbeautifier" },
+    eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
     json = { "jq" },
     sql = { "sql_formatter" }
