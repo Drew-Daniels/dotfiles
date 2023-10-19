@@ -3,7 +3,7 @@ root: <%= ENV["PROJECTS_DIR"] %>/keetman
 on_project_exit: clear
 
 windows:
-  - pt:
+  - keetman:
       layout: even-horizontal
       panes:
         - editor:
