@@ -74,4 +74,6 @@ if status is-interactive
     complete -fa "(__fish_complete_pip)" -c pip
     # pip fish completion end
 
+    # zoxide
+    zoxide init --cmd j fish | source
 end
