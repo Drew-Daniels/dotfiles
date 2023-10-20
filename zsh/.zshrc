@@ -105,11 +105,6 @@ if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/googl
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/drew/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/completion.zsh.inc'; fi
 
-# colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
-
-alias lc='colorls -lA --sd'
-
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 

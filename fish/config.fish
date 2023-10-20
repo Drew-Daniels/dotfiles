@@ -12,9 +12,6 @@ if status is-interactive
     set -gx VISUAL nvim
     alias cls "printf '\33c\e[3J'"
 
-    # colorls
-    alias lc "colorls -lA --sd"
-
     # ripgrep
     # search for pattern in filenames
     alias rgf "rg --files | rg"
