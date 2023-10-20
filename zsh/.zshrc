@@ -105,6 +105,9 @@ if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/googl
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/drew/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/completion.zsh.inc'; fi
 
+# jless
+alias yless="jless --yaml"
+
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 

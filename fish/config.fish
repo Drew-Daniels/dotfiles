@@ -57,7 +57,7 @@ if status is-interactive
     fish_add_path /usr/local/sbin
 
     # tmuxinator
-    alias mux=tmuxinator
+    alias mux="tmuxinator"
 
     # pip fish completion start
     function __fish_complete_pip
@@ -70,6 +70,9 @@ if status is-interactive
     end
     complete -fa "(__fish_complete_pip)" -c pip
     # pip fish completion end
+
+    # jless
+    alias yless="jless --yaml"
 
     # zoxide
     zoxide init --cmd j fish | source
