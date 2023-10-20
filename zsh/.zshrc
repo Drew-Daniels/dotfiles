@@ -108,6 +108,9 @@ if [ -f '/Users/drew/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/drew
 # jless
 alias yless="jless --yaml"
 
+# taskwarrior
+export TASKRC="$XDG_CONFIG_HOME/taskwarrior/.taskrc"
+
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 

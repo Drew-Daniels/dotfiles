@@ -74,6 +74,9 @@ if status is-interactive
     # jless
     alias yless="jless --yaml"
 
+    # taskwarrior
+    set -gx TASKRC $XDG_CONFIG_HOME/taskwarrior/.taskrc
+
     # zoxide
     zoxide init --cmd j fish | source
 end
