@@ -456,6 +456,7 @@ end, { desc = "scopes" })
 
 -- FZF
 vim.keymap.set("n", "<C-p>", ":GFiles<CR>", { noremap = false, desc = "FZF" })
+vim.keymap.set("n", "<C-g>", ":RG<CR>", { noremap = false, desc = "grep" })
 
 -- my custom commands (not included in default 'fzf.vim' config)
 vim.cmd(
