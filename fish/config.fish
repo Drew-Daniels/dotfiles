@@ -10,7 +10,7 @@ if status is-interactive
     # general
     set -gx XDG_CONFIG_HOME ~/projects/dotfiles
     set -gx EDITOR nvim
-    set -gx VISUAL ewrap
+    set -gx VISUAL nvim
     alias cls "printf '\33c\e[3J'"
 
     # ripgrep
@@ -80,7 +80,7 @@ if status is-interactive
     # nnn
     set -gx NNN_PLUG "p:preview-tui"
     set -gx NNN_FIFO /tmp/nnn.fifo
-    alias nnn="nnn -Pp -d -e"
+    alias nnn="nnn -H -Pp -d -e"
 
     # zoxide
     zoxide init --cmd j fish | source

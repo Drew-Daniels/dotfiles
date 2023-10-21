@@ -12,7 +12,7 @@ COLOR_GIT='%F{39}'
 NEWLINE=$'\n'
 
 export EDITOR="nvim"
-export VISUAL="ewrap"
+export VISUAL="nvim"
 
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
@@ -134,7 +134,7 @@ n ()
 
     # The command builtin allows one to alias nnn to n, if desired, without
     # making an infinitely recursive alias
-    command nnn -Pp "$@"
+    command nnn -H -Pp -d -e "$@"
 
     [ ! -f "$NNN_TMPFILE" ] || {
         . "$NNN_TMPFILE"
