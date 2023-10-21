@@ -76,6 +76,11 @@ if status is-interactive
 
     # taskwarrior
     set -gx TASKRC $XDG_CONFIG_HOME/taskwarrior/.taskrc
+    
+    # nnn
+    set -gx NNN_PLUG "p:preview-tui"
+    set -gx NNN_FIFO /tmp/nnn.fifo
+    alias nnn="nnn -Pp"
 
     # zoxide
     zoxide init --cmd j fish | source
