@@ -18,3 +18,4 @@ fish/completions/docker*
 gitk
 
 secrets
+nnn/.lastd
