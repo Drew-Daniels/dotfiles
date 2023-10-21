@@ -111,6 +111,10 @@ alias yless="jless --yaml"
 # taskwarrior
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/.taskrc"
 
+# nnn
+export NNN_PLUG="p:preview-tui"
+export NNN_FIFO="/tmp/nnn.fifo"
+
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 
