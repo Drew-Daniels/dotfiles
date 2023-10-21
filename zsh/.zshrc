@@ -12,6 +12,7 @@ COLOR_GIT='%F{39}'
 NEWLINE=$'\n'
 
 export EDITOR="nvim"
+# create some kind of script like this to open up a new terminal window with nnn: https://github.com/jarun/nnn/wiki/Basic-use-cases#detached-text
 export VISUAL="nvim"
 
 setopt PROMPT_SUBST
@@ -36,7 +37,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # asdf
-export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
 . "$HOME/.asdf/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -55,20 +56,19 @@ export PROJECTS_DIR=~/projects
 alias cls="printf '\33c\e[3J'"
 alias arm="/usr/bin/env arch -arm64 zsh"
 alias intel="/usr/bin/env arch -x86_64 zsh"
-alias pclean="$HOME/projects/dotfiles/scripts/clean-parsers.sh"
+alias pclean="$XDG_CONFIG_HOME/scripts/clean-parsers.sh"
 
 # tmuxp
 export TMUXP_LAYOUT=main-vertical
 
 # tmuxinator
-export PROJECTS_DIR=~/projects
 alias mux=tmuxinator
 export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
-export EXPORT_E2E_CREDS_SCRIPT=~/projects/dotfiles/scripts/export_e2e_creds.sh
+export EXPORT_E2E_CREDS_SCRIPT="$XDG_CONFIG_HOME/scripts/export_e2e_creds.sh"
 
 # starship
-export STARSHIP_CONFIG=~/projects/dotfiles/starship/starship.toml
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
 
 # homebrew
@@ -114,7 +114,7 @@ export TASKRC="$XDG_CONFIG_HOME/taskwarrior/.taskrc"
 # nnn
 export NNN_PLUG="p:preview-tui"
 export NNN_FIFO="/tmp/nnn.fifo"
-alias nnn="nnn -P p"
+alias nnn="nnn -Pp -e"
 
 # zoxide
 eval "$(zoxide init --cmd j zsh)"

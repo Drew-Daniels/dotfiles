@@ -8,6 +8,7 @@ if status is-interactive
     set -g fish_greeting
 
     # general
+    set -gx XDG_CONFIG_HOME ~/projects/dotfiles
     set -gx EDITOR nvim
     set -gx VISUAL nvim
     alias cls "printf '\33c\e[3J'"
@@ -35,19 +36,18 @@ if status is-interactive
     fish_add_path $ANDROID_HOME/platform-tools
 
     # asdf
-    set -gx ASDF_CONFIG_FILE ~/projects/dotfiles/asdf/.asdfrc
+    set -gx ASDF_CONFIG_FILE $XDG_CONFIG_HOME/asdf/.asdfrc
     source ~/.asdf/asdf.fish
 
     # nvim
-    set -gx XDG_CONFIG_HOME ~/projects/dotfiles
     set -gx VIMCONFIG ~/.config/nvim
     set -gx VIMDATA ~/.local/share/nvim
 
     # fisher
-    set -gx FISHER_PATH ~/projects/dotfiles/fish
+    set -gx FISHER_PATH $XDG_CONFIG_HOME/fish
 
     # starship
-    set -gx STARSHIP_CONFIG ~/projects/dotfiles/starship/starship.toml
+    set -gx STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/starship.toml
     starship init fish | source
 
     # fzf.fish
@@ -80,7 +80,7 @@ if status is-interactive
     # nnn
     set -gx NNN_PLUG "p:preview-tui"
     set -gx NNN_FIFO /tmp/nnn.fifo
-    alias nnn="nnn -Pp"
+    alias nnn="nnn -Pp -e"
 
     # zoxide
     zoxide init --cmd j fish | source
