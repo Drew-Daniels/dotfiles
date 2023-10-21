@@ -93,7 +93,7 @@ fi
 
 if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-    "gcalcli" \
+    "gcalcli 238 255" \
 		#"earthquake 3 0" \
 		"pwd 238 255" \
 		#"macos_notification_count 29 255" \
