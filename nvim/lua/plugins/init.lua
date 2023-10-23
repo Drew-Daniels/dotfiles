@@ -72,7 +72,9 @@ return require("lazy").setup({
 					["core.concealer"] = {}, -- Adds pretty icons to your documents
 					["core.dirman"] = { -- Manages Neorg workspaces
 						config = {
+              default_workspace = "notes",
 							workspaces = {
+                notes = "~/notes",
 								api = "~/notes/api",
                 auth = "~/notes/auth",
                 admin = "~/notes/admin",
