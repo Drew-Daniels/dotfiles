@@ -87,6 +87,8 @@ return require("lazy").setup({
                 keetman = "~/notes/keetman",
                 ops_tools = "~/notes/ops_tools",
                 dotfiles = "~/notes/dotfiles",
+                one_on_ones = "~/notes/one_on_ones",
+                standups = "~/notes/standups",
 							},
 						},
 					},
