@@ -532,18 +532,6 @@ require("neo-tree").setup({
   },
 })
 
-require("neorg").setup({
-  load = {
-    ["core.defaults"] = {},
-    ["core.dirman"] = {
-      config = {
-        workspaces = {
-          work = "~/notes/work",
-        }
-      }
-    }
-  }
-})
 -- TODO: Figure out how to automatically select the previous window after neotree is opened
 -- vim.cmd([[autocmd VimEnter * Neotree]])
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
