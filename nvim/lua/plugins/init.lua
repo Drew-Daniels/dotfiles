@@ -79,7 +79,10 @@ return require("lazy").setup({
                 pt = "~/notes/pt",
                 embedded = "~/notes/embedded",
                 patient = "~/notes/patient",
-                mobile = "~/notes/mobile"
+                mobile = "~/notes/mobile",
+                auth_client = "~/notes/auth_client",
+                api_client = "~/notes/api_client",
+                ui_components = "~/notes/ui_components",
 							},
 						},
 					},
