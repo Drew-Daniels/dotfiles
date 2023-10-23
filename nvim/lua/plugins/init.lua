@@ -74,7 +74,12 @@ return require("lazy").setup({
 						config = {
 							workspaces = {
 								api = "~/notes/api",
-                fe = "~/notes/fe"
+                auth = "~/notes/auth",
+                admin = "~/notes/admin",
+                pt = "~/notes/pt",
+                embedded = "~/notes/embedded",
+                patient = "~/notes/patient",
+                mobile = "~/notes/mobile"
 							},
 						},
 					},
