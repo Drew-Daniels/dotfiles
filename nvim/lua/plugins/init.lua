@@ -73,8 +73,8 @@ return require("lazy").setup({
 					["core.dirman"] = { -- Manages Neorg workspaces
 						config = {
 							workspaces = {
-								work = "~/notes/work",
-                personal = "~/notes/personal"
+								api = "~/notes/api",
+                fe = "~/notes/fe"
 							},
 						},
 					},
