@@ -9,7 +9,7 @@ windows:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          - nvim
+          - nvim -c ":vs | vs"
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
