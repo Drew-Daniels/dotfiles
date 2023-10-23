@@ -455,8 +455,8 @@ end, { desc = "scopes" })
 -- Language Server Configuration END
 
 -- FZF
-vim.keymap.set("n", "<C-p>", ":GFiles<CR>", { noremap = false, desc = "FZF" })
-vim.keymap.set("n", "<C-g>", ":RG<CR>", { noremap = false, desc = "grep" })
+vim.keymap.set("n", "<Leader>o", ":FZF<CR>", { noremap = false, desc = "open file" })
+vim.keymap.set("n", "<Leader>g", ":RG<CR>", { noremap = false, desc = "grep" })
 
 -- my custom commands (not included in default 'fzf.vim' config)
 vim.cmd(
@@ -530,6 +530,19 @@ require("neo-tree").setup({
     -- automatically refresh file tree
     use_libuv_file_watcher = true,
   },
+})
+
+require("neorg").setup({
+  load = {
+    ["core.defaults"] = {},
+    ["core.dirman"] = {
+      config = {
+        workspaces = {
+          work = "~/notes/work",
+        }
+      }
+    }
+  }
 })
 -- TODO: Figure out how to automatically select the previous window after neotree is opened
 -- vim.cmd([[autocmd VimEnter * Neotree]])
