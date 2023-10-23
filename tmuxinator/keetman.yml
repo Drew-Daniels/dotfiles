@@ -4,7 +4,7 @@ on_project_exit: clear
 
 windows:
   - keetman:
-      layout: even-horizontal
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -13,6 +13,10 @@ windows:
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+        - env:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim hurl/hurl.env
         - notes:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
