@@ -500,6 +500,8 @@ set.hlsearch = false
 set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
+-- Neorg
+set.conceallevel=3
 
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
