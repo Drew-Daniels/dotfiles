@@ -29,3 +29,7 @@ windows:
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+        - notes:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim -c ":Neorg workspace pt"
