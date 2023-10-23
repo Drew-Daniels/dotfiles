@@ -1,0 +1,19 @@
+name: notes
+on_project_exit: clear
+
+windows:
+  - standups:
+      root: ~/notes/standups/2023
+      panes:
+        - standups:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim -c ":Neorg workspace standups"
+  - one_on_ones:
+      layout: even-horizontal
+      root: ~/notes/one_on_ones/2023
+      panes:
+        - one_on_ones:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim -c ":Neorg workspace one_on_ones"
