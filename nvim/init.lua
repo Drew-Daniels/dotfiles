@@ -455,8 +455,9 @@ end, { desc = "scopes" })
 -- Language Server Configuration END
 
 -- FZF
-vim.keymap.set("n", "<Leader>o", ":FZF<CR>", { noremap = false, desc = "open file" })
-vim.keymap.set("n", "<Leader>g", ":RG<CR>", { noremap = false, desc = "grep" })
+vim.keymap.set("n", "<Leader>j", ":GFiles<CR>", { noremap = false, desc = "Jump to Git Tracked File" })
+vim.keymap.set("n", "<Leader>ja", ":FZF<CR>", { noremap = false, desc = "Jump to Any Tracked File" })
+vim.keymap.set("n", "<Leader>g", ":RG<CR>", { noremap = false, desc = "Grep" })
 
 -- my custom commands (not included in default 'fzf.vim' config)
 vim.cmd(
@@ -537,6 +538,11 @@ require("neo-tree").setup({
 -- TODO: Figure out how to automatically select the previous window after neotree is opened
 -- vim.cmd([[autocmd VimEnter * Neotree]])
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
+
+-- neogen https://github.com/danymat/neogen
+require("neogen").setup({ snippet_engine = "luasnip" })
+
+vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
 
 -- harpoon
 vim.keymap.set(
