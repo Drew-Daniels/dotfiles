@@ -5,5 +5,5 @@ local get_visual = helpers.get_visual
 
 return {
   s("td", fmta("# TODO: <>", { i(1) }), { desc = "TODO" }),
-  s("dl", fmta([[ puts "<>: #{<>}"]], { i(1), i(2) }), { desc = "Debug Log" })
+  s("dl", fmta([[ pp "<>: #{<>}"]], { i(1), i(2) }), { desc = "Debug Log" })
 }
