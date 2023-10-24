@@ -70,11 +70,6 @@ return require("lazy").setup({
 				load = {
 					["core.defaults"] = {}, -- Loads default behaviour
 					["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.journal"] = {
-            config = {
-              strategy = "flat",
-            }
-          },
 					["core.dirman"] = { -- Manages Neorg workspaces
 						config = {
               default_workspace = "notes",
@@ -94,8 +89,8 @@ return require("lazy").setup({
                 keetman = "~/notes/keetman",
                 ops_tools = "~/notes/ops_tools",
                 dotfiles = "~/notes/dotfiles",
-                one_on_ones = "~/notes/one_on_ones/2023",
-                standups = "~/notes/standups/2023",
+                one_on_ones = "~/notes/one_on_ones",
+                standups = "~/notes/standups"
 							},
 						},
 					},

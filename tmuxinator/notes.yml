@@ -3,17 +3,17 @@ on_project_exit: clear
 
 windows:
   - standups:
-      root: ~/notes/standups/2023
+      root: ~/notes/standups
       panes:
         - standups:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          - nvim -c ":Neorg workspace standups"
+          - nvim -c ":exe 'Neorg workspace standups' | exe 'Neorg journal today'"
   - one_on_ones:
       layout: even-horizontal
-      root: ~/notes/one_on_ones/2023
+      root: ~/notes/one_on_ones
       panes:
         - one_on_ones:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          - nvim -c ":Neorg workspace one_on_ones"
+          - nvim -c ":exe 'Neorg workspace one_on_ones' | exe 'Neorg journal today'"
