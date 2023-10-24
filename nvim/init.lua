@@ -542,6 +542,9 @@ vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc 
 -- neogen https://github.com/danymat/neogen
 require("neogen").setup({ snippet_engine = "luasnip" })
 
+-- oil https://github.com/stevearc/oil.nvim
+require("oil").setup()
+
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
 
 -- harpoon

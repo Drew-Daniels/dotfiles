@@ -17,6 +17,12 @@ vim.g.maplocalleader = " "
 
 return require("lazy").setup({
   {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = true,
@@ -44,15 +50,15 @@ return require("lazy").setup({
   "RRethy/nvim-treesitter-endwise",
   "williamboman/mason.nvim",
   "tpope/vim-fugitive", -- Git operations, tools in neovim
-  "junegunn/gv.vim",   -- Pretty Git log
+  "junegunn/gv.vim",    -- Pretty Git log
   "navarasu/onedark.nvim",
   "xiyaowong/transparent.nvim",
   -- recommended settings from 'nvim-lspconfig'
   "neovim/nvim-lspconfig",
-  "hrsh7th/nvim-cmp",        -- Autocompletion plugin
-  "hrsh7th/cmp-nvim-lsp",    -- LSP source for nvim-cmp
+  "hrsh7th/nvim-cmp",         -- Autocompletion plugin
+  "hrsh7th/cmp-nvim-lsp",     -- LSP source for nvim-cmp
   "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-  "L3MON4D3/LuaSnip",        -- Snippets plugin
+  "L3MON4D3/LuaSnip",         -- Snippets plugin
   -- dap
   "williamboman/mason.nvim",
   "mfussenegger/nvim-dap",
@@ -73,9 +79,9 @@ return require("lazy").setup({
     config = function()
       require("neorg").setup({
         load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.defaults"] = {},  -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
+          ["core.dirman"] = {      -- Manages Neorg workspaces
             config = {
               default_workspace = "notes",
               workspaces = {
