@@ -97,6 +97,11 @@ return require("lazy").setup({
 							folds = false,
 						},
 					},
+					["core.presenter"] = {
+						config = {
+							zen_mode = "zen-mode",
+						},
+					},
 					["core.dirman"] = { -- Manages Neorg workspaces
 						config = {
 							default_workspace = "notes",
