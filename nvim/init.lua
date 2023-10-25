@@ -531,23 +531,6 @@ require("clipboard-image").setup({
 })
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
-require("neo-tree").setup({
-	filesystem = {
-		filtered_items = {
-			hide_dotfiles = false,
-			hide_gitignored = false,
-		},
-		follow_current_file = {
-			enabled = true,
-		},
-		-- automatically refresh file tree
-		use_libuv_file_watcher = true,
-	},
-})
-
--- TODO: Figure out how to automatically select the previous window after neotree is opened
--- vim.cmd([[autocmd VimEnter * Neotree]])
-vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>", { noremap = false, desc = "Toggle Neotree" })
 
 -- neogen https://github.com/danymat/neogen
 require("neogen").setup({ snippet_engine = "luasnip" })
