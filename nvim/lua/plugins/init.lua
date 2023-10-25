@@ -17,6 +17,10 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"folke/zen-mode.nvim",
+		opts = {},
+	},
+	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
