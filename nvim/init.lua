@@ -295,6 +295,7 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "neorg" }
   },
 })
 
@@ -491,6 +492,7 @@ end, { range = true })
 
 -- general configs
 local set = vim.opt
+set.smartindent = true
 set.autoindent = true
 set.expandtab = true
 set.tabstop = 2
@@ -501,8 +503,10 @@ set.hlsearch = false
 set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
+
 -- Neorg
-set.conceallevel=3
+set.conceallevel = 3
+vim.keymap.set('n', '<LocalLeader>lg', ':Neorg keybind all core.looking-glass.magnify-code-block<CR>', { desc = "Looking Glass" })
 
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
