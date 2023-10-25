@@ -503,8 +503,8 @@ set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
--- Neorg
-set.conceallevel = 3
+-- neorg
+-- set.conceallevel = 3
 vim.keymap.set('n', '<LocalLeader>lg', ':Neorg keybind all core.looking-glass.magnify-code-block<CR>', { desc = "Looking Glass" })
 
 -- do not open folds when searching for text
