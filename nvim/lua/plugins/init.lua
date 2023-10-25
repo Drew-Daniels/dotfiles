@@ -17,6 +17,12 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"stevearc/overseer.nvim",
+		opts = {},
+    -- optional for nicer ui
+    dependencies = { "rcarriga/nvim-notify", "stevearc/dressing.nvim" }
+	},
+	{
 		"folke/zen-mode.nvim",
 		opts = {},
 	},

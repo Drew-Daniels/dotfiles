@@ -564,6 +564,12 @@ require("zen-mode").setup({
 	},
 })
 
+-- overseer https://github.com/stevearc/overseer.nvim
+require("overseer").setup()
+
+vim.keymap.set("n", "<Leader>ot", ":OverseerToggle<CR>", { desc = "Overseer Toggle" })
+vim.keymap.set("n", "<Leader>or", ":OverseerRun<CR>", { desc = "Overseer Run" })
+
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
 
 -- harpoon
