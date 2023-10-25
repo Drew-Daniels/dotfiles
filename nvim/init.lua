@@ -247,6 +247,7 @@ local servers = {
   "cucumber_language_server",
   "tailwindcss",
   "solargraph",
+  "rubocop",
   "sqlls",
   "vimls",
 }
@@ -469,6 +470,7 @@ require("lualine").setup()
 
 require("conform").setup({
   formatters_by_ft = {
+    lua = { "stylua" },
     html = { "htmlbeautifier" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
