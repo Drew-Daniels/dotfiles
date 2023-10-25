@@ -1,5 +1,7 @@
 require("plugins")
 
+--TODO: Figure out better keybindings across this whole thing. Lacking a systematic approach
+
 -- https://github.com/williamboman/mason.nvim/issues/130
 local present, mason = pcall(require, "mason")
 
@@ -505,14 +507,36 @@ set.wildignore = "node_modules/*"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 
--- neorg
--- set.conceallevel = 3
+-- neorg https://github.com/nvim-neorg/neorg
 vim.keymap.set(
 	"n",
 	"<LocalLeader>lg",
 	":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
 	{ desc = "Looking Glass" }
 )
+
+local openYesterdaysJournal = function()
+  vim.cmd([[ Neorg workspace standups ]])
+  vim.cmd([[ Neorg journal yesterday ]])
+  --TODO: Figure out how to set this value on all `.norg` files rather than just when this command is run
+  vim.cmd([[ set conceallevel=3 ]])
+end
+
+local openTodaysJournal = function()
+  vim.cmd([[ Neorg workspace standups ]])
+  vim.cmd([[ Neorg journal today ]])
+  vim.cmd([[ set conceallevel=3 ]])
+end
+
+local openTomorrowsJournal = function()
+  vim.cmd([[ Neorg workspace standups ]])
+  vim.cmd([[ Neorg journal tomorrow ]])
+  vim.cmd([[ set conceallevel=3 ]])
+end
+
+vim.keymap.set("n", "<LocalLeader>[j", openYesterdaysJournal, { desc = "Yesterday's Journal" })
+vim.keymap.set("n", "<LocalLeader>|j", openTodaysJournal, { desc = "Today's Journal" })
+vim.keymap.set("n", "<LocalLeader>]j", openTomorrowsJournal, { desc = "Tomorrow's Journal" })
 
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
@@ -549,10 +573,13 @@ require("zen-mode").setup({
 
 -- overseer https://github.com/stevearc/overseer.nvim
 require("overseer").setup()
-
 vim.keymap.set("n", "<Leader>ot", ":OverseerToggle<CR>", { desc = "Overseer Toggle" })
 vim.keymap.set("n", "<Leader>or", ":OverseerRun<CR>", { desc = "Overseer Run" })
 
+-- markdown-preview https://github.com/iamcco/markdown-preview.nvim
+vim.keymap.set("n", "<LocalLeader>p", ":MarkdownPreview<CR>", { desc = "MarkdownPreview" })
+
+-- neogen https://github.com/danymat/neogen
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
 
 -- harpoon
