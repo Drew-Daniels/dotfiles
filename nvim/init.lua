@@ -1,7 +1,9 @@
 require("plugins")
 
 --TODO: Figure out better keybindings across this whole thing. Lacking a systematic approach
+--TODO: Get caps lock plugin working again - what keybindings did it have that conflicted?
 
+-- MASON
 -- https://github.com/williamboman/mason.nvim/issues/130
 local present, mason = pcall(require, "mason")
 
@@ -45,6 +47,8 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 	vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
 end, {})
 
+-- NVIM-DAP
+-- https://github.com/mfussenegger/nvim-dap 
 require("dap").adapters["pwa-node"] = {
 	type = "server",
 	host = "localhost",
@@ -55,8 +59,8 @@ require("dap").adapters["pwa-node"] = {
 	},
 }
 
+-- DAP-VSCODE-JS
 -- https://miguelcrespo.co/posts/debugging-javascript-applications-with-neovim/
-
 require("dap-vscode-js").setup({
 	debugger_path = vim.fn.stdpath("data") .. "/vscode-js-debug",
 	adapters = {
@@ -112,6 +116,8 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 	}
 end
 
+-- NVIM-DAP-UI
+-- https://github.com/rcarriga/nvim-dap-ui
 require("dapui").setup()
 
 local dap, dapui = require("dap"), require("dapui")
@@ -125,8 +131,56 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
+-- rec mappings
+vim.keymap.set("n", "<F5>", function()
+	require("dap").continue()
+end, { desc = "continue" })
+vim.keymap.set("n", "<F10>", function()
+	require("dap").step_over()
+end, { desc = "step over" })
+vim.keymap.set("n", "<F11>", function()
+	require("dap").step_into()
+end, { desc = "step into" })
+vim.keymap.set("n", "<F12>", function()
+	require("dap").step_out()
+end, { desc = "step out" })
+vim.keymap.set("n", "<Leader>b", function()
+	require("dap").toggle_breakpoint()
+end, { desc = "toggle breakpoint" })
+vim.keymap.set("n", "<Leader>B", function()
+	require("dap").set_breakpoint()
+end, { desc = "set breakpoint" })
+vim.keymap.set("n", "<Leader>lp", function()
+	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, { desc = "log point message" })
+vim.keymap.set("n", "<Leader>dr", function()
+	require("dap").repl.open()
+end, { desc = "open repl" })
+vim.keymap.set("n", "<Leader>dl", function()
+	require("dap").run_last()
+end, { desc = "run last" })
+vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
+	require("dap.ui.widgets").hover()
+end, { desc = "hover" })
+vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
+	require("dap.ui.widgets").preview()
+end, { desc = "preview" })
+vim.keymap.set("n", "<Leader>df", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.frames)
+end, { desc = "frames" })
+vim.keymap.set("n", "<Leader>ds", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end, { desc = "scopes" })
+
+-- TRANSPARENT.NVIM
+-- https://github.com/xiyaowong/transparent.nvim
 require("transparent").setup()
 
+-- NVIM-TREESITTER
+-- https://github.com/nvim-treesitter/nvim-treesitter
+---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"c",
@@ -161,10 +215,14 @@ require("nvim-treesitter.configs").setup({
 -- custom file associations
 require("vim.treesitter.language").register("http", "hurl")
 
+-- NEOSCROLL.NVIM
+-- https://github.com/karb94/neoscroll.nvim
 require("neoscroll").setup({
 	easing_function = "quadratic",
 })
 
+-- WEB-TOOLS.NVIM
+-- https://github.com/ray-x/web-tools.nvim
 require("web-tools").setup({
 	keymaps = {
 		rename = nil, -- by default use same setup of lspconfig
@@ -179,6 +237,8 @@ require("web-tools").setup({
 	},
 })
 
+-- REST.NVIM
+-- https://github.com/rest-nvim/rest.nvim
 require("rest-nvim").setup({
 	-- Open request results in a horizontal split
 	result_split_horizontal = false,
@@ -221,14 +281,17 @@ vim.keymap.set("n", "<leader>x", "<Plug>RestNvim", { desc = "execute request" })
 vim.keymap.set("n", "<leader>p", "<Plug>RestNvimPreview", { desc = "preview curl" })
 vim.keymap.set("n", "<leader>l", "<Plug>RestNvimLast", { desc = "repeat last request" })
 
--- 'neodev' configuration START - must be done before any lspconfig
+-- NEODEV.NVIM
+-- https://github.com/folke/neodev.nvim
+-- NOTE: must be done before any lspconfig
 require("neodev").setup({})
--- 'neodev' configuration END
 
+--TODO: Figure out where this configuration was recommended?
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Language Server Configuration START
+-- NVIM-LSPCONFIG
+-- https://github.com/neovim/nvim-lspconfig
 local lspconfig = require("lspconfig")
 
 local servers = {
@@ -259,12 +322,15 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
--- RECOMMENDED 'nvim-lspconfig' SETUP START
--- luasnip setup
+-- RECOMMENDED 'nvim-lspconfig' SETUP
+-- LUASNIP
+-- https://github.com/L3MON4D3/LuaSnip
 local luasnip = require("luasnip")
 
--- nvim-cmp setup
+-- NVIM-CMP
+-- https://github.com/hrsh7th/nvim-cmp
 local cmp = require("cmp")
+---@diagnostic disable-next-line: missing-fields
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -301,6 +367,7 @@ cmp.setup({
 	},
 })
 
+--TODO: Where was this bit of configuration recommended?
 vim.o.updatetime = 250
 vim.api.nvim_create_autocmd("CursorHold", {
 	buffer = bufnr,
@@ -316,7 +383,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		vim.diagnostic.open_float(nil, opts)
 	end,
 })
-
 -- RECOMMENDED 'nvim-lspconfig' SETUP END
 
 -- luasnip specific configuration
@@ -360,9 +426,7 @@ vim.keymap.set(
 )
 
 ls.filetype_extend("javascriptreact", { "javascript" })
-
 ls.filetype_extend("typescript", { "javascript" })
-
 ls.filetype_extend("typescriptreact", { "javascriptreact" })
 
 -- 'nvim-lsp' suggested keymappings, completion
@@ -413,63 +477,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { unpack(opts), desc = "format" })
 	end,
 })
--- 'nvim-dap' rec mappings
-vim.keymap.set("n", "<F5>", function()
-	require("dap").continue()
-end, { desc = "continue" })
-vim.keymap.set("n", "<F10>", function()
-	require("dap").step_over()
-end, { desc = "step over" })
-vim.keymap.set("n", "<F11>", function()
-	require("dap").step_into()
-end, { desc = "step into" })
-vim.keymap.set("n", "<F12>", function()
-	require("dap").step_out()
-end, { desc = "step out" })
-vim.keymap.set("n", "<Leader>b", function()
-	require("dap").toggle_breakpoint()
-end, { desc = "toggle breakpoint" })
-vim.keymap.set("n", "<Leader>B", function()
-	require("dap").set_breakpoint()
-end, { desc = "set breakpoint" })
-vim.keymap.set("n", "<Leader>lp", function()
-	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end, { desc = "log point message" })
-vim.keymap.set("n", "<Leader>dr", function()
-	require("dap").repl.open()
-end, { desc = "open repl" })
-vim.keymap.set("n", "<Leader>dl", function()
-	require("dap").run_last()
-end, { desc = "run last" })
-vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-	require("dap.ui.widgets").hover()
-end, { desc = "hover" })
-vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-	require("dap.ui.widgets").preview()
-end, { desc = "preview" })
-vim.keymap.set("n", "<Leader>df", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.frames)
-end, { desc = "frames" })
-vim.keymap.set("n", "<Leader>ds", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.scopes)
-end, { desc = "scopes" })
 -- Language Server Configuration END
 
--- FZF
+-- FZF.VIM
+-- https://github.com/junegunn/fzf.vim
 vim.keymap.set("n", "<Leader>j", ":GFiles<CR>", { noremap = false, desc = "Jump to Git Tracked File" })
 vim.keymap.set("n", "<Leader>ja", ":FZF<CR>", { noremap = false, desc = "Jump to Any Tracked File" })
 vim.keymap.set("n", "<Leader>g", ":RG<CR>", { noremap = false, desc = "Grep" })
 
--- my custom commands (not included in default 'fzf.vim' config)
 vim.cmd(
 	[[command! -bang -nargs=* Rgi call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --iglob !yarn.lock --iglob !tags -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]]
 )
 
--- lualine
+-- LUALINE
+-- https://github.com/nvim-lualine/lualine.nvim
+---@diagnostic disable-next-line: missing-parameter
 require("lualine").setup()
 
+-- CONFORM.NVIM
+-- https://github.com/stevearc/conform.nvim
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -493,21 +519,8 @@ vim.api.nvim_create_user_command("Format", function(args)
 	require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
 
--- general configs
-local set = vim.opt
-set.smartindent = true
-set.autoindent = true
-set.expandtab = true
-set.tabstop = 2
-set.shiftwidth = 2
-set.softtabstop = 2
-set.number = true
-set.hlsearch = false
-set.wildignore = "node_modules/*"
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-set.syntax = "on"
-
--- neorg https://github.com/nvim-neorg/neorg
+-- NEORG
+-- https://github.com/nvim-neorg/neorg
 vim.keymap.set(
 	"n",
 	"<LocalLeader>lg",
@@ -538,16 +551,20 @@ vim.keymap.set("n", "<LocalLeader>[j", openYesterdaysJournal, { desc = "Yesterda
 vim.keymap.set("n", "<LocalLeader>|j", openTodaysJournal, { desc = "Today's Journal" })
 vim.keymap.set("n", "<LocalLeader>]j", openTomorrowsJournal, { desc = "Tomorrow's Journal" })
 
--- do not open folds when searching for text
-vim.cmd([[set foldopen-=search]])
 
+-- ONEDARK.NVIM
+-- https://github.com/navarasu/onedark.nvim
+---@diagnostic disable-next-line: missing-parameter
 require("onedark").setup()
-
 require("onedark").load()
 
+-- CAPSLOCK.NVIM
+-- https://github.com/barklan/capslock.nvim
 require("capslock").setup()
 
--- Figure out how to update the image path used in markdown links. Images are getting copied to /images/<image-name> correctly, but the markdown links reference /img/<image-name>.
+-- CLIPBOARD-IMAGE.NVIM
+-- https://github.com/ekickx/clipboard-image.nvim
+--TODO: Figure out how to update the image path used in markdown links. Images are getting copied to /images/<image-name> correctly, but the markdown links reference /img/<image-name>.
 require("clipboard-image").setup({
 	default = {
 		img_dir = "images",
@@ -556,13 +573,16 @@ require("clipboard-image").setup({
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
--- neogen https://github.com/danymat/neogen
+-- NEOGEN
+-- https://github.com/danymat/neogen
 require("neogen").setup({ snippet_engine = "luasnip" })
 
--- oil https://github.com/stevearc/oil.nvim
+-- OIL
+-- https://github.com/stevearc/oil.nvim
 require("oil").setup()
 
--- zen-mode https://github.com/folke/zen-mode.nvim
+-- ZEN-MODE
+-- https://github.com/folke/zen-mode.nvim
 require("zen-mode").setup({
 	plugins = {
 		tmux = {
@@ -571,18 +591,22 @@ require("zen-mode").setup({
 	},
 })
 
--- overseer https://github.com/stevearc/overseer.nvim
+-- OVERSEER.NVIM
+-- https://github.com/stevearc/overseer.nvim
 require("overseer").setup()
 vim.keymap.set("n", "<Leader>ot", ":OverseerToggle<CR>", { desc = "Overseer Toggle" })
 vim.keymap.set("n", "<Leader>or", ":OverseerRun<CR>", { desc = "Overseer Run" })
 
--- markdown-preview https://github.com/iamcco/markdown-preview.nvim
+-- MARKDOWN-PREVIEW.NVIM
+-- https://github.com/iamcco/markdown-preview.nvim
 vim.keymap.set("n", "<LocalLeader>p", ":MarkdownPreview<CR>", { desc = "MarkdownPreview" })
 
--- neogen https://github.com/danymat/neogen
+-- NEOGEN
+-- https://github.com/danymat/neogen
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
 
--- harpoon
+-- HARPOON
+-- https://github.com/ThePrimeagen/harpoon
 vim.keymap.set(
 	"n",
 	"<Leader>h",
@@ -613,3 +637,21 @@ vim.keymap.set(
 	":lua require('harpoon.mark').clear_all()<CR>",
 	{ noremap = false, desc = "Delete all Harpoons" }
 )
+
+-- GENERAL
+local set = vim.opt
+set.smartindent = true
+set.autoindent = true
+set.expandtab = true
+set.tabstop = 2
+set.shiftwidth = 2
+set.softtabstop = 2
+set.ignorecase = true
+set.smartcase = true
+set.number = true
+set.hlsearch = false
+set.wildignore = "node_modules/*"
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+set.syntax = "on"
+-- do not open folds when searching for text
+vim.cmd([[set foldopen-=search]])
