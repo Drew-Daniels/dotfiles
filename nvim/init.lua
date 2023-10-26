@@ -48,7 +48,7 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 end, {})
 
 -- NVIM-DAP
--- https://github.com/mfussenegger/nvim-dap 
+-- https://github.com/mfussenegger/nvim-dap
 require("dap").adapters["pwa-node"] = {
 	type = "server",
 	host = "localhost",
@@ -208,6 +208,10 @@ require("nvim-treesitter.configs").setup({
 	},
 	-- required by 'nvim-treesitter-endwise'
 	endwise = {
+		enable = true,
+	},
+	-- required by 'nvim-ts-context-commentstring'
+	context_commentstring = {
 		enable = true,
 	},
 })
@@ -529,28 +533,27 @@ vim.keymap.set(
 )
 
 local openYesterdaysJournal = function()
-  vim.cmd([[ Neorg workspace standups ]])
-  vim.cmd([[ Neorg journal yesterday ]])
-  --TODO: Figure out how to set this value on all `.norg` files rather than just when this command is run
-  vim.cmd([[ set conceallevel=3 ]])
+	vim.cmd([[ Neorg workspace standups ]])
+	vim.cmd([[ Neorg journal yesterday ]])
+	--TODO: Figure out how to set this value on all `.norg` files rather than just when this command is run
+	vim.cmd([[ set conceallevel=3 ]])
 end
 
 local openTodaysJournal = function()
-  vim.cmd([[ Neorg workspace standups ]])
-  vim.cmd([[ Neorg journal today ]])
-  vim.cmd([[ set conceallevel=3 ]])
+	vim.cmd([[ Neorg workspace standups ]])
+	vim.cmd([[ Neorg journal today ]])
+	vim.cmd([[ set conceallevel=3 ]])
 end
 
 local openTomorrowsJournal = function()
-  vim.cmd([[ Neorg workspace standups ]])
-  vim.cmd([[ Neorg journal tomorrow ]])
-  vim.cmd([[ set conceallevel=3 ]])
+	vim.cmd([[ Neorg workspace standups ]])
+	vim.cmd([[ Neorg journal tomorrow ]])
+	vim.cmd([[ set conceallevel=3 ]])
 end
 
 vim.keymap.set("n", "<LocalLeader>[j", openYesterdaysJournal, { desc = "Yesterday's Journal" })
 vim.keymap.set("n", "<LocalLeader>|j", openTodaysJournal, { desc = "Today's Journal" })
 vim.keymap.set("n", "<LocalLeader>]j", openTomorrowsJournal, { desc = "Tomorrow's Journal" })
-
 
 -- ONEDARK.NVIM
 -- https://github.com/navarasu/onedark.nvim
@@ -638,6 +641,15 @@ vim.keymap.set(
 	{ noremap = false, desc = "Delete all Harpoons" }
 )
 
+-- NVIM-TS-COMMENTSTRING
+-- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+---@diagnostic disable-next-line: missing-parameter
+require("ts_context_commentstring").setup()
+
+-- COMMENT.NVIM
+-- https://github.com/numToStr/Comment.nvim
+require("Comment").setup()
+
 -- GENERAL
 local set = vim.opt
 set.smartindent = true
@@ -651,6 +663,7 @@ set.smartcase = true
 set.number = true
 set.hlsearch = false
 set.wildignore = "node_modules/*"
+set.number = true
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 -- do not open folds when searching for text

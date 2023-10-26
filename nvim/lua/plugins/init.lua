@@ -17,6 +17,17 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+	},
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+		lazy = false,
+	},
+	{
 		"stevearc/overseer.nvim",
 		opts = {},
 		-- optional for nicer ui
