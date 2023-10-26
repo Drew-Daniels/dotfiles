@@ -37,6 +37,7 @@ local options = {
 		"tailwindcss-language-server",
 		"vim-language-server",
 		"yaml-language-server",
+    "typescript-language-server",
 	},
 	max_concurrent_installers = 10,
 }
