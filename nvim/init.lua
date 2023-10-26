@@ -28,7 +28,6 @@ local options = {
 		"html-lsp",
 		"json-lsp",
 		"jsonlint",
-		"rubocop",
 		"lua-language-server",
 		"solargraph",
 		"stylua",
@@ -317,7 +316,6 @@ local servers = {
 	"cucumber_language_server",
 	"tailwindcss",
 	"solargraph",
-	"rubocop",
 	"sqlls",
 	"vimls",
 }
@@ -670,6 +668,7 @@ vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, { desc = "Git Buffer Com
 --TODO: Figure out what plugin is setting <leader>r mapping currently - would be nice to use this keybinding for builtin.registers
 --TODO: Figure out what other keymapping I can use for switching between harpooned files - <Leader>s would be nice to use for spellcheck, or <Leader>sc
 vim.keymap.set("n", "<leader>k", builtin.keymaps, { desc = "Normal Mode Keymappings" })
+--TODO: Find better keymapping for live grep
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffer" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
