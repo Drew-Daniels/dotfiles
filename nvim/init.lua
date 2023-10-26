@@ -37,7 +37,7 @@ local options = {
 		"tailwindcss-language-server",
 		"vim-language-server",
 		"yaml-language-server",
-    "typescript-language-server",
+		"typescript-language-server",
 	},
 	max_concurrent_installers = 10,
 }
@@ -654,7 +654,14 @@ require("Comment").setup()
 -- SNIPRUN
 -- https://github.com/michaelb/sniprun
 require("sniprun").setup({
-  display = { "NvimNotify" }
+	display = { "NvimNotify" },
+})
+
+-- NVIM-NOTIFY
+-- https://github.com/rcarriga/nvim-notify
+---@diagnostic disable-next-line: missing-fields
+require("notify").setup({
+	background_colour = "#000000",
 })
 
 -- GENERAL
