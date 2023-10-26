@@ -650,6 +650,12 @@ require("ts_context_commentstring").setup()
 -- https://github.com/numToStr/Comment.nvim
 require("Comment").setup()
 
+-- SNIPRUN
+-- https://github.com/michaelb/sniprun
+require("sniprun").setup({
+  display = { "NvimNotify" }
+})
+
 -- GENERAL
 local set = vim.opt
 set.smartindent = true

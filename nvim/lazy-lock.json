@@ -34,6 +34,7 @@
   "overseer.nvim": { "branch": "master", "commit": "5e8498131867cd1b7c676ecdd1382ab2fd347dde" },
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "rest.nvim": { "branch": "main", "commit": "5bcaa1012ea8efd6093c69d2a4c67fbde760d043" },
+  "sniprun": { "branch": "master", "commit": "0ad935699a5e24ca3a0aa621c7425ac7029775b3" },
   "transparent.nvim": { "branch": "main", "commit": "3af6232c8d39d51062702e875ff6407c1eeb0391" },
   "typescript-tools.nvim": { "branch": "master", "commit": "102ba313f87e1f9f9864f681dd7779cac8f6d3ea" },
   "vim-fugitive": { "branch": "master", "commit": "cbe9dfa162c178946afa689dd3f42d4ea8bf89c1" },
