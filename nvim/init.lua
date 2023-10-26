@@ -484,16 +484,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 -- Language Server Configuration END
 
--- FZF.VIM
--- https://github.com/junegunn/fzf.vim
-vim.keymap.set("n", "<Leader>j", ":GFiles<CR>", { noremap = false, desc = "Jump to Git Tracked File" })
-vim.keymap.set("n", "<Leader>ja", ":FZF<CR>", { noremap = false, desc = "Jump to Any Tracked File" })
-vim.keymap.set("n", "<Leader>g", ":RG<CR>", { noremap = false, desc = "Grep" })
-
-vim.cmd(
-	[[command! -bang -nargs=* Rgi call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --iglob !yarn.lock --iglob !tags -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]]
-)
-
 -- LUALINE
 -- https://github.com/nvim-lualine/lualine.nvim
 ---@diagnostic disable-next-line: missing-parameter
@@ -664,6 +654,22 @@ require("notify").setup({
 	background_colour = "#000000",
 	render = "compact",
 })
+
+-- TELESCOPE.NVIM
+-- https://github.com/nvim-telescope/telescope.nvim
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ja", builtin.find_files, { desc = "All Files" })
+vim.keymap.set("n", "<leader>j", builtin.git_files, { desc = "Git Files" })
+vim.keymap.set("n", "<leader>ac", builtin.commands, { desc = "Available Commands" })
+vim.keymap.set("n", "<leader>ch", builtin.command_history, { desc = "Command History" })
+vim.keymap.set("n", "<leader>m", builtin.man_pages, { desc = "Man Pages" })
+vim.keymap.set("n", "<leader>`", builtin.marks, { desc = "Marks" })
+--TODO: Figure out what plugin is setting <leader>r mapping currently - would be nice to use this keybinding for builtin.registers
+--TODO: Figure out what other keymapping I can use for switching between harpooned files - <Leader>s would be nice to use for spellcheck, or <Leader>sc
+vim.keymap.set("n", "<leader>k", builtin.keymaps, { desc = "Normal Mode Keymappings" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffer" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
 
 -- GENERAL
 local set = vim.opt

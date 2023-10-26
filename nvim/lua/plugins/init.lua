@@ -17,6 +17,11 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
 		"michaelb/sniprun",
 		build = "sh install.sh",
 		-- optional
@@ -153,10 +158,6 @@ return require("lazy").setup({
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
-	},
-	{
-		"junegunn/fzf.vim",
-		dependencies = { "junegunn/fzf", build = ":call fzf#install()" },
 	},
 	{
 		"nvim-lualine/lualine.nvim",
