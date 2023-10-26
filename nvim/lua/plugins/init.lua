@@ -16,7 +16,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-	{ "michaelb/sniprun", build = "sh install.sh" },
+	{
+		"michaelb/sniprun",
+		build = "sh install.sh",
+		-- optional
+		dependencies = "rcarriga/nvim-notify",
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
