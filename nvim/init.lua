@@ -1,4 +1,6 @@
 require("plugins")
+--TODO: Figure out why typing 'g', waiting, then 'cA' works to insert comments, but typing them all quickly doesn't?
+-- Is there some plugin that is causing combinations that start with g to wait/not wait?
 
 -- MASON
 -- https://github.com/williamboman/mason.nvim/issues/130
@@ -410,7 +412,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
 		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
-    -- conform.nvim should handle formatting
+		-- conform.nvim should handle formatting
 		-- vim.keymap.set("n", "<space>f", function()
 		-- 	vim.lsp.buf.format({ async = true })
 		-- end, { unpack(opts), desc = "format" })
@@ -423,8 +425,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require("lualine").setup({
 	sections = {
 		lualine_x = {
-      -- CAPSLOCK.NVIM
-      -- https://github.com/barklan/capslock.nvim
+			-- CAPSLOCK.NVIM
+			-- https://github.com/barklan/capslock.nvim
 			{ require("capslock").status_string },
 		},
 	},
@@ -509,7 +511,6 @@ require("zen-mode").setup({
 		},
 	},
 })
-
 
 -- NVIM-TS-COMMENTSTRING
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
@@ -742,9 +743,21 @@ wk.register({
 wk.register({
 	["<leader>l"] = {
 		name = "LSP",
+    a = { 
+      -- code actions
+    },
+		c = {
+			-- change name
+		},
 		d = {
 			"<cmd>Telescope lsp_diagnostics<cr>",
 			"Diagnostics",
+		},
+		D = {
+			-- definition
+		},
+		h = {
+			-- hover
 		},
 		i = {
 			"<cmd>Telescope lsp_implementations<cr>",
@@ -759,17 +772,23 @@ wk.register({
 			"<cmd>Telescope lsp_references<cr>",
 			"References",
 		},
+		R = {
+			-- references
+		},
 		t = {
 			"<cmd>Telescope lsp_type_definitions<cr>",
 			"Type Definitions",
 		},
 		p = {
 			vim.diagnostic.goto_prev,
-			"Go-To Prev",
+			"Go-To Prev Diagnostic",
 		},
 		n = {
 			vim.diagnostic.goto_next,
-			"Go-To Next",
+			"Go-To Next Diagnostic",
+		},
+		s = {
+      -- signature_help
 		},
 	},
 })
@@ -801,12 +820,12 @@ wk.register({
 			"Today's notes",
 		},
 		n = {
-      openTomorrowsJournal,
-      "Next day's notes"
+			openTomorrowsJournal,
+			"Next day's notes",
 		},
 	},
 })
-
+--
 wk.register({
 	["<leader>"] = {
 		p = {
@@ -876,6 +895,21 @@ wk.register({
 		l = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
 	},
 }, { silent = true })
+
+wk.register({
+	["<leader>w"] = {
+		name = "Workspace",
+		a = {
+      -- workspace add
+		},
+		r = {
+      -- workspace remove
+		},
+		l = {
+      -- workspace list
+		},
+	},
+})
 
 -- TELESCOPE-FZF-NATIVE
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
