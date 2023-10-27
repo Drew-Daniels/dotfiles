@@ -412,9 +412,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
 		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
-		vim.keymap.set("n", "<space>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, { unpack(opts), desc = "format" })
+    -- conform.nvim should handle formatting
+		-- vim.keymap.set("n", "<space>f", function()
+		-- 	vim.lsp.buf.format({ async = true })
+		-- end, { unpack(opts), desc = "format" })
 	end,
 })
 -- Language Server Configuration END
@@ -547,6 +548,15 @@ wk.register({
 		t = {
 			"<cmd>Telescope treesitter<cr>",
 			"Treesitter",
+		},
+	},
+})
+
+wk.register({
+	["<leader>"] = {
+		c = {
+			"<cmd>Format<cr>",
+			"Code Formatter",
 		},
 	},
 })
