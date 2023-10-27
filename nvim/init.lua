@@ -573,10 +573,12 @@ local duiw = require("dap.ui.widgets")
 wk.register({
 	["<leader>d"] = {
 		name = "Debug",
-		-- f = {
-		-- 	duiw.frames,
-		-- 	"Frames",
-		-- },
+		f = {
+      function ()
+        duiw.centered_float(duiw.frames)
+      end,
+			"Frames",
+		},
 		h = {
 			duiw.hover,
 			"Hover",
@@ -585,10 +587,12 @@ wk.register({
 			duiw.preview,
 			"Preview",
 		},
-		-- s = {
-		-- 	duiw.scopes,
-		-- 	"Scopes",
-		-- },
+		s = {
+      function ()
+        duiw.centered_float(duiw.scopes)
+      end,
+			"Scopes",
+		},
 		n = {
 			d.set_breakpoint,
 			"New Breakpoint",
@@ -610,10 +614,12 @@ wk.register({
 			d.step_out,
 			"Step Out",
 		},
-		-- r = {
-		-- 	d.repl,
-		-- 	"REPL",
-		-- },
+		r = {
+      function ()
+        d.repl.open()
+      end,
+			"REPL",
+		},
 		l = {
 			d.run_last,
 			"Run Last",
