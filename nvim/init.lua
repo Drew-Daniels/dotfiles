@@ -1,7 +1,5 @@
 require("plugins")
 
---TODO: Get caps lock plugin working again - what keybindings did it have that conflicted?
-
 -- MASON
 -- https://github.com/williamboman/mason.nvim/issues/130
 local present, mason = pcall(require, "mason")
@@ -60,6 +58,7 @@ require("dap").adapters["pwa-node"] = {
 
 -- DAP-VSCODE-JS
 -- https://miguelcrespo.co/posts/debugging-javascript-applications-with-neovim/
+---@diagnostic disable-next-line: missing-fields
 require("dap-vscode-js").setup({
 	debugger_path = vim.fn.stdpath("data") .. "/vscode-js-debug",
 	adapters = {
@@ -551,15 +550,6 @@ wk.register({
 	},
 })
 
-wk.register({
-	["<leader>"] = {
-		c = {
-			"<cmd>Format<cr>",
-			"Code Formatter",
-		},
-	},
-})
-
 local d = require("dap")
 local duiw = require("dap.ui.widgets")
 
@@ -784,10 +774,16 @@ wk.register({
 	},
 })
 
---TODO: Do some more research on figuring out the best way to keep/maintain notes. Might look at other plugins.
-vim.keymap.set("n", "<LocalLeader>[j", openYesterdaysJournal, { desc = "Yesterday's Journal" })
-vim.keymap.set("n", "<LocalLeader>|j", openTodaysJournal, { desc = "Today's Journal" })
-vim.keymap.set("n", "<LocalLeader>]j", openTomorrowsJournal, { desc = "Tomorrow's Journal" })
+wk.register({
+	["<leader>m"] = {
+		--TODO: move these into other keymap groups
+		name = "Miscellaneous",
+		l = {
+			"<cmd>Telescope resume<cr>",
+			"Last Search",
+		},
+	},
+})
 
 wk.register({
 	["<leader>n"] = {
@@ -796,24 +792,26 @@ wk.register({
 			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
 			"Looking Glass",
 		},
-		l = {
-			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
-			"Looking Glass",
+		p = {
+			openYesterdaysJournal,
+			"Previous day's notes",
 		},
-		l = {
-			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
-			"Looking Glass",
+		t = {
+			openTodaysJournal,
+			"Today's notes",
+		},
+		n = {
+      openTomorrowsJournal,
+      "Next day's notes"
 		},
 	},
 })
 
 wk.register({
-	["<leader>m"] = {
-		--TODO: move these into other keymap groups
-		name = "Miscellaneous",
-		l = {
-			"<cmd>Telescope resume<cr>",
-			"Last Search",
+	["<leader>"] = {
+		p = {
+			"<cmd>Format<cr>",
+			"Pretty",
 		},
 	},
 })
