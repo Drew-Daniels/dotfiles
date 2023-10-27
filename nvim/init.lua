@@ -1,6 +1,5 @@
 require("plugins")
 
---TODO: Figure out better keybindings across this whole thing. Lacking a systematic approach
 --TODO: Get caps lock plugin working again - what keybindings did it have that conflicted?
 
 -- MASON
@@ -373,13 +372,6 @@ vim.keymap.set({ "i", "s" }, "<C-E>", function()
 	end
 end, { silent = true })
 
-vim.keymap.set(
-	"n",
-	"<Leader>L",
-	'<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>',
-	{ desc = "load snippets" }
-)
-
 ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("typescriptreact", { "javascriptreact" })
@@ -429,8 +421,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- LUALINE
 -- https://github.com/nvim-lualine/lualine.nvim
----@diagnostic disable-next-line: missing-parameter
-require("lualine").setup()
+require("lualine").setup({
+	sections = {
+		lualine_x = {
+      -- CAPSLOCK.NVIM
+      -- https://github.com/barklan/capslock.nvim
+			{ require("capslock").status_string },
+		},
+	},
+})
 
 -- CONFORM.NVIM
 -- https://github.com/stevearc/conform.nvim
@@ -479,19 +478,11 @@ local openTomorrowsJournal = function()
 	vim.cmd([[ set conceallevel=3 ]])
 end
 
-vim.keymap.set("n", "<LocalLeader>[j", openYesterdaysJournal, { desc = "Yesterday's Journal" })
-vim.keymap.set("n", "<LocalLeader>|j", openTodaysJournal, { desc = "Today's Journal" })
-vim.keymap.set("n", "<LocalLeader>]j", openTomorrowsJournal, { desc = "Tomorrow's Journal" })
-
 -- ONEDARK.NVIM
 -- https://github.com/navarasu/onedark.nvim
 ---@diagnostic disable-next-line: missing-parameter
 require("onedark").setup()
 require("onedark").load()
-
--- CAPSLOCK.NVIM
--- https://github.com/barklan/capslock.nvim
-require("capslock").setup()
 
 -- CLIPBOARD-IMAGE.NVIM
 -- https://github.com/ekickx/clipboard-image.nvim
@@ -501,8 +492,6 @@ require("clipboard-image").setup({
 		img_dir = "images",
 	},
 })
--- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
--- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
 -- NEOGEN
 -- https://github.com/danymat/neogen
@@ -570,13 +559,20 @@ wk.register({
 local d = require("dap")
 local duiw = require("dap.ui.widgets")
 
+-- CAPSLOCK.NVIM
+-- https://github.com/barklan/capslock.nvim
+require("capslock").setup()
+
+vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
+vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
+
 wk.register({
 	["<leader>d"] = {
 		name = "Debug",
 		f = {
-      function ()
-        duiw.centered_float(duiw.frames)
-      end,
+			function()
+				duiw.centered_float(duiw.frames)
+			end,
 			"Frames",
 		},
 		h = {
@@ -588,9 +584,9 @@ wk.register({
 			"Preview",
 		},
 		s = {
-      function ()
-        duiw.centered_float(duiw.scopes)
-      end,
+			function()
+				duiw.centered_float(duiw.scopes)
+			end,
 			"Scopes",
 		},
 		n = {
@@ -615,9 +611,9 @@ wk.register({
 			"Step Out",
 		},
 		r = {
-      function ()
-        d.repl.open()
-      end,
+			function()
+				d.repl.open()
+			end,
 			"REPL",
 		},
 		l = {
@@ -784,9 +780,22 @@ wk.register({
 	},
 })
 
+--TODO: Do some more research on figuring out the best way to keep/maintain notes. Might look at other plugins.
+vim.keymap.set("n", "<LocalLeader>[j", openYesterdaysJournal, { desc = "Yesterday's Journal" })
+vim.keymap.set("n", "<LocalLeader>|j", openTodaysJournal, { desc = "Today's Journal" })
+vim.keymap.set("n", "<LocalLeader>]j", openTomorrowsJournal, { desc = "Tomorrow's Journal" })
+
 wk.register({
 	["<leader>n"] = {
 		name = "Notes",
+		l = {
+			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
+			"Looking Glass",
+		},
+		l = {
+			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
+			"Looking Glass",
+		},
 		l = {
 			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
 			"Looking Glass",
@@ -839,7 +848,7 @@ wk.register({
 
 wk.register({
 	["<leader>s"] = {
-		name = "Snippet",
+		name = "Snippets",
 		-- NEOGEN
 		-- https://github.com/danymat/neogen
 		--TODO: More plugin-agnostic name possible here?
@@ -847,6 +856,7 @@ wk.register({
 			":lua require('neogen').generate()<CR>",
 			"Neogen",
 		},
+		l = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
 	},
 }, { silent = true })
 
