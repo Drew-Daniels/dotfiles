@@ -131,49 +131,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
--- rec mappings
-vim.keymap.set("n", "<F5>", function()
-	require("dap").continue()
-end, { desc = "continue" })
-vim.keymap.set("n", "<F10>", function()
-	require("dap").step_over()
-end, { desc = "step over" })
-vim.keymap.set("n", "<F11>", function()
-	require("dap").step_into()
-end, { desc = "step into" })
-vim.keymap.set("n", "<F12>", function()
-	require("dap").step_out()
-end, { desc = "step out" })
-vim.keymap.set("n", "<Leader>b", function()
-	require("dap").toggle_breakpoint()
-end, { desc = "toggle breakpoint" })
-vim.keymap.set("n", "<Leader>B", function()
-	require("dap").set_breakpoint()
-end, { desc = "set breakpoint" })
-vim.keymap.set("n", "<Leader>lp", function()
-	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end, { desc = "log point message" })
-vim.keymap.set("n", "<Leader>dr", function()
-	require("dap").repl.open()
-end, { desc = "open repl" })
-vim.keymap.set("n", "<Leader>dl", function()
-	require("dap").run_last()
-end, { desc = "run last" })
-vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-	require("dap.ui.widgets").hover()
-end, { desc = "hover" })
-vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-	require("dap.ui.widgets").preview()
-end, { desc = "preview" })
-vim.keymap.set("n", "<Leader>df", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.frames)
-end, { desc = "frames" })
-vim.keymap.set("n", "<Leader>ds", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.scopes)
-end, { desc = "scopes" })
-
 -- TRANSPARENT.NVIM
 -- https://github.com/xiyaowong/transparent.nvim
 require("transparent").setup()
@@ -280,10 +237,6 @@ require("rest-nvim").setup({
 	custom_dynamic_variables = {},
 	yank_dry_run = true,
 })
-
-vim.keymap.set("n", "<leader>x", "<Plug>RestNvim", { desc = "execute request" })
-vim.keymap.set("n", "<leader>p", "<Plug>RestNvimPreview", { desc = "preview curl" })
-vim.keymap.set("n", "<leader>l", "<Plug>RestNvimLast", { desc = "repeat last request" })
 
 -- NEODEV.NVIM
 -- https://github.com/folke/neodev.nvim
@@ -397,14 +350,13 @@ local ls = require("luasnip")
 ls.config.set_config({
 	-- Enable autotriggered snippets
 	enable_autosnippets = false,
-
 	-- Use Tab to trigger visual selection
 	store_selection_keys = "<Tab>",
-
 	-- show repeated node text as it's typed
 	update_events = "TextChanged,TextChangedI",
 })
 
+--TODO: Better way to map these potentially?
 vim.keymap.set({ "i" }, "<C-K>", function()
 	ls.expand()
 end, { silent = true })
@@ -432,14 +384,6 @@ ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("typescriptreact", { "javascriptreact" })
 
--- 'nvim-lsp' suggested keymappings, completion
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "open float" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "goto prev" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "goto next" })
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "set location list" })
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -451,6 +395,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
+		--TODO: Can I move these outside of this function?
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
@@ -514,12 +459,6 @@ end, { range = true })
 
 -- NEORG
 -- https://github.com/nvim-neorg/neorg
-vim.keymap.set(
-	"n",
-	"<LocalLeader>lg",
-	":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
-	{ desc = "Looking Glass" }
-)
 
 local openYesterdaysJournal = function()
 	vim.cmd([[ Neorg workspace standups ]])
@@ -589,47 +528,6 @@ require("overseer").setup()
 vim.keymap.set("n", "<Leader>ot", ":OverseerToggle<CR>", { desc = "Overseer Toggle" })
 vim.keymap.set("n", "<Leader>or", ":OverseerRun<CR>", { desc = "Overseer Run" })
 
--- MARKDOWN-PREVIEW.NVIM
--- https://github.com/iamcco/markdown-preview.nvim
-vim.keymap.set("n", "<LocalLeader>p", ":MarkdownPreview<CR>", { desc = "MarkdownPreview" })
-
--- NEOGEN
--- https://github.com/danymat/neogen
-vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
-
--- HARPOON
--- https://github.com/ThePrimeagen/harpoon
-vim.keymap.set(
-	"n",
-	"<Leader>h",
-	":lua require('harpoon.mark').add_file()<CR>",
-	{ noremap = false, desc = "Harpoon file" }
-)
-vim.keymap.set(
-	"n",
-	"<Leader>s",
-	":lua require('harpoon.ui').toggle_quick_menu()<CR>",
-	{ noremap = false, desc = "Switch file" }
-)
-vim.keymap.set(
-	"n",
-	"<Leader>p",
-	":lua require('harpoon.ui').nav_prev()<CR>",
-	{ noremap = false, desc = "Navigate to Previous File" }
-)
-vim.keymap.set(
-	"n",
-	"<Leader>n",
-	":lua require('harpoon.ui').nav_next()<CR>",
-	{ noremap = false, desc = "Navigate to Next File" }
-)
-vim.keymap.set(
-	"n",
-	"<Leader>da",
-	":lua require('harpoon.mark').clear_all()<CR>",
-	{ noremap = false, desc = "Delete all Harpoons" }
-)
-
 -- NVIM-TS-COMMENTSTRING
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ---@diagnostic disable-next-line: missing-parameter
@@ -655,24 +553,296 @@ require("notify").setup({
 
 -- TELESCOPE.NVIM
 -- https://github.com/nvim-telescope/telescope.nvim
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ja", builtin.find_files, { desc = "All Files" })
-vim.keymap.set("n", "<leader>jg", builtin.git_files, { desc = "Git Files" })
-vim.keymap.set("n", "<leader>ac", builtin.commands, { desc = "Available Commands" })
-vim.keymap.set("n", "<leader>ch", builtin.command_history, { desc = "Command History" })
-vim.keymap.set("n", "<leader>m", builtin.man_pages, { desc = "Man Pages" })
-vim.keymap.set("n", "<leader>`", builtin.marks, { desc = "Marks" })
---TODO: Figure out alternative keymap instead of <Leader>b for setting breakpoints with nvim-dap
-vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git Commits" })
-vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, { desc = "Git Buffer Commits" })
---TODO: Figure out what plugin is setting <leader>r mapping currently - would be nice to use this keybinding for builtin.registers
---TODO: Figure out what other keymapping I can use for switching between harpooned files - <Leader>s would be nice to use for spellcheck, or <Leader>sc
-vim.keymap.set("n", "<leader>k", builtin.keymaps, { desc = "Normal Mode Keymappings" })
---TODO: Find better keymapping for live grep
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffer" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
-vim.keymap.set("n", "<leader>ts", builtin.treesitter, { desc = "Treesitter" })
+
+-- WHICH-KEY.NVIM
+-- https://github.com/folke/which-key.nvim
+local wk = require("which-key")
+
+wk.register({
+	["<leader>"] = {
+		t = {
+			"<cmd>Telescope treesitter<cr>",
+			"Treesitter",
+		},
+	},
+})
+
+local d = require("dap")
+local duiw = require("dap.ui.widgets")
+
+wk.register({
+	["<leader>d"] = {
+		name = "Debug",
+		-- f = {
+		-- 	duiw.frames,
+		-- 	"Frames",
+		-- },
+		h = {
+			duiw.hover,
+			"Hover",
+		},
+		p = {
+			duiw.preview,
+			"Preview",
+		},
+		-- s = {
+		-- 	duiw.scopes,
+		-- 	"Scopes",
+		-- },
+		n = {
+			d.set_breakpoint,
+			"New Breakpoint",
+		},
+		t = {
+			d.toggle_breakpoint,
+			"Toggle Breakpoint",
+		},
+		c = {
+			d.continue,
+			"Continue",
+		},
+		--TODO: This is gross
+		ov = {
+			d.step_over,
+			"Step Over",
+		},
+		ou = {
+			d.step_out,
+			"Step Out",
+		},
+		-- r = {
+		-- 	d.repl,
+		-- 	"REPL",
+		-- },
+		l = {
+			d.run_last,
+			"Run Last",
+		},
+	},
+})
+
+wk.register({
+	["<leader>e"] = {
+		name = "Ex Commands",
+		c = {
+			"<cmd>Telescope commands<cr>",
+			"Ex Commands",
+		},
+		h = {
+			"<cmd>Telescope command_history<cr>",
+			"Ex Command History",
+		},
+	},
+})
+
+-- HARPOON
+-- https://github.com/ThePrimeagen/harpoon
+local hui = require("harpoon.ui")
+local hm = require("harpoon.mark")
+
+-- MARKDOWN-PREVIEW.NVIM
+-- https://github.com/iamcco/markdown-preview.nvim
+vim.keymap.set("n", "<LocalLeader>p", ":MarkdownPreview<CR>", { desc = "MarkdownPreview" })
+
+wk.register({
+	["<leader>f"] = {
+		name = "Files",
+		a = {
+			"<cmd>Telescope autocommands<cr>",
+			"Autocommands",
+		},
+		b = {
+			"<cmd>Telescope buffers<cr>",
+			"Buffer(s)",
+		},
+		d = {
+			"<cmd>:lua require('harpoon.mark').clear_all()<cr>",
+			"Delete All Harpoons",
+		},
+		f = {
+			"<cmd>Telescope find_files<cr>",
+			"File(s)",
+		},
+		g = {
+			"<cmd>Telescope git_files<cr>",
+			"Git-tracked File(s)",
+		},
+		l = {
+			"<cmd>Telescope resume<cr>",
+			"Last ",
+		},
+		r = {
+			"<cmd>Telescope oldfiles<cr>",
+			"Recent File(s)",
+		},
+		t = {
+			"<cmd>Telescope tags<cr>",
+			"Tag",
+		},
+		c = { "<cmd>ene<cr>", "Create File" },
+		m = { "<cmd>Telescope marks<cr>", "Marks" },
+		q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
+		h = { "<cmd>Telescope quickfix_history<cr>", "Quickfix History" },
+		x = { hm.mark_file, "Harpoon" },
+		s = { hui.toggle_quick_menu, "Switch Harpoon" },
+		p = { hui.nav_prev, "Previous Harpoon" },
+		n = { hui.nav_next, "Next Harpoon" },
+	},
+})
+
+wk.register({
+	["<leader>g"] = {
+		name = "Git",
+		b = {
+			"<cmd>Telescope git_branches<cr>",
+			"Branches",
+		},
+		--TODO: Come back to this one
+		-- b = {
+		-- 	"<cmd>Telescope git_bcommits<cr>",
+		-- 	"Buffer Commits",
+		-- },
+		c = {
+			"<cmd>Telescope git_commits<cr>",
+			"Commits",
+		},
+		r = {
+			"<cmd>Telescope git_bcommits_range<cr>",
+			"Range Buffer Commits",
+		},
+		s = {
+			"<cmd>Telescope git_status<cr>",
+			"Status",
+		},
+		w = {
+			"<cmd>Telescope git_stash<cr>",
+			"Work (Stashed)",
+		},
+	},
+})
+
+wk.register({
+	["<leader>h"] = {
+		name = "Help",
+		h = {
+			"<cmd>Telescope help_tags<cr>",
+			"Help Tags",
+		},
+		o = {
+			"<cmd>Telescope vim_options<cr>",
+			"Vim Options",
+		},
+		s = {
+			"<cmd>Telescope spell_suggest<cr>",
+			"Open Recent File",
+		},
+		m = {
+			"<cmd>Telescope man_pages<cr>",
+			"Man Pages",
+		},
+	},
+})
+
+wk.register({
+	["<leader>l"] = {
+		name = "LSP",
+		d = {
+			"<cmd>Telescope lsp_diagnostics<cr>",
+			"Diagnostics",
+		},
+		i = {
+			"<cmd>Telescope lsp_implementations<cr>",
+			"Implementations",
+		},
+		o = {
+			vim.diagnostic.open_float,
+			"Open Float",
+		},
+		l = { vim.diagnostic.setloclist, "Set Location List" },
+		r = {
+			"<cmd>Telescope lsp_references<cr>",
+			"References",
+		},
+		t = {
+			"<cmd>Telescope lsp_type_definitions<cr>",
+			"Type Definitions",
+		},
+		p = {
+			vim.diagnostic.goto_prev,
+			"Go-To Prev",
+		},
+		n = {
+			vim.diagnostic.goto_next,
+			"Go-To Next",
+		},
+	},
+})
+
+wk.register({
+	["<leader>n"] = {
+		name = "Notes",
+		l = {
+			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
+			"Looking Glass",
+		},
+	},
+})
+
+wk.register({
+	["<leader>m"] = {
+		--TODO: move these into other keymap groups
+		name = "Miscellaneous",
+		l = {
+			"<cmd>Telescope resume<cr>",
+			"Last Search",
+		},
+	},
+})
+
+wk.register({
+	["<leader>r"] = {
+		name = "Request",
+		s = {
+			"<Plug>RestNvim",
+			"Send Request",
+		},
+		p = {
+			"<Plug>RestNvimPreview",
+			"Preview Request",
+		},
+		r = {
+			"<Plug>RestNvimLast",
+			"Repeat Last Request",
+		},
+	},
+})
+
+wk.register({
+	["<leader>r"] = {
+		name = "RG",
+		g = {
+			"<cmd>Telescope live_grep<cr>",
+			"Live Search",
+		},
+		s = {
+			"<cmd>Telescope search_history<cr>",
+			"Search History",
+		},
+	},
+})
+
+wk.register({
+	["<leader>s"] = {
+		name = "Snippet",
+		-- NEOGEN
+		-- https://github.com/danymat/neogen
+		--TODO: More plugin-agnostic name possible here?
+		n = {
+			":lua require('neogen').generate()<CR>",
+			"Neogen",
+		},
+	},
+}, { silent = true })
 
 -- TELESCOPE-FZF-NATIVE
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
