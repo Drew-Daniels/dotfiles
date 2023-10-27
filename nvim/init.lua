@@ -511,11 +511,6 @@ require("zen-mode").setup({
 	},
 })
 
--- OVERSEER.NVIM
--- https://github.com/stevearc/overseer.nvim
-require("overseer").setup()
-vim.keymap.set("n", "<Leader>ot", ":OverseerToggle<CR>", { desc = "Overseer Toggle" })
-vim.keymap.set("n", "<Leader>or", ":OverseerRun<CR>", { desc = "Overseer Run" })
 
 -- NVIM-TS-COMMENTSTRING
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
@@ -843,6 +838,21 @@ wk.register({
 			"<cmd>Telescope search_history<cr>",
 			"Search History",
 		},
+	},
+})
+
+-- OVERSEER.NVIM
+-- https://github.com/stevearc/overseer.nvim
+require("overseer").setup()
+
+wk.register({
+	["<leader>t"] = {
+		name = "Tasks",
+		t = {
+			"<cmd>OverseerToggle<cr>",
+			"Toggle",
+		},
+		r = { "<cmd>OverseerRun<cr>", "Run" },
 	},
 })
 
