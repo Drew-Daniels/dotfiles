@@ -262,7 +262,6 @@ local servers = {
 	"dockerls",
 	"emmet_language_server",
 	"yamlls",
-	"tsserver",
 	"eslint",
 	"marksman",
 	"cucumber_language_server",
