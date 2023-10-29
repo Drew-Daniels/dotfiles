@@ -558,8 +558,8 @@ local duiw = require("dap.ui.widgets")
 -- https://github.com/barklan/capslock.nvim
 require("capslock").setup()
 
-vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
-vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
+-- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
+-- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
 wk.register({
 	["<leader>d"] = {
@@ -596,12 +596,11 @@ wk.register({
 			d.continue,
 			"Continue",
 		},
-		--TODO: This is gross
-		ov = {
+		v = {
 			d.step_over,
 			"Step Over",
 		},
-		ou = {
+		u = {
 			d.step_out,
 			"Step Out",
 		},
@@ -637,10 +636,6 @@ wk.register({
 local hui = require("harpoon.ui")
 local hm = require("harpoon.mark")
 
--- MARKDOWN-PREVIEW.NVIM
--- https://github.com/iamcco/markdown-preview.nvim
-vim.keymap.set("n", "<LocalLeader>p", ":MarkdownPreview<CR>", { desc = "MarkdownPreview" })
-
 wk.register({
 	["<leader>f"] = {
 		name = "Files",
@@ -666,7 +661,11 @@ wk.register({
 		},
 		l = {
 			"<cmd>Telescope resume<cr>",
-			"Last ",
+			"Last Search Results",
+		},
+		o = {
+			"<cmd>Oil<cr>",
+			"Oil",
 		},
 		r = {
 			"<cmd>Telescope oldfiles<cr>",
@@ -793,13 +792,14 @@ wk.register({
 	},
 })
 
+-- MARKDOWN-PREVIEW.NVIM
+-- https://github.com/iamcco/markdown-preview.nvim
 wk.register({
 	["<leader>m"] = {
-		--TODO: move these into other keymap groups
-		name = "Miscellaneous",
-		l = {
-			"<cmd>Telescope resume<cr>",
-			"Last Search",
+		name = "Markdown",
+		p = {
+			"<cmd>MarkdownPreview<cr>",
+			"Markdown Preview",
 		},
 	},
 })
