@@ -659,6 +659,10 @@ wk.register({
 			"<cmd>Telescope git_files<cr>",
 			"Git-tracked File(s)",
 		},
+		i = {
+			"<cmd>Telescope import<cr>",
+			"Imports",
+		},
 		l = {
 			"<cmd>Telescope resume<cr>",
 			"Last Search Results",
@@ -742,9 +746,9 @@ wk.register({
 wk.register({
 	["<leader>l"] = {
 		name = "LSP",
-    a = { 
-      -- code actions
-    },
+		a = {
+			-- code actions
+		},
 		c = {
 			-- change name
 		},
@@ -787,7 +791,7 @@ wk.register({
 			"Go-To Next Diagnostic",
 		},
 		s = {
-      -- signature_help
+			-- signature_help
 		},
 	},
 })
@@ -900,13 +904,13 @@ wk.register({
 	["<leader>w"] = {
 		name = "Workspace",
 		a = {
-      -- workspace add
+			-- workspace add
 		},
 		r = {
-      -- workspace remove
+			-- workspace remove
 		},
 		l = {
-      -- workspace list
+			-- workspace list
 		},
 	},
 })
@@ -914,7 +918,13 @@ wk.register({
 -- TELESCOPE-FZF-NATIVE
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
 ---@diagnostic disable-next-line: missing-parameter
-require("telescope").setup()
+require("telescope").setup({
+	extensions = {
+		import = {
+			insert_at_top = true,
+		},
+	},
+})
 require("telescope").load_extension("fzf")
 
 -- GENERAL
