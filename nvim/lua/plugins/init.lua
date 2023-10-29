@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "nvim-telescope/telescope-media-files.nvim", dependencies = { "nvim-lua/popup.nvim" } },
 	{
 		"piersolenski/telescope-import.nvim",
 		requires = "nvim-telescope/telescope.nvim",

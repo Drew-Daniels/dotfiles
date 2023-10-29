@@ -660,8 +660,8 @@ wk.register({
 			"Git-tracked File(s)",
 		},
 		i = {
-			"<cmd>Telescope import<cr>",
-			"Imports",
+			"<cmd>Telescope media_files<cr>",
+			"Images & Media File(s)",
 		},
 		l = {
 			"<cmd>Telescope resume<cr>",
@@ -832,6 +832,10 @@ wk.register({
 --
 wk.register({
 	["<leader>"] = {
+		i = {
+			"<cmd>Telescope import<cr>",
+			"Import",
+		},
 		p = {
 			"<cmd>Format<cr>",
 			"Pretty",
@@ -926,6 +930,10 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf")
+
+-- TELESCOPE-MEDIA-FILES.NVIM
+-- https://github.com/nvim-telescope/telescope-media-files.nvim
+require("telescope").load_extension("media_files")
 
 -- GENERAL
 local set = vim.opt
