@@ -749,6 +749,10 @@ wk.register({
 		a = {
 			-- code actions
 		},
+    b = {
+      "<cmd>LspRestart<cr>",
+      "Reboot LSP"
+    },
 		c = {
 			-- change name
 		},
