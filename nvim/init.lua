@@ -201,29 +201,19 @@ require("web-tools").setup({
 -- REST.NVIM
 -- https://github.com/rest-nvim/rest.nvim
 require("rest-nvim").setup({
-	-- Open request results in a horizontal split
 	result_split_horizontal = false,
-	-- Keep the http file buffer above|left when split horizontal|vertical
 	result_split_in_place = true,
-	-- Skip SSL verification, useful for unknown certificates
 	skip_ssl_verification = false,
-	-- Encode URL before making request
 	encode_url = true,
-	-- Highlight request on run
 	highlight = {
 		enabled = true,
 		timeout = 150,
 	},
 	result = {
-		-- toggle showing URL, HTTP info, headers at top the of result window
 		show_url = true,
-		-- show the generated curl command in case you want to launch
-		-- the same request via the terminal (can be verbose)
 		show_curl_command = false,
 		show_http_info = true,
 		show_headers = true,
-		-- executables or functions for formatting response body [optional]
-		-- set them to false if you want to disable them
 		formatters = {
 			json = "jq",
 			html = function(body)
@@ -231,7 +221,6 @@ require("rest-nvim").setup({
 			end,
 		},
 	},
-	-- Jump to request line on run
 	jump_to_request = false,
 	env_file = ".env",
 	custom_dynamic_variables = {},
@@ -683,7 +672,7 @@ wk.register({
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 		h = { "<cmd>Telescope quickfix_history<cr>", "Quickfix History" },
-		x = { hm.mark_file, "Harpoon" },
+		x = { hm.add_file, "Harpoon" },
 		s = { hui.toggle_quick_menu, "Switch Harpoon" },
 		p = { hui.nav_prev, "Previous Harpoon" },
 		n = { hui.nav_next, "Next Harpoon" },
@@ -866,13 +855,13 @@ wk.register({
 })
 
 wk.register({
-	["<leader>r"] = {
-		name = "RG",
-		g = {
+	["<leader>q"] = {
+		name = "Query",
+		l = {
 			"<cmd>Telescope live_grep<cr>",
 			"Live Search",
 		},
-		s = {
+		h = {
 			"<cmd>Telescope search_history<cr>",
 			"Search History",
 		},
