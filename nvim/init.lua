@@ -537,6 +537,14 @@ wk.register({
 			"<cmd>Telescope treesitter<cr>",
 			"Treesitter",
 		},
+		i = {
+			"<cmd>Telescope import<cr>",
+			"Import",
+		},
+		p = {
+			"<cmd>Format<cr>",
+			"Pretty",
+		},
 	},
 })
 
@@ -819,19 +827,6 @@ wk.register({
 		n = {
 			openTomorrowsJournal,
 			"Next day's notes",
-		},
-	},
-})
---
-wk.register({
-	["<leader>"] = {
-		i = {
-			"<cmd>Telescope import<cr>",
-			"Import",
-		},
-		p = {
-			"<cmd>Format<cr>",
-			"Pretty",
 		},
 	},
 })
