@@ -20,11 +20,11 @@ return {
 		"jba",
 		fmta(
 			[[ 
-        beforeAll('<>', () =>> {
+        beforeAll(() =>> {
           <>
         });
       ]],
-			{ i(1), i(2) }
+			{ i(1) }
 		),
 		{ desc = "jest beforeAll" }
 	),
@@ -32,11 +32,11 @@ return {
 		"jbe",
 		fmta(
 			[[ 
-        beforeEach('<>', () =>> {
+        beforeEach(() =>> {
           <>
         });
       ]],
-			{ i(1), i(2) }
+			{ i(1) }
 		),
 		{ desc = "jest beforeAll" }
 	),
