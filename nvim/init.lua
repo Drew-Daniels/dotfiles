@@ -754,7 +754,7 @@ wk.register({
 			-- change name
 		},
 		d = {
-			"<cmd>Telescope lsp_diagnostics<cr>",
+			"<cmd>Telescope diagnostics<cr>",
 			"Diagnostics",
 		},
 		D = {
