@@ -114,55 +114,6 @@ return require("lazy").setup({
 		opts = {},
 	},
 	{
-		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.completion"] = {
-						config = { engine = "nvim-cmp" },
-					},
-					["core.defaults"] = {}, -- Loads default behaviour
-					["core.concealer"] = {
-						config = {
-							folds = false,
-						},
-					},
-					["core.presenter"] = {
-						config = {
-							zen_mode = "zen-mode",
-						},
-					},
-					["core.dirman"] = { -- Manages Neorg workspaces
-						config = {
-							default_workspace = "notes",
-							workspaces = {
-								notes = "~/notes",
-								api = "~/notes/api",
-								auth = "~/notes/auth",
-								admin = "~/notes/admin",
-								pt = "~/notes/pt",
-								embedded = "~/notes/embedded",
-								patient = "~/notes/patient",
-								mobile = "~/notes/mobile",
-								auth_client = "~/notes/auth_client",
-								api_client = "~/notes/api_client",
-								ui_components = "~/notes/ui_components",
-								devdocs = "~/notes/devdocs",
-								keetman = "~/notes/keetman",
-								ops_tools = "~/notes/ops_tools",
-								dotfiles = "~/notes/dotfiles",
-								one_on_ones = "~/notes/one_on_ones",
-								standups = "~/notes/standups",
-							},
-						},
-					},
-				},
-			})
-		end,
-	},
-	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {

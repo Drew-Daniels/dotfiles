@@ -18,7 +18,3 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - nvim hurl/hurl.env
-        - notes:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - nvim -c ":Neorg workspace keetman"

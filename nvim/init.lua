@@ -307,7 +307,6 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "neorg" },
 	},
 })
 
@@ -445,28 +444,6 @@ vim.api.nvim_create_user_command("Format", function(args)
 	end
 	require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
-
--- NEORG
--- https://github.com/nvim-neorg/neorg
-
-local openYesterdaysJournal = function()
-	vim.cmd([[ Neorg workspace standups ]])
-	vim.cmd([[ Neorg journal yesterday ]])
-	--TODO: Figure out how to set this value on all `.norg` files rather than just when this command is run
-	vim.cmd([[ set conceallevel=3 ]])
-end
-
-local openTodaysJournal = function()
-	vim.cmd([[ Neorg workspace standups ]])
-	vim.cmd([[ Neorg journal today ]])
-	vim.cmd([[ set conceallevel=3 ]])
-end
-
-local openTomorrowsJournal = function()
-	vim.cmd([[ Neorg workspace standups ]])
-	vim.cmd([[ Neorg journal tomorrow ]])
-	vim.cmd([[ set conceallevel=3 ]])
-end
 
 -- ONEDARK.NVIM
 -- https://github.com/navarasu/onedark.nvim
@@ -805,28 +782,6 @@ wk.register({
 		p = {
 			"<cmd>MarkdownPreview<cr>",
 			"Markdown Preview",
-		},
-	},
-})
-
-wk.register({
-	["<leader>n"] = {
-		name = "Notes",
-		l = {
-			":Neorg keybind all core.looking-glass.magnify-code-block<CR>",
-			"Looking Glass",
-		},
-		p = {
-			openYesterdaysJournal,
-			"Previous day's notes",
-		},
-		t = {
-			openTodaysJournal,
-			"Today's notes",
-		},
-		n = {
-			openTomorrowsJournal,
-			"Next day's notes",
 		},
 	},
 })
