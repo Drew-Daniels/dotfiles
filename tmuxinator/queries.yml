@@ -1,9 +1,9 @@
-name: ui-components
-root: <%= ENV["PROJECTS_DIR"] %>/ui-components
+name: queries
+root: <%= ENV["PROJECTS_DIR"] %>/queries
 on_project_exit: clear
 
 windows:
-  - pt:
+  - queries:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
