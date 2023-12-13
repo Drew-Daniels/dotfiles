@@ -1,0 +1,15 @@
+name: hydra-client
+root: <%= ENV["PROJECTS_DIR"] %>/hydra-client
+on_project_exit: clear
+
+windows:
+  - hydra-client:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish

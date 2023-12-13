@@ -1,0 +1,15 @@
+name: keet-hydra
+root: <%= ENV["PROJECTS_DIR"] %>/keet-hydra
+on_project_exit: clear
+
+windows:
+  - keet-hydra:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
