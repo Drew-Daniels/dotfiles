@@ -1,5 +1,5 @@
 name: hydra-client
-root: <%= ENV["PROJECTS_DIR"] %>/hydra-client
+root: <%= ENV["PROJECTS_DIR"] %>/hydra_client
 on_project_exit: clear
 
 windows:
