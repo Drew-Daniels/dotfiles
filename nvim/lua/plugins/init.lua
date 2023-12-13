@@ -35,12 +35,6 @@ return require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
-		"michaelb/sniprun",
-		build = "sh install.sh",
-		-- optional
-		dependencies = "rcarriga/nvim-notify",
-	},
-	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",

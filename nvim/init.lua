@@ -491,12 +491,6 @@ require("ts_context_commentstring").setup()
 -- https://github.com/numToStr/Comment.nvim
 require("Comment").setup()
 
--- SNIPRUN
--- https://github.com/michaelb/sniprun
-require("sniprun").setup({
-	display = { "NvimNotify" },
-})
-
 -- NVIM-NOTIFY
 -- https://github.com/rcarriga/nvim-notify
 ---@diagnostic disable-next-line: missing-fields
