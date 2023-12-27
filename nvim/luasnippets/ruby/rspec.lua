@@ -11,7 +11,7 @@ return {
 		"itm",
 		fmta(
       [[
-        it "<>" do
+        it '<>' do
           <>
         end
       ]],
@@ -23,7 +23,7 @@ return {
     "ds",
     fmta(
       [[
-        describe "<>" do
+        describe '<>' do
           <>
         end
       ]],
@@ -47,7 +47,7 @@ return {
     "cn",
     fmta(
       [[
-        context "<>" do
+        context '<>' do
           <>
         end
       ]],
