@@ -35,10 +35,6 @@ if status is-interactive
     fish_add_path $ANDROID_HOME/tools/bin
     fish_add_path $ANDROID_HOME/platform-tools
 
-    # asdf
-    set -gx ASDF_CONFIG_FILE $XDG_CONFIG_HOME/asdf/.asdfrc
-    source ~/.asdf/asdf.fish
-
     # nvim
     set -gx VIMCONFIG ~/.config/nvim
     set -gx VIMDATA ~/.local/share/nvim
