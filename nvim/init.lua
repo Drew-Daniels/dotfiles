@@ -872,6 +872,10 @@ require("telescope").load_extension("fzf")
 -- https://github.com/nvim-telescope/telescope-media-files.nvim
 require("telescope").load_extension("media_files")
 
+-- INDENT-BLANKLINE.NVIM
+-- https://github.com/lukas-reineke/indent-blankline.nvim
+require("ibl").setup()
+
 -- GENERAL
 local set = vim.opt
 set.smartindent = true

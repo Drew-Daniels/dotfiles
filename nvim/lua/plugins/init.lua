@@ -16,8 +16,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  { "github/copilot.vim" },
-  { "nvim-telescope/telescope-media-files.nvim", dependencies = { "nvim-lua/popup.nvim" } },
+	{ "github/copilot.vim" },
+	{ "nvim-telescope/telescope-media-files.nvim", dependencies = { "nvim-lua/popup.nvim" } },
 	{
 		"piersolenski/telescope-import.nvim",
 		requires = "nvim-telescope/telescope.nvim",
@@ -127,4 +127,5 @@ return require("lazy").setup({
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 })
