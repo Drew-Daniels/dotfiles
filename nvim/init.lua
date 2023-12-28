@@ -168,10 +168,6 @@ require("nvim-treesitter.configs").setup({
 	endwise = {
 		enable = true,
 	},
-	-- required by 'nvim-ts-context-commentstring'
-	context_commentstring = {
-		enable = true,
-	},
 })
 
 -- custom file associations
