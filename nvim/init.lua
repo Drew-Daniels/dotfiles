@@ -36,7 +36,7 @@ local options = {
 		"vim-language-server",
 		"yaml-language-server",
 		"typescript-language-server",
-    "prettier",
+		"prettier",
 	},
 	max_concurrent_installers = 10,
 }
@@ -427,9 +427,9 @@ require("conform").setup({
 		fish = { "fish_indent" },
 		json = { "jq" },
 		sql = { "sql_formatter" },
-    css = { "prettier" },
-    less = { "prettier" },
-    scss = { "prettier" },
+		css = { "prettier" },
+		less = { "prettier" },
+		scss = { "prettier" },
 	},
 })
 
@@ -717,10 +717,10 @@ wk.register({
 		a = {
 			-- code actions
 		},
-    b = {
-      "<cmd>LspRestart<cr>",
-      "Reboot LSP"
-    },
+		b = {
+			"<cmd>LspRestart<cr>",
+			"Reboot LSP",
+		},
 		c = {
 			-- change name
 		},
@@ -816,16 +816,37 @@ wk.register({
 -- https://github.com/stevearc/overseer.nvim
 require("overseer").setup()
 
+-- NEOTEST-RSPEC
+-- https://github.com/olimorris/neotest-rspec
+
 wk.register({
 	["<leader>t"] = {
-		name = "Tasks",
-		t = {
-			"<cmd>OverseerToggle<cr>",
-			"Toggle",
+		name = "Test",
+		b = {
+      ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
+			"Buffer",
 		},
-		r = { "<cmd>OverseerRun<cr>", "Run" },
+		s = {
+      ':lua require("neotest").run.run(vim.fn.getcwd())<CR>',
+			"Suite",
+		},
+		f = {
+      ':lua require("neotest").run.run()<CR>',
+			"Function",
+		},
 	},
 })
+
+-- wk.register({
+-- 	["<leader>t"] = {
+-- 		name = "Tests",
+-- 		t = {
+-- 			"<cmd>OverseerToggle<cr>",
+-- 			"Toggle",
+-- 		},
+-- 		r = { "<cmd>OverseerRun<cr>", "Run" },
+-- 	},
+-- })
 
 wk.register({
 	["<leader>s"] = {
