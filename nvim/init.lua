@@ -819,6 +819,13 @@ require("overseer").setup()
 -- NEOTEST-RSPEC
 -- https://github.com/olimorris/neotest-rspec
 
+--TODO: Figure out how to run ahoy rspec when running tests from work comp, but use default command when running tests from home comp.
+-- require("neotest-rspec")({
+--   rspec_cmd = function()
+--     return vim.tbl_flatten({ "ahoy", "rspec" })
+--   end
+-- })
+
 wk.register({
 	["<leader>t"] = {
 		name = "Test",
