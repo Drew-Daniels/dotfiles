@@ -712,6 +712,16 @@ wk.register({
 })
 
 wk.register({
+  ["<leader>j"] = {
+    name = "Jump",
+    d = {
+      ":cd %:p:h<cr>",
+      "Directory",
+    }
+  }
+})
+
+wk.register({
 	["<leader>l"] = {
 		name = "LSP",
 		a = {
