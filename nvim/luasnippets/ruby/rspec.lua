@@ -12,12 +12,24 @@ return {
 		fmta(
       [[
         it '<>' do
-          <>
+          expect(<>).<>
+        end
+      ]],
+      { i(1), i(2), i(3) }
+    ),
+    { desc = "RSpec test - multi-line" }
+	),
+	s(
+		"sp",
+		fmta(
+      [[
+        specify do
+          expect(<>).<>
         end
       ]],
       { i(1), i(2) }
     ),
-    { desc = "RSpec test - multi-line" }
+    { desc = "RSpec test - specify" }
 	),
   s(
     "ds",
