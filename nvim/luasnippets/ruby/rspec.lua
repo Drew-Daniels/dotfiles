@@ -7,15 +7,16 @@ return {
   --TODO: Make 'it' snippet containing choice nodes that can alternate between single-line, and multi-line
   -- rspec tests
 	s("its", fmta([[it { <> }]], { i(1) }), { desc = "RSpec test - single-line" }),
+	s("su", fmta([[subject { <> }]], { i(1) }), { desc = "RSpec test - subject" }),
 	s(
 		"itm",
 		fmta(
       [[
         it '<>' do
-          expect(<>).<>
+          <>
         end
       ]],
-      { i(1), i(2), i(3) }
+      { i(1), i(2) }
     ),
     { desc = "RSpec test - multi-line" }
 	),
