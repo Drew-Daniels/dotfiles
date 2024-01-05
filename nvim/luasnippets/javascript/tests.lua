@@ -5,7 +5,7 @@ local get_visual = helpers.get_visual
 
 return {
 	s(
-		"jd",
+		"ds",
 		fmta(
 			[[ 
         describe('<>', () =>> {
@@ -17,7 +17,7 @@ return {
 		{ desc = "jest describe" }
 	),
 	s(
-		"jba",
+		"ba",
 		fmta(
 			[[ 
         beforeAll(() =>> {
@@ -29,7 +29,7 @@ return {
 		{ desc = "jest beforeAll" }
 	),
 	s(
-		"jbe",
+		"be",
 		fmta(
 			[[ 
         beforeEach(() =>> {
@@ -40,10 +40,10 @@ return {
 		),
 		{ desc = "jest beforeAll" }
 	),
-	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
-	s("jx", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
+	s("ts", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
+	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
 	s(
-		"jf",
+		"be",
 		fmta(
 			[[ <>('<>', () =>> {<>}); ]],
 			{ c(1, { t("describe"), t("it"), t("beforeAll"), t("beforeEach") }), i(2), i(3) }
