@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
-  "LuaSnip": { "branch": "master", "commit": "c5fb16a934892086d4ba01bac48b77c65435025e" },
+  "LuaSnip": { "branch": "master", "commit": "2f0db89fcb22d27b908b3609d2441c02798106ab" },
   "capslock.nvim": { "branch": "main", "commit": "35b560dd5585cd60e45a2367ad6ff9873f4c21a2" },
   "clipboard-image.nvim": { "branch": "main", "commit": "485de5493d196154db30f85665f8ac480ce116a2" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
@@ -35,7 +35,7 @@
   "overseer.nvim": { "branch": "master", "commit": "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
-  "rest.nvim": { "branch": "main", "commit": "f13ae54ae2545d4d612593d4a442cbb33a1b5b65" },
+  "rest.nvim": { "branch": "main", "commit": "84e81a19ab24ccf05c9233d34d4dfce61c233abe" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
   "telescope-import.nvim": { "branch": "main", "commit": "9fc3e51ec9ccac3165fef2f9ef4b879775e10d19" },
   "telescope-media-files.nvim": { "branch": "master", "commit": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a" },
