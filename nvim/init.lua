@@ -712,13 +712,13 @@ wk.register({
 })
 
 wk.register({
-  ["<leader>j"] = {
-    name = "Jump",
-    d = {
-      ":cd %:p:h<cr>",
-      "Directory",
-    }
-  }
+	["<leader>j"] = {
+		name = "Jump",
+		d = {
+			":cd %:p:h<cr>",
+			"Directory",
+		},
+	},
 })
 
 wk.register({
@@ -836,19 +836,32 @@ require("overseer").setup()
 --   end
 -- })
 
+require("neotest").setup({
+	adapters = {
+		require("neotest-rspec"),
+		require("neotest-jest")({
+			jestCommand = "yarn test",
+			jestConfigFile = "jest.config.js",
+			cwd = function()
+				return vim.fn.getcwd()
+			end,
+		}),
+	},
+})
+
 wk.register({
 	["<leader>t"] = {
 		name = "Test",
 		b = {
-      ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
+			':lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
 			"Buffer",
 		},
 		s = {
-      ':lua require("neotest").run.run(vim.fn.getcwd())<CR>',
+			':lua require("neotest").run.run(vim.fn.getcwd())<CR>',
 			"Suite",
 		},
 		f = {
-      ':lua require("neotest").run.run()<CR>',
+			':lua require("neotest").run.run()<CR>',
 			"Function",
 		},
 	},

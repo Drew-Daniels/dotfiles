@@ -21,14 +21,8 @@ return require("lazy").setup({
 		lazy = true,
 		dependencies = {
 			"olimorris/neotest-rspec",
+			"nvim-neotest/neotest-jest",
 		},
-		config = function()
-			require("neotest").setup({
-				adapters = {
-					require("neotest-rspec"),
-				},
-			})
-		end,
 	},
 	{ "github/copilot.vim" },
 	{ "nvim-telescope/telescope-media-files.nvim", dependencies = { "nvim-lua/popup.nvim" } },
