@@ -8,16 +8,16 @@ return {
 		"nf",
 		fmta(
 			[[ 
-        <>function <>() {
+        <>function <>(<>) {
           <>     
         }
       ]],
-			{ c(1, { t(""), t("async ") }), i(2), i(3) },
+			{ c(1, { t(""), t("async ") }), i(2), i(3), i(4) },
 			{ desc = "Named Fn" }
 		)
 	),
 	s(
-		">>",
+		"af",
 		fmta(
 			[[
         (<>) =>> {<>}
