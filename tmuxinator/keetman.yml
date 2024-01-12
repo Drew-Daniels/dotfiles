@@ -9,12 +9,14 @@ windows:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
-          # - nvim -c ":vs | vs"
+          - cls
           - nvim
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
         - env:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
           - nvim hurl/hurl.env

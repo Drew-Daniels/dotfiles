@@ -9,10 +9,12 @@ windows:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
           - nvim
         - devserver:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
           - yarn env:ptnow:docker
           - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> ptnow
           - yarn
@@ -20,3 +22,4 @@ windows:
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls

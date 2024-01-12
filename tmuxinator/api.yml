@@ -9,6 +9,7 @@ windows:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
           - nvim
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -19,4 +20,5 @@ windows:
         - services:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
           - ahoy up

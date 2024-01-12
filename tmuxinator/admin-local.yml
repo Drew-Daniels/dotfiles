@@ -9,12 +9,15 @@ windows:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
           - nvim
         - devserver:
           - fish
+          - cls
           - yarn env:local
           - yarn
           - yarn start
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
+          - cls
