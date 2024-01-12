@@ -4,7 +4,7 @@ on_project_exit: clear
 
 windows:
   - taop:
-      layout: even-vertical
+      layout: 0f71,217x48,0,0[217x33,0,0{108x33,0,0,10,108x33,109,0,11},217x14,0,34,12]
       panes:
         - sql:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -16,3 +16,7 @@ windows:
           - cd data
           - fish
           - cls
+        - shell:
+          - fish
+          - cls
+
