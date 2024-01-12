@@ -4,12 +4,15 @@ on_project_exit: clear
 
 windows:
   - taop:
-      layout: <%= ENV["MUX_LAYOUT"] %>
+      layout: even-vertical
       panes:
-        - editor:
+        - sql:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - cd sql
           - fish
-          - nvim
-        - cmd:
+          - cls
+        - data:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - cd data
           - fish
+          - cls
