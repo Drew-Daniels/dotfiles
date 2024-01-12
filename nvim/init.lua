@@ -888,7 +888,7 @@ wk.register({
 			":lua require('neogen').generate()<CR>",
 			"Neogen",
 		},
-		r = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
+		l = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
 	},
 }, { silent = true })
 
