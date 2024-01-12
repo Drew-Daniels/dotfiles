@@ -1,0 +1,15 @@
+name: taop
+root: <%= ENV["PROJECTS_DIR"] %>/TAOP
+on_project_exit: clear
+
+windows:
+  - taop:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
