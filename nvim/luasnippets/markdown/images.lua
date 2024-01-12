@@ -2,13 +2,13 @@
 
 return {
   s(
-    "ln",
+    "im",
     fmta(
       [[
-        [<>](<>)
+        ![<>](<>)
       ]],
       { i(1), i(0) },
-      { desc = "Link" }
+      { desc = "Image" }
     )
   ),
 }
