@@ -110,3 +110,6 @@ export TASKRC="$XDG_CONFIG_HOME/taskwarrior/.taskrc"
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 
+# mise
+eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
+
