@@ -1,6 +1,6 @@
 # limit search output
 --max-columns=150
---max-colums=preview
+--max-columns-preview
 
 # Include dotfiles in search
 --hidden
