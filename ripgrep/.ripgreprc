@@ -8,5 +8,7 @@
 # But not files in .git folders
 --glob=!.git/*
 
+--glob=!yarn.lock
+
 --smart-case
 
