@@ -16,6 +16,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    -- tag = "*",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 	{
 		"nvim-neotest/neotest",
 		lazy = true,

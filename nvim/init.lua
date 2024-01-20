@@ -927,6 +927,23 @@ require("telescope").load_extension("media_files")
 -- https://github.com/lukas-reineke/indent-blankline.nvim
 require("ibl").setup()
 
+-- NEORG
+-- https://github.com/nvim-neorg/neorg
+require("neorg").setup({
+	load = {
+		["core.defaults"] = {}, -- Loads default behaviour
+		["core.concealer"] = {}, -- Adds pretty icons to your documents
+		["core.dirman"] = { -- Manages Neorg workspaces
+			config = {
+				workspaces = {
+					work = "~/notes/work",
+					home = "~/notes/home",
+				},
+			},
+		},
+	},
+})
+
 -- GENERAL
 local set = vim.opt
 set.smartindent = true
