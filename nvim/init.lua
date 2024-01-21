@@ -186,6 +186,16 @@ require("nvim-treesitter.configs").setup({
 				["@function.outer"] = "V", -- linewise
 				["@class.outer"] = "V", -- blockwise
 			},
+      swap = {
+        enable = true,
+        --TODO: Figure out why these aren't working? This just does the normal 'a' action of appending after the cursor.
+        swap_next = {
+          ["<leader>a"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["<leader>A"] = "@parameter.inner",
+        },
+      },
 		},
 	},
 	-- my config
