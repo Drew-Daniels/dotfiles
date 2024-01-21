@@ -168,6 +168,19 @@ require("nvim-treesitter.configs").setup({
 	endwise = {
 		enable = true,
 	},
+  -- my config
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<Leader>si", -- select start
+      node_incremental = "<Leader>sn", -- select node (incremental)
+      scope_incremental = "<Leader>ss", -- select scope
+      node_decremental = "<Leader>sd", -- select node (decremental)
+    },
+  },
 })
 
 -- custom file associations
@@ -502,8 +515,6 @@ require("telescope").load_extension("import")
 -- TELESCOPE-MEDIA-FILES
 -- https://github.com/nvim-telescope/telescope-media-files.nvim
 require("telescope").load_extension("media_files")
---TODO: Figure out how to override the Telescope find_files previewer with the media_files previewer.
---TODO: Set a keybinding for running "Telescope media_files"?
 require("telescope").setup({
   extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
@@ -889,7 +900,7 @@ wk.register({
 -- })
 
 wk.register({
-	["<leader>s"] = {
+	["<leader>S"] = {
 		name = "Snippets",
 		-- NEOGEN
 		-- https://github.com/danymat/neogen
