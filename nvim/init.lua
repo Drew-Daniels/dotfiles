@@ -190,11 +190,17 @@ require("nvim-treesitter.configs").setup({
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
 			},
+			goto_next = {
+				["]d"] = "@conditional.outer",
+			},
+			goto_previous = {
+				["[d"] = "@conditional.outer",
+			},
 		},
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
+		context_commentstring = {
+			enable = true,
+			enable_autocmd = false,
+		},
 		select = {
 			enable = true,
 			lookahead = true,
@@ -289,6 +295,23 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 })
+
+local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+
+-- Repeat movement with ; and ,
+-- ensure ; goes forward and , goes backward regardless of the last direction
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+-- vim way: ; goes to the direction you were moving.
+-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+
+-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 
 -- custom file associations
 require("vim.treesitter.language").register("http", "hurl")
@@ -625,7 +648,6 @@ require("telescope").load_extension("media_files")
 require("telescope").setup({
 	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
-
 
 -- OVERSEER.NVIM
 -- https://github.com/stevearc/overseer.nvim
@@ -1023,7 +1045,6 @@ require("neotest").setup({
 		}),
 	},
 })
-
 
 -- TELESCOPE-FZF-NATIVE
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
