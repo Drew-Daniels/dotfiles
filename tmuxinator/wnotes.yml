@@ -1,0 +1,12 @@
+name: Work Notes
+root: <%= ENV["PROJECTS_DIR"] %>/work_notes
+
+windows:
+  - wnotes:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim -e ":Neorg workspace work"
