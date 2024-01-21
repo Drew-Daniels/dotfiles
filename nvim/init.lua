@@ -171,6 +171,15 @@ require("nvim-treesitter.configs").setup({
 	-- NVIM-TREESITTER-TEXTOBJECTS
 	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	textobjects = {
+		lsp_interop = {
+			enable = true,
+			border = "none",
+			floating_preview_opts = {},
+			peek_definition_code = {
+				["<leader>vf"] = "@function.outer",
+				["<leader>vc"] = "@class.outer",
+			},
+		},
 		move = {
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist
@@ -267,12 +276,11 @@ require("nvim-treesitter.configs").setup({
 			},
 			swap = {
 				enable = true,
-				--TODO: Figure out why these aren't working? This just does the normal 'a' action of appending after the cursor.
 				swap_next = {
-					["gs"] = { query = "@parameter.inner", desc = "Swap With Next Parameter" },
+					["<leader>a"] = "@parameter.inner",
 				},
 				swap_previous = {
-					["gS"] = { query = "@parameter.inner", desc = "Swap With Previous Parameter" },
+					["<leader>A"] = "@parameter.inner",
 				},
 			},
 		},
@@ -518,7 +526,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--TODO: Can I move these outside of this function?
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
+		-- commenting this out since nvim-treesitter-textobject providers more consistent TypeScript support for peeking definitions
+		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
 		vim.keymap.set(
