@@ -53,7 +53,9 @@ return require("lazy").setup({
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
+    build = ":TSUpdate",
 	},
+  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
