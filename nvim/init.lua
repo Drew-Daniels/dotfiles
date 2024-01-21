@@ -181,6 +181,9 @@ require("nvim-treesitter.configs").setup({
       node_decremental = "<Leader>sd", -- select node (decremental)
     },
   },
+  indent = {
+    enable = true,
+  },
 })
 
 -- custom file associations
