@@ -171,6 +171,30 @@ require("nvim-treesitter.configs").setup({
 	-- NVIM-TREESITTER-TEXTOBJECTS
 	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	textobjects = {
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				["]]"] = "@class.outer",
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[m"] = "@function.outer",
+				["[["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+		},
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
+    },
 		select = {
 			enable = true,
 			lookahead = true,
@@ -180,41 +204,71 @@ require("nvim-treesitter.configs").setup({
 				["ac"] = { query = "@class.outer", desc = "Select outer class" },
 				["ic"] = { query = "@class.inner", desc = "Select inner class" },
 				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-        ["is"] = { query = "@scope.inner", query_group = "locals", desc = "Select inner language scope" },
-        ["al"] = { query = "@loop.outer", desc = "Select outer loop" },
-        ["il"] = { query = "@loop.inner", desc = "Select inner loop" },
-        ["ab"] = { query = "@block.outer", desc = "Select outer block" },
-        ["ib"] = { query = "@block.inner", desc = "Select inner block" },
-        ["ap"] = { query = "@parameter.outer", desc = "Select outer parameter" },
-        ["ip"] = { query = "@parameter.inner", desc = "Select inner parameter" },
-        ["aP"] = { query = "@parameter.outer", mode = "a", desc = "Select outer parameter (inclusive)" },
-        ["iP"] = { query = "@parameter.inner", mode = "a", desc = "Select inner parameter (inclusive)" },
-        ["a,"] = { query = "@parameter.outer", mode = "i", desc = "Select outer parameter (exclusive)" },
-        ["i,"] = { query = "@parameter.inner", mode = "i", desc = "Select inner parameter (exclusive)" },
-        ["a;"] = { query = "@parameter.outer", mode = "a", kind = "inclusive", desc = "Select outer parameter (inclusive)" },
-        ["i;"] = { query = "@parameter.inner", mode = "a", kind = "inclusive", desc = "Select inner parameter (inclusive)" },
-        ["a:"] = { query = "@parameter.outer", mode = "i", kind = "exclusive", desc = "Select outer parameter (exclusive)" },
-        ["i:"] = { query = "@parameter.inner", mode = "i", kind = "exclusive", desc = "Select inner parameter (exclusive)" },
-        ["a/"] = { query = "@comment.outer", desc = "Select outer comment" },
-        ["i/"] = { query = "@comment.inner", desc = "Select inner comment" },
-        ["a#"] = { query = "@comment.outer", mode = "i", kind = "inclusive", desc = "Select outer comment (inclusive)" },
-        ["i#"] = { query = "@comment.inner", mode = "i", kind = "inclusive", desc = "Select inner comment (inclusive)" },
+				["is"] = { query = "@scope.inner", query_group = "locals", desc = "Select inner language scope" },
+				["al"] = { query = "@loop.outer", desc = "Select outer loop" },
+				["il"] = { query = "@loop.inner", desc = "Select inner loop" },
+				["ab"] = { query = "@block.outer", desc = "Select outer block" },
+				["ib"] = { query = "@block.inner", desc = "Select inner block" },
+				["ap"] = { query = "@parameter.outer", desc = "Select outer parameter" },
+				["ip"] = { query = "@parameter.inner", desc = "Select inner parameter" },
+				["aP"] = { query = "@parameter.outer", mode = "a", desc = "Select outer parameter (inclusive)" },
+				["iP"] = { query = "@parameter.inner", mode = "a", desc = "Select inner parameter (inclusive)" },
+				["a,"] = { query = "@parameter.outer", mode = "i", desc = "Select outer parameter (exclusive)" },
+				["i,"] = { query = "@parameter.inner", mode = "i", desc = "Select inner parameter (exclusive)" },
+				["a;"] = {
+					query = "@parameter.outer",
+					mode = "a",
+					kind = "inclusive",
+					desc = "Select outer parameter (inclusive)",
+				},
+				["i;"] = {
+					query = "@parameter.inner",
+					mode = "a",
+					kind = "inclusive",
+					desc = "Select inner parameter (inclusive)",
+				},
+				["a:"] = {
+					query = "@parameter.outer",
+					mode = "i",
+					kind = "exclusive",
+					desc = "Select outer parameter (exclusive)",
+				},
+				["i:"] = {
+					query = "@parameter.inner",
+					mode = "i",
+					kind = "exclusive",
+					desc = "Select inner parameter (exclusive)",
+				},
+				["a/"] = { query = "@comment.outer", desc = "Select outer comment" },
+				["i/"] = { query = "@comment.inner", desc = "Select inner comment" },
+				["a#"] = {
+					query = "@comment.outer",
+					mode = "i",
+					kind = "inclusive",
+					desc = "Select outer comment (inclusive)",
+				},
+				["i#"] = {
+					query = "@comment.inner",
+					mode = "i",
+					kind = "inclusive",
+					desc = "Select inner comment (inclusive)",
+				},
 			},
 			selection_modes = {
 				["@parameter.outer"] = "v", -- charwise
 				["@function.outer"] = "V", -- linewise
 				["@class.outer"] = "V", -- blockwise
 			},
-      swap = {
-        enable = true,
-        --TODO: Figure out why these aren't working? This just does the normal 'a' action of appending after the cursor.
-        swap_next = {
-          ["gs"] = { query = "@parameter.inner", desc = "Swap With Next Parameter" },
-        },
-        swap_previous = {
-          ["gS"] = { query = "@parameter.inner", desc = "Swap With Previous Parameter" },
-        },
-      },
+			swap = {
+				enable = true,
+				--TODO: Figure out why these aren't working? This just does the normal 'a' action of appending after the cursor.
+				swap_next = {
+					["gs"] = { query = "@parameter.inner", desc = "Swap With Next Parameter" },
+				},
+				swap_previous = {
+					["gS"] = { query = "@parameter.inner", desc = "Swap With Previous Parameter" },
+				},
+			},
 		},
 	},
 	-- my config
