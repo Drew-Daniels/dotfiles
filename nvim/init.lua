@@ -168,6 +168,9 @@ require("nvim-treesitter.configs").setup({
 	endwise = {
 		enable = true,
 	},
+  -- NVIM-TREESITTER-TEXTOBJECTS
+  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  textobjects = { select = { enable = true, lookahead = true } },
   -- my config
   highlight = {
     enable = true,
