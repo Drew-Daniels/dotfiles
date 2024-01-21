@@ -495,8 +495,18 @@ require("notify").setup({
 	render = "compact",
 })
 
--- TELESCOPE.NVIM
--- https://github.com/nvim-telescope/telescope.nvim
+-- TELESCOPE-IMPORT
+-- https://github.com/piersolenski/telescope-import.nvim
+require("telescope").load_extension("import")
+
+-- TELESCOPE-MEDIA-FILES
+-- https://github.com/nvim-telescope/telescope-media-files.nvim
+require("telescope").load_extension("media_files")
+--TODO: Figure out how to override the Telescope find_files previewer with the media_files previewer.
+--TODO: Set a keybinding for running "Telescope media_files"?
+require("telescope").setup({
+  extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
+})
 
 -- WHICH-KEY.NVIM
 -- https://github.com/folke/which-key.nvim
@@ -918,10 +928,6 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf")
-
--- TELESCOPE-MEDIA-FILES.NVIM
--- https://github.com/nvim-telescope/telescope-media-files.nvim
-require("telescope").load_extension("media_files")
 
 -- INDENT-BLANKLINE.NVIM
 -- https://github.com/lukas-reineke/indent-blankline.nvim
