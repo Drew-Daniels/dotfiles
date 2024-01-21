@@ -181,6 +181,11 @@ require("nvim-treesitter.configs").setup({
 				["ic"] = { query = "@class.inner", desc = "Select inner class" },
 				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
 			},
+			selection_modes = {
+				["@parameter.outer"] = "v", -- charwise
+				["@function.outer"] = "V", -- linewise
+				["@class.outer"] = "V", -- blockwise
+			},
 		},
 	},
 	-- my config
