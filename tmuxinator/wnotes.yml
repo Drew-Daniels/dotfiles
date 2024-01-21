@@ -9,4 +9,4 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          - nvim -e ":Neorg workspace work"
+          - nvim -c "Neorg workspace work"
