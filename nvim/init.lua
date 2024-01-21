@@ -168,25 +168,38 @@ require("nvim-treesitter.configs").setup({
 	endwise = {
 		enable = true,
 	},
-  -- NVIM-TREESITTER-TEXTOBJECTS
-  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  textobjects = { select = { enable = true, lookahead = true } },
-  -- my config
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<Leader>si", -- select start
-      node_incremental = "<Leader>sn", -- select node (incremental)
-      scope_incremental = "<Leader>ss", -- select scope
-      node_decremental = "<Leader>sd", -- select node (decremental)
-    },
-  },
-  indent = {
-    enable = true,
-  },
+	-- NVIM-TREESITTER-TEXTOBJECTS
+	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = { query = "@function.outer", desc = "Select outer function" },
+				["if"] = { query = "@function.inner", desc = "Select inner function" },
+				["ac"] = { query = "@class.outer", desc = "Select outer class" },
+				["ic"] = { query = "@class.inner", desc = "Select inner class" },
+				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+			},
+		},
+	},
+	-- my config
+	highlight = {
+		enable = true,
+	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			--TODO: how to inform whichkey that <leader>s should be used for this?
+			init_selection = "<Leader>si", -- select start
+			node_incremental = "<Leader>sn", -- select node (incremental)
+			scope_incremental = "<Leader>ss", -- select scope
+			node_decremental = "<Leader>sd", -- select node (decremental)
+		},
+	},
+	indent = {
+		enable = true,
+	},
 })
 
 -- custom file associations
@@ -522,7 +535,7 @@ require("telescope").load_extension("import")
 -- https://github.com/nvim-telescope/telescope-media-files.nvim
 require("telescope").load_extension("media_files")
 require("telescope").setup({
-  extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
+	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
 
 -- WHICH-KEY.NVIM
