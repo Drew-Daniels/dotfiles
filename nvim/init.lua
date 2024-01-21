@@ -181,29 +181,36 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 		move = {
+      --TODO: Figure out why go-tos for conditionals don't work in .rb files?
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist
 			goto_next_start = {
-				["]m"] = "@function.outer",
-				["]]"] = "@class.outer",
+				["]m"] = { query = "@function.outer", desc = "Next method (start)"  },
+				["]c"] = { query = "@class.outer", desc = "Next class (start)" },
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope (start)" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold (start)" },
+				["]d"] = { query = "@conditional.outer", desc = "Next Conditional (start)" },
 			},
 			goto_next_end = {
-				["]M"] = "@function.outer",
-				["]["] = "@class.outer",
+				["]M"] = { query = "@function.outer", desc = "Next method (end)" },
+        ["]C"] = { query = "@class.outer", desc = "Next class (end)" },
+        ["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope (end)" },
+        ["]Z"] = { query = "@fold", query_group = "folds", desc = "Next fold (end)" },
+				["]D"] = { query = "@conditional.outer", desc = "Next Conditional (end)"  },
 			},
 			goto_previous_start = {
-				["[m"] = "@function.outer",
-				["[["] = "@class.outer",
+				["[m"] = { query = "@function.outer", desc = "Previous method (start)" },
+        ["[c"] = { query = "@class.outer", desc = "Previous class (start)" },
+        ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope (start)" },
+        ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (start)" },
+				["[d"] = { query = "@conditional.outer", desc = "Previous Conditional (start)"  },
 			},
 			goto_previous_end = {
-				["[M"] = "@function.outer",
-				["[]"] = "@class.outer",
-			},
-			goto_next = {
-				["]d"] = "@conditional.outer",
-			},
-			goto_previous = {
-				["[d"] = "@conditional.outer",
+				["[M"] = { query = "@function.outer", desc = "Previous method (end)" },
+        ["[C"] = { query = "@class.outer", desc = "Previous class (end)" },
+        ["[S"] = { query = "@scope", query_group = "locals", desc = "Previous scope (end)" },
+        ["[Z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (end)" },
+				["[D"] = { query = "@conditional.outer", desc = "Previous Conditional (end)"  },
 			},
 		},
 		context_commentstring = {
