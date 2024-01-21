@@ -626,6 +626,11 @@ require("telescope").setup({
 	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
 
+
+-- OVERSEER.NVIM
+-- https://github.com/stevearc/overseer.nvim
+require("overseer").setup()
+
 -- WHICH-KEY.NVIM
 -- https://github.com/folke/which-key.nvim
 local wk = require("which-key")
@@ -950,33 +955,6 @@ wk.register({
 	},
 })
 
--- OVERSEER.NVIM
--- https://github.com/stevearc/overseer.nvim
-require("overseer").setup()
-
--- NEOTEST-RSPEC
--- https://github.com/olimorris/neotest-rspec
-
---TODO: Figure out how to run ahoy rspec when running tests from work comp, but use default command when running tests from home comp.
--- require("neotest-rspec")({
---   rspec_cmd = function()
---     return vim.tbl_flatten({ "ahoy", "rspec" })
---   end
--- })
-
-require("neotest").setup({
-	adapters = {
-		require("neotest-rspec"),
-		require("neotest-jest")({
-			jestCommand = "yarn test",
-			jestConfigFile = "jest.config.js",
-			cwd = function()
-				return vim.fn.getcwd()
-			end,
-		}),
-	},
-})
-
 wk.register({
 	["<leader>t"] = {
 		name = "Test",
@@ -994,17 +972,6 @@ wk.register({
 		},
 	},
 })
-
--- wk.register({
--- 	["<leader>t"] = {
--- 		name = "Tests",
--- 		t = {
--- 			"<cmd>OverseerToggle<cr>",
--- 			"Toggle",
--- 		},
--- 		r = { "<cmd>OverseerRun<cr>", "Run" },
--- 	},
--- })
 
 wk.register({
 	["<leader>S"] = {
@@ -1034,6 +1001,29 @@ wk.register({
 		},
 	},
 })
+-- NEOTEST-RSPEC
+-- https://github.com/olimorris/neotest-rspec
+
+--TODO: Figure out how to run ahoy rspec when running tests from work comp, but use default command when running tests from home comp.
+-- require("neotest-rspec")({
+--   rspec_cmd = function()
+--     return vim.tbl_flatten({ "ahoy", "rspec" })
+--   end
+-- })
+
+require("neotest").setup({
+	adapters = {
+		require("neotest-rspec"),
+		require("neotest-jest")({
+			jestCommand = "yarn test",
+			jestConfigFile = "jest.config.js",
+			cwd = function()
+				return vim.fn.getcwd()
+			end,
+		}),
+	},
+})
+
 
 -- TELESCOPE-FZF-NATIVE
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
