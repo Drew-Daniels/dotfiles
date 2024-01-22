@@ -687,7 +687,7 @@ local wk = require("which-key")
 -- weird workaround to fix bug where which-key menu does not display unless <leader> has been pressed on a buffer at some point before pressing <localleader>
 -- https://github.com/folke/which-key.nvim/issues/172
 vim.keymap.set({ "n" }, "<localleader>", function()
-  wk.show("<localleader>", { mode = "n" })
+	wk.show("<localleader>", { mode = "n" })
 end, { silent = true })
 
 wk.register({
@@ -1107,9 +1107,14 @@ require("neorg").setup({
 					work = "~/projects/work_notes",
 					home = "~/projects/home_notes",
 				},
-				default_keybinds = {},
 			},
 		},
+		["core.keybinds"] = { config = { default_keybinds = {} } },
+    ["core.completion"] = {
+      config = {
+        engine = "nvim-cmp",
+      },
+    },
 	},
 })
 
