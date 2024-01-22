@@ -684,6 +684,12 @@ require("overseer").setup()
 -- https://github.com/folke/which-key.nvim
 local wk = require("which-key")
 
+-- weird workaround to fix bug where which-key menu does not display unless <leader> has been pressed on a buffer at some point before pressing <localleader>
+-- https://github.com/folke/which-key.nvim/issues/172
+vim.keymap.set({ "n" }, "<localleader>", function()
+  wk.show("<localleader>", { mode = "n" })
+end, { silent = true })
+
 wk.register({
 	["<leader>"] = {
 		t = {
