@@ -102,7 +102,7 @@ return require("lazy").setup({
 	"williamboman/mason.nvim",
 	"tpope/vim-fugitive", -- Git operations, tools in neovim
 	"junegunn/gv.vim", -- Pretty Git log
-	"navarasu/onedark.nvim",
+	-- "navarasu/onedark.nvim",
 	"xiyaowong/transparent.nvim",
 	-- recommended settings from 'nvim-lspconfig'
 	"neovim/nvim-lspconfig",

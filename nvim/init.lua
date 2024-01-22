@@ -156,6 +156,7 @@ require("nvim-treesitter.configs").setup({
 		"jq",
 		"json",
 		"markdown",
+    "markdown_inline",
 		"ruby",
 		"scss",
 		"sql",
@@ -617,8 +618,8 @@ end, { range = true })
 -- ONEDARK.NVIM
 -- https://github.com/navarasu/onedark.nvim
 ---@diagnostic disable-next-line: missing-parameter
-require("onedark").setup()
-require("onedark").load()
+-- require("onedark").setup()
+-- require("onedark").load()
 
 -- CLIPBOARD-IMAGE.NVIM
 -- https://github.com/ekickx/clipboard-image.nvim
