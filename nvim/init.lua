@@ -1123,5 +1123,8 @@ set.wildignore = "node_modules/*"
 set.number = true
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
+set.termguicolors = true
+set.virtualedit = "block"
+set.inccommand = "split"
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
