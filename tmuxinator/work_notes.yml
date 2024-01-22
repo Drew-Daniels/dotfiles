@@ -5,8 +5,7 @@ windows:
   - work_notes:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - editor:
+        - work_notes:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          - nvim -c "Neorg workspace work"
