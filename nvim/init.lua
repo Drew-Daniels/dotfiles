@@ -156,7 +156,7 @@ require("nvim-treesitter.configs").setup({
 		"jq",
 		"json",
 		"markdown",
-    "markdown_inline",
+		"markdown_inline",
 		"ruby",
 		"scss",
 		"sql",
@@ -182,36 +182,36 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 		move = {
-      --TODO: Figure out why go-tos for conditionals don't work in .rb files?
+			--TODO: Figure out why go-tos for conditionals don't work in .rb files?
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist
 			goto_next_start = {
-				["]m"] = { query = "@function.outer", desc = "Next method (start)"  },
+				["]m"] = { query = "@function.outer", desc = "Next method (start)" },
 				["]c"] = { query = "@class.outer", desc = "Next class (start)" },
-        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope (start)" },
-        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold (start)" },
+				["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope (start)" },
+				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold (start)" },
 				["]d"] = { query = "@conditional.outer", desc = "Next Conditional (start)" },
 			},
 			goto_next_end = {
 				["]M"] = { query = "@function.outer", desc = "Next method (end)" },
-        ["]C"] = { query = "@class.outer", desc = "Next class (end)" },
-        ["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope (end)" },
-        ["]Z"] = { query = "@fold", query_group = "folds", desc = "Next fold (end)" },
-				["]D"] = { query = "@conditional.outer", desc = "Next Conditional (end)"  },
+				["]C"] = { query = "@class.outer", desc = "Next class (end)" },
+				["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope (end)" },
+				["]Z"] = { query = "@fold", query_group = "folds", desc = "Next fold (end)" },
+				["]D"] = { query = "@conditional.outer", desc = "Next Conditional (end)" },
 			},
 			goto_previous_start = {
 				["[m"] = { query = "@function.outer", desc = "Previous method (start)" },
-        ["[c"] = { query = "@class.outer", desc = "Previous class (start)" },
-        ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope (start)" },
-        ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (start)" },
-				["[d"] = { query = "@conditional.outer", desc = "Previous Conditional (start)"  },
+				["[c"] = { query = "@class.outer", desc = "Previous class (start)" },
+				["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope (start)" },
+				["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (start)" },
+				["[d"] = { query = "@conditional.outer", desc = "Previous Conditional (start)" },
 			},
 			goto_previous_end = {
 				["[M"] = { query = "@function.outer", desc = "Previous method (end)" },
-        ["[C"] = { query = "@class.outer", desc = "Previous class (end)" },
-        ["[S"] = { query = "@scope", query_group = "locals", desc = "Previous scope (end)" },
-        ["[Z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (end)" },
-				["[D"] = { query = "@conditional.outer", desc = "Previous Conditional (end)"  },
+				["[C"] = { query = "@class.outer", desc = "Previous class (end)" },
+				["[S"] = { query = "@scope", query_group = "locals", desc = "Previous scope (end)" },
+				["[Z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (end)" },
+				["[D"] = { query = "@conditional.outer", desc = "Previous Conditional (end)" },
 			},
 		},
 		context_commentstring = {
@@ -331,12 +331,12 @@ vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 
 -- This repeats the last query with always previous direction and to the start of the range.
 vim.keymap.set({ "n", "x", "o" }, "<home>", function()
-  ts_repeat_move.repeat_last_move({forward = false, start = true})
+	ts_repeat_move.repeat_last_move({ forward = false, start = true })
 end)
 
 -- This repeats the last query with always next direction and to the end of the range.
 vim.keymap.set({ "n", "x", "o" }, "<end>", function()
-  ts_repeat_move.repeat_last_move({forward = true, start = false})
+	ts_repeat_move.repeat_last_move({ forward = true, start = false })
 end)
 
 -- custom file associations
@@ -1101,6 +1101,7 @@ require("neorg").setup({
 					work = "~/projects/work_notes",
 					home = "~/projects/home_notes",
 				},
+				default_keybinds = {},
 			},
 		},
 	},
