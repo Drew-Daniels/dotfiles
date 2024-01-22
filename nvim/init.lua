@@ -1105,6 +1105,8 @@ require("neorg").setup({
 	},
 })
 
+vim.opt.conceallevel = 3
+
 -- GENERAL
 local set = vim.opt
 set.smartindent = true
