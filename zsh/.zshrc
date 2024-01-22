@@ -52,7 +52,7 @@ alias intel="/usr/bin/env arch -x86_64 zsh"
 alias pclean="$XDG_CONFIG_HOME/scripts/clean-parsers.sh"
 
 # tmux
-export TERM=screen-256color
+# export TERM=screen-256color
 
 # tmuxp
 export TMUXP_LAYOUT=main-vertical
