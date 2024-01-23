@@ -1119,8 +1119,21 @@ require("neorg").setup({
 	},
 })
 
---TODO: Create some kind of autocmd to automatically generate a standup template when a new note is created in the su workspace
---  :autocmd BufNewFile {~/projects/work_notes/su/*}.norg  0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
+vim.api.nvim_create_user_command("PD", function()
+  local yesterday = os.date("%Y-%m-%d", os.time() - 86400)
+  vim.cmd("e ~/projects/work_notes/su/2024/" .. yesterday .. ".norg")
+end, { range = false })
+vim.api.nvim_create_user_command("TD", function()
+  local today = os.date("%Y-%m-%d")
+  vim.cmd("e ~/projects/work_notes/su/2024/" .. today .. ".norg")
+end, { range = false })
+vim.api.nvim_create_user_command("ND", function()
+  local tomorrow = os.date("%Y-%m-%d", os.time() + 86400)
+  vim.cmd("e ~/projects/work_notes/su/2024/" .. tomorrow .. ".norg")
+end, { range = false })
+
+vim.cmd([[autocmd BufNewFile ~/projects/work_notes/su/**/*.norg  0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg]])
+vim.cmd([[autocmd BufNewFile ~/projects/work_notes/ooo/**/*.norg  0read ~/projects/dotfiles/nvim/norg/templates/ooo_template.norg]])
 
 vim.cmd([[autocmd FileType norg setlocal conceallevel=3]])
 
