@@ -1119,23 +1119,42 @@ require("neorg").setup({
 	},
 })
 
-vim.api.nvim_create_user_command("PD", function()
-  local yesterday = os.date("%Y-%m-%d", os.time() - 86400)
-  vim.cmd("e ~/projects/work_notes/su/2024/" .. yesterday .. ".norg")
-end, { range = false })
-vim.api.nvim_create_user_command("TD", function()
-  local today = os.date("%Y-%m-%d")
-  vim.cmd("e ~/projects/work_notes/su/2024/" .. today .. ".norg")
-end, { range = false })
-vim.api.nvim_create_user_command("ND", function()
-  local tomorrow = os.date("%Y-%m-%d", os.time() + 86400)
-  vim.cmd("e ~/projects/work_notes/su/2024/" .. tomorrow .. ".norg")
-end, { range = false })
+vim.api.nvim_create_user_command("Standup", function(opts)
+  local date = os.date("%Y-%m-%d")
+  if opts.fargs[1] == "yesterday" then
+    date = os.date("%Y-%m-%d", os.time() - 86400)
+  elseif opts.fargs[1] == "today" then
+    date = os.date("%Y-%m-%d")
+  elseif opts.fargs[1] == "tomorrow" then
+    date = os.date("%Y-%m-%d", os.time() + 86400)
+  else
+    print("Invalid date")
+    return
+  end
+  vim.cmd("e ~/projects/work_notes/su/2024/" .. date .. ".norg")
+end, { range = false, nargs = 1 })
 
-vim.cmd([[autocmd BufNewFile ~/projects/work_notes/su/**/*.norg  0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg]])
-vim.cmd([[autocmd BufNewFile ~/projects/work_notes/ooo/**/*.norg  0read ~/projects/dotfiles/nvim/norg/templates/ooo_template.norg]])
+vim.api.nvim_create_user_command("Ticket", function(opts)
+  local ticket_no = opts.fargs[1]
+  local desc = opts.fargs[2]
+  if tonumber(ticket_no) == nil then
+    print("Invalid ticket")
+    return
+  end
+  if type(desc) ~= "string" then
+    print("Invalid ticket description")
+    return
+  end
+  vim.cmd("e ~/projects/work_notes/tickets/KEET-" .. ticket_no .. "-" .. desc ..".norg")
+end, { nargs = '*' })
 
-vim.cmd([[autocmd FileType norg setlocal conceallevel=3]])
+vim.cmd([[
+  augroup neorg_cmds
+    autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
+    autocmd BufNewFile ~/projects/work_notes/ooo/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/ooo_template.norg
+    autocmd FileType norg setlocal conceallevel=3
+  augroup END
+]])
 
 -- GENERAL
 local set = vim.opt
