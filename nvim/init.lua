@@ -1131,6 +1131,12 @@ require("neorg").setup({
 	},
 })
 
+vim.api.nvim_create_user_command("Note", function(opts)
+  local name = opts.fargs[1]
+  vim.cmd("e ~/projects/home_notes/" .. name .. ".norg")
+end, { range = false, nargs = 1 })
+
+
 vim.api.nvim_create_user_command("Standup", function(opts)
   local date = os.date("%Y-%m-%d")
   if opts.fargs[1] == "yesterday" then
@@ -1169,6 +1175,8 @@ vim.cmd([[
     autocmd FileType norg setlocal conceallevel=3
     autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
     autocmd BufWritePost ~/projects/work_notes/ooo/**/*.norg silent !git -C ~/projects/work_notes/ooo/ add . && git -C ~/projects/work_notes/ooo/ commit -m "Update work notes" && git -C ~/projects/work_notes/ooo/ push
+    " Figure out why recursive file pattern like ~/projects/home_notes/**/*.norg doesn't work?
+    autocmd BufWritePost ~/projects/home_notes/*.norg !git -C ~/projects/home_notes/ add . && git -C ~/projects/home_notes/ commit -m "Update home notes" && git -C ~/projects/home_notes/ push
   augroup END
 ]])
 
