@@ -1119,7 +1119,10 @@ require("neorg").setup({
 	},
 })
 
-vim.opt.conceallevel = 3
+--TODO: Create some kind of autocmd to automatically generate a standup template when a new note is created in the su workspace
+--  :autocmd BufNewFile {~/projects/work_notes/su/*}.norg  0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
+
+vim.cmd([[autocmd FileType norg setlocal conceallevel=3]])
 
 -- GENERAL
 local set = vim.opt
