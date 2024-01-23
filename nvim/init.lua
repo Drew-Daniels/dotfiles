@@ -232,6 +232,8 @@ require("nvim-treesitter.configs").setup({
 				["il"] = { query = "@loop.inner", desc = "Select inner loop" },
 				["ab"] = { query = "@block.outer", desc = "Select outer block" },
 				["ib"] = { query = "@block.inner", desc = "Select inner block" },
+        ["ad"] = { query = "@conditional.outer", desc = "Select outer conditional" },
+        ["id"] = { query = "@conditional.inner", desc = "Select inner conditional" },
 				["ap"] = { query = "@parameter.outer", desc = "Select outer parameter" },
 				["ip"] = { query = "@parameter.inner", desc = "Select inner parameter" },
 				["aP"] = { query = "@parameter.outer", mode = "a", desc = "Select outer parameter (inclusive)" },
