@@ -1167,6 +1167,8 @@ vim.cmd([[
     autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
     autocmd BufNewFile ~/projects/work_notes/ooo/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/ooo_template.norg
     autocmd FileType norg setlocal conceallevel=3
+    autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
+    autocmd BufWritePost ~/projects/work_notes/ooo/**/*.norg silent !git -C ~/projects/work_notes/ooo/ add . && git -C ~/projects/work_notes/ooo/ commit -m "Update work notes" && git -C ~/projects/work_notes/ooo/ push
   augroup END
 ]])
 
