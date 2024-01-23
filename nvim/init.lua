@@ -410,7 +410,6 @@ local lspconfig = require("lspconfig")
 
 local servers = {
 	"emmet_language_server",
-	"lua_ls",
 	"jsonls",
 	"html",
 	"bashls",
@@ -433,6 +432,17 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+lspconfig.lua_ls.setup({
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+})
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
 -- LUASNIP
