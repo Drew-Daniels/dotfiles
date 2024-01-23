@@ -1150,6 +1150,8 @@ vim.api.nvim_create_user_command("Ticket", function(opts)
   vim.cmd("e ~/projects/work_notes/tickets/KEET-" .. ticket_no .. "-" .. desc ..".norg")
 end, { nargs = '*' })
 
+--TODO: Create a 'OOO' command to create One on One files
+
 vim.cmd([[
   augroup neorg_cmds
     autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
