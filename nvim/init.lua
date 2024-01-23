@@ -1176,7 +1176,7 @@ vim.cmd([[
     autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
     autocmd BufWritePost ~/projects/work_notes/ooo/**/*.norg silent !git -C ~/projects/work_notes/ooo/ add . && git -C ~/projects/work_notes/ooo/ commit -m "Update work notes" && git -C ~/projects/work_notes/ooo/ push
     " Figure out why recursive file pattern like ~/projects/home_notes/**/*.norg doesn't work?
-    autocmd BufWritePost ~/projects/home_notes/*.norg !git -C ~/projects/home_notes/ add . && git -C ~/projects/home_notes/ commit -m "Update home notes" && git -C ~/projects/home_notes/ push
+    autocmd BufWritePost ~/projects/home_notes/*.norg silent !git -C ~/projects/home_notes/ add . && git -C ~/projects/home_notes/ commit -m "Update home notes" && git -C ~/projects/home_notes/ push
   augroup END
 ]])
 
