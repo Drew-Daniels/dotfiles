@@ -1173,6 +1173,7 @@ vim.cmd([[
     autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
     autocmd BufNewFile ~/projects/work_notes/ooo/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/ooo_template.norg
     autocmd FileType norg setlocal conceallevel=3
+    " Figure out how to stop folds from getting created on buffers created after first entering into a .norg buffer
     autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
     autocmd BufWritePost ~/projects/work_notes/ooo/**/*.norg silent !git -C ~/projects/work_notes/ooo/ add . && git -C ~/projects/work_notes/ooo/ commit -m "Update work notes" && git -C ~/projects/work_notes/ooo/ push
     " Figure out why recursive file pattern like ~/projects/home_notes/**/*.norg doesn't work?
