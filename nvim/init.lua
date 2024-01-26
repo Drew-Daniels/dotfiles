@@ -1143,6 +1143,7 @@ vim.api.nvim_create_user_command("Standup", function(opts)
     date = os.date("%Y-%m-%d", os.time() - 86400)
   elseif opts.fargs[1] == "today" then
     date = os.date("%Y-%m-%d")
+    --TODO: Figure out how to create a SU note for the next Monday if current day is Friday
   elseif opts.fargs[1] == "tomorrow" then
     date = os.date("%Y-%m-%d", os.time() + 86400)
   else
