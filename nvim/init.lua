@@ -231,7 +231,8 @@ require("nvim-treesitter.configs").setup({
 				["al"] = { query = "@loop.outer", desc = "Select outer loop" },
 				["il"] = { query = "@loop.inner", desc = "Select inner loop" },
 				["ab"] = { query = "@block.outer", desc = "Select outer block" },
-				["ib"] = { query = "@block.inner", desc = "Select inner block" },
+        --TODO: Figure out how to select blocks without the curly braces
+				["ib"] = { query = "@block.inner", desc = "Select inner block", kind = "exclusive" },
         ["ad"] = { query = "@conditional.outer", desc = "Select outer conditional" },
         ["id"] = { query = "@conditional.inner", desc = "Select inner conditional" },
 				["ap"] = { query = "@parameter.outer", desc = "Select outer parameter" },
@@ -1201,5 +1202,7 @@ set.syntax = "on"
 set.termguicolors = true
 set.virtualedit = "block"
 set.inccommand = "split"
+vim.keymap.set("n", "n", "nzz", { silent = true })
+vim.keymap.set("n", "N", "Nzz", { silent = true })
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
