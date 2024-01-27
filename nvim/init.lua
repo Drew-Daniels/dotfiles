@@ -1191,11 +1191,11 @@ set.autoindent = true
 -- expands tabs into spaces
 set.expandtab = true
 -- number of spaces to use for each tab
-set.tabstop = 4
+set.tabstop = 2
 -- number of spaces to use when indenting
-set.shiftwidth = 4
+set.shiftwidth = 2
 -- number of spaces to use for (auto)indent step
-set.softtabstop = 4
+set.softtabstop = 2
 set.ignorecase = true
 set.smartcase = true
 set.number = true
