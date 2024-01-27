@@ -164,6 +164,7 @@ require("nvim-treesitter.configs").setup({
 		"tsx",
 		"typescript",
 		"yaml",
+    "prisma",
 	},
 	-- required by 'nvim-treesitter-endwise'
 	endwise = {
