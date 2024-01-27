@@ -1186,14 +1186,24 @@ vim.cmd([[
 -- GENERAL
 local set = vim.opt
 set.smartindent = true
+-- autoindent new lines
 set.autoindent = true
+-- expands tabs into spaces
 set.expandtab = true
-set.tabstop = 2
-set.shiftwidth = 2
-set.softtabstop = 2
+-- number of spaces to use for each tab
+set.tabstop = 4
+-- number of spaces to use when indenting
+set.shiftwidth = 4
+-- number of spaces to use for (auto)indent step
+set.softtabstop = 4
 set.ignorecase = true
 set.smartcase = true
 set.number = true
+set.relativenumber = true
+set.splitbelow = true
+set.splitright = true
+set.scrolloff = 999
+set.wrap = false
 set.hlsearch = false
 set.wildignore = "node_modules/*"
 set.number = true
@@ -1204,5 +1214,7 @@ set.virtualedit = "block"
 set.inccommand = "split"
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
+vim.keymap.set("i", "nl", "<CR><ESC>kA<CR>", { silent = true })
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
+-- do not open folds when moving cursor
