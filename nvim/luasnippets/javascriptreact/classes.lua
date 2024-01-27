@@ -8,9 +8,9 @@ return {
 		"cl",
 		fmta(
 			[[ 
-        class <>{<>}
+        <>class <> {<>}
       ]],
-			{ i(1), i(2) },
+			{ c(1, { t(""), t("export ") }), i(2), i(3) },
 			{ desc = "Class" }
 		)
 	),
