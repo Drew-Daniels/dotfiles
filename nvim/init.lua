@@ -448,7 +448,7 @@ lspconfig.lua_ls.setup({
 -- RECOMMENDED 'nvim-lspconfig' SETUP
 -- LUASNIP
 -- https://github.com/L3MON4D3/LuaSnip
-local luasnip = require("luasnip")
+local ls = require("luasnip")
 
 -- NVIM-CMP
 -- https://github.com/hrsh7th/nvim-cmp
@@ -457,7 +457,7 @@ local cmp = require("cmp")
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			ls.lsp_expand(args.body)
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -510,8 +510,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- luasnip specific configuration
 -- specify luasnippets directory to save a few ms of startup time
 require("luasnip.loaders.from_lua").load({ paths = "./luasnippets/" })
-
-local ls = require("luasnip")
 
 ls.config.set_config({
 	-- Enable autotriggered snippets
