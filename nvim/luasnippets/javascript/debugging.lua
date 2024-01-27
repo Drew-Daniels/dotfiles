@@ -4,5 +4,6 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-	s("db", fmta("debugger;", {}), { desc = "debugger statement" }),
+  s("dl", fmta([[ console.log('<>: ', <>);]], { i(1), i(2) }), { desc = "console.log" }),
+	s("ds", fmta("debugger;", {}), { desc = "debugger statement" }),
 }
