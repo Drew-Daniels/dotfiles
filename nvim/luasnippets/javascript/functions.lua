@@ -8,16 +8,26 @@ return {
 		"nf",
 		fmta(
 			[[ 
-        <>function <>(<>) {
+        <><>function <>(<>) {
           <>     
         }
       ]],
-			{ c(1, { t(""), t("async ") }), i(2), i(3), i(4) },
+			{ c(1, { t(""), t("export ") }), c(2, { t(""), t("async ") }), i(2), i(3), i(4) },
 			{ desc = "Named Fn" }
 		)
 	),
 	s(
-		"af",
+		"na",
+		fmta(
+			[[
+        <><>const <> = (<>) =>> {<>}
+      ]],
+			{ c(1, { t(""), t("export ") }), c(2, { t(""), t("async ") }), i(3), i(3), i(4) },
+			{ desc = "Named Arrow Fn" }
+		)
+	),
+	s(
+		"aa",
 		fmta(
 			[[
         (<>) =>> {<>}
