@@ -471,6 +471,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
+    --TODO: Find a better keymapping so this doesn't overwrite the default to insert special digraphs
 		["<C-k>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
