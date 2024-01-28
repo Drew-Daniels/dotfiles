@@ -653,61 +653,69 @@ require("capslock").setup()
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
--- wk.register({
--- 	["<leader>d"] = {
--- 		name = "Debug",
--- 		f = {
--- 			function()
--- 				duiw.centered_float(duiw.frames)
--- 			end,
--- 			"Frames",
--- 		},
--- 		h = {
--- 			duiw.hover,
--- 			"Hover",
--- 		},
--- 		p = {
--- 			duiw.preview,
--- 			"Preview",
--- 		},
--- 		s = {
--- 			function()
--- 				duiw.centered_float(duiw.scopes)
--- 			end,
--- 			"Scopes",
--- 		},
--- 		n = {
--- 			d.set_breakpoint,
--- 			"New Breakpoint",
--- 		},
--- 		t = {
--- 			d.toggle_breakpoint,
--- 			"Toggle Breakpoint",
--- 		},
--- 		c = {
--- 			d.continue,
--- 			"Continue",
--- 		},
--- 		v = {
--- 			d.step_over,
--- 			"Step Over",
--- 		},
--- 		u = {
--- 			d.step_out,
--- 			"Step Out",
--- 		},
--- 		r = {
--- 			function()
--- 				d.repl.open()
--- 			end,
--- 			"REPL",
--- 		},
--- 		l = {
--- 			d.run_last,
--- 			"Run Last",
--- 		},
--- 	},
--- })
+wk.register({
+	["<leader>d"] = {
+		name = "Debug",
+		f = {
+			function()
+        local widgets = require("dap.ui.widgets")
+				widgets.centered_float(widgets.frames)
+			end,
+			"Frames",
+		},
+		h = {
+			function()
+        local widgets = require("dap.ui.widgets")
+        widgets.hover()
+			end,
+			"Hover",
+		},
+		p = {
+			function()
+        local widgets = require("dap.ui.widgets")
+        widgets.preview()
+			end,
+			"Preview",
+		},
+		s = {
+			function()
+        local widgets = require("dap.ui.widgets")
+				widgets.centered_float(widgets.scopes)
+			end,
+			"Scopes",
+		},
+		n = {
+			require("dap").set_breakpoint,
+			"New Breakpoint",
+		},
+		t = {
+			require("dap").toggle_breakpoint,
+			"Toggle Breakpoint",
+		},
+		c = {
+			require("dap").continue,
+			"Continue",
+		},
+		v = {
+			require("dap").step_over,
+			"Step Over",
+		},
+		u = {
+			require("dap").step_out,
+			"Step Out",
+		},
+		r = {
+			function()
+				require("dap").repl.open()
+			end,
+			"REPL",
+		},
+		l = {
+			require("dap").run_last,
+			"Run Last",
+		},
+	},
+})
 
 wk.register({
 	["<leader>e"] = {
@@ -1086,47 +1094,47 @@ for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "java
 	}
 end
 
-vim.keymap.set("n", "<F5>", function()
-	require("dap").continue()
-end)
-vim.keymap.set("n", "<F10>", function()
-	require("dap").step_over()
-end)
-vim.keymap.set("n", "<F11>", function()
-	require("dap").step_into()
-end)
-vim.keymap.set("n", "<F12>", function()
-	require("dap").step_out()
-end)
-vim.keymap.set("n", "<Leader>b", function()
-	require("dap").toggle_breakpoint()
-end)
-vim.keymap.set("n", "<Leader>B", function()
-	require("dap").set_breakpoint()
-end)
-vim.keymap.set("n", "<Leader>lp", function()
-	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end)
-vim.keymap.set("n", "<Leader>dr", function()
-	require("dap").repl.open()
-end)
-vim.keymap.set("n", "<Leader>dl", function()
-	require("dap").run_last()
-end)
-vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-	require("dap.ui.widgets").hover()
-end)
-vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-	require("dap.ui.widgets").preview()
-end)
-vim.keymap.set("n", "<Leader>df", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set("n", "<Leader>ds", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.scopes)
-end)
+-- vim.keymap.set("n", "<F5>", function()
+-- 	require("dap").continue()
+-- end)
+-- vim.keymap.set("n", "<F10>", function()
+-- 	require("dap").step_over()
+-- end)
+-- vim.keymap.set("n", "<F11>", function()
+-- 	require("dap").step_into()
+-- end)
+-- vim.keymap.set("n", "<F12>", function()
+-- 	require("dap").step_out()
+-- end)
+-- vim.keymap.set("n", "<Leader>b", function()
+-- 	require("dap").toggle_breakpoint()
+-- end)
+-- vim.keymap.set("n", "<Leader>B", function()
+-- 	require("dap").set_breakpoint()
+-- end)
+-- vim.keymap.set("n", "<Leader>lp", function()
+-- 	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+-- end)
+-- vim.keymap.set("n", "<Leader>dr", function()
+-- 	require("dap").repl.open()
+-- end)
+-- vim.keymap.set("n", "<Leader>dl", function()
+-- 	require("dap").run_last()
+-- end)
+-- vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
+-- 	require("dap.ui.widgets").hover()
+-- end)
+-- vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
+-- 	require("dap.ui.widgets").preview()
+-- end)
+-- vim.keymap.set("n", "<Leader>df", function()
+-- 	local widgets = require("dap.ui.widgets")
+-- 	widgets.centered_float(widgets.frames)
+-- end)
+-- vim.keymap.set("n", "<Leader>ds", function()
+-- 	local widgets = require("dap.ui.widgets")
+-- 	widgets.centered_float(widgets.scopes)
+-- end)
 
 -- NVIM-DAP-UI
 -- https://github.com/rcarriga/nvim-dap-ui
