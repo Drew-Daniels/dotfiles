@@ -9,6 +9,7 @@ local present, mason = pcall(require, "mason")
 if not present then
 	return
 end
+
 -- Not all dependencies installed by Mason here are specifically for nvim-lspconfig
 -- some are installed here just for consistency across machines, and it's easier if
 -- things are installed in one place.
@@ -415,7 +416,7 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
-      select = true
+      behavior = cmp.ConfirmBehavior.Replace,
 		}),
 	}),
 	sources = {
