@@ -37,6 +37,7 @@ local options = {
 		"yaml-language-server",
 		"typescript-language-server",
 		"prettier",
+    "prisma-language-server",
 	},
 	max_concurrent_installers = 10,
 }
