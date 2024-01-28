@@ -5,7 +5,7 @@ local get_visual = helpers.get_visual
 
 return {
 	s(
-		"cs",
+		"cd",
 		fmta(
 			[[ 
         <>class <> {<>}
@@ -21,7 +21,7 @@ return {
         constructor(<>) {<>}
       ]],
 			{ i(1), i(2) },
-			{ desc = "Constructor" }
+			{ desc = "Class Constructor" }
 		)
 	),
 	s(
@@ -31,17 +31,17 @@ return {
         <>(<>) {<>}
       ]],
 			{ c(1, { t(""), t("static "), t("private ") }), i(2), i(3) },
-			{ desc = "Method" }
+			{ desc = "Class Method" }
 		)
 	),
 	s(
-		"sp",
+		"cs",
 		fmta(
 			[[ 
         super(<>)
       ]],
 			{ i(1) },
-      { desc = "Super" }
+      { desc = "Class Super" }
 		)
 	),
 }
