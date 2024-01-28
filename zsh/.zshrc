@@ -113,3 +113,11 @@ eval "$(zoxide init --cmd j zsh)"
 # mise
 eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
 
+# bat
+alias cat="bat"
+alias man="batman"
+alias pb="prettybat"
+
+# lsd
+alias ls="lsd"
+
