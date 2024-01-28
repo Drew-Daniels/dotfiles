@@ -1185,7 +1185,6 @@ vim.cmd([[
 
 -- GENERAL
 local set = vim.opt
-set.smartindent = true
 -- autoindent new lines
 set.autoindent = true
 -- expands tabs into spaces
