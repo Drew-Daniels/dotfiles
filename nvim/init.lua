@@ -38,6 +38,7 @@ local options = {
 		"typescript-language-server",
 		"prettier",
     "prisma-language-server",
+    "graphql-language-service-cli",
 	},
 	max_concurrent_installers = 10,
 }
@@ -430,6 +431,7 @@ local servers = {
 	"sqlls",
 	"vimls",
   "prismals",
+  "graphql",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
