@@ -429,6 +429,7 @@ local servers = {
 	"solargraph",
 	"sqlls",
 	"vimls",
+  "prismals",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
