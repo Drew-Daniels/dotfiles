@@ -12,7 +12,7 @@ return {
           <>     
         }
       ]],
-			{ c(1, { t(""), t("export ") }), c(2, { t(""), t("async ") }), i(2), i(3), i(4) },
+			{ c(1, { t(""), t("export ") }), c(2, { t(""), t("async ") }), i(3), i(4), i(5) },
 			{ desc = "Named Fn" }
 		)
 	),
@@ -22,7 +22,7 @@ return {
 			[[
         <><>const <> = (<>) =>> {<>}
       ]],
-			{ c(1, { t(""), t("export ") }), c(2, { t(""), t("async ") }), i(3), i(3), i(4) },
+			{ c(1, { t(""), t("export ") }), c(2, { t(""), t("async ") }), i(3), i(4), i(5) },
 			{ desc = "Named Arrow Fn" }
 		)
 	),
