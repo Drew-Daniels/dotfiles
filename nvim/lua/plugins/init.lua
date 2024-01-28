@@ -19,6 +19,7 @@ return require("lazy").setup({
   { "mfussenegger/nvim-dap" },
   { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
   { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+  { "nvim-telescope/telescope-dap.nvim", dependencies = "mfussenegger/nvim-dap" },
 	{
 		"nvim-telescope/telescope-media-files.nvim",
 		dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },

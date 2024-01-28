@@ -611,6 +611,10 @@ require("telescope").setup({
 	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
 
+-- TELESCOPE-DAP
+-- https://github.com/nvim-telescope/telescope-dap.nvim
+require("telescope").load_extension("dap")
+
 -- OVERSEER.NVIM
 -- https://github.com/stevearc/overseer.nvim
 require("overseer").setup()
