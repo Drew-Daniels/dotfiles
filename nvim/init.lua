@@ -1038,7 +1038,7 @@ require("dap-vscode-js").setup({
 	debugger_path = vim.fn.stdpath("data") .. "/vscode-js-debug",
 })
 
-for _, language in ipairs({ "typescript", "javascript" }) do
+for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "javascriptreact" }) do
 	require("dap").configurations[language] = {
 		{
 			name = "Launch file",
