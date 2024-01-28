@@ -497,7 +497,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- commenting this out since nvim-treesitter-textobject providers more consistent TypeScript support for peeking definitions
 		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
-		vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
+		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
 		vim.keymap.set(
 			"n",
 			"<leader>wa",
