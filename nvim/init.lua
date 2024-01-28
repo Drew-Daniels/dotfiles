@@ -384,23 +384,23 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-		["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-		["<C-j>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		--TODO: Find a better keymapping so this doesn't overwrite the default to insert special digraphs
-		["<C-k>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
+		-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+		-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+		-- ["<C-j>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_next_item()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { "i", "s" }),
+		-- --TODO: Find a better keymapping so this doesn't overwrite the default to insert special digraphs
+		-- ["<C-k>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_prev_item()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { "i", "s" }),
 		-- C-b (back) C-f (forward) for snippet placeholder navigation.
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
@@ -445,15 +445,15 @@ ls.config.set_config({
 })
 
 --TODO: Better way to map these potentially?
-vim.keymap.set({ "i" }, "<C-k>", function()
-	ls.expand()
-end, { silent = true })
+-- vim.keymap.set({ "i" }, "<C-k>", function()
+-- 	ls.expand()
+-- end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
 	ls.jump(1)
 end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-j>", function()
-	ls.jump(-1)
-end, { silent = true })
+-- vim.keymap.set({ "i", "s" }, "<C-j>", function()
+-- 	ls.jump(-1)
+-- end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<C-e>", function()
 	if ls.choice_active() then
@@ -482,7 +482,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- commenting this out since nvim-treesitter-textobject providers more consistent TypeScript support for peeking definitions
 		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
+		-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
 		vim.keymap.set(
 			"n",
 			"<space>wa",
