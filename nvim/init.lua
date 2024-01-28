@@ -36,7 +36,7 @@ local options = {
 		"vim-language-server",
 		"yaml-language-server",
 		"typescript-language-server",
-		"prettier",
+		"prettierd",
 	},
 	max_concurrent_installers = 10,
 }
@@ -610,9 +610,10 @@ require("conform").setup({
 		fish = { "fish_indent" },
 		json = { "jq" },
 		sql = { "sql_formatter" },
-		css = { "prettier" },
-		less = { "prettier" },
-		scss = { "prettier" },
+		css = { "prettierd" },
+		less = { "prettierd" },
+		scss = { "prettierd" },
+    prisma = { "prettierd" }
 	},
 })
 
