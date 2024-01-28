@@ -117,7 +117,11 @@ eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
 alias cat="bat"
 alias man="batman"
 alias pb="prettybat"
-
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat
+}
 # lsd
 alias ls="lsd"
 
