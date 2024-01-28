@@ -415,8 +415,9 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({
+		["<C-e>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
+      select = true
 		}),
 	}),
 	sources = {
