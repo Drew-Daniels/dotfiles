@@ -18,9 +18,9 @@ return {
 		"cc",
 		fmta(
 			[[ 
-        constructor(<><>: <>) {<>}
+        constructor(<>) {<>}
       ]],
-			{ c(1, { t(""), t("private ") }), i(2), i(3), i(4) },
+			{ i(1), i(2) },
 			{ desc = "Constructor" }
 		)
 	),
@@ -32,6 +32,16 @@ return {
       ]],
 			{ c(1, { t(""), t("static "), t("private ") }), i(2), i(3) },
 			{ desc = "Method" }
+		)
+	),
+	s(
+		"sp",
+		fmta(
+			[[ 
+        super(<>)
+      ]],
+			{ i(1) },
+      { desc = "Super" }
 		)
 	),
 }
