@@ -656,6 +656,14 @@ require("capslock").setup()
 wk.register({
 	["<leader>d"] = {
 		name = "Debug",
+		b = {
+			require("dap").set_breakpoint,
+			"New Breakpoint",
+		},
+		d = {
+			require("dap").continue,
+			"Debug",
+		},
 		f = {
 			function()
         local widgets = require("dap.ui.widgets")
@@ -670,12 +678,22 @@ wk.register({
 			end,
 			"Hover",
 		},
+		l = {
+			require("dap").run_last,
+			"Run Last",
+		},
 		p = {
 			function()
         local widgets = require("dap.ui.widgets")
         widgets.preview()
 			end,
 			"Preview",
+		},
+		r = {
+			function()
+				require("dap").repl.open()
+			end,
+			"REPL",
 		},
 		s = {
 			function()
@@ -684,35 +702,17 @@ wk.register({
 			end,
 			"Scopes",
 		},
-		n = {
-			require("dap").set_breakpoint,
-			"New Breakpoint",
-		},
 		t = {
 			require("dap").toggle_breakpoint,
 			"Toggle Breakpoint",
-		},
-		c = {
-			require("dap").continue,
-			"Continue",
-		},
-		v = {
-			require("dap").step_over,
-			"Step Over",
 		},
 		u = {
 			require("dap").step_out,
 			"Step Out",
 		},
-		r = {
-			function()
-				require("dap").repl.open()
-			end,
-			"REPL",
-		},
-		l = {
-			require("dap").run_last,
-			"Run Last",
+		v = {
+			require("dap").step_over,
+			"Step Over",
 		},
 	},
 })
