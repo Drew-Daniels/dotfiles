@@ -268,9 +268,22 @@ require("vim.treesitter.language").register("http", "hurl")
 
 -- NEOSCROLL.NVIM
 -- https://github.com/karb94/neoscroll.nvim
+local t = {}
+t['<C-k>'] = {'scroll', {'-vim.wo.scroll', 'true', '350'}}
+t['<C-j>'] = {'scroll', {'vim.wo.scroll', 'true', '350'}}
+t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '500'}}
+t['<C-f>'] = {'scroll', {'vim.api.nvim_win_get_height(0)', 'true', '500'}}
+t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}
+t['<C-e>'] = {'scroll', {'0.10', 'false', '100'}}
+t['zt'] = {'zt', {'0'}}
+t['zz'] = {'zz', {'0'}}
+t['zb'] = {'zb', {'0'}}
+
 require("neoscroll").setup({
 	easing_function = "quadratic",
 })
+
+require("neoscroll.config").set_mappings(t)
 
 -- WEB-TOOLS.NVIM
 -- https://github.com/ray-x/web-tools.nvim
@@ -666,15 +679,15 @@ wk.register({
 		},
 		f = {
 			function()
-        local widgets = require("dap.ui.widgets")
+				local widgets = require("dap.ui.widgets")
 				widgets.centered_float(widgets.frames)
 			end,
 			"Frames",
 		},
 		h = {
 			function()
-        local widgets = require("dap.ui.widgets")
-        widgets.hover()
+				local widgets = require("dap.ui.widgets")
+				widgets.hover()
 			end,
 			"Hover",
 		},
@@ -684,8 +697,8 @@ wk.register({
 		},
 		p = {
 			function()
-        local widgets = require("dap.ui.widgets")
-        widgets.preview()
+				local widgets = require("dap.ui.widgets")
+				widgets.preview()
 			end,
 			"Preview",
 		},
@@ -697,7 +710,7 @@ wk.register({
 		},
 		s = {
 			function()
-        local widgets = require("dap.ui.widgets")
+				local widgets = require("dap.ui.widgets")
 				widgets.centered_float(widgets.scopes)
 			end,
 			"Scopes",
