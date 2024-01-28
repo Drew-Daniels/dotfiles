@@ -500,22 +500,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
 		vim.keymap.set(
 			"n",
-			"<space>wa",
+			"<leader>wa",
 			vim.lsp.buf.add_workspace_folder,
 			{ unpack(opts), desc = "add workspace folder" }
 		)
 		vim.keymap.set(
 			"n",
-			"<space>wr",
+			"<leader>wr",
 			vim.lsp.buf.remove_workspace_folder,
 			{ unpack(opts), desc = "remove workspace folder" }
 		)
-		vim.keymap.set("n", "<space>wl", function()
+		vim.keymap.set("n", "<leader>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, { unpack(opts), desc = "list workspace folders" })
-		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
-		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
-		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
+		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
 		-- conform.nvim should handle formatting
 		-- vim.keymap.set("n", "<space>f", function()
