@@ -37,8 +37,11 @@ local options = {
 		"yaml-language-server",
 		"typescript-language-server",
 		"prettier",
-    "prisma-language-server",
-    "graphql-language-service-cli",
+		"prisma-language-server",
+		"graphql-language-service-cli",
+		"firefox-debug-adapter",
+		"chrome-debug-adapter",
+		"js-debug-adapter",
 	},
 	max_concurrent_installers = 10,
 }
@@ -48,91 +51,6 @@ mason.setup(options)
 vim.api.nvim_create_user_command("MasonInstallAll", function()
 	vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
 end, {})
-
--- NVIM-DAP
--- https://github.com/mfussenegger/nvim-dap
-require("dap").adapters["pwa-node"] = {
-	type = "server",
-	host = "localhost",
-	port = "9229",
-	executable = {
-		command = "node",
-		args = { vim.fn.stdpath("data") .. "/vscode-js-debug", "9229" },
-	},
-}
-
--- DAP-VSCODE-JS
--- https://miguelcrespo.co/posts/debugging-javascript-applications-with-neovim/
----@diagnostic disable-next-line: missing-fields
-require("dap-vscode-js").setup({
-	debugger_path = vim.fn.stdpath("data") .. "/vscode-js-debug",
-	adapters = {
-		"pwa-node",
-		"pwa-chrome",
-	},
-})
-
-local js_based_languages = { "typescript", "javascript", "typescriptreact" }
-
-for _, language in ipairs(js_based_languages) do
-	require("dap").configurations[language] = {
-		{
-			type = "pwa-node",
-			request = "launch",
-			name = "Launch file",
-			program = "${file}",
-			cwd = "${workspaceFolder}",
-		},
-		{
-			type = "pwa-node",
-			request = "attach",
-			name = "Attach",
-			processId = require("dap.utils").pick_process,
-			cwd = "${workspaceFolder}",
-		},
-		{
-			type = "pwa-chrome",
-			request = "launch",
-			name = 'Start Chrome with "localhost"',
-			url = "http://localhost:3000",
-			webRoot = "${workspaceFolder}",
-		},
-	}
-end
-
-for _, language in ipairs({ "typescript", "javascript" }) do
-	require("dap").configurations[language] = {
-		{
-			type = "pwa-node",
-			request = "launch",
-			name = "Launch file",
-			program = "${file}",
-			cwd = "${workspaceFolder}",
-		},
-		{
-			type = "pwa-node",
-			request = "attach",
-			name = "Attach",
-			processId = require("dap.utils").pick_process,
-			cwd = "${workspaceFolder}",
-		},
-	}
-end
-
--- NVIM-DAP-UI
--- https://github.com/rcarriga/nvim-dap-ui
-require("dapui").setup()
-
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-end
 
 -- TRANSPARENT.NVIM
 -- https://github.com/xiyaowong/transparent.nvim
@@ -166,7 +84,7 @@ require("nvim-treesitter.configs").setup({
 		"tsx",
 		"typescript",
 		"yaml",
-    "prisma",
+		"prisma",
 	},
 	-- required by 'nvim-treesitter-endwise'
 	endwise = {
@@ -234,10 +152,10 @@ require("nvim-treesitter.configs").setup({
 				["al"] = { query = "@loop.outer", desc = "Select outer loop" },
 				["il"] = { query = "@loop.inner", desc = "Select inner loop" },
 				["ab"] = { query = "@block.outer", desc = "Select outer block" },
-        --TODO: Figure out how to select blocks without the curly braces
+				--TODO: Figure out how to select blocks without the curly braces
 				["ib"] = { query = "@block.inner", desc = "Select inner block", kind = "exclusive" },
-        ["ad"] = { query = "@conditional.outer", desc = "Select outer conditional" },
-        ["id"] = { query = "@conditional.inner", desc = "Select inner conditional" },
+				["ad"] = { query = "@conditional.outer", desc = "Select outer conditional" },
+				["id"] = { query = "@conditional.inner", desc = "Select inner conditional" },
 				["ap"] = { query = "@parameter.outer", desc = "Select outer parameter" },
 				["ip"] = { query = "@parameter.inner", desc = "Select inner parameter" },
 				["aP"] = { query = "@parameter.outer", mode = "a", desc = "Select outer parameter (inclusive)" },
@@ -430,8 +348,8 @@ local servers = {
 	"solargraph",
 	"sqlls",
 	"vimls",
-  "prismals",
-  "graphql",
+	"prismals",
+	"graphql",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
@@ -440,14 +358,14 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 })
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
@@ -475,7 +393,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-    --TODO: Find a better keymapping so this doesn't overwrite the default to insert special digraphs
+		--TODO: Find a better keymapping so this doesn't overwrite the default to insert special digraphs
 		["<C-k>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -724,9 +642,6 @@ wk.register({
 	},
 })
 
-local d = require("dap")
-local duiw = require("dap.ui.widgets")
-
 -- CAPSLOCK.NVIM
 -- https://github.com/barklan/capslock.nvim
 require("capslock").setup()
@@ -734,61 +649,61 @@ require("capslock").setup()
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 
-wk.register({
-	["<leader>d"] = {
-		name = "Debug",
-		f = {
-			function()
-				duiw.centered_float(duiw.frames)
-			end,
-			"Frames",
-		},
-		h = {
-			duiw.hover,
-			"Hover",
-		},
-		p = {
-			duiw.preview,
-			"Preview",
-		},
-		s = {
-			function()
-				duiw.centered_float(duiw.scopes)
-			end,
-			"Scopes",
-		},
-		n = {
-			d.set_breakpoint,
-			"New Breakpoint",
-		},
-		t = {
-			d.toggle_breakpoint,
-			"Toggle Breakpoint",
-		},
-		c = {
-			d.continue,
-			"Continue",
-		},
-		v = {
-			d.step_over,
-			"Step Over",
-		},
-		u = {
-			d.step_out,
-			"Step Out",
-		},
-		r = {
-			function()
-				d.repl.open()
-			end,
-			"REPL",
-		},
-		l = {
-			d.run_last,
-			"Run Last",
-		},
-	},
-})
+-- wk.register({
+-- 	["<leader>d"] = {
+-- 		name = "Debug",
+-- 		f = {
+-- 			function()
+-- 				duiw.centered_float(duiw.frames)
+-- 			end,
+-- 			"Frames",
+-- 		},
+-- 		h = {
+-- 			duiw.hover,
+-- 			"Hover",
+-- 		},
+-- 		p = {
+-- 			duiw.preview,
+-- 			"Preview",
+-- 		},
+-- 		s = {
+-- 			function()
+-- 				duiw.centered_float(duiw.scopes)
+-- 			end,
+-- 			"Scopes",
+-- 		},
+-- 		n = {
+-- 			d.set_breakpoint,
+-- 			"New Breakpoint",
+-- 		},
+-- 		t = {
+-- 			d.toggle_breakpoint,
+-- 			"Toggle Breakpoint",
+-- 		},
+-- 		c = {
+-- 			d.continue,
+-- 			"Continue",
+-- 		},
+-- 		v = {
+-- 			d.step_over,
+-- 			"Step Over",
+-- 		},
+-- 		u = {
+-- 			d.step_out,
+-- 			"Step Out",
+-- 		},
+-- 		r = {
+-- 			function()
+-- 				d.repl.open()
+-- 			end,
+-- 			"REPL",
+-- 		},
+-- 		l = {
+-- 			d.run_last,
+-- 			"Run Last",
+-- 		},
+-- 	},
+-- })
 
 wk.register({
 	["<leader>e"] = {
@@ -1112,6 +1027,120 @@ require("telescope").load_extension("fzf")
 -- https://github.com/lukas-reineke/indent-blankline.nvim
 require("ibl").setup()
 
+-- NVIM-DAP
+-- https://github.com/mfussenegger/nvim-dap
+local dap = require("dap")
+
+-- NVIM-DAP-VSCODE-JS
+-- https://github.com/mxsdev/nvim-dap-vscode-js
+require("dap-vscode-js").setup({
+	adapters = { "pwa-node", "pwa-chrome", "node-terminal", "pwa-extensionHost" },
+	debugger_path = vim.fn.stdpath("data") .. "/vscode-js-debug",
+})
+
+for _, language in ipairs({ "typescript", "javascript" }) do
+	require("dap").configurations[language] = {
+		{
+			name = "Launch file",
+			type = "pwa-node",
+			request = "launch",
+			program = "${file}",
+			cwd = "${workspaceFolder}",
+		},
+		{
+			name = "Attach",
+			type = "pwa-node",
+			request = "attach",
+			processId = require("dap.utils").pick_process,
+			cwd = "${workspaceFolder}",
+		},
+		{
+			name = "Debug Jest Tests",
+			type = "pwa-node",
+			request = "launch",
+			-- trace = true, -- include debugger info
+			runtimeExecutable = "node",
+			runtimeArgs = {
+				"./node_modules/jest/bin/jest.js",
+				"--runInBand",
+			},
+			rootPath = "${workspaceFolder}",
+			cwd = "${workspaceFolder}",
+			console = "integratedTerminal",
+			internalConsoleOptions = "neverOpen",
+		},
+		{
+			name = "Launch Chrome",
+			type = "pwa-chrome",
+			request = "launch",
+			url = "http://localhost:5173",
+			webRoot = "${workspaceFolder}",
+			sourceMaps = true,
+			protocol = "inspector",
+			console = "integratedTerminal",
+		},
+	}
+end
+
+vim.keymap.set("n", "<F5>", function()
+	require("dap").continue()
+end)
+vim.keymap.set("n", "<F10>", function()
+	require("dap").step_over()
+end)
+vim.keymap.set("n", "<F11>", function()
+	require("dap").step_into()
+end)
+vim.keymap.set("n", "<F12>", function()
+	require("dap").step_out()
+end)
+vim.keymap.set("n", "<Leader>b", function()
+	require("dap").toggle_breakpoint()
+end)
+vim.keymap.set("n", "<Leader>B", function()
+	require("dap").set_breakpoint()
+end)
+vim.keymap.set("n", "<Leader>lp", function()
+	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end)
+vim.keymap.set("n", "<Leader>dr", function()
+	require("dap").repl.open()
+end)
+vim.keymap.set("n", "<Leader>dl", function()
+	require("dap").run_last()
+end)
+vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
+	require("dap.ui.widgets").hover()
+end)
+vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
+	require("dap.ui.widgets").preview()
+end)
+vim.keymap.set("n", "<Leader>df", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set("n", "<Leader>ds", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end)
+
+-- NVIM-DAP-UI
+-- https://github.com/rcarriga/nvim-dap-ui
+require("dapui").setup()
+local dapui = require("dapui")
+
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open({})
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close({})
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close({})
+end
+
+vim.keymap.set("n", "<leader>ui", require("dapui").toggle)
+
 -- NEORG
 -- https://github.com/nvim-neorg/neorg
 require("neorg").setup({
@@ -1122,55 +1151,54 @@ require("neorg").setup({
 			config = {
 				workspaces = {
 					su = "~/projects/work_notes/su/2024",
-          ooo = "~/projects/work_notes/ooo/2024",
+					ooo = "~/projects/work_notes/ooo/2024",
 					home = "~/projects/home_notes",
 				},
 			},
 		},
 		["core.keybinds"] = { config = { default_keybinds = {} } },
-    ["core.completion"] = {
-      config = {
-        engine = "nvim-cmp",
-      },
-    },
+		["core.completion"] = {
+			config = {
+				engine = "nvim-cmp",
+			},
+		},
 	},
 })
 
 vim.api.nvim_create_user_command("Note", function(opts)
-  local name = opts.fargs[1]
-  vim.cmd("e ~/projects/home_notes/" .. name .. ".norg")
+	local name = opts.fargs[1]
+	vim.cmd("e ~/projects/home_notes/" .. name .. ".norg")
 end, { range = false, nargs = 1 })
 
-
 vim.api.nvim_create_user_command("Standup", function(opts)
-  local date = os.date("%Y-%m-%d")
-  if opts.fargs[1] == "yesterday" then
-    date = os.date("%Y-%m-%d", os.time() - 86400)
-  elseif opts.fargs[1] == "today" then
-    date = os.date("%Y-%m-%d")
-    --TODO: Figure out how to create a SU note for the next Monday if current day is Friday
-  elseif opts.fargs[1] == "tomorrow" then
-    date = os.date("%Y-%m-%d", os.time() + 86400)
-  else
-    print("Invalid date")
-    return
-  end
-  vim.cmd("e ~/projects/work_notes/su/2024/" .. date .. ".norg")
+	local date = os.date("%Y-%m-%d")
+	if opts.fargs[1] == "yesterday" then
+		date = os.date("%Y-%m-%d", os.time() - 86400)
+	elseif opts.fargs[1] == "today" then
+		date = os.date("%Y-%m-%d")
+	--TODO: Figure out how to create a SU note for the next Monday if current day is Friday
+	elseif opts.fargs[1] == "tomorrow" then
+		date = os.date("%Y-%m-%d", os.time() + 86400)
+	else
+		print("Invalid date")
+		return
+	end
+	vim.cmd("e ~/projects/work_notes/su/2024/" .. date .. ".norg")
 end, { range = false, nargs = 1 })
 
 vim.api.nvim_create_user_command("Ticket", function(opts)
-  local ticket_no = opts.fargs[1]
-  local desc = opts.fargs[2]
-  if tonumber(ticket_no) == nil then
-    print("Invalid ticket")
-    return
-  end
-  if type(desc) ~= "string" then
-    print("Invalid ticket description")
-    return
-  end
-  vim.cmd("e ~/projects/work_notes/tickets/KEET-" .. ticket_no .. "-" .. desc ..".norg")
-end, { nargs = '*' })
+	local ticket_no = opts.fargs[1]
+	local desc = opts.fargs[2]
+	if tonumber(ticket_no) == nil then
+		print("Invalid ticket")
+		return
+	end
+	if type(desc) ~= "string" then
+		print("Invalid ticket description")
+		return
+	end
+	vim.cmd("e ~/projects/work_notes/tickets/KEET-" .. ticket_no .. "-" .. desc .. ".norg")
+end, { nargs = "*" })
 
 --TODO: Create a 'OOO' command to create One on One files
 

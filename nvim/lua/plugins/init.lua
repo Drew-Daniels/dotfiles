@@ -16,6 +16,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "mfussenegger/nvim-dap" },
+  { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{
 		"nvim-telescope/telescope-media-files.nvim",
 		dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
@@ -90,10 +93,8 @@ return require("lazy").setup({
 	{ "ThePrimeagen/harpoon", dependencies = { "nvim-lua/plenary.nvim" } },
 	"dfendr/clipboard-image.nvim",
 	"karb94/neoscroll.nvim",
-	"mxsdev/nvim-dap-vscode-js",
 	"barklan/capslock.nvim",
 	"stevearc/conform.nvim",
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "folke/neodev.nvim", opts = {} },
 	"ray-x/web-tools.nvim",
 	{ "rest-nvim/rest.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
@@ -110,9 +111,7 @@ return require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
-	-- dap
 	"williamboman/mason.nvim",
-	"mfussenegger/nvim-dap",
 	--
 	{
 		"folke/which-key.nvim",
