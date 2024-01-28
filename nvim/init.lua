@@ -9,7 +9,6 @@ local present, mason = pcall(require, "mason")
 if not present then
 	return
 end
-
 -- Not all dependencies installed by Mason here are specifically for nvim-lspconfig
 -- some are installed here just for consistency across machines, and it's easier if
 -- things are installed in one place.
@@ -269,15 +268,16 @@ require("vim.treesitter.language").register("http", "hurl")
 -- NEOSCROLL.NVIM
 -- https://github.com/karb94/neoscroll.nvim
 local t = {}
-t['<C-k>'] = {'scroll', {'-vim.wo.scroll', 'true', '350'}}
-t['<C-j>'] = {'scroll', {'vim.wo.scroll', 'true', '350'}}
-t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '500'}}
-t['<C-f>'] = {'scroll', {'vim.api.nvim_win_get_height(0)', 'true', '500'}}
-t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}
-t['<C-e>'] = {'scroll', {'0.10', 'false', '100'}}
-t['zt'] = {'zt', {'0'}}
-t['zz'] = {'zz', {'0'}}
-t['zb'] = {'zb', {'0'}}
+t["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "350" } }
+t["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "350" } }
+t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500" } }
+t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500" } }
+t["<C-y>"] = { "scroll", { "-0.10", "false", "100" } }
+--TODO: Find better keymapping for this since this gets overridden by change choice for luasnip
+t["<C-e>"] = { "scroll", { "0.10", "false", "100" } }
+t["zt"] = { "zt", { "0" } }
+t["zz"] = { "zz", { "0" } }
+t["zb"] = { "zb", { "0" } }
 
 require("neoscroll").setup({
 	easing_function = "quadratic",
@@ -397,24 +397,22 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-		-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-		-- ["<C-j>"] = cmp.mapping(function(fallback)
-		-- 	if cmp.visible() then
-		-- 		cmp.select_next_item()
-		-- 	else
-		-- 		fallback()
-		-- 	end
-		-- end, { "i", "s" }),
-		-- --TODO: Find a better keymapping so this doesn't overwrite the default to insert special digraphs
-		-- ["<C-k>"] = cmp.mapping(function(fallback)
-		-- 	if cmp.visible() then
-		-- 		cmp.select_prev_item()
-		-- 	else
-		-- 		fallback()
-		-- 	end
-		-- end, { "i", "s" }),
-		-- C-b (back) C-f (forward) for snippet placeholder navigation.
+		["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		["<C-d>"] = cmp.mapping.scroll_docs(4),
+		["<C-n>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<C-p>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
@@ -457,18 +455,20 @@ ls.config.set_config({
 	update_events = "TextChanged,TextChangedI",
 })
 
---TODO: Better way to map these potentially?
--- vim.keymap.set({ "i" }, "<C-k>", function()
--- 	ls.expand()
--- end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-l>", function()
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
 	ls.jump(1)
 end, { silent = true })
--- vim.keymap.set({ "i", "s" }, "<C-j>", function()
--- 	ls.jump(-1)
--- end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<C-e>", function()
+vim.keymap.set({ "i", "s" }, "<C-h>", function()
+	ls.jump(-1)
+end, { silent = true })
+
+--TODO: Why do I have to hit <C-e> twice to expand?
+vim.keymap.set({ "i" }, "<C-e>", function()
+	ls.expand()
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-c>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
 	end
