@@ -8,12 +8,15 @@ return {
 		"in",
 		fmta(
 			[[
-        interface <> {
+        <>interface <> {
           <>: <>
         }
       ]],
 			{
-        i(1), i(2), i(3)
+				c(1, { t(""), t("export ") }),
+				i(2),
+				i(3),
+				i(4),
 			}
 		)
 	),
@@ -21,12 +24,15 @@ return {
 		"ty",
 		fmta(
 			[[
-        type <> = {
+        <>type <> = {
           <>: <>
         }
       ]],
 			{
-        i(1), i(2), i(3)
+				c(1, { t(""), t("export ") }),
+				i(2),
+				i(3),
+				i(4),
 			}
 		)
 	),
