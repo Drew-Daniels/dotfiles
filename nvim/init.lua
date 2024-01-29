@@ -754,11 +754,6 @@ wk.register({
 	},
 })
 
--- HARPOON
--- https://github.com/ThePrimeagen/harpoon
-local hui = require("harpoon.ui")
-local hm = require("harpoon.mark")
-
 wk.register({
 	["<leader>f"] = {
 		name = "Files",
@@ -769,10 +764,6 @@ wk.register({
 		b = {
 			"<cmd>Telescope buffers<cr>",
 			"Buffer(s)",
-		},
-		d = {
-			"<cmd>:lua require('harpoon.mark').clear_all()<cr>",
-			"Delete All Harpoons",
 		},
 		f = {
 			"<cmd>Telescope find_files<cr>",
@@ -806,10 +797,6 @@ wk.register({
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 		h = { "<cmd>Telescope quickfix_history<cr>", "Quickfix History" },
-		x = { hm.add_file, "Harpoon" },
-		s = { hui.toggle_quick_menu, "Switch Harpoon" },
-		p = { hui.nav_prev, "Previous Harpoon" },
-		n = { hui.nav_next, "Next Harpoon" },
 	},
 })
 
@@ -844,25 +831,22 @@ wk.register({
 	},
 })
 
+-- HARPOON
+-- https://github.com/ThePrimeagen/harpoon
+local hui = require("harpoon.ui")
+local hm = require("harpoon.mark")
+
 wk.register({
 	["<leader>h"] = {
-		name = "Help",
-		h = {
-			"<cmd>Telescope help_tags<cr>",
-			"Help Tags",
+		name = "Harpoon",
+		a = { hm.add_file, "Add Harpoon" },
+		d = {
+			"<cmd>:lua require('harpoon.mark').clear_all()<cr>",
+			"Delete All Harpoons",
 		},
-		o = {
-			"<cmd>Telescope vim_options<cr>",
-			"Vim Options",
-		},
-		s = {
-			"<cmd>Telescope spell_suggest<cr>",
-			"Open Recent File",
-		},
-		m = {
-			"<cmd>Telescope man_pages<cr>",
-			"Man Pages",
-		},
+		s = { hui.toggle_quick_menu, "Switch Harpoon" },
+		p = { hui.nav_prev, "Previous Harpoon" },
+		n = { hui.nav_next, "Next Harpoon" },
 	},
 })
 
