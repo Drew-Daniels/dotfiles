@@ -416,8 +416,8 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
 		}),
 	}),
 	sources = {
@@ -667,6 +667,14 @@ require("capslock").setup()
 
 -- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 -- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
+wk.register({
+	["<leader>c"] = {
+		name = "Copilot",
+		d = { "<cmd>Copilot disable<cr>", "Disable" },
+		e = { "<cmd>Copilot enable<cr>", "Enable" },
+		s = { "<cmd>Copilot status<cr>", "Status" },
+	},
+})
 
 wk.register({
 	["<leader>d"] = {
