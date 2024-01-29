@@ -4,5 +4,19 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-  s("tn", fmta([[ <> ? <> : <> ]], { i(1, "cond"), i(2, "then"), i(3, "else") })),
+	s("tn", fmta([[ <> ? <> : <> ]], { i(1, "cond"), i(2, "then"), i(3, "else") })),
+	s(
+		"tc",
+		fmta(
+			[[
+        try {
+          <>
+        } catch (<>) {
+          <>
+        }
+      ]],
+			{ i(1), i(2, "e"), i(3) },
+			{ desc = "Try Catch" }
+		)
+	),
 }
