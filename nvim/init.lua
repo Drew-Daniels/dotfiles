@@ -1270,7 +1270,6 @@ set.softtabstop = 2
 set.ignorecase = true
 set.smartcase = true
 set.number = true
-set.relativenumber = true
 set.splitbelow = true
 set.splitright = true
 set.scrolloff = 999
