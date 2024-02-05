@@ -1273,7 +1273,6 @@ set.number = true
 set.splitbelow = true
 set.splitright = true
 set.scrolloff = 999
-set.wrap = false
 set.hlsearch = false
 set.wildignore = "node_modules/*"
 set.number = true
