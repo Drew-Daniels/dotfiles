@@ -131,3 +131,5 @@ alias ls="lsd"
 # uninstall by removing these lines
 [[ -f ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh ]] && . ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh || true
 
+alias pn="pnpm"
+
