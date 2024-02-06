@@ -86,5 +86,5 @@ if status is-interactive
 
     # tabtab source for packages
     # uninstall by removing these lines
-    [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
+    [ -f $XDG_CONFIG_HOME/tabtab/fish/__tabtab.fish ]; and . $XDG_CONFIG_HOME/tabtab/fish/__tabtab.fish; or true
 end
