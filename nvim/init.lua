@@ -365,7 +365,8 @@ local servers = {
 	"vimls",
 	"prismals",
 	"graphql",
-  "nxls",
+  -- turning off for now: https://github.com/nrwl/nx-console/issues/2019
+  -- "nxls",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
