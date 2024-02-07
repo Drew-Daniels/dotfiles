@@ -42,6 +42,7 @@ local options = {
 		"firefox-debug-adapter",
 		"chrome-debug-adapter",
 		"js-debug-adapter",
+		"nxls",
 	},
 	max_concurrent_installers = 10,
 }
@@ -683,7 +684,7 @@ wk.register({
 			require("dap").set_breakpoint,
 			"Breakpoint",
 		},
-    c = { require("dap").continue, "Continue (Start)" },
+		c = { require("dap").continue, "Continue (Start)" },
 		d = {
 			require("dap").continue,
 			"Debug",
