@@ -365,6 +365,7 @@ local servers = {
 	"vimls",
 	"prismals",
 	"graphql",
+  "nxls",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
