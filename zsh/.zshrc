@@ -133,3 +133,7 @@ alias ls="lsd"
 
 alias pn="pnpm"
 
+# go
+# TODO: Figure out why $GOPATH is unset when sourcing this file - likely because mise starts up after, but still, would be nice to not have to hard-code
+export GOBIN="~/.local/share/mise/installs/go/1.21.1/package/bin"
+
