@@ -40,7 +40,7 @@ return {
 		),
 		{ desc = "jest beforeAll" }
 	),
-	s("ts", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
+	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
 	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
 	s(
 		"be",
