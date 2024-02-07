@@ -934,6 +934,28 @@ wk.register({
 })
 
 wk.register({
+  ["<leader>n"] = {
+    name = "Neogen",
+    g = {
+      ":lua require('neogen').generate()<CR>",
+      "Generate",
+    },
+    f = {
+      ":lua require('neogen').generate({ type = 'func' })<CR>",
+      "Generate Function Annotation",
+    },
+    c = {
+      ":lua require('neogen').generate({ type = 'class' })<CR>",
+      "Generate Class Annotation",
+    },
+    t = {
+      ":lua require('neogen').generate({ type = 'type' })<CR>",
+      "Generate Type Annotation",
+    },
+  },
+});
+
+wk.register({
 	["<leader>r"] = {
 		name = "Request",
 		s = {
@@ -986,13 +1008,6 @@ wk.register({
 wk.register({
 	["<leader>S"] = {
 		name = "Snippets",
-		-- NEOGEN
-		-- https://github.com/danymat/neogen
-		--TODO: More plugin-agnostic name possible here?
-		n = {
-			":lua require('neogen').generate()<CR>",
-			"Neogen",
-		},
 		l = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
 	},
 }, { silent = true })
