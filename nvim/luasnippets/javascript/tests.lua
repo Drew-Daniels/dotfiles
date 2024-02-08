@@ -5,6 +5,18 @@ local get_visual = helpers.get_visual
 
 return {
 	s(
+		"cn",
+		fmta(
+			[[ 
+        context('<>', () =>> {
+          <>
+        });
+      ]],
+			{ i(1), i(2) }
+		),
+		{ desc = "Jest Context" }
+	),
+	s(
 		"ds",
 		fmta(
 			[[ 

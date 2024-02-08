@@ -841,6 +841,24 @@ local hui = require("harpoon.ui")
 local hm = require("harpoon.mark")
 
 wk.register({
+	["<leader>a"] = {
+		name = "API Request",
+		s = {
+			"<Plug>RestNvim",
+			"Send Request",
+		},
+		p = {
+			"<Plug>RestNvimPreview",
+			"Preview Request",
+		},
+		r = {
+			"<Plug>RestNvimLast",
+			"Repeat Last Request",
+		},
+	},
+})
+
+wk.register({
 	["<leader>h"] = {
 		name = "Harpoon",
 		a = { hm.add_file, "Add Harpoon" },
@@ -955,23 +973,6 @@ wk.register({
   },
 });
 
-wk.register({
-	["<leader>r"] = {
-		name = "Request",
-		s = {
-			"<Plug>RestNvim",
-			"Send Request",
-		},
-		p = {
-			"<Plug>RestNvimPreview",
-			"Preview Request",
-		},
-		r = {
-			"<Plug>RestNvimLast",
-			"Repeat Last Request",
-		},
-	},
-})
 
 wk.register({
 	["<leader>q"] = {
