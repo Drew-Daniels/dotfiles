@@ -78,6 +78,7 @@ require("nvim-treesitter.configs").setup({
 		"json",
 		"markdown",
 		"markdown_inline",
+    "norg",
 		"ruby",
 		"scss",
 		"sql",
