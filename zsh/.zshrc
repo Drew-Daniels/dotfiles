@@ -137,3 +137,6 @@ alias pn="pnpm"
 # TODO: Figure out why $GOPATH is unset when sourcing this file - likely because mise starts up after, but still, would be nice to not have to hard-code
 export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 
+# yabai
+yabai --start-service
+
