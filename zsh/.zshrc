@@ -148,3 +148,5 @@ yabai --start-service
 # skhd
 skhd --start-service
 
+# sketchybar
+brew services start sketchybar --config $XDG_CONFIG_HOME/sketchybar/sketchybarrc
