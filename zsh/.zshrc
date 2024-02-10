@@ -139,14 +139,14 @@ export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 
 # yabai
 # hack - https://github.com/koekeishiya/yabai/issues/1844
-yabai --start-service
-. $XDG_CONFIG_HOME/yabai/yabairc
+# yabai --start-service
+# . $XDG_CONFIG_HOME/yabai/yabairc
 
 # run this command after rebooting so yabai will work
 # sudo nvram boot-args=-arm64e_preview_abi
 
 # skhd
-skhd --start-service
+# skhd --start-service
 
 # sketchybar
-brew services start sketchybar --config $XDG_CONFIG_HOME/sketchybar/sketchybarrc
+# sketchybar --config $XDG_CONFIG_HOME/sketchybar/sketchybarrc
