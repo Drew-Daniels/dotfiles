@@ -140,3 +140,6 @@ export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 # yabai
 yabai --start-service
 
+# skhd
+skhd --start-service
+
