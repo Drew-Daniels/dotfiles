@@ -150,3 +150,4 @@ export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 
 # sketchybar
 # sketchybar --config $XDG_CONFIG_HOME/sketchybar/sketchybarrc
+export CONFIG_DIR="$XDG_CONFIG_HOME/sketchybar"
