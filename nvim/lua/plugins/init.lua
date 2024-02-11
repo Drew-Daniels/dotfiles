@@ -16,12 +16,18 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  { 'mrjones2014/smart-splits.nvim' },
-  { "fladson/vim-kitty" },
-  { "mfussenegger/nvim-dap" },
-  { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-  { "nvim-telescope/telescope-dap.nvim", dependencies = "mfussenegger/nvim-dap" },
+	{
+		"kwkarlwang/bufresize.nvim",
+		config = function()
+			require("bufresize").setup()
+		end,
+	},
+	{ "mrjones2014/smart-splits.nvim" },
+	{ "fladson/vim-kitty" },
+	{ "mfussenegger/nvim-dap" },
+	{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	{ "nvim-telescope/telescope-dap.nvim", dependencies = "mfussenegger/nvim-dap" },
 	{
 		"nvim-telescope/telescope-media-files.nvim",
 		dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
@@ -59,9 +65,9 @@ return require("lazy").setup({
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
-    build = ":TSUpdate",
+		build = ":TSUpdate",
 	},
-  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
+	{ "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
@@ -106,7 +112,7 @@ return require("lazy").setup({
 	"williamboman/mason.nvim",
 	"tpope/vim-fugitive", -- Git operations, tools in neovim
 	"junegunn/gv.vim", -- Pretty Git log
-  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	"xiyaowong/transparent.nvim",
 	-- recommended settings from 'nvim-lspconfig'
 	"neovim/nvim-lspconfig",
