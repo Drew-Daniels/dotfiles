@@ -78,7 +78,7 @@ require("nvim-treesitter.configs").setup({
 		"json",
 		"markdown",
 		"markdown_inline",
-    "norg",
+		"norg",
 		"ruby",
 		"scss",
 		"sql",
@@ -366,8 +366,8 @@ local servers = {
 	"vimls",
 	"prismals",
 	"graphql",
-  -- turning off for now: https://github.com/nrwl/nx-console/issues/2019
-  -- "nxls",
+	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
+	-- "nxls",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
@@ -532,7 +532,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- LUALINE
 -- https://github.com/nvim-lualine/lualine.nvim
 require("lualine").setup({
-  options = { theme = "gruvbox" },
+	options = { theme = "gruvbox" },
 	sections = {
 		lualine_x = {
 			-- CAPSLOCK.NVIM
@@ -953,27 +953,26 @@ wk.register({
 })
 
 wk.register({
-  ["<leader>n"] = {
-    name = "Neogen",
-    g = {
-      ":lua require('neogen').generate()<CR>",
-      "Generate",
-    },
-    f = {
-      ":lua require('neogen').generate({ type = 'func' })<CR>",
-      "Generate Function Annotation",
-    },
-    c = {
-      ":lua require('neogen').generate({ type = 'class' })<CR>",
-      "Generate Class Annotation",
-    },
-    t = {
-      ":lua require('neogen').generate({ type = 'type' })<CR>",
-      "Generate Type Annotation",
-    },
-  },
-});
-
+	["<leader>n"] = {
+		name = "Neogen",
+		g = {
+			":lua require('neogen').generate()<CR>",
+			"Generate",
+		},
+		f = {
+			":lua require('neogen').generate({ type = 'func' })<CR>",
+			"Generate Function Annotation",
+		},
+		c = {
+			":lua require('neogen').generate({ type = 'class' })<CR>",
+			"Generate Class Annotation",
+		},
+		t = {
+			":lua require('neogen').generate({ type = 'type' })<CR>",
+			"Generate Type Annotation",
+		},
+	},
+})
 
 wk.register({
 	["<leader>q"] = {
@@ -1200,6 +1199,12 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 vim.keymap.set("n", "<leader>ui", require("dapui").toggle)
+
+-- SMART-SPLITS.NVIM
+-- https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file
+require("smart-splits").setup({
+	resize_mode = { hooks = { on_leave = require("bufresize").register } },
+})
 
 -- NEORG
 -- https://github.com/nvim-neorg/neorg
