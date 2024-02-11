@@ -532,6 +532,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- LUALINE
 -- https://github.com/nvim-lualine/lualine.nvim
 require("lualine").setup({
+  options = { theme = "gruvbox" },
 	sections = {
 		lualine_x = {
 			-- CAPSLOCK.NVIM
@@ -569,11 +570,10 @@ vim.api.nvim_create_user_command("Format", function(args)
 	require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
 
--- ONEDARK.NVIM
--- https://github.com/navarasu/onedark.nvim
----@diagnostic disable-next-line: missing-parameter
-require("onedark").setup()
-require("onedark").load()
+-- GRUVBOX-NVIM
+-- https://github.com/ellisonleao/gruvbox.nvim
+vim.o.background = "dark"
+vim.cmd("colorscheme gruvbox")
 
 -- CLIPBOARD-IMAGE.NVIM
 -- https://github.com/ekickx/clipboard-image.nvim
