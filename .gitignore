@@ -20,3 +20,4 @@ gitk
 secrets
 nnn/.lastd
 .android
+*.bak
