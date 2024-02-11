@@ -70,4 +70,7 @@ smart_splits.apply_to_config(config)
 -- COLORS
 config.color_scheme = "Gruvbox Material (Gogh)"
 
+-- history
+config.scrollback_lines = 10000
+
 return config
