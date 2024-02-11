@@ -2,6 +2,8 @@ require("plugins")
 --TODO: Figure out why typing 'g', waiting, then 'cA' works to insert comments, but typing them all quickly doesn't?
 -- Is there some plugin that is causing combinations that start with g to wait/not wait?
 
+require("legendary").setup({ extensions = { lazy_nvim = { auto_register = true } } })
+
 -- MASON
 -- https://github.com/williamboman/mason.nvim/issues/130
 local present, mason = pcall(require, "mason")
