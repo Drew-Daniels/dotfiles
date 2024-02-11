@@ -138,17 +138,6 @@ alias pn="pnpm"
 # TODO: Figure out why $GOPATH is unset when sourcing this file - likely because mise starts up after, but still, would be nice to not have to hard-code
 export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 
-# yabai
-# hack - https://github.com/koekeishiya/yabai/issues/1844
-yabai --start-service
-. $XDG_CONFIG_HOME/yabai/yabairc
-
-# run this command after rebooting so yabai will work
-# sudo nvram boot-args=-arm64e_preview_abi
-
-# skhd
-skhd --start-service
-
 # sketchybar
 # sketchybar --config $XDG_CONFIG_HOME/sketchybar/sketchybarrc
 export CONFIG_DIR="$XDG_CONFIG_HOME/sketchybar"
