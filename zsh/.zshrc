@@ -144,3 +144,8 @@ export CONFIG_DIR="$XDG_CONFIG_HOME/sketchybar"
 
 # kitty
 alias d="kitten diff"
+if [[ $TERM == "xterm-kitty" ]]; then
+  fish
+else
+  :
+fi
