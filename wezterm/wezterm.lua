@@ -8,12 +8,12 @@ config.keys = {
   -- splitting
   {
     mods   = "LEADER",
-    key    = "|",
+    key    = "_",
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
   },
   {
     mods   = "LEADER",
-    key    = "_",
+    key    = "|",
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
   }
 }
