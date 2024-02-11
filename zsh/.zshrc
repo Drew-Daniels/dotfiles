@@ -38,6 +38,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 # search for pattern in filenames
+alias rg="rg --hyperlink-format=kitty"
 alias rgf="rg --files | rg"
 
 # nvim

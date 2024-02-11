@@ -15,6 +15,7 @@ if status is-interactive
 
     # ripgrep
     # search for pattern in filenames
+    alias rg "rg --hyperlink-format=kitty"
     alias rgf "rg --files | rg"
 
     # pnpm
