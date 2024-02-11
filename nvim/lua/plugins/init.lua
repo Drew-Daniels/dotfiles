@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { 'mrjones2014/smart-splits.nvim' },
   { "fladson/vim-kitty" },
   { "mfussenegger/nvim-dap" },
   { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
