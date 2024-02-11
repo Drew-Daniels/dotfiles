@@ -89,4 +89,7 @@ if status is-interactive
     [ -f $XDG_CONFIG_HOME/tabtab/fish/__tabtab.fish ]; and . $XDG_CONFIG_HOME/tabtab/fish/__tabtab.fish; or true
 
     alias pn="pnpm"
+    
+    # kitten
+    alias d="kitten diff"
 end
