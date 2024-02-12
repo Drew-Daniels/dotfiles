@@ -1,8 +1,9 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 local config = wezterm.config_builder()
 
-local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 -- you can put the rest of your Wezterm config here
 
 -- KEY BINDINGS
@@ -62,15 +63,53 @@ config.keys = {
 			mode = "SwapWithActive",
 		}),
 	},
+	-- Show the launcher in fuzzy selection mode and have it list all workspaces
+	-- and allow activating one.
+	{
+		key = "9",
+		mods = "ALT",
+		action = act.ShowLauncherArgs({
+			flags = "FUZZY|WORKSPACES",
+		}),
+	},
 }
 
 -- apply smart_splits defaults
 smart_splits.apply_to_config(config)
-
 -- COLORS
 config.color_scheme = "Gruvbox Material (Gogh)"
-
 -- history
 config.scrollback_lines = 10000
+
+-- WORKSPACES
+wezterm.on("gui-startup", function(cmd)
+	local args = {}
+	if cmd then
+		args = cmd.args
+	end
+
+	local project_dir = wezterm.home_dir .. '/projects'
+
+	-- dotfiles
+	local tab, build_pane, window = mux.spawn_window({
+		workspace = "dotfiles",
+		cwd = project_dir .. "/dotfiles",
+		args = args,
+	})
+	local editor_pane = build_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = project_dir,
+	})
+
+	-- local tab, pane, window = mux.spawn_window({
+	-- 	workspace = "pt",
+ --    cwd = project_dir .. "/keet-umi",
+	-- 	args = args,
+	-- })
+
+	-- We want to startup in the coding workspace
+	mux.set_active_workspace("dotfiles")
+end)
 
 return config
