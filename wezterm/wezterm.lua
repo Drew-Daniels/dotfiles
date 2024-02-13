@@ -97,12 +97,14 @@ wezterm.on("gui-startup", function(cmd)
   local env = "docker"
   local client = "keet"
 
-	if cmd.args[1] then
-    env = cmd.args[1]
-	end
+  if cmd then
+    if cmd.args[1] then
+      env = cmd.args[1]
+    end
 
-  if cmd.args[2] then
-    client = cmd.args[2]
+    if cmd.args[2] then
+      client = cmd.args[2]
+    end
   end
 
 	local project_dir = wezterm.home_dir .. "/projects"
@@ -134,6 +136,7 @@ wezterm.on("gui-startup", function(cmd)
     fishify_pane(git_pane)
 
     editor_pane:send_text("nvim\n")
+    editor_pane:activate()
     return tab, cmd_pane, editor_pane, window
   end
 
@@ -181,6 +184,7 @@ wezterm.on("gui-startup", function(cmd)
   create_workspace("ops tools", project_dir .. "/ops-tools")
   create_workspace("devdocs", project_dir .. "/devDocs")
   create_workspace("keetman", project_dir .. "/keetman")
+  create_workspace("work notes", project_dir .. "/work_notes")
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
