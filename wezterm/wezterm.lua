@@ -92,7 +92,8 @@ config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
 --TODO: Add local:env startup cmds
---TODO: Every project will need an editor, cmd, and git pane. However, some projects will also need to have their cmd pane run yarn start.
+--TODO: Create `create_mobile_workspace` function
+--TODO: Create `create_api_workspace` function
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
 	if cmd then
@@ -100,6 +101,11 @@ wezterm.on("gui-startup", function(cmd)
 	end
 
 	local project_dir = wezterm.home_dir .. "/projects"
+
+  local function fishify_pane(pane)
+    pane:send_text("fish\n")
+    pane:send_text("cls\n")
+  end
 
   local function create_workspace(name, dir)
     local tab, cmd_pane, window = mux.spawn_window({
@@ -118,8 +124,9 @@ wezterm.on("gui-startup", function(cmd)
       args = args,
     })
 
-    cmd_pane:send_text("fish\n")
-    cmd_pane:send_text("cls\n")
+    fishify_pane(cmd_pane)
+    fishify_pane(editor_pane)
+    fishify_pane(git_pane)
 
     editor_pane:send_text("fish\n")
     editor_pane:send_text("cls\n")
@@ -127,16 +134,31 @@ wezterm.on("gui-startup", function(cmd)
     return tab, cmd_pane, editor_pane, window
   end
 
+
   local function create_fe_workspace(name, dir)
     local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
     cmd_pane:send_text("yarn start\n")
   end
 
+  local function create_api_workspace(name, dir)
+    local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
+    local stack_tab, stack_pane, stack_window = mux.spawn_window({
+      workspace = name,
+      cwd = dir,
+      args = args,
+    })
+    stack_pane:send_text("fish\n")
+    stack_pane:send_text("cls\n")
+    stack_pane:send_text("ahoy up\n")
+  end
+
   create_workspace("dotfiles", project_dir .. "/dotfiles")
+  -- fe workspaces
   create_fe_workspace("admin", project_dir .. "/keet-admin")
   create_fe_workspace("pt", project_dir .. "/keet-umi")
   create_fe_workspace("embedded", project_dir .. "/keet-embedded")
-  create_workspace("api", project_dir .. "/keet-api")
+  -- api workspace
+  create_api_workspace("api", project_dir .. "/keet-api")
   create_workspace("auth", project_dir .. "/keet-auth")
   create_workspace("patient", project_dir .. "/keet-patient")
   create_workspace("mobile", project_dir .. "/keet-mobile")
