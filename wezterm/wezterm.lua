@@ -92,7 +92,6 @@ config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
 --TODO: Create `create_mobile_workspace` function
---TODO: Create `create_api_workspace` function
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
   local env = "docker"
