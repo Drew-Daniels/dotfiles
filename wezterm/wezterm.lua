@@ -94,11 +94,8 @@ config.window_close_confirmation = "NeverPrompt"
 --TODO: determine how to get default_args to work when starting wezterm by clicking on the application icon
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
-	local default_args = { "fish" }
 	if cmd then
 		args = cmd.args
-	else
-		args = default_args
 	end
 
 	local project_dir = wezterm.home_dir .. "/projects"
@@ -117,6 +114,9 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  dotfiles_cmd_pane:send_text("fish\n")
+
+  dotfiles_editor_pane:send_text("fish\n")
 	dotfiles_editor_pane:send_text("nvim\n")
 
 	-- admin
@@ -132,6 +132,13 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = admin_dir,
 		args = args,
 	})
+
+  admin_cmd_pane:send_text("fish\n")
+
+
+  admin_cmd_pane:send_text("fish\n")
+
+  admin_editor_pane:send_text("fish\n")
 	admin_editor_pane:send_text("nvim\n")
 
 	-- pt
@@ -147,6 +154,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = pt_dir,
 		args = args,
 	})
+
+  pt_cmd_pane:send_text("fish\n")
+
+  pt_editor_pane:send_text("fish\n")
 	pt_editor_pane:send_text("nvim\n")
 
   -- embedded
@@ -162,6 +173,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = embedded_dir,
 		args = args,
 	})
+
+  embedded_cmd_pane:send_text("fish\n")
+
+  embedded_editor_pane:send_text("fish\n")
 	embedded_editor_pane:send_text("nvim\n")
 
   -- api
@@ -177,6 +192,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = api_dir,
 		args = args,
 	})
+
+  api_cmd_pane:send_text("fish\n")
+
+  api_editor_pane:send_text("fish\n")
 	api_editor_pane:send_text("nvim\n")
 
   -- auth
@@ -192,6 +211,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = auth_dir,
 		args = args,
 	})
+
+  auth_cmd_pane:send_text("fish\n")
+
+  auth_editor_pane:send_text("fish\n")
 	auth_editor_pane:send_text("nvim\n")
 
   -- patient
@@ -207,6 +230,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = patient_dir,
 		args = args,
 	})
+
+  patient_cmd_pane:send_text("fish\n")
+
+  patient_editor_pane:send_text("fish\n")
 	patient_editor_pane:send_text("nvim\n")
 
   -- mobile
@@ -222,6 +249,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = mobile_dir,
 		args = args,
 	})
+
+  mobile_cmd_pane:send_text("fish\n")
+
+  mobile_editor_pane:send_text("fish\n")
 	mobile_editor_pane:send_text("nvim\n")
 
   -- auth-client
@@ -237,6 +268,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = auth_client_dir,
 		args = args,
 	})
+
+  auth_client_cmd_pane:send_text("fish\n")
+
+  auth_client_editor_pane:send_text("fish\n")
 	auth_client_editor_pane:send_text("nvim\n")
 
   -- api-client
@@ -252,6 +287,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = api_client_dir,
 		args = args,
 	})
+
+  api_client_cmd_pane:send_text("fish\n")
+
+  api_client_editor_pane:send_text("fish\n")
 	api_client_editor_pane:send_text("nvim\n")
 
   -- ui-components
@@ -267,6 +306,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = ui_components_dir,
 		args = args,
 	})
+
+  ui_components_cmd_pane:send_text("fish\n")
+
+  ui_components_editor_pane:send_text("fish\n")
 	ui_components_editor_pane:send_text("nvim\n")
 
   -- ops-tools
@@ -282,6 +325,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = ops_tools_dir,
 		args = args,
 	})
+
+  ops_tools_cmd_pane:send_text("fish\n")
+
+  ops_tools_editor_pane:send_text("fish\n")
 	ops_tools_editor_pane:send_text("nvim\n")
 
   -- devdocs
@@ -297,6 +344,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = devdocs_dir,
 		args = args,
 	})
+
+  devdocs_cmd_pane:send_text("fish\n")
+
+  devdocs_editor_pane:send_text("fish\n")
 	devdocs_editor_pane:send_text("nvim\n")
 
   -- keetman
@@ -312,6 +363,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = keetman_dir,
 		args = args,
 	})
+
+  keetman_cmd_pane:send_text("fish\n")
+
+  keetman_editor_pane:send_text("fish\n")
 	keetman_editor_pane:send_text("nvim\n")
 
 	-- We want to startup in the coding workspace
