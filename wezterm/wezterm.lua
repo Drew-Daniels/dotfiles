@@ -96,7 +96,6 @@ config.window_close_confirmation = "NeverPrompt"
 --TODO: Figure out how to close all workspaces with keybinding
 --TODO: Add local:env startup cmds
 --TODO: Add yarn start cmds
---TODO: modularize the workspace creation
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
 	if cmd then
@@ -105,368 +104,45 @@ wezterm.on("gui-startup", function(cmd)
 
 	local project_dir = wezterm.home_dir .. "/projects"
 
-	-- dotfiles
-	local dotfiles_dir = project_dir .. "/dotfiles"
-	local tab, dotfiles_cmd_pane, dotfiles_window = mux.spawn_window({
-		workspace = "dotfiles",
-		cwd = dotfiles_dir,
-		args = args,
-	})
-	local dotfiles_editor_pane = dotfiles_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = dotfiles_dir,
-		args = args,
-	})
-  local dotfiles_git_pane = dotfiles_cmd_pane:split({
-    cwd = dotfiles_dir,
-    args = args,
-  })
+  local function create_workspace(name, dir)
+    local tab, cmd_pane, window = mux.spawn_window({
+      workspace = name,
+      cwd = dir,
+      args = args,
+    })
+    local editor_pane = cmd_pane:split({
+      direction = "Top",
+      size = 0.6,
+      cwd = dir,
+      args = args,
+    })
+    local git_pane = cmd_pane:split({
+      cwd = dir,
+      args = args,
+    })
 
-  dotfiles_cmd_pane:send_text("fish\n")
-  dotfiles_cmd_pane:send_text("cls\n")
+    cmd_pane:send_text("fish\n")
+    cmd_pane:send_text("cls\n")
 
-  dotfiles_editor_pane:send_text("fish\n")
-  dotfiles_editor_pane:send_text("cls\n")
-	dotfiles_editor_pane:send_text("nvim\n")
+    editor_pane:send_text("fish\n")
+    editor_pane:send_text("cls\n")
+    editor_pane:send_text("nvim\n")
+  end
 
-	-- admin
-	local admin_dir = project_dir .. "/keet-admin"
-	local tab, admin_cmd_pane, admin_window = mux.spawn_window({
-		workspace = "admin",
-		cwd = admin_dir,
-		args = args,
-	})
-	local admin_editor_pane = admin_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = admin_dir,
-		args = args,
-	})
-
-  local admin_git_pane = admin_cmd_pane:split({
-    cwd = admin_dir,
-    args = args,
-  })
-
-  admin_cmd_pane:send_text("fish\n")
-  admin_cmd_pane:send_text("cls\n")
-
-  admin_editor_pane:send_text("fish\n")
-  admin_editor_pane:send_text("cls\n")
-	admin_editor_pane:send_text("nvim\n")
-
-	-- pt
-	local pt_dir = project_dir .. "/keet-umi"
-	local tab, pt_cmd_pane, pt_window = mux.spawn_window({
-		workspace = "pt",
-		cwd = pt_dir,
-		args = args,
-	})
-	local pt_editor_pane = pt_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = pt_dir,
-		args = args,
-	})
-
-  local pt_git_pane = pt_cmd_pane:split({
-    cwd = pt_dir,
-    args = args,
-  })
-
-  pt_cmd_pane:send_text("fish\n")
-  pt_cmd_pane:send_text("cls\n")
-
-  pt_editor_pane:send_text("fish\n")
-  pt_editor_pane:send_text("cls\n")
-	pt_editor_pane:send_text("nvim\n")
-
-  -- embedded
-	local embedded_dir = project_dir .. "/keet-embedded"
-	local tab, embedded_cmd_pane, embedded_window = mux.spawn_window({
-		workspace = "embedded",
-		cwd = embedded_dir,
-		args = args,
-	})
-	local embedded_editor_pane = embedded_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = embedded_dir,
-		args = args,
-	})
-
-  local embedded_git_pane = embedded_cmd_pane:split({
-    cwd = embedded_dir,
-    args = args,
-  })
-
-  embedded_cmd_pane:send_text("fish\n")
-  embedded_cmd_pane:send_text("cls\n")
-
-  embedded_editor_pane:send_text("fish\n")
-  embedded_editor_pane:send_text("cls\n")
-	embedded_editor_pane:send_text("nvim\n")
-
-  -- api
-	local api_dir = project_dir .. "/keet-api"
-	local tab, api_cmd_pane, api_window = mux.spawn_window({
-		workspace = "api",
-		cwd = api_dir,
-		args = args,
-	})
-	local api_editor_pane = api_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = api_dir,
-		args = args,
-	})
-
-  local api_git_pane = api_cmd_pane:split({
-    cwd = api_dir,
-    args = args,
-  })
-
-  api_cmd_pane:send_text("fish\n")
-  api_cmd_pane:send_text("cls\n")
-
-  api_editor_pane:send_text("fish\n")
-  api_editor_pane:send_text("cls\n")
-	api_editor_pane:send_text("nvim\n")
-
-  -- auth
-	local auth_dir = project_dir .. "/keet-auth"
-	local tab, auth_cmd_pane, auth_window = mux.spawn_window({
-		workspace = "auth",
-		cwd = auth_dir,
-		args = args,
-	})
-	local auth_editor_pane = auth_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = auth_dir,
-		args = args,
-	})
-
-  local auth_git_pane = auth_cmd_pane:split({
-    cwd = auth_dir,
-    args = args,
-  })
-
-  auth_cmd_pane:send_text("fish\n")
-  auth_cmd_pane:send_text("cls\n")
-
-  auth_editor_pane:send_text("fish\n")
-  auth_editor_pane:send_text("cls\n")
-	auth_editor_pane:send_text("nvim\n")
-
-  -- patient
-	local patient_dir = project_dir .. "/keet-patient"
-	local tab, patient_cmd_pane, patient_window = mux.spawn_window({
-		workspace = "patient",
-		cwd = patient_dir,
-		args = args,
-	})
-	local patient_editor_pane = patient_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = patient_dir,
-		args = args,
-	})
-
-  local patient_git_pane = patient_cmd_pane:split({
-    cwd = patient_dir,
-    args = args,
-  })
-
-  patient_cmd_pane:send_text("fish\n")
-  patient_cmd_pane:send_text("cls\n")
-
-  patient_editor_pane:send_text("fish\n")
-  patient_editor_pane:send_text("cls\n")
-	patient_editor_pane:send_text("nvim\n")
-
-  -- mobile
-	local mobile_dir = project_dir .. "/keet-mobile"
-	local tab, mobile_cmd_pane, mobile_window = mux.spawn_window({
-		workspace = "mobile",
-		cwd = mobile_dir,
-		args = args,
-	})
-	local mobile_editor_pane = mobile_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = mobile_dir,
-		args = args,
-	})
-
-  local mobile_git_pane = mobile_cmd_pane:split({
-    cwd = mobile_dir,
-    args = args,
-  })
-
-  mobile_cmd_pane:send_text("fish\n")
-  mobile_cmd_pane:send_text("cls\n")
-
-  mobile_editor_pane:send_text("fish\n")
-  mobile_editor_pane:send_text("cls\n")
-	mobile_editor_pane:send_text("nvim\n")
-
-  -- auth-client
-	local auth_client_dir = project_dir .. "/keet-auth-client"
-	local tab, auth_client_cmd_pane, auth_client_window = mux.spawn_window({
-		workspace = "auth client",
-		cwd = auth_client_dir,
-		args = args,
-	})
-	local auth_client_editor_pane = auth_client_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = auth_client_dir,
-		args = args,
-	})
-
-  local auth_client_git_pane = auth_client_cmd_pane:split({
-    cwd = auth_client_dir,
-    args = args,
-  })
-
-  auth_client_cmd_pane:send_text("fish\n")
-  auth_client_cmd_pane:send_text("cls\n")
-
-  auth_client_editor_pane:send_text("fish\n")
-  auth_client_editor_pane:send_text("cls\n")
-	auth_client_editor_pane:send_text("nvim\n")
-
-  -- api-client
-	local api_client_dir = project_dir .. "/keet-api-client"
-	local tab, api_client_cmd_pane, api_client_window = mux.spawn_window({
-		workspace = "api client",
-		cwd = api_client_dir,
-		args = args,
-	})
-	local api_client_editor_pane = api_client_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = api_client_dir,
-		args = args,
-	})
-
-  local api_client_git_pane = api_client_cmd_pane:split({
-    cwd = api_client_dir,
-    args = args,
-  })
-
-  api_client_cmd_pane:send_text("fish\n")
-  api_client_cmd_pane:send_text("cls\n")
-
-  api_client_editor_pane:send_text("fish\n")
-  api_client_editor_pane:send_text("cls\n")
-	api_client_editor_pane:send_text("nvim\n")
-
-  -- ui-components
-	local ui_components_dir = project_dir .. "/ui-components"
-	local tab, ui_components_cmd_pane, ui_components_window = mux.spawn_window({
-		workspace = "ui components",
-		cwd = ui_components_dir,
-		args = args,
-	})
-	local ui_components_editor_pane = ui_components_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = ui_components_dir,
-		args = args,
-	})
-
-  local ui_components_git_pane = ui_components_cmd_pane:split({
-    cwd = ui_components_dir,
-    args = args,
-  })
-
-  ui_components_cmd_pane:send_text("fish\n")
-  ui_components_cmd_pane:send_text("cls\n")
-
-  ui_components_editor_pane:send_text("fish\n")
-  ui_components_editor_pane:send_text("cls\n")
-	ui_components_editor_pane:send_text("nvim\n")
-
-  -- ops-tools
-	local ops_tools_dir = project_dir .. "/ops-tools"
-	local tab, ops_tools_cmd_pane, ops_tools_window = mux.spawn_window({
-		workspace = "ops tools",
-		cwd = ops_tools_dir,
-		args = args,
-	})
-	local ops_tools_editor_pane = ops_tools_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = ops_tools_dir,
-		args = args,
-	})
-
-  local ops_tools_git_pane = ops_tools_cmd_pane:split({
-    cwd = ops_tools_dir,
-    args = args,
-  })
-
-  ops_tools_cmd_pane:send_text("fish\n")
-  ops_tools_cmd_pane:send_text("cls\n")
-
-  ops_tools_editor_pane:send_text("fish\n")
-  ops_tools_editor_pane:send_text("cls\n")
-	ops_tools_editor_pane:send_text("nvim\n")
-
-  -- devdocs
-	local devdocs_dir = project_dir .. "/devDocs"
-	local tab, devdocs_cmd_pane, devdocs_window = mux.spawn_window({
-		workspace = "devdocs",
-		cwd = devdocs_dir,
-		args = args,
-	})
-	local devdocs_editor_pane = devdocs_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = devdocs_dir,
-		args = args,
-	})
-
-  local devdocs_git_pane = devdocs_cmd_pane:split({
-    cwd = devdocs_dir,
-    args = args,
-  })
-
-  devdocs_cmd_pane:send_text("fish\n")
-  devdocs_cmd_pane:send_text("cls\n")
-
-  devdocs_editor_pane:send_text("fish\n")
-  devdocs_editor_pane:send_text("cls\n")
-	devdocs_editor_pane:send_text("nvim\n")
-
-  -- keetman
-	local keetman_dir = project_dir .. "/keetman"
-	local tab, keetman_cmd_pane, keetman_window = mux.spawn_window({
-		workspace = "keetman",
-		cwd = keetman_dir,
-		args = args,
-	})
-	local keetman_editor_pane = keetman_cmd_pane:split({
-		direction = "Top",
-		size = 0.6,
-		cwd = keetman_dir,
-		args = args,
-	})
-
-  local keetman_git_pane = keetman_cmd_pane:split({
-    cwd = keetman_dir,
-    args = args,
-  })
-
-  keetman_cmd_pane:send_text("fish\n")
-  keetman_cmd_pane:send_text("cls\n")
-
-  keetman_editor_pane:send_text("fish\n")
-  keetman_editor_pane:send_text("cls\n")
-	keetman_editor_pane:send_text("nvim\n")
+  create_workspace("dotfiles", project_dir .. "/dotfiles")
+  create_workspace("admin", project_dir .. "/keet-admin")
+  create_workspace("pt", project_dir .. "/keet-umi")
+  create_workspace("embedded", project_dir .. "/keet-embedded")
+  create_workspace("api", project_dir .. "/keet-api")
+  create_workspace("auth", project_dir .. "/keet-auth")
+  create_workspace("patient", project_dir .. "/keet-patient")
+  create_workspace("mobile", project_dir .. "/keet-mobile")
+  create_workspace("auth client", project_dir .. "/keet-auth-client")
+  create_workspace("api client", project_dir .. "/keet-api-client")
+  create_workspace("ui components", project_dir .. "/ui-components")
+  create_workspace("ops tools", project_dir .. "/ops-tools")
+  create_workspace("devdocs", project_dir .. "/devDocs")
+  create_workspace("keetman", project_dir .. "/keetman")
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
