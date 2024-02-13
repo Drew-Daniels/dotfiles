@@ -92,6 +92,8 @@ config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
 --TODO: determine how to get default_args to work when starting wezterm by clicking on the application icon
+--TODO: Add another cmd window to all workspaces
+--TODO: Figure out how to close all workspaces with keybinding
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
 	if cmd then
@@ -113,6 +115,10 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = dotfiles_dir,
 		args = args,
 	})
+  local dotfiles_git_pane = dotfiles_cmd_pane:split({
+    cwd = dotfiles_dir,
+    args = args,
+  })
 
   dotfiles_cmd_pane:send_text("fish\n")
   dotfiles_cmd_pane:send_text("cls\n")
@@ -135,6 +141,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local admin_git_pane = admin_cmd_pane:split({
+    cwd = admin_dir,
+    args = args,
+  })
+
   admin_cmd_pane:send_text("fish\n")
   admin_cmd_pane:send_text("cls\n")
 
@@ -155,6 +166,11 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = pt_dir,
 		args = args,
 	})
+
+  local pt_git_pane = pt_cmd_pane:split({
+    cwd = pt_dir,
+    args = args,
+  })
 
   pt_cmd_pane:send_text("fish\n")
   pt_cmd_pane:send_text("cls\n")
@@ -177,6 +193,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local embedded_git_pane = embedded_cmd_pane:split({
+    cwd = embedded_dir,
+    args = args,
+  })
+
   embedded_cmd_pane:send_text("fish\n")
   embedded_cmd_pane:send_text("cls\n")
 
@@ -197,6 +218,11 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = api_dir,
 		args = args,
 	})
+
+  local api_git_pane = api_cmd_pane:split({
+    cwd = api_dir,
+    args = args,
+  })
 
   api_cmd_pane:send_text("fish\n")
   api_cmd_pane:send_text("cls\n")
@@ -219,6 +245,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local auth_git_pane = auth_cmd_pane:split({
+    cwd = auth_dir,
+    args = args,
+  })
+
   auth_cmd_pane:send_text("fish\n")
   auth_cmd_pane:send_text("cls\n")
 
@@ -239,6 +270,11 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = patient_dir,
 		args = args,
 	})
+
+  local patient_git_pane = patient_cmd_pane:split({
+    cwd = patient_dir,
+    args = args,
+  })
 
   patient_cmd_pane:send_text("fish\n")
   patient_cmd_pane:send_text("cls\n")
@@ -261,6 +297,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local mobile_git_pane = mobile_cmd_pane:split({
+    cwd = mobile_dir,
+    args = args,
+  })
+
   mobile_cmd_pane:send_text("fish\n")
   mobile_cmd_pane:send_text("cls\n")
 
@@ -281,6 +322,11 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = auth_client_dir,
 		args = args,
 	})
+
+  local auth_client_git_pane = auth_client_cmd_pane:split({
+    cwd = auth_client_dir,
+    args = args,
+  })
 
   auth_client_cmd_pane:send_text("fish\n")
   auth_client_cmd_pane:send_text("cls\n")
@@ -303,6 +349,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local api_client_git_pane = api_client_cmd_pane:split({
+    cwd = api_client_dir,
+    args = args,
+  })
+
   api_client_cmd_pane:send_text("fish\n")
   api_client_cmd_pane:send_text("cls\n")
 
@@ -323,6 +374,11 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = ui_components_dir,
 		args = args,
 	})
+
+  local ui_components_git_pane = ui_components_cmd_pane:split({
+    cwd = ui_components_dir,
+    args = args,
+  })
 
   ui_components_cmd_pane:send_text("fish\n")
   ui_components_cmd_pane:send_text("cls\n")
@@ -345,6 +401,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local ops_tools_git_pane = ops_tools_cmd_pane:split({
+    cwd = ops_tools_dir,
+    args = args,
+  })
+
   ops_tools_cmd_pane:send_text("fish\n")
   ops_tools_cmd_pane:send_text("cls\n")
 
@@ -366,6 +427,11 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
+  local devdocs_git_pane = devdocs_cmd_pane:split({
+    cwd = devdocs_dir,
+    args = args,
+  })
+
   devdocs_cmd_pane:send_text("fish\n")
   devdocs_cmd_pane:send_text("cls\n")
 
@@ -386,6 +452,11 @@ wezterm.on("gui-startup", function(cmd)
 		cwd = keetman_dir,
 		args = args,
 	})
+
+  local keetman_git_pane = keetman_cmd_pane:split({
+    cwd = keetman_dir,
+    args = args,
+  })
 
   keetman_cmd_pane:send_text("fish\n")
   keetman_cmd_pane:send_text("cls\n")
