@@ -84,32 +84,35 @@ config.scrollback_lines = 10000
 -- WORKSPACES
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
-  local default_args = { "fish" }
+	local default_args = { "fish" }
 	if cmd then
 		args = cmd.args
-  else
-    args = default_args
+	else
+		args = default_args
 	end
 
-	local project_dir = wezterm.home_dir .. '/projects'
+	local project_dir = wezterm.home_dir .. "/projects"
 
 	-- dotfiles
-  local dotfiles_dir = project_dir .. "/dotfiles"
-	local tab, build_pane, window = mux.spawn_window({
+	local dotfiles_dir = project_dir .. "/dotfiles"
+	local tab, dotfiles_cmd_pane, window = mux.spawn_window({
 		workspace = "dotfiles",
 		cwd = dotfiles_dir,
 		args = args,
 	})
-	local editor_pane = build_pane:split({
+	local dotfiles_editor_pane = dotfiles_cmd_pane:split({
 		direction = "Top",
 		size = 0.6,
 		cwd = dotfiles_dir,
-    args = args,
+		args = args,
 	})
 
-	local tab, pane, window = mux.spawn_window({
+	dotfiles_editor_pane:send_text("nvim\n")
+
+	-- members-only-client
+	local tab, editor_pane, window = mux.spawn_window({
 		workspace = "members-only-client",
-    cwd = project_dir .. "/members-only-client",
+		cwd = project_dir .. "/members-only-client",
 		args = args,
 	})
 
