@@ -84,29 +84,34 @@ config.scrollback_lines = 10000
 -- WORKSPACES
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
+  local default_args = { "fish" }
 	if cmd then
 		args = cmd.args
+  else
+    args = default_args
 	end
 
 	local project_dir = wezterm.home_dir .. '/projects'
 
 	-- dotfiles
+  local dotfiles_dir = project_dir .. "/dotfiles"
 	local tab, build_pane, window = mux.spawn_window({
 		workspace = "dotfiles",
-		cwd = project_dir .. "/dotfiles",
+		cwd = dotfiles_dir,
 		args = args,
 	})
 	local editor_pane = build_pane:split({
 		direction = "Top",
 		size = 0.6,
-		cwd = project_dir,
+		cwd = dotfiles_dir,
+    args = args,
 	})
 
-	-- local tab, pane, window = mux.spawn_window({
-	-- 	workspace = "pt",
- --    cwd = project_dir .. "/keet-umi",
-	-- 	args = args,
-	-- })
+	local tab, pane, window = mux.spawn_window({
+		workspace = "members-only-client",
+    cwd = project_dir .. "/members-only-client",
+		args = args,
+	})
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
