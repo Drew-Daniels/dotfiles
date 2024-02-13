@@ -92,7 +92,7 @@ config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
 --TODO: Add local:env startup cmds
---TODO: Add yarn start cmds
+--TODO: Every project will need an editor, cmd, and git pane. However, some projects will also need to have their cmd pane run yarn start.
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
 	if cmd then
@@ -124,12 +124,18 @@ wezterm.on("gui-startup", function(cmd)
     editor_pane:send_text("fish\n")
     editor_pane:send_text("cls\n")
     editor_pane:send_text("nvim\n")
+    return tab, cmd_pane, editor_pane, window
+  end
+
+  local function create_fe_workspace(name, dir)
+    local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
+    cmd_pane:send_text("yarn start\n")
   end
 
   create_workspace("dotfiles", project_dir .. "/dotfiles")
-  create_workspace("admin", project_dir .. "/keet-admin")
-  create_workspace("pt", project_dir .. "/keet-umi")
-  create_workspace("embedded", project_dir .. "/keet-embedded")
+  create_fe_workspace("admin", project_dir .. "/keet-admin")
+  create_fe_workspace("pt", project_dir .. "/keet-umi")
+  create_fe_workspace("embedded", project_dir .. "/keet-embedded")
   create_workspace("api", project_dir .. "/keet-api")
   create_workspace("auth", project_dir .. "/keet-auth")
   create_workspace("patient", project_dir .. "/keet-patient")
