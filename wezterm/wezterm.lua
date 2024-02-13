@@ -115,8 +115,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   dotfiles_cmd_pane:send_text("fish\n")
+  dotfiles_cmd_pane:send_text("cls\n")
 
   dotfiles_editor_pane:send_text("fish\n")
+  dotfiles_editor_pane:send_text("cls\n")
 	dotfiles_editor_pane:send_text("nvim\n")
 
 	-- admin
@@ -134,11 +136,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   admin_cmd_pane:send_text("fish\n")
-
-
-  admin_cmd_pane:send_text("fish\n")
+  admin_cmd_pane:send_text("cls\n")
 
   admin_editor_pane:send_text("fish\n")
+  admin_editor_pane:send_text("cls\n")
 	admin_editor_pane:send_text("nvim\n")
 
 	-- pt
@@ -156,8 +157,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   pt_cmd_pane:send_text("fish\n")
+  pt_cmd_pane:send_text("cls\n")
 
   pt_editor_pane:send_text("fish\n")
+  pt_editor_pane:send_text("cls\n")
 	pt_editor_pane:send_text("nvim\n")
 
   -- embedded
@@ -175,8 +178,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   embedded_cmd_pane:send_text("fish\n")
+  embedded_cmd_pane:send_text("cls\n")
 
   embedded_editor_pane:send_text("fish\n")
+  embedded_editor_pane:send_text("cls\n")
 	embedded_editor_pane:send_text("nvim\n")
 
   -- api
@@ -194,8 +199,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   api_cmd_pane:send_text("fish\n")
+  api_cmd_pane:send_text("cls\n")
 
   api_editor_pane:send_text("fish\n")
+  api_editor_pane:send_text("cls\n")
 	api_editor_pane:send_text("nvim\n")
 
   -- auth
@@ -213,8 +220,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   auth_cmd_pane:send_text("fish\n")
+  auth_cmd_pane:send_text("cls\n")
 
   auth_editor_pane:send_text("fish\n")
+  auth_editor_pane:send_text("cls\n")
 	auth_editor_pane:send_text("nvim\n")
 
   -- patient
@@ -232,8 +241,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   patient_cmd_pane:send_text("fish\n")
+  patient_cmd_pane:send_text("cls\n")
 
   patient_editor_pane:send_text("fish\n")
+  patient_editor_pane:send_text("cls\n")
 	patient_editor_pane:send_text("nvim\n")
 
   -- mobile
@@ -251,8 +262,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   mobile_cmd_pane:send_text("fish\n")
+  mobile_cmd_pane:send_text("cls\n")
 
   mobile_editor_pane:send_text("fish\n")
+  mobile_editor_pane:send_text("cls\n")
 	mobile_editor_pane:send_text("nvim\n")
 
   -- auth-client
@@ -270,8 +283,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   auth_client_cmd_pane:send_text("fish\n")
+  auth_client_cmd_pane:send_text("cls\n")
 
   auth_client_editor_pane:send_text("fish\n")
+  auth_client_editor_pane:send_text("cls\n")
 	auth_client_editor_pane:send_text("nvim\n")
 
   -- api-client
@@ -289,8 +304,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   api_client_cmd_pane:send_text("fish\n")
+  api_client_cmd_pane:send_text("cls\n")
 
   api_client_editor_pane:send_text("fish\n")
+  api_client_editor_pane:send_text("cls\n")
 	api_client_editor_pane:send_text("nvim\n")
 
   -- ui-components
@@ -308,8 +325,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   ui_components_cmd_pane:send_text("fish\n")
+  ui_components_cmd_pane:send_text("cls\n")
 
   ui_components_editor_pane:send_text("fish\n")
+  ui_components_editor_pane:send_text("cls\n")
 	ui_components_editor_pane:send_text("nvim\n")
 
   -- ops-tools
@@ -327,8 +346,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   ops_tools_cmd_pane:send_text("fish\n")
+  ops_tools_cmd_pane:send_text("cls\n")
 
   ops_tools_editor_pane:send_text("fish\n")
+  ops_tools_editor_pane:send_text("cls\n")
 	ops_tools_editor_pane:send_text("nvim\n")
 
   -- devdocs
@@ -346,8 +367,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   devdocs_cmd_pane:send_text("fish\n")
+  devdocs_cmd_pane:send_text("cls\n")
 
   devdocs_editor_pane:send_text("fish\n")
+  devdocs_editor_pane:send_text("cls\n")
 	devdocs_editor_pane:send_text("nvim\n")
 
   -- keetman
@@ -365,8 +388,10 @@ wezterm.on("gui-startup", function(cmd)
 	})
 
   keetman_cmd_pane:send_text("fish\n")
+  keetman_cmd_pane:send_text("cls\n")
 
   keetman_editor_pane:send_text("fish\n")
+  keetman_editor_pane:send_text("cls\n")
 	keetman_editor_pane:send_text("nvim\n")
 
 	-- We want to startup in the coding workspace
