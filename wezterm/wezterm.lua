@@ -91,13 +91,15 @@ config.scrollback_lines = 10000
 config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
---TODO: Add local:env startup cmds
 --TODO: Create `create_mobile_workspace` function
 --TODO: Create `create_api_workspace` function
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
+  local env = "docker"
 	if cmd then
-		args = cmd.args
+    if cmd.args[1] == "local" then
+      env = cmd.args[1]
+    end
 	end
 
 	local project_dir = wezterm.home_dir .. "/projects"
@@ -137,6 +139,7 @@ wezterm.on("gui-startup", function(cmd)
 
   local function create_fe_workspace(name, dir)
     local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
+    cmd_pane:send_text("yarn env:" .. env .. "\n")
     cmd_pane:send_text("yarn start\n")
   end
 
