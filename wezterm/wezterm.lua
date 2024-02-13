@@ -95,11 +95,15 @@ config.window_close_confirmation = "NeverPrompt"
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
   local env = "docker"
-	if cmd then
-    if cmd.args[1] == "local" then
-      env = cmd.args[1]
-    end
+  local client = "keet"
+
+	if cmd.args[1] then
+    env = cmd.args[1]
 	end
+
+  if cmd.args[2] then
+    client = cmd.args[2]
+  end
 
 	local project_dir = wezterm.home_dir .. "/projects"
 
@@ -140,6 +144,12 @@ wezterm.on("gui-startup", function(cmd)
     cmd_pane:send_text("yarn start\n")
   end
 
+  local function create_patient_workspace(name, dir)
+    local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
+    cmd_pane:send_text("yarn env:" .. client .. ":" .. env .. "\n")
+    -- no autostart here because it shares port with other apps
+  end
+
   local function create_api_workspace(name, dir)
     local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
     local stack_tab, stack_pane, stack_window = window:spawn_tab({
@@ -152,7 +162,6 @@ wezterm.on("gui-startup", function(cmd)
     stack_pane:send_text("ahoy up\n")
   end
 
-  create_workspace("dotfiles", project_dir .. "/dotfiles")
   -- fe workspaces
   create_fe_workspace("admin", project_dir .. "/keet-admin")
   create_fe_workspace("pt", project_dir .. "/keet-umi")
@@ -160,8 +169,12 @@ wezterm.on("gui-startup", function(cmd)
   -- api workspace
   create_api_workspace("api", project_dir .. "/keet-api")
   create_workspace("auth", project_dir .. "/keet-auth")
-  create_workspace("patient", project_dir .. "/keet-patient")
+  -- patient web
+  create_patient_workspace("patient", project_dir .. "/keet-patient")
+  --patient mobile
   create_workspace("mobile", project_dir .. "/keet-mobile")
+  -- general
+  create_workspace("dotfiles", project_dir .. "/dotfiles")
   create_workspace("auth client", project_dir .. "/keet-auth-client")
   create_workspace("api client", project_dir .. "/keet-api-client")
   create_workspace("ui components", project_dir .. "/ui-components")
