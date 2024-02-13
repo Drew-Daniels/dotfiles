@@ -129,8 +129,6 @@ wezterm.on("gui-startup", function(cmd)
     fishify_pane(editor_pane)
     fishify_pane(git_pane)
 
-    editor_pane:send_text("fish\n")
-    editor_pane:send_text("cls\n")
     editor_pane:send_text("nvim\n")
     return tab, cmd_pane, editor_pane, window
   end
