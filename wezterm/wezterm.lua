@@ -72,6 +72,13 @@ config.keys = {
 			flags = "FUZZY|WORKSPACES",
 		}),
 	},
+  -- have to set this separately from config.window_close_confirmation
+  -- https://wezfurlong.org/wezterm/config/lua/config/window_close_confirmation.html
+	{
+		key = "w",
+		mods = "CMD",
+		action = wezterm.action.CloseCurrentTab({ confirm = false }),
+	},
 }
 
 -- apply smart_splits defaults
@@ -81,7 +88,10 @@ config.color_scheme = "Gruvbox Material (Gogh)"
 -- history
 config.scrollback_lines = 10000
 
+config.window_close_confirmation = "NeverPrompt"
+
 -- WORKSPACES
+--TODO: determine how to get default_args to work when starting wezterm by clicking on the application icon
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
 	local default_args = { "fish" }
@@ -95,7 +105,7 @@ wezterm.on("gui-startup", function(cmd)
 
 	-- dotfiles
 	local dotfiles_dir = project_dir .. "/dotfiles"
-	local tab, dotfiles_cmd_pane, window = mux.spawn_window({
+	local tab, dotfiles_cmd_pane, dotfiles_window = mux.spawn_window({
 		workspace = "dotfiles",
 		cwd = dotfiles_dir,
 		args = args,
@@ -109,12 +119,200 @@ wezterm.on("gui-startup", function(cmd)
 
 	dotfiles_editor_pane:send_text("nvim\n")
 
-	-- members-only-client
-	local tab, editor_pane, window = mux.spawn_window({
-		workspace = "members-only-client",
-		cwd = project_dir .. "/members-only-client",
+	-- admin
+	local admin_dir = project_dir .. "/keet-admin"
+	local tab, admin_cmd_pane, admin_window = mux.spawn_window({
+		workspace = "admin",
+		cwd = admin_dir,
 		args = args,
 	})
+	local admin_editor_pane = admin_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = admin_dir,
+		args = args,
+	})
+	admin_editor_pane:send_text("nvim\n")
+
+	-- pt
+	local pt_dir = project_dir .. "/keet-umi"
+	local tab, pt_cmd_pane, pt_window = mux.spawn_window({
+		workspace = "pt",
+		cwd = pt_dir,
+		args = args,
+	})
+	local pt_editor_pane = pt_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = pt_dir,
+		args = args,
+	})
+	pt_editor_pane:send_text("nvim\n")
+
+  -- embedded
+	local embedded_dir = project_dir .. "/keet-embedded"
+	local tab, embedded_cmd_pane, embedded_window = mux.spawn_window({
+		workspace = "embedded",
+		cwd = embedded_dir,
+		args = args,
+	})
+	local embedded_editor_pane = embedded_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = embedded_dir,
+		args = args,
+	})
+	embedded_editor_pane:send_text("nvim\n")
+
+  -- api
+	local api_dir = project_dir .. "/keet-api"
+	local tab, api_cmd_pane, api_window = mux.spawn_window({
+		workspace = "api",
+		cwd = api_dir,
+		args = args,
+	})
+	local api_editor_pane = api_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = api_dir,
+		args = args,
+	})
+	api_editor_pane:send_text("nvim\n")
+
+  -- auth
+	local auth_dir = project_dir .. "/keet-auth"
+	local tab, auth_cmd_pane, auth_window = mux.spawn_window({
+		workspace = "auth",
+		cwd = auth_dir,
+		args = args,
+	})
+	local auth_editor_pane = auth_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = auth_dir,
+		args = args,
+	})
+	auth_editor_pane:send_text("nvim\n")
+
+  -- patient
+	local patient_dir = project_dir .. "/keet-patient"
+	local tab, patient_cmd_pane, patient_window = mux.spawn_window({
+		workspace = "patient",
+		cwd = patient_dir,
+		args = args,
+	})
+	local patient_editor_pane = patient_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = patient_dir,
+		args = args,
+	})
+	patient_editor_pane:send_text("nvim\n")
+
+  -- mobile
+	local mobile_dir = project_dir .. "/keet-mobile"
+	local tab, mobile_cmd_pane, mobile_window = mux.spawn_window({
+		workspace = "mobile",
+		cwd = mobile_dir,
+		args = args,
+	})
+	local mobile_editor_pane = mobile_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = mobile_dir,
+		args = args,
+	})
+	mobile_editor_pane:send_text("nvim\n")
+
+  -- auth-client
+	local auth_client_dir = project_dir .. "/keet-auth-client"
+	local tab, auth_client_cmd_pane, auth_client_window = mux.spawn_window({
+		workspace = "auth client",
+		cwd = auth_client_dir,
+		args = args,
+	})
+	local auth_client_editor_pane = auth_client_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = auth_client_dir,
+		args = args,
+	})
+	auth_client_editor_pane:send_text("nvim\n")
+
+  -- api-client
+	local api_client_dir = project_dir .. "/keet-api-client"
+	local tab, api_client_cmd_pane, api_client_window = mux.spawn_window({
+		workspace = "api client",
+		cwd = api_client_dir,
+		args = args,
+	})
+	local api_client_editor_pane = api_client_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = api_client_dir,
+		args = args,
+	})
+	api_client_editor_pane:send_text("nvim\n")
+
+  -- ui-components
+	local ui_components_dir = project_dir .. "/ui-components"
+	local tab, ui_components_cmd_pane, ui_components_window = mux.spawn_window({
+		workspace = "ui components",
+		cwd = ui_components_dir,
+		args = args,
+	})
+	local ui_components_editor_pane = ui_components_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = ui_components_dir,
+		args = args,
+	})
+	ui_components_editor_pane:send_text("nvim\n")
+
+  -- ops-tools
+	local ops_tools_dir = project_dir .. "/ops-tools"
+	local tab, ops_tools_cmd_pane, ops_tools_window = mux.spawn_window({
+		workspace = "ops tools",
+		cwd = ops_tools_dir,
+		args = args,
+	})
+	local ops_tools_editor_pane = ops_tools_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = ops_tools_dir,
+		args = args,
+	})
+	ops_tools_editor_pane:send_text("nvim\n")
+
+  -- devdocs
+	local devdocs_dir = project_dir .. "/devDocs"
+	local tab, devdocs_cmd_pane, devdocs_window = mux.spawn_window({
+		workspace = "devdocs",
+		cwd = devdocs_dir,
+		args = args,
+	})
+	local devdocs_editor_pane = devdocs_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = devdocs_dir,
+		args = args,
+	})
+	devdocs_editor_pane:send_text("nvim\n")
+
+  -- keetman
+	local keetman_dir = project_dir .. "/keetman"
+	local tab, keetman_cmd_pane, keetman_window = mux.spawn_window({
+		workspace = "keetman",
+		cwd = keetman_dir,
+		args = args,
+	})
+	local keetman_editor_pane = keetman_cmd_pane:split({
+		direction = "Top",
+		size = 0.6,
+		cwd = keetman_dir,
+		args = args,
+	})
+	keetman_editor_pane:send_text("nvim\n")
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
