@@ -115,20 +115,20 @@ wezterm.on("gui-startup", function(cmd)
   end
 
   local function create_editor_workspace(name, dir)
-    local tab, cmd_pane, window = mux.spawn_window({
+    local tab, editor_pane, window = mux.spawn_window({
       workspace = name,
       cwd = dir,
       args = args,
     })
-    fishify_pane(cmd_pane)
-    return tab, cmd_pane, window
+    fishify_pane(editor_pane)
+    return tab, editor_pane, window
   end
 
   local function create_workspace(name, dir)
-    local tab, cmd_pane, window = create_editor_workspace(name, dir)
-    local editor_pane = cmd_pane:split({
-      direction = "Top",
-      size = 0.6,
+    local tab, editor_pane, window = create_editor_workspace(name, dir)
+    local cmd_pane = editor_pane:split({
+      direction = "Bottom",
+      size = 0.3,
       cwd = dir,
       args = args,
     })
