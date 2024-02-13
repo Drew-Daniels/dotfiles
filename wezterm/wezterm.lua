@@ -142,13 +142,13 @@ wezterm.on("gui-startup", function(cmd)
 
   local function create_api_workspace(name, dir)
     local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-    local stack_tab, stack_pane, stack_window = mux.spawn_window({
-      workspace = name,
+    local stack_tab, stack_pane, stack_window = window:spawn_tab({
       cwd = dir,
       args = args,
     })
-    stack_pane:send_text("fish\n")
-    stack_pane:send_text("cls\n")
+    local tabs = window:tabs()
+    tabs[1]:activate()
+    fishify_pane(stack_pane)
     stack_pane:send_text("ahoy up\n")
   end
 
