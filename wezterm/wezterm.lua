@@ -114,7 +114,7 @@ wezterm.on("gui-startup", function(cmd)
     pane:send_text("cls\n")
   end
 
-  local function create_bare_workspace(name, dir)
+  local function create_editor_workspace(name, dir)
     local tab, cmd_pane, editor_pane, window = mux.spawn_window({
       workspace = name,
       cwd = dir,
@@ -125,7 +125,7 @@ wezterm.on("gui-startup", function(cmd)
   end
 
   local function create_workspace(name, dir)
-    local tab, cmd_pane, window = create_bare_workspace(name, dir)
+    local tab, cmd_pane, window = create_editor_workspace(name, dir)
     local editor_pane = cmd_pane:split({
       direction = "Top",
       size = 0.6,
@@ -190,7 +190,7 @@ wezterm.on("gui-startup", function(cmd)
   create_workspace("ops tools", project_dir .. "/ops-tools")
   create_workspace("devdocs", project_dir .. "/devDocs")
   create_workspace("keetman", project_dir .. "/keetman")
-  create_bare_workspace("work notes", project_dir .. "/work_notes")
+  create_editor_workspace("work notes", project_dir .. "/work_notes")
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
