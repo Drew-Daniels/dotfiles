@@ -91,9 +91,6 @@ config.scrollback_lines = 10000
 config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
---TODO: determine how to get default_args to work when starting wezterm by clicking on the application icon
---TODO: Add another cmd window to all workspaces
---TODO: Figure out how to close all workspaces with keybinding
 --TODO: Add local:env startup cmds
 --TODO: Add yarn start cmds
 wezterm.on("gui-startup", function(cmd)
