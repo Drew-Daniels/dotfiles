@@ -114,13 +114,18 @@ wezterm.on("gui-startup", function(cmd)
     pane:send_text("cls\n")
   end
 
+  local function edify_pane(pane)
+    fishify_pane(pane)
+    pane:send_text("nvim\n")
+  end
+
   local function create_editor_workspace(name, dir)
     local tab, editor_pane, window = mux.spawn_window({
       workspace = name,
       cwd = dir,
       args = args,
     })
-    fishify_pane(editor_pane)
+    edify_pane(editor_pane)
     return tab, editor_pane, window
   end
 
@@ -138,10 +143,8 @@ wezterm.on("gui-startup", function(cmd)
     })
 
     fishify_pane(cmd_pane)
-    fishify_pane(editor_pane)
     fishify_pane(git_pane)
 
-    editor_pane:send_text("nvim\n")
     editor_pane:activate()
     return tab, cmd_pane, editor_pane, window
   end
