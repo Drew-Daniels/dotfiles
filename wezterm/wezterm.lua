@@ -111,18 +111,18 @@ config.window_close_confirmation = "NeverPrompt"
 wezterm.on("gui-startup", function()
 	local project_dir = wezterm.home_dir .. "/projects"
 
-  local function cmd(pane, text)
-    pane:send_text(text .. "\n")
-  end
+	local function cmd(pane, text)
+		pane:send_text(text .. "\n")
+	end
 
 	local function fishify_pane(pane)
-    cmd(pane, "fish")
-    cmd(pane, "cls")
+		cmd(pane, "fish")
+		cmd(pane, "cls")
 	end
 
 	local function edify_pane(pane)
 		fishify_pane(pane)
-    cmd(pane, "nvim")
+		cmd(pane, "nvim")
 	end
 
 	local function create_editor_workspace(name, dir)
@@ -134,20 +134,20 @@ wezterm.on("gui-startup", function()
 		return tab, editor_pane, window
 	end
 
-  local function create_cmd_workspace(name, dir)
-    local tab, cmd_pane, window = mux.spawn_window({
-      workspace = name,
-      cwd = dir,
-    })
-    local du_tab, du_pane, du_window = window:spawn_tab({
-      cwd = dir,
-    })
-    fishify_pane(cmd_pane)
-    cmd(cmd_pane, "btm")
-    cmd_pane:activate()
+	local function create_cmd_workspace(name, dir)
+		local tab, cmd_pane, window = mux.spawn_window({
+			workspace = name,
+			cwd = dir,
+		})
+		local du_tab, du_pane, du_window = window:spawn_tab({
+			cwd = dir,
+		})
+		fishify_pane(cmd_pane)
+		cmd(cmd_pane, "btm")
+		cmd_pane:activate()
 
-    cmd(du_pane, "dust")
-  end
+		cmd(du_pane, "dust")
+	end
 
 	local function create_workspace(name, dir)
 		local tab, editor_pane, window = create_editor_workspace(name, dir)
@@ -169,13 +169,13 @@ wezterm.on("gui-startup", function()
 
 	local function create_fe_workspace(name, dir)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-    cmd(cmd_pane, "yarn env:" .. settings.env)
-    cmd(cmd_pane, "yarn start")
+		cmd(cmd_pane, "yarn env:" .. settings.env)
+		cmd(cmd_pane, "yarn start")
 	end
 
 	local function create_patient_workspace(name, dir)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-    cmd(cmd_pane, "yarn env:" .. settings.client .. ":" .. settings.env)
+		cmd(cmd_pane, "yarn env:" .. settings.client .. ":" .. settings.env)
 		-- no autostart here because it shares port with other apps
 	end
 
@@ -187,7 +187,7 @@ wezterm.on("gui-startup", function()
 		local tabs = window:tabs()
 		tabs[1]:activate()
 		fishify_pane(stack_pane)
-    cmd(stack_pane, "ahoy up")
+		cmd(stack_pane, "ahoy up")
 	end
 
 	if settings.comp == "work" then
@@ -212,8 +212,8 @@ wezterm.on("gui-startup", function()
 		create_editor_workspace("work notes", project_dir .. "/work_notes")
 	end
 
-  create_workspace("dotfiles", project_dir .. "/dotfiles")
-  create_cmd_workspace("monitoring", project_dir)
+	create_workspace("dotfiles", project_dir .. "/dotfiles")
+	create_cmd_workspace("monitoring", project_dir)
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
