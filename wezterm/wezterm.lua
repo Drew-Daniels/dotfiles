@@ -153,7 +153,7 @@ wezterm.on("gui-startup", function()
 		local tab, editor_pane, window = create_editor_workspace(name, dir)
 		local cmd_pane = editor_pane:split({
 			direction = "Bottom",
-			size = 0.3,
+			size = 0.4,
 			cwd = dir,
 		})
 		local git_pane = cmd_pane:split({
