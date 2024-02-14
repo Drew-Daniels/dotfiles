@@ -108,18 +108,21 @@ config.window_close_confirmation = "NeverPrompt"
 -- WORKSPACES
 --TODO: Move this into a separate file?
 --TODO: Create `create_mobile_workspace` function
---TODO: Create helper function for sending text to panes
 wezterm.on("gui-startup", function()
 	local project_dir = wezterm.home_dir .. "/projects"
 
+  local function cmd(pane, text)
+    pane:send_text(text .. "\n")
+  end
+
 	local function fishify_pane(pane)
-		pane:send_text("fish\n")
-		pane:send_text("cls\n")
+    cmd(pane, "fish")
+    cmd(pane, "cls")
 	end
 
 	local function edify_pane(pane)
 		fishify_pane(pane)
-		pane:send_text("nvim\n")
+    cmd(pane, "nvim")
 	end
 
 	local function create_editor_workspace(name, dir)
@@ -140,10 +143,10 @@ wezterm.on("gui-startup", function()
       cwd = dir,
     })
     fishify_pane(cmd_pane)
-    cmd_pane:send_text("btm\n")
+    cmd(cmd_pane, "btm")
     cmd_pane:activate()
 
-    du_pane:send_text("dust\n")
+    cmd(du_pane, "dust")
   end
 
 	local function create_workspace(name, dir)
@@ -166,13 +169,13 @@ wezterm.on("gui-startup", function()
 
 	local function create_fe_workspace(name, dir)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-		cmd_pane:send_text("yarn env:" .. settings.env .. "\n")
-		cmd_pane:send_text("yarn start\n")
+    cmd(cmd_pane, "yarn env:" .. settings.env)
+    cmd(cmd_pane, "yarn start")
 	end
 
 	local function create_patient_workspace(name, dir)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-		cmd_pane:send_text("yarn env:" .. settings.client .. ":" .. settings.env .. "\n")
+    cmd(cmd_pane, "yarn env:" .. settings.client .. ":" .. settings.env)
 		-- no autostart here because it shares port with other apps
 	end
 
@@ -184,7 +187,7 @@ wezterm.on("gui-startup", function()
 		local tabs = window:tabs()
 		tabs[1]:activate()
 		fishify_pane(stack_pane)
-		stack_pane:send_text("ahoy up\n")
+    cmd(stack_pane, "ahoy up")
 	end
 
 	if settings.comp == "work" then
