@@ -106,6 +106,7 @@ config.scrollback_lines = 10000
 config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
+--TODO: Move this into a separate file?
 --TODO: Create `create_mobile_workspace` function
 wezterm.on("gui-startup", function()
 	local project_dir = wezterm.home_dir .. "/projects"
@@ -128,6 +129,15 @@ wezterm.on("gui-startup", function()
 		edify_pane(editor_pane)
 		return tab, editor_pane, window
 	end
+
+  local function create_cmd_workspace(name, dir)
+    local tab, cmd_pane, window = mux.spawn_window({
+      workspace = name,
+      cwd = dir,
+    })
+    fishify_pane(cmd_pane)
+    cmd_pane:send_text("btm\n")
+  end
 
 	local function create_workspace(name, dir)
 		local tab, editor_pane, window = create_editor_workspace(name, dir)
@@ -193,6 +203,7 @@ wezterm.on("gui-startup", function()
 	end
 
   create_workspace("dotfiles", project_dir .. "/dotfiles")
+  create_cmd_workspace("monitoring", project_dir)
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
