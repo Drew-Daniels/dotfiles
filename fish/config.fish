@@ -93,4 +93,10 @@ if status is-interactive
     
     # kitten
     alias d="kitten diff"
+
+    # wezterm
+    alias upgrade_wezterm "brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
+
+    # neovim
+    alias upgrade_nvim "brew upgrade nvim --fetch-HEAD"
 end

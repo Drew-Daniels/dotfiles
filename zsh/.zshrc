@@ -151,5 +151,7 @@ else
 fi
 
 # wezterm
-alias wwd="wezterm start -- work docker keet"
-alias wwl="wezterm start -- work local keet"
+alias upgrade_wezterm="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
+
+# neovim
+alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
