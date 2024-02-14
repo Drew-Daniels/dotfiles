@@ -3,6 +3,8 @@ local act = wezterm.action
 local mux = wezterm.mux
 local config = wezterm.config_builder()
 
+local settings = require("settings")
+
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 -- you can put the rest of your Wezterm config here
 
@@ -105,26 +107,7 @@ config.window_close_confirmation = "NeverPrompt"
 
 -- WORKSPACES
 --TODO: Create `create_mobile_workspace` function
-wezterm.on("gui-startup", function(cmd)
-	local args = {}
-	local comp = "home"
-	local env = "docker"
-	local client = "keet"
-
-	if cmd then
-		if cmd.args[1] then
-			comp = cmd.args[1]
-		end
-
-		if cmd.args[2] then
-			env = cmd.args[2]
-		end
-
-		if cmd.args[2] then
-			client = cmd.args[2]
-		end
-	end
-
+wezterm.on("gui-startup", function()
 	local project_dir = wezterm.home_dir .. "/projects"
 
 	local function fishify_pane(pane)
@@ -141,7 +124,6 @@ wezterm.on("gui-startup", function(cmd)
 		local tab, editor_pane, window = mux.spawn_window({
 			workspace = name,
 			cwd = dir,
-			args = args,
 		})
 		edify_pane(editor_pane)
 		return tab, editor_pane, window
@@ -153,11 +135,9 @@ wezterm.on("gui-startup", function(cmd)
 			direction = "Bottom",
 			size = 0.3,
 			cwd = dir,
-			args = args,
 		})
 		local git_pane = cmd_pane:split({
 			cwd = dir,
-			args = args,
 		})
 
 		fishify_pane(cmd_pane)
@@ -169,13 +149,13 @@ wezterm.on("gui-startup", function(cmd)
 
 	local function create_fe_workspace(name, dir)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-		cmd_pane:send_text("yarn env:" .. env .. "\n")
+		cmd_pane:send_text("yarn env:" .. settings.env .. "\n")
 		cmd_pane:send_text("yarn start\n")
 	end
 
 	local function create_patient_workspace(name, dir)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
-		cmd_pane:send_text("yarn env:" .. client .. ":" .. env .. "\n")
+		cmd_pane:send_text("yarn env:" .. settings.client .. ":" .. settings.env .. "\n")
 		-- no autostart here because it shares port with other apps
 	end
 
@@ -183,7 +163,6 @@ wezterm.on("gui-startup", function(cmd)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
 		local stack_tab, stack_pane, stack_window = window:spawn_tab({
 			cwd = dir,
-			args = args,
 		})
 		local tabs = window:tabs()
 		tabs[1]:activate()
@@ -191,7 +170,7 @@ wezterm.on("gui-startup", function(cmd)
 		stack_pane:send_text("ahoy up\n")
 	end
 
-	if comp == "work" then
+	if settings.comp == "work" then
 		-- fe workspaces
 		create_fe_workspace("admin", project_dir .. "/keet-admin")
 		create_fe_workspace("pt", project_dir .. "/keet-umi")

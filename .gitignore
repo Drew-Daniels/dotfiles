@@ -21,3 +21,4 @@ secrets
 nnn/.lastd
 .android
 *.bak
+wezterm/settings.lua
