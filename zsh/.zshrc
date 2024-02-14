@@ -149,3 +149,7 @@ if [[ $TERM == "xterm-kitty" ]]; then
 else
   :
 fi
+
+# wezterm
+alias wwd="wezterm start -- work docker keet"
+alias wwl="wezterm start -- work local keet"

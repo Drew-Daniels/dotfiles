@@ -107,12 +107,17 @@ config.window_close_confirmation = "NeverPrompt"
 --TODO: Create `create_mobile_workspace` function
 wezterm.on("gui-startup", function(cmd)
 	local args = {}
+	local comp = "home"
 	local env = "docker"
 	local client = "keet"
 
 	if cmd then
 		if cmd.args[1] then
-			env = cmd.args[1]
+			comp = cmd.args[1]
+		end
+
+		if cmd.args[2] then
+			env = cmd.args[2]
 		end
 
 		if cmd.args[2] then
@@ -186,26 +191,29 @@ wezterm.on("gui-startup", function(cmd)
 		stack_pane:send_text("ahoy up\n")
 	end
 
-	-- fe workspaces
-	create_fe_workspace("admin", project_dir .. "/keet-admin")
-	create_fe_workspace("pt", project_dir .. "/keet-umi")
-	create_fe_workspace("embedded", project_dir .. "/keet-embedded")
-	-- api workspace
-	create_api_workspace("api", project_dir .. "/keet-api")
-	create_workspace("auth", project_dir .. "/keet-auth")
-	-- patient web
-	create_patient_workspace("patient", project_dir .. "/keet-patient")
-	--patient mobile
-	create_workspace("mobile", project_dir .. "/keet-mobile")
-	-- general
-	create_workspace("dotfiles", project_dir .. "/dotfiles")
-	create_workspace("auth client", project_dir .. "/keet-auth-client")
-	create_workspace("api client", project_dir .. "/keet-api-client")
-	create_workspace("ui components", project_dir .. "/ui-components")
-	create_workspace("ops tools", project_dir .. "/ops-tools")
-	create_workspace("devdocs", project_dir .. "/devDocs")
-	create_workspace("keetman", project_dir .. "/keetman")
-	create_editor_workspace("work notes", project_dir .. "/work_notes")
+	if comp == "work" then
+		-- fe workspaces
+		create_fe_workspace("admin", project_dir .. "/keet-admin")
+		create_fe_workspace("pt", project_dir .. "/keet-umi")
+		create_fe_workspace("embedded", project_dir .. "/keet-embedded")
+		-- api workspace
+		create_api_workspace("api", project_dir .. "/keet-api")
+		create_workspace("auth", project_dir .. "/keet-auth")
+		-- patient web
+		create_patient_workspace("patient", project_dir .. "/keet-patient")
+		--patient mobile
+		create_workspace("mobile", project_dir .. "/keet-mobile")
+		-- general
+		create_workspace("auth client", project_dir .. "/keet-auth-client")
+		create_workspace("api client", project_dir .. "/keet-api-client")
+		create_workspace("ui components", project_dir .. "/ui-components")
+		create_workspace("ops tools", project_dir .. "/ops-tools")
+		create_workspace("devdocs", project_dir .. "/devDocs")
+		create_workspace("keetman", project_dir .. "/keetman")
+		create_editor_workspace("work notes", project_dir .. "/work_notes")
+	end
+
+  create_workspace("dotfiles", project_dir .. "/dotfiles")
 
 	-- We want to startup in the coding workspace
 	mux.set_active_workspace("dotfiles")
