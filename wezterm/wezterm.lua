@@ -108,6 +108,7 @@ config.window_close_confirmation = "NeverPrompt"
 -- WORKSPACES
 --TODO: Move this into a separate file?
 --TODO: Create `create_mobile_workspace` function
+--TODO: Create helper function for sending text to panes
 wezterm.on("gui-startup", function()
 	local project_dir = wezterm.home_dir .. "/projects"
 
@@ -135,8 +136,14 @@ wezterm.on("gui-startup", function()
       workspace = name,
       cwd = dir,
     })
+    local du_tab, du_pane, du_window = window:spawn_tab({
+      cwd = dir,
+    })
     fishify_pane(cmd_pane)
     cmd_pane:send_text("btm\n")
+    cmd_pane:activate()
+
+    du_pane:send_text("dust\n")
   end
 
 	local function create_workspace(name, dir)
