@@ -90,7 +90,7 @@ if status is-interactive
     [ -f $XDG_CONFIG_HOME/tabtab/fish/__tabtab.fish ]; and . $XDG_CONFIG_HOME/tabtab/fish/__tabtab.fish; or true
 
     alias pn="pnpm"
-    
+
     # kitten
     alias d="kitten diff"
 
@@ -99,4 +99,14 @@ if status is-interactive
 
     # neovim
     alias upgrade_nvim "brew upgrade nvim --fetch-HEAD"
+
+    # yazi
+    function ya
+        set tmp (mktemp -t "yazi-cwd.XXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+    end
 end

@@ -3,7 +3,7 @@
 export XDG_CONFIG_HOME=~/projects/dotfiles
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+	git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 COLOR_DEF='%f'
 COLOR_USR='%F{243}'
@@ -74,9 +74,8 @@ PATH="/usr/local/sbin:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # homebrew shell completion
-if type brew &>/dev/null
-then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+if type brew &>/dev/null; then
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 # brew curl shell completion
@@ -121,7 +120,7 @@ alias pb="prettybat"
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat
+	git diff --name-only --relative --diff-filter=d | xargs bat
 }
 # lsd
 alias ls="lsd"
@@ -145,9 +144,9 @@ export CONFIG_DIR="$XDG_CONFIG_HOME/sketchybar"
 # kitty
 alias d="kitten diff"
 if [[ $TERM == "xterm-kitty" ]]; then
-  fish
+	fish
 else
-  :
+	:
 fi
 
 # wezterm
@@ -155,3 +154,13 @@ alias upgrade_wezterm="brew upgrade --cask wezterm-nightly --no-quarantine --gre
 
 # neovim
 alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
+
+# yazi
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
