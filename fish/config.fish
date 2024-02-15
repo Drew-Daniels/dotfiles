@@ -109,4 +109,6 @@ if status is-interactive
         end
         rm -f -- "$tmp"
     end
+
+    set gx YAZI_CONFIG_HOME "$XDG_CONFIG_HOME/yazi"
 end

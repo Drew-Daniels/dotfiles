@@ -164,3 +164,5 @@ function ya() {
 	fi
 	rm -f -- "$tmp"
 }
+
+export YAZI_CONFIG_HOME="$XDG_CONFIG_HOME/yazi"
