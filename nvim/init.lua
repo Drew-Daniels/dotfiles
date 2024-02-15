@@ -19,7 +19,6 @@ end
 -- things are installed in one place.
 local options = {
 	ensure_installed = {
-		"beautysh",
 		"bash-language-server",
 		"css-lsp",
 		"cssmodules-language-server",
@@ -558,6 +557,7 @@ require("conform").setup({
 		css = { "prettier" },
 		less = { "prettier" },
 		scss = { "prettier" },
+    zsh = { "shfmt" },
 	},
 })
 
