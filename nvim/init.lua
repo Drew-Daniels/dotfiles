@@ -20,6 +20,8 @@ end
 local options = {
 	ensure_installed = {
 		"bash-language-server",
+    "clangd",
+    "clang-format",
 		"css-lsp",
 		"cssmodules-language-server",
 		"cucumber-language-server",
@@ -548,6 +550,7 @@ require("lualine").setup({
 -- https://github.com/stevearc/conform.nvim
 require("conform").setup({
 	formatters_by_ft = {
+    c = { "clang-format" },
 		lua = { "stylua" },
 		html = { "htmlbeautifier" },
 		eruby = { "htmlbeaufifier" },
