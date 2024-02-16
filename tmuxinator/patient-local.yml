@@ -14,9 +14,9 @@ windows:
         - devserver:
           - fish
           - cls
-          - yarn env:keet:local
-          - yarn
-          - yarn start
+          - pnpm env:keet:local
+          - pnpm i
+          - pnpm start
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish

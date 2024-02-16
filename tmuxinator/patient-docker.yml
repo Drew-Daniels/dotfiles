@@ -15,10 +15,10 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          - yarn env:keet:docker
+          - pnpm env:keet:docker
           - <%= ENV["EXPORT_E2E_CREDS_SCRIPT"] %> patient
-          - yarn
-          - yarn start
+          - pnpm i
+          - pnpm start
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
