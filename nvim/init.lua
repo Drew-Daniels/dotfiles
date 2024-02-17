@@ -1205,8 +1205,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close({})
 end
 
-vim.keymap.set("n", "<leader>ui", require("dapui").toggle)
-
 -- SMART-SPLITS.NVIM
 -- https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file
 require("smart-splits").setup({
