@@ -5,10 +5,10 @@ local get_visual = helpers.get_visual
 
 return {
 	s(
-		"kv",
+		"bk",
 		fmta([[{ <> }]], {
       i(1),
-		}, { desc = "Key Value" })
+		}, { desc = "Block" })
 	),
 	s(
 		"ls",
