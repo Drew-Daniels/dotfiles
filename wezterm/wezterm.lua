@@ -6,12 +6,9 @@ local config = wezterm.config_builder()
 local settings = require("settings")
 
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
--- you can put the rest of your Wezterm config here
 
--- KEY BINDINGS
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	-- splitting
 	{
 		mods = "LEADER",
 		key = "_",
@@ -22,7 +19,6 @@ config.keys = {
 		key = "|",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-	-- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
 	{
 		key = "a",
 		mods = "LEADER|CTRL",
@@ -37,9 +33,7 @@ config.keys = {
 	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
 	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
 	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-	-- activate pane selection mode with the default alphabet (labels are "a", "s", "d", "f" and so on)
 	{ key = "8", mods = "CTRL", action = act.PaneSelect },
-	-- activate pane selection mode with numeric labels
 	{
 		key = "9",
 		mods = "CTRL",
@@ -47,7 +41,6 @@ config.keys = {
 			alphabet = "1234567890",
 		}),
 	},
-	-- show the pane selection mode, but have it swap the active and selected panes
 	{
 		key = "0",
 		mods = "CTRL",
@@ -55,13 +48,11 @@ config.keys = {
 			mode = "SwapWithActive",
 		}),
 	},
-	-- rotate panes
 	{
 		mods = "LEADER",
 		key = "Space",
 		action = wezterm.action.RotatePanes("Clockwise"),
 	},
-	-- show the pane selection mode, but have it swap the active and selected panes
 	{
 		mods = "LEADER",
 		key = "0",
@@ -69,8 +60,6 @@ config.keys = {
 			mode = "SwapWithActive",
 		}),
 	},
-	-- Show the launcher in fuzzy selection mode and have it list all workspaces
-	-- and allow activating one.
 	{
 		key = "9",
 		mods = "ALT",
@@ -78,26 +67,41 @@ config.keys = {
 			flags = "FUZZY|WORKSPACES",
 		}),
 	},
-	-- have to set this separately from config.window_close_confirmation
-	-- https://wezfurlong.org/wezterm/config/lua/config/window_close_confirmation.html
 	{
 		key = "w",
 		mods = "CMD",
 		action = wezterm.action.CloseCurrentTab({ confirm = false }),
 	},
 	{ key = "U", mods = "CTRL|SHIFT", action = act.AttachDomain("devhost") },
-	-- Detaches the domain associated with the current pane
 	{
 		key = "D",
 		mods = "CTRL|SHIFT",
 		action = act.DetachDomain("CurrentPaneDomain"),
 	},
-	-- Detaches the "devhost" domain
 	{
 		key = "E",
 		mods = "CTRL|SHIFT",
 		action = act.DetachDomain({ DomainName = "devhost" }),
 	},
+	{ key = "n", mods = "LEADER", action = act.SwitchWorkspaceRelative(1) },
+	{ key = "p", mods = "LEADER", action = act.SwitchWorkspaceRelative(-1) },
+	{ key = "n", mods = "SHIFT|CTRL", action = wezterm.action.SpawnWindow },
+	{ key = "F9", mods = "ALT", action = wezterm.action.ShowTabNavigator },
+  {
+    key = 'E',
+    mods = 'CTRL|SHIFT',
+    action = act.PromptInputLine {
+      description = 'Enter new name for tab',
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
+  },
 }
 
 -- apply smart_splits defaults
