@@ -1014,14 +1014,14 @@ wk.register({
 })
 
 wk.register({
-  ["<leader>u"] = {
-    name = "Undotree",
-    t = { "<cmd>UndotreeToggle<cr>", "Toggle" },
-    f = { "<cmd>UndotreeFocus<cr>", "Focus" },
-    s = { "<cmd>UndotreeShow<cr>", "Show" },
-    h = { "<cmd>UndotreeHide<cr>", "Hide" },
-    p = { "<cmd>UndotreePersistUndo<cr>", "PersistUndo" },
-  },
+	["<leader>u"] = {
+		name = "Undotree",
+		t = { "<cmd>UndotreeToggle<cr>", "Toggle" },
+		f = { "<cmd>UndotreeFocus<cr>", "Focus" },
+		s = { "<cmd>UndotreeShow<cr>", "Show" },
+		h = { "<cmd>UndotreeHide<cr>", "Hide" },
+		p = { "<cmd>UndotreePersistUndo<cr>", "PersistUndo" },
+	},
 })
 
 wk.register({
