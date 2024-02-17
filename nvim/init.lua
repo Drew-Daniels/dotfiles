@@ -1310,6 +1310,7 @@ set.scrolloff = 999
 set.hlsearch = false
 set.wildignore = "node_modules/*"
 set.number = true
+set.relativenumber = true
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
 set.termguicolors = true
