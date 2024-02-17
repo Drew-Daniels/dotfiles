@@ -20,8 +20,8 @@ end
 local options = {
 	ensure_installed = {
 		"bash-language-server",
-    "clangd",
-    "clang-format",
+		"clangd",
+		"clang-format",
 		"css-lsp",
 		"cssmodules-language-server",
 		"cucumber-language-server",
@@ -355,6 +355,7 @@ local servers = {
 	"jsonls",
 	"html",
 	"bashls",
+	"clangd",
 	"cssls",
 	"cssmodules_ls",
 	"docker_compose_language_service",
@@ -550,7 +551,7 @@ require("lualine").setup({
 -- https://github.com/stevearc/conform.nvim
 require("conform").setup({
 	formatters_by_ft = {
-    c = { "clang-format" },
+		c = { "clang-format" },
 		lua = { "stylua" },
 		html = { "htmlbeautifier" },
 		eruby = { "htmlbeaufifier" },
@@ -560,7 +561,7 @@ require("conform").setup({
 		css = { "prettier" },
 		less = { "prettier" },
 		scss = { "prettier" },
-    zsh = { "shfmt" },
+		zsh = { "shfmt" },
 	},
 })
 
@@ -1250,8 +1251,8 @@ vim.api.nvim_create_user_command("Standup", function(opts)
 	--TODO: Figure out how to create a SU note for the next Monday if current day is Friday
 	elseif opts.fargs[1] == "tomorrow" then
 		date = os.date("%Y-%m-%d", os.time() + 86400)
-  elseif opts.fargs[1] == "monday" then
-    date = os.date("%Y-%m-%d", os.time() + 86400 * (8 - os.date("%w")))
+	elseif opts.fargs[1] == "monday" then
+		date = os.date("%Y-%m-%d", os.time() + 86400 * (8 - os.date("%w")))
 	else
 		print("Invalid date")
 		return
