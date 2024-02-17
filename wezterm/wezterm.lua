@@ -102,6 +102,23 @@ config.keys = {
 			end),
 		}),
 	},
+	{
+		key = "u",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.CharSelect({
+			copy_on_select = true,
+			copy_to = "ClipboardAndPrimarySelection",
+		}),
+	},
+}
+
+config.mouse_bindings = {
+	-- Ctrl-click will open the link under the mouse cursor
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
 }
 
 -- apply smart_splits defaults
