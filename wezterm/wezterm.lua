@@ -192,10 +192,12 @@ wezterm.on("gui-startup", function()
 		return tab, cmd_pane, editor_pane, window
 	end
 
-	local function create_fe_workspace(name, dir)
+	local function create_fe_workspace(name, dir, no_autostart)
 		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
 		cmd(cmd_pane, "yarn env:" .. settings.env)
-		cmd(cmd_pane, "yarn start")
+    if not no_autostart then
+      cmd(cmd_pane, "yarn start")
+    end
 	end
 
 	local function create_patient_workspace(name, dir)
@@ -215,14 +217,25 @@ wezterm.on("gui-startup", function()
 		cmd(stack_pane, "ahoy up")
 	end
 
+  --TODO: Modularize this
+  local function create_auth_workspace(name, dir)
+		local tab, cmd_pane, editor_pane, window = create_workspace(name, dir)
+		local stack_tab, stack_pane, stack_window = window:spawn_tab({
+			cwd = dir,
+		})
+		local tabs = window:tabs()
+		tabs[1]:activate()
+		fishify_pane(stack_pane)
+  end
+
 	if settings.comp == "work" then
 		-- fe workspaces
 		create_fe_workspace("admin", project_dir .. "/keet-admin")
 		create_fe_workspace("pt", project_dir .. "/keet-umi")
-		create_fe_workspace("embedded", project_dir .. "/keet-embedded")
+		create_fe_workspace("embedded", project_dir .. "/keet-embedded", true)
 		-- api workspace
 		create_api_workspace("api", project_dir .. "/keet-api")
-		create_workspace("auth", project_dir .. "/keet-auth")
+		create_auth_workspace("auth", project_dir .. "/keet-auth")
 		-- patient web
 		create_patient_workspace("patient", project_dir .. "/keet-patient")
 		--patient mobile
