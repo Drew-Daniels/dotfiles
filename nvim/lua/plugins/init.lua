@@ -25,7 +25,6 @@ return require("lazy").setup({
 		end,
 	},
 	{ "mrjones2014/smart-splits.nvim" },
-	{ "fladson/vim-kitty" },
 	{ "mfussenegger/nvim-dap" },
 	{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
