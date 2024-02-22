@@ -214,7 +214,7 @@ wezterm.on("gui-startup", function()
 		local tabs = window:tabs()
 		tabs[1]:activate()
 		fishify_pane(stack_pane)
-		cmd(stack_pane, "ahoy up")
+		-- cmd(stack_pane, "ahoy up")
 	end
 
   --TODO: Modularize this
