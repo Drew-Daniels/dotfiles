@@ -111,4 +111,7 @@ if status is-interactive
     end
 
     set gx YAZI_CONFIG_HOME "$XDG_CONFIG_HOME/yazi"
+    
+    # gitlab
+    alias gll "$XDG_CONFIG_HOME/scripts/gll.sh"
 end
