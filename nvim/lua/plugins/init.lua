@@ -81,10 +81,6 @@ return require("lazy").setup({
 		dependencies = { "rcarriga/nvim-notify", "stevearc/dressing.nvim" },
 	},
 	{
-		"folke/zen-mode.nvim",
-		opts = {},
-	},
-	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},

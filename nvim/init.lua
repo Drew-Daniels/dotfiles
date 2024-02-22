@@ -599,16 +599,6 @@ require("neogen").setup({ snippet_engine = "luasnip" })
 -- https://github.com/stevearc/oil.nvim
 require("oil").setup()
 
--- ZEN-MODE
--- https://github.com/folke/zen-mode.nvim
-require("zen-mode").setup({
-	plugins = {
-		tmux = {
-			enabled = true,
-		},
-	},
-})
-
 -- NVIM-TS-COMMENTSTRING
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ---@diagnostic disable-next-line: missing-parameter
