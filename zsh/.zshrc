@@ -172,3 +172,6 @@ alias gll="$XDG_CONFIG_HOME/scripts/gll.sh"
 
 # neovim can't use aliases in command mode, so making scripts globally available
 export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
+
+# cspell
+alias cspell="cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"

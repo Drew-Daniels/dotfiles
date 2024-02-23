@@ -1,0 +1,7 @@
+words:
+  - Dynatrace
+
+dictionaryDefinitions:
+  - name: "work-words"
+    path: "./work_words.txt"
+    addWords: true

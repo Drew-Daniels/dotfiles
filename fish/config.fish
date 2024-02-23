@@ -117,4 +117,7 @@ if status is-interactive
 
     # neovim can't use aliases in command mode, so making scripts globally available
     fish_add_path "$XDG_CONFIG_HOME/scripts"
+    
+    # cspell
+    alias cspell "cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 end
