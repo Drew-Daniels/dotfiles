@@ -617,6 +617,8 @@ require("notify").setup({
 	render = "compact",
 })
 
+require("telescope").load_extension("notify")
+
 -- TELESCOPE-IMPORT
 -- https://github.com/piersolenski/telescope-import.nvim
 require("telescope").load_extension("import")
