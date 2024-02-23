@@ -114,4 +114,7 @@ if status is-interactive
     
     # gitlab
     alias gll "$XDG_CONFIG_HOME/scripts/gll.sh"
+
+    # neovim can't use aliases in command mode, so making scripts globally available
+    fish_add_path "$XDG_CONFIG_HOME/scripts"
 end

@@ -2,7 +2,7 @@ return {
 	name = "gll",
 	builder = function()
 		return {
-			cmd = { "gll" },
+			cmd = { "gll.sh" },
 			name = "GitLab CI Config Lint",
 		}
 	end,

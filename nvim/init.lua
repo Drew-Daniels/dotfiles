@@ -974,29 +974,29 @@ wk.register({
 })
 
 wk.register({
-  ["<leader>o"] = {
-    name = "Overseer",
-    t = {
-      "<cmd>OverseerToggle<cr>",
-      "Toggle",
-    },
-    c = {
-      "<cmd>OverseerClose<cr>",
-      "Close",
-    },
-    o = {
-      "<cmd>OverseerOpen<cr>",
-      "Open",
-    },
-    i = {
-      "<cmd>OverseerInfo<cr>",
-      "Info",
-    },
-    r = {
-      "<cmd>OverseerRun<cr>",
-      "Run",
-    },
-  },
+	["<leader>o"] = {
+		name = "Overseer",
+		t = {
+			"<cmd>OverseerToggle<cr>",
+			"Toggle",
+		},
+		c = {
+			"<cmd>OverseerClose<cr>",
+			"Close",
+		},
+		o = {
+			"<cmd>OverseerOpen<cr>",
+			"Open",
+		},
+		i = {
+			"<cmd>OverseerInfo<cr>",
+			"Info",
+		},
+		r = {
+			"<cmd>OverseerRun<cr>",
+			"Run",
+		},
+	},
 })
 
 wk.register({
@@ -1314,6 +1314,12 @@ vim.cmd([[
     " Figure out why recursive file pattern like ~/projects/home_notes/**/*.norg doesn't work?
     autocmd BufWritePost ~/projects/home_notes/*.norg silent !git -C ~/projects/home_notes/ add . && git -C ~/projects/home_notes/ commit -m "Update home notes" && git -C ~/projects/home_notes/ push
   augroup END
+]])
+
+-- COPILOT.VIM
+-- https://github.com/github/copilot.vim
+vim.cmd([[
+  let g:copilot_filetypes = { 'norg': v:false }
 ]])
 
 -- GENERAL

@@ -169,3 +169,6 @@ export YAZI_CONFIG_HOME="$XDG_CONFIG_HOME/yazi"
 
 # gitlab
 alias gll="$XDG_CONFIG_HOME/scripts/gll.sh"
+
+# neovim can't use aliases in command mode, so making scripts globally available
+export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
