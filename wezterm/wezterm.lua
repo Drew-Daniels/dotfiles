@@ -168,14 +168,10 @@ wezterm.on("gui-startup", function()
 			workspace = name,
 			cwd = dir,
 		})
-		local du_tab, du_pane, du_window = window:spawn_tab({
-			cwd = dir,
-		})
 		fishify_pane(cmd_pane)
 		cmd(cmd_pane, "btm")
 		cmd_pane:activate()
 
-		cmd(du_pane, "dust")
 	end
 
 	local function create_workspace(name, dir)
