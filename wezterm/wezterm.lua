@@ -145,17 +145,21 @@ wezterm.on("gui-startup", function()
 		cmd(pane, "cls")
 	end
 
-	local function edify_pane(pane)
+	local function edify_pane(pane, startup_cmd)
 		fishify_pane(pane)
-		cmd(pane, "nvim")
+    if startup_cmd then
+      cmd(pane, "nvim -c '" .. startup_cmd .. "'")
+    else
+      cmd(pane, "nvim")
+    end
 	end
 
-	local function create_editor_workspace(name, dir)
+	local function create_editor_workspace(name, dir, startup_cmd)
 		local tab, editor_pane, window = mux.spawn_window({
 			workspace = name,
 			cwd = dir,
 		})
-		edify_pane(editor_pane)
+		edify_pane(editor_pane, startup_cmd)
 		return tab, editor_pane, window
 	end
 
@@ -247,7 +251,7 @@ wezterm.on("gui-startup", function()
 		create_workspace("ops tools", project_dir .. "/ops-tools")
 		create_workspace("devdocs", project_dir .. "/devDocs")
 		create_workspace("keetman", project_dir .. "/keetman")
-		create_editor_workspace("work notes", project_dir .. "/work_notes")
+		create_editor_workspace("work notes", project_dir .. "/work_notes", "Standup today")
 	end
 
 	create_workspace("dotfiles", project_dir .. "/dotfiles")
