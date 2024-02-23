@@ -633,7 +633,9 @@ require("telescope").load_extension("dap")
 
 -- OVERSEER.NVIM
 -- https://github.com/stevearc/overseer.nvim
-require("overseer").setup()
+require("overseer").setup({
+	templates = { "builtin", "gitlab.gll" },
+})
 
 -- WHICH-KEY.NVIM
 -- https://github.com/folke/which-key.nvim
@@ -969,6 +971,32 @@ wk.register({
 			"Generate Type Annotation",
 		},
 	},
+})
+
+wk.register({
+  ["<leader>o"] = {
+    name = "Overseer",
+    t = {
+      "<cmd>OverseerToggle<cr>",
+      "Toggle",
+    },
+    c = {
+      "<cmd>OverseerClose<cr>",
+      "Close",
+    },
+    o = {
+      "<cmd>OverseerOpen<cr>",
+      "Open",
+    },
+    i = {
+      "<cmd>OverseerInfo<cr>",
+      "Info",
+    },
+    r = {
+      "<cmd>OverseerRun<cr>",
+      "Run",
+    },
+  },
 })
 
 wk.register({
@@ -1315,6 +1343,8 @@ set.syntax = "on"
 set.termguicolors = true
 set.virtualedit = "block"
 set.inccommand = "split"
+-- https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
+set.shellcmdflag = "-ic"
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
 vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true })
