@@ -542,7 +542,8 @@ require("lualine").setup({
 		lualine_x = {
 			-- CAPSLOCK.NVIM
 			-- https://github.com/barklan/capslock.nvim
-			{ require("capslock").status_string },
+			-- { require("capslock").status_string },
+			{ "overseer" },
 		},
 	},
 })
