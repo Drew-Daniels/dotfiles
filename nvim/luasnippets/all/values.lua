@@ -7,13 +7,13 @@ return {
 	s(
 		"dq",
 		fmta([["<>"]], {
-      i(1),
+			i(1),
 		}, { desc = "Double-Quoted String" })
 	),
 	s(
 		"sq",
 		fmta([['<>']], {
-      i(1),
+			i(1),
 		}, { desc = "Single-Quoted String" })
 	),
 }

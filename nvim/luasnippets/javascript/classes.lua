@@ -41,7 +41,7 @@ return {
         super(<>)
       ]],
 			{ i(1) },
-      { desc = "Class Super" }
+			{ desc = "Class Super" }
 		)
 	),
 }

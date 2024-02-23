@@ -38,6 +38,7 @@ local options = {
 		"sqlls",
 		"marksman",
 		"tailwindcss-language-server",
+		"typos-lsp",
 		"vim-language-server",
 		"yaml-language-server",
 		"typescript-language-server",
@@ -391,6 +392,11 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+lspconfig.typos_lsp.setup({
+	capabilities = capabilities,
+	filetypes = { "markdown", "norg" },
+})
+
 -- RECOMMENDED 'nvim-lspconfig' SETUP
 -- LUASNIP
 -- https://github.com/L3MON4D3/LuaSnip
@@ -563,6 +569,8 @@ require("conform").setup({
 		less = { "prettier" },
 		scss = { "prettier" },
 		zsh = { "shfmt" },
+		markdown = { "typos-lsp" },
+		norg = { "typos-lsp" },
 	},
 })
 
@@ -1325,8 +1333,13 @@ vim.cmd([[
   let g:copilot_filetypes = { 'norg': v:false }
 ]])
 
+-- TOGGLETERM.NVIM
+-- https://github.com/akinsho/toggleterm.nvim
+require("toggleterm").setup()
+
 -- GENERAL
 local set = vim.opt
+
 -- autoindent new lines
 set.autoindent = true
 -- expands tabs into spaces

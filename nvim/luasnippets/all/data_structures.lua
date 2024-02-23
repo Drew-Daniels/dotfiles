@@ -7,13 +7,13 @@ return {
 	s(
 		"bk",
 		fmta([[{ <> }]], {
-      i(1),
+			i(1),
 		}, { desc = "Block" })
 	),
 	s(
 		"ls",
 		fmta("[ <> ]", {
-      i(1),
+			i(1),
 		}, { desc = "List" })
 	),
 }

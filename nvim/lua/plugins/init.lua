@@ -16,8 +16,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  { "mbbill/undotree" },
-  { "mrjones2014/legendary.nvim", priority = 1000, lazy = false },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{ "mbbill/undotree" },
+	{ "mrjones2014/legendary.nvim", priority = 1000, lazy = false },
 	{
 		"kwkarlwang/bufresize.nvim",
 		config = function()
