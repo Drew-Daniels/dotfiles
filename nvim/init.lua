@@ -897,7 +897,7 @@ wk.register({
 		},
 		w = {
 			"<cmd>Telescope git_stash<cr>",
-			"Work (Stashed)",
+			"WIP (Stashed)",
 		},
 	},
 })
@@ -930,7 +930,7 @@ wk.register({
 wk.register({
 	["<leader>b"] = {
 		name = "Box",
-		mode = { "v", "n" },
+		mode = { "x", "n" },
 		b = { "<Cmd>CBccbox<CR>", "Box Title" },
 		t = { "<Cmd>CBllline<CR>", "Titled Line" },
 		l = { "<Cmd>CBline<CR>", "Simple Line" },
