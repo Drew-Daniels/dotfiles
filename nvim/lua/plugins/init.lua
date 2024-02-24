@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "shumphrey/fugitive-gitlab.vim" },
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-context" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
