@@ -1358,6 +1358,10 @@ vim.cmd([[
 -- https://github.com/akinsho/toggleterm.nvim
 require("toggleterm").setup()
 
+-- NVIM-TREESITTER-CONTEXT
+-- https://github.com/nvim-treesitter/nvim-treesitter-context
+require("treesitter-context").setup()
+
 -- GENERAL
 local set = vim.opt
 
