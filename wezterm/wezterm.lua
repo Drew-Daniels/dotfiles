@@ -250,6 +250,10 @@ wezterm.on("gui-startup", function()
 		create_editor_workspace("work notes", project_dir .. "/work_notes", "Standup today")
 	end
 
+  if settings.comp == "home" then
+    create_editor_workspace("home notes", project_dir .. "/home_notes")
+  end
+
 	create_workspace("dotfiles", project_dir .. "/dotfiles")
 	create_cmd_workspace("monitoring", project_dir)
 
