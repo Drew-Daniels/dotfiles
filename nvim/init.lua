@@ -738,11 +738,29 @@ wk.register({
 			"<cmd>MarkdownPreview<cr>",
 			"Live Markdown Preview",
 		},
+    s = { "<cmd>Telescope search_history", "Search History" },
+		m = { "<cmd>Telescope marks<cr>", "Marks" },
+		z = {
+			"<cmd>Telescope spell_suggest",
+			"Spell Suggest",
+		},
 	},
 })
 
 wk.register({
 	["<leader>c"] = {
+		name = "Commands",
+		a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
+		c = { "<cmd>Telescope commands<cr>", "Commands" },
+		h = { "<cmd>Telescope command_history<cr>", "History" },
+	},
+})
+
+--TODO: Create which key configuration for telescope builtin.search_history
+--TODO: Create which key configuration for telescope builtin.keymaps
+
+wk.register({
+	["<leader>C"] = {
 		name = "Copilot",
 		d = { "<cmd>Copilot disable<cr>", "Disable" },
 		e = { "<cmd>Copilot enable<cr>", "Enable" },
@@ -865,13 +883,14 @@ wk.register({
 			"Recent File(s)",
 		},
 		t = {
-			"<cmd>Telescope tags<cr>",
-			"Tag",
+			"<cmd>Telescope filetypes<cr>",
+			"Types",
 		},
+		-- t = {
+		-- 	"<cmd>Telescope tags<cr>",
+		-- 	"Tag",
+		-- },
 		c = { "<cmd>ene<cr>", "Create File" },
-		m = { "<cmd>Telescope marks<cr>", "Marks" },
-		q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
-		h = { "<cmd>Telescope quickfix_history<cr>", "Quickfix History" },
 	},
 })
 
@@ -965,6 +984,17 @@ wk.register({
 			":cd %:p:h<cr>",
 			"Directory",
 		},
+		l = {
+			"<cmd>Telescope jumplist<cr>",
+			"Jumplist",
+		},
+	},
+})
+
+wk.register({
+	["<leader>k"] = {
+		name = "Keymaps",
+		l = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 	},
 })
 
@@ -1097,10 +1127,6 @@ wk.register({
 			"<cmd>Telescope live_grep<cr>",
 			"Live Search",
 		},
-		h = {
-			"<cmd>Telescope search_history<cr>",
-			"Search History",
-		},
 	},
 })
 
@@ -1134,6 +1160,14 @@ wk.register({
 })
 
 wk.register({
+	["<leader>q"] = {
+		name = "Quickfix",
+		l = { "<cmd>Telescope quickfix<cr>", "List" },
+		h = { "<cmd>Telescope quickfix_history<cr>", "History" },
+	},
+})
+
+wk.register({
 	["<leader>S"] = {
 		name = "Snippets",
 		l = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
@@ -1154,6 +1188,7 @@ wk.register({
 		},
 	},
 })
+
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                      NEOTEST-RSPEC                      │
 --          │       https://github.com/olimorris/neotest-rspec        │
