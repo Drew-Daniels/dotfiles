@@ -734,6 +734,10 @@ wk.register({
 			"<cmd>Format<cr>",
 			"Pretty",
 		},
+		m = {
+			"<cmd>MarkdownPreview<cr>",
+			"Markdown Preview",
+		},
 	},
 })
 
@@ -1017,20 +1021,6 @@ wk.register({
 		},
 		s = {
 			-- signature_help
-		},
-	},
-})
-
---          ╭─────────────────────────────────────────────────────────╮
---          │                  MARKDOWN-PREVIEW.NVIM                  │
---          │     https://github.com/iamcco/markdown-preview.nvim     │
---          ╰─────────────────────────────────────────────────────────╯
-wk.register({
-	["<leader>m"] = {
-		name = "Markdown",
-		p = {
-			"<cmd>MarkdownPreview<cr>",
-			"Markdown Preview",
 		},
 	},
 })
