@@ -93,6 +93,10 @@ require("nvim-treesitter.configs").setup({
 		"yaml",
 		"prisma",
 	},
+  -- required by 'nvim-ts-autotag'
+  autotag = {
+    enable = true,
+  },
 	-- required by 'nvim-treesitter-endwise'
 	endwise = {
 		enable = true,
