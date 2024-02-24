@@ -1376,12 +1376,6 @@ vim.api.nvim_create_user_command(
     { nargs = 1 }
 )
 
--- FUGITIVE-GITLAB
--- https://github.com/shumphrey/fugitive-gitlab.vim
-vim.cmd([[
-  let g:fugitive_gitlab_domains = ['gitlab.webpt.com']
-  let g:gitlab_api_keys = { 'gitlab.webpt.com': '' }
-]])
 
 -- GENERAL
 local set = vim.opt
