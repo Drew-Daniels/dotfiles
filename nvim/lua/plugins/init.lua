@@ -16,11 +16,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  { "LudoPinelli/comment-box.nvim" },
-  { "shumphrey/fugitive-gitlab.vim" },
-  { "windwp/nvim-ts-autotag" },
-  { "nvim-treesitter/nvim-treesitter-context" },
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{ "LudoPinelli/comment-box.nvim" },
+	{ "shumphrey/fugitive-gitlab.vim" },
+	{ "windwp/nvim-ts-autotag" },
+	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "mbbill/undotree" },
 	{ "mrjones2014/legendary.nvim", priority = 1000, lazy = false },
 	{
@@ -117,7 +116,7 @@ return require("lazy").setup({
 	"RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
 	"tpope/vim-fugitive", -- Git operations, tools in neovim
-  "tpope/vim-rhubarb", -- Fugitive-companion to interact with github
+	"tpope/vim-rhubarb", -- Fugitive-companion to interact with github
 	"junegunn/gv.vim", -- Pretty Git log
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	"xiyaowong/transparent.nvim",

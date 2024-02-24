@@ -6,8 +6,10 @@ require("legendary").setup({
 	extensions = { lazy_nvim = { auto_register = true }, which_key = { auto_register = true }, smart_splits = {} },
 })
 
--- MASON
--- https://github.com/williamboman/mason.nvim/issues/130
+--           ╭───────────────────────────────────────────────────────╮
+--           │                         MASON                         │
+--           │ https://github.com/williamboman/mason.nvim/issues/130 │
+--           ╰───────────────────────────────────────────────────────╯
 local present, mason = pcall(require, "mason")
 
 if not present then
@@ -93,10 +95,10 @@ require("nvim-treesitter.configs").setup({
 		"yaml",
 		"prisma",
 	},
-  -- required by 'nvim-ts-autotag'
-  autotag = {
-    enable = true,
-  },
+	-- required by 'nvim-ts-autotag'
+	autotag = {
+		enable = true,
+	},
 	-- required by 'nvim-treesitter-endwise'
 	endwise = {
 		enable = true,
@@ -874,6 +876,18 @@ wk.register({
 })
 
 wk.register({
+	["<leader>b"] = {
+		name = "Box",
+		mode = { "v", "n" },
+		b = { "<Cmd>CBccbox<CR>", "Box Title" },
+		t = { "<Cmd>CBllline<CR>", "Titled Line" },
+		l = { "<Cmd>CBline<CR>", "Simple Line" },
+		m = { "<Cmd>CBllbox15<CR>", "Marked" },
+		r = { "<Cmd>CBd<CR>", "Remove Box Around Comment" },
+	},
+})
+
+wk.register({
 	["<leader>h"] = {
 		name = "Harpoon",
 		a = { hm.add_file, "Add Harpoon" },
@@ -1043,28 +1057,6 @@ wk.register({
 			':lua require("neotest").run.run()<CR>',
 			"Function",
 		},
-	},
-})
-
--- wk.register({
--- 	["<leader>t"] = {
--- 		name = "Terminal",
--- 		a = { "<cmd>ToggleTermAll<cr>", "Toggle All" },
--- 		c = { "<cmd>ToggleTermSendCurrentLine<cr>", "Send Current Line" },
--- 		--TODO: Create a function that can take user input, and pass this as a command to TermExec to run
--- 		-- e = { "<cmd>TermExec<cr>", "Exec" },
--- 		s = { "<cmd>TermSelect<cr>", "Select" },
--- 		t = { "<cmd>ToggleTerm<cr>", "Toggle" },
--- 		n = { "<cmd>ToggleTermSetName<cr>", "Set Name" },
--- 	},
--- })
-
-wk.register({
-	["<leader>t"] = {
-		name = "Terminal",
-		mode = "v",
-		l = { "<cmd>ToggleTermSendVisualLines<cr>", "Send Visual Lines" },
-		s = { "<cmd>ToggleTermSendVisualSelection<cr>", "Send Visual Selection" },
 	},
 })
 
@@ -1358,24 +1350,15 @@ vim.cmd([[
   let g:copilot_filetypes = { 'norg': v:false }
 ]])
 
--- TOGGLETERM.NVIM
--- https://github.com/akinsho/toggleterm.nvim
-require("toggleterm").setup()
-
 -- NVIM-TREESITTER-CONTEXT
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
 require("treesitter-context").setup()
 
 -- VIM-RHUBARB
 -- https://github.com/tpope/vim-rhubarb
-vim.api.nvim_create_user_command(
-    'Browse',
-    function (opts)
-    vim.fn.system { 'open', opts.fargs[1] }
-  end,
-    { nargs = 1 }
-)
-
+vim.api.nvim_create_user_command("Browse", function(opts)
+	vim.fn.system({ "open", opts.fargs[1] })
+end, { nargs = 1 })
 
 -- GENERAL
 local set = vim.opt
