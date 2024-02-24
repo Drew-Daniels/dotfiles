@@ -1042,6 +1042,28 @@ wk.register({
 	},
 })
 
+-- wk.register({
+-- 	["<leader>t"] = {
+-- 		name = "Terminal",
+-- 		a = { "<cmd>ToggleTermAll<cr>", "Toggle All" },
+-- 		c = { "<cmd>ToggleTermSendCurrentLine<cr>", "Send Current Line" },
+-- 		--TODO: Create a function that can take user input, and pass this as a command to TermExec to run
+-- 		-- e = { "<cmd>TermExec<cr>", "Exec" },
+-- 		s = { "<cmd>TermSelect<cr>", "Select" },
+-- 		t = { "<cmd>ToggleTerm<cr>", "Toggle" },
+-- 		n = { "<cmd>ToggleTermSetName<cr>", "Set Name" },
+-- 	},
+-- })
+
+wk.register({
+	["<leader>t"] = {
+		name = "Terminal",
+		mode = "v",
+		l = { "<cmd>ToggleTermSendVisualLines<cr>", "Send Visual Lines" },
+		s = { "<cmd>ToggleTermSendVisualSelection<cr>", "Send Visual Selection" },
+	},
+})
+
 wk.register({
 	["<leader>u"] = {
 		name = "Undotree",
