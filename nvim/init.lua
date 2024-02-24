@@ -1111,7 +1111,6 @@ require("neotest").setup({
 		require("neotest-rspec"),
 		require("neotest-jest")({
 			jestCommand = "yarn test",
-			jestConfigFile = "jest.config.js",
 			cwd = function()
 				return vim.fn.getcwd()
 			end,
