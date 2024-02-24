@@ -61,12 +61,16 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 	vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
 end, {})
 
--- TRANSPARENT.NVIM
--- https://github.com/xiyaowong/transparent.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                    TRANSPARENT.NVIM                     │
+--          │      https://github.com/xiyaowong/transparent.nvim      │
+--          ╰─────────────────────────────────────────────────────────╯
 require("transparent").setup()
 
--- NVIM-TREESITTER
--- https://github.com/nvim-treesitter/nvim-treesitter
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     NVIM-TREESITTER                     │
+--          │   https://github.com/nvim-treesitter/nvim-treesitter    │
+--          ╰─────────────────────────────────────────────────────────╯
 ---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
@@ -103,8 +107,10 @@ require("nvim-treesitter.configs").setup({
 	endwise = {
 		enable = true,
 	},
-	-- NVIM-TREESITTER-TEXTOBJECTS
-	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+	--       ╭───────────────────────────────────────────────────────────────╮
+	--       │                  NVIM-TREESITTER-TEXTOBJECTS                  │
+	--       │https://github.com/nvim-treesitter/nvim-treesitter-textobjects │
+	--       ╰───────────────────────────────────────────────────────────────╯
 	textobjects = {
 		lsp_interop = {
 			enable = true,
@@ -279,8 +285,10 @@ end)
 -- custom file associations
 require("vim.treesitter.language").register("http", "hurl")
 
--- NEOSCROLL.NVIM
--- https://github.com/karb94/neoscroll.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     NEOSCROLL.NVIM                      │
+--          │        https://github.com/karb94/neoscroll.nvim         │
+--          ╰─────────────────────────────────────────────────────────╯
 local t = {}
 t["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "350" } }
 t["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "350" } }
@@ -299,8 +307,10 @@ require("neoscroll").setup({
 
 require("neoscroll.config").set_mappings(t)
 
--- WEB-TOOLS.NVIM
--- https://github.com/ray-x/web-tools.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     WEB-TOOLS.NVIM                      │
+--          │         https://github.com/ray-x/web-tools.nvim         │
+--          ╰─────────────────────────────────────────────────────────╯
 require("web-tools").setup({
 	keymaps = {
 		rename = nil, -- by default use same setup of lspconfig
@@ -315,8 +325,10 @@ require("web-tools").setup({
 	},
 })
 
--- REST.NVIM
--- https://github.com/rest-nvim/rest.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                        REST.NVIM                        │
+--          │         https://github.com/rest-nvim/rest.nvim          │
+--          ╰─────────────────────────────────────────────────────────╯
 require("rest-nvim").setup({
 	result_split_horizontal = false,
 	result_split_in_place = true,
@@ -344,8 +356,10 @@ require("rest-nvim").setup({
 	yank_dry_run = true,
 })
 
--- NEODEV.NVIM
--- https://github.com/folke/neodev.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       NEODEV.NVIM                       │
+--          │          https://github.com/folke/neodev.nvim           │
+--          ╰─────────────────────────────────────────────────────────╯
 -- NOTE: must be done before any lspconfig
 require("neodev").setup({})
 
@@ -353,8 +367,10 @@ require("neodev").setup({})
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- NVIM-LSPCONFIG
--- https://github.com/neovim/nvim-lspconfig
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     NVIM-LSPCONFIG                      │
+--          │        https://github.com/neovim/nvim-lspconfig         │
+--          ╰─────────────────────────────────────────────────────────╯
 local lspconfig = require("lspconfig")
 
 local servers = {
@@ -404,12 +420,16 @@ lspconfig.typos_lsp.setup({
 })
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
--- LUASNIP
--- https://github.com/L3MON4D3/LuaSnip
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                         LUASNIP                         │
+--          │           https://github.com/L3MON4D3/LuaSnip           │
+--          ╰─────────────────────────────────────────────────────────╯
 local ls = require("luasnip")
 
--- NVIM-CMP
--- https://github.com/hrsh7th/nvim-cmp
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                        NVIM-CMP                         │
+--          │           https://github.com/hrsh7th/nvim-cmp           │
+--          ╰─────────────────────────────────────────────────────────╯
 local cmp = require("cmp")
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
@@ -546,8 +566,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 -- Language Server Configuration END
 
--- LUALINE
--- https://github.com/nvim-lualine/lualine.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                         LUALINE                         │
+--          │      https://github.com/nvim-lualine/lualine.nvim       │
+--          ╰─────────────────────────────────────────────────────────╯
 require("lualine").setup({
 	options = { theme = "gruvbox" },
 	sections = {
@@ -560,8 +582,10 @@ require("lualine").setup({
 	},
 })
 
--- CONFORM.NVIM
--- https://github.com/stevearc/conform.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      CONFORM.NVIM                       │
+--          │        https://github.com/stevearc/conform.nvim         │
+--          ╰─────────────────────────────────────────────────────────╯
 require("conform").setup({
 	formatters_by_ft = {
 		c = { "clang-format" },
@@ -592,13 +616,17 @@ vim.api.nvim_create_user_command("Format", function(args)
 	require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
 
--- GRUVBOX-NVIM
--- https://github.com/ellisonleao/gruvbox.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      GRUVBOX-NVIM                       │
+--          │       https://github.com/ellisonleao/gruvbox.nvim       │
+--          ╰─────────────────────────────────────────────────────────╯
 vim.o.background = "dark"
 vim.cmd("colorscheme gruvbox")
 
--- CLIPBOARD-IMAGE.NVIM
--- https://github.com/ekickx/clipboard-image.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                  CLIPBOARD-IMAGE.NVIM                   │
+--          │     https://github.com/ekickx/clipboard-image.nvim      │
+--          ╰─────────────────────────────────────────────────────────╯
 --TODO: Figure out how to update the image path used in markdown links. Images are getting copied to /images/<image-name> correctly, but the markdown links reference /img/<image-name>.
 require("clipboard-image").setup({
 	default = {
@@ -606,25 +634,35 @@ require("clipboard-image").setup({
 	},
 })
 
--- NEOGEN
--- https://github.com/danymat/neogen
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                         NEOGEN                          │
+--          │            https://github.com/danymat/neogen            │
+--          ╰─────────────────────────────────────────────────────────╯
 require("neogen").setup({ snippet_engine = "luasnip" })
 
--- OIL
--- https://github.com/stevearc/oil.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                           OIL                           │
+--          │          https://github.com/stevearc/oil.nvim           │
+--          ╰─────────────────────────────────────────────────────────╯
 require("oil").setup()
 
--- NVIM-TS-COMMENTSTRING
--- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+--       ╭───────────────────────────────────────────────────────────────╮
+--       │                     NVIM-TS-COMMENTSTRING                     │
+--       │https://github.com/JoosepAlviste/nvim-ts-context-commentstring │
+--       ╰───────────────────────────────────────────────────────────────╯
 ---@diagnostic disable-next-line: missing-parameter
 require("ts_context_commentstring").setup()
 
--- COMMENT.NVIM
--- https://github.com/numToStr/Comment.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      COMMENT.NVIM                       │
+--          │        https://github.com/numToStr/Comment.nvim         │
+--          ╰─────────────────────────────────────────────────────────╯
 require("Comment").setup()
 
--- NVIM-NOTIFY
--- https://github.com/rcarriga/nvim-notify
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       NVIM-NOTIFY                       │
+--          │         https://github.com/rcarriga/nvim-notify         │
+--          ╰─────────────────────────────────────────────────────────╯
 ---@diagnostic disable-next-line: missing-fields
 require("notify").setup({
 	background_colour = "#000000",
@@ -633,29 +671,47 @@ require("notify").setup({
 
 require("telescope").load_extension("notify")
 
--- TELESCOPE-IMPORT
--- https://github.com/piersolenski/telescope-import.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                    TELESCOPE-IMPORT                     │
+--          │  https://github.com/piersolenski/telescope-import.nvim  │
+--          ╰─────────────────────────────────────────────────────────╯
 require("telescope").load_extension("import")
 
--- TELESCOPE-MEDIA-FILES
--- https://github.com/nvim-telescope/telescope-media-files.nvim
+--        ╭─────────────────────────────────────────────────────────────╮
+--        │                    TELESCOPE-MEDIA-FILES                    │
+--        │https://github.com/nvim-telescope/telescope-media-files.nvim │
+--        ╰─────────────────────────────────────────────────────────────╯
 require("telescope").load_extension("media_files")
 require("telescope").setup({
 	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
 
--- TELESCOPE-DAP
--- https://github.com/nvim-telescope/telescope-dap.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      TELESCOPE-DAP                      │
+--          │  https://github.com/nvim-telescope/telescope-dap.nvim   │
+--          ╰─────────────────────────────────────────────────────────╯
 require("telescope").load_extension("dap")
 
--- OVERSEER.NVIM
--- https://github.com/stevearc/overseer.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      OVERSEER.NVIM                      │
+--          │        https://github.com/stevearc/overseer.nvim        │
+--          ╰─────────────────────────────────────────────────────────╯
 require("overseer").setup({
 	templates = { "builtin", "gitlab.gll" },
 })
 
--- WHICH-KEY.NVIM
--- https://github.com/folke/which-key.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      CAPSLOCK.NVIM                      │
+--          │        https://github.com/barklan/capslock.nvim         │
+--          ╰─────────────────────────────────────────────────────────╯
+require("capslock").setup()
+-- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
+-- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
+
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     WHICH-KEY.NVIM                      │
+--          │         https://github.com/folke/which-key.nvim         │
+--          ╰─────────────────────────────────────────────────────────╯
 local wk = require("which-key")
 
 -- weird workaround to fix bug where which-key menu does not display unless <leader> has been pressed on a buffer at some point before pressing <localleader>
@@ -681,12 +737,6 @@ wk.register({
 	},
 })
 
--- CAPSLOCK.NVIM
--- https://github.com/barklan/capslock.nvim
-require("capslock").setup()
-
--- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
--- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
 wk.register({
 	["<leader>c"] = {
 		name = "Copilot",
@@ -852,8 +902,10 @@ wk.register({
 	},
 })
 
--- HARPOON
--- https://github.com/ThePrimeagen/harpoon
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                         HARPOON                         │
+--          │         https://github.com/ThePrimeagen/harpoon         │
+--          ╰─────────────────────────────────────────────────────────╯
 local hui = require("harpoon.ui")
 local hm = require("harpoon.mark")
 
@@ -882,7 +934,8 @@ wk.register({
 		b = { "<Cmd>CBccbox<CR>", "Box Title" },
 		t = { "<Cmd>CBllline<CR>", "Titled Line" },
 		l = { "<Cmd>CBline<CR>", "Simple Line" },
-		m = { "<Cmd>CBllbox15<CR>", "Marked" },
+		m = { "<Cmd>CBllbox14<CR>", "Marked" },
+		q = { "<Cmd>CBllbox13<CR>", "Quote" },
 		r = { "<Cmd>CBd<CR>", "Remove Box Around Comment" },
 	},
 })
@@ -968,8 +1021,10 @@ wk.register({
 	},
 })
 
--- MARKDOWN-PREVIEW.NVIM
--- https://github.com/iamcco/markdown-preview.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                  MARKDOWN-PREVIEW.NVIM                  │
+--          │     https://github.com/iamcco/markdown-preview.nvim     │
+--          ╰─────────────────────────────────────────────────────────╯
 wk.register({
 	["<leader>m"] = {
 		name = "Markdown",
@@ -1092,8 +1147,10 @@ wk.register({
 		},
 	},
 })
--- NEOTEST-RSPEC
--- https://github.com/olimorris/neotest-rspec
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      NEOTEST-RSPEC                      │
+--          │       https://github.com/olimorris/neotest-rspec        │
+--          ╰─────────────────────────────────────────────────────────╯
 
 --TODO: Figure out how to run ahoy rspec when running tests from work comp, but use default command when running tests from home comp.
 -- require("neotest-rspec")({
@@ -1114,8 +1171,10 @@ require("neotest").setup({
 	},
 })
 
--- TELESCOPE-FZF-NATIVE
--- https://github.com/nvim-telescope/telescope-fzf-native.nvim
+--        ╭────────────────────────────────────────────────────────────╮
+--        │                    TELESCOPE-FZF-NATIVE                    │
+--        │https://github.com/nvim-telescope/telescope-fzf-native.nvim │
+--        ╰────────────────────────────────────────────────────────────╯
 ---@diagnostic disable-next-line: missing-parameter
 require("telescope").setup({
 	extensions = {
@@ -1126,16 +1185,22 @@ require("telescope").setup({
 })
 require("telescope").load_extension("fzf")
 
--- INDENT-BLANKLINE.NVIM
--- https://github.com/lukas-reineke/indent-blankline.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                  INDENT-BLANKLINE.NVIM                  │
+--          │ https://github.com/lukas-reineke/indent-blankline.nvim  │
+--          ╰─────────────────────────────────────────────────────────╯
 require("ibl").setup()
 
--- NVIM-DAP
--- https://github.com/mfussenegger/nvim-dap
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                        NVIM-DAP                         │
+--          │        https://github.com/mfussenegger/nvim-dap         │
+--          ╰─────────────────────────────────────────────────────────╯
 local dap = require("dap")
 
--- NVIM-DAP-VSCODE-JS
--- https://github.com/mxsdev/nvim-dap-vscode-js
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                   NVIM-DAP-VSCODE-JS                    │
+--          │      https://github.com/mxsdev/nvim-dap-vscode-js       │
+--          ╰─────────────────────────────────────────────────────────╯
 require("dap-vscode-js").setup({
 	adapters = { "pwa-node", "pwa-chrome", "node-terminal", "pwa-extensionHost" },
 	debugger_path = vim.fn.stdpath("data") .. "/vscode-js-debug",
@@ -1247,8 +1312,10 @@ end
 -- 	widgets.centered_float(widgets.scopes)
 -- end)
 
--- NVIM-DAP-UI
--- https://github.com/rcarriga/nvim-dap-ui
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       NVIM-DAP-UI                       │
+--          │         https://github.com/rcarriga/nvim-dap-ui         │
+--          ╰─────────────────────────────────────────────────────────╯
 require("dapui").setup()
 local dapui = require("dapui")
 
@@ -1262,14 +1329,18 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close({})
 end
 
--- SMART-SPLITS.NVIM
--- https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file
+--    ╭────────────────────────────────────────────────────────────────────╮
+--    │                         SMART-SPLITS.NVIM                          │
+--    │https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file │
+--    ╰────────────────────────────────────────────────────────────────────╯
 require("smart-splits").setup({
 	resize_mode = { hooks = { on_leave = require("bufresize").register } },
 })
 
--- NEORG
--- https://github.com/nvim-neorg/neorg
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                          NEORG                          │
+--          │           https://github.com/nvim-neorg/neorg           │
+--          ╰─────────────────────────────────────────────────────────╯
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {}, -- Loads default behaviour
@@ -1344,23 +1415,29 @@ vim.cmd([[
   augroup END
 ]])
 
--- COPILOT.VIM
--- https://github.com/github/copilot.vim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       COPILOT.VIM                       │
+--          │          https://github.com/github/copilot.vim          │
+--          ╰─────────────────────────────────────────────────────────╯
 vim.cmd([[
   let g:copilot_filetypes = { 'norg': v:false }
 ]])
 
--- NVIM-TREESITTER-CONTEXT
--- https://github.com/nvim-treesitter/nvim-treesitter-context
+--         ╭───────────────────────────────────────────────────────────╮
+--         │                  NVIM-TREESITTER-CONTEXT                  │
+--         │https://github.com/nvim-treesitter/nvim-treesitter-context │
+--         ╰───────────────────────────────────────────────────────────╯
 require("treesitter-context").setup()
 
--- VIM-RHUBARB
--- https://github.com/tpope/vim-rhubarb
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       VIM-RHUBARB                       │
+--          │          https://github.com/tpope/vim-rhubarb           │
+--          ╰─────────────────────────────────────────────────────────╯
 vim.api.nvim_create_user_command("Browse", function(opts)
 	vim.fn.system({ "open", opts.fargs[1] })
 end, { nargs = 1 })
 
--- GENERAL
+-- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 
 -- autoindent new lines
@@ -1388,7 +1465,9 @@ set.syntax = "on"
 set.termguicolors = true
 set.virtualedit = "block"
 set.inccommand = "split"
--- https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
+-- ╓
+-- ║ https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
+-- ╙
 set.shellcmdflag = "-ic"
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
