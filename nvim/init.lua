@@ -1366,6 +1366,14 @@ require("toggleterm").setup()
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
 require("treesitter-context").setup()
 
+vim.api.nvim_create_user_command(
+    'Browse',
+    function (opts)
+    vim.fn.system { 'open', opts.fargs[1] }
+  end,
+    { nargs = 1 }
+)
+
 -- GENERAL
 local set = vim.opt
 
