@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "gorbit99/codewindow.nvim" },
 	{ "LudoPinelli/comment-box.nvim" },
 	{ "shumphrey/fugitive-gitlab.vim" },
 	{ "windwp/nvim-ts-autotag" },

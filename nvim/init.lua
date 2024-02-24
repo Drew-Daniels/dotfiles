@@ -734,9 +734,9 @@ wk.register({
 			"<cmd>Format<cr>",
 			"Pretty",
 		},
-		m = {
+		l = {
 			"<cmd>MarkdownPreview<cr>",
-			"Markdown Preview",
+			"Live Markdown Preview",
 		},
 	},
 })
@@ -1044,6 +1044,23 @@ wk.register({
 			":lua require('neogen').generate({ type = 'type' })<CR>",
 			"Generate Type Annotation",
 		},
+	},
+})
+
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     CODEWINDOW.NVIM                     │
+--          │       https://github.com/gorbit99/codewindow.nvim       │
+--          ╰─────────────────────────────────────────────────────────╯
+local codewindow = require("codewindow")
+codewindow.setup({ auto_enable = true })
+
+wk.register({
+	["<leader>m"] = {
+		name = "Minimap",
+		o = { codewindow.open_minimap, "Open" },
+		c = { codewindow.close_minimap, "Close" },
+		s = { codewindow.toggle_minimap, "Show/Hide" },
+		f = { codewindow.toggle_focus, "Focus" },
 	},
 })
 
