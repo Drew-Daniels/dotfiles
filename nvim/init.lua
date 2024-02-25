@@ -478,6 +478,8 @@ cmp.setup({
 	},
 })
 
+-- RECOMMENDED 'nvim-lspconfig' SETUP END
+
 --TODO: Where was this bit of configuration recommended?
 vim.o.updatetime = 250
 vim.api.nvim_create_autocmd("CursorHold", {
@@ -494,7 +496,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		vim.diagnostic.open_float(nil, opts)
 	end,
 })
--- RECOMMENDED 'nvim-lspconfig' SETUP END
 
 -- luasnip specific configuration
 -- specify luasnippets directory to save a few ms of startup time
