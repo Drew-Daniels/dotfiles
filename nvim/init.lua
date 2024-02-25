@@ -427,10 +427,17 @@ lspconfig.typos_lsp.setup({
 local ls = require("luasnip")
 
 --          ╭─────────────────────────────────────────────────────────╮
+--          │                     NVIM-AUTOPAIRS                      │
+--          │        https://github.com/windwp/nvim-autopairs         │
+--          ╰─────────────────────────────────────────────────────────╯
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+--          ╭─────────────────────────────────────────────────────────╮
 --          │                        NVIM-CMP                         │
 --          │           https://github.com/hrsh7th/nvim-cmp           │
 --          ╰─────────────────────────────────────────────────────────╯
 local cmp = require("cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
 	snippet = {
