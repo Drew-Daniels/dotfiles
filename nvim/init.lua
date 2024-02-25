@@ -3,7 +3,11 @@ require("plugins")
 -- Is there some plugin that is causing combinations that start with g to wait/not wait?
 
 require("legendary").setup({
-	extensions = { lazy_nvim = { auto_register = true }, which_key = { auto_register = true }, smart_splits = {} },
+	extensions = {
+		lazy_nvim = { auto_register = true },
+		which_key = { auto_register = true },
+		smart_splits = {},
+	},
 })
 
 --           ╭───────────────────────────────────────────────────────╮
