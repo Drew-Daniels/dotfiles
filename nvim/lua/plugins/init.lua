@@ -16,10 +16,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+	{ "axieax/urlview.nvim" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {}, -- this is equalent to setup({}) function
 	},
 	{ "LukasPietzschmann/telescope-tabs" },
 	{ "gorbit99/codewindow.nvim" },

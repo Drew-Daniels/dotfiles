@@ -430,6 +430,10 @@ local ls = require("luasnip")
 --          │                     NVIM-AUTOPAIRS                      │
 --          │        https://github.com/windwp/nvim-autopairs         │
 --          ╰─────────────────────────────────────────────────────────╯
+local npairs = require("nvim-autopairs")
+npairs.setup({
+	check_ts = true,
+})
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -960,6 +964,20 @@ wk.register({
 		r = {
 			"<Plug>RestNvimLast",
 			"Repeat Last Request",
+		},
+	},
+})
+
+wk.register({
+	["<leader>B"] = {
+		name = "Browse URLs",
+		a = {
+			"<cmd>UrlView<cr>",
+			"All URLs",
+		},
+		p = {
+			"<cmd>UrlView lazy<cr>",
+			"Plugin URLs",
 		},
 	},
 })
@@ -1502,6 +1520,8 @@ require("treesitter-context").setup()
 vim.api.nvim_create_user_command("Browse", function(opts)
 	vim.fn.system({ "open", opts.fargs[1] })
 end, { nargs = 1 })
+
+require("urlview").setup({})
 
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
