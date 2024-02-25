@@ -1262,6 +1262,8 @@ require("neotest").setup({
 	},
 })
 
+vim.cmd("let test#strategy = 'neovim'")
+
 --        ╭────────────────────────────────────────────────────────────╮
 --        │                    TELESCOPE-FZF-NATIVE                    │
 --        │https://github.com/nvim-telescope/telescope-fzf-native.nvim │
