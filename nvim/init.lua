@@ -792,7 +792,7 @@ wk.register({
 })
 
 wk.register({
-	["<leader>d"] = {
+	["<leader>D"] = {
 		name = "Debug",
 		b = {
 			require("dap").set_breakpoint,
@@ -866,6 +866,51 @@ wk.register({
 		h = {
 			"<cmd>Telescope command_history<cr>",
 			"Ex Command History",
+		},
+	},
+})
+
+wk.register({
+	["<leader>d"] = {
+		name = "Diffview",
+		a = {
+			"<cmd>DiffviewFileHistory<cr>",
+			"All Files",
+		},
+		c = {
+			"<cmd>DiffviewFileHistory %<cr>",
+			"Current File",
+		},
+		f = {
+			"<cmd>DiffviewFocusFiles<cr>",
+			"Focus Files",
+		},
+		r = {
+			"<cmd>DiffviewRefresh<cr>",
+			"Refresh",
+		},
+		t = {
+			"<cmd>DiffviewToggleFiles<cr>",
+			"Toggle Files",
+		},
+		o = {
+			"<cmd>DiffviewOpen<cr>",
+			"Open",
+		},
+		m = {
+			"<cmd>DiffviewOpen master..@<cr>",
+			"Master to Current",
+		},
+	},
+})
+
+wk.register({
+	["<leader>d"] = {
+		name = "Diffview",
+		mode = "x",
+		s = {
+			"<cmd>DiffviewFileHistory<cr>",
+			"Selected",
 		},
 	},
 })
