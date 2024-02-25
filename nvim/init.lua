@@ -1625,6 +1625,83 @@ require("urlview").setup({})
 -- 	resource_editing = { enabled = true },
 -- })
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      GITSIGNS.NVIM                      │
+--          │       https://github.com/lewis6991/gitsigns.nvim        │
+--          ╰─────────────────────────────────────────────────────────╯
+require("gitsigns").setup({
+	on_attach = function(bufnr)
+		local gs = package.loaded.gitsigns
+
+		local function map(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			vim.keymap.set(mode, l, r, opts)
+		end
+
+		-- Navigation
+		map("n", "]c", function()
+			if vim.wo.diff then
+				return "]c"
+			end
+			vim.schedule(function()
+				gs.next_hunk()
+			end)
+			return "<Ignore>"
+		end, { expr = true })
+
+		map("n", "[c", function()
+			if vim.wo.diff then
+				return "[c"
+			end
+			vim.schedule(function()
+				gs.prev_hunk()
+			end)
+			return "<Ignore>"
+		end, { expr = true })
+
+		-- Actions
+		wk.register({
+			["<leader>G"] = {
+				name = "Gitsigns",
+				s = {
+					function()
+						gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+					end,
+					"Stage Hunk",
+				},
+				r = {
+					function()
+						gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+					end,
+					"Reset Hunk",
+				},
+				S = { gs.stage_buffer, "Stage Buffer" },
+				u = { gs.undo_stage_hunk, "Undo Stage Hunk" },
+				R = { gs.reset_buffer, "Reset Buffer" },
+				p = { gs.preview_hunk, "Preview Hunk" },
+				b = {
+					function()
+						gs.blame_line({ full = true })
+					end,
+					"Blame Line",
+				},
+				t = { gs.toggle_current_line_blame, "Toggle Blame" },
+				d = { gs.diffthis, "Diff This" },
+				D = {
+					function()
+						gs.diffthis("~")
+					end,
+					"Diff This (Ignore Whitespace)",
+				},
+				td = { gs.toggle_deleted, "Toggle Deleted" },
+			},
+		})
+		-- Text object
+		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+	end,
+})
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 

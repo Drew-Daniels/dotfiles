@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+	{ "lewis6991/gitsigns.nvim" },
 	{ "sindrets/diffview.nvim" },
 	{
 		"harrisoncramer/gitlab.nvim",
