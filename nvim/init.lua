@@ -917,6 +917,42 @@ wk.register({
 	},
 })
 
+local gitlab = require("gitlab")
+
+wk.register({
+	["<leader>gl"] = {
+		name = "GitLab",
+		mode = "n",
+		r = { gitlab.review, "Review" },
+		s = { gitlab.summary, "Summary" },
+		a = { gitlab.approve, "Approve" },
+		R = { gitlab.revoke, "Revoke" },
+		c = { gitlab.create_comment, "Comment" },
+		O = { gitlab.create_mr, "Create MR" },
+		m = { gitlab.move_to_discussion_tree_from_diagnostic, "Move to Discussion Tree" },
+		n = { gitlab.create_note, "Create Note" },
+		d = { gitlab.toggle_discussions, "Toggle Discussions" },
+		aa = { gitlab.add_assignee, "Add Assignee" },
+		ad = { gitlab.delete_assignee, "Delete Assignee" },
+		la = { gitlab.add_label, "Add Label" },
+		ld = { gitlab.delete_label, "Delete Label" },
+		ra = { gitlab.add_reviewer, "Add Reviewer" },
+		rd = { gitlab.delete_reviewer, "Delete Reviewer" },
+		p = { gitlab.pipeline, "Pipeline" },
+		o = { gitlab.open_in_browser, "Open in Browser" },
+		-- M = { gitlab.merge, "Merge" },
+	},
+})
+
+wk.register({
+	["<leader>gl"] = {
+		name = "GitLab",
+		mode = "x",
+		c = { gitlab.create_multiline_comment, "Create Multiline Comment" },
+		C = { gitlab.create_comment_suggestion, "Create Comment Suggestion" },
+	},
+})
+
 wk.register({
 	["<leader>g"] = {
 		name = "Git",
