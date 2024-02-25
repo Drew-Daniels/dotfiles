@@ -677,6 +677,13 @@ require("telescope").load_extension("notify")
 --          ╰─────────────────────────────────────────────────────────╯
 require("telescope").load_extension("import")
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     TELESCOPE-TABS                      │
+--          │   https://github.com/LukasPietzschmann/telescope-tabs   │
+--          ╰─────────────────────────────────────────────────────────╯
+require("telescope").load_extension("telescope-tabs")
+require("telescope-tabs").setup()
+
 --        ╭─────────────────────────────────────────────────────────────╮
 --        │                    TELESCOPE-MEDIA-FILES                    │
 --        │https://github.com/nvim-telescope/telescope-media-files.nvim │
@@ -738,7 +745,7 @@ wk.register({
 			"<cmd>MarkdownPreview<cr>",
 			"Live Markdown Preview",
 		},
-    s = { "<cmd>Telescope search_history", "Search History" },
+		s = { "<cmd>Telescope search_history", "Search History" },
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		z = {
 			"<cmd>Telescope spell_suggest",
@@ -1132,6 +1139,16 @@ wk.register({
 
 wk.register({
 	["<leader>t"] = {
+		name = "Tab",
+		l = { "<cmd>Telescope telescope-tabs list_tabs<cr>", "List" },
+		--TODO: Figure out why this doesn't work
+		-- Could be related: https://github.com/LukasPietzschmann/telescope-tabs/issues
+		-- p = { "<cmd>Telescope telescope-tabs go_to_previous<cr>", "Goto Previous" },
+	},
+})
+
+wk.register({
+	["<leader>T"] = {
 		name = "Test",
 		b = {
 			':lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
