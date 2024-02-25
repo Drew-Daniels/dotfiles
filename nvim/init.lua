@@ -959,6 +959,7 @@ wk.register({
 		-- 	"Tag",
 		-- },
 		c = { "<cmd>ene<cr>", "Create File" },
+		s = { "<cmd>Telescope live_grep<cr>", "Search" },
 	},
 })
 
