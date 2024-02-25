@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+	{ "nvim-neotest/neotest-vim-test", dependencies = "vim-test/vim-test" },
 	{ "axieax/urlview.nvim" },
 	{
 		"windwp/nvim-autopairs",

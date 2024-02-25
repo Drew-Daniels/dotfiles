@@ -1244,15 +1244,21 @@ wk.register({
 --   end
 -- })
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                    NEOTEST-VIM-TEST                     │
+--          │    https://github.com/nvim-neotest/neotest-vim-test     │
+--          ╰─────────────────────────────────────────────────────────╯
+
 require("neotest").setup({
 	adapters = {
-		require("neotest-rspec"),
-		require("neotest-jest")({
-			jestCommand = "yarn test",
-			cwd = function()
-				return vim.fn.getcwd()
-			end,
-		}),
+		-- require("neotest-rspec"),
+		-- require("neotest-jest")({
+		-- 	jestCommand = "yarn test",
+		-- 	cwd = function()
+		-- 		return vim.fn.getcwd()
+		-- 	end,
+		-- }),
+		require("neotest-vim-test"),
 	},
 })
 
