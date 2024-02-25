@@ -1536,6 +1536,10 @@ end, { nargs = 1 })
 
 require("urlview").setup({})
 
+require("gitlab").setup({
+	resource_editing = { enabled = true },
+})
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 
@@ -1575,3 +1579,4 @@ vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
+

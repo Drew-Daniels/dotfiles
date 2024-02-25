@@ -176,5 +176,3 @@ export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
 # cspell
 alias cspell="cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 
-# gitlab
-export GITLAB_VIM_URL="https://gitlab.webpt.com"

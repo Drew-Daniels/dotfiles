@@ -120,6 +120,4 @@ if status is-interactive
     
     # cspell
     alias cspell "cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
-
-    set gx GITLAB_VIM_URL "https://gitlab.webpt.com"
 end
