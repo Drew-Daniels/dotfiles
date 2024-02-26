@@ -1703,6 +1703,13 @@ require("gitsigns").setup({
 	end,
 })
 
+--╭────────────────────────────────────────────────────────────────────────────────────────────────────╮
+--│                                            GITLAB.NVIM                                             │
+--│https://github.com/harrisoncramer/gitlab.nvim/issues?q=is%3Aissue+is%3Aopen+invalid+highlight+color │
+--╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+require("gitlab").setup()
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 

@@ -31,9 +31,6 @@ return require("lazy").setup({
 		build = function()
 			require("gitlab.server").build(true)
 		end, -- Builds the Go binary
-		config = function()
-			require("gitlab").setup()
-		end,
 	},
 	--TODO: Would be nice to get this working...
 	-- {
