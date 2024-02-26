@@ -121,3 +121,7 @@ if status is-interactive
     # cspell
     alias cspell "cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 end
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/drew.daniels/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
