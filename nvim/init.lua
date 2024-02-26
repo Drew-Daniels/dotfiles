@@ -901,6 +901,10 @@ wk.register({
 			"<cmd>DiffviewOpen master..@<cr>",
 			"Master to Current",
 		},
+    q = {
+      "<cmd>DiffviewClose<cr>",
+      "Quit",
+    },
 	},
 })
 
