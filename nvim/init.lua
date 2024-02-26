@@ -1201,7 +1201,7 @@ wk.register({
 --          │       https://github.com/gorbit99/codewindow.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
 local codewindow = require("codewindow")
-codewindow.setup({ auto_enable = true })
+codewindow.setup()
 
 wk.register({
 	["<leader>m"] = {
