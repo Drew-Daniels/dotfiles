@@ -1102,15 +1102,7 @@ wk.register({
 
 wk.register({
 	["<leader>j"] = {
-		name = "Jump",
-		d = {
-			":cd %:p:h<cr>",
-			"Directory",
-		},
-		l = {
-			"<cmd>Telescope jumplist<cr>",
-			"Jumplist",
-		},
+		name = "Jira",
 	},
 })
 
