@@ -757,10 +757,6 @@ wk.register({
 			"<cmd>Format<cr>",
 			"Pretty",
 		},
-		l = {
-			"<cmd>MarkdownPreview<cr>",
-			"Live Markdown Preview",
-		},
 		s = { "<cmd>Telescope search_history", "Search History" },
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		z = {
@@ -773,8 +769,8 @@ wk.register({
 wk.register({
 	["<leader>c"] = {
 		name = "Commands",
-		a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
-		c = { "<cmd>Telescope commands<cr>", "Commands" },
+		a = { "<cmd>Telescope autocommands<cr>", "Autocommands List" },
+		l = { "<cmd>Telescope commands<cr>", "Commands List" },
 		h = { "<cmd>Telescope command_history<cr>", "History" },
 	},
 })
@@ -964,6 +960,10 @@ wk.register({
 		-- },
 		c = { "<cmd>ene<cr>", "Create File" },
 		s = { "<cmd>Telescope live_grep<cr>", "Search" },
+		p = {
+			"<cmd>MarkdownPreview<cr>",
+			"Preview Markdown",
+		},
 	},
 })
 
