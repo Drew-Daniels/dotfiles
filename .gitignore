@@ -25,3 +25,4 @@ wezterm/settings.lua
 cspell/work_words.txt
 nvim/plugin/gitlab.vim
 glab-cli
+.jira
