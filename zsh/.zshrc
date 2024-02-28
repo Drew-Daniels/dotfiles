@@ -24,10 +24,6 @@ export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
-# docker
-source ~/.docker/init-zsh.sh || true
-# docker end
-
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator

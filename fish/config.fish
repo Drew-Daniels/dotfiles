@@ -20,14 +20,8 @@ if status is-interactive
 
     # pnpm
     set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
-
     fish_add_path PNPM_HOME
-
     # pnpm end
-
-    # docker
-    source ~/.docker/init-zsh.sh || true
-    # docker end    
 
     # Android
     set -gx ANDROID_HOME $HOME/Library/Android/sdk
