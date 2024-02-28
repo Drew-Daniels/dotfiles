@@ -1714,6 +1714,12 @@ require("gitsigns").setup({
 
 require("gitlab").setup()
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                        JIRA.NVIM                        │
+--          │           https://github.com/Funk66/jira.nvim           │
+--          ╰─────────────────────────────────────────────────────────╯
+require("jira").setup()
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 
