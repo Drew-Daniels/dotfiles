@@ -22,9 +22,9 @@ return require("lazy").setup({
 		config = function()
 			require("jira").setup()
 		end,
-		cond = function()
-			return vim.env.JIRA_API_TOKEN ~= nil
-		end,
+		-- cond = function()
+		-- 	return vim.env.JIRA_API_TOKEN ~= nil
+		-- end,
 	},
 	{ "lewis6991/gitsigns.nvim" },
 	{ "sindrets/diffview.nvim" },
