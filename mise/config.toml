@@ -1,7 +1,7 @@
 [tools]
 python = "3.11.5"
-ruby = "3.2.2"
-node = "20.11.0"
+ruby = "3"
+node = "20"
 golang = "1.21.1"
 aws-vault = "7.2.0"
 deno = "1.37.2"
