@@ -60,9 +60,6 @@ export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 export EXPORT_E2E_CREDS_SCRIPT="$XDG_CONFIG_HOME/scripts/export_e2e_creds.sh"
 
-# starship
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-eval "$(starship init zsh)"
 
 # homebrew
 PATH="/usr/local/sbin:$PATH"
@@ -76,6 +73,10 @@ fi
 
 # brew curl shell completion
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
+
+# starship
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+eval "$(starship init zsh)"
 
 # pip zsh completion start
 #compdef -P pip[0-9.]#
