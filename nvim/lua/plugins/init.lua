@@ -28,29 +28,6 @@ return require("lazy").setup({
 	},
 	{ "lewis6991/gitsigns.nvim" },
 	{ "sindrets/diffview.nvim" },
-	{
-		"harrisoncramer/gitlab.nvim",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-			"stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-			"nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
-		},
-		enabled = true,
-		build = function()
-			require("gitlab.server").build(true)
-		end, -- Builds the Go binary
-	},
-	--TODO: Would be nice to get this working...
-	-- {
-	-- 	"git@gitlab.com:gitlab-org/editor-extensions/gitlab.vim.git",
-	-- 	event = { "BufReadPre", "BufNewFile" }, -- Activate when a file is created/opened
-	-- 	ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "ruby" }, -- Activate when a supported filetype is open
-	-- 	cond = function()
-	-- 		return vim.env.GITLAB_TOKEN ~= nil and vim.env.GITLAB_TOKEN ~= "" -- Only activate if token is present in environment variable (remove to use interactive workflow)
-	-- 	end,
-	-- },
 	{ "nvim-neotest/neotest-vim-test", dependencies = "vim-test/vim-test" },
 	{ "axieax/urlview.nvim" },
 	{
@@ -60,7 +37,6 @@ return require("lazy").setup({
 	{ "LukasPietzschmann/telescope-tabs" },
 	{ "gorbit99/codewindow.nvim" },
 	{ "LudoPinelli/comment-box.nvim" },
-	{ "shumphrey/fugitive-gitlab.vim" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "mbbill/undotree" },

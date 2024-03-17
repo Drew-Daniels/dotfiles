@@ -720,7 +720,7 @@ require("telescope").load_extension("dap")
 --          │        https://github.com/stevearc/overseer.nvim        │
 --          ╰─────────────────────────────────────────────────────────╯
 require("overseer").setup({
-	templates = { "builtin", "gitlab.gll" },
+	templates = { "builtin" },
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -964,42 +964,6 @@ wk.register({
 			"<cmd>MarkdownPreview<cr>",
 			"Preview Markdown",
 		},
-	},
-})
-
-local gitlab = require("gitlab")
-
-wk.register({
-	["<leader>gl"] = {
-		name = "GitLab",
-		mode = "n",
-		r = { gitlab.review, "Review" },
-		s = { gitlab.summary, "Summary" },
-		a = { gitlab.approve, "Approve" },
-		R = { gitlab.revoke, "Revoke" },
-		c = { gitlab.create_comment, "Comment" },
-		O = { gitlab.create_mr, "Create MR" },
-		m = { gitlab.move_to_discussion_tree_from_diagnostic, "Move to Discussion Tree" },
-		n = { gitlab.create_note, "Create Note" },
-		d = { gitlab.toggle_discussions, "Toggle Discussions" },
-		aa = { gitlab.add_assignee, "Add Assignee" },
-		ad = { gitlab.delete_assignee, "Delete Assignee" },
-		la = { gitlab.add_label, "Add Label" },
-		ld = { gitlab.delete_label, "Delete Label" },
-		ra = { gitlab.add_reviewer, "Add Reviewer" },
-		rd = { gitlab.delete_reviewer, "Delete Reviewer" },
-		p = { gitlab.pipeline, "Pipeline" },
-		o = { gitlab.open_in_browser, "Open in Browser" },
-		-- M = { gitlab.merge, "Merge" },
-	},
-})
-
-wk.register({
-	["<leader>gl"] = {
-		name = "GitLab",
-		mode = "x",
-		c = { gitlab.create_multiline_comment, "Create Multiline Comment" },
-		C = { gitlab.create_comment_suggestion, "Create Comment Suggestion" },
 	},
 })
 
@@ -1614,14 +1578,6 @@ end, { nargs = 1 })
 
 require("urlview").setup({})
 
---   ╭───────────────────────────────────────────────────────────────────────╮
---   │                              GITLAB.VIM                               │
---   │https://gitlab.com/gitlab-org/editor-extensions/gitlab.vim/-/tree/main │
---   ╰───────────────────────────────────────────────────────────────────────╯
--- require("gitlab").setup({
--- 	resource_editing = { enabled = true },
--- })
-
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                      GITSIGNS.NVIM                      │
 --          │       https://github.com/lewis6991/gitsigns.nvim        │
@@ -1698,13 +1654,6 @@ require("gitsigns").setup({
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 	end,
 })
-
---╭────────────────────────────────────────────────────────────────────────────────────────────────────╮
---│                                            GITLAB.NVIM                                             │
---│https://github.com/harrisoncramer/gitlab.nvim/issues?q=is%3Aissue+is%3Aopen+invalid+highlight+color │
---╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-require("gitlab").setup()
 
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
