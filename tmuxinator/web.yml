@@ -1,9 +1,9 @@
-name: api
-root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/api
+name: web
+root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/web
 on_project_exit: clear
 
 windows:
-  - api:
+  - web:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
