@@ -3,7 +3,7 @@ root: <%= ENV["PROJECTS_DIR"] %>/hapi-fhir-jpa-server
 on_project_exit: clear
 
 windows:
-  - fhir:
+  - editor:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -18,3 +18,11 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
+  - stack:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - services:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          # - docker-compose up
