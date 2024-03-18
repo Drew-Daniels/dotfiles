@@ -1,5 +1,5 @@
 name: devdocs
-root: <%= ENV["PROJECTS_DIR"] %>/devDocs
+root: <%= ENV["PROJECTS_DIR"] %>/dev-docs
 on_project_exit: clear
 
 windows:
