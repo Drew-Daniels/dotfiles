@@ -735,14 +735,14 @@ wk.register({
 	},
 })
 
-wk.register({
-	["<leader>c"] = {
-		name = "Commands",
-		a = { "<cmd>Telescope autocommands<cr>", "Autocommands List" },
-		l = { "<cmd>Telescope commands<cr>", "Commands List" },
-		h = { "<cmd>Telescope command_history<cr>", "History" },
-	},
-})
+-- wk.register({
+-- 	["<leader>c"] = {
+-- 		name = "Commands",
+-- 		a = { "<cmd>Telescope autocommands<cr>", "Autocommands List" },
+-- 		l = { "<cmd>Telescope commands<cr>", "Commands List" },
+-- 		h = { "<cmd>Telescope command_history<cr>", "History" },
+-- 	},
+-- })
 
 --TODO: Create which key configuration for telescope builtin.search_history
 --TODO: Create which key configuration for telescope builtin.keymaps
