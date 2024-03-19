@@ -18,11 +18,19 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-  - stack:
+  - hapi-fhir-postgres:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - services:
+        - postgres:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          # - docker-compose up
+          - docker-compose up hapi-fhir-postgres
+  - jetty:run:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - mvn-jetty-run:
+            - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+            - fish
+            - cls
+            - mvn jetty:run
