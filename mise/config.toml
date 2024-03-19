@@ -5,4 +5,5 @@ node = "20"
 golang = "1.21.1"
 aws-vault = "7.2.0"
 deno = "1.37.2"
+java = "17.0.2"
 
