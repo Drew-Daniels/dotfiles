@@ -177,3 +177,5 @@ alias cspell="cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
+# java
+export PATH="$PATH:/opt/apache-maven-3.8.5/bin"

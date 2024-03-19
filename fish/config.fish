@@ -114,6 +114,9 @@ if status is-interactive
     
     # cspell
     alias cspell "cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
+
+    # java
+    fish_add_path "/opt/apache-maven-3.8.5/bin"
 end
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
