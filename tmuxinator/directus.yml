@@ -37,4 +37,4 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          # - docker-compose up --build
+          - docker-compose up --build
