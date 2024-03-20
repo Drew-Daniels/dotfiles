@@ -131,20 +131,6 @@ return require("lazy").setup({
 	"stevearc/conform.nvim",
 	{ "folke/neodev.nvim", opts = {} },
 	"ray-x/web-tools.nvim",
-	{
-		"vhyrro/luarocks.nvim",
-		config = function()
-			require("luarocks").setup({})
-		end,
-	},
-	{
-		"rest-nvim/rest.nvim",
-		ft = "http",
-		dependencies = { "luarocks.nvim" },
-		config = function()
-			require("rest-nvim").setup({})
-		end,
-	},
 	"ludovicchabant/vim-gutentags",
 	"RRethy/nvim-treesitter-endwise",
 	"williamboman/mason.nvim",
