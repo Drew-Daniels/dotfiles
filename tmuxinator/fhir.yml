@@ -33,4 +33,5 @@ windows:
             - <%= ENV["MUXLSHELL_RUN_CMD"] %>
             - fish
             - cls
+            - sleep 10
             - mvn jetty:run
