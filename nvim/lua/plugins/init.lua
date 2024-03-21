@@ -75,7 +75,6 @@ return require("lazy").setup({
 			"nvim-neotest/neotest-jest",
 		},
 	},
-	{ "github/copilot.vim" },
 	{
 		"piersolenski/telescope-import.nvim",
 		requires = "nvim-telescope/telescope.nvim",
