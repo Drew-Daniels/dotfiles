@@ -1,6 +1,7 @@
 name: engage
 root: <%= ENV["PROJECTS_DIR"] %>/engage
 on_project_exit: clear
+on_project_stop: docker compose stop && kill $(lsof -t -i:3000) && kill $(lsof -t -i:3001)
 
 windows:
   - root:
