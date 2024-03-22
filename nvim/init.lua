@@ -580,6 +580,10 @@ require("conform").setup({
 		fish = { "fish_indent" },
 		json = { "jq" },
 		sql = { "sql_formatter" },
+		javascript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescript = { "prettier" },
+		typescriptreact = { "prettier" },
 		css = { "prettier" },
 		less = { "prettier" },
 		scss = { "prettier" },
@@ -866,10 +870,10 @@ wk.register({
 			"<cmd>DiffviewOpen master..@<cr>",
 			"Master to Current",
 		},
-    q = {
-      "<cmd>DiffviewClose<cr>",
-      "Quit",
-    },
+		q = {
+			"<cmd>DiffviewClose<cr>",
+			"Quit",
+		},
 	},
 })
 
