@@ -1,6 +1,7 @@
 name: directus
 root: <%= ENV["PROJECTS_DIR"] %>/directus
 on_project_exit: clear
+on_project_stop: docker compose stop
 
 windows:
   - root:
@@ -18,18 +19,6 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-  - extensions:
-      root: <%= ENV["PROJECTS_DIR"] %>/directus/extensions
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-        - cmd:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
   - stack:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
@@ -37,4 +26,4 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          - docker compose up --build
+          - docker compose up
