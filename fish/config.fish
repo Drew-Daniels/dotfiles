@@ -117,6 +117,9 @@ if status is-interactive
 
     # java
     fish_add_path "/opt/apache-maven-3.8.5/bin"
+    
+    # alias
+    alias mp="multipass"
 end
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
