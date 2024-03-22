@@ -11,7 +11,7 @@ return {
         <>class <> {<>}
       ]],
 			{ c(1, { t(""), t("export ") }), i(2), i(3) },
-			{ desc = "Class" }
+			{ desc = "Class Definition" }
 		)
 	),
 	s(
