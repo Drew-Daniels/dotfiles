@@ -1,6 +1,7 @@
 name: n8n
 root: <%= ENV["PROJECTS_DIR"] %>/n8n
 on_project_exit: clear
+on_project_stop: docker compose stop
 
 windows:
   - editor:
@@ -11,9 +12,6 @@ windows:
           - fish
           - cls
           - nvim
-        - devserver:
-          - fish
-          - cls
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
