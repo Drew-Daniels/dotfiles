@@ -28,9 +28,9 @@ return {
 		"cm",
 		fmta(
 			[[ 
-        <><>(<>) {<>}
+        <><><>(<>) {<>}
       ]],
-			{ c(1, { t(""), t("static "), t("private ") }), c(2, { t(""), t("async ") }), i(3), i(4) },
+			{ c(1, { t(""), t("static "), t("private ") }), c(2, { t(""), t("async ") }), i(3), i(4), i(5) },
 			{ desc = "Class Method" }
 		)
 	),
