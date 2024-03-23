@@ -85,12 +85,6 @@ eval "$(starship init zsh)"
 #           PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
 # pip zsh completion end
 
-# initialise completions with ZSH's compinit
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-
-# aws cli
-complete -C '/usr/local/bin/aws_completer' aws
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/path.zsh.inc'; fi
@@ -182,3 +176,18 @@ export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 
 # multipass
 alias mp="multipass"
+
+# iterm2
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
+
+# terraform
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# aws cli
+complete -C '/usr/local/bin/aws_completer' aws
+
