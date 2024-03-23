@@ -50,6 +50,7 @@ local options = {
 		"typescript-language-server",
 		"prettier",
 		"prisma-language-server",
+    "python-lsp-server",
 		"graphql-language-service-cli",
 		"firefox-debug-adapter",
 		"chrome-debug-adapter",
@@ -366,6 +367,7 @@ local servers = {
 	"sqlls",
 	"vimls",
 	"prismals",
+  "pylsp",
 	"graphql",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
