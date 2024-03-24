@@ -57,10 +57,16 @@ return require("lazy").setup({
 		dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 	},
 	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
+	{
 		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		-- tag = "*",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "luarocks.nvim" },
+    lazy = false,
+    version = "*",
+    config = true,
 	},
 	{
 		"nvim-neotest/neotest",
