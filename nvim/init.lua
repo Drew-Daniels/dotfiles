@@ -564,10 +564,7 @@ require("lualine").setup({
 	options = { theme = "gruvbox" },
 	sections = {
 		lualine_x = {
-			-- CAPSLOCK.NVIM
-			-- https://github.com/barklan/capslock.nvim
-			-- { require("capslock").status_string },
-			{ "overseer" },
+			"grapple",
 		},
 	},
 })
@@ -738,8 +735,8 @@ wk.register({
 			"Pretty",
 		},
 		s = { "<cmd>Telescope search_history", "Search History" },
-    m = { g.toggle, "Toggle Grapple" },
-    M = { g.toggle_tags, "Move" },
+		m = { g.toggle, "Toggle Grapple" },
+		M = { g.toggle_tags, "Move" },
 		z = {
 			"<cmd>Telescope spell_suggest",
 			"Spell Suggest",
@@ -1645,7 +1642,7 @@ set.virtualedit = "block"
 set.inccommand = "split"
 
 -- disable mouse
-set.mouse=""
+set.mouse = ""
 -- ╓
 -- ║ https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
 -- ╙
