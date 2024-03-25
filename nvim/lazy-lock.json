@@ -51,6 +51,7 @@
   "overseer.nvim": { "branch": "master", "commit": "b04b0b105c07b4f02b3073ea3a98d6eca90bf152" },
   "plenary.nvim": { "branch": "master", "commit": "f7adfc4b3f4f91aab6caebf42b3682945fbc35be" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
+  "portal.nvim": { "branch": "main", "commit": "94ff1d57537e2cdb939a359bf7a7467b21a1defe" },
   "smart-splits.nvim": { "branch": "master", "commit": "cd59333ecf787856065f1c0e4cd41b0d9ec9c432" },
   "telescope-dap.nvim": { "branch": "master", "commit": "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },

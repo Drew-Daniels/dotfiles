@@ -1014,9 +1014,13 @@ wk.register({
 
 wk.register({
 	["<leader>j"] = {
-		name = "Jira",
+		name = "Jump",
+		f = { "<cmd>Portal jumplist forward<cr>" },
+		b = { "<cmd>Portal jumplist backward<cr>" },
 	},
 })
+
+--TODO: Figure out how to override jira.nvim default keybindings of '<leader>jv' and '<leader>jo' - or fork this plugin so I can edit this myself
 
 wk.register({
 	["<leader>k"] = {
