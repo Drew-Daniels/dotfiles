@@ -1661,6 +1661,9 @@ set.syntax = "on"
 set.termguicolors = true
 set.virtualedit = "block"
 set.inccommand = "split"
+
+-- disable mouse
+set.mouse=""
 -- ╓
 -- ║ https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
 -- ╙
