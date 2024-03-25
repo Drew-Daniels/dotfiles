@@ -12,9 +12,6 @@ windows:
           - fish
           - cls
           - nvim
-        - devserver:
-          - fish
-          - cls
         - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
