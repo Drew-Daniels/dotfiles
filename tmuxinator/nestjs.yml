@@ -1,0 +1,29 @@
+name: nestjs
+root: <%= ENV["PROJECTS_DIR"] %>/iluvcoffee
+on_project_exit: docker compose stop && kill -15 $(lsof -ti :3000)
+
+windows:
+  - nestjs:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+  - stack:
+      layout: even-horizontal
+      panes:
+      - pg:
+        - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+        - fish
+        - docker compose up
+      - web:
+        - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+        - fish
+        - cls
+        - npm run start:dev
