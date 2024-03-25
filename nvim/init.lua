@@ -721,6 +721,8 @@ vim.keymap.set({ "n" }, "<localleader>", function()
 	wk.show("<localleader>", { mode = "n" })
 end, { silent = true })
 
+local g = require("grapple")
+
 wk.register({
 	["<leader>"] = {
 		t = {
@@ -736,7 +738,8 @@ wk.register({
 			"Pretty",
 		},
 		s = { "<cmd>Telescope search_history", "Search History" },
-		m = { "<cmd>Telescope marks<cr>", "Marks" },
+    m = { g.toggle, "Toggle Grapple" },
+    M = { g.toggle_tags, "Move" },
 		z = {
 			"<cmd>Telescope spell_suggest",
 			"Spell Suggest",
@@ -976,13 +979,6 @@ wk.register({
 	},
 })
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                         HARPOON                         │
---          │         https://github.com/ThePrimeagen/harpoon         │
---          ╰─────────────────────────────────────────────────────────╯
-local hui = require("harpoon.ui")
-local hm = require("harpoon.mark")
-
 wk.register({
 	["<leader>a"] = {
 		name = "API Request",
@@ -1025,20 +1021,6 @@ wk.register({
 		m = { "<Cmd>CBllbox14<CR>", "Marked" },
 		q = { "<Cmd>CBllbox13<CR>", "Quote" },
 		r = { "<Cmd>CBd<CR>", "Remove Box Around Comment" },
-	},
-})
-
-wk.register({
-	["<leader>h"] = {
-		name = "Harpoon",
-		a = { hm.add_file, "Add Harpoon" },
-		d = {
-			"<cmd>:lua require('harpoon.mark').clear_all()<cr>",
-			"Delete All Harpoons",
-		},
-		s = { hui.toggle_quick_menu, "Switch Harpoon" },
-		p = { hui.nav_prev, "Previous Harpoon" },
-		n = { hui.nav_next, "Next Harpoon" },
 	},
 })
 
@@ -1141,15 +1123,15 @@ wk.register({
 local codewindow = require("codewindow")
 codewindow.setup()
 
-wk.register({
-	["<leader>m"] = {
-		name = "Minimap",
-		o = { codewindow.open_minimap, "Open" },
-		c = { codewindow.close_minimap, "Close" },
-		s = { codewindow.toggle_minimap, "Show/Hide" },
-		f = { codewindow.toggle_focus, "Focus" },
-	},
-})
+-- wk.register({
+-- 	["<leader>m"] = {
+-- 		name = "Minimap",
+-- 		o = { codewindow.open_minimap, "Open" },
+-- 		c = { codewindow.close_minimap, "Close" },
+-- 		s = { codewindow.toggle_minimap, "Show/Hide" },
+-- 		f = { codewindow.toggle_focus, "Focus" },
+-- 	},
+-- })
 
 wk.register({
 	["<leader>o"] = {

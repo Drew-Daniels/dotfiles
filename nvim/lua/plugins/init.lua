@@ -64,9 +64,9 @@ return require("lazy").setup({
 	{
 		"nvim-neorg/neorg",
 		dependencies = { "luarocks.nvim" },
-    lazy = false,
-    version = "*",
-    config = true,
+		lazy = false,
+		version = "*",
+		config = true,
 	},
 	{
 		"nvim-neotest/neotest",
@@ -129,7 +129,12 @@ return require("lazy").setup({
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = true,
 	},
-	{ "ThePrimeagen/harpoon", dependencies = { "nvim-lua/plenary.nvim" } },
+	{
+		"cbochs/grapple.nvim",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons", lazy = true },
+		},
+	},
 	"dfendr/clipboard-image.nvim",
 	"karb94/neoscroll.nvim",
 	"barklan/capslock.nvim",
