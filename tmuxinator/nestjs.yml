@@ -1,6 +1,9 @@
 name: nestjs
 root: <%= ENV["PROJECTS_DIR"] %>/iluvcoffee
-on_project_exit: docker compose stop && kill -15 $(lsof -ti :3000)
+on_project_start: open -n /Applications/Insomnia.app && open -n /Applications/'pgAdmin 4.app'
+on_project_stop: docker compose stop && kill -15 $(lsof -ti :3000) \
+  && osascript -e 'quit app "Insomnia"' \
+  && osascript -e 'quit app "pgAdmin 4.app"'
 
 windows:
   - nestjs:
