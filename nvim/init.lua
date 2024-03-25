@@ -757,15 +757,6 @@ wk.register({
 --TODO: Create which key configuration for telescope builtin.keymaps
 
 wk.register({
-	["<leader>C"] = {
-		name = "Copilot",
-		d = { "<cmd>Copilot disable<cr>", "Disable" },
-		e = { "<cmd>Copilot enable<cr>", "Enable" },
-		s = { "<cmd>Copilot status<cr>", "Status" },
-	},
-})
-
-wk.register({
 	["<leader>D"] = {
 		name = "Debug",
 		b = {
