@@ -33,57 +33,8 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-  - api:
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/api
-      panes:
-        - editor:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-          - nvim
-        - devserver:
-          - fish
-          - cls
-        - cmd:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-  - dev servers:
-      layout: even-horizontal
-      panes: 
-        - api:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-          - npx dotenv -e .env -- yarn dev --filter="api"
-        - web:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-          - npx dotenv -e .env -- yarn dev --filter="web"
-  - infra:
-      layout: even-horizontal
-      panes: 
-        - rest:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-          - docker compose up postgres redis redis-web prisma-studio zookeeper kafka kafka-ui
   - ui:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/ui
-      panes:
-        - editor:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-          - nvim
-        - cmd:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
-          - fish
-          - cls
-  - api client:
-      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/api-client
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -107,3 +58,49 @@ windows:
           - fish
           - cls
           - yarn dev
+  - api:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/api
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - devserver:
+          - fish
+          - cls
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+  - api client:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/api-client
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+  - infra:
+      layout: even-horizontal
+      panes: 
+        - api:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - npx dotenv -e .env -- yarn dev --filter="api"
+        - web:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - npx dotenv -e .env -- yarn dev --filter="web"
+        - rest:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - docker compose up postgres redis redis-web prisma-studio zookeeper kafka kafka-ui
