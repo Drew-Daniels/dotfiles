@@ -567,6 +567,7 @@ require("lualine").setup({
 			"grapple",
 		},
 	},
+  --TODO: Figure out how to show codeium status string in lualine
   -- winbar = {
   --   lualine_a = {
   --     "codeium#GetStatusString()"
