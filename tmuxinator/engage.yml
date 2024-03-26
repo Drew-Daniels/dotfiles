@@ -21,8 +21,8 @@ windows:
           - fish
           - cls
   - web:
-      layout: <%= ENV["MUX_LAYOUT"] %>
       root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/web
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -35,6 +35,7 @@ windows:
           - cls
   - ui:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/ui
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -47,6 +48,7 @@ windows:
           - cls
   - webdocs:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/webdocs
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
@@ -76,6 +78,7 @@ windows:
           - cls
   - api client:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/api-client
+      layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
