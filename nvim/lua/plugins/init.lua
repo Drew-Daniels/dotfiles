@@ -17,6 +17,10 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
+	},
+	{
 		"Funk66/jira.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
