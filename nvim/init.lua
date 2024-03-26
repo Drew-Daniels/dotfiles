@@ -1619,6 +1619,7 @@ require("gitsigns").setup({
 -- vim.g.codeium_disable_bindings = 1
 vim.g.codeium_no_map_tab = 1
 -- defaults: https://github.com/Exafunction/codeium.vim?tab=readme-ov-file#%EF%B8%8F-keybindings
+-- set the Meta key in iTerm2 > Preferences > Profiles > Keys > Left Option Key to Esc+
 vim.keymap.set('i', '<M-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
 vim.keymap.set('i', '<M-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
 
