@@ -1,7 +1,7 @@
 name: engage
 root: <%= ENV["PROJECTS_DIR"] %>/engage
 on_project_exit: clear
-on_project_stop: docker compose stop && kill -15 $(lsof -ti :3000) && kill -15 $(lsof -ti :3000)
+on_project_stop: docker compose stop && kill -15 $(lsof -ti :3001) && kill -15 $(lsof -ti :3000) && kill -15 $(lsof -ti :6006)
 
 windows:
   - root:
@@ -66,3 +66,11 @@ windows:
           - fish
           - cls
           - docker compose up postgres redis redis-web prisma-studio zookeeper kafka kafka-ui
+  - storybook:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/webdocs
+      panes:
+        - storybook:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - yarn dev
