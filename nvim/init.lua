@@ -968,7 +968,7 @@ wk.register({
 })
 
 wk.register({
-	["<leader>a"] = {
+	["<leader>A"] = {
 		name = "API Request",
 		s = {
 			"<Plug>RestNvim",
