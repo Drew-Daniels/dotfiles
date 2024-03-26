@@ -444,8 +444,8 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-e>"] = cmp.mapping.complete(),
-		["<C-Space>"] = cmp.mapping.confirm({
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		}),
