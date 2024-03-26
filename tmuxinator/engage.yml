@@ -1,7 +1,11 @@
 name: engage
 root: <%= ENV["PROJECTS_DIR"] %>/engage
 on_project_exit: clear
-on_project_stop: docker compose stop && kill -15 $(lsof -ti :3001) && kill -15 $(lsof -ti :3000) && kill -15 $(lsof -ti :6006)
+on_project_stop:
+  - docker compose stop
+  - kill -15 $(lsof -ti :3000)
+  - kill -15 $(lsof -ti :3001)
+  - kill -15 $(lsof -ti :6006)
 
 windows:
   - root:
@@ -66,10 +70,39 @@ windows:
           - fish
           - cls
           - docker compose up postgres redis redis-web prisma-studio zookeeper kafka kafka-ui
-  - storybook:
+  - ui:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/ui
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+  - api client:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/api-client
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+  - webdocs:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/webdocs
       panes:
-        - storybook:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
