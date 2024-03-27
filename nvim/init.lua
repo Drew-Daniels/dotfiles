@@ -1465,7 +1465,7 @@ vim.api.nvim_create_user_command("Note", function(opts)
 	vim.cmd("e ~/projects/home_notes/" .. name .. ".norg")
 end, { range = false, nargs = 1 })
 
-vim.api.nvim_create_user_command("Standup", function(opts)
+vim.api.nvim_create_user_command("SU", function(opts)
 	local date = os.date("%Y-%m-%d")
 	if opts.fargs[1] == "yesterday" then
 		date = os.date("%Y-%m-%d", os.time() - 86400)
