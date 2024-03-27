@@ -55,11 +55,15 @@ windows:
           - fish
           - cls
           - nvim
-        - cmd:
+        - devserver:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
           - yarn dev
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
   - api:
       layout: <%= ENV["MUX_LAYOUT"] %>
       root: <%= ENV["PROJECTS_DIR"] %>/engage/apps/api
