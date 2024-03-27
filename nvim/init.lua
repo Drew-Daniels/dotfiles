@@ -1523,7 +1523,9 @@ vim.cmd([[
 --         │                  NVIM-TREESITTER-CONTEXT                  │
 --         │https://github.com/nvim-treesitter/nvim-treesitter-context │
 --         ╰───────────────────────────────────────────────────────────╯
-require("treesitter-context").setup()
+require("treesitter-context").setup({
+  max_lines = 5
+})
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       VIM-RHUBARB                       │
