@@ -89,6 +89,19 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
+  - database:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/database
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
   - infra:
       layout: even-horizontal
       panes: 
