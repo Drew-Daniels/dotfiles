@@ -1627,6 +1627,7 @@ vim.keymap.set('i', '<M-x>', function() return vim.fn['codeium#Clear']() end, { 
 vim.cmd([[
   let g:codeium_filetypes = {
     \ "norg": v:false,
+    \ "markdown": v:false,
     \ }
 ]])
 
