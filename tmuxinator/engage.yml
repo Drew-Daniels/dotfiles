@@ -133,6 +133,19 @@ windows:
           - fish
           - cls
           - docker compose up postgres redis redis-web prisma-studio zookeeper kafka kafka-ui
+  - utils:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/utils
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
   - eslint config custom fe:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/eslint-config-custom
       layout: <%= ENV["MUX_LAYOUT"] %>
