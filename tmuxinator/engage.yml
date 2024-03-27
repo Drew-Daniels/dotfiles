@@ -133,8 +133,8 @@ windows:
           - fish
           - cls
           - docker compose up postgres redis redis-web prisma-studio zookeeper kafka kafka-ui
-  - eslint config custom server:
-      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/eslint-config-custom-server
+  - eslint config custom fe:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/eslint-config-custom
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -146,8 +146,8 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-  - eslint config custom:
-      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/eslint-config-custom
+  - eslint config custom be:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/eslint-config-custom-server
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
