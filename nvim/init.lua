@@ -1040,10 +1040,6 @@ wk.register({
 		a = {
 			-- code actions
 		},
-		b = {
-			"<cmd>LspRestart<cr>",
-			"Reboot LSP",
-		},
 		c = {
 			-- change name
 		},
@@ -1070,9 +1066,6 @@ wk.register({
 			"<cmd>Telescope lsp_references<cr>",
 			"References",
 		},
-		R = {
-			-- references
-		},
 		t = {
 			"<cmd>Telescope lsp_type_definitions<cr>",
 			"Type Definitions",
@@ -1087,6 +1080,18 @@ wk.register({
 		},
 		s = {
 			-- signature_help
+		},
+		R = {
+			"<cmd>LspRestart<cr>",
+			"Restart LSP",
+		},
+		Q = {
+			"<cmd>LspStop<cr>",
+			"Stop LSP",
+		},
+		S = {
+			"<cmd>LspStart<cr>",
+			"Start LSP",
 		},
 	},
 })
