@@ -9,4 +9,4 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-          - nvim -c "Standup today"
+          - nvim -c "SU today"
