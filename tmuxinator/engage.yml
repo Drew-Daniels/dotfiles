@@ -76,6 +76,19 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
+  - api types:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/api-types
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
   - api client:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/api-client
       layout: <%= ENV["MUX_LAYOUT"] %>
