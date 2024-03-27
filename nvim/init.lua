@@ -496,7 +496,6 @@ vim.keymap.set({ "i", "s" }, "<C-h>", function()
 	ls.jump(-1)
 end, { silent = true })
 
---TODO: Why do I have to hit <C-e> twice to expand?
 vim.keymap.set({ "i" }, "<C-e>", function()
 	ls.expand()
 end, { silent = true })
@@ -509,7 +508,7 @@ end, { silent = true })
 
 ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("typescriptreact", { "javascriptreact" })
+ls.filetype_extend("typescriptreact", { "javascriptreact", "javascript" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
