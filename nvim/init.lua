@@ -566,12 +566,12 @@ require("lualine").setup({
 			"grapple",
 		},
 	},
-  --TODO: Figure out how to show codeium status string in lualine
-  -- winbar = {
-  --   lualine_a = {
-  --     "codeium#GetStatusString()"
-  --   },
-  -- }
+	--TODO: Figure out how to show codeium status string in lualine
+	-- winbar = {
+	--   lualine_a = {
+	--     "codeium#GetStatusString()"
+	--   },
+	-- }
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -1524,7 +1524,7 @@ vim.cmd([[
 --         │https://github.com/nvim-treesitter/nvim-treesitter-context │
 --         ╰───────────────────────────────────────────────────────────╯
 require("treesitter-context").setup({
-  max_lines = 5
+	max_lines = 5,
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -1622,8 +1622,12 @@ require("gitsigns").setup({
 vim.g.codeium_no_map_tab = 1
 -- defaults: https://github.com/Exafunction/codeium.vim?tab=readme-ov-file#%EF%B8%8F-keybindings
 -- set the Meta key in iTerm2 > Preferences > Profiles > Keys > Left Option Key to Esc+
-vim.keymap.set('i', '<M-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-vim.keymap.set('i', '<M-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+vim.keymap.set("i", "<M-g>", function()
+	return vim.fn["codeium#Accept"]()
+end, { expr = true, silent = true })
+vim.keymap.set("i", "<M-x>", function()
+	return vim.fn["codeium#Clear"]()
+end, { expr = true, silent = true })
 
 vim.cmd([[
   let g:codeium_filetypes = {

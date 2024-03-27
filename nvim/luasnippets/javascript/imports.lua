@@ -8,7 +8,7 @@ return {
 		"esi",
 		fmta(
 			[[
-        import <> from '<>';
+        import <> from "<>";
       ]],
 			{ c(2, { sn(nil, { t("{ "), i(1), t(" }") }), t("") }), i(1) },
 			{ desc = "ES Module Import" }
@@ -18,7 +18,7 @@ return {
 		"cji",
 		fmta(
 			[[
-        const <> = require('<>');
+        const <> = require("<>");
       ]],
 			{ c(2, { sn(nil, { t("{ "), i(1), t(" }") }), t("") }), i(1) },
 			{ desc = "CommonJS Module Import" }

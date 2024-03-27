@@ -8,7 +8,7 @@ return {
 		"cn",
 		fmta(
 			[[ 
-        context('<>', () =>> {
+        context("<>", () =>> {
           <>
         });
       ]],
@@ -20,7 +20,7 @@ return {
 		"ds",
 		fmta(
 			[[ 
-        describe('<>', () =>> {
+        describe("<>", () =>> {
           <>
         });
       ]],
@@ -52,12 +52,12 @@ return {
 		),
 		{ desc = "jest beforeAll" }
 	),
-	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
+	s("jt", fmta([[ it("<>", () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
 	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
 	s(
 		"be",
 		fmta(
-			[[ <>('<>', () =>> {<>}); ]],
+			[[ <>("<>", () =>> {<>}); ]],
 			{ c(1, { t("describe"), t("it"), t("beforeAll"), t("beforeEach") }), i(2), i(3) }
 		)
 	),
