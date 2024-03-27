@@ -1662,7 +1662,7 @@ set.shellcmdflag = "-ic"
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
 vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true })
-vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
+-- vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
