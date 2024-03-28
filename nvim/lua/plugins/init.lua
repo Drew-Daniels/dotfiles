@@ -118,11 +118,6 @@ return require("lazy").setup({
 		dependencies = { "rcarriga/nvim-notify", "stevearc/dressing.nvim" },
 	},
 	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	},
-	{
 		"stevearc/oil.nvim",
 		opts = {},
 		-- Optional dependencies

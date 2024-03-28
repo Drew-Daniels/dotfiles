@@ -57,6 +57,7 @@ local options = {
 		"chrome-debug-adapter",
 		"js-debug-adapter",
 		"nxls",
+		"typescript-language-server",
 	},
 	max_concurrent_installers = 10,
 }
@@ -372,6 +373,7 @@ local servers = {
 	"prismals",
 	"pylsp",
 	"graphql",
+	"tsserver",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
