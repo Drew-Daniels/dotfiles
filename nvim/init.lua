@@ -1027,8 +1027,6 @@ wk.register({
 	},
 })
 
---TODO: Figure out how to override jira.nvim default keybindings of '<leader>jv' and '<leader>jo' - or fork this plugin so I can edit this myself
-
 wk.register({
 	["<leader>k"] = {
 		name = "Keymaps",
@@ -1118,6 +1116,20 @@ wk.register({
 			"Generate Type Annotation",
 		},
 	},
+})
+
+wk.register({
+  ["<leader>J"] = {
+    name= "Jira",
+    v = {
+      "<cmd>JiraView<cr>",
+      "View Issue"
+    },
+    o = {
+      "<cmd>JiraOpen<cr>",
+      "Open Issue in Browser"
+    }
+  }
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
