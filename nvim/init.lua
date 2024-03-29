@@ -570,7 +570,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --          │      https://github.com/nvim-lualine/lualine.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
 require("lualine").setup({
-	options = { theme = "gruvbox" },
+	options = { theme = "gruvbox-material" },
 	sections = {
 		lualine_x = {
 			"grapple",
