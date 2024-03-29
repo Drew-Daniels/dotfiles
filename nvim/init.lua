@@ -569,11 +569,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --          │                         LUALINE                         │
 --          │      https://github.com/nvim-lualine/lualine.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
+local function getCodeiumStatus()
+	return vim.fn["codeium#GetStatusString"]()
+end
+
 require("lualine").setup({
 	options = { theme = "gruvbox-material" },
 	sections = {
 		lualine_x = {
-			"grapple",
+			-- "grapple",
+			getCodeiumStatus,
 		},
 	},
 	--TODO: Figure out how to show codeium status string in lualine
@@ -1652,6 +1657,7 @@ vim.g.codeium_no_map_tab = 1
 vim.keymap.set("i", "<C-g>", function()
 	return vim.fn["codeium#Accept"]()
 end, { expr = true, silent = true })
+
 vim.keymap.set("i", "<C-x>", function()
 	return vim.fn["codeium#Clear"]()
 end, { expr = true, silent = true })
