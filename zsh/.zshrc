@@ -191,3 +191,6 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
+# lorem ipsum generator script
+alias lip="bash $XDG_CONFIG_HOME/scripts/lip.sh"
+

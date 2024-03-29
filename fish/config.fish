@@ -120,6 +120,9 @@ if status is-interactive
     
     # alias
     alias mp="multipass"
+
+    # lorem ipsum generator
+    alias lip="$XDG_CONFIG_HOME/scripts/lip.sh"
 end
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
