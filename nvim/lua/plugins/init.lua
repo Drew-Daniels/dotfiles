@@ -17,9 +17,9 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
-		-- dir = "~/projects/faker.nvim",
-		-- name = "faker",
-		"Drew-Daniels/faker.nvim",
+		dir = "~/projects/faker.nvim",
+		name = "faker",
+		-- "Drew-Daniels/faker.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("faker").setup()
