@@ -421,7 +421,15 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 --          │           https://github.com/hrsh7th/nvim-cmp           │
 --          ╰─────────────────────────────────────────────────────────╯
 local cmp = require("cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+local ts_utils = require("nvim-treesitter.ts_utils")
+
+cmp.event:on("confirm_done", function(evt)
+	local name = ts_utils.get_node_at_cursor():type()
+	if name ~= "named_imports" then
+		cmp_autopairs.on_confirm_done()(evt)
+	end
+end)
+
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
 	snippet = {
@@ -1119,17 +1127,17 @@ wk.register({
 })
 
 wk.register({
-  ["<leader>J"] = {
-    name= "Jira",
-    v = {
-      "<cmd>JiraView<cr>",
-      "View Issue"
-    },
-    o = {
-      "<cmd>JiraOpen<cr>",
-      "Open Issue in Browser"
-    }
-  }
+	["<leader>J"] = {
+		name = "Jira",
+		v = {
+			"<cmd>JiraView<cr>",
+			"View Issue",
+		},
+		o = {
+			"<cmd>JiraOpen<cr>",
+			"Open Issue in Browser",
+		},
+	},
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
