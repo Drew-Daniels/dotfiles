@@ -124,7 +124,3 @@ if status is-interactive
     # lorem ipsum generator
     alias lip="$XDG_CONFIG_HOME/scripts/lip.sh"
 end
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/drew.daniels/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
