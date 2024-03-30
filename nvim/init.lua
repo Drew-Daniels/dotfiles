@@ -598,7 +598,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --          │      https://github.com/nvim-lualine/lualine.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
 local function getCodeiumStatus()
-	return vim.fn["codeium#GetStatusString"]()
+	return "codeium: " .. vim.fn["codeium#GetStatusString"]()
 end
 
 require("lualine").setup({
