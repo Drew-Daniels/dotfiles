@@ -17,7 +17,9 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
-		"vim-denops/denops.vim",
+		dir = "~/projects/denops-maze",
+		name = "denops-maze",
+		lazy = false,
 	},
 	{
 		-- dir = "~/projects/faker.nvim",
@@ -27,6 +29,9 @@ return require("lazy").setup({
 		config = function()
 			require("faker").setup()
 		end,
+	},
+	{
+		"vim-denops/denops.vim",
 	},
 	{
 		"Exafunction/codeium.vim",
@@ -108,7 +113,7 @@ return require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "rafi/telescope-thesaurus.nvim" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",

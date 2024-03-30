@@ -61,6 +61,7 @@
   "telescope-import.nvim": { "branch": "main", "commit": "baa2d50be46c769a1cc942a9d5be049f314f4206" },
   "telescope-media-files.nvim": { "branch": "master", "commit": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a" },
   "telescope-tabs": { "branch": "master", "commit": "0a678eefcb71ebe5cb0876aa71dd2e2583d27fd3" },
+  "telescope-thesaurus.nvim": { "branch": "master", "commit": "0bd7f7c2ce67c8b86b98b80dd42ec597bea72c7c" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
   "transparent.nvim": { "branch": "main", "commit": "fd35a46f4b7c1b244249266bdcb2da3814f01724" },
   "undotree": { "branch": "master", "commit": "aa93a7e5890dbbebbc064cd22260721a6db1a196" },

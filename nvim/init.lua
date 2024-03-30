@@ -581,21 +581,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
-		vim.keymap.set(
-			"n",
-			"<leader>wa",
-			vim.lsp.buf.add_workspace_folder,
-			{ unpack(opts), desc = "add workspace folder" }
-		)
-		vim.keymap.set(
-			"n",
-			"<leader>wr",
-			vim.lsp.buf.remove_workspace_folder,
-			{ unpack(opts), desc = "remove workspace folder" }
-		)
-		vim.keymap.set("n", "<leader>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, { unpack(opts), desc = "list workspace folders" })
 		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
 		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
@@ -723,27 +708,28 @@ require("notify").setup({
 	render = "compact",
 })
 
-require("telescope").load_extension("notify")
+local telescope = require("telescope")
+telescope.load_extension("notify")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                    TELESCOPE-IMPORT                     │
 --          │  https://github.com/piersolenski/telescope-import.nvim  │
 --          ╰─────────────────────────────────────────────────────────╯
-require("telescope").load_extension("import")
+telescope.load_extension("import")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     TELESCOPE-TABS                      │
 --          │   https://github.com/LukasPietzschmann/telescope-tabs   │
 --          ╰─────────────────────────────────────────────────────────╯
-require("telescope").load_extension("telescope-tabs")
+telescope.load_extension("telescope-tabs")
 require("telescope-tabs").setup()
 
 --        ╭─────────────────────────────────────────────────────────────╮
 --        │                    TELESCOPE-MEDIA-FILES                    │
 --        │https://github.com/nvim-telescope/telescope-media-files.nvim │
 --        ╰─────────────────────────────────────────────────────────────╯
-require("telescope").load_extension("media_files")
-require("telescope").setup({
+telescope.load_extension("media_files")
+telescope.setup({
 	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
 
@@ -751,7 +737,7 @@ require("telescope").setup({
 --          │                      TELESCOPE-DAP                      │
 --          │  https://github.com/nvim-telescope/telescope-dap.nvim   │
 --          ╰─────────────────────────────────────────────────────────╯
-require("telescope").load_extension("dap")
+telescope.load_extension("dap")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                      OVERSEER.NVIM                      │
@@ -1297,15 +1283,10 @@ wk.register({
 
 wk.register({
 	["<leader>w"] = {
-		name = "Workspace",
-		a = {
-			-- workspace add
-		},
-		r = {
-			-- workspace remove
-		},
-		l = {
-			-- workspace list
+		name = "Word",
+		d = {
+			"<cmd>Telescope thesaurus lookup<cr>",
+			"Definition & Thesaurus",
 		},
 	},
 })
@@ -1342,24 +1323,26 @@ require("neotest").setup({
 
 vim.cmd("let test#strategy = 'neovim'")
 
+telescope.load_extension("fzf")
+
 --        ╭────────────────────────────────────────────────────────────╮
 --        │                    TELESCOPE-FZF-NATIVE                    │
 --        │https://github.com/nvim-telescope/telescope-fzf-native.nvim │
 --        ╰────────────────────────────────────────────────────────────╯
 ---@diagnostic disable-next-line: missing-parameter
-require("telescope").setup({
+telescope.setup({
 	extensions = {
 		import = {
 			insert_at_top = true,
 		},
 	},
 })
-require("telescope").load_extension("fzf")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                  INDENT-BLANKLINE.NVIM                  │
 --          │ https://github.com/lukas-reineke/indent-blankline.nvim  │
 --          ╰─────────────────────────────────────────────────────────╯
+
 require("ibl").setup()
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -1754,5 +1737,3 @@ vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true })
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
-
-vim.opt.runtimepath:append("~/projects/denops-getting-started")
