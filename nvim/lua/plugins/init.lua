@@ -17,20 +17,6 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
-		dir = "~/projects/denops-maze",
-		name = "denops-maze",
-		lazy = false,
-	},
-	{
-		-- dir = "~/projects/faker.nvim",
-		-- name = "faker",
-		"Drew-Daniels/faker.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("faker").setup()
-		end,
-	},
-	{
 		"vim-denops/denops.vim",
 	},
 	{
