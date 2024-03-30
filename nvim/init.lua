@@ -58,6 +58,7 @@ local options = {
 		"js-debug-adapter",
 		"nxls",
 		"typescript-language-server",
+		"deno",
 	},
 	max_concurrent_installers = 10,
 }
@@ -373,7 +374,6 @@ local servers = {
 	"prismals",
 	"pylsp",
 	"graphql",
-	"tsserver",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
@@ -397,6 +397,49 @@ lspconfig.lua_ls.setup({
 lspconfig.typos_lsp.setup({
 	capabilities = capabilities,
 	filetypes = { "markdown", "norg" },
+})
+
+-- https://www.npbee.me/posts/deno-and-typescript-in-a-monorepo-neovim-lsp
+---Specialized root pattern that allows for an exclusion
+---@param opt { root: string[], exclude: string[] }
+---@return fun(file_name: string): string | nil
+local function root_pattern_exclude(opt)
+	local lsputil = require("lspconfig.util")
+
+	return function(fname)
+		local excluded_root = lsputil.root_pattern(opt.exclude)(fname)
+		local included_root = lsputil.root_pattern(opt.root)(fname)
+
+		if excluded_root then
+			return nil
+		else
+			return included_root
+		end
+	end
+end
+
+lspconfig.tsserver.setup({
+	capabilities = capabilities,
+	root_dir = root_pattern_exclude({
+		root = { "package.json" },
+		exclude = { "deno.json", "deno.jsonc" },
+	}),
+	single_file_support = false,
+})
+
+lspconfig.denols.setup({
+	capabilities = capabilities,
+	root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
+	init_options = {
+		lint = true,
+		suggest = {
+			imports = {
+				hosts = {
+					["https://deno.land"] = true,
+				},
+			},
+		},
+	},
 })
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
@@ -1711,3 +1754,5 @@ vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true })
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
+
+vim.opt.runtimepath:append("~/projects/denops-getting-started")

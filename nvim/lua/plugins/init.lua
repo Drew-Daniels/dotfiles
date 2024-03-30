@@ -16,9 +16,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  {
-    "vim-denops/denops.vim",
-  },
+	{
+		"vim-denops/denops.vim",
+	},
 	{
 		-- dir = "~/projects/faker.nvim",
 		-- name = "faker",
