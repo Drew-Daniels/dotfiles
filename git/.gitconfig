@@ -9,7 +9,7 @@
 [user]
 	name = Drew Daniels
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [credential]
 	helper = osxkeychain
 [checkout]
