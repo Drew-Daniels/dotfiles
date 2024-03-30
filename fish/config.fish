@@ -123,4 +123,7 @@ if status is-interactive
 
     # lorem ipsum generator
     alias lip="$XDG_CONFIG_HOME/scripts/lip.sh"
+
+    # mise
+    /opt/homebrew/bin/mise activate fish | source
 end
