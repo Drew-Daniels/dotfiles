@@ -268,27 +268,27 @@ local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
 -- Repeat movement with ; and ,
 -- ensure ; goes forward and , goes backward regardless of the last direction
-vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
-vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next, { desc = "Repeat last move next" })
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous, { desc = "Repeat last move previous" })
 
 -- vim way: ; goes to the direction you were moving.
 -- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
 -- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 
 -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f, { desc = "Repeat builtin f" })
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F, { desc = "Repeat builtin F" })
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t, { desc = "Repeat builtin t" })
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T, { desc = "Repeat builtin T" })
 
 -- This repeats the last query with always previous direction and to the start of the range.
 vim.keymap.set({ "n", "x", "o" }, "<home>", function()
-	ts_repeat_move.repeat_last_move({ forward = false, start = true })
+	ts_repeat_move.repeat_last_move({ forward = false, start = true, desc = "Repeat last move" })
 end)
 
 -- This repeats the last query with always next direction and to the end of the range.
 vim.keymap.set({ "n", "x", "o" }, "<end>", function()
-	ts_repeat_move.repeat_last_move({ forward = true, start = false })
+	ts_repeat_move.repeat_last_move({ forward = true, start = false, desc = "Repeat last move" })
 end)
 
 -- custom file associations
@@ -543,21 +543,21 @@ ls.config.set_config({
 
 vim.keymap.set({ "i", "s" }, "<C-j>", function()
 	ls.jump(1)
-end, { silent = true })
+end, { silent = true, desc = "Next Snippet" })
 
 vim.keymap.set({ "i", "s" }, "<C-h>", function()
 	ls.jump(-1)
-end, { silent = true })
+end, { silent = true, desc = "Previous Snippet" })
 
 vim.keymap.set({ "i" }, "<C-e>", function()
 	ls.expand()
-end, { silent = true })
+end, { silent = true, desc = "Expand Snippet" })
 
 vim.keymap.set({ "i", "s" }, "<C-c>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
 	end
-end, { silent = true })
+end, { silent = true, desc = "Choose Snippet" })
 
 ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescript", { "javascript" })
@@ -765,7 +765,7 @@ local wk = require("which-key")
 -- https://github.com/folke/which-key.nvim/issues/172
 vim.keymap.set({ "n" }, "<localleader>", function()
 	wk.show("<localleader>", { mode = "n" })
-end, { silent = true })
+end, { silent = true, desc = "Show which-key menu" })
 
 local g = require("grapple")
 
@@ -1627,7 +1627,7 @@ require("gitsigns").setup({
 				gs.next_hunk()
 			end)
 			return "<Ignore>"
-		end, { expr = true })
+		end, { expr = true, desc = "Next Hunk" })
 
 		map("n", "[c", function()
 			if vim.wo.diff then
@@ -1637,7 +1637,7 @@ require("gitsigns").setup({
 				gs.prev_hunk()
 			end)
 			return "<Ignore>"
-		end, { expr = true })
+		end, { expr = true, desc = "Prev Hunk" })
 
 		-- Actions
 		wk.register({
@@ -1691,11 +1691,11 @@ vim.g.codeium_no_map_tab = 1
 -- set the Meta key in iTerm2 > Preferences > Profiles > Keys > Left Option Key to Esc+
 vim.keymap.set("i", "<C-g>", function()
 	return vim.fn["codeium#Accept"]()
-end, { expr = true, silent = true })
+end, { expr = true, silent = true, desc = "Codeium Accept" })
 
 vim.keymap.set("i", "<C-x>", function()
 	return vim.fn["codeium#Clear"]()
-end, { expr = true, silent = true })
+end, { expr = true, silent = true, desc = "Codeium Clear" })
 
 vim.cmd([[
   let g:codeium_filetypes = {
@@ -1739,9 +1739,9 @@ set.mouse = ""
 -- ║ https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
 -- ╙
 set.shellcmdflag = "-ic"
-vim.keymap.set("n", "n", "nzz", { silent = true })
-vim.keymap.set("n", "N", "Nzz", { silent = true })
-vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true })
+vim.keymap.set("n", "n", "nzz", { silent = true, desc = "Search Next" })
+vim.keymap.set("n", "N", "Nzz", { silent = true, desc = "Search Prev" })
+vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true, desc = "Insert blank line" })
 -- vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
