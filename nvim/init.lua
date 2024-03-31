@@ -802,6 +802,15 @@ wk.register({
 -- 	},
 -- })
 
+wk.register({
+	["<leader>C"] = {
+		name = "Codeium",
+		e = { "<cmd>CodeiumEnable<cr>", "Enable" },
+		d = { "<cmd>CodeiumDisable<cr>", "Disable" },
+		t = { "<cmd>CodeiumToggle<cr>", "Toggle" },
+	},
+})
+
 --TODO: Create which key configuration for telescope builtin.search_history
 --TODO: Create which key configuration for telescope builtin.keymaps
 
