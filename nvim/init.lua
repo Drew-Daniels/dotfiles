@@ -526,6 +526,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		}
 		vim.diagnostic.open_float(nil, opts)
 	end,
+	desc = "Show Diagnostics on CursorHold event",
 })
 
 -- luasnip specific configuration
@@ -590,6 +591,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- 	vim.lsp.buf.format({ async = true })
 		-- end, { unpack(opts), desc = "format" })
 	end,
+	desc = "Initialize LSP on LspAttach event",
 })
 -- Language Server Configuration END
 
