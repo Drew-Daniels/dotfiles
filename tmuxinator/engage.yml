@@ -158,6 +158,18 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
+  - tailwind config:
+      root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/tailwind-config
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+        - cmd:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
   - eslint config custom fe:
       root: <%= ENV["PROJECTS_DIR"] %>/engage/packages/eslint-config-custom
       layout: <%= ENV["MUX_LAYOUT"] %>
