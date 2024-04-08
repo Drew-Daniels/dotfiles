@@ -81,7 +81,6 @@ return require("lazy").setup({
 		dependencies = { "luarocks.nvim" },
 		lazy = false,
 		version = "*",
-		config = true,
 	},
 	{
 		"nvim-neotest/neotest",
