@@ -357,7 +357,6 @@ local servers = {
 	"html",
 	"bashls",
 	"clangd",
-	"cssls",
 	"cssmodules_ls",
 	"docker_compose_language_service",
 	"dockerls",
@@ -382,6 +381,30 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+lspconfig.cssls.setup({
+  capabilities = capabilities,
+  settings = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      }
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      }
+    },
+    less = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      }
+    },
+  },
+})
 
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
