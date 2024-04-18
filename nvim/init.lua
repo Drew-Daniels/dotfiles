@@ -383,27 +383,27 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.cssls.setup({
-  capabilities = capabilities,
-  settings = {
-    css = {
-      validate = true,
-      lint = {
-        unknownAtRules = "ignore",
-      }
-    },
-    scss = {
-      validate = true,
-      lint = {
-        unknownAtRules = "ignore",
-      }
-    },
-    less = {
-      validate = true,
-      lint = {
-        unknownAtRules = "ignore",
-      }
-    },
-  },
+	capabilities = capabilities,
+	settings = {
+		css = {
+			validate = true,
+			lint = {
+				unknownAtRules = "ignore",
+			},
+		},
+		scss = {
+			validate = true,
+			lint = {
+				unknownAtRules = "ignore",
+			},
+		},
+		less = {
+			validate = true,
+			lint = {
+				unknownAtRules = "ignore",
+			},
+		},
+	},
 })
 
 lspconfig.lua_ls.setup({
@@ -809,8 +809,8 @@ wk.register({
 			"Pretty",
 		},
 		s = { "<cmd>Telescope search_history", "Search History" },
-		m = { g.toggle, "Toggle Grapple" },
-		M = { g.toggle_tags, "Move" },
+		m = { g.tag, "Grapple Tag" },
+		M = { g.toggle_tags, "Grapple Move" },
 		z = {
 			"<cmd>Telescope spell_suggest",
 			"Spell Suggest",
@@ -919,11 +919,11 @@ wk.register({
 })
 
 require("diffview").setup({
-  view = {
-    merge_tool = {
-      layout = "diff4_mixed",
-    },
-  }
+	view = {
+		merge_tool = {
+			layout = "diff4_mixed",
+		},
+	},
 })
 
 wk.register({
