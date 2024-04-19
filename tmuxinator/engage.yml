@@ -116,19 +116,22 @@ windows:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
-  - infra:
-      layout: even-horizontal
-      panes: 
+  - api server:
+      panes:
         - api:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
           - npx dotenv -e .env -- yarn dev --filter="api"
-        - web:
+  - web server:
+      panes:
+        - web: 
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
           - npx dotenv -e .env -- yarn dev --filter="web"
+  - rest server: 
+      panes:
         - rest:
           - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
