@@ -41,6 +41,18 @@ return {
 		{ desc = "jest beforeAll" }
 	),
 	s(
+		"aa",
+		fmta(
+			[[ 
+        afterAll(() =>> {
+          <>
+        });
+      ]],
+			{ i(1) }
+		),
+		{ desc = "jest afterAll" }
+	),
+	s(
 		"be",
 		fmta(
 			[[ 
@@ -51,6 +63,18 @@ return {
 			{ i(1) }
 		),
 		{ desc = "jest beforeAll" }
+	),
+	s(
+		"ae",
+		fmta(
+			[[ 
+        afterEach(() =>> {
+          <>
+        });
+      ]],
+			{ i(1) }
+		),
+		{ desc = "jest afterEach" }
 	),
 	s("jt", fmta([[ it("<>", () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
 	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
