@@ -194,3 +194,6 @@ complete -C '/usr/local/bin/aws_completer' aws
 # lorem ipsum generator script
 alias lip="bash $XDG_CONFIG_HOME/scripts/lip.sh"
 
+# playwright
+alias psr="npx playwright show-report"
+

@@ -126,4 +126,7 @@ if status is-interactive
 
     # mise
     /opt/homebrew/bin/mise activate fish | source
+    
+    # playwright
+    alias psr="npx playwright show-report"
 end
