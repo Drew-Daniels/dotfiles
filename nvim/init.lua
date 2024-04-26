@@ -598,17 +598,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
-		--TODO: Can I move these outside of this function?
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
-		-- commenting this out since nvim-treesitter-textobject providers more consistent TypeScript support for peeking definitions
-		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
-		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
+		vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
 		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
+		vim.keymap.set("n", "gR", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
 		-- conform.nvim should handle formatting
 		-- vim.keymap.set("n", "<space>f", function()
 		-- 	vim.lsp.buf.format({ async = true })
