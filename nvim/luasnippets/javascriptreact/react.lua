@@ -16,4 +16,5 @@ return {
 			{ i(2), i(1) }
 		)
 	),
+	s("rtd", fmt("{{/* TODO: {} */}}", { i(1) }), { desc = "React TODO" }),
 }
