@@ -441,13 +441,26 @@ local function root_pattern_exclude(opt)
 	end
 end
 
-lspconfig.tsserver.setup({
-	capabilities = capabilities,
-	root_dir = root_pattern_exclude({
-		root = { "package.json" },
-		exclude = { "deno.json", "deno.jsonc" },
-	}),
-	single_file_support = false,
+-- Commenting out since 'typescript-tools.nvim' handles this configuration
+-- https://github.com/pmizio/typescript-tools.nvim?tab=readme-ov-file#-installation
+-- lspconfig.tsserver.setup({
+-- 	capabilities = capabilities,
+-- 	root_dir = root_pattern_exclude({
+-- 		root = { "package.json" },
+-- 		exclude = { "deno.json", "deno.jsonc" },
+-- 	}),
+-- 	single_file_support = false,
+-- })
+
+require("typescript-tools").setup({
+	settings = {
+		capabilities = capabilities,
+		root_dir = root_pattern_exclude({
+			root = { "package.json" },
+			exclude = { "deno.json", "deno.jsonc" },
+		}),
+		single_file_support = false,
+	},
 })
 
 lspconfig.denols.setup({

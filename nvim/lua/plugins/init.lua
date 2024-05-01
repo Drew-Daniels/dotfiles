@@ -16,6 +16,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
 	-- {
 	-- 	-- development
 	-- 	dir = "~/projects/faker.nvim",
@@ -170,7 +175,7 @@ return require("lazy").setup({
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-  { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+	{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 	"williamboman/mason.nvim",
 	--
 	{
