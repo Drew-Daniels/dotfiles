@@ -180,6 +180,9 @@ alias mp="multipass"
 # iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# stripe
+fpath=($XDG_CONFIG_HOME/stripe $fpath)
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
 compinit
