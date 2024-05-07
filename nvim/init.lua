@@ -14,60 +14,55 @@ require("legendary").setup({
 --           │                         MASON                         │
 --           │ https://github.com/williamboman/mason.nvim/issues/130 │
 --           ╰───────────────────────────────────────────────────────╯
-local present, mason = pcall(require, "mason")
-
-if not present then
-	return
-end
-
--- Not all dependencies installed by Mason here are specifically for nvim-lspconfig
--- some are installed here just for consistency across machines, and it's easier if
--- things are installed in one place.
-local options = {
+local mason_options = {
 	ensure_installed = {
-		"bash-language-server",
-		"clangd",
 		"clang-format",
-		"css-lsp",
-		"cssmodules-language-server",
-		"cucumber-language-server",
-		"docker-compose-language-service",
-		"dockerfile-language-server",
-		"emmet-language-server",
-		"eslint-lsp",
-		"html-lsp",
-		"json-lsp",
 		"jsonlint",
-		"lua-language-server",
-		"solargraph",
 		"stylua",
-		"sqlls",
-		"marksman",
-		"tailwindcss-language-server",
-		"terraform-ls",
-		"typos-lsp",
-		"vim-language-server",
-		"yaml-language-server",
-		"typescript-language-server",
 		"prettier",
-		"prisma-language-server",
-		"python-lsp-server",
-		"graphql-language-service-cli",
 		"firefox-debug-adapter",
 		"chrome-debug-adapter",
 		"js-debug-adapter",
 		"nxls",
-		"typescript-language-server",
-		"deno",
 	},
 	max_concurrent_installers = 10,
 }
 
-mason.setup(options)
+require("mason").setup(mason_options)
 
 vim.api.nvim_create_user_command("MasonInstallAll", function()
-	vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
+	vim.cmd("MasonInstall " .. table.concat(mason_options.ensure_installed, " "))
 end, {})
+
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"bashls",
+		"clangd",
+		"cssls",
+		"cssmodules_ls",
+		"cucumber_language_server",
+		"docker_compose_language_service",
+		"dockerls",
+		"emmet_language_server",
+		"eslint@4.8.0",
+		"html",
+		"jsonls",
+		"lua_ls",
+		"solargraph",
+		"sqlls",
+		"marksman",
+		"tailwindcss",
+		"terraformls",
+		"typos_lsp",
+		"vimls",
+		"yamlls",
+		"tsserver",
+		"prismals",
+		"pylsp",
+		"graphql",
+		"denols",
+	},
+})
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                    TRANSPARENT.NVIM                     │
@@ -352,6 +347,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 local servers = {
+	"eslint",
 	"emmet_language_server",
 	"jsonls",
 	"html",
@@ -362,7 +358,6 @@ local servers = {
 	"dockerls",
 	"emmet_language_server",
 	"yamlls",
-	"eslint",
 	"marksman",
 	"cucumber_language_server",
 	"tailwindcss",
