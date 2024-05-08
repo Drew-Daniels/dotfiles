@@ -17,6 +17,12 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"barrett-ruth/live-server.nvim",
+		build = "npm i -g live-server",
+		cmd = { "LiveServerStart", "LiveServerStop" },
+		config = true,
+	},
+	{
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",

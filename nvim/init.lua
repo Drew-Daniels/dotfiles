@@ -1186,6 +1186,24 @@ wk.register({
 	},
 })
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                    live-server.nvim                     │
+--          │    https://github.com/barrett-ruth/live-server.nvim     │
+--          ╰─────────────────────────────────────────────────────────╯
+wk.register({
+	["<leader>L"] = {
+		name = "Live Server",
+		s = {
+			"<cmd>LiveServerStart<cr>",
+			"Start",
+		},
+		t = {
+			"<cmd>LiveServerStop<cr>",
+			"Stop",
+		},
+	},
+})
+
 wk.register({
 	["<leader>n"] = {
 		name = "Neogen",

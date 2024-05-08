@@ -22,6 +22,7 @@
   "jira.nvim": { "branch": "master", "commit": "a61695d4981caf4b4410b40ff24de35262d7e0a5" },
   "lazy.nvim": { "branch": "main", "commit": "d3974346b6cef2116c8e7b08423256a834cb7cbc" },
   "legendary.nvim": { "branch": "master", "commit": "b15d9b6751d106bc5d94ed4567da3a134bef51a4" },
+  "live-server.nvim": { "branch": "main", "commit": "0b4d31c665fa69b3e68d6da5765fab5ccf88b0c0" },
   "lualine.nvim": { "branch": "master", "commit": "0a5a66803c7407767b799067986b4dc3036e1983" },
   "luarocks.nvim": { "branch": "main", "commit": "d3dda396d66e484590f253d1ac6d8980e3130807" },
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
