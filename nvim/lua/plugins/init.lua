@@ -17,6 +17,9 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
 	{
+		"norcalli/nvim-colorizer.lua",
+	},
+	{
 		"barrett-ruth/live-server.nvim",
 		build = "npm i -g live-server",
 		cmd = { "LiveServerStart", "LiveServerStop" },
