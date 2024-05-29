@@ -17,4 +17,6 @@ return {
 		)
 	),
 	s("rtd", fmt("{{/* TODO: {} */}}", { i(1) }), { desc = "React TODO" }),
+	--TODO: Create choice node for choosing between {} and [] destructuring
+	s("hk", fmta([=[ const {<>} = <>(<>) ]=], { i(3), i(1), i(2) })),
 }
