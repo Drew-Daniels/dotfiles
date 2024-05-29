@@ -416,6 +416,9 @@ lspconfig.lua_ls.setup({
 lspconfig.typos_lsp.setup({
 	capabilities = capabilities,
 	filetypes = { "markdown", "norg" },
+	init_options = {
+		config = "~/projects/dotfiles/typos/typos.toml",
+	},
 })
 
 -- https://www.npbee.me/posts/deno-and-typescript-in-a-monorepo-neovim-lsp
