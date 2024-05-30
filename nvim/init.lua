@@ -44,7 +44,7 @@ require("mason-lspconfig").setup({
 		"docker_compose_language_service",
 		"dockerls",
 		"emmet_language_server",
-		"eslint@4.8.0",
+		"eslint",
 		-- "eslint",
 		"html",
 		"jsonls",
@@ -348,7 +348,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 local servers = {
-	"eslint",
 	"emmet_language_server",
 	"jsonls",
 	"html",
@@ -377,6 +376,16 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+lspconfig.eslint.setup({
+	capabilities = capabilities,
+	settings = {
+		workingDirectories = { mode = "auto" },
+    experimental = {
+      useFlatConfig = false,
+    }
+	},
+})
 
 lspconfig.cssls.setup({
 	capabilities = capabilities,
