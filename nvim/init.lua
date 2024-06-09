@@ -45,7 +45,6 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"emmet_language_server",
 		"eslint",
-		-- "eslint",
 		"html",
 		"jsonls",
 		"lua_ls",
