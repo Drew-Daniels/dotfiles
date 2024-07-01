@@ -33,6 +33,19 @@ windows:
         - cmd:
           - fish
           - cls
+  - fe server:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+          - fish
+          - yarn nx serve employee-portal-new
+  - db server:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+          - fish
+          - docker compose up db
+          - yarn nx elayne-api
   - aws-fluent-bit:
       root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/infrastructure/aws-fluent-bit
       layout: <%= ENV["MUX_LAYOUT"] %>
