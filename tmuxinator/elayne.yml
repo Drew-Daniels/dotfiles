@@ -1,0 +1,71 @@
+name: elayne-platform
+root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform
+
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - employee-portal-new:
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/apps/employee-portal-new
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - employee-portal-new-e2e:
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/apps/employee-portal-new-e2e
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - aws-fluent-bit:
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/infrastructure/aws-fluent-bit
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - elayne-api:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/services/elayne-api
+      panes:
+        - editor:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
+  - elayne-api-e2e:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/services/elayne-api-e2e
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - devserver:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
