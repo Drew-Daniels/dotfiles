@@ -63,7 +63,6 @@ windows:
         - editor:
           - fish
           - cls
-          - nvim
         - cmd:
           - fish
           - cls
@@ -74,7 +73,6 @@ windows:
         - editor:
           - fish
           - cls
-          - nvim
         - cmd:
           - fish
           - cls
@@ -85,7 +83,6 @@ windows:
         - editor:
           - fish
           - cls
-          - nvim
         - devserver:
           - fish
           - cls
