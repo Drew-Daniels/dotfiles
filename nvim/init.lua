@@ -605,7 +605,7 @@ end, { silent = true, desc = "Choose Snippet" })
 
 ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("typescriptreact", { "javascriptreact", "javascript" })
+ls.filetype_extend("typescriptreact", { "javascriptreact", "javascript", "typescript" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
