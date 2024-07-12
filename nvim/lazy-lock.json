@@ -14,7 +14,7 @@
   "denops.vim": { "branch": "main", "commit": "09e64956c2946bba0a060d0a0aaddde106753bd9" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "6741f1062d3dc6e4755367a7e9b347b553623f04" },
-  "gitsigns.nvim": { "branch": "main", "commit": "e784e5a078f993f7218b8a857cb581d5b9ca42dc" },
+  "gitsigns.nvim": { "branch": "main", "commit": "e9c4187c3774a46df2d086a66cf3a7e6bea4c432" },
   "grapple.nvim": { "branch": "main", "commit": "7aedc261b05a6c030397c4bc26416efbe746ebf1" },
   "gruvbox.nvim": { "branch": "main", "commit": "7a1b23e4edf73a39642e77508ee6b9cbb8c60f9e" },
   "gv.vim": { "branch": "master", "commit": "b6bb6664e2c95aa584059f195eb3a9f3cb133994" },
@@ -77,5 +77,5 @@
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-test": { "branch": "master", "commit": "34aab77f7a63f20a623df45684156915f6182a55" },
   "web-tools.nvim": { "branch": "master", "commit": "eb0ac27bd3eb0beb06b7190a11e2e043049a4ccc" },
-  "which-key.nvim": { "branch": "main", "commit": "af4ded85542d40e190014c732fa051bdbf88be3d" }
+  "which-key.nvim": { "branch": "main", "commit": "a86e9d3c0023f985344014bf2b7cb15e0be8fa2b" }
 }
