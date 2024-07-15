@@ -837,7 +837,7 @@ wk.add({
 	{ "<leader>f", group = "Files" },
 	{ "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Autocommands" },
 	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-	{ "<leader>ff", "<cmd>Telescope files<cr>", desc = "File(s)" },
+	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File(s)" },
   { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Live Search" },
 	{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git-tracked File(s)" },
 	{ "<leader>fi", "<cmd>Telescope media_files<cr>", desc = "Images & Media File(s)" },
