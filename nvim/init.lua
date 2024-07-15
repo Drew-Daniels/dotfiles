@@ -806,7 +806,6 @@ local wk = require("which-key")
 
 wk.add({
 	-- Miscellaneous
-	{ "<leader>t", "<cmd>Telescope treesitter<cr>", desc = "Treesitter" },
 	{ "<leader>i", "<cmd>Telescope import<cr>", desc = "Import" },
 	{ "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
 	{ "<leader>s", "<cmd>Telescope search_history<cr>", desc = "Search History" },
@@ -854,7 +853,7 @@ wk.add({
 	{ "<leader>gr", "<cmd>Telescope git_bcommits_range<cr>", desc = "Range Buffer Commits" },
 	{ "<leader>gw", "<cmd>Telescope git_stash<cr>", desc = "WIP (Stashed)" },
 	-- API Requests
-	{ "<leader>Ar", group = "API Requests" },
+	{ "<leader>A", group = "API Requests" },
 	{ "<leader>As", "<Plug>RestNvim", desc = "Send Request" },
 	{ "<leader>Ap", "<Plug>RestNvimPreview", desc = "Preview Request" },
 	{ "<leader>Ar", "<Plug>RestNvimLast", desc = "Repeat Last Request" },
@@ -905,7 +904,6 @@ wk.add({
 	{ "<leader>Lt", "<cmd>LiveServerStop<cr>", desc = "Stop" },
   -- Neogen
   { "<leader>n", group = "Neogen" },
-  { "<leader>n", "<cmd>lua require('neogen').generate()<cr>", desc = "Generate" },
   { "<leader>nf", "<cmd>lua require('neogen').generate({ type = 'func' })<cr>", desc = "Generate Function Annotation" },
   { "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
   { "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
