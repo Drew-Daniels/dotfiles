@@ -809,8 +809,8 @@ wk.add({
 	{ "<leader>i", "<cmd>Telescope import<cr>", desc = "Import" },
 	{ "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
 	{ "<leader>s", "<cmd>Telescope search_history<cr>", desc = "Search History" },
-	{ "<leader>m", "<cmd>Grapple tag", desc = "Grapple Tag" },
-	{ "<leader>M", "<cmd>Grapple move", desc = "Grapple Move" },
+	{ "<leader>m", "<cmd>Grapple tag<cr>", desc = "Grapple Tag" },
+	{ "<leader>M", "<cmd>Grapple move<cr>", desc = "Grapple Move" },
 	{ "<leader>z", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggest" },
 	-- Codeium
 	{ "<leader>C", group = "Codeium" },
