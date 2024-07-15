@@ -200,6 +200,9 @@ return require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 		opts = {},
+		dependencies = {
+			{ "echasnovski/mini.icons", version = false },
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
