@@ -1289,43 +1289,6 @@ require("gitsigns").setup({
 			return "<Ignore>"
 		end, { expr = true, desc = "Prev Hunk" })
 
-		-- Actions
-		wk.register({
-			["<leader>G"] = {
-				name = "Gitsigns",
-				s = {
-					function()
-						gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-					end,
-					"Stage Hunk",
-				},
-				r = {
-					function()
-						gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-					end,
-					"Reset Hunk",
-				},
-				S = { gs.stage_buffer, "Stage Buffer" },
-				u = { gs.undo_stage_hunk, "Undo Stage Hunk" },
-				R = { gs.reset_buffer, "Reset Buffer" },
-				p = { gs.preview_hunk, "Preview Hunk" },
-				b = {
-					function()
-						gs.blame_line({ full = true })
-					end,
-					"Blame Line",
-				},
-				t = { gs.toggle_current_line_blame, "Toggle Blame" },
-				d = { gs.diffthis, "Diff This" },
-				D = {
-					function()
-						gs.diffthis("~")
-					end,
-					"Diff This (Ignore Whitespace)",
-				},
-				td = { gs.toggle_deleted, "Toggle Deleted" },
-			},
-		})
 		-- Text object
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 	end,
