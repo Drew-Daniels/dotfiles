@@ -380,9 +380,9 @@ lspconfig.eslint.setup({
 	capabilities = capabilities,
 	settings = {
 		workingDirectories = { mode = "auto" },
-    experimental = {
-      useFlatConfig = false,
-    }
+		experimental = {
+			useFlatConfig = false,
+		},
 	},
 })
 
@@ -804,136 +804,136 @@ require("capslock").setup()
 --          ╰─────────────────────────────────────────────────────────╯
 local wk = require("which-key")
 
--- weird workaround to fix bug where which-key menu does not display unless <leader> has been pressed on a buffer at some point before pressing <localleader>
--- https://github.com/folke/which-key.nvim/issues/172
-vim.keymap.set({ "n" }, "<localleader>", function()
-	wk.show("<localleader>", { mode = "n" })
-end, { silent = true, desc = "Show which-key menu" })
-
-local g = require("grapple")
-
-wk.register({
-	["<leader>"] = {
-		t = {
-			"<cmd>Telescope treesitter<cr>",
-			"Treesitter",
-		},
-		i = {
-			"<cmd>Telescope import<cr>",
-			"Import",
-		},
-		p = {
-			"<cmd>Format<cr>",
-			"Pretty",
-		},
-		s = { "<cmd>Telescope search_history", "Search History" },
-		m = { g.tag, "Grapple Tag" },
-		M = { g.toggle_tags, "Grapple Move" },
-		z = {
-			"<cmd>Telescope spell_suggest",
-			"Spell Suggest",
-		},
-	},
-})
-
--- wk.register({
--- 	["<leader>c"] = {
--- 		name = "Commands",
--- 		a = { "<cmd>Telescope autocommands<cr>", "Autocommands List" },
--- 		l = { "<cmd>Telescope commands<cr>", "Commands List" },
--- 		h = { "<cmd>Telescope command_history<cr>", "History" },
--- 	},
--- })
-
-wk.register({
-	["<leader>C"] = {
-		name = "Codeium",
-		e = { "<cmd>CodeiumEnable<cr>", "Enable" },
-		d = { "<cmd>CodeiumDisable<cr>", "Disable" },
-		t = { "<cmd>CodeiumToggle<cr>", "Toggle" },
-	},
-})
-
---TODO: Create which key configuration for telescope builtin.search_history
---TODO: Create which key configuration for telescope builtin.keymaps
-
-wk.register({
-	["<leader>D"] = {
-		name = "Debug",
-		b = {
-			require("dap").set_breakpoint,
-			"Breakpoint",
-		},
-		c = { require("dap").continue, "Continue (Start)" },
-		d = {
-			require("dap").continue,
-			"Debug",
-		},
-		f = {
-			function()
-				local widgets = require("dap.ui.widgets")
-				widgets.centered_float(widgets.frames)
-			end,
-			"Frames",
-		},
-		h = {
-			function()
-				local widgets = require("dap.ui.widgets")
-				widgets.hover()
-			end,
-			"Hover",
-		},
-		l = {
-			require("dap").run_last,
-			"Run Last",
-		},
-		p = {
-			function()
-				local widgets = require("dap.ui.widgets")
-				widgets.preview()
-			end,
-			"Preview",
-		},
-		r = {
-			function()
-				require("dap").repl.open()
-			end,
-			"REPL",
-		},
-		s = {
-			function()
-				local widgets = require("dap.ui.widgets")
-				widgets.centered_float(widgets.scopes)
-			end,
-			"Scopes",
-		},
-		t = {
-			require("dap").toggle_breakpoint,
-			"Toggle Breakpoint",
-		},
-		u = {
-			require("dap").step_out,
-			"Step Out",
-		},
-		v = {
-			require("dap").step_over,
-			"Step Over",
-		},
-	},
-})
-
-wk.register({
-	["<leader>e"] = {
-		name = "Ex Commands",
-		c = {
-			"<cmd>Telescope commands<cr>",
-			"Ex Commands",
-		},
-		h = {
-			"<cmd>Telescope command_history<cr>",
-			"Ex Command History",
-		},
-	},
+wk.add({
+	-- Miscellaneous
+	{ "<leader>t", "<cmd>Telescope treesitter<cr>", desc = "Treesitter" },
+	{ "<leader>i", "<cmd>Telescope import<cr>", desc = "Import" },
+	{ "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
+	{ "<leader>s", "<cmd>Telescope search_history<cr>", desc = "Search History" },
+	{ "<leader>m", "<cmd>Grapple tag", desc = "Grapple Tag" },
+	{ "<leader>M", "<cmd>Grapple move", desc = "Grapple Move" },
+	{ "<leader>z", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggest" },
+	-- Codeium
+	{ "<leader>C", group = "Codeium" },
+	{ "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
+	{ "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
+	{ "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
+	-- Ex commands
+	{ "<leader>e", group = "Ex Commands" },
+	{ "<leader>ec", "<cmd>Telescope commands<cr>", desc = "Ex Commands" },
+	{ "<leader>eh", "<cmd>Telescope command_history<cr>", desc = "Ex Command History" },
+	-- Diffview
+	{ "<leader>d", group = "Diffview" },
+	{ "<leader>da", "<cmd>DiffviewFileHistory<cr>", desc = "All Files" },
+	{ "<leader>dc", "<cmd>DiffviewFileHistory %<cr>", desc = "Current File" },
+	{ "<leader>df", "<cmd>DiffviewFocusFiles<cr>", desc = "Focus Files" },
+	{ "<leader>dr", "<cmd>DiffviewRefresh<cr>", desc = "Refresh" },
+	{ "<leader>dt", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle Files" },
+	{ "<leader>ds", "<cmd>DiffviewOpen<cr>", desc = "Open" },
+	{ "<leader>dm", "<cmd>DiffviewOpen main..@<cr>", desc = "Main to Current" },
+	{ "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Quit" },
+	{ "<leader>dx", "<cmd>DiffviewFileHistory<cr>", desc = "Selected" },
+	-- Files
+	{ "<leader>f", group = "Files" },
+	{ "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Autocommands" },
+	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+	{ "<leader>ff", "<cmd>Telescope files<cr>", desc = "File(s)" },
+  { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Live Search" },
+	{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git-tracked File(s)" },
+	{ "<leader>fi", "<cmd>Telescope media_files<cr>", desc = "Images & Media File(s)" },
+	{ "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search Results" },
+	{ "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
+	{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File(s)" },
+	{ "<leader>ft", "<cmd>Telescope filetypes<cr>", desc = "Filetypes" },
+	-- Git
+	{ "<leader>g", group = "Git" },
+	{ "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "File History" },
+	{ "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
+	{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
+	{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
+	{ "<leader>gr", "<cmd>Telescope git_bcommits_range<cr>", desc = "Range Buffer Commits" },
+	{ "<leader>gw", "<cmd>Telescope git_stash<cr>", desc = "WIP (Stashed)" },
+	-- API Requests
+	{ "<leader>Ar", group = "API Requests" },
+	{ "<leader>As", "<Plug>RestNvim", desc = "Send Request" },
+	{ "<leader>Ap", "<Plug>RestNvimPreview", desc = "Preview Request" },
+	{ "<leader>Ar", "<Plug>RestNvimLast", desc = "Repeat Last Request" },
+	-- Browse URLs
+	{ "<leader>B", group = "Browse URLs" },
+	{ "<leader>Ba", "<cmd>UrlView<cr>", desc = "All URLs" },
+	{ "<leader>Bp", "<cmd>UrlView lazy<cr>", desc = "Plugin URLs" },
+	-- Box
+	{ "<leader>b", group = "Box" },
+	{ "<leader>bb", "<cmd>CBccbox<cr>", desc = "Box Title" },
+	{ "<leader>bt", "<cmd>CBllline<cr>", desc = "Titled Line" },
+	{ "<leader>bl", "<cmd>CBline<cr>", desc = "Simple Line" },
+	{ "<leader>bm", "<cmd>CBllbox14<cr>", desc = "Marked" },
+	{ "<leader>bq", "<cmd>CBllbox13<cr>", desc = "Quote" },
+	{ "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
+	-- Jump
+	{ "<leader>j", group = "Jump" },
+	{ "<leader>jf", "<cmd>lua require('jumplist').jump({ forward = true })<cr>", desc = "Forward" },
+	{ "<leader>jb", "<cmd>lua require('jumplist').jump({ forward = false })<cr>", desc = "Backward" },
+	-- Keymaps
+	{ "<leader>k", group = "Keymaps" },
+	{ "<leader>kl", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+	-- LSP
+	{ "<leader>l", group = "LSP" },
+	{ "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
+	{ "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+	{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
+	{ "<leader>li", "<cmd>Telescope implementations<cr>", desc = "Implementations" },
+	{ "<leader>ll", "<cmd>vim.diagnostic.loclist()<cr>", desc = "Set Location List" },
+	{ "<leader>lo", "<cmd>vim.diagnostic.open_float<cr>", desc = "Open Float" },
+	{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+	{ "<leader>lr", "<cmd>Telescope references<cr>", desc = "References" },
+	{ "<leader>lt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Type Definitions" },
+	{ "<leader>lp", "<cmd>vim.diagnostic.goto_prev<cr>", desc = "Go-To Prev Diagnostic" },
+	{ "<leader>ln", "<cmd>vim.diagnostic.goto_next<cr>", desc = "Go-To Next Diagnostic" },
+	{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
+	{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
+	{ "<leader>lS", "<cmd>LspStart<cr>", desc = "Start LSP" },
+	-- { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Actions" },
+	-- <leader>lc change name
+	{ "<leader>lT", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
+	--          ╭─────────────────────────────────────────────────────────╮
+	--          │                    live-server.nvim                     │
+	--          │    https://github.com/barrett-ruth/live-server.nvim     │
+	--          ╰─────────────────────────────────────────────────────────╯
+	{ "<leader>L", group = "Live Server" },
+	{ "<leader>Ls", "<cmd>LiveServerStart<cr>", desc = "Start" },
+	{ "<leader>Lt", "<cmd>LiveServerStop<cr>", desc = "Stop" },
+  -- Neogen
+  { "<leader>n", group = "Neogen" },
+  { "<leader>n", "<cmd>lua require('neogen').generate()<cr>", desc = "Generate" },
+  { "<leader>nf", "<cmd>lua require('neogen').generate({ type = 'func' })<cr>", desc = "Generate Function Annotation" },
+  { "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
+  { "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
+  -- Jira
+  { "<leader>J", group = "Jira" },
+  { "<leader>Jv", "<cmd>JiraView<cr>", desc = "View Issue" },
+  { "<leader>Jo", "<cmd>JiraOpen<cr>", desc = "Open Issue in Browser" },
+  -- Overseer
+  { "<leader>o", group = "Overseer" },
+  { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle" },
+  { "<leader>oc", "<cmd>OverseerClose<cr>", desc = "Close" },
+  { "<leader>oo", "<cmd>OverseerOpen<cr>", desc = "Open" },
+  { "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Info" },
+  { "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run" },
+  -- Tabs
+  { "<leader>t", group = "Tabs" },
+  { "<leader>tl", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "List" },
+  -- Quickfix
+  { "<leader>q", group = "Quickfix" },
+  { "<leader>ql", "<cmd>Telescope quickfix<cr>", desc = "List" },
+  { "<leader>qh", "<cmd>Telescope quickfix_history<cr>", desc = "History" },
+  -- Snippets
+  { "<leader>S", group = "Snippets" },
+  { "<leader>Sl", "<cmd>lua require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })<cr>", desc = "Load", silent = true },
+  -- Word
+  { "<leader>w", group = "Word" },
+  { "<leader>wd", "<cmd>Telescope thesaurus lookup<cr>", desc = "Definition" },
+  { "<leader>ws", "<cmd>Telescope thesaurus query<cr>", desc = "Search" },
 })
 
 require("diffview").setup({
@@ -943,431 +943,12 @@ require("diffview").setup({
 		},
 	},
 })
-
-wk.register({
-	["<leader>d"] = {
-		name = "Diffview",
-		a = {
-			"<cmd>DiffviewFileHistory<cr>",
-			"All Files",
-		},
-		c = {
-			"<cmd>DiffviewFileHistory %<cr>",
-			"Current File",
-		},
-		f = {
-			"<cmd>DiffviewFocusFiles<cr>",
-			"Focus Files",
-		},
-		r = {
-			"<cmd>DiffviewRefresh<cr>",
-			"Refresh",
-		},
-		t = {
-			"<cmd>DiffviewToggleFiles<cr>",
-			"Toggle Files",
-		},
-		o = {
-			"<cmd>DiffviewOpen<cr>",
-			"Open",
-		},
-		m = {
-			"<cmd>DiffviewOpen master..@<cr>",
-			"Master to Current",
-		},
-		q = {
-			"<cmd>DiffviewClose<cr>",
-			"Quit",
-		},
-	},
-})
-
-wk.register({
-	["<leader>d"] = {
-		name = "Diffview",
-		mode = "x",
-		s = {
-			"<cmd>DiffviewFileHistory<cr>",
-			"Selected",
-		},
-	},
-})
-
-wk.register({
-	["<leader>f"] = {
-		name = "Files",
-		a = {
-			"<cmd>Telescope autocommands<cr>",
-			"Autocommands",
-		},
-		b = {
-			"<cmd>Telescope buffers<cr>",
-			"Buffer(s)",
-		},
-		f = {
-			"<cmd>Telescope find_files<cr>",
-			"File(s)",
-		},
-		g = {
-			"<cmd>Telescope git_files<cr>",
-			"Git-tracked File(s)",
-		},
-		i = {
-			"<cmd>Telescope media_files<cr>",
-			"Images & Media File(s)",
-		},
-		l = {
-			"<cmd>Telescope resume<cr>",
-			"Last Search Results",
-		},
-		o = {
-			"<cmd>Oil<cr>",
-			"Oil",
-		},
-		r = {
-			"<cmd>Telescope oldfiles<cr>",
-			"Recent File(s)",
-		},
-		t = {
-			"<cmd>Telescope filetypes<cr>",
-			"Types",
-		},
-		-- t = {
-		-- 	"<cmd>Telescope tags<cr>",
-		-- 	"Tag",
-		-- },
-		c = { "<cmd>ene<cr>", "Create File" },
-		s = { "<cmd>Telescope live_grep<cr>", "Search" },
-		p = {
-			"<cmd>MarkdownPreview<cr>",
-			"Preview Markdown",
-		},
-	},
-})
-
-wk.register({
-	["<leader>g"] = {
-		name = "Git",
-		b = {
-			"<cmd>Telescope git_branches<cr>",
-			"Branches",
-		},
-		--TODO: Come back to this one
-		-- b = {
-		-- 	"<cmd>Telescope git_bcommits<cr>",
-		-- 	"Buffer Commits",
-		-- },
-		c = {
-			"<cmd>Telescope git_commits<cr>",
-			"Commits",
-		},
-		r = {
-			"<cmd>Telescope git_bcommits_range<cr>",
-			"Range Buffer Commits",
-		},
-		s = {
-			"<cmd>Telescope git_status<cr>",
-			"Status",
-		},
-		w = {
-			"<cmd>Telescope git_stash<cr>",
-			"WIP (Stashed)",
-		},
-	},
-})
-
-wk.register({
-	["<leader>A"] = {
-		name = "API Request",
-		s = {
-			"<Plug>RestNvim",
-			"Send Request",
-		},
-		p = {
-			"<Plug>RestNvimPreview",
-			"Preview Request",
-		},
-		r = {
-			"<Plug>RestNvimLast",
-			"Repeat Last Request",
-		},
-	},
-})
-
-wk.register({
-	["<leader>B"] = {
-		name = "Browse URLs",
-		a = {
-			"<cmd>UrlView<cr>",
-			"All URLs",
-		},
-		p = {
-			"<cmd>UrlView lazy<cr>",
-			"Plugin URLs",
-		},
-	},
-})
-
-wk.register({
-	["<leader>b"] = {
-		name = "Box",
-		mode = { "x", "n" },
-		b = { "<Cmd>CBccbox<CR>", "Box Title" },
-		t = { "<Cmd>CBllline<CR>", "Titled Line" },
-		l = { "<Cmd>CBline<CR>", "Simple Line" },
-		m = { "<Cmd>CBllbox14<CR>", "Marked" },
-		q = { "<Cmd>CBllbox13<CR>", "Quote" },
-		r = { "<Cmd>CBd<CR>", "Remove Box Around Comment" },
-	},
-})
-
-wk.register({
-	["<leader>j"] = {
-		name = "Jump",
-		f = { "<cmd>Portal jumplist forward<cr>" },
-		b = { "<cmd>Portal jumplist backward<cr>" },
-	},
-})
-
-wk.register({
-	["<leader>k"] = {
-		name = "Keymaps",
-		l = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-	},
-})
-
-wk.register({
-	["<leader>l"] = {
-		name = "LSP",
-		a = {
-			-- code actions
-		},
-		c = {
-			-- change name
-		},
-		d = {
-			"<cmd>Telescope diagnostics<cr>",
-			"Diagnostics",
-		},
-		D = {
-			-- definition
-		},
-		h = {
-			-- hover
-		},
-		i = {
-			"<cmd>Telescope lsp_implementations<cr>",
-			"Implementations",
-		},
-		o = {
-			vim.diagnostic.open_float,
-			"Open Float",
-		},
-		l = { vim.diagnostic.setloclist, "Set Location List" },
-		r = {
-			"<cmd>Telescope lsp_references<cr>",
-			"References",
-		},
-		t = {
-			"<cmd>Telescope lsp_type_definitions<cr>",
-			"Type Definitions",
-		},
-		p = {
-			vim.diagnostic.goto_prev,
-			"Go-To Prev Diagnostic",
-		},
-		n = {
-			vim.diagnostic.goto_next,
-			"Go-To Next Diagnostic",
-		},
-		s = {
-			-- signature_help
-		},
-		R = {
-			"<cmd>LspRestart<cr>",
-			"Restart LSP",
-		},
-		Q = {
-			"<cmd>LspStop<cr>",
-			"Stop LSP",
-		},
-		S = {
-			"<cmd>LspStart<cr>",
-			"Start LSP",
-		},
-	},
-})
-
---          ╭─────────────────────────────────────────────────────────╮
---          │                    live-server.nvim                     │
---          │    https://github.com/barrett-ruth/live-server.nvim     │
---          ╰─────────────────────────────────────────────────────────╯
-wk.register({
-	["<leader>L"] = {
-		name = "Live Server",
-		s = {
-			"<cmd>LiveServerStart<cr>",
-			"Start",
-		},
-		t = {
-			"<cmd>LiveServerStop<cr>",
-			"Stop",
-		},
-	},
-})
-
-wk.register({
-	["<leader>n"] = {
-		name = "Neogen",
-		g = {
-			":lua require('neogen').generate()<CR>",
-			"Generate",
-		},
-		f = {
-			":lua require('neogen').generate({ type = 'func' })<CR>",
-			"Generate Function Annotation",
-		},
-		c = {
-			":lua require('neogen').generate({ type = 'class' })<CR>",
-			"Generate Class Annotation",
-		},
-		t = {
-			":lua require('neogen').generate({ type = 'type' })<CR>",
-			"Generate Type Annotation",
-		},
-	},
-})
-
-wk.register({
-	["<leader>J"] = {
-		name = "Jira",
-		v = {
-			"<cmd>JiraView<cr>",
-			"View Issue",
-		},
-		o = {
-			"<cmd>JiraOpen<cr>",
-			"Open Issue in Browser",
-		},
-	},
-})
-
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     CODEWINDOW.NVIM                     │
 --          │       https://github.com/gorbit99/codewindow.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
 local codewindow = require("codewindow")
 codewindow.setup()
-
--- wk.register({
--- 	["<leader>m"] = {
--- 		name = "Minimap",
--- 		o = { codewindow.open_minimap, "Open" },
--- 		c = { codewindow.close_minimap, "Close" },
--- 		s = { codewindow.toggle_minimap, "Show/Hide" },
--- 		f = { codewindow.toggle_focus, "Focus" },
--- 	},
--- })
-
-wk.register({
-	["<leader>o"] = {
-		name = "Overseer",
-		t = {
-			"<cmd>OverseerToggle<cr>",
-			"Toggle",
-		},
-		c = {
-			"<cmd>OverseerClose<cr>",
-			"Close",
-		},
-		o = {
-			"<cmd>OverseerOpen<cr>",
-			"Open",
-		},
-		i = {
-			"<cmd>OverseerInfo<cr>",
-			"Info",
-		},
-		r = {
-			"<cmd>OverseerRun<cr>",
-			"Run",
-		},
-	},
-})
-
-wk.register({
-	["<leader>q"] = {
-		name = "Query",
-		l = {
-			"<cmd>Telescope live_grep<cr>",
-			"Live Search",
-		},
-	},
-})
-
-wk.register({
-	["<leader>t"] = {
-		name = "Tab",
-		l = { "<cmd>Telescope telescope-tabs list_tabs<cr>", "List" },
-		--TODO: Figure out why this doesn't work
-		-- Could be related: https://github.com/LukasPietzschmann/telescope-tabs/issues
-		-- p = { "<cmd>Telescope telescope-tabs go_to_previous<cr>", "Goto Previous" },
-	},
-})
-
-wk.register({
-	["<leader>T"] = {
-		name = "Test",
-		b = {
-			':lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
-			"Buffer",
-		},
-		s = {
-			':lua require("neotest").run.run(vim.fn.getcwd())<CR>',
-			"Suite",
-		},
-		f = {
-			':lua require("neotest").run.run()<CR>',
-			"Function",
-		},
-	},
-})
-
-wk.register({
-	["<leader>u"] = {
-		name = "Undotree",
-		t = { "<cmd>UndotreeToggle<cr>", "Toggle" },
-		f = { "<cmd>UndotreeFocus<cr>", "Focus" },
-		s = { "<cmd>UndotreeShow<cr>", "Show" },
-		h = { "<cmd>UndotreeHide<cr>", "Hide" },
-		p = { "<cmd>UndotreePersistUndo<cr>", "PersistUndo" },
-	},
-})
-
-wk.register({
-	["<leader>q"] = {
-		name = "Quickfix",
-		l = { "<cmd>Telescope quickfix<cr>", "List" },
-		h = { "<cmd>Telescope quickfix_history<cr>", "History" },
-	},
-})
-
-wk.register({
-	["<leader>S"] = {
-		name = "Snippets",
-		l = { '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "./luasnippets/"})<CR>', "Load" },
-	},
-}, { silent = true })
-
-wk.register({
-	["<leader>w"] = {
-		name = "Word",
-		d = {
-			"<cmd>Telescope thesaurus lookup<cr>",
-			"Definition & Thesaurus",
-		},
-	},
-})
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                      NEOTEST-RSPEC                      │
