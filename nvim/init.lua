@@ -885,7 +885,7 @@ wk.add({
 	{ "<leader>ll", "<cmd>vim.diagnostic.loclist()<cr>", desc = "Set Location List" },
 	{ "<leader>lo", "<cmd>vim.diagnostic.open_float<cr>", desc = "Open Float" },
 	{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
-	{ "<leader>lr", "<cmd>Telescope references<cr>", desc = "References" },
+	{ "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
 	{ "<leader>lt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Type Definitions" },
 	{ "<leader>lp", "<cmd>vim.diagnostic.goto_prev<cr>", desc = "Go-To Prev Diagnostic" },
 	{ "<leader>ln", "<cmd>vim.diagnostic.goto_next<cr>", desc = "Go-To Next Diagnostic" },
