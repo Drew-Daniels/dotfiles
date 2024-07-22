@@ -200,3 +200,5 @@ alias lip="bash $XDG_CONFIG_HOME/scripts/lip.sh"
 # playwright
 alias psr="npx playwright show-report"
 
+# beets
+export BEETSDIR="$XDG_CONFIG_HOME/beets"
