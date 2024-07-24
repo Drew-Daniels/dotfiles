@@ -27,3 +27,5 @@ nvim/plugin/gitlab.vim
 glab-cli
 .jira
 stripe
+beets
+!beets/config.yaml
