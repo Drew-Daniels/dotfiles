@@ -16,9 +16,6 @@ export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)$
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# asdf
-export ASDF_CONFIG_FILE="$HOME/projects/dotfiles/asdf/.asdfrc"
-. "$HOME/.asdf/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 
@@ -31,8 +28,8 @@ export VIMDATA=~/.local/share/nvim
 export PROJECTS_DIR=~/projects
 alias cls="printf '\33c\e[3J'"
 
-# tmuxp
-export TMUXP_LAYOUT=main-vertical
+# tmux
+export TMUX_LAYOUT=main-vertical
 
 # tmuxinator
 export PROJECTS_DIR=~/projects
@@ -40,9 +37,13 @@ alias mux=tmuxinator
 export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 export EXPORT_E2E_CREDS_SCRIPT=~/projects/dotfiles/scripts/export_e2e_creds.sh
+
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --iglob !git'
+
 # starship
 export STARSHIP_CONFIG=~/projects/dotfiles/starship/starship.toml
 eval "$(starship init bash)"
 
+# zoxide
+eval "$(zoxide init --cmd j bash)"
