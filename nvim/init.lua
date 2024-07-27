@@ -24,6 +24,8 @@ local mason_options = {
 		"chrome-debug-adapter",
 		"js-debug-adapter",
 		"nxls",
+    "shfmt",
+    "shellcheck",
 	},
 	max_concurrent_installers = 10,
 }
@@ -662,6 +664,7 @@ require("conform").setup({
 		eruby = { "htmlbeaufifier" },
 		fish = { "fish_indent" },
 		json = { "jq" },
+    sh = { "shfmt" },
 		sql = { "sql_formatter" },
 		javascript = { "prettier" },
 		javascriptreact = { "prettier" },
