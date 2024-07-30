@@ -6,7 +6,7 @@ local get_visual = helpers.get_visual
 return {
 	s("ese", fmta([[ export <><> ]], { c(1, { t(""), t("default ") }), i(2) }), { desc = "ES Module export" }),
 	s(
-		"cjs",
+		"cje",
 		fmta(
 			[[
         module.exports = {
