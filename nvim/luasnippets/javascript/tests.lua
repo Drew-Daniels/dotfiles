@@ -56,13 +56,13 @@ return {
 		"be",
 		fmta(
 			[[ 
-        beforeEach(() =>> {
+        beforeEach(<>() =>> {
           <>
         });
       ]],
-			{ i(1) }
+			{ c(1, { t(""), t("async ") }), i(2) }
 		),
-		{ desc = "jest beforeAll" }
+		{ desc = "jest beforeEach" }
 	),
 	s(
 		"ae",
@@ -79,11 +79,4 @@ return {
 	s("jt", fmta([[ it("<>", () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
 	s("jtd", fmta([[ it.todo("<>");]], { i(1) }), { desc = "jest test todo" }),
 	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
-	s(
-		"be",
-		fmta(
-			[[ <>("<>", () =>> {<>}); ]],
-			{ c(1, { t("describe"), t("it"), t("beforeAll"), t("beforeEach") }), i(2), i(3) }
-		)
-	),
 }

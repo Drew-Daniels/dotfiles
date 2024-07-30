@@ -24,8 +24,8 @@ local mason_options = {
 		"chrome-debug-adapter",
 		"js-debug-adapter",
 		"nxls",
-    "shfmt",
-    "shellcheck",
+		"shfmt",
+		"shellcheck",
 	},
 	max_concurrent_installers = 10,
 }
@@ -664,7 +664,7 @@ require("conform").setup({
 		eruby = { "htmlbeaufifier" },
 		fish = { "fish_indent" },
 		json = { "jq" },
-    sh = { "shfmt" },
+		sh = { "shfmt" },
 		sql = { "sql_formatter" },
 		javascript = { "prettier" },
 		javascriptreact = { "prettier" },
@@ -830,7 +830,7 @@ wk.add({
 	{ "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Autocommands" },
 	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File(s)" },
-  { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Live Search" },
+	{ "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Live Search" },
 	{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git-tracked File(s)" },
 	{ "<leader>fi", "<cmd>Telescope media_files<cr>", desc = "Images & Media File(s)" },
 	{ "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search Results" },
@@ -895,36 +895,45 @@ wk.add({
 	{ "<leader>L", group = "Live Server" },
 	{ "<leader>Ls", "<cmd>LiveServerStart<cr>", desc = "Start" },
 	{ "<leader>Lt", "<cmd>LiveServerStop<cr>", desc = "Stop" },
-  -- Neogen
-  { "<leader>n", group = "Neogen" },
-  { "<leader>nf", "<cmd>lua require('neogen').generate({ type = 'func' })<cr>", desc = "Generate Function Annotation" },
-  { "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
-  { "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
-  -- Jira
-  { "<leader>J", group = "Jira" },
-  { "<leader>Jv", "<cmd>JiraView<cr>", desc = "View Issue" },
-  { "<leader>Jo", "<cmd>JiraOpen<cr>", desc = "Open Issue in Browser" },
-  -- Overseer
-  { "<leader>o", group = "Overseer" },
-  { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle" },
-  { "<leader>oc", "<cmd>OverseerClose<cr>", desc = "Close" },
-  { "<leader>oo", "<cmd>OverseerOpen<cr>", desc = "Open" },
-  { "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Info" },
-  { "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run" },
-  -- Tabs
-  { "<leader>t", group = "Tabs" },
-  { "<leader>tl", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "List" },
-  -- Quickfix
-  { "<leader>q", group = "Quickfix" },
-  { "<leader>ql", "<cmd>Telescope quickfix<cr>", desc = "List" },
-  { "<leader>qh", "<cmd>Telescope quickfix_history<cr>", desc = "History" },
-  -- Snippets
-  { "<leader>S", group = "Snippets" },
-  { "<leader>Sl", "<cmd>lua require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })<cr>", desc = "Load", silent = true },
-  -- Word
-  { "<leader>w", group = "Word" },
-  { "<leader>wd", "<cmd>Telescope thesaurus lookup<cr>", desc = "Definition" },
-  { "<leader>ws", "<cmd>Telescope thesaurus query<cr>", desc = "Search" },
+	-- Neogen
+	{ "<leader>n", group = "Neogen" },
+	{
+		"<leader>nf",
+		"<cmd>lua require('neogen').generate({ type = 'func' })<cr>",
+		desc = "Generate Function Annotation",
+	},
+	{ "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
+	{ "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
+	-- Jira
+	{ "<leader>J", group = "Jira" },
+	{ "<leader>Jv", "<cmd>JiraView<cr>", desc = "View Issue" },
+	{ "<leader>Jo", "<cmd>JiraOpen<cr>", desc = "Open Issue in Browser" },
+	-- Overseer
+	{ "<leader>o", group = "Overseer" },
+	{ "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle" },
+	{ "<leader>oc", "<cmd>OverseerClose<cr>", desc = "Close" },
+	{ "<leader>oo", "<cmd>OverseerOpen<cr>", desc = "Open" },
+	{ "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Info" },
+	{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run" },
+	-- Tabs
+	{ "<leader>t", group = "Tabs" },
+	{ "<leader>tl", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "List" },
+	-- Quickfix
+	{ "<leader>q", group = "Quickfix" },
+	{ "<leader>ql", "<cmd>Telescope quickfix<cr>", desc = "List" },
+	{ "<leader>qh", "<cmd>Telescope quickfix_history<cr>", desc = "History" },
+	-- Snippets
+	{ "<leader>S", group = "Snippets" },
+	{
+		"<leader>Sl",
+		"<cmd>lua require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })<cr>",
+		desc = "Load",
+		silent = true,
+	},
+	-- Word
+	{ "<leader>w", group = "Word" },
+	{ "<leader>wd", "<cmd>Telescope thesaurus lookup<cr>", desc = "Definition" },
+	{ "<leader>ws", "<cmd>Telescope thesaurus query<cr>", desc = "Search" },
 })
 
 require("diffview").setup({
