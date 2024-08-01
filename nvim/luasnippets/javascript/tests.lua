@@ -8,7 +8,7 @@ return {
 		"cn",
 		fmta(
 			[[ 
-        context("<>", () =>> {
+        context('<>', () =>> {
           <>
         });
       ]],
@@ -20,7 +20,7 @@ return {
 		"ds",
 		fmta(
 			[[ 
-        describe("<>", () =>> {
+        describe('<>', () =>> {
           <>
         });
       ]],
@@ -76,7 +76,7 @@ return {
 		),
 		{ desc = "jest afterEach" }
 	),
-	s("jt", fmta([[ it("<>", () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
-	s("jtd", fmta([[ it.todo("<>");]], { i(1) }), { desc = "jest test todo" }),
+	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
+	s("jtd", fmta([[ it.todo('<>');]], { i(1) }), { desc = "jest test todo" }),
 	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
 }
