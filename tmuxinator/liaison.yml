@@ -9,6 +9,9 @@ windows:
           - fish
           - cls
           - nvim
+        - dev:
+          - fish
+          - cls
         - cmd:
           - fish
           - cls
@@ -20,6 +23,9 @@ windows:
           - fish
           - cls
           - nvim
+        - dev:
+          - fish
+          - cls
         - cmd:
           - fish
           - cls
@@ -31,6 +37,9 @@ windows:
           - fish
           - cls
           - nvim
+        - dev:
+          - fish
+          - cls
         - cmd:
           - fish
           - cls
@@ -42,6 +51,9 @@ windows:
           - fish
           - cls
           - nvim
+        - dev:
+          - fish
+          - cls
         - cmd:
           - fish
           - cls
@@ -53,6 +65,9 @@ windows:
           - fish
           - cls
           - nvim
+        - dev:
+          - fish
+          - cls
         - cmd:
           - fish
           - cls
