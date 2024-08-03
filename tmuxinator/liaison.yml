@@ -34,3 +34,25 @@ windows:
         - cmd:
           - fish
           - cls
+  - react-demo:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - react-demo-e2e:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo-e2e
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
