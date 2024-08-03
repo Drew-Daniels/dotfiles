@@ -1,5 +1,5 @@
 name: <%= @settings["n"] %>
-root: <%= ENV["PROJECTS_DIR"] %>/<%= @settings["d"] %>
+root: <%= ENV["PROJECTS_DIR"] %>/<%= @settings["n"] %>
 
 windows:
   - root:

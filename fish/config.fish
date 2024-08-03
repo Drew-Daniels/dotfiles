@@ -55,6 +55,7 @@ if status is-interactive
 
     # tmuxinator
     alias mux="tmuxinator"
+    alias ts="mux start project"
 
     # pip fish completion start
     function __fish_complete_pip

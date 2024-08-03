@@ -60,6 +60,7 @@ export TMUXP_LAYOUT=main-vertical
 
 # tmuxinator
 alias mux=tmuxinator
+alias ts="mux start project"
 export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 export EXPORT_E2E_CREDS_SCRIPT="$XDG_CONFIG_HOME/scripts/export_e2e_creds.sh"
