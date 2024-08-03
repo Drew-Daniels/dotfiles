@@ -47,6 +47,9 @@ if status is-interactive
     # homebrew
     fish_add_path /usr/local/sbin
 
+    # tmux
+    alias tk="tmux kill-session -t"
+
     # tmuxinator
     alias mux="tmuxinator"
 

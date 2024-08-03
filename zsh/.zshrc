@@ -50,6 +50,7 @@ alias pclean="$XDG_CONFIG_HOME/scripts/clean-parsers.sh"
 
 # tmux
 # export TERM=screen-256color
+alias tk="tmux kill-session -t"
 
 # tmuxp
 export TMUXP_LAYOUT=main-vertical
