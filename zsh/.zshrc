@@ -205,3 +205,8 @@ export BEETSDIR="$XDG_CONFIG_HOME/beets"
 
 # ssh
 ssh-add -A 2>/dev/null
+
+# nx
+alias ynx="yarn nx --"
+alias pnx="pnpm nx --"
+
