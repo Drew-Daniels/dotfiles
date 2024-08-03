@@ -1,5 +1,8 @@
 name: liaison
 root: <%= ENV["PROJECTS_DIR"] %>/liaison
+on_project_stop:
+- kill -15 $(lsof -ti :4200)
+- kill -15 $(lsof -ti :4201)
 
 windows:
   - root:
