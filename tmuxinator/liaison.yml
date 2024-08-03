@@ -29,8 +29,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-sdk:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/libs/react-sdk
+  - react:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/libs/react
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -43,8 +43,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-demo-parent:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo-parent
+  - parent-react-app:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/parent-react-app
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -57,8 +57,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-demo-parent-e2e:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo-parent-e2e
+  - parent-react-app-e2e:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/parent-react-app-e2e
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -71,8 +71,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-demo-iframe:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo-iframe
+  - iframe-react-app:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/iframe-react-app
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -85,8 +85,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-demo-iframe-e2e:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo-iframe-e2e
+  - iframe-react-app-e2e:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/iframe-react-app-e2e
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
