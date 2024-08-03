@@ -43,8 +43,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-demo:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo
+  - react-parent-demo:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-parent-demo
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
@@ -57,8 +57,8 @@ windows:
         - cmd:
           - fish
           - cls
-  - react-demo-e2e:
-      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-demo-e2e
+  - react-parent-demo-e2e:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/react-parent-demo-e2e
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
