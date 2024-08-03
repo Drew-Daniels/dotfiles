@@ -61,7 +61,6 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"prismals",
 		"pylsp",
-		"graphql",
 		"denols",
 	},
 })
@@ -358,7 +357,6 @@ local servers = {
 	"vimls",
 	"prismals",
 	"pylsp",
-	"graphql",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
