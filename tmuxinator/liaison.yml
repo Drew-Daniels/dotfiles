@@ -1,0 +1,25 @@
+name: liaison
+root: <%= ENV["PROJECTS_DIR"] %>/liaison
+
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - core:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/libs/core
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
