@@ -129,4 +129,8 @@ if status is-interactive
     
     # playwright
     alias psr="npx playwright show-report"
+
+    # nx
+    alias ynx="yarn nx --"
+    alias pnx="pnpm nx --"
 end
