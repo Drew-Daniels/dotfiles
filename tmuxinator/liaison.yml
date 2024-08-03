@@ -23,3 +23,14 @@ windows:
         - cmd:
           - fish
           - cls
+  - react-sdk:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/libs/react-sdk
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
