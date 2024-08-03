@@ -54,6 +54,7 @@ windows:
         - dev:
           - fish
           - cls
+          - nx serve
         - cmd:
           - fish
           - cls
@@ -82,6 +83,7 @@ windows:
         - dev:
           - fish
           - cls
+          - nx serve
         - cmd:
           - fish
           - cls
