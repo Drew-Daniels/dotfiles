@@ -48,6 +48,9 @@ if status is-interactive
     fish_add_path /usr/local/sbin
 
     # tmux
+    alias tn="tmux new -s"
+    alias ta="tmux attach -t"
+    alias tl="tmux ls"
     alias tk="tmux kill-session -t"
 
     # tmuxinator

@@ -50,6 +50,9 @@ alias pclean="$XDG_CONFIG_HOME/scripts/clean-parsers.sh"
 
 # tmux
 # export TERM=screen-256color
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tl="tmux ls"
 alias tk="tmux kill-session -t"
 
 # tmuxp
