@@ -76,6 +76,20 @@ windows:
         - cmd:
           - fish
           - cls
+  - ui:
+      root: <%= ENV["PROJECTS_DIR"] %>/liaison/libs/ui
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - dev:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
   - parent-react-app-e2e:
       root: <%= ENV["PROJECTS_DIR"] %>/liaison/apps/parent-react-app-e2e
       layout: <%= ENV["MUX_LAYOUT"] %>
