@@ -79,4 +79,5 @@ return {
 	s("jt", fmta([[ it('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "jest test" }),
 	s("jtd", fmta([[ it.todo('<>');]], { i(1) }), { desc = "jest test todo" }),
 	s("ex", fmta([[ expect(<>)<>;]], { i(1), i(0) }), { desc = "jest expect" }),
+	s("pt", fmta([[ test('<>', () =>> {<>});]], { i(1), i(2) }), { desc = "playwright test" }),
 }

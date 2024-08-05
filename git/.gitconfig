@@ -16,3 +16,21 @@
 	defaultRemote = origin
 [tag]
   sort = -version:refname
+[submodule "plugins/tpm"]
+	url = https://github.com/tmux-plugins/tpm
+	active = true
+[submodule "tmux/plugins/tpm"]
+	url = https://github.com/tmux-plugins/tpm
+	active = true
+[submodule "tmux/plugins/tmux-powerline"]
+	url = https://github.com/erikw/tmux-powerline.git
+	active = true
+[submodule "tmux/plugins/tmux-mem-cpu-load"]
+	url = https://github.com/thewtex/tmux-mem-cpu-load.git
+	active = true
+[submodule "vim-tmux-navigator"]
+	url = https://github.com/christoomey/vim-tmux-navigator
+	active = true
+[submodule "tmux/plugins/vim-tmux-navigator"]
+	url = https://github.com/christoomey/vim-tmux-navigator
+	active = true
