@@ -1,5 +1,7 @@
-name: <%= @settings["n"] %>
-root: <%= ENV["PROJECTS_DIR"] %>/<%= @settings["n"] %>
+name: <%= @args[0] %>
+# usage: 
+  # cd foo
+  # tmuxinator start project foo
 
 windows:
   - root:
