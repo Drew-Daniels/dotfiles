@@ -1,6 +1,4 @@
 require("plugins")
---TODO: Figure out why typing 'g', waiting, then 'cA' works to insert comments, but typing them all quickly doesn't?
--- Is there some plugin that is causing combinations that start with g to wait/not wait?
 
 require("legendary").setup({
 	extensions = {
@@ -541,27 +539,9 @@ cmp.setup({
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP END
 
---TODO: Where was this bit of configuration recommended?
-vim.o.updatetime = 250
-vim.api.nvim_create_autocmd("CursorHold", {
-	buffer = bufnr,
-	callback = function()
-		local opts = {
-			focusable = false,
-			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-			border = "rounded",
-			source = "always",
-			prefix = " ",
-			scope = "cursor",
-		}
-		vim.diagnostic.open_float(nil, opts)
-	end,
-	desc = "Show Diagnostics on CursorHold event",
-})
-
 -- luasnip specific configuration
 -- specify luasnippets directory to save a few ms of startup time
-require("luasnip.loaders.from_lua").load({ paths = "./luasnippets/" })
+require("luasnip.loaders.from_lua").load({ paths = { "./luasnippets/" } })
 
 ls.config.set_config({
 	-- Enable autotriggered snippets
