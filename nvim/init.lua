@@ -808,6 +808,7 @@ wk.add({
 	{ "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
 	{ "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
 	{ "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
+	{ "<leader>Cc", "<cmd>lua vim.fn['codeium#Chat']()<cr>", desc = "Codeium Chat" },
 	-- Ex commands
 	{ "<leader>e", group = "Ex Commands" },
 	{ "<leader>ec", "<cmd>Telescope commands<cr>", desc = "Ex Commands" },
