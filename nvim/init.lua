@@ -773,14 +773,6 @@ require("overseer").setup({
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
---          │                      CAPSLOCK.NVIM                      │
---          │        https://github.com/barklan/capslock.nvim         │
---          ╰─────────────────────────────────────────────────────────╯
-require("capslock").setup()
--- vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
--- vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle", { desc = "toggle caps lock" })
-
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     WHICH-KEY.NVIM                      │
 --          │         https://github.com/folke/which-key.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -854,8 +846,8 @@ wk.add({
 	{ "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
 	-- Jump
 	{ "<leader>j", group = "Jump" },
-	{ "<leader>jf", "<cmd>lua require('jumplist').jump({ forward = true })<cr>", desc = "Forward" },
-	{ "<leader>jb", "<cmd>lua require('jumplist').jump({ forward = false })<cr>", desc = "Backward" },
+	{ "<leader>jf", "<cmd>Portal jumplist forward<cr>", desc = "Forward" },
+	{ "<leader>jb", "<cmd>Portal jumplist backward<cr>", desc = "Backward" },
 	-- Keymaps
 	{ "<leader>k", group = "Keymaps" },
 	{ "<leader>kl", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },

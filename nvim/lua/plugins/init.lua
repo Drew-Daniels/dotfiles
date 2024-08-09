@@ -62,7 +62,6 @@ return require("lazy").setup({
 	},
 	{ "lewis6991/gitsigns.nvim" },
 	{ "sindrets/diffview.nvim" },
-	{ "nvim-neotest/neotest-vim-test", dependencies = "vim-test/vim-test" },
 	{ "axieax/urlview.nvim" },
 	{
 		"windwp/nvim-autopairs",
@@ -73,7 +72,6 @@ return require("lazy").setup({
 	{ "LudoPinelli/comment-box.nvim" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "mbbill/undotree" },
 	{ "mrjones2014/legendary.nvim", priority = 1000, lazy = false },
 	{
 		"kwkarlwang/bufresize.nvim",
@@ -96,19 +94,6 @@ return require("lazy").setup({
 		dependencies = { "luarocks.nvim" },
 		lazy = false,
 		version = "*",
-	},
-	{
-		"nvim-neotest/neotest",
-		lazy = true,
-		dependencies = {
-			"nvim-neotest/nvim-nio",
-			"nvim-lua/plenary.nvim",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			-- optional
-			"olimorris/neotest-rspec",
-			"nvim-neotest/neotest-jest",
-		},
 	},
 	{
 		"piersolenski/telescope-import.nvim",
@@ -168,7 +153,6 @@ return require("lazy").setup({
 	},
 	"dfendr/clipboard-image.nvim",
 	"karb94/neoscroll.nvim",
-	"barklan/capslock.nvim",
 	"stevearc/conform.nvim",
 	{ "folke/neodev.nvim", opts = {} },
 	"ray-x/web-tools.nvim",
