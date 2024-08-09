@@ -150,7 +150,6 @@ return require("lazy").setup({
 	"williamboman/mason.nvim",
 	"tpope/vim-fugitive", -- Git operations, tools in neovim
 	"tpope/vim-rhubarb", -- Fugitive-companion to interact with github
-	"junegunn/gv.vim", -- Pretty Git log
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	"xiyaowong/transparent.nvim",
 	-- recommended settings from 'nvim-lspconfig'
