@@ -35,17 +35,6 @@ return require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
-	-- {
-	-- 	-- development
-	-- 	dir = "~/projects/faker.nvim",
-	-- 	name = "faker",
-	-- 	-- once released
-	-- 	-- "Drew-Daniels/faker.nvim",
-	-- 	lazy = false,
-	-- },
-	{
-		"vim-denops/denops.vim",
-	},
 	{
 		"Exafunction/codeium.vim",
 		event = "BufEnter",
