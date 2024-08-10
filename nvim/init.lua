@@ -64,7 +64,7 @@ require("mason-lspconfig").setup({
 --          │                    TRANSPARENT.NVIM                     │
 --          │      https://github.com/xiyaowong/transparent.nvim      │
 --          ╰─────────────────────────────────────────────────────────╯
-require("transparent").setup()
+require("transparent").setup({})
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-TREESITTER                     │
