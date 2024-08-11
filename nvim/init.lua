@@ -354,7 +354,7 @@ local servers = {
 	"vimls",
 	"prismals",
 	"pylsp",
-	"vuels",
+	"volar",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
@@ -363,6 +363,11 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+-- lspconfig.vuels.setup({
+-- 	capabilities = capabilities,
+-- 	cmd = { "vue-language-server", "--stdio" },
+-- })
 
 lspconfig.eslint.setup({
 	capabilities = capabilities,
@@ -448,6 +453,13 @@ end
 -- })
 
 require("typescript-tools").setup({
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
+	},
 	settings = {
 		capabilities = capabilities,
 		root_dir = root_pattern_exclude({
@@ -455,6 +467,9 @@ require("typescript-tools").setup({
 			exclude = { "deno.json", "deno.jsonc" },
 		}),
 		single_file_support = false,
+		tsserver_plugins = {
+			"@vue/typescript-plugin",
+		},
 	},
 })
 
