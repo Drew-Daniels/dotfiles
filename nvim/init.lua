@@ -354,6 +354,7 @@ local servers = {
 	"vimls",
 	"prismals",
 	"pylsp",
+	"vuels",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
