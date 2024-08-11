@@ -99,6 +99,7 @@ require("nvim-treesitter.configs").setup({
 		"typescript",
 		"yaml",
 		"prisma",
+		"vue",
 	},
 	-- required by 'nvim-ts-autotag'
 	autotag = {
