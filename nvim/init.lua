@@ -57,6 +57,7 @@ require("mason-lspconfig").setup({
 		"prismals",
 		"pylsp",
 		"denols",
+		"volar",
 	},
 })
 
