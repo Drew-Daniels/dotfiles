@@ -58,6 +58,7 @@ require("mason-lspconfig").setup({
 		"pylsp",
 		"denols",
 		"volar",
+		"nil_ls",
 	},
 })
 
@@ -100,6 +101,7 @@ require("nvim-treesitter.configs").setup({
 		"yaml",
 		"prisma",
 		"vue",
+		"nix",
 	},
 	-- required by 'nvim-ts-autotag'
 	autotag = {
@@ -355,6 +357,7 @@ local servers = {
 	"prismals",
 	"pylsp",
 	"volar",
+	"nil_ls",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
