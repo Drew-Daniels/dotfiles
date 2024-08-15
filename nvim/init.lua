@@ -58,8 +58,14 @@ require("mason-lspconfig").setup({
 		"pylsp",
 		"denols",
 		"volar",
-    --TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
+		--TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
 		"nil_ls",
+		"clojure_lsp",
+		-- https://github.com/williamboman/mason-lspconfig.nvim/issues/451
+		-- "cljfmt",
+		-- linter
+		-- https://github.com/williamboman/mason-lspconfig.nvim/issues/450
+		-- "clj-kondo",
 	},
 })
 
@@ -673,6 +679,7 @@ require("conform").setup({
 		zsh = { "shfmt" },
 		markdown = { "typos-lsp" },
 		norg = { "typos-lsp" },
+		clojure = { "cljfmt" },
 	},
 })
 
