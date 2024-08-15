@@ -58,6 +58,7 @@ require("mason-lspconfig").setup({
 		"pylsp",
 		"denols",
 		"volar",
+    --TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
 		"nil_ls",
 	},
 })
