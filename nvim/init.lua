@@ -89,6 +89,7 @@ require("nvim-treesitter.configs").setup({
 		"query",
 		"bash",
 		"css",
+    "clojure",
 		"dockerfile",
 		"fish",
 		"html",
@@ -365,6 +366,7 @@ local servers = {
 	"pylsp",
 	"volar",
 	"nil_ls",
+  "clojure_lsp",
 	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
 	-- "nxls",
 }
