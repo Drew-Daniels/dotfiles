@@ -3,3 +3,5 @@
 .DS_Store
 tags*
 node_modules
+.clj-kondo
+.lsp
