@@ -5,15 +5,15 @@ local get_visual = helpers.get_visual
 
 --TODO: Determine how to implement choice nodes that can be used to create a new todo, but also cycle through varying levels of indentdation (-, --, ---, etc.)
 return {
-	s(
-		"td",
-		fmta(
-			[[
+  s(
+    "td",
+    fmta(
+      [[
         - ( ) <>
       ]],
-			{
-				i(1),
-			}
-		)
-	),
+      {
+        i(1),
+      }
+    )
+  ),
 }

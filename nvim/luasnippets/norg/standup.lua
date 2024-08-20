@@ -4,10 +4,10 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-	s(
-		"su",
-		fmta(
-			[[
+  s(
+    "su",
+    fmta(
+      [[
         * Standup <>
 
         ** What did I do yesterday?
@@ -26,14 +26,14 @@ return {
           - ( ) <>
 
       ]],
-			{
-				i(1),
-				i(2),
-				i(3),
-				i(4),
-				i(5),
-				i(6),
-			}
-		)
-	),
+      {
+        i(1),
+        i(2),
+        i(3),
+        i(4),
+        i(5),
+        i(6),
+      }
+    )
+  ),
 }

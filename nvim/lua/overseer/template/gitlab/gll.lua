@@ -10,13 +10,13 @@
 -- local output_parser = parser.new(defn)
 
 return {
-	name = "gll",
-	builder = function()
-		return {
-			cmd = { "gll.sh" },
-			name = "GitLab CI Config Lint",
-			-- components = { "on_output_parse", parser = output_parser },
-		}
-	end,
-	desc = "Lints GitLab CI Configuration file in PWD",
+  name = "gll",
+  builder = function()
+    return {
+      cmd = { "gll.sh" },
+      name = "GitLab CI Config Lint",
+      -- components = { "on_output_parse", parser = output_parser },
+    }
+  end,
+  desc = "Lints GitLab CI Configuration file in PWD",
 }

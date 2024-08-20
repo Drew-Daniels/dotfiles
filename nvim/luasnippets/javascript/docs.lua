@@ -4,5 +4,5 @@ local helpers = require("luasnip-helpers")
 local get_visual = helpers.get_visual
 
 return {
-	s("do", fmta([[ /** <> */]], { i(1) }), { desc = "Documentation" }),
+  s("do", fmta([[ /** <> */]], { i(1) }), { desc = "Documentation" }),
 }
