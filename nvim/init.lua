@@ -21,6 +21,7 @@ local mason_options = {
     "nxls",
     "shfmt",
     "shellcheck",
+    "htmlbeautifier",
   },
   max_concurrent_installers = 10,
 }
@@ -61,6 +62,7 @@ require("mason-lspconfig").setup({
     --TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
     "nil_ls",
     "clojure_lsp",
+    "prettier",
     -- https://github.com/williamboman/mason-lspconfig.nvim/issues/451
     -- "cljfmt",
     -- linter
