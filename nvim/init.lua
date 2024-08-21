@@ -22,6 +22,7 @@ local mason_options = {
     "shfmt",
     "shellcheck",
     "htmlbeautifier",
+    "sqlfmt"
   },
   max_concurrent_installers = 10,
 }
@@ -62,7 +63,6 @@ require("mason-lspconfig").setup({
     --TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
     "nil_ls",
     "clojure_lsp",
-    "prettier",
     -- https://github.com/williamboman/mason-lspconfig.nvim/issues/451
     -- "cljfmt",
     -- linter
@@ -672,7 +672,7 @@ require("conform").setup({
     fish = { "fish_indent" },
     json = { "jq" },
     sh = { "shfmt" },
-    sql = { "sql_formatter" },
+    sql = { "sqlfmt" },
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
