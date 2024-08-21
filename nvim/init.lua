@@ -69,6 +69,7 @@ require("mason-lspconfig").setup({
     -- https://github.com/williamboman/mason-lspconfig.nvim/issues/450
     -- "clj-kondo",
     "ruff",
+    "basedpyright",
   },
 })
 
@@ -372,6 +373,7 @@ local servers = {
   -- turning off for now: https://github.com/nrwl/nx-console/issues/2019
   -- "nxls",
   "ruff",
+  "basedpyright",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
@@ -384,15 +386,12 @@ end
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
-lspconfig.pylsp.setup({
+lspconfig.basedpyright.setup({
   capabilities = capabilities,
   settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          enabled = false,
-        },
-        pyflakes = { enabled = false },
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
       },
     },
   },
@@ -884,7 +883,7 @@ wk.add({
   { "<leader>kl", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
   -- LSP
   { "<leader>l", group = "LSP" },
-  { "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
+  { "<leader>lD", "<cmd>Telescope lsp_definitions()<cr>", desc = "Definitions" },
   { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
   { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
   { "<leader>li", "<cmd>Telescope implementations<cr>", desc = "Implementations" },
