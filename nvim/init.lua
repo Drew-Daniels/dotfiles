@@ -22,7 +22,7 @@ local mason_options = {
     "shfmt",
     "shellcheck",
     "htmlbeautifier",
-    "sqlfmt"
+    "sqlfmt",
   },
   max_concurrent_installers = 10,
 }
@@ -68,6 +68,7 @@ require("mason-lspconfig").setup({
     -- linter
     -- https://github.com/williamboman/mason-lspconfig.nvim/issues/450
     -- "clj-kondo",
+    "ruff",
   },
 })
 
@@ -365,12 +366,12 @@ local servers = {
   "sqlls",
   "vimls",
   "prismals",
-  "pylsp",
   "volar",
   "nil_ls",
   "clojure_lsp",
   -- turning off for now: https://github.com/nrwl/nx-console/issues/2019
   -- "nxls",
+  "ruff",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
@@ -382,6 +383,20 @@ end
 -- 	capabilities = capabilities,
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
+
+lspconfig.pylsp.setup({
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = false,
+        },
+        pyflakes = { enabled = false },
+      },
+    },
+  },
+})
 
 lspconfig.eslint.setup({
   capabilities = capabilities,
@@ -684,6 +699,7 @@ require("conform").setup({
     markdown = { "typos-lsp" },
     norg = { "typos-lsp" },
     clojure = { "cljfmt" },
+    python = { "ruff" },
   },
 })
 
@@ -1190,3 +1206,4 @@ vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true, desc = "Insert 
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
+vim.diagnostic.config({ virtual_text = { source = true } })
