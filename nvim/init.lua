@@ -52,6 +52,7 @@ require("mason-lspconfig").setup({
     "marksman",
     "tailwindcss",
     "terraformls",
+    "tflint",
     "typos_lsp",
     "vimls",
     "yamlls",
@@ -374,6 +375,7 @@ local servers = {
   -- "nxls",
   "ruff",
   "basedpyright",
+  "tflint",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
