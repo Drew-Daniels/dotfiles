@@ -638,7 +638,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
     vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
     vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
-    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { unpack(opts), desc = "code action" })
+    vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { unpack(opts), desc = "code ACTIONS" })
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
     vim.keymap.set("n", "gR", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
     -- conform.nvim should handle formatting
@@ -809,9 +809,9 @@ local wk = require("which-key")
 
 wk.add({
   -- Miscellaneous
-  { "<leader>i", "<cmd>Telescope import<cr>", desc = "Import" },
+  { "<leader>I", "<cmd>Telescope import<cr>", desc = "Import" },
   { "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
-  { "<leader>s", "<cmd>Telescope search_history<cr>", desc = "Search History" },
+  { "<leader>sh", "<cmd>Telescope search_history<cr>", desc = "Search History" },
   { "<leader>m", "<cmd>Grapple tag<cr>", desc = "Grapple Tag" },
   { "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple Move" },
   { "<leader>z", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggest" },
@@ -849,18 +849,17 @@ wk.add({
   { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File(s)" },
   { "<leader>ft", "<cmd>Telescope filetypes<cr>", desc = "Filetypes" },
   -- Git
-  { "<leader>g", group = "Git" },
-  { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "File History" },
-  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
-  { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
-  { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
-  { "<leader>gr", "<cmd>Telescope git_bcommits_range<cr>", desc = "Range Buffer Commits" },
-  { "<leader>gw", "<cmd>Telescope git_stash<cr>", desc = "WIP (Stashed)" },
-  -- API Requests
-  { "<leader>A", group = "API Requests" },
-  { "<leader>As", "<Plug>RestNvim", desc = "Send Request" },
-  { "<leader>Ap", "<Plug>RestNvimPreview", desc = "Preview Request" },
-  { "<leader>Ar", "<Plug>RestNvimLast", desc = "Repeat Last Request" },
+  { "<leader>G", group = "Git" },
+  { "<leader>Gf", "<cmd>Telescope git_bcommits<cr>", desc = "File History" },
+  { "<leader>Gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
+  { "<leader>Gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
+  { "<leader>Gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
+  { "<leader>Gw", "<cmd>Telescope git_stash<cr>", desc = "WIP (Stashed)" },
+  -- Requests
+  { "<leader>R", group = "Request" },
+  { "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
+  { "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview" },
+  { "<leader>Rr", "<Plug>RestNvimLast", desc = "Repeat Last" },
   -- Browse URLs
   { "<leader>B", group = "Browse URLs" },
   { "<leader>Ba", "<cmd>UrlView<cr>", desc = "All URLs" },
