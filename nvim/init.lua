@@ -679,6 +679,9 @@ require("lualine").setup({
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
 require("conform").setup({
+  format_after_save = {
+    lsp_format = "fallback",
+  },
   formatters_by_ft = {
     c = { "clang-format" },
     lua = { "stylua" },
