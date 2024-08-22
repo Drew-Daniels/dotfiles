@@ -3,7 +3,7 @@
 export XDG_CONFIG_HOME=~/projects/dotfiles
 
 parse_git_branch() {
-	git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+  git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 COLOR_DEF='%f'
 COLOR_USR='%F{243}'
@@ -65,7 +65,6 @@ export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 export EXPORT_E2E_CREDS_SCRIPT="$XDG_CONFIG_HOME/scripts/export_e2e_creds.sh"
 
-
 # homebrew
 PATH="/usr/local/sbin:$PATH"
 
@@ -73,7 +72,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # homebrew shell completion
 if type brew &>/dev/null; then
-	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 # brew curl shell completion
@@ -89,7 +88,6 @@ eval "$(starship init zsh)"
 #           COMP_CWORD=$((CURRENT-1)) \
 #           PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
 # pip zsh completion end
-
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/path.zsh.inc'; fi
@@ -116,7 +114,7 @@ alias pb="prettybat"
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 batdiff() {
-	git diff --name-only --relative --diff-filter=d | xargs bat
+  git diff --name-only --relative --diff-filter=d | xargs bat
 }
 # lsd
 alias ls="lsd"
@@ -140,9 +138,9 @@ export CONFIG_DIR="$XDG_CONFIG_HOME/sketchybar"
 # kitty
 alias d="kitten diff"
 if [[ $TERM == "xterm-kitty" ]]; then
-	fish
+  fish
 else
-	:
+  :
 fi
 
 # wezterm
@@ -153,12 +151,12 @@ alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
 
 # yazi
 function ya() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 export YAZI_CONFIG_HOME="$XDG_CONFIG_HOME/yazi"
@@ -215,3 +213,6 @@ ssh-add -A 2>/dev/null
 alias ynx="yarn nx"
 alias pnx="pnpm nx"
 
+# vcpkg - https://github.com/Microsoft/vcpkg
+export VCPKG_ROOT=~/projects/vcpkg
+export PATH="$VCPKG_ROOT:$PATH"
