@@ -47,7 +47,6 @@ require("mason-lspconfig").setup({
     "html",
     "jsonls",
     "lua_ls",
-    "solargraph",
     "sqlls",
     "marksman",
     "tailwindcss",
