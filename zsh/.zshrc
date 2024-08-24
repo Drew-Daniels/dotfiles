@@ -17,11 +17,10 @@ export VISUAL="nvim"
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
 # pnpm
 export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+alias pn="pnpm"
 # pnpm end
 
 # Android
@@ -34,7 +33,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 # search for pattern in filenames
-alias rg="rg --hyperlink-format=kitty"
 alias rgf="rg --files | rg"
 
 # nvim
@@ -63,7 +61,6 @@ alias mux=tmuxinator
 alias ts="mux start project"
 export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
-export EXPORT_E2E_CREDS_SCRIPT="$XDG_CONFIG_HOME/scripts/export_e2e_creds.sh"
 
 # homebrew
 PATH="/usr/local/sbin:$PATH"
@@ -89,17 +86,8 @@ eval "$(starship init zsh)"
 #           PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
 # pip zsh completion end
 
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/drew/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/Users/drew/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/drew/google-cloud-sdk/completion.zsh.inc'; fi
-
 # jless
 alias yless="jless --yaml"
-
-# taskwarrior
-export TASKRC="$XDG_CONFIG_HOME/taskwarrior/.taskrc"
 
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
@@ -119,32 +107,13 @@ batdiff() {
 # lsd
 alias ls="lsd"
 
-# pnpm
-
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh ]] && . ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh || true
 
-alias pn="pnpm"
-
 # go
 # TODO: Figure out why $GOPATH is unset when sourcing this file - likely because mise starts up after, but still, would be nice to not have to hard-code
 export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
-
-# sketchybar
-# sketchybar --config $XDG_CONFIG_HOME/sketchybar/sketchybarrc
-export CONFIG_DIR="$XDG_CONFIG_HOME/sketchybar"
-
-# kitty
-alias d="kitten diff"
-if [[ $TERM == "xterm-kitty" ]]; then
-  fish
-else
-  :
-fi
-
-# wezterm
-alias upgrade_wezterm="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
 
 # neovim
 alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
@@ -183,9 +152,6 @@ alias mp="multipass"
 # iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# stripe
-fpath=($XDG_CONFIG_HOME/stripe $fpath)
-
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
 compinit
@@ -197,9 +163,6 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
-# lorem ipsum generator script
-alias lip="bash $XDG_CONFIG_HOME/scripts/lip.sh"
-
 # playwright
 alias psr="npx playwright show-report"
 
@@ -208,10 +171,6 @@ export BEETSDIR="$XDG_CONFIG_HOME/beets"
 
 # ssh
 ssh-add -A 2>/dev/null
-
-# nx
-alias ynx="yarn nx"
-alias pnx="pnpm nx"
 
 # vcpkg - https://github.com/Microsoft/vcpkg
 export VCPKG_ROOT=~/projects/vcpkg
