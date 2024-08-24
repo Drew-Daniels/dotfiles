@@ -1,7 +1,5 @@
 if status is-interactive
     fish_add_path /opt/homebrew/bin
-    fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
 
     # fish-specific
     # turn off greeting
@@ -15,7 +13,6 @@ if status is-interactive
 
     # ripgrep
     # search for pattern in filenames
-    alias rg "rg --hyperlink-format=kitty"
     alias rgf "rg --files | rg"
 
     # pnpm
@@ -72,9 +69,6 @@ if status is-interactive
     # jless
     alias yless="jless --yaml"
 
-    # taskwarrior
-    set -gx TASKRC $XDG_CONFIG_HOME/taskwarrior/.taskrc
-
     # zoxide
     zoxide init --cmd j fish | source
 
@@ -92,12 +86,6 @@ if status is-interactive
 
     alias pn="pnpm"
 
-    # kitten
-    alias d="kitten diff"
-
-    # wezterm
-    alias upgrade_wezterm "brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
-
     # neovim
     alias upgrade_nvim "brew upgrade nvim --fetch-HEAD"
 
@@ -112,32 +100,25 @@ if status is-interactive
     end
 
     set gx YAZI_CONFIG_HOME "$XDG_CONFIG_HOME/yazi"
-    
+
     # gitlab
     alias gll "$XDG_CONFIG_HOME/scripts/gll.sh"
 
     # neovim can't use aliases in command mode, so making scripts globally available
     fish_add_path "$XDG_CONFIG_HOME/scripts"
-    
+
     # cspell
     alias cspell "cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 
     # java
     fish_add_path "/opt/apache-maven-3.8.5/bin"
-    
+
     # alias
     alias mp="multipass"
 
-    # lorem ipsum generator
-    alias lip="$XDG_CONFIG_HOME/scripts/lip.sh"
-
     # mise
     /opt/homebrew/bin/mise activate fish | source
-    
+
     # playwright
     alias psr="npx playwright show-report"
-
-    # nx
-    alias ynx="yarn nx"
-    alias pnx="pnpm nx"
 end
