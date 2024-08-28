@@ -379,6 +379,7 @@ local servers = {
   "cucumber_language_server",
   "tailwindcss",
   "terraformls",
+  -- Do not install 'solargraph' with Mason, since the version used depends on Ruby version
   "solargraph",
   "sqlls",
   "vimls",
