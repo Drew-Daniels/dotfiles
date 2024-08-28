@@ -18,7 +18,6 @@ if status is-interactive
     # pnpm
     set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
     fish_add_path PNPM_HOME
-    # pnpm end
 
     # Android
     set -gx ANDROID_HOME $HOME/Library/Android/sdk
@@ -121,4 +120,7 @@ if status is-interactive
 
     # playwright
     alias psr="npx playwright show-report"
+
+    # solargraph - https://github.com/castwide/solargraph
+    set gx SOLARGRAPH_GLOBAL_CONFIG "$XDG_CONFIG_HOME/solargraph/config.yml"
 end

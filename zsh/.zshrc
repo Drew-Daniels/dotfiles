@@ -21,7 +21,6 @@ export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)$
 export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 alias pn="pnpm"
-# pnpm end
 
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -175,3 +174,6 @@ ssh-add -A 2>/dev/null
 # vcpkg - https://github.com/Microsoft/vcpkg
 export VCPKG_ROOT=~/projects/vcpkg
 export PATH="$VCPKG_ROOT:$PATH"
+
+# solargraph - https://github.com/castwide/solargraph
+export SOLARGRAPH_GLOBAL_CONFIG=~/projects/dotfiles/solargraph/config.yml
