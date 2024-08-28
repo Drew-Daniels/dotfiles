@@ -123,4 +123,7 @@ if status is-interactive
 
     # solargraph - https://github.com/castwide/solargraph
     set gx SOLARGRAPH_GLOBAL_CONFIG "$XDG_CONFIG_HOME/solargraph/config.yml"
+
+    # node
+    fish_add_path "./node_modules/.bin"
 end

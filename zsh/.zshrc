@@ -177,3 +177,6 @@ export PATH="$VCPKG_ROOT:$PATH"
 
 # solargraph - https://github.com/castwide/solargraph
 export SOLARGRAPH_GLOBAL_CONFIG=~/projects/dotfiles/solargraph/config.yml
+
+# node
+export PATH="$PATH:./node_modules/.bin"
