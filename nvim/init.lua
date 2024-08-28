@@ -106,6 +106,7 @@ require("nvim-treesitter.configs").setup({
     "markdown",
     "markdown_inline",
     "ruby",
+    "scheme",
     "scss",
     "sql",
     "terraform",
@@ -1230,3 +1231,9 @@ vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true, desc = "Insert 
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
 vim.diagnostic.config({ virtual_text = { source = true } })
+
+vim.filetype.add({
+  filename = {
+    ["Brewfile"] = "brewfile",
+  },
+})
