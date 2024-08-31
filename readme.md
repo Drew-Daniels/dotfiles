@@ -17,29 +17,15 @@ cd dotfiles
 ./scripts/setup.sh
 ```
 
-## Source `.zshrc` from `dotfiles`
+## Configure local environment
 
 ```bash
-echo ". ~/projects/dotfiles/zsh/.zshrc" > ~/.zshrc
+email=drew.daniels@somecompany.com
+
+sed -i -e "s/.*EMAIL*.*/EMAIL=$email/" .env.local
 ```
 
-## Set `~/.gitconfig`
-
-```bash
-cat ~/projects/dotfiles/git/.gitconfig.template > ~/.gitconfig
-vim ~/.gitconfig
-# Update email
-```
-
-## Configure [`mise`](https://mise.jdx.dev/getting-started.html#homebrew)
-
-```bash
-# Default npm packages
-cat ~/projects/dotfiles/mise/.default-npm-packages > ~/.default-npm-packages
-
-# Default ruby gems
-cat ~/projects/dotfiles/mise/.default-gems > ~/.default-gems
-```
+## Restart terminal (to pick up changes to `~/.zshrc`)
 
 ## Install [`homebrew`](https://brew.sh/)
 
@@ -47,9 +33,7 @@ cat ~/projects/dotfiles/mise/.default-gems > ~/.default-gems
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Install Dependencies
-
-Since `HOMEBREW_BUNDLE_FILE` is set in `dotfiles/zsh/.zshrc` and `dotfiles/fish/config.fish`, `homebrew-bundle` should use the `Brewfile` stored in `dotfiles/homebrew`.
+## Install dependencies managed with `brew`
 
 ```bash
 brew bundle
@@ -71,8 +55,8 @@ NOTE: Do not install via `homebrew` because this installs dependencies like `pyt
 
 ## Install [`luarocks`](https://luarocks.org/)
 
-## Install [`tpm`](https://github.com/tmux-plugins/tpm)
+## Restart
 
 ```bash
-git clone https://github.com/tmux-plugins/tpm ~/projects/dotfiles/tmux/plugins/tpm
+sudo shutdown -r now
 ```
