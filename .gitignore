@@ -29,3 +29,4 @@ glab-cli
 stripe
 beets
 !beets/config.yaml
+.env.local
