@@ -107,9 +107,6 @@ if status is-interactive
     # java
     fish_add_path "/opt/apache-maven-3.8.5/bin"
 
-    # alias
-    alias mp="multipass"
-
     # mise
     /opt/homebrew/bin/mise activate fish | source
 

@@ -137,9 +137,6 @@ alias cspell="cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 # java
 export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 
-# multipass
-alias mp="multipass"
-
 # iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
