@@ -1,4 +1,0 @@
-# This is a template for how your .zshrc should look in your ~/.zshrc, if you want to source its contents from the .zshrc file in this folder.
-
-. /Users/drew/projects/dotfiles/zsh/.zshrc
-

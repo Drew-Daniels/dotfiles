@@ -18,4 +18,4 @@ echo "source ~/projects/dotfiles/etc/shells" >/etc/shells
 test -f ~/.zshrc || echo ". ~/projects/dotfiles/zsh/.zshrc" >~/.zshrc
 
 # configure git
-test -f ~/.gitconfig || echo ". ~/projects/dotfiles/git/.gitconfig.template" >~/.gitconfig
+test -f ~/.gitconfig || cat ~/projects/dotfiles/git/.gitconfig.template >~/.gitconfig
