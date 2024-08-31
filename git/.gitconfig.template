@@ -1,4 +1,2 @@
 [include]
 	path = ~/projects/dotfiles/git/.gitconfig 
-[user]
-	email = <insert-work-or-personal-email-here>

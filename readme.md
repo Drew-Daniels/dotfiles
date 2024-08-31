@@ -12,8 +12,9 @@ cd ~/projects
 git clone https://github.com/Drew-Daniels/dotfiles.git
 cd dotfiles
 
-# This won't exist, and when our zsh config is loaded the shell will throw an error without it
-touch zsh/secrets
+# Adds .gitignored files that will vary by machine
+# Sets up ~/.zshrc and ~/.gitconfig files to source configs from 'dotfiles'
+./scripts/setup.sh
 ```
 
 ## Source `.zshrc` from `dotfiles`
