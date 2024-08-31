@@ -39,14 +39,10 @@ alias intel="/usr/bin/env arch -x86_64 zsh"
 alias pclean="$XDG_CONFIG_HOME/scripts/clean-parsers.sh"
 
 # tmux
-# export TERM=screen-256color
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tl="tmux ls"
 alias tk="tmux kill-session -t"
-
-# tmuxp
-export TMUXP_LAYOUT=main-vertical
 
 # tmuxinator
 alias mux=tmuxinator
