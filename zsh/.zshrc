@@ -86,6 +86,9 @@ eval "$(zoxide init --cmd j zsh)"
 # mise
 eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
 
+export MISE_RUBY_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-gems"
+export MISE_NODE_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-npm-packages"
+
 # bat
 alias cat="bat"
 alias man="batman"
