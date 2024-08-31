@@ -42,6 +42,7 @@ if status is-interactive
 
     # homebrew
     fish_add_path /usr/local/sbin
+    set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/homebrew/Brewfile
 
     # tmux
     alias tn="tmux new -s"

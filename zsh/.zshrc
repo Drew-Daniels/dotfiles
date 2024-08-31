@@ -74,6 +74,8 @@ fi
 # brew curl shell completion
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
+export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
+
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
