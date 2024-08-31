@@ -22,13 +22,6 @@ export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 alias pn="pnpm"
 
-# Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 # search for pattern in filenames
