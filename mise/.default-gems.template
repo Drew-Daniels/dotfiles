@@ -1,0 +1,7 @@
+rubocop
+rubocop-rails
+rubocop-performance
+rubocop-rspec
+solargraph
+solargraph-rails
+tmuxinator
