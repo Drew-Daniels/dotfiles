@@ -75,6 +75,7 @@ fi
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
+export HOMEBREW_BUNDLE_NO_LOCK=1
 
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
