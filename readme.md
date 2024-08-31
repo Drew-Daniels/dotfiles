@@ -1,6 +1,6 @@
 # Installation Process on a New Machine
 
-## Setup GitHub Authentication & clone the repo:
+## Setup GitHub Authentication & clone the repo
 
 Create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
 
@@ -16,13 +16,13 @@ cd dotfiles
 touch zsh/secrets
 ```
 
-## Source `.zshrc` from `dotfiles`:
+## Source `.zshrc` from `dotfiles`
 
 ```bash
 echo ". ~/projects/dotfiles/zsh/.zshrc" > ~/.zshrc
 ```
 
-## Set `~/.gitconfig`:
+## Set `~/.gitconfig`
 
 ```bash
 cat ~/projects/dotfiles/git/.gitconfig.template > ~/.gitconfig
@@ -40,13 +40,13 @@ cat ~/projects/dotfiles/mise/.default-npm-packages > ~/.default-npm-packages
 cat ~/projects/dotfiles/mise/.default-gems > ~/.default-gems
 ```
 
-## Install [`homebrew`](https://brew.sh/):
+## Install [`homebrew`](https://brew.sh/)
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Install Dependencies:
+## Install Dependencies
 
 Since `HOMEBREW_BUNDLE_FILE` is set in `dotfiles/zsh/.zshrc` and `dotfiles/fish/config.fish`, `homebrew-bundle` should use the `Brewfile` stored in `dotfiles/homebrew`.
 
@@ -54,10 +54,24 @@ Since `HOMEBREW_BUNDLE_FILE` is set in `dotfiles/zsh/.zshrc` and `dotfiles/fish/
 brew bundle
 ```
 
-## Install [iTerm2](https://iterm2.com/):
+## Install [iTerm2](https://iterm2.com/)
 
 Configure: `CMD+,` > General > Settings:
 
 - Check `Load settings from custom folder or URL`
 - Set path to `<absolute-path-to-home-folder>/projects/dotfiles/iterm2`
 - Set "Save Changes" option to "When Quitting"
+
+## Install [`awscli`](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+NOTE: Do not install via `homebrew` because this installs dependencies like `python` that aren't managed by `mise`.
+
+## Install [`lua 5.1`](https://gist.github.com/ivan-loh/9f81b6f44c42f4115964)
+
+## Install [`luarocks`](https://luarocks.org/)
+
+## Install [`tpm`](https://github.com/tmux-plugins/tpm)
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/projects/dotfiles/tmux/plugins/tpm
+```
