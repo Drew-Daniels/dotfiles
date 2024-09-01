@@ -84,13 +84,7 @@ cask "tidal"
 cask "tor-browser"
 cask "vitalsource-bookshelf"
 cask "zoom"
-mas "Antivirus One", id: 1068435535
-mas "Developer", id: 640199958
-mas "GarageBand", id: 682658836
-mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
-mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
-mas "Pages", id: 409201541
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Xcode", id: 497799835
