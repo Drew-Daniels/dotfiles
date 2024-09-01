@@ -1,0 +1,17 @@
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: '0.2'
+dictionaryDefinitions:
+  - name: misc
+    path: './misc.txt'
+    addWords: true
+  - name: neovim
+    path: './neovim.txt'
+    addWords: true
+dictionaries:
+  - misc
+  - neovim
+ignorePaths:
+  - 'node_modules'
+  - '/misc.txt'
+  - '/neovim.txt'
+  - 'tmux/plugins'
