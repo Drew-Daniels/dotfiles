@@ -312,23 +312,15 @@ require("vim.treesitter.language").register("http", "hurl")
 --          │                     NEOSCROLL.NVIM                      │
 --          │        https://github.com/karb94/neoscroll.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
-local t = {}
-t["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "350" } }
-t["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "350" } }
-t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500" } }
-t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500" } }
-t["<C-y>"] = { "scroll", { "-0.10", "false", "100" } }
---TODO: Find better keymapping for this since this gets overridden by change choice for luasnip
-t["<C-e>"] = { "scroll", { "0.10", "false", "100" } }
-t["zt"] = { "zt", { "0" } }
-t["zz"] = { "zz", { "0" } }
-t["zb"] = { "zb", { "0" } }
-
 require("neoscroll").setup({
   easing_function = "quadratic",
+  -- https://github.com/karb94/neoscroll.nvim/issues/112
+  -- mappings = {
+  --   ["zt"] = "zt",
+  --   ["zz"] = "zz",
+  --   ["zb"] = "zb",
+  -- },
 })
-
-require("neoscroll.config").set_mappings(t)
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     WEB-TOOLS.NVIM                      │
