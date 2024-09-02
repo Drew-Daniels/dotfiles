@@ -93,7 +93,7 @@ if status is-interactive
         rm -f -- "$tmp"
     end
 
-    set gx YAZI_CONFIG_HOME "$XDG_CONFIG_HOME/yazi"
+    set -gx YAZI_CONFIG_HOME "$XDG_CONFIG_HOME/yazi"
 
     # gitlab
     alias gll "$XDG_CONFIG_HOME/scripts/gll.sh"
@@ -110,13 +110,13 @@ if status is-interactive
     # mise
     /opt/homebrew/bin/mise activate fish | source
 
-    set gx MISE_RUBY_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-gems"
-    set gx MISE_NODE_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-npm-packages"
-    set gx MISE_PYTHON_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-python-packages"
+    set -gx MISE_RUBY_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-gems"
+    set -gx MISE_NODE_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-npm-packages"
+    set -gx MISE_PYTHON_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-python-packages"
 
     # playwright
     alias psr="npx playwright show-report"
 
     # solargraph - https://github.com/castwide/solargraph
-    set gx SOLARGRAPH_GLOBAL_CONFIG "$XDG_CONFIG_HOME/solargraph/config.yml"
+    set -gx SOLARGRAPH_GLOBAL_CONFIG "$XDG_CONFIG_HOME/solargraph/config.yml"
 end
