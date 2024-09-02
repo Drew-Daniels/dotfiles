@@ -314,12 +314,7 @@ require("vim.treesitter.language").register("http", "hurl")
 --          ╰─────────────────────────────────────────────────────────╯
 require("neoscroll").setup({
   easing_function = "quadratic",
-  -- https://github.com/karb94/neoscroll.nvim/issues/112
-  -- mappings = {
-  --   ["zt"] = "zt",
-  --   ["zz"] = "zz",
-  --   ["zb"] = "zb",
-  -- },
+  mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>" },
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
