@@ -21,7 +21,6 @@ local mason_options = {
     "nxls",
     "shfmt",
     "shellcheck",
-    "htmlbeautifier",
     "sqlfmt",
   },
   max_concurrent_installers = 10,
@@ -880,6 +879,8 @@ wk.add({
   { "<leader>bm", "<cmd>CBllbox14<cr>", desc = "Marked" },
   { "<leader>bq", "<cmd>CBllbox13<cr>", desc = "Quote" },
   { "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
+  -- Hunks
+  { "<leader>h", group = "Hunks", desc = "Hunks" },
   -- Jump
   { "<leader>j", group = "Jump" },
   { "<leader>jf", "<cmd>Portal jumplist forward<cr>", desc = "Forward" },
@@ -1136,6 +1137,22 @@ require("gitsigns").setup({
       end)
       return "<Ignore>"
     end, { expr = true, desc = "Prev Hunk" })
+
+    map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage Hunk" })
+    map("n", "<leader>hr", gs.reset_hunk, { desc = "Reset" })
+    map("v", "<leader>hs", function()
+      gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    end)
+    map("v", "<leader>hr", function()
+      gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    end)
+    map("n", "<leader>hS", gs.stage_buffer)
+    map("n", "<leader>hu", gs.undo_stage_hunk)
+    map("n", "<leader>hR", gs.reset_buffer)
+    map("n", "<leader>hp", gs.preview_hunk)
+    map("n", "<leader>hb", function()
+      gs.blame_line({ full = true })
+    end)
 
     -- Text object
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")

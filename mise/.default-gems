@@ -6,3 +6,4 @@ rubocop-rspec
 solargraph
 solargraph-rails
 tmuxinator
+htmlbeautifier
