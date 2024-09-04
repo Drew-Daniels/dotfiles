@@ -391,6 +391,11 @@ end
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
+lspconfig.solargraph.setup({
+  capabilities = capabilities,
+  filetypes = { "ruby", "eruby" },
+})
+
 lspconfig.basedpyright.setup({
   capabilities = capabilities,
   settings = {
