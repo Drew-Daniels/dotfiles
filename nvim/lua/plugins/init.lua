@@ -25,11 +25,9 @@ return require("lazy").setup({
     cmd = { "LiveServerStart", "LiveServerStop" },
     config = true,
   },
-  {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  },
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -147,7 +145,6 @@ return require("lazy").setup({
   "ray-x/web-tools.nvim",
   "ludovicchabant/vim-gutentags",
   "RRethy/nvim-treesitter-endwise",
-  "williamboman/mason.nvim",
   "tpope/vim-fugitive", -- Git operations, tools in neovim
   "tpope/vim-rhubarb", -- Fugitive-companion to interact with github
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
@@ -158,7 +155,6 @@ return require("lazy").setup({
   "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
   "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
   { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
-  "williamboman/mason.nvim",
   --
   {
     "folke/which-key.nvim",
