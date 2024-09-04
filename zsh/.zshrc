@@ -66,6 +66,11 @@ fi
 # brew curl shell completion
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
+# https://homebrew-file.readthedocs.io/en/latest/installation.html
+if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+  source $(brew --prefix)/etc/brew-wrap
+fi
+
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 export HOMEBREW_BUNDLE_NO_LOCK=1
 

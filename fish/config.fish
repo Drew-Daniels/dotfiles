@@ -35,6 +35,12 @@ if status is-interactive
 
     # homebrew
     fish_add_path /usr/local/sbin
+
+    # https://homebrew-file.readthedocs.io/en/latest/installation.html
+    if test -f (brew --prefix)/etc/brew-wrap.fish
+        source (brew --prefix)/etc/brew-wrap.fish
+    end
+
     set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/homebrew/Brewfile
     set -gx HOMEBREW_BUNDLE_NO_LOCK 1
 
