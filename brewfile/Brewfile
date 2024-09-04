@@ -58,7 +58,6 @@ brew jpeg-turbo
 brew jpeg-xl
 brew jq
 brew lame
-brew leiningen
 brew leptonica
 brew libapplewm
 brew libarchive
@@ -152,7 +151,6 @@ brew pcre2
 brew pixman
 brew pkg-config
 brew pngpaste
-brew python@3.12
 brew rav1e
 brew readline
 brew reattach-to-user-namespace
@@ -208,7 +206,6 @@ tap homebrew/cask
 cask alex313031-thorium
 cask alt-tab
 cask dbeaver-community
-cask discord
 cask docker
 cask drawio
 cask firefox
@@ -218,16 +215,9 @@ cask jellyfin
 cask obs
 cask postgres-unofficial
 cask postman
-cask qbittorrent
 cask raindropio
-cask raspberry-pi-imager
 cask rectangle
 cask roboform
-cask signal
-cask slack
-cask tidal
-cask tor-browser
-cask vitalsource-bookshelf
 cask zoom
 
 tap homebrew/bundle
@@ -247,7 +237,7 @@ tap teamookla/speedtest
 brew speedtest
 
 # App Store applications
-appstore 302584613 Amazon Kindle (7.18)
-appstore 823766827 OneDrive (24.161.0811)
-appstore 1303222628 Paprika Recipe Manager 3 (3.8.0)
 appstore 497799835 Xcode (15.4)
+
+# Main file
+main ./${HOSTNAME}.Brewfile
