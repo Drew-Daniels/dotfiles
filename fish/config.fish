@@ -115,8 +115,11 @@ if status is-interactive
     set -gx MISE_PYTHON_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-python-packages"
 
     # playwright
-    alias psr="npx playwright show-report"
+    alias psr "npx playwright show-report"
 
     # solargraph - https://github.com/castwide/solargraph
     set -gx SOLARGRAPH_GLOBAL_CONFIG "$XDG_CONFIG_HOME/solargraph/config.yml"
+
+    # htmlbeautifier
+    alias hb htmlbeautifier
 end
