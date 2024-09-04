@@ -679,6 +679,7 @@ require("lualine").setup({
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
 require("conform").setup({
+  log_level = vim.log.levels.DEBUG,
   format_after_save = function(bufnr)
     local ignore_filetypes = { "norg" }
     if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
@@ -1139,20 +1140,22 @@ require("gitsigns").setup({
     end, { expr = true, desc = "Prev Hunk" })
 
     map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage Hunk" })
-    map("n", "<leader>hr", gs.reset_hunk, { desc = "Reset" })
+    map("n", "<leader>hr", gs.reset_hunk, { desc = "Reset Hunk" })
     map("v", "<leader>hs", function()
       gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-    end)
+    end, { desc = "Stage Hunk" })
     map("v", "<leader>hr", function()
       gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-    end)
-    map("n", "<leader>hS", gs.stage_buffer)
-    map("n", "<leader>hu", gs.undo_stage_hunk)
-    map("n", "<leader>hR", gs.reset_buffer)
-    map("n", "<leader>hp", gs.preview_hunk)
+    end, { desc = "Reset Hunk" })
+    --TODO: Determine better buffer-wide actions
+    map("n", "<leader>hS", gs.stage_buffer, { desc = "Stage Buffer" })
+    map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Undo Stage Hunk" })
+    map("n", "<leader>hR", gs.reset_buffer, { desc = "Reset Buffer" })
+    map("n", "<leader>hp", gs.preview_hunk, { desc = "Preview Hunk" })
+    --TODO: Deteremine better keymap for this
     map("n", "<leader>hb", function()
       gs.blame_line({ full = true })
-    end)
+    end, { desc = "Blame Line" })
 
     -- Text object
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
