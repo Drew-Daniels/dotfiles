@@ -54,7 +54,7 @@ require("mason-lspconfig").setup({
     "typos_lsp",
     "vimls",
     "yamlls",
-    "tsserver",
+    "ts_ls",
     "prismals",
     "pylsp",
     "denols",
@@ -481,7 +481,7 @@ end
 
 -- Commenting out since 'typescript-tools.nvim' handles this configuration
 -- https://github.com/pmizio/typescript-tools.nvim?tab=readme-ov-file#-installation
--- lspconfig.tsserver.setup({
+-- lspconfig.ts_ls.setup({
 -- 	capabilities = capabilities,
 -- 	root_dir = root_pattern_exclude({
 -- 		root = { "package.json" },
