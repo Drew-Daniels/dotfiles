@@ -1,5 +1,5 @@
 name: healthmatters
-root: <%= ENV["PROJECTS_DIR"] %>/healthmatters
+root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters
 
 windows:
   - root:
