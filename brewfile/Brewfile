@@ -217,6 +217,7 @@ cask postman
 cask raindropio
 cask rectangle
 cask roboform
+cask tidal
 
 tap homebrew/bundle
 
