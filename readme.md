@@ -33,10 +33,12 @@ sed -i -e "s/.*EMAIL*.*/EMAIL=$email/" .env.local
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Install dependencies managed with `brew`
+## Install dependencies managed with [`homebrew-file`](https://github.com/rcmdnk/homebrew-file)
 
 ```bash
-brew bundle
+brew install rcmdnk/file/brew-file
+
+brew file install
 ```
 
 ## Install [iTerm2](https://iterm2.com/)

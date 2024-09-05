@@ -218,7 +218,6 @@ cask postman
 cask raindropio
 cask rectangle
 cask roboform
-cask zoom
 
 tap homebrew/bundle
 
@@ -235,9 +234,6 @@ brew brew-file
 
 tap teamookla/speedtest
 brew speedtest
-
-# App Store applications
-appstore 497799835 Xcode (15.4)
 
 # Main file
 main ./${HOSTNAME}.Brewfile
