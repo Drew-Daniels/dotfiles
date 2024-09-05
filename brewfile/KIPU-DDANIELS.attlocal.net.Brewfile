@@ -2,6 +2,7 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew bash
 brew python@3.12
 
 tap homebrew/cask
