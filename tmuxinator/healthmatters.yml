@@ -1,0 +1,25 @@
+name: healthmatters
+root: <%= ENV["PROJECTS_DIR"] %>/healthmatters
+
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
+  - web:
+      root: <%= ENV["PROJECTS_DIR"] %>
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - cmd:
+          - fish
+          - cls
