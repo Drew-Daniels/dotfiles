@@ -10,3 +10,4 @@ ruby = "3.3.4"
 
 [settings]
 legacy_version_file = true
+http_timeout = 60
