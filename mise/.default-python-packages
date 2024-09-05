@@ -5,3 +5,5 @@ openpyxl
 
 # package req for visidata to open YAML files
 PyYAML
+
+neovim
