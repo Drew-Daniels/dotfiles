@@ -157,7 +157,6 @@ brew reattach-to-user-namespace
 brew ripgrep
 brew rtmpdump
 brew rubberband
-brew rust
 brew sdl2
 brew shared-mime-info
 brew snappy
