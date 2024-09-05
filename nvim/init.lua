@@ -54,13 +54,14 @@ require("mason-lspconfig").setup({
     "typos_lsp",
     "vimls",
     "yamlls",
-    "ts_ls",
+    --TODO: Create an issue about this, tsserver changed its name to tsserver
+    "tsserver",
     "prismals",
     "pylsp",
     "denols",
     "volar",
     --TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
-    "nil_ls",
+    -- "nil_ls",
     "clojure_lsp",
     -- https://github.com/williamboman/mason-lspconfig.nvim/issues/451
     -- "cljfmt",
