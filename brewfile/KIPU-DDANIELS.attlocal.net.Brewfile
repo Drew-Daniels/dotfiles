@@ -6,6 +6,7 @@ brew awscli
 brew bash
 brew bdw-gc
 brew binutils
+brew c-ares
 brew cffi
 brew cryptography
 brew dcraw
@@ -27,7 +28,9 @@ brew libksba
 brew libmpc
 brew libusb
 brew libxml2
+brew mongosh
 brew mpfr
+brew node
 brew npth
 brew openldap
 brew openssl@1.1
@@ -47,6 +50,10 @@ tap homebrew/bundle
 tap homebrew/services
 
 tap ankitpokhrel/jira-cli
+
+tap mongodb/brew
+brew mongodb-community@6.0
+brew mongodb-database-tools
 
 tap oven-sh/bun
 
