@@ -7,6 +7,7 @@ brew leiningen
 tap homebrew/cask
 cask discord
 cask qbittorrent
+cask postgres-unofficial
 cask raspberry-pi-imager
 cask signal
 cask slack

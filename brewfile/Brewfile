@@ -212,7 +212,6 @@ cask font-jetbrains-mono-nerd-font
 cask google-chrome
 cask jellyfin
 cask obs
-cask postgres-unofficial
 cask postman
 cask raindropio
 cask rectangle
