@@ -30,3 +30,4 @@ stripe
 beets
 !beets/config.yaml
 .env.*
+zsh/functions

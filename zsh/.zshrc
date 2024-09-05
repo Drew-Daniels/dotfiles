@@ -181,3 +181,8 @@ export SOLARGRAPH_GLOBAL_CONFIG=~/projects/dotfiles/solargraph/config.yml
 
 # htmlbeautifier
 alias hb="htmlbeautifier"
+
+# work
+if [ -f ~/projects/dotfiles/zsh/functions/work.sh ]; then
+  . ~/projects/dotfiles/zsh/functions/work.sh
+fi
