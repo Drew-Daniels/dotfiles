@@ -687,7 +687,6 @@ require("lualine").setup({
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
 require("conform").setup({
-  log_level = vim.log.levels.DEBUG,
   format_after_save = function(bufnr)
     local ignore_filetypes = { "norg" }
     if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
@@ -699,6 +698,7 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
+    ruby = { "project_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
     json = { "jq" },
@@ -716,6 +716,12 @@ require("conform").setup({
     norg = { "typos-lsp" },
     clojure = { "cljfmt" },
     python = { "ruff" },
+  },
+  formatters = {
+    project_rubocop = {
+      command = "bundle",
+      args = { "exec", "rubocop", "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
+    },
   },
 })
 
