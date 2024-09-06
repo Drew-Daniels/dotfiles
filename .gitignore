@@ -31,3 +31,4 @@ beets
 !beets/config.yaml
 .env.*
 zsh/functions
+docs/project_notes.md
