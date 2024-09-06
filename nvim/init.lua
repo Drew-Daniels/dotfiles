@@ -368,7 +368,7 @@ local servers = {
   "tailwindcss",
   "terraformls",
   -- Do not install 'solargraph' with Mason, since the version used depends on Ruby version
-  "solargraph",
+  -- "solargraph",
   "sqlls",
   "vimls",
   "prismals",
@@ -392,10 +392,12 @@ end
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
-lspconfig.solargraph.setup({
-  capabilities = capabilities,
-  filetypes = { "ruby", "eruby" },
-})
+if vim.fn.hostname() == "drews-mbp-1" then
+  lspconfig.solargraph.setup({
+    capabilities = capabilities,
+    filetypes = { "ruby", "eruby" },
+  })
+end
 
 lspconfig.basedpyright.setup({
   capabilities = capabilities,
