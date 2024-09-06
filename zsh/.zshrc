@@ -99,7 +99,7 @@ export MISE_NODE_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-npm-packa
 export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-python-packages"
 
 # bat
-alias cat="bat"
+# alias cat="bat"
 alias man="batman"
 alias pb="prettybat"
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'

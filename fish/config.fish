@@ -73,7 +73,7 @@ if status is-interactive
     zoxide init --cmd j fish | source
 
     # bat
-    alias cat="bat"
+    # alias cat="bat"
     alias man="batman"
     alias pb="prettybat"
 
