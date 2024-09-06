@@ -1,5 +1,10 @@
 name: healthmatters
 root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters
+on_project_stop:
+# gracefully stop sidekiq
+- ps -ef | grep "sidekiq" | grep -v grep | awk '{print $2}' | xargs kill -2
+# gracefully shut down rails
+- ps -ef | grep "rails" | grep -v grep | awk '{print $2}' | xargs kill -2
 
 windows:
   - root:
@@ -12,14 +17,23 @@ windows:
         - cmd:
           - fish
           - cls
-  - web:
-      root: <%= ENV["PROJECTS_DIR"] %>
+  - stack:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - editor:
+        - sidekiq:
           - fish
           - cls
-          - nvim
+          - bin/dev
+        - cmd:
+          - fish
+          - cls
+  - sidekiq:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - sidekiq:
+          - fish
+          - cls
+          - bundle exec sidekiq
         - cmd:
           - fish
           - cls
