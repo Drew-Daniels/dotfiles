@@ -70,6 +70,7 @@ require("mason-lspconfig").setup({
     -- "clj-kondo",
     "ruff",
     "basedpyright",
+    "solargraph",
   },
 })
 
@@ -392,12 +393,12 @@ end
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
-if vim.fn.hostname() == "drews-mbp-1" then
-  lspconfig.solargraph.setup({
-    capabilities = capabilities,
-    filetypes = { "ruby", "eruby" },
-  })
-end
+-- if vim.fn.hostname() == "drews-mbp-1" then
+lspconfig.solargraph.setup({
+  capabilities = capabilities,
+  filetypes = { "ruby", "eruby" },
+})
+-- end
 
 lspconfig.basedpyright.setup({
   capabilities = capabilities,
