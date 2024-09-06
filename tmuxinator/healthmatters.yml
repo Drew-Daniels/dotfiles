@@ -96,6 +96,46 @@ windows:
         - cmd:
           - fish
           - cls
+  - webpack-configs:
+      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/webpack
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
+  - tw-configs:
+      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/tailwind
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
+  - vitest-configs:
+      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/vitest
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
+  - js-packages:
+      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/packages
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
   - lib:
       root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/lib
       layout: <%= ENV["MUX_LAYOUT"] %>
