@@ -189,4 +189,5 @@ return require("lazy").setup({
     end,
   },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { "tpope/vim-rails" },
 })
