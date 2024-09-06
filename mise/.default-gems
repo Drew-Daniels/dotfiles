@@ -1,3 +1,6 @@
 tmuxinator
 htmlbeautifier
 neovim
+cspell
+pnpm
+@vue/typescript-plugin
