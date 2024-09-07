@@ -186,3 +186,6 @@ alias hb="htmlbeautifier"
 if [ -f ~/projects/dotfiles/zsh/functions/work.sh ]; then
   . ~/projects/dotfiles/zsh/functions/work.sh
 fi
+
+# spotify_player
+alias sp="spotify_player"

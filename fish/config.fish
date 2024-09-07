@@ -128,4 +128,7 @@ if status is-interactive
 
     # htmlbeautifier
     alias hb htmlbeautifier
+
+    # spotify_player
+    alias sp spotify_player
 end
