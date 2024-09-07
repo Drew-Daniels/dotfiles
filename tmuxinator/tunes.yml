@@ -1,3 +1,4 @@
+# Can't see album art in tmux for some reason?
 name: ♫ tunes ♫
 root: "~"
 on_project_exit: clear
