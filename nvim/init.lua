@@ -1208,7 +1208,9 @@ require("colorizer").setup()
 
 -- OCTO.NVIM
 -- https://github.com/pwntester/octo.nvim
-require("octo").setup()
+require("octo").setup({
+  default_to_projects_v2 = true,
+})
 
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
