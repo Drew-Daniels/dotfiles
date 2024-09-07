@@ -839,13 +839,25 @@ wk.add({
   { "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple Move" },
   { "<leader>z", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggest" },
   -- Codeium
-  { "<leader>C", group = "Codeium" },
+  { "<leader>C", group = "[C]odeium" },
   { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
   { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
   { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
   { "<leader>Cc", "<cmd>lua vim.fn['codeium#Chat']()<cr>", desc = "Codeium Chat" },
+  -- Comment Box
+  { "<leader>c", group = "[c]omment Box" },
+  -- nesting so I don't have to repeat the mode
+  {
+    mode = { "n", "v" },
+    { "<leader>cb", "<cmd>CBccbox<cr>", desc = "[b]ox" },
+    { "<leader>ct", "<cmd>CBllline<cr>", desc = "[t]itled Line" },
+    { "<leader>cl", "<cmd>CBline<cr>", desc = "[l]ine" },
+    { "<leader>cm", "<cmd>CBllbox14<cr>", desc = "[m]arked" },
+    { "<leader>cq", "<cmd>CBllbox13<cr>", desc = "[q]uoted" },
+    { "<leader>cr", "<cmd>CBd<cr>", desc = "[r]emove box" },
+  },
   -- Ex commands
-  { "<leader>e", group = "Ex Commands" },
+  { "<leader>e", group = "[E]x Commands" },
   { "<leader>ec", "<cmd>Telescope commands<cr>", desc = "Ex Commands" },
   { "<leader>eh", "<cmd>Telescope command_history<cr>", desc = "Ex Command History" },
   -- Diffview
@@ -1206,8 +1218,10 @@ vim.cmd([[
 --          ╰─────────────────────────────────────────────────────────╯
 require("colorizer").setup()
 
--- OCTO.NVIM
--- https://github.com/pwntester/octo.nvim
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                        OCTO.NVIM                        │
+--          │         https://github.com/pwntester/octo.nvim          │
+--          ╰─────────────────────────────────────────────────────────╯
 require("octo").setup({
   default_to_projects_v2 = true,
 })
