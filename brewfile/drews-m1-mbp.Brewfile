@@ -7,7 +7,6 @@ brew leiningen
 brew libmagic
 brew python@3.12
 brew rust
-brew spotify_player
 
 tap homebrew/cask
 cask discord
@@ -16,6 +15,7 @@ cask qbittorrent
 cask raspberry-pi-imager
 cask signal
 cask slack
+cask spotify
 cask tor-browser
 cask vitalsource-bookshelf
 cask zoom
