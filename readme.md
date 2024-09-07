@@ -57,6 +57,18 @@ NOTE: Do not install via `homebrew` because this installs dependencies like `pyt
 
 ## Install [`luarocks`](https://luarocks.org/)
 
+## [`spotify_player`](https://github.com/aome510/spotify-player)
+
+### Install `spotify_player`
+
+```sh
+cargo install spotify_player --features lyric-finder,image,fzf
+```
+
+### Configure [`librespot-auth`](https://github.com/dspearson/librespot-auth)
+
+https://github.com/aome510/spotify-player/issues/520#issuecomment-2296842298
+
 ## Restart
 
 ```bash
