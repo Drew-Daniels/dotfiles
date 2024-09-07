@@ -190,4 +190,12 @@ return require("lazy").setup({
   },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { "tpope/vim-rails" },
+  {
+    "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
 })

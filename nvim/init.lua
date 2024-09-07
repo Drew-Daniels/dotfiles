@@ -1206,6 +1206,10 @@ vim.cmd([[
 --          ╰─────────────────────────────────────────────────────────╯
 require("colorizer").setup()
 
+-- OCTO.NVIM
+-- https://github.com/pwntester/octo.nvim
+require("octo").setup()
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 
