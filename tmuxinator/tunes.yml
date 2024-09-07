@@ -1,4 +1,5 @@
 name: ♫ tunes ♫
+root: "~"
 on_project_exit: clear
 
 windows:
