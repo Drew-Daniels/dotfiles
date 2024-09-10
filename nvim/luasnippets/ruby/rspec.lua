@@ -44,7 +44,7 @@ return {
     ),
     { desc = "RSpec describe" }
   ),
-  s("b4", fmta([[before { <> }]], { i(1) }), { desc = "RSpec before" }),
+  s("bf", fmta([[before { <> }]], { i(1) }), { desc = "RSpec before" }),
   s("ex", fmta([[expect(<>).<>]], { i(1), i(2) }), { desc = "RSpec expect" }),
   s(
     "cn",
