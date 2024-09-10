@@ -139,4 +139,5 @@ if status is-interactive
 
     # bundler
     alias be "bundle exec"
+    alias ber "bundle exec rspec"
 end
