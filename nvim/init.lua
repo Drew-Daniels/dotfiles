@@ -1208,6 +1208,7 @@ vim.cmd([[
   let g:codeium_filetypes = {
     \ "norg": v:false,
     \ "markdown": v:false,
+    \ "ruby": v:false,
     \ }
 ]])
 
