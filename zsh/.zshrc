@@ -191,7 +191,9 @@ fi
 alias sp="spotify_player"
 
 # Run rubocop only on ruby files that have changed
-alias rcdiff="git diff origin/master --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
+alias rcdiff="git diff --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
+# Run rspec only on ruby files that have changed
+alias rsdiff="git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
 
 # bundler
 alias be="bundle exec"
