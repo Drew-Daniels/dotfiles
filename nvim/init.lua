@@ -698,7 +698,7 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
-    ruby = { "project_rubocop" },
+    -- ruby = { "project_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
     json = { "jq" },
@@ -717,12 +717,12 @@ require("conform").setup({
     clojure = { "cljfmt" },
     python = { "ruff" },
   },
-  formatters = {
-    project_rubocop = {
-      command = "bundle",
-      args = { "exec", "rubocop", "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
-    },
-  },
+  -- formatters = {
+  --   project_rubocop = {
+  --     command = "bundle",
+  --     args = { "exec", "rubocop", "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
+  --   },
+  -- },
 })
 
 vim.api.nvim_create_user_command("Format", function(args)
