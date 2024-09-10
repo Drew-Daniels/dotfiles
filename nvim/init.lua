@@ -708,6 +708,7 @@ require("conform").setup({
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
+    vue = { "prettier" },
     css = { "prettier" },
     less = { "prettier" },
     scss = { "prettier" },
