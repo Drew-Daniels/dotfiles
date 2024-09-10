@@ -131,4 +131,7 @@ if status is-interactive
 
     # spotify_player
     alias sp spotify_player
+
+    # Run rubocop only on ruby files that have changed
+    alias rcdiff "git diff origin/master --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
 end
