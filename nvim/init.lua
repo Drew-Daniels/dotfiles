@@ -54,8 +54,7 @@ require("mason-lspconfig").setup({
     "typos_lsp",
     "vimls",
     "yamlls",
-    --TODO: Create an issue about this, tsserver changed its name to tsserver
-    "tsserver",
+    "ts_ls",
     "prismals",
     "pylsp",
     "denols",
