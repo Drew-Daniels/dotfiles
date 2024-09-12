@@ -415,7 +415,7 @@ lspconfig.eslint.setup({
   settings = {
     workingDirectories = { mode = "auto" },
     experimental = {
-      useFlatConfig = false,
+      useFlatConfig = true,
     },
   },
 })
