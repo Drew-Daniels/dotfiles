@@ -2,6 +2,7 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew ast-grep
 brew file-formula
 brew leiningen
 brew libmagic
@@ -33,7 +34,7 @@ tap rcmdnk/file
 tap teamookla/speedtest
 
 # App Store applications
-appstore 302584613 Amazon Kindle (7.18)
-appstore 823766827 OneDrive (24.161.0811)
+appstore 302584613 Amazon Kindle (7.19)
+appstore 823766827 OneDrive (24.166.0818)
 appstore 1303222628 Paprika Recipe Manager 3 (3.8.0)
-appstore 497799835 Xcode (15.4)
+appstore 497799835 Xcode (16.0)
