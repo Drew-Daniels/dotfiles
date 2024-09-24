@@ -10,5 +10,6 @@ return {
   --TODO: Add choice node for arrow fn returning object or function with explicit return statement
   s("cp", fmta("const <> = computed(() =>> {<>})", { i(1), i(2) }), { desc = "Comptuted Property" }),
   --TODO: Add newline, tab before interpolation
-  s("ss", fmt("<style scoped>{}</style>", { i(1) }), { desc = "Scoped Style Tag" }),
+  --TODO: Add choice node for adding 'scope' directive
+  s("st", fmt("<style{}>{}</style>", { c(1, { t(""), t(" scoped") }), i(2) }), { desc = "Style Tag" }),
 }
