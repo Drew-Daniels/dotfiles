@@ -3,8 +3,12 @@ root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters
 on_project_stop:
 # gracefully stop sidekiq
 - ps -ef | grep "sidekiq" | grep -v grep | awk '{print $2}' | xargs kill -2
+# when angry
+# - ps -ef | grep "sidekiq" | grep -v grep | awk '{print $2}' | xargs kill -9
 # gracefully shut down rails
 - ps -ef | grep "rails" | grep -v grep | awk '{print $2}' | xargs kill -2
+# when angry
+# - ps -ef | grep "rails" | grep -v grep | awk '{print $2}' | xargs kill -9
 
 windows:
   - root:
