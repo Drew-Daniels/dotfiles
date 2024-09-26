@@ -14,4 +14,16 @@ return {
       { desc = "Table" }
     )
   ),
+  s(
+    "ba",
+    fmta(
+      [[
+        | Before | After |
+        | -- | -- |
+        |  |  |
+      ]],
+      {},
+      { desc = "Before & After Table" }
+    )
+  ),
 }
