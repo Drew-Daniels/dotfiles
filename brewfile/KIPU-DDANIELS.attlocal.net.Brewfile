@@ -37,7 +37,7 @@ brew openssl@1.1
 brew pinentry
 brew pv
 brew pycparser
-brew python@3.11
+brew python-packaging
 brew python@3.12
 brew redis
 brew telnet
@@ -62,4 +62,4 @@ tap rcmdnk/file
 tap teamookla/speedtest
 
 # App Store applications
-appstore 497799835 Xcode (15.4)
+appstore 497799835 Xcode (16.0)

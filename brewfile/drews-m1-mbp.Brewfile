@@ -2,7 +2,6 @@
 # tap repositories and their packages
 
 tap homebrew/core
-brew ast-grep
 brew file-formula
 brew leiningen
 brew libmagic

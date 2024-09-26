@@ -7,6 +7,7 @@ brew aom
 brew aribb24
 brew autoconf
 brew automake
+brew ast-grep
 brew bat
 brew bat-extras
 brew bottom
