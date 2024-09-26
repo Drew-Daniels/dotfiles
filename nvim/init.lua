@@ -824,7 +824,7 @@ telescope.setup({
 --          │        https://github.com/stevearc/overseer.nvim        │
 --          ╰─────────────────────────────────────────────────────────╯
 require("overseer").setup({
-  templates = { "builtin" },
+  templates = { "builtin", "user.lint_fix" },
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
