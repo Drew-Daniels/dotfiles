@@ -690,13 +690,13 @@ require("lualine").setup({
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
 require("conform").setup({
-  -- format_after_save = function(bufnr)
-  --   local ignore_filetypes = { "norg" }
-  --   if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-  --     return
-  --   end
-  --   return { timeout_ms = 500, lsp_format = "fallback" }
-  -- end,
+  format_after_save = function(bufnr)
+    local ignore_filetypes = { "norg" }
+    if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+      return
+    end
+    return { timeout_ms = 500, lsp_format = "fallback" }
+  end,
   formatters_by_ft = {
     c = { "clang-format" },
     lua = { "stylua" },
@@ -711,7 +711,8 @@ require("conform").setup({
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
-    vue = { "eslint" },
+    -- vue = { "eslint" },
+    vue = { "project_eslint" },
     css = { "prettier" },
     less = { "prettier" },
     scss = { "prettier" },
@@ -721,12 +722,21 @@ require("conform").setup({
     clojure = { "cljfmt" },
     python = { "ruff" },
   },
-  -- formatters = {
-  --   project_rubocop = {
-  --     command = "bundle",
-  --     args = { "exec", "rubocop", "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
-  --   },
-  -- },
+  formatters = {
+    -- project_rubocop = {
+    --   command = "bundle",
+    --   args = { "exec", "rubocop", "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
+    -- },
+    project_eslint = {
+      cwd = require("conform.util").root_file(".git"),
+      command = "pnpm",
+      -- Doesn't work because ESlint requires that non-fixable errors be reported
+      -- https://github.com/eslint/eslint/issues/5393
+      -- args = { "run", "lint:fix", "--", "--stdin", "$FILENAME" },
+      args = { "lint:fix", "$FILENAME" },
+      stdin = false,
+    },
+  },
 })
 
 vim.api.nvim_create_user_command("Format", function(args)
