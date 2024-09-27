@@ -738,6 +738,8 @@ require("conform").setup({
       condition = function(self, ctx)
         return vim.fs.root(0, ".git") ~= "healthmatters"
       end,
+      --TODO: Swallow eslint errors
+      exit_codes = { 0, 1 },
     },
   },
 })
