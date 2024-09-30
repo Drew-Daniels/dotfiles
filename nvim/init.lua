@@ -727,6 +727,10 @@ require("conform").setup({
       command = "bundle",
       args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
       stdin = false,
+      --TODO: Dedupe
+      condition = function()
+        return vim.fs.root(0, ".git") ~= "healthmatters"
+      end,
     },
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
