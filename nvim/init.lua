@@ -689,6 +689,14 @@ require("lualine").setup({
 --          │                      CONFORM.NVIM                       │
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
+local function in_dir(dir)
+  return vim.fs.root(0, ".git") ~= dir
+end
+
+local function in_hm()
+  return in_dir("healthmatters")
+end
+
 require("conform").setup({
   format_after_save = function(bufnr)
     local ignore_filetypes = { "norg" }
@@ -727,10 +735,7 @@ require("conform").setup({
       command = "bundle",
       args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
       stdin = false,
-      --TODO: Dedupe
-      condition = function()
-        return vim.fs.root(0, ".git") ~= "healthmatters"
-      end,
+      condition = in_hm,
     },
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
@@ -740,10 +745,7 @@ require("conform").setup({
       -- args = { "run", "lint:fix", "--", "--stdin", "$FILENAME" },
       args = { "lint:fix", "$FILENAME" },
       stdin = false,
-      condition = function()
-        return vim.fs.root(0, ".git") ~= "healthmatters"
-      end,
-      --TODO: Swallow eslint errors
+      condition = in_hm,
       exit_codes = { 0, 1 },
     },
   },
