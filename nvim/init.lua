@@ -735,7 +735,7 @@ require("conform").setup({
       -- args = { "run", "lint:fix", "--", "--stdin", "$FILENAME" },
       args = { "lint:fix", "$FILENAME" },
       stdin = false,
-      condition = function(self, ctx)
+      condition = function()
         return vim.fs.root(0, ".git") ~= "healthmatters"
       end,
       --TODO: Swallow eslint errors
