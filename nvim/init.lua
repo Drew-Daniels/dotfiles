@@ -701,7 +701,7 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
-    -- ruby = { "project_rubocop" },
+    ruby = { "project_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
     json = { "jq" },
@@ -723,10 +723,11 @@ require("conform").setup({
     python = { "ruff" },
   },
   formatters = {
-    -- project_rubocop = {
-    --   command = "bundle",
-    --   args = { "exec", "rubocop", "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
-    -- },
+    project_rubocop = {
+      command = "bundle",
+      args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
+      stdin = false,
+    },
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
       command = "pnpm",
