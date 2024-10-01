@@ -690,23 +690,26 @@ require("lualine").setup({
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
 local function run_project_formatter()
-  local project_dir = "healthmatters"
+  -- configure
+  --TODO: De-hardcode path
+  local project_dir = vim.fn.expand("$HOME/projects/sites/healthmatters")
+  --TODO: Provide relative path from project_dir to ignore_dir since multiple subfolders might have the same name
   local ignore_dirs = { "app" }
-  --TODO: Use a different fn than getcwd because we want to check the path of the file buffer, not wherever we launched neovim from
-  local cwd = vim.fn.getcwd()
-  local in_project_dir = string.find(cwd, project_dir)
-  local in_ignored_dir = false
 
+  -- check that the git repository root directory name matches
+  local root_dir = vim.fs.root(0, ".git")
+  local in_project_dir = root_dir == project_dir
+
+  -- then check that the current file is not located within an ignored directory
+  local in_ignored_dir = false
+  local bufr_dir_path = vim.fn.expand("%:p:h")
   for _, dir in ipairs(ignore_dirs) do
-    if string.find(cwd, dir) then
+    if bufr_dir_path:find(dir) then
       in_ignored_dir = true
-      break
     end
   end
 
-  if in_project_dir and not in_ignored_dir then
-    return true
-  end
+  return in_project_dir and not in_ignored_dir
 end
 
 require("conform").setup({
