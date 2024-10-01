@@ -689,12 +689,23 @@ require("lualine").setup({
 --          │                      CONFORM.NVIM                       │
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
-local function in_dir(dir)
-  return vim.fs.root(0, ".git") ~= dir
-end
+local function run_project_formatter()
+  local project_dir = "healthmatters"
+  local ignore_dirs = { "app" }
+  local cwd = vim.fn.getcwd()
+  local in_project_dir = string.find(cwd, project_dir)
+  local in_ignored_dir = false
 
-local function in_hm()
-  return in_dir("healthmatters")
+  for _, dir in ipairs(ignore_dirs) do
+    if string.find(cwd, dir) then
+      in_ignored_dir = true
+      break
+    end
+  end
+
+  if in_project_dir and not in_ignored_dir then
+    return true
+  end
 end
 
 require("conform").setup({
@@ -709,6 +720,7 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
+    --TODO: Run alternate rubocop if project_rubocop fails
     ruby = { "project_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
@@ -736,7 +748,7 @@ require("conform").setup({
       command = "bundle",
       args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
       stdin = false,
-      condition = in_hm,
+      condition = run_project_formatter,
     },
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
@@ -746,7 +758,7 @@ require("conform").setup({
       -- args = { "run", "lint:fix", "--", "--stdin", "$FILENAME" },
       args = { "lint:fix", "$FILENAME" },
       stdin = false,
-      condition = in_hm,
+      condition = run_project_formatter,
       exit_codes = { 0, 1 },
     },
   },
