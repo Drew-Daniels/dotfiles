@@ -692,6 +692,7 @@ require("lualine").setup({
 local function run_project_formatter()
   local project_dir = "healthmatters"
   local ignore_dirs = { "app" }
+  --TODO: Use a different fn than getcwd because we want to check the path of the file buffer, not wherever we launched neovim from
   local cwd = vim.fn.getcwd()
   local in_project_dir = string.find(cwd, project_dir)
   local in_ignored_dir = false
