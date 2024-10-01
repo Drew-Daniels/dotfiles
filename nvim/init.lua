@@ -1261,7 +1261,7 @@ require("octo").setup({
 
 require("scratch").setup({
   file_picker = "telescope",
-  filetypes = { "js", "json", "sh" },
+  filetypes = { "js", "json", "sh", "ruby" },
 })
 
 -- ── GENERAL ─────────────────────────────────────────────────────────
