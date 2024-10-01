@@ -968,7 +968,7 @@ wk.add({
   { "<leader>Ls", "<cmd>LiveServerStart<cr>", desc = "Start" },
   { "<leader>Lt", "<cmd>LiveServerStop<cr>", desc = "Stop" },
   -- Neogen
-  { "<leader>n", group = "Neogen" },
+  { "<leader>N", group = "Neogen" },
   {
     "<leader>nf",
     "<cmd>lua require('neogen').generate({ type = 'func' })<cr>",
@@ -994,14 +994,21 @@ wk.add({
   { "<leader>q", group = "Quickfix" },
   { "<leader>ql", "<cmd>Telescope quickfix<cr>", desc = "List" },
   { "<leader>qh", "<cmd>Telescope quickfix_history<cr>", desc = "History" },
-  -- Snippets
-  { "<leader>S", group = "Snippets" },
+  -- Reload
+  { "<leader>r", group = "Reload" },
   {
-    "<leader>Sl",
+    "<leader>rs",
     "<cmd>lua require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })<cr>",
-    desc = "Load",
+    desc = "Snippets",
     silent = true,
   },
+  -- Scratch
+  { "<leader>S", group = "Scratch" },
+  { "<leader>Su", "<cmd>Scratch<cr>", desc = "Scratch Unnamed" },
+  { "<leader>Sn", "<cmd>ScratchWithName<cr>", desc = "Scratch Named" },
+  { "<leader>So", "<cmd>ScratchOpen<cr>", desc = "Scratch Open" },
+  { "<leader>Ss", "<cmd>ScratchOpenFzf<cr>", desc = "Scratch Search" },
+
   -- Word
   { "<leader>w", group = "Word" },
   { "<leader>wd", "<cmd>Telescope thesaurus lookup<cr>", desc = "Definition" },
