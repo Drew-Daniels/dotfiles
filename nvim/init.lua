@@ -1252,6 +1252,11 @@ require("octo").setup({
   mappings_disable_default = true,
 })
 
+require("scratch").setup({
+  file_picker = "telescope",
+  filetypes = { "js", "json", "sh" },
+})
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 local set = vim.opt
 
