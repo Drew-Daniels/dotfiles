@@ -868,7 +868,7 @@ wk.add({
   { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
   { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
   { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
-  { "<leader>Cc", "<cmd>lua vim.fn['codeium#Chat']()<cr>", desc = "Codeium Chat" },
+  { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
   -- Comment Box
   { "<leader>c", group = "[c]omment Box" },
   -- nesting so I don't have to repeat the mode
