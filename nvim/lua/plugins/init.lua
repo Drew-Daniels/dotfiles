@@ -198,4 +198,8 @@ return require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
   },
+  {
+    "LintaoAmons/scratch.nvim",
+    event = "VeryLazy",
+  },
 })
