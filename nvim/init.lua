@@ -737,9 +737,7 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
-    --TODO: Run alternate rubocop if project_rubocop fails
-    -- Disabling until `encounters-dev` merged into `main` because all ruby code is shared across legacy and encounters applications
-    -- ruby = { "project_rubocop" },
+    ruby = { "project_rubocop", "fallback_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
     json = { "jq" },
@@ -766,6 +764,14 @@ require("conform").setup({
       args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
       stdin = false,
       condition = run_project_formatter,
+    },
+    fallback_rubocop = {
+      command = "bundle",
+      args = { "--auto-correct", "--format", "quiet", "$FILENAME" },
+      stdin = false,
+      condition = function()
+        return not in_hm()
+      end,
     },
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
