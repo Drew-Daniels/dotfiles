@@ -689,27 +689,32 @@ require("lualine").setup({
 --          │                      CONFORM.NVIM                       │
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
-local function run_project_formatter()
-  -- configure
-  --TODO: De-hardcode path
+
+local function in_hm()
   local project_dir = vim.fn.expand("$HOME/projects/sites/healthmatters")
-  --TODO: Provide relative path from project_dir to ignore_dir since multiple subfolders might have the same name
-  local ignore_dirs = { "app" }
-
-  -- check that the git repository root directory name matches
   local root_dir = vim.fs.root(0, ".git")
-  local in_project_dir = root_dir == project_dir
 
-  -- then check that the current file is not located within an ignored directory
-  local in_ignored_dir = false
-  local bufr_dir_path = vim.fn.expand("%:p:h")
-  for _, dir in ipairs(ignore_dirs) do
-    if bufr_dir_path:find(dir) then
-      in_ignored_dir = true
+  return root_dir == project_dir
+end
+
+-- checks if the current buffer/file is in one of the directories provided
+local function buff_in_dir(bufr_path, dirs)
+  local result = false
+
+  for _, dir in ipairs(dirs) do
+    if string.find(bufr_path, dir, 1, true) then
+      result = true
     end
   end
 
-  return in_project_dir and not in_ignored_dir
+  return result
+end
+
+local function run_project_formatter()
+  --TODO: Provide relative path from project_dir to ignore_dir since multiple subfolders might have the same name
+  local enabled_dirs = { "emr-v3" }
+
+  return in_hm() and buff_in_dir(vim.fn.expand("%:p:h"), enabled_dirs)
 end
 
 require("conform").setup({
@@ -718,14 +723,21 @@ require("conform").setup({
     if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
       return
     end
-    return { timeout_ms = 500, lsp_format = "fallback" }
+
+    if in_hm() then
+      -- always use project formatter
+      return { timeout_ms = 500, lsp_format = "never", quiet = true }
+    else
+      return { timeout_ms = 500, lsp_format = "fallback" }
+    end
   end,
   formatters_by_ft = {
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
     --TODO: Run alternate rubocop if project_rubocop fails
-    ruby = { "project_rubocop" },
+    -- Disabling until `encounters-dev` merged into `main` because all ruby code is shared across legacy and encounters applications
+    -- ruby = { "project_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
     json = { "jq" },
