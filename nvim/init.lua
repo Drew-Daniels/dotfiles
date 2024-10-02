@@ -690,6 +690,8 @@ require("lualine").setup({
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
 
+local conform_utils = require("conform.util")
+
 local function in_hm()
   local project_dir = vim.fn.expand("$HOME/projects/sites/healthmatters")
   local root_dir = vim.fs.root(0, ".git")
@@ -749,7 +751,7 @@ require("conform").setup({
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     -- vue = { "eslint" },
-    vue = { "project_eslint" },
+    vue = { "project_eslint", "fallback_eslint" },
     css = { "prettier" },
     less = { "prettier" },
     scss = { "prettier" },
@@ -769,13 +771,22 @@ require("conform").setup({
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
       command = "pnpm",
-      -- Doesn't work because ESlint requires that non-fixable errors be reported
-      -- https://github.com/eslint/eslint/issues/5393
-      -- args = { "run", "lint:fix", "--", "--stdin", "$FILENAME" },
       args = { "lint:fix", "$FILENAME" },
       stdin = false,
       condition = run_project_formatter,
       exit_codes = { 0, 1 },
+    },
+    fallback_eslint = {
+      command = conform_utils.from_node_modules("eslint"),
+      args = { "--fix", "$FILENAME" },
+      stdin = false,
+      cwd = conform_utils.root_file({
+        "package.json",
+      }),
+      exit_codes = { 0, 1 },
+      condition = function()
+        return not in_hm()
+      end,
     },
   },
 })
