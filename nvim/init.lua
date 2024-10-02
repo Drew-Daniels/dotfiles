@@ -745,8 +745,7 @@ require("conform").setup({
     json = { "jq" },
     sh = { "shfmt" },
     sql = { "sqlfmt" },
-    --TODO: Run alternate eslint if project_eslint fails
-    javascript = { "project_eslint" },
+    javascript = { "project_eslint", "fallback_eslint" },
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
