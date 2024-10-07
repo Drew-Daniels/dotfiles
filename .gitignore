@@ -14,7 +14,6 @@ github-copilot
 
 fish/completions/asdf.fish
 fish/completions/docker*
-fish/functions/work*.fish
 
 gitk
 
