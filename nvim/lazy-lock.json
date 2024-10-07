@@ -5,7 +5,7 @@
   "clipboard-image.nvim": { "branch": "main", "commit": "4ab6f7f1fa4ea97866c0e0f6160f6a36ef174438" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
-  "codeium.vim": { "branch": "main", "commit": "9ff8d323ff56ff513457f3f7f4305523408d538e" },
+  "codeium.vim": { "branch": "main", "commit": "d85a85ca7e12967db22b00fd5e9f1a095bb47c96" },
   "codewindow.nvim": { "branch": "master", "commit": "dd7017617962943eb1d152fc58940f11c6775a4a" },
   "comment-box.nvim": { "branch": "main", "commit": "06bb771690bc9df0763d14769b779062d8f12bc5" },
   "conform.nvim": { "branch": "master", "commit": "40d4e98fcc3e6f485f0e8924c63734bc7e305967" },
