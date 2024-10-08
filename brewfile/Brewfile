@@ -5,9 +5,9 @@ tap homebrew/core
 brew actionlint
 brew aom
 brew aribb24
+brew ast-grep
 brew autoconf
 brew automake
-brew ast-grep
 brew bat
 brew bat-extras
 brew bottom
