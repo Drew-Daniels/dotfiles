@@ -1347,7 +1347,13 @@ set.shellcmdflag = "-ic"
 vim.keymap.set("n", "n", "nzz", { silent = true, desc = "Search Next" })
 vim.keymap.set("n", "N", "Nzz", { silent = true, desc = "Search Prev" })
 vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true, desc = "Insert blank line" })
--- vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
+vim.keymap.set(
+  "n",
+  "<leader>Y",
+  ":let @+ = expand('%')<cr>",
+  { silent = true, desc = "Yank Buffer File Path to Clipboard" }
+)
+vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
