@@ -411,6 +411,7 @@ lspconfig.basedpyright.setup({
 })
 
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
+-- https://github.com/neovim/nvim-lspconfig/issues/2508
 lspconfig.eslint.setup({
   capabilities = capabilities,
   settings = {
