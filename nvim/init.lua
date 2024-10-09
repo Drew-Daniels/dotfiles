@@ -410,6 +410,7 @@ lspconfig.basedpyright.setup({
   },
 })
 
+--TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
 lspconfig.eslint.setup({
   capabilities = capabilities,
   settings = {
