@@ -781,6 +781,7 @@ require("conform").setup({
       condition = run_project_formatter,
       exit_codes = { 0, 1 },
     },
+    --TODO: Update condition so that it only returns true when there is an eslint config in the root dir
     fallback_eslint = {
       command = conform_utils.from_node_modules("eslint"),
       args = { "--fix", "$FILENAME" },
