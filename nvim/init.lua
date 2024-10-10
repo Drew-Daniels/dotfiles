@@ -916,6 +916,10 @@ require("overseer").setup({
   templates = { "builtin", "user.lint_fix" },
 })
 
+require("grapple").setup({
+  scope = "git_branch",
+})
+
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     WHICH-KEY.NVIM                      │
 --          │         https://github.com/folke/which-key.nvim         │
