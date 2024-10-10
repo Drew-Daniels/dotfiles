@@ -1018,6 +1018,7 @@ wk.add({
   { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
   { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
   { "<leader>li", "<cmd>Telescope implementations<cr>", desc = "Implementations" },
+  { "<leader>lI", "<cmd>LspInfo<cr>", desc = "Info" },
   { "<leader>ll", "<cmd>vim.diagnostic.loclist()<cr>", desc = "Set Location List" },
   { "<leader>lo", "<cmd>vim.diagnostic.open_float<cr>", desc = "Open Float" },
   { "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
