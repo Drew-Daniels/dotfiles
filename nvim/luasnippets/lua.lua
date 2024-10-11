@@ -15,5 +15,5 @@ return {
     ),
     { desc = "Setup" }
   ),
-  s("dl", fmta([[print(<>)]], { i(1) }), { desc = "Debug Log" }),
+  s("dl", fmta([[print("<>: ", <>)]], { i(1), i(2) }), { desc = "Debug Log" }),
 }
