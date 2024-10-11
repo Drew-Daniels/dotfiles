@@ -648,7 +648,7 @@ end, { silent = true, desc = "Choose Snippet" })
 
 ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("vue", { "javascript", "typescript" })
+ls.filetype_extend("vue", { "javascript", "typescript", "html" })
 ls.filetype_extend("typescriptreact", { "javascriptreact", "javascript", "typescript" })
 ls.filetype_extend("less", { "css" })
 ls.filetype_extend("scss", { "css" })
