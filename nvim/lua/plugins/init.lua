@@ -197,6 +197,9 @@ return require("lazy").setup({
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    dir = "~/projects/octo.nvim",
+    url = "https://github.com/pwntester/octo.nvim",
+    dev = true,
   },
   {
     "LintaoAmons/scratch.nvim",
