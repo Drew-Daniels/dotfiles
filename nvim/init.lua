@@ -979,6 +979,7 @@ wk.add({
   { "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
   { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File(s)" },
   { "<leader>ft", "<cmd>Telescope filetypes<cr>", desc = "Filetypes" },
+  { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
   -- Git
   { "<leader>G", group = "Git" },
   { "<leader>Gf", "<cmd>Telescope git_bcommits<cr>", desc = "File History" },
