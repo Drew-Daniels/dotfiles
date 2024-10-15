@@ -187,6 +187,8 @@ if [ -f ~/projects/dotfiles/zsh/functions/work.sh ]; then
   . ~/projects/dotfiles/zsh/functions/work.sh
 fi
 
+. ~/projects/dotfiles/zsh/functions/helpers.sh
+
 # spotify_player
 alias sp="spotify_player"
 
