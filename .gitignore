@@ -30,5 +30,5 @@ stripe
 beets
 !beets/config.yaml
 .env.*
-zsh/functions
+zsh/functions/work.sh
 docs/project_notes.md
