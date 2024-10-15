@@ -1,0 +1,17 @@
+session_name: dotfiles
+start_directory: <%= ENV["PROJECTS_DIR"] %>/dotfiles
+after_script: clear
+
+windows:
+- layout: <%= ENV["MUX_LAYOUT"] %>
+  panes:
+  - editor:
+    - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+    - fish
+    - cls
+    - nvim
+  - cmd:
+    - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+    - fish
+    - cls
+  window_name: dotfiles
