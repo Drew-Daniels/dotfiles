@@ -218,6 +218,7 @@ cask raindropio
 cask rectangle
 cask roboform
 cask tidal
+cask protonvpn
 
 tap homebrew/bundle
 

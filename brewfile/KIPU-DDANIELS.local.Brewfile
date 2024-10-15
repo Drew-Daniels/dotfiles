@@ -17,9 +17,11 @@ brew gcc@11
 brew gdbm
 brew gnu-getopt
 brew gnupg
+brew icu4c@75
 brew isl
 brew kubernetes-cli
 brew libassuan
+brew libdeflate
 brew libffi
 brew libgcrypt
 brew libgpg-error
@@ -44,6 +46,7 @@ brew telnet
 brew v8
 
 tap homebrew/cask
+cask michaelvillar-timer
 
 tap homebrew/bundle
 
