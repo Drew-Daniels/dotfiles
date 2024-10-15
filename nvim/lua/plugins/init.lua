@@ -199,7 +199,7 @@ return require("lazy").setup({
     },
     dir = "~/projects/octo.nvim",
     url = "https://github.com/pwntester/octo.nvim",
-    dev = true,
+    dev = false,
   },
   {
     "LintaoAmons/scratch.nvim",
