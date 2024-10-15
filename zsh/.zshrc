@@ -165,6 +165,12 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # TODO: Add handling to ensure that this is only run on work machine
 eval "$(aws configure export-credentials --format env)"
+eval "export AWS_REGION=$(aws configure get region)"
+eval "export KIPU_S3_KEY=$AWS_ACCESS_KEY_ID"
+eval "export KIPU_S3_SECRET=$AWS_SECRET_ACCESS_KEY"
+eval "export KIPU_S3_REGION=$AWS_REGION"
+eval "export KIPU_ASSET_KEY=$AWS_ACCESS_KEY_ID"
+eval "export KIPU_ASSET_SECRET=$AWS_SECRET_ACCESS_KEY"
 
 # playwright
 alias psr="npx playwright show-report"
