@@ -53,6 +53,9 @@ alias ts="mux start project"
 export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 
+# tmuxp
+export TMUXP_CONFIGDIR=$XDG_CONFIG_HOME/tmuxp
+
 # homebrew
 PATH="/usr/local/sbin:$PATH"
 
