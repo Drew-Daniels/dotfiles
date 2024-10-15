@@ -171,6 +171,7 @@ brew tcl-tk
 brew tesseract
 brew theora
 brew tmux
+brew tmuxp
 brew tree
 brew tree-sitter
 brew unbound
@@ -214,11 +215,11 @@ cask google-chrome
 cask jellyfin
 cask obs
 cask postman
+cask protonvpn
 cask raindropio
 cask rectangle
 cask roboform
 cask tidal
-cask protonvpn
 
 tap homebrew/bundle
 

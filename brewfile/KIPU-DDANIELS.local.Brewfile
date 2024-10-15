@@ -41,6 +41,7 @@ brew pv
 brew pycparser
 brew python-packaging
 brew python@3.12
+brew python@3.13
 brew redis
 brew telnet
 brew v8
