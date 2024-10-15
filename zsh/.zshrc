@@ -163,6 +163,9 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
+# TODO: Add handling to ensure that this is only run on work machine
+eval "$(aws configure export-credentials --format env)"
+
 # playwright
 alias psr="npx playwright show-report"
 
