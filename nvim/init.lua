@@ -576,7 +576,6 @@ require("blink-cmp").setup({
   --       "blink.cmp.sources.snippets",
   --       name = "Snippets",
   --       opts = {
-  --         friendly_snippets = true,
   --         search_paths = { vim.fn.stdpath("config") .. "/snippets" },
   --       },
   --     },
@@ -614,6 +613,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Language Server Configuration END
 
 require("scissors").setup({
+  snippetDir = vim.fn.stdpath("config") .. "/snippets",
   jsonFormatter = "jq",
 })
 
