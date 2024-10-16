@@ -5,3 +5,6 @@ tags*
 node_modules
 .clj-kondo
 .lsp
+.conform.*
+.mise.local.toml
+.mise.*.local.toml
