@@ -151,11 +151,18 @@ return require("lazy").setup({
   "xiyaowong/transparent.nvim",
   -- recommended settings from 'nvim-lspconfig'
   "neovim/nvim-lspconfig",
-  "hrsh7th/nvim-cmp", -- Autocompletion plugin
-  "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-  "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-  { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
-  --
+  {
+    "saghen/blink.cmp",
+    lazy = false, -- lazy loading handled internally
+    -- optional: provides snippets for the snippet source
+    dependencies = "rafamadriz/friendly-snippets",
+    -- use a release tag to download pre-built binaries
+    version = "v0.*",
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- On musl libc based systems you need to add this flag
+    -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
+  },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",

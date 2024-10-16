@@ -342,10 +342,6 @@ require("web-tools").setup({
 -- NOTE: must be done before any lspconfig
 require("neodev").setup({})
 
---TODO: Figure out where this configuration was recommended?
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-LSPCONFIG                      │
 --          │        https://github.com/neovim/nvim-lspconfig         │
@@ -382,25 +378,20 @@ local servers = {
   "tflint",
 }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
-    capabilities = capabilities,
-  })
+  lspconfig[lsp].setup({})
 end
 
 -- lspconfig.vuels.setup({
--- 	capabilities = capabilities,
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
 -- if vim.fn.hostname() == "drews-mbp-1" then
 lspconfig.solargraph.setup({
-  capabilities = capabilities,
   filetypes = { "ruby", "eruby" },
 })
 -- end
 
 lspconfig.basedpyright.setup({
-  capabilities = capabilities,
   settings = {
     python = {
       analysis = {
@@ -413,7 +404,6 @@ lspconfig.basedpyright.setup({
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
 -- https://github.com/neovim/nvim-lspconfig/issues/2508
 lspconfig.eslint.setup({
-  capabilities = capabilities,
   settings = {
     workingDirectories = { mode = "auto" },
     experimental = {
@@ -442,7 +432,6 @@ lspconfig.eslint.setup({
 })
 
 lspconfig.cssls.setup({
-  capabilities = capabilities,
   settings = {
     css = {
       validate = true,
@@ -466,7 +455,6 @@ lspconfig.cssls.setup({
 })
 
 lspconfig.lua_ls.setup({
-  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
@@ -477,7 +465,6 @@ lspconfig.lua_ls.setup({
 })
 
 lspconfig.typos_lsp.setup({
-  capabilities = capabilities,
   filetypes = { "markdown", "norg" },
   init_options = {
     config = "~/projects/dotfiles/typos/typos.toml",
@@ -506,7 +493,6 @@ end
 -- Commenting out since 'typescript-tools.nvim' handles this configuration
 -- https://github.com/pmizio/typescript-tools.nvim?tab=readme-ov-file#-installation
 -- lspconfig.ts_ls.setup({
--- 	capabilities = capabilities,
 -- 	root_dir = root_pattern_exclude({
 -- 		root = { "package.json" },
 -- 		exclude = { "deno.json", "deno.jsonc" },
@@ -523,7 +509,6 @@ require("typescript-tools").setup({
     "vue",
   },
   settings = {
-    capabilities = capabilities,
     root_dir = root_pattern_exclude({
       root = { "package.json" },
       exclude = { "deno.json", "deno.jsonc" },
@@ -539,7 +524,6 @@ require("typescript-tools").setup({
 })
 
 lspconfig.denols.setup({
-  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
   init_options = {
     lint = true,
@@ -555,12 +539,6 @@ lspconfig.denols.setup({
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
 --          ╭─────────────────────────────────────────────────────────╮
---          │                         LUASNIP                         │
---          │           https://github.com/L3MON4D3/LuaSnip           │
---          ╰─────────────────────────────────────────────────────────╯
-local ls = require("luasnip")
-
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-AUTOPAIRS                      │
 --          │        https://github.com/windwp/nvim-autopairs         │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -568,90 +546,26 @@ local npairs = require("nvim-autopairs")
 npairs.setup({
   check_ts = true,
 })
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                        NVIM-CMP                         │
---          │           https://github.com/hrsh7th/nvim-cmp           │
---          ╰─────────────────────────────────────────────────────────╯
-local cmp = require("cmp")
-local ts_utils = require("nvim-treesitter.ts_utils")
-
----@diagnostic disable-next-line: missing-fields
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      ls.lsp_expand(args.body)
-    end,
+require("blink-cmp").setup({
+  keymap = {
+    scroll_documentation_up = "<C-u>",
+    scroll_documentation_down = "<C-d>",
+    select_next = "<C-n>",
+    select_prev = "<C-p>",
+    accept = "<C-e>",
+    show = "<C-space>",
+    hide = "<C-space>",
+    show_documentation = "<C-k>",
+    hide_documentation = "<C-k>",
+    snippet_forward = "<C-j>",
+    snippet_backward = "<C-h>",
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-n>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<C-p>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-  }),
-  sources = {
-    { name = "luasnip" },
-    { name = "nvim_lsp" },
+  nerd_font_variant = "mono",
+  highlight = {
+    use_nvim_cmp_as_default = true,
   },
 })
-
--- RECOMMENDED 'nvim-lspconfig' SETUP END
-
--- luasnip specific configuration
--- specify luasnippets directory to save a few ms of startup time
-require("luasnip.loaders.from_lua").load({ paths = { "./luasnippets/" } })
-
-ls.config.set_config({
-  -- Enable autotriggered snippets
-  enable_autosnippets = false,
-  -- Use Tab to trigger visual selection
-  store_selection_keys = "<Tab>",
-  -- show repeated node text as it's typed
-  update_events = "TextChanged,TextChangedI",
-})
-
-vim.keymap.set({ "i", "s" }, "<C-j>", function()
-  ls.jump(1)
-end, { silent = true, desc = "Next Snippet" })
-
-vim.keymap.set({ "i", "s" }, "<C-h>", function()
-  ls.jump(-1)
-end, { silent = true, desc = "Previous Snippet" })
-
-vim.keymap.set({ "i" }, "<C-e>", function()
-  ls.expand()
-end, { silent = true, desc = "Expand Snippet" })
-
-vim.keymap.set({ "i", "s" }, "<C-c>", function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
-end, { silent = true, desc = "Choose Snippet" })
-
-ls.filetype_extend("javascriptreact", { "javascript" })
-ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("vue", { "javascript", "typescript", "html" })
-ls.filetype_extend("typescriptreact", { "javascriptreact", "javascript", "typescript" })
-ls.filetype_extend("less", { "css" })
-ls.filetype_extend("scss", { "css" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -852,7 +766,7 @@ require("clipboard-image").setup({
 --          │                         NEOGEN                          │
 --          │            https://github.com/danymat/neogen            │
 --          ╰─────────────────────────────────────────────────────────╯
-require("neogen").setup({ snippet_engine = "luasnip" })
+require("neogen").setup({ snippet_engine = "nvim" })
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                           OIL                           │
@@ -1068,12 +982,6 @@ wk.add({
   { "<leader>qh", "<cmd>Telescope quickfix_history<cr>", desc = "History" },
   -- Reload
   { "<leader>r", group = "Reload" },
-  {
-    "<leader>rs",
-    "<cmd>lua require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })<cr>",
-    desc = "Snippets",
-    silent = true,
-  },
   -- Scratch
   { "<leader>S", group = "Scratch" },
   { "<leader>Su", "<cmd>Scratch<cr>", desc = "Scratch Unnamed" },
@@ -1149,11 +1057,6 @@ require("neorg").setup({
       },
     },
     ["core.keybinds"] = { config = { default_keybinds = {} } },
-    ["core.completion"] = {
-      config = {
-        engine = "nvim-cmp",
-      },
-    },
   },
 })
 
