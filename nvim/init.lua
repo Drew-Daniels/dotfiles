@@ -547,6 +547,10 @@ npairs.setup({
   check_ts = true,
 })
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       BLINK.CMP                         │
+--          │         https://github.com/Saghen/blink.cmp             │
+--          ╰─────────────────────────────────────────────────────────╯
 require("blink-cmp").setup({
   keymap = {
     scroll_documentation_up = "<C-u>",
@@ -595,6 +599,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Initialize LSP on LspAttach event",
 })
 -- Language Server Configuration END
+
+require("scissors").setup({
+  jsonFormatter = "jq",
+})
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                         LUALINE                         │

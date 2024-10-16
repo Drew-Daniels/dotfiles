@@ -17,6 +17,10 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
   {
+    "chrisgrieser/nvim-scissors",
+    dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
+  },
+  {
     "norcalli/nvim-colorizer.lua",
   },
   {
