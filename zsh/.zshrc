@@ -170,6 +170,13 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # work
 if [ "$MACHINE" = "work" ]; then
+
+  aws sts get-caller-identity &>/dev/null
+  EXIT_CODE="$?" # $? is the exit code of the last statement
+  if [ $EXIT_CODE != 0 ]; then
+    aws sso login
+  fi
+
   eval "$(aws configure export-credentials --format env)"
   eval "export AWS_REGION=$(aws configure get region)"
   eval "export KIPU_S3_KEY=$AWS_ACCESS_KEY_ID"
