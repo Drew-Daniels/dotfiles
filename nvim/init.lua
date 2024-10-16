@@ -569,7 +569,7 @@ require("blink-cmp").setup({
   highlight = {
     use_nvim_cmp_as_default = true,
   },
-  -- TODO: Might need to uncomment this if custom snippets are not automatically found
+  -- TODO: Need to figure out why custom snippets aren't being sourced
   -- sources = {
   --   providers = {
   --     {
@@ -577,7 +577,7 @@ require("blink-cmp").setup({
   --       name = "Snippets",
   --       opts = {
   --         friendly_snippets = true,
-  --         search_paths = { vim.fn.stdpath('config') .. '/snippets' },
+  --         search_paths = { vim.fn.stdpath("config") .. "/snippets" },
   --       },
   --     },
   --   },
