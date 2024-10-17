@@ -33,3 +33,8 @@ beets
 zsh/functions/work.sh
 docs/project_notes.md
 zsh/last_aws_sso_login
+
+mise/config.local.toml
+
+# hack for adding another global, but ignored config until https://github.com/kipusystems/healthmatters/pull/16091 is merged
+mise/mise.toml
