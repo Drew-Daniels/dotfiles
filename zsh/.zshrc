@@ -171,10 +171,20 @@ complete -C '/usr/local/bin/aws_completer' aws
 # work
 if [ "$MACHINE" = "work" ]; then
 
-  aws sts get-caller-identity &>/dev/null
-  EXIT_CODE="$?" # $? is the exit code of the last statement
-  if [ $EXIT_CODE != 0 ]; then
+  last_sso_logfile_path="$XDG_CONFIG_HOME/zsh/last_aws_sso_login"
+
+  last_sso_date_str=$(cat $last_sso_logfile_path)
+  last_sso_timestamp=$(date -j -f '%Y-%m-%d %H:%M:%S' "$last_sso_date_str" '+%s')
+
+  today_date_str="$(date '+%Y-%m-%d') 00:00:00"
+  today_timestamp=$(date -j -f '%Y-%m-%d %H:%M:%S' "$today_date_str" '+%s')
+
+  if [ $today_timestamp -gt $last_sso_timestamp ]; then
+    echo "Last SSO on: $last_sso_date_str"
+    echo "Re-authenticating..."
     aws sso login
+    echo $today_date_str >$last_sso_logfile_path
+    echo "Authenticated"
   fi
 
   eval "$(aws configure export-credentials --format env)"

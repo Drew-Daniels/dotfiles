@@ -32,3 +32,4 @@ beets
 .env.*
 zsh/functions/work.sh
 docs/project_notes.md
+zsh/last_aws_sso_login
