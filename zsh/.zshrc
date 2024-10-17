@@ -95,6 +95,7 @@ alias yless="jless --yaml"
 eval "$(zoxide init --cmd j zsh)"
 
 # mise
+export MISE_CONFIG_DIR="$XDG_CONFIG_HOME/mise"
 # development, testing, production
 export MISE_ENV="development"
 eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
