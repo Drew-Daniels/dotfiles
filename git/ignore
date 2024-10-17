@@ -8,3 +8,4 @@ node_modules
 .conform.*
 .mise.local.toml
 .mise.*.local.toml
+mise/config.local.toml
