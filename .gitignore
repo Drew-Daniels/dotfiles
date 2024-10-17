@@ -36,5 +36,7 @@ zsh/last_aws_sso_login
 
 mise/config.local.toml
 
-# hack for adding another global, but ignored config until https://github.com/kipusystems/healthmatters/pull/16091 is merged
+# hack for adding another global, but ignored config until these are fixed
+# https://github.com/jdx/mise/issues/2773
+# https://github.com/jdx/mise/issues/2774
 mise/mise.toml
