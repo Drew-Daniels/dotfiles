@@ -1,0 +1,10 @@
+# this is a template for how ~/.config/mise/config.local.toml should look
+[env]
+GITHUB_OAUTH_TOKEN=''
+
+JIRA_API_TOKEN=''
+# git config email - <first>.<last>@<company>.com
+EMAIL=''
+WORK_HOSTNAME=''
+# 'work' or 'home'
+MACHINE=''
