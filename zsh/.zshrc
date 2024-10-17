@@ -1,6 +1,4 @@
-. ~/projects/dotfiles/zsh/secrets
-
-# export env vars that vary by machine - such as git config email
+# export env vars that vary by machine and that need to be *immediately* loaded into the shell process
 set -o allexport && source ~/projects/dotfiles/.env.local && set +o allexport
 
 export XDG_CONFIG_HOME=~/projects/dotfiles
