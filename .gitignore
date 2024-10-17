@@ -17,7 +17,6 @@ fish/completions/docker*
 
 gitk
 
-# TODO: Remove this
 secrets
 nnn/.lastd
 .android
