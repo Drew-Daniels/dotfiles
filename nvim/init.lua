@@ -569,15 +569,14 @@ require("blink-cmp").setup({
   highlight = {
     use_nvim_cmp_as_default = true,
   },
-  -- TODO: Need to figure out why custom snippets aren't being sourced
-  -- sources = {
-  --   providers = {
-  --     -- { 'blink.cmp.sources.lsp', name = 'LSP' },
-  --     -- { 'blink.cmp.sources.path', name = 'Path', score_offset = 3 },
-  --     -- { 'blink.cmp.sources.snippets', name = 'Snippets', score_offset = -3 },
-  --     -- { "blink.cmp.sources.buffer", name = "Buffer" },
-  --   },
-  -- },
+  sources = {
+    providers = {
+      { "blink.cmp.sources.lsp", name = "LSP" },
+      { "blink.cmp.sources.path", name = "Path", score_offset = 3 },
+      { "blink.cmp.sources.snippets", name = "Snippets", score_offset = 4 },
+      { "blink.cmp.sources.buffer", name = "Buffer" },
+    },
+  },
 })
 
 -- Use LspAttach autocommand to only map the following keys
