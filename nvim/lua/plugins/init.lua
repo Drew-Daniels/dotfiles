@@ -17,6 +17,12 @@ vim.g.maplocalleader = ","
 
 return require("lazy").setup({
   {
+    "rafamadriz/friendly-snippets",
+    dir = "~/projects/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets",
+    dev = true,
+  },
+  {
     "chrisgrieser/nvim-scissors",
     dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
   },
