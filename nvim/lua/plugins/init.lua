@@ -21,6 +21,13 @@ return require("lazy").setup({
     dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
   },
   {
+    "garymjr/nvim-snippets",
+    dependencies = { "hrsh7th/nvim-cmp" },
+    dir = "~/projects/nvim-snippets",
+    url = "https://github.com/garymjr/nvim-snippets",
+    dev = true,
+  },
+  {
     "norcalli/nvim-colorizer.lua",
   },
   {
