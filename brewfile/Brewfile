@@ -8,6 +8,7 @@ brew aribb24
 brew ast-grep
 brew autoconf
 brew automake
+brew awscli
 brew bat
 brew bat-extras
 brew bottom
@@ -120,7 +121,6 @@ brew libxt
 brew libxtst
 brew libyaml
 brew little-cms2
-brew llvm
 brew lpeg
 brew lsd
 brew luajit
@@ -171,7 +171,6 @@ brew tcl-tk
 brew tesseract
 brew theora
 brew tmux
-brew tmuxp
 brew tree
 brew tree-sitter
 brew unbound
@@ -197,7 +196,6 @@ brew xvid
 brew xxhash
 brew xz
 brew yazi --HEAD
-brew z3
 brew zeromq
 brew zimg
 brew zoxide
@@ -215,7 +213,6 @@ cask google-chrome
 cask jellyfin
 cask obs
 cask postman
-cask protonvpn
 cask raindropio
 cask rectangle
 cask roboform

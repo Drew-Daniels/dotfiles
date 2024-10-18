@@ -49,25 +49,9 @@ Configure: `CMD+,` > General > Settings:
 - Set path to `<absolute-path-to-home-folder>/projects/dotfiles/iterm2`
 - Set "Save Changes" option to "When Quitting"
 
-## Install [`awscli`](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-
-NOTE: Do not install via `homebrew` because this installs dependencies like `python` that aren't managed by `mise`.
-
 ## Install [`lua 5.1`](https://gist.github.com/ivan-loh/9f81b6f44c42f4115964)
 
 ## Install [`luarocks`](https://luarocks.org/)
-
-## [`spotify_player`](https://github.com/aome510/spotify-player)
-
-### Install `spotify_player`
-
-```sh
-cargo install spotify_player --features lyric-finder,image,fzf
-```
-
-### Configure [`librespot-auth`](https://github.com/dspearson/librespot-auth)
-
-https://github.com/aome510/spotify-player/issues/520#issuecomment-2296842298
 
 ## Restart
 
