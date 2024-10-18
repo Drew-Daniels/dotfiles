@@ -171,15 +171,13 @@ return require("lazy").setup({
   "neovim/nvim-lspconfig",
   {
     "saghen/blink.cmp",
-    lazy = false, -- lazy loading handled internally
-    -- optional: provides snippets for the snippet source
+    lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
-    -- use a release tag to download pre-built binaries
-    version = "v0.*",
-    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- On musl libc based systems you need to add this flag
-    -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
+    dir = "~/projects/blink.cmp",
+    url = "https://github.com/Saghen/blink.cmp",
+    dev = true,
+    -- version = "v0.*",
+    build = "cargo build --release",
   },
   {
     "folke/which-key.nvim",
