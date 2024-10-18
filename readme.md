@@ -12,17 +12,17 @@ cd ~/projects
 git clone https://github.com/Drew-Daniels/dotfiles.git
 cd dotfiles
 
-# Adds .gitignored files that will vary by machine
-# Sets up ~/.zshrc and ~/.gitconfig files to source configs from 'dotfiles'
+# Adds .gitignored files that will vary by machine, or contain secrets
+# And sets up ~/.zshrc and ~/.gitconfig files to source configs from 'dotfiles'
 ./scripts/setup.sh
 ```
 
 ## Configure local environment
 
 ```bash
-email=drew.daniels@somecompany.com
+machine=work
 
-sed -i -e "s/.*EMAIL*.*/EMAIL=$email/" .env.local
+sed -i -e "s/.*MACHINE*.*/MACHINE=$machine/" .env.local
 ```
 
 ## Restart terminal (to pick up changes to `~/.zshrc`)
