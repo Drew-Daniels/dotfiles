@@ -3,76 +3,8 @@
   "contributes": {
     "snippets": [
       {
-        "language": "all",
-        "path": "./all.json"
-      },
-      {
-        "language": "javascript",
-        "path": "./javascript.json"
-      },
-      {
-        "language": "javascriptreact",
-        "path": "./javascriptreact.json"
-      },
-      {
-        "language": "markdown",
-        "path": "./markdown.json"
-      },
-      {
-        "language": "norg",
-        "path": "./norg.json"
-      },
-      {
-        "language": "ruby",
-        "path": "./ruby.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./typescript.json"
-      },
-      {
-        "language": "css",
-        "path": "./css.json"
-      },
-      {
-        "language": "cucumber",
-        "path": "./cucumber.json"
-      },
-      {
-        "language": "eruby",
-        "path": "./eruby.json"
-      },
-      {
-        "language": "fish",
-        "path": "./fish.json"
-      },
-      {
-        "language": "html",
-        "path": "./html.json"
-      },
-      {
-        "language": "json",
-        "path": "./json.json"
-      },
-      {
         "language": "lua",
         "path": "./lua.json"
-      },
-      {
-        "language": "sh",
-        "path": "./sh.json"
-      },
-      {
-        "language": "vue",
-        "path": "./vue.json"
-      },
-      {
-        "language": "yaml",
-        "path": "./yaml.json"
-      },
-      {
-        "language": "zsh",
-        "path": "./zsh.json"
       }
     ]
   }
