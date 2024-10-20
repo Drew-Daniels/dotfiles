@@ -1,0 +1,11 @@
+{
+  "TODO": {
+    "body": "# TODO: ${1:TODO}",
+    "prefix": "td",
+    "description": "Create a TODO"
+  },
+  "Shebang": {
+    "body": "#!/user/bin/env ${1:bash}",
+    "prefix": "sh"
+  }
+}
