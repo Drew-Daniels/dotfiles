@@ -13,6 +13,10 @@
       {
         "language": "yaml",
         "path": "./yaml.json"
+      },
+      {
+        "language": "css",
+        "path": "./css.json"
       }
     ]
   }
