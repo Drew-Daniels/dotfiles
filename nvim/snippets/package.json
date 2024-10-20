@@ -33,6 +33,10 @@
       {
         "language": "norg",
         "path": "./norg.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./javascript.json"
       }
     ]
   }

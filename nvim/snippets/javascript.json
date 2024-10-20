@@ -1,0 +1,14 @@
+{
+  "TODO": {
+    "body": "// TODO: ${1:TODO}",
+    "prefix": "td"
+  },
+  "ESLint Disable": {
+    "body": "/* eslint-disable */",
+    "prefix": "ed"
+  },
+  "ESLint Ignore": {
+    "body": "/* eslint-ignore ${1:RULE} */",
+    "prefix": "ei"
+  }
+}
