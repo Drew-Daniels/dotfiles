@@ -16,12 +16,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  -- {
-  --   "rafamadriz/friendly-snippets",
-  --   dir = "~/projects/friendly-snippets",
-  --   url = "https://github.com/rafamadriz/friendly-snippets",
-  --   dev = true,
-  -- },
+  {
+    "rafamadriz/friendly-snippets",
+    dir = "~/projects/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets",
+    dev = true,
+  },
   {
     "chrisgrieser/nvim-scissors",
     dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
@@ -31,7 +31,7 @@ return require("lazy").setup({
     dependencies = { "hrsh7th/nvim-cmp" },
     dir = "~/projects/nvim-snippets",
     url = "https://github.com/garymjr/nvim-snippets",
-    dev = true,
+    -- dev = true,
   },
   {
     "norcalli/nvim-colorizer.lua",
@@ -175,9 +175,10 @@ return require("lazy").setup({
     dependencies = "rafamadriz/friendly-snippets",
     dir = "~/projects/blink.cmp",
     url = "https://github.com/Saghen/blink.cmp",
-    dev = true,
-    -- version = "v0.*",
-    build = "cargo build --release",
+    -- dev = true,
+    version = "v0.*",
+    -- NOTE: Need to run this build manually
+    -- build = "cargo build --release",
   },
   {
     "folke/which-key.nvim",
