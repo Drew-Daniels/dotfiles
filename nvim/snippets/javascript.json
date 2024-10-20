@@ -3,6 +3,14 @@
     "body": "// TODO: ${1:TODO}",
     "prefix": "td"
   },
+  "Debug Log": {
+    "body": "console.log(\"${1:VARIABLE}: \", ${1.VARIABLE})",
+    "prefix": "dl"
+  },
+  "Debugger": {
+    "body": "debugger;",
+    "prefix": "db"
+  },
   "ESLint Disable": {
     "body": "/* eslint-disable */",
     "prefix": "ed"
