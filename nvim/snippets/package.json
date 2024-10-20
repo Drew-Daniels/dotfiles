@@ -29,6 +29,10 @@
       {
         "language": "fish",
         "path": "./fish.json"
+      },
+      {
+        "language": "norg",
+        "path": "./norg.json"
       }
     ]
   }

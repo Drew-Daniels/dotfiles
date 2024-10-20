@@ -1,0 +1,6 @@
+{
+  "TODO": {
+    "body": "- ( ) ${1:TODO}",
+    "prefix": "td"
+  }
+}
