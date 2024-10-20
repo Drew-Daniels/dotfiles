@@ -17,6 +17,18 @@
       {
         "language": "css",
         "path": "./css.json"
+      },
+      {
+        "language": "ruby",
+        "path": "./ruby.json"
+      },
+      {
+        "language": "json",
+        "path": "./json.json"
+      },
+      {
+        "language": "fish",
+        "path": "./fish.json"
       }
     ]
   }

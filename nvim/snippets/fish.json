@@ -1,0 +1,10 @@
+{
+  "TODO": {
+    "body": "# TODO: ${1:TODO}",
+    "prefix": "td"
+  },
+  "Function": {
+    "body": "function ${1:NAME}\n\t${2:BODY}\nend",
+    "prefix": "fn"
+  }
+}
