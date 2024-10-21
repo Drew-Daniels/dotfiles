@@ -867,6 +867,9 @@ require("overseer").setup({
 
 require("grapple").setup({
   scope = "git_branch",
+  win_opts = {
+    width = 150,
+  },
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
