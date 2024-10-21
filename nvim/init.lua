@@ -272,6 +272,8 @@ require("nvim-treesitter.configs").setup({
   -- my config
   highlight = {
     enable = true,
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1352#issuecomment-1449638327
+    disable = { "embedded_template" },
   },
   incremental_selection = {
     enable = true,
