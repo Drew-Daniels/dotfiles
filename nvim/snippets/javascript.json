@@ -16,7 +16,7 @@
     "prefix": "ed"
   },
   "ESLint Ignore": {
-    "body": "/* eslint-ignore ${0:RULE} */",
+    "body": "/* eslint-ignore ${0} */",
     "prefix": "ei"
   }
 }
