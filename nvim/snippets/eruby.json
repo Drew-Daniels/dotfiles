@@ -1,0 +1,14 @@
+{
+  "TODO": {
+    "body": "# TODO: ${1:TODO}",
+    "prefix": "td"
+  },
+  "Debug Log (Ruby)": {
+    "body": "pp \"${1:VARIABLE}: #{${1:VARIABLE}}\"",
+    "prefix": "dlr"
+  },
+  "Debug Log (JavaScript)": {
+    "body": "pp \"${1:VARIABLE}: #{${1:VARIABLE}}\"",
+    "prefix": "dlj"
+  }
+}
