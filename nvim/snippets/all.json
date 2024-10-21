@@ -1,10 +1,10 @@
 {
   "Block Comment": {
-    "body": "$BLOCK_COMMENT_START ${1:COMMENT} $BLOCK_COMMENT_END",
+    "body": "$BLOCK_COMMENT_START ${0:COMMENT} $BLOCK_COMMENT_END",
     "prefix": "bc"
   },
   "Line Comment": {
-    "body": "$LINE_COMMENT ${1:COMMENT}",
+    "body": "$LINE_COMMENT ${0:COMMENT}",
     "prefix": "lc"
   }
 }

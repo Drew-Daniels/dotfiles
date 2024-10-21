@@ -1,6 +1,6 @@
 {
   "Property": {
-    "body": "\"${1:KEY}\": ${2:VALUE}",
+    "body": "\"${0:KEY}\": ${1:VALUE}",
     "prefix": "pr",
     "description": "A JSON Object Property"
   }
