@@ -580,7 +580,17 @@ require("blink-cmp").setup({
     providers = {
       { "blink.cmp.sources.lsp", name = "LSP" },
       { "blink.cmp.sources.path", name = "Path", score_offset = 3 },
-      { "blink.cmp.sources.snippets", name = "Snippets", score_offset = -3 },
+      {
+        "blink.cmp.sources.snippets",
+        name = "Snippets",
+        score_offset = -3,
+        opts = {
+          extended_filetypes = {
+            "eruby",
+            { "ruby", "javascript" },
+          },
+        },
+      },
       { "blink.cmp.sources.buffer", name = "Buffer" },
     },
   },
