@@ -96,6 +96,7 @@ require("nvim-treesitter.configs").setup({
     "css",
     "clojure",
     "dockerfile",
+    "embedded_template",
     "fish",
     "html",
     "http",
