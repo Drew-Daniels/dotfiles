@@ -181,13 +181,13 @@ if [ "$MACHINE" = "work" ]; then
   if [ $today_timestamp -gt $last_sso_timestamp ]; then
     echo "Last SSO on: $last_sso_date_str"
     echo "Re-authenticating..."
-    aws sso login
+    aws sso login --profile kipu-dev
     echo $today_date_str >$last_sso_logfile_path
     echo "Authenticated"
   fi
 
-  eval "$(aws configure export-credentials --format env)"
-  eval "export AWS_REGION=$(aws configure get region)"
+  eval "$(aws configure export-credentials --format env --profile kipu-dev)"
+  eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
 fi
 
 # playwright
