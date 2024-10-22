@@ -29,6 +29,7 @@ brew libksba
 brew libmpc
 brew libusb
 brew libxml2
+brew llvm
 brew mongosh
 brew mpfr
 brew node
@@ -44,6 +45,7 @@ brew python@3.13
 brew redis
 brew telnet
 brew v8
+brew z3
 
 tap homebrew/cask
 cask michaelvillar-timer

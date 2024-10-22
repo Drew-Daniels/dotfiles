@@ -213,9 +213,11 @@ cask google-chrome
 cask jellyfin
 cask obs
 cask postman
+cask protonvpn
 cask raindropio
 cask rectangle
 cask roboform
+cask spotify
 cask tidal
 
 tap homebrew/bundle
