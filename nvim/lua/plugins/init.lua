@@ -16,6 +16,18 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add options here
+      -- or leave it empty to use the default settings
+    },
+    keys = {
+      -- suggested keymap
+      { "<leader>P", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+    },
+  },
   { "rcarriga/nvim-notify" },
   {
     "folke/lazydev.nvim",
