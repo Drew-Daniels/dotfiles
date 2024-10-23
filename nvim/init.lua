@@ -338,13 +338,7 @@ require("web-tools").setup({
   },
 })
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                       NEODEV.NVIM                       │
---          │          https://github.com/folke/neodev.nvim           │
---          ╰─────────────────────────────────────────────────────────╯
--- NOTE: must be done before any lspconfig
-require("neodev").setup({})
-
+-- TODO: Add lazydev setup call here
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-LSPCONFIG                      │
 --          │        https://github.com/neovim/nvim-lspconfig         │
@@ -1000,10 +994,6 @@ wk.add({
   },
   { "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
   { "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
-  -- Jira
-  { "<leader>J", group = "Jira" },
-  { "<leader>Jv", "<cmd>JiraView<cr>", desc = "View Issue" },
-  { "<leader>Jo", "<cmd>JiraOpen<cr>", desc = "Open Issue in Browser" },
   -- Overseer
   { "<leader>o", group = "Overseer" },
   { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle" },
@@ -1040,12 +1030,6 @@ require("diffview").setup({
     },
   },
 })
---          ╭─────────────────────────────────────────────────────────╮
---          │                     CODEWINDOW.NVIM                     │
---          │       https://github.com/gorbit99/codewindow.nvim       │
---          ╰─────────────────────────────────────────────────────────╯
-local codewindow = require("codewindow")
-codewindow.setup()
 
 telescope.load_extension("fzf")
 

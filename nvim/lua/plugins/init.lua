@@ -55,16 +55,6 @@ return require("lazy").setup({
   --   "Exafunction/codeium.vim",
   --   event = "BufEnter",
   -- },
-  {
-    "Funk66/jira.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("jira").setup()
-    end,
-    -- cond = function()
-    -- 	return vim.env.JIRA_API_TOKEN ~= nil
-    -- end,
-  },
   { "lewis6991/gitsigns.nvim" },
   { "sindrets/diffview.nvim" },
   { "axieax/urlview.nvim" },
@@ -73,7 +63,6 @@ return require("lazy").setup({
     event = "InsertEnter",
   },
   { "LukasPietzschmann/telescope-tabs" },
-  { "gorbit99/codewindow.nvim" },
   { "LudoPinelli/comment-box.nvim" },
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-context" },
@@ -159,7 +148,6 @@ return require("lazy").setup({
   "dfendr/clipboard-image.nvim",
   "karb94/neoscroll.nvim",
   "stevearc/conform.nvim",
-  { "folke/neodev.nvim", opts = {} },
   "ray-x/web-tools.nvim",
   "ludovicchabant/vim-gutentags",
   "RRethy/nvim-treesitter-endwise",
