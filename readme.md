@@ -51,7 +51,23 @@ Configure: `CMD+,` > General > Settings:
 
 ## Install [`lua 5.1`](https://gist.github.com/ivan-loh/9f81b6f44c42f4115964)
 
+```sh
+curl -LO http://www.lua.org/ftp/lua-5.1.5.tar.gz
+tar xvzf lua-5.1.5.tar.gz
+cd lua-5.1.5/src
+make macosx
+sudo cp lua /usr/local/bin/lua
+```
+
 ## Install [`luarocks`](https://luarocks.org/)
+
+```sh
+wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+tar zxpf luarocks-3.11.1.tar.gz
+cd luarocks-3.11.1
+./configure && make && sudo make install
+sudo luarocks install luasocket
+```
 
 ## Restart
 
