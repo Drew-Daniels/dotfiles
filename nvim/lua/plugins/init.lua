@@ -128,12 +128,6 @@ return require("lazy").setup({
     lazy = false,
   },
   {
-    "stevearc/overseer.nvim",
-    opts = {},
-    -- optional for nicer ui
-    dependencies = { "rcarriga/nvim-notify", "stevearc/dressing.nvim" },
-  },
-  {
     "stevearc/oil.nvim",
     opts = {},
     -- Optional dependencies

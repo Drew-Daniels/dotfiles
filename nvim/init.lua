@@ -851,14 +851,6 @@ telescope.setup({
   extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
 })
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                      OVERSEER.NVIM                      │
---          │        https://github.com/stevearc/overseer.nvim        │
---          ╰─────────────────────────────────────────────────────────╯
-require("overseer").setup({
-  templates = { "builtin", "user.lint_fix" },
-})
-
 require("grapple").setup({
   scope = "git_branch",
   win_opts = {
@@ -994,13 +986,6 @@ wk.add({
   },
   { "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
   { "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
-  -- Overseer
-  { "<leader>o", group = "Overseer" },
-  { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle" },
-  { "<leader>oc", "<cmd>OverseerClose<cr>", desc = "Close" },
-  { "<leader>oo", "<cmd>OverseerOpen<cr>", desc = "Open" },
-  { "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Info" },
-  { "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run" },
   -- Tabs
   { "<leader>t", group = "Tabs" },
   { "<leader>tl", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "List" },
