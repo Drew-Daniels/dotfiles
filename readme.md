@@ -49,13 +49,16 @@ Configure: `CMD+,` > General > Settings:
 - Set path to `<absolute-path-to-home-folder>/projects/dotfiles/iterm2`
 - Set "Save Changes" option to "When Quitting"
 
-## Install [`lua 5.1`](https://gist.github.com/ivan-loh/9f81b6f44c42f4115964)
+## Install [`lua 5.1`](https://www.lua.org/manual/5.4/readme.html)
 
 ```sh
 curl -LO http://www.lua.org/ftp/lua-5.1.5.tar.gz
 tar xvzf lua-5.1.5.tar.gz
-cd lua-5.1.5/src
+cd lua-5.1.5
 make macosx
+make test
+sudo make install
+make local
 sudo cp lua /usr/local/bin/lua
 ```
 
