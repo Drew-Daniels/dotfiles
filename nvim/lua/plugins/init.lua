@@ -140,13 +140,6 @@ return require("lazy").setup({
     config = true,
   },
   {
-    "cbochs/portal.nvim",
-    -- Optional dependencies
-    dependencies = {
-      "cbochs/grapple.nvim",
-    },
-  },
-  {
     "cbochs/grapple.nvim",
     dependencies = {
       { "nvim-tree/nvim-web-devicons", lazy = true },

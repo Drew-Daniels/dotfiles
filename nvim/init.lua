@@ -944,10 +944,6 @@ wk.add({
   { "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
   -- Hunks
   { "<leader>h", group = "Hunks", desc = "Hunks" },
-  -- Jump
-  { "<leader>j", group = "Jump" },
-  { "<leader>jf", "<cmd>Portal jumplist forward<cr>", desc = "Forward" },
-  { "<leader>jb", "<cmd>Portal jumplist backward<cr>", desc = "Backward" },
   -- Keymaps
   { "<leader>k", group = "Keymaps" },
   { "<leader>kl", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
