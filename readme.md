@@ -59,7 +59,6 @@ make macosx
 make test
 sudo make install
 make local
-sudo cp lua /usr/local/bin/lua
 ```
 
 ## Install [`luarocks`](https://luarocks.org/)
