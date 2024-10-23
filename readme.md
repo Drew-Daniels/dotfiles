@@ -71,6 +71,13 @@ cd luarocks-3.11.1
 sudo luarocks install luasocket
 ```
 
+## Install `luarocks` modules
+
+```sh
+# https://github.com/3rd/image.nvim
+luarocks install --local magick
+```
+
 ## Restart
 
 ```bash
