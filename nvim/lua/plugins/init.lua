@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "rcarriga/nvim-notify" },
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
