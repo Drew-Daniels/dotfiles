@@ -91,7 +91,7 @@ return require("lazy").setup({
   { "LudoPinelli/comment-box.nvim" },
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-context" },
-  { "mrjones2014/legendary.nvim", priority = 1000, lazy = false },
+  { "mrjones2014/legendary.nvim", priority = 2000, lazy = false },
   {
     "kwkarlwang/bufresize.nvim",
     config = function()
@@ -105,7 +105,7 @@ return require("lazy").setup({
   },
   {
     "vhyrro/luarocks.nvim",
-    priority = 1000,
+    priority = 3000,
     config = true,
   },
   {
