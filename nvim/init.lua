@@ -656,11 +656,17 @@ require("lualine").setup({
 
 local conform_utils = require("conform.util")
 
-local function in_hm()
-  local project_dir = vim.fn.expand("$HOME/projects/sites/healthmatters")
+---@param rel_project_path string
+local function in_project(rel_project_path)
+  -- TODO: Use env var here instead of hardcoding projects path
+  local project_dir = vim.fn.expand("$HOME/projects/" .. rel_project_path)
   local root_dir = vim.fs.root(0, ".git")
 
   return root_dir == project_dir
+end
+
+local function in_hm()
+  return in_project("sites/healthmatters")
 end
 
 -- checks if the current buffer/file is in one of the directories provided
