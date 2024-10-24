@@ -104,9 +104,6 @@ return require("lazy").setup({
     dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   },
   {
-    "3rd/image.nvim",
-  },
-  {
     "vhyrro/luarocks.nvim",
     priority = 3000,
     config = true,
