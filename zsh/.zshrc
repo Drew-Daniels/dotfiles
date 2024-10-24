@@ -168,28 +168,28 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 complete -C '/usr/local/bin/aws_completer' aws
 
 # work
-# TODO: Figure out why this fails
-# if [ "$MACHINE" = "work" ]; then
-#
-#   last_sso_logfile_path="$XDG_CONFIG_HOME/zsh/last_aws_sso_login"
-#
-#   last_sso_date_str=$(cat $last_sso_logfile_path)
-#   last_sso_timestamp=$(date -j -f '%Y-%m-%d %H:%M:%S' "$last_sso_date_str" '+%s')
-#
-#   today_date_str="$(date '+%Y-%m-%d') 00:00:00"
-#   today_timestamp=$(date -j -f '%Y-%m-%d %H:%M:%S' "$today_date_str" '+%s')
-#
-#   if [ $today_timestamp -gt $last_sso_timestamp ]; then
-#     echo "Last SSO on: $last_sso_date_str"
-#     echo "Re-authenticating..."
-#     aws sso login --profile kipu-dev
-#     echo $today_date_str >$last_sso_logfile_path
-#     echo "Authenticated"
-#   fi
-#
-#   eval "$(aws configure export-credentials --format env --profile kipu-dev)"
-#   eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
-# fi
+if [ "$MACHINE" = "work" ]; then
+
+  # last_sso_logfile_path="$XDG_CONFIG_HOME/zsh/last_aws_sso_login"
+  #
+  # last_sso_date_str=$(cat $last_sso_logfile_path)
+  # last_sso_timestamp=$(date -j -f '%Y-%m-%d %H:%M:%S' "$last_sso_date_str" '+%s')
+  #
+  # today_date_str="$(date '+%Y-%m-%d') 00:00:00"
+  # today_timestamp=$(date -j -f '%Y-%m-%d %H:%M:%S' "$today_date_str" '+%s')
+  #
+  # # TODO: Figure out why this fails
+  # if [ $today_timestamp -gt $last_sso_timestamp ]; then
+  #   echo "Last SSO on: $last_sso_date_str"
+  #   echo "Re-authenticating..."
+  #   aws sso login --profile kipu-dev
+  #   echo $today_date_str >$last_sso_logfile_path
+  #   echo "Authenticated"
+  # fi
+
+  eval "$(aws configure export-credentials --format env --profile kipu-dev)"
+  eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
+fi
 
 # playwright
 alias psr="npx playwright show-report"
