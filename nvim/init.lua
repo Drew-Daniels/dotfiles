@@ -580,9 +580,11 @@ require("blink-cmp").setup({
         name = "Snippets",
         score_offset = -3,
         opts = {
+          -- https://github.com/garymjr/nvim-snippets?tab=readme-ov-file#configuration
           extended_filetypes = {
-            "eruby",
-            { "ruby", "javascript" },
+            eruby = { "ruby", "javascript" },
+            typescript = { "javascript" },
+            vue = { "javascript", "html", "css" },
           },
         },
       },
