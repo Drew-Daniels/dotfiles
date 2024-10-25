@@ -4,7 +4,7 @@
     "prefix": "td"
   },
   "Debug Log": {
-    "body": "pp \"${0}: #{${0}}\"",
+    "body": "pp \"${1}: #{${0}}\"",
     "prefix": "dl"
   }
 }
