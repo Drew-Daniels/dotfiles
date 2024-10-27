@@ -671,6 +671,10 @@ local function in_hm()
   return in_project("sites/healthmatters")
 end
 
+local function in_fs()
+  return in_project("friendly-snippets")
+end
+
 -- checks if the current buffer/file is in one of the directories provided
 local function buff_in_dir(bufr_path, dirs)
   local result = false
@@ -698,7 +702,7 @@ require("conform").setup({
       return
     end
 
-    if in_hm() then
+    if in_hm() or in_fs() then
       -- always use project formatter
       return { timeout_ms = 500, lsp_format = "never", quiet = true }
     else
@@ -712,7 +716,7 @@ require("conform").setup({
     ruby = { "project_rubocop", "fallback_rubocop" },
     eruby = { "htmlbeaufifier" },
     fish = { "fish_indent" },
-    json = { "jq" },
+    json = { "custom_jq" },
     sh = { "shfmt" },
     sql = { "sqlfmt" },
     javascript = { "project_eslint", "fallback_eslint" },
@@ -731,6 +735,12 @@ require("conform").setup({
     python = { "ruff" },
   },
   formatters = {
+    custom_jq = {
+      command = "jq",
+      condition = function()
+        return not in_fs()
+      end,
+    },
     project_rubocop = {
       command = "bundle",
       args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
