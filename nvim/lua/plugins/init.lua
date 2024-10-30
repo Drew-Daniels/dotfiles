@@ -75,11 +75,11 @@ return require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  -- -- Currently broken?
-  -- {
-  --   "Exafunction/codeium.vim",
-  --   event = "BufEnter",
-  -- },
+  -- Currently broken?
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+  },
   { "lewis6991/gitsigns.nvim" },
   { "sindrets/diffview.nvim" },
   { "axieax/urlview.nvim" },
