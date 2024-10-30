@@ -30,176 +30,176 @@ windows:
         - cmd:
           - fish
           - cls
-  - app:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/app
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - bin:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/bin
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - config:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/config
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - db:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/db
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - docker:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/docker
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - js:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - emr-v2:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v2
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - emr-v3:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v3
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - webpack-configs:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/webpack
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - tw-configs:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/tailwind
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - vitest-configs:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/vitest
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - js-packages:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/packages
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - lib:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/lib
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - public:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/public
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - spec:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/spec
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - sql:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/sql
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - vendor:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/vendor
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
+  # - app:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/app
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - bin:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/bin
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - config:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/config
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - db:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/db
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - docker:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/docker
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - js:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - emr-v2:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v2
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - emr-v3:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v3
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - webpack-configs:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/webpack
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - tw-configs:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/tailwind
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - vitest-configs:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/vitest
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - js-packages:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/packages
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - lib:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/lib
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - public:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/public
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - spec:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/spec
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - sql:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/sql
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - vendor:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/vendor
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
   - stack:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
