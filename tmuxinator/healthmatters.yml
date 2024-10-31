@@ -30,6 +30,16 @@ windows:
         - cmd:
           - fish
           - cls
+  - codeium:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim -c "CodeiumChat"
+        - cmd:
+          - fish
+          - cls
   # - app:
   #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/app
   #     layout: <%= ENV["MUX_LAYOUT"] %>
