@@ -102,6 +102,9 @@ export MISE_RUBY_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-gems"
 export MISE_NODE_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-npm-packages"
 export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-python-packages"
 
+# ruby
+export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
+
 # bat
 # alias cat="bat"
 alias man="batman"
