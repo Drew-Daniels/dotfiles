@@ -79,7 +79,7 @@ return require("lazy").setup({
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    dir = "~/projects/codeium.nvim",
+    dir = "~/projects/codeium.vim",
     dev = true,
   },
   { "lewis6991/gitsigns.nvim" },
