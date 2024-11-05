@@ -44,7 +44,6 @@ return require("lazy").setup({
   {
     "rafamadriz/friendly-snippets",
     dir = "~/projects/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets",
     dev = true,
   },
   {
@@ -55,7 +54,6 @@ return require("lazy").setup({
     "garymjr/nvim-snippets",
     dependencies = { "hrsh7th/nvim-cmp" },
     dir = "~/projects/nvim-snippets",
-    url = "https://github.com/garymjr/nvim-snippets",
     -- dev = true,
   },
   {
@@ -80,7 +78,7 @@ return require("lazy").setup({
     "Exafunction/codeium.vim",
     event = "BufEnter",
     dir = "~/projects/codeium.vim",
-    dev = true,
+    -- dev = true,
   },
   { "lewis6991/gitsigns.nvim" },
   { "sindrets/diffview.nvim" },
@@ -176,7 +174,6 @@ return require("lazy").setup({
     lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
     dir = "~/projects/blink.cmp",
-    url = "https://github.com/Saghen/blink.cmp",
     -- dev = true,
     version = "v0.*",
     -- NOTE: Need to run this build manually
@@ -224,7 +221,6 @@ return require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     dir = "~/projects/octo.nvim",
-    url = "https://github.com/pwntester/octo.nvim",
     dev = false,
   },
   {
