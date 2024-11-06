@@ -200,9 +200,6 @@ alias psr="npx playwright show-report"
 # beets
 export BEETSDIR="$XDG_CONFIG_HOME/beets"
 
-# ssh
-ssh-add -A 2>/dev/null
-
 # vcpkg - https://github.com/Microsoft/vcpkg
 export VCPKG_ROOT=~/projects/vcpkg
 export PATH="$VCPKG_ROOT:$PATH"
