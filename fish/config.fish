@@ -140,4 +140,7 @@ if status is-interactive
     # bundler
     alias be "bundle exec"
     alias ber "bundle exec rspec"
+
+    # 1password
+    op completion fish | source
 end

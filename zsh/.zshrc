@@ -231,3 +231,7 @@ alias rsdiff="git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
 # bundler
 alias be="bundle exec"
 alias ber="bundle exec rspec"
+
+# 1password
+eval "$(op completion zsh)"
+compdef _op op
