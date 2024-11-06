@@ -50,7 +50,6 @@ brew graphite2
 brew harfbuzz
 brew highway
 brew hurl
-brew icu4c
 brew imagemagick --HEAD
 brew imath
 brew jasper
@@ -213,7 +212,6 @@ cask google-chrome
 cask jellyfin
 cask obs
 cask postman
-cask protonvpn
 cask raindropio
 cask rectangle
 cask roboform
@@ -235,6 +233,9 @@ brew brew-file
 
 tap teamookla/speedtest
 brew speedtest
+
+# Other Homebrew packages
+brew icu4c
 
 # Main file
 main ./${HOSTNAME}.Brewfile
