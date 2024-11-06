@@ -2,6 +2,7 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew awscli
 brew bash
 brew bdw-gc
 brew binutils
@@ -20,6 +21,7 @@ brew icu4c@75
 brew isl
 brew kubernetes-cli
 brew libassuan
+brew libavif
 brew libdeflate
 brew libffi
 brew libgcrypt
@@ -48,7 +50,10 @@ brew v8
 brew z3
 
 tap homebrew/cask
+cask 1password-cli
+cask 1password@nightly
 cask michaelvillar-timer
+cask protonvpn
 
 tap homebrew/bundle
 
@@ -67,4 +72,4 @@ tap rcmdnk/file
 tap teamookla/speedtest
 
 # App Store applications
-appstore 497799835 Xcode (16.0)
+appstore 497799835 Xcode (16.1)
