@@ -16,6 +16,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  config = {
+    dev = {
+      path = "~/projects",
+    },
+  },
   {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
@@ -43,7 +48,6 @@ return require("lazy").setup({
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   {
     "rafamadriz/friendly-snippets",
-    dir = "~/projects/friendly-snippets",
     dev = true,
   },
   {
@@ -53,7 +57,6 @@ return require("lazy").setup({
   {
     "garymjr/nvim-snippets",
     dependencies = { "hrsh7th/nvim-cmp" },
-    dir = "~/projects/nvim-snippets",
     -- dev = true,
   },
   {
@@ -77,7 +80,6 @@ return require("lazy").setup({
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    dir = "~/projects/codeium.vim",
     -- dev = true,
   },
   { "lewis6991/gitsigns.nvim" },
@@ -173,7 +175,6 @@ return require("lazy").setup({
     "saghen/blink.cmp",
     lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
-    dir = "~/projects/blink.cmp",
     -- dev = true,
     version = "v0.*",
     -- NOTE: Need to run this build manually
@@ -220,8 +221,7 @@ return require("lazy").setup({
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
-    dir = "~/projects/octo.nvim",
-    dev = false,
+    -- dev = true,
   },
   {
     "LintaoAmons/scratch.nvim",
