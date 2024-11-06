@@ -8,7 +8,6 @@ brew aribb24
 brew ast-grep
 brew autoconf
 brew automake
-brew awscli
 brew bat
 brew bat-extras
 brew bottom
