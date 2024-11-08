@@ -1128,11 +1128,11 @@ vim.api.nvim_create_user_command("SU", function(opts)
     date = os.date("%Y-%m-%d", os.time() - 86400)
   elseif opts.fargs[1] == "today" then
     date = os.date("%Y-%m-%d")
-  --TODO: Figure out how to create a SU note for the next Monday if current day is Friday
+  elseif opts.fargs[1] == "tomorrow" and os.date("%w") == "5" then
+    -- If today is Friday, then next business day is Monday
+    date = os.date("%Y-%m-%d", os.time() + 86400 * 3)
   elseif opts.fargs[1] == "tomorrow" then
     date = os.date("%Y-%m-%d", os.time() + 86400)
-  elseif opts.fargs[1] == "monday" then
-    date = os.date("%Y-%m-%d", os.time() + 86400 * (8 - os.date("%w")))
   else
     print("Invalid date")
     return
