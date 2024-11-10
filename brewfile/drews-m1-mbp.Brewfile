@@ -25,7 +25,6 @@ cask discord
 cask postgres-unofficial
 cask qbittorrent
 cask raspberry-pi-imager
-cask raycast
 cask signal
 cask slack
 cask tor-browser
