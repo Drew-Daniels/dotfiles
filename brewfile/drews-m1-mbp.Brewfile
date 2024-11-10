@@ -3,6 +3,7 @@
 
 tap homebrew/core
 brew ansible
+brew awscli
 brew certifi
 brew cffi
 brew cryptography
@@ -24,6 +25,7 @@ cask discord
 cask postgres-unofficial
 cask qbittorrent
 cask raspberry-pi-imager
+cask raycast
 cask signal
 cask slack
 cask tor-browser
