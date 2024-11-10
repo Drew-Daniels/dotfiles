@@ -21,6 +21,7 @@ brew python@3.13
 tap homebrew/cask
 cask 1password-cli
 cask 1password@nightly
+cask alfred
 cask discord
 cask postgres-unofficial
 cask qbittorrent
