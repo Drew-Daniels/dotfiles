@@ -106,8 +106,9 @@ export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
 # bat
 alias man="batman"
 alias pb="prettybat"
-alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+# these lines are breaking postgres dropdb command for some reason
+# alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+# alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 batdiff() {
   git diff --name-only --relative --diff-filter=d | xargs bat
 }
