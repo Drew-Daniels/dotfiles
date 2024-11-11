@@ -25,8 +25,6 @@ alias pn="pnpm"
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
-# search for pattern in filenames
-alias rgf="rg --files | rg"
 
 # nvim
 export VIMCONFIG=~/.config/nvim

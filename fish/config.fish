@@ -11,10 +11,6 @@ if status is-interactive
     set -gx VISUAL nvim
     alias cls "printf '\33c\e[3J'"
 
-    # ripgrep
-    # search for pattern in filenames
-    alias rgf "rg --files | rg"
-
     # pnpm
     set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
     fish_add_path PNPM_HOME
