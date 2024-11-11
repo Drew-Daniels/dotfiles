@@ -104,7 +104,6 @@ export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-python-
 export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
 
 # bat
-# alias cat="bat"
 alias man="batman"
 alias pb="prettybat"
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
