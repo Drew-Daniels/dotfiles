@@ -148,7 +148,6 @@ brew pango
 brew pcre
 brew pcre2
 brew pixman
-brew pkg-config
 brew pngpaste
 brew rav1e
 brew readline
@@ -235,6 +234,7 @@ brew speedtest
 
 # Other Homebrew packages
 brew icu4c
+brew pkg-config
 
 # Main file
 main ./${HOSTNAME}.Brewfile
