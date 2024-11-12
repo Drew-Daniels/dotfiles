@@ -21,16 +21,16 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
     set -l jira_issue_id (git branch --show-current | cut -d / -f2- | cut -d / -f1 | tr -d '[:space:]' | tr a-z A-Z)
 
     if set -q _flag_i
-        echo $jira_issue_id | pbcopy
+        echo -n $jira_issue_id | pbcopy
         echo "Copied Jira Issue ID to Clipboard: $jira_issue_id"
     else
         set -l jira_issue_link (jira open $jira_issue_id -n | tr -d '\n')
         if set -q _flag_m
             set -l jira_issue_md_link "[$jira_issue_id]($jira_issue_link)"
-            echo $jira_issue_md_link | pbcopy
+            echo -n $jira_issue_md_link | pbcopy
             echo "Copied Jira Issue Markdown Link to Clipboard: $jira_issue_md_link"
         else
-            echo $jira_issue_link | pbcopy
+            echo -n $jira_issue_link | pbcopy
             echo "Copied Jira Issue URL to Clipboard: $jira_issue_link"
         end
     end
