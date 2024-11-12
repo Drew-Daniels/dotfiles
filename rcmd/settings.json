@@ -1,12 +1,9 @@
 {
+  "allowWindowSwitcher" : true,
+  "appSwitcherUseNumbersForWindows" : false,
+  "enableAssignHotkey" : true,
+  "specialKey" : "equal",
   "enableHideOnFocusHotkey" : false,
-  "focusOnKeyUp" : false,
-  "fnWindowSwitching" : false,
-  "appSort" : "name",
-  "windowSwitcherDimFocused" : false,
-  "appSortReverse" : false,
-  "minimizeOnlyFocusedWindowOnMinus" : true,
-  "zeroAsLastFocusedWindow" : false,
   "windowKeyPatterns" : [
     {
       "id" : "com.sublimetext.4",
@@ -17,28 +14,28 @@
       "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
-      "id" : "com.sublimetext.2",
-      "pattern" : ".* — [^\\w\\d]*(.)"
+      "pattern" : ".* — [^\\w\\d]*(.)",
+      "id" : "com.sublimetext.2"
     },
     {
-      "pattern" : ".* — [^\\w\\d]*(.)",
-      "id" : "com.sublimetext."
+      "id" : "com.sublimetext.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
       "id" : "com.visualstudio.code.oss",
       "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
-      "pattern" : ".* — [^\\w\\d]*(.)",
-      "id" : "com.visualstudio.code"
+      "id" : "com.visualstudio.code",
+      "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
       "id" : "com.microsoft.VSCodiumInsiders",
       "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
-      "pattern" : ".* — [^\\w\\d]*(.)",
-      "id" : "com.microsoft.VSCode"
+      "id" : "com.microsoft.VSCode",
+      "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
       "id" : "com.microsoft.VSCodeInsiders",
@@ -53,46 +50,51 @@
       "id" : "com.todesktop."
     }
   ],
+  "showWindowSwitcher" : true,
+  "windowSwitcherAppearance" : "compact",
+  "hideStaticSettings" : true,
+  "activateAllWindows" : true,
+  "windowTriggerKeys" : [
+    5
+  ],
+  "windowSwitchOSDDelay" : 0,
+  "windowKeyAssignments" : [
+
+  ],
+  "minimizeKey" : "minus",
+  "ignoredApps" : [
+    "com.apple.AppStore",
+    "com.apple.MobileSMS",
+    "com.apple.iCal",
+    "io.raindrop.macapp",
+    "com.apple.shortcuts"
+  ],
+  "fnWindowSwitching" : false,
+  "keyTapThreshold" : 0.14,
+  "appSwitcherFeatures" : 38,
+  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "appKeyAssignments" : [
+
+  ],
+  "windowOnlySwitchOSDDelay" : 0,
+  "showAppSwitcher" : true,
   "ignoredKeys" : [
 
   ],
   "whenAlreadyFocusedAction" : 2,
-  "enableCycleHotkey" : true,
-  "appSwitcherUseNumbersForWindows" : false,
-  "switcherScreenPlacement" : 8,
   "windowSwitcherFeatures" : 57,
-  "enableStaticCycle" : false,
+  "notificationsPermissionsGranted" : false,
+  "alwaysHideOthers" : false,
   "triggerKeys" : [
     4
   ],
-  "ignoredApps" : [
-    "com.apple.iCal",
-    "com.apple.shortcuts",
-    "com.apple.MobileSMS"
-  ],
-  "minimizeKey" : "minus",
-  "windowTriggerKeys" : [
-    5
-  ],
-  "specialKey" : "equal",
-  "showWindowSwitcher" : true,
-  "windowSwitcherAppearance" : "compact",
-  "windowSwitchOSDDelay" : 0,
-  "keyTapThreshold" : 0.14,
-  "activateAllWindows" : true,
-  "appSwitcherFeatures" : 38,
-  "showAppSwitcher" : true,
-  "notificationsPermissionsGranted" : false,
-  "windowOnlySwitchOSDDelay" : 0,
-  "appKeyAssignments" : [
-
-  ],
-  "hideStaticSettings" : true,
-  "enableAssignHotkey" : true,
+  "windowSwitcherDimFocused" : false,
+  "switcherScreenPlacement" : 8,
+  "enableStaticCycle" : false,
+  "appSortReverse" : false,
+  "focusOnKeyUp" : false,
+  "zeroAsLastFocusedWindow" : false,
+  "appSort" : "name",
   "hideOnlyFocusedAppOnMinus" : false,
-  "alwaysHideOthers" : false,
-  "allowWindowSwitcher" : true,
-  "windowKeyAssignments" : [
-
-  ]
+  "enableCycleHotkey" : true
 }
