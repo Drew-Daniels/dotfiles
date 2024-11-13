@@ -763,7 +763,8 @@ require("conform").setup({
     vue = { "project_eslint", "fallback_eslint" },
     css = { "prettier" },
     less = { "prettier" },
-    scss = { "prettier" },
+    -- TODO: Figure out how to disable prettier from running in folders other than emr-v3
+    -- scss = { "prettier" },
     zsh = { "shfmt" },
     markdown = { "prettier" },
     norg = { "typos-lsp" },
