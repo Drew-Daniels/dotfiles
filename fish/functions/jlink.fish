@@ -46,9 +46,13 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
                 echo $jira_issue_md_link
             end
         else
-            echo -n $jira_issue_link | pbcopy
-            if test -z "$_flag_q"
-                echo "Copied Jira Issue URL to Clipboard: $jira_issue_link"
+            if set -q _flag_c
+                echo -n $jira_issue_link | pbcopy
+                if test -z "$_flag_q"
+                    echo "Copied Jira Issue URL to Clipboard: $jira_issue_link"
+                end
+            else
+                echo $jira_issue_link
             end
         end
     end
