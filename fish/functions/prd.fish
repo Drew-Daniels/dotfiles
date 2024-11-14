@@ -20,6 +20,12 @@ function prd -d "Generates a Description for a Given PR"
     # Refactor this and bname so this functionality is stripped into a separate function
     set -l jira_ticket_id $argv[1]
 
+    if not string match -qi "*emr*" $jira_ticket_id
+        set jira_ticket_id EMR-$jira_ticket_id
+    else
+        set jira_ticket_id (echo $jira_ticket_id | tr a-z A-Z)
+    end
+
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
@@ -40,21 +46,21 @@ function prd -d "Generates a Description for a Given PR"
     # TODO: Store shared string in another variable
     if test $issue_type = Story
         if set -q _flag_c
-            echo -n "feat($issue_scope): [EMR-$jira_ticket_id] $issue_summary" | pbcopy
+            echo -n "feat($issue_scope): [$jira_ticket_id] $issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: feat($issue_scope): [EMR-$jira_ticket_id] $issue_summary"
+                echo "Copied GitHub PR Description to Clipboard: feat($issue_scope): [$jira_ticket_id] $issue_summary"
             end
         else
-            echo -n "feat($issue_scope): [EMR-$jira_ticket_id] $issue_summary"
+            echo -n "feat($issue_scope): [$jira_ticket_id] $issue_summary"
         end
     else
         if set -q _flag_c
-            echo -n "fix($issue_scope): [EMR-$jira_ticket_id] $issue_summary" | pbcopy
+            echo -n "fix($issue_scope): [$jira_ticket_id] $issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: fix($issue_scope): [EMR-$jira_ticket_id] $issue_summary"
+                echo "Copied GitHub PR Description to Clipboard: fix($issue_scope): [$jira_ticket_id] $issue_summary"
             end
         else
-            echo -n "fix($issue_scope): [EMR-$jira_ticket_id] $issue_summary"
+            echo -n "fix($issue_scope): [$jira_ticket_id] $issue_summary"
         end
     end
 end
