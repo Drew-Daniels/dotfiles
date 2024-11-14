@@ -29,9 +29,18 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
     set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary')
+    set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
-    set -l issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]')
-    set -l issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z)
+    # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
+    # if 2 colons, then there are multiple scopes
+    # TODO: Remove parenthesis from branch name
+    if test $num_colons = 2
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | tr -d '[:space:]' | tr ':' '-' | tr a-z A-Z)
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z)
+    else
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]' | tr a-z A-Z)
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z)
+    end
 
     # TODO: This functionality of either copying or echoing to stdout is used in a bunch of these utility functions, can probably make this into a reusable function
     if test $issue_type = Story
