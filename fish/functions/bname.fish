@@ -12,9 +12,9 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     echo $issue_type
 
     # get issue summary
-    set -l issue_summary (echo $raw_issue_data | jq -r '.fields.summary')
-    echo $issue_summary
-    set -l issue_scope (echo $issue_summary | cut -d ':' -f1 | tr -d '[:space:]')
+    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary')
+    echo $issue_scope_and_summary
+    set -l issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]')
     echo $issue_scope
 
     if test $issue_type = Story
