@@ -1,12 +1,12 @@
 function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
-    # TODO: Add quiet option
-    set -l options c/clipboard h/help
+    set -l options q/quiet c/clipboard h/help
     argparse $options -- $argv
 
     if set --query _flag_help
         printf "Usage: pr [OPTIONS]\n\n"
         printf "Options:\n"
         printf "  -c/--clipboard  Copy result to clipboard\n"
+        printf "  -q/--quiet      Don't print anything\n"
         printf "  -h/--help       Prints help and exits\n"
     end
 
@@ -22,7 +22,9 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
 
     if set -q _flag_c
         echo -n $message | pbcopy
-        echo "Copied Slack Message to Clipboard: $message"
+        if test -z "$_flag_q"
+            echo "Copied Slack Message to Clipboard: $message"
+        end
     else
         echo $message
     end
