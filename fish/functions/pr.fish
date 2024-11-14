@@ -1,6 +1,15 @@
 function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
     # TODO: Add quiet option
-    # TODO: Add option to return result instead of copying to the clipboard
+    set -l options c/clipboard h/help
+    argparse $options -- $argv
+
+    if set --query _flag_help
+        printf "Usage: pr [OPTIONS]\n\n"
+        printf "Options:\n"
+        printf "  -c/--clipboard  Copy result to clipboard\n"
+        printf "  -h/--help       Prints help and exits\n"
+    end
+
     set -l jira_issue_md_link (jlink -m)
     set -l jira_issue_id (jlink -i)
 
@@ -11,6 +20,10 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
 
     set -l message "PR for $jira_issue_md_link: $gh_md_link"
 
-    echo -n $message | pbcopy
-    echo "Copied Slack Message to Clipboard: $message"
+    if set -q _flag_c
+        echo -n $message | pbcopy
+        echo "Copied Slack Message to Clipboard: $message"
+    else
+        echo $message
+    end
 end
