@@ -164,7 +164,6 @@ brew srt
 brew starship
 brew stylua
 brew svt-av1
-brew tcl-tk
 brew tesseract
 brew theora
 brew tmux
@@ -200,7 +199,6 @@ brew zstd
 
 tap homebrew/cask
 cask alex313031-thorium
-cask alt-tab
 cask dbeaver-community
 cask docker
 cask drawio
