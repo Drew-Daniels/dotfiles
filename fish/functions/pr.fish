@@ -1,11 +1,8 @@
 function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
-    begin
-        jlink -m
-        set -l jira_issue_md_link (pbpaste)
-
-        jlink -i
-        set -l jira_issue_id (pbpaste)
-    end &>/dev/null
+    # TODO: Add quiet option
+    # TODO: Add option to return result instead of copying to the clipboard
+    set -l jira_issue_md_link (jlink -m)
+    set -l jira_issue_id (jlink -i)
 
     set -l gh_link (gh search prs $jira_issue_id --assignee="@me" --json=title,url --match=title --limit=1 | jq -r '.[0].url')
 
