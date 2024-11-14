@@ -24,7 +24,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     end
 
     # refactor shared functionality with prd into separate function
-    # TODO: Only add "EMR-" prefix if not passed in argument to bname
     # TODO: Cut off the summary after the first n characters - would be nice to ensure that only whole words are output
     set -l jira_ticket_id $argv[1]
 
@@ -65,10 +64,10 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         if set -q _flag_c
             echo -n "fix/$jira_ticket_id/$issue_scope-$issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: fix/EMR-$jira_ticket_id/$issue_scope-$issue_summary"
+                echo "Copied Git Branch Name to Clipboard: fix/$jira_ticket_id/$issue_scope-$issue_summary"
             end
         else
-            echo -n "fix/EMR-$jira_ticket_id/$issue_scope-$issue_summary"
+            echo -n "fix/$jira_ticket_id/$issue_scope-$issue_summary"
         end
     end
 
