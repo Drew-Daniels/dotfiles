@@ -1,5 +1,4 @@
 function prd -d "Generates a Description for a Given PR"
-    # TODO: Figure out why 18858 ticket not working with this? its because of multiple scopes
     set -l options h/help q/quiet c/clipboard
 
     argparse $options -- $argv
@@ -13,7 +12,6 @@ function prd -d "Generates a Description for a Given PR"
         return 0
     end
 
-    # validate
     if test -z "$_flag_c"; and set -q _flag_q
         echo "Cannot use quiet mode without copying to clipboard"
         return 1
@@ -27,7 +25,6 @@ function prd -d "Generates a Description for a Given PR"
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
     set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary')
 
-    # count the number of colons in the string
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too

@@ -20,7 +20,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     end
 
     # refactor shared functionality with prd into separate function
-    # TODO: Add handling to join scopes together when multiple are listed in the ticket summary (E.g, 'eRx: DrFirst: Some Summary')
     # TODO: Only add "EMR-" prefix if not passed in argument to bname
     # TODO: Cut off the summary after the first n characters - would be nice to ensure that only whole words are output
     set -l jira_ticket_id $argv[1]
@@ -33,7 +32,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
     # if 2 colons, then there are multiple scopes
-    # TODO: Remove parenthesis from branch name
     if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | tr -d '[:space:]' | tr ':' '-' | tr a-z A-Z)
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
@@ -43,6 +41,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     end
 
     # TODO: This functionality of either copying or echoing to stdout is used in a bunch of these utility functions, can probably make this into a reusable function
+    # TODO: Store shared string in a variable
     if test $issue_type = Story
         if set -q _flag_c
             echo -n "feat/EMR-$jira_ticket_id/$issue_scope-$issue_summary" | pbcopy
