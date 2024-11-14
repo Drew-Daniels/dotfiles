@@ -1,6 +1,6 @@
 function jlink -d "Copies Jira Issue Link for Current Git Branch"
     # TODO: Add option to return result instead of copying to the clipboard
-    set -l options i/id m/markdown h/help q/quiet
+    set -l options i/id m/markdown h/help q/quiet c/clipboard
 
     argparse $options -- $argv
 
@@ -11,6 +11,7 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
         printf "  -i/--id         Get Issue ID\n"
         printf "  -m/--markdown   Get Markdown Link\n"
         printf "  -q/--quiet      Don't print anything\n"
+        printf "  -c/--clipboard  Copy result to clipboard\n"
         return 0
     end
 
@@ -24,9 +25,13 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
     set -l jira_issue_id (git branch --show-current | cut -d / -f2- | cut -d / -f1 | tr -d '[:space:]' | tr a-z A-Z)
 
     if set -q _flag_i
-        echo -n $jira_issue_id | pbcopy
-        if test -z "$_flag_q"
-            echo "Copied Jira Issue ID to Clipboard: $jira_issue_id"
+        if set -q _flag_c
+            echo -n $jira_issue_id | pbcopy
+            if test -z "$_flag_q"
+                echo "Copied Jira Issue ID to Clipboard: $jira_issue_id"
+            end
+        else
+            echo $jira_issue_id
         end
     else
         set -l jira_issue_link (jira open $jira_issue_id -n | tr -d '\n')
