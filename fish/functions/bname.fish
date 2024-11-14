@@ -30,8 +30,9 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     if not string match -qi "*emr*" $jira_ticket_id
         set jira_ticket_id EMR-$jira_ticket_id
+    else
+        set jira_ticket_id (echo $jira_ticket_id | tr a-z A-Z)
     end
-    echo $jira_ticket_id
 
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
