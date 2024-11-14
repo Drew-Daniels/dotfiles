@@ -5,10 +5,6 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
 
     argparse $options -- $argv
 
-    if set -q _flag_h
-
-    end
-
     if set --query _flag_help
         printf "Usage: jlink [OPTIONS]\n\n"
         printf "Options:\n"
