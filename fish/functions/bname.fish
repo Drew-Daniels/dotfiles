@@ -36,10 +36,10 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     # TODO: Remove parenthesis from branch name
     if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | tr -d '[:space:]' | tr ':' '-' | tr a-z A-Z)
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z)
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
     else
         set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]' | tr a-z A-Z)
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z)
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
     end
 
     # TODO: This functionality of either copying or echoing to stdout is used in a bunch of these utility functions, can probably make this into a reusable function
