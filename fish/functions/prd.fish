@@ -28,8 +28,18 @@ function prd -d "Generates a Description for a Given PR"
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
     set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary')
 
-    set -l issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]')
-    set -l issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //')
+    # count the number of colons in the string
+    set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
+
+    # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
+    # if 2 colons, then there are multiple scopes
+    if test $num_colons = 2
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | tr -d '[:space:]')
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //')
+    else
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]')
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //')
+    end
 
     # TODO: Store shared string in another variable
     if test $issue_type = Story
