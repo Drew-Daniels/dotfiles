@@ -1,5 +1,4 @@
 function jlink -d "Copies Jira Issue Link for Current Git Branch"
-    # TODO: Make i and m options mutually exclusive
     # TODO: Add option to return result instead of copying to the clipboard
     set -l options i/id m/markdown h/help q/quiet
 
@@ -13,6 +12,12 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
         printf "  -m/--markdown   Get Markdown Link\n"
         printf "  -q/--quiet      Don't print anything\n"
         return 0
+    end
+
+    # validate
+    if set -q _flag_i _flag_m
+        echo "Cannot specify both -i and -m"
+        return 1
     end
 
     # parse text after first forward slash and before second forward slash and trim whitespace including newlines and put this into a local variable
