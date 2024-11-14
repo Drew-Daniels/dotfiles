@@ -1,5 +1,8 @@
 function bname -d "Generates a Git branch name using a Jira Ticket ID"
     # TODO: Only add "EMR-" prefix if not passed in argument to bname
+    # TODO: Get the scope from whatever comes before the first ":"
+    # TODO: Replace spaces in summary with dashes
+    # TODO: Cut off the summary after the first n characters
     # get the jira issue id to fetch data against
     set -l jira_ticket_id $argv[1]
     # get issue data
@@ -11,11 +14,13 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     # get issue summary
     set -l issue_summary (echo $raw_issue_data | jq -r '.fields.summary')
     echo $issue_summary
+    set -l issue_scope (echo $issue_summary | cut -d ':' -f1 | tr -d '[:space:]')
+    echo $issue_scope
 
     if test $issue_type = Story
-        echo -n "feat/EMR-$jira_ticket_id/$issue_summary"
+        echo -n "feat/EMR-$jira_ticket_id/$issue_scope-"
     else
-        echo -n "fix/EMR-$jira_ticket_id/$issue_summary"
+        echo -n "fix/EMR-$jira_ticket_id/$issue_scope-"
     end
 
 end
