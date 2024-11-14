@@ -13,6 +13,12 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         return 0
     end
 
+    # validate
+    if test -z "$_flag_c"; and set -q _flag_q
+        echo "Cannot use quiet mode without copying to clipboard"
+        return 1
+    end
+
     # refactor shared functionality with prd into separate function
     # TODO: Add handling to join scopes together when multiple are listed in the ticket summary (E.g, 'eRx: DrFirst: Some Summary')
     # TODO: Only add "EMR-" prefix if not passed in argument to bname
@@ -27,6 +33,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr -d '[:space:]')
     set -l issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z)
 
+    # TODO: This functionality of either copying or echoing to stdout is used in a bunch of these utility functions, can probably make this into a reusable function
     if test $issue_type = Story
         if set -q _flag_c
             echo -n "feat/EMR-$jira_ticket_id/$issue_scope-$issue_summary" | pbcopy
