@@ -1,6 +1,7 @@
 function jlink -d "Copies Jira Issue Link for Current Git Branch"
     # TODO: Make i and m options mutually exclusive
     # TODO: Add option to return result instead of copying to the clipboard
+    # TODO: Add option to suppress output logging
     set -l options i/id m/markdown h/help
 
     argparse $options -- $argv
