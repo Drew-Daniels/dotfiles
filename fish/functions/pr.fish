@@ -1,4 +1,5 @@
 function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
+    # TODO: Add error handling in the event where there is no matching PR for a ticket
     set -l options q/quiet c/clipboard h/help
     argparse $options -- $argv
 
