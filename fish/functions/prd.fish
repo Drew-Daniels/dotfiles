@@ -20,7 +20,6 @@ function prd -d "Generates a Description for a Given PR"
     end
 
     # Refactor this and bname so this functionality is stripped into a separate function
-    # TODO: Add options quiet, clipboard, help
     set -l jira_ticket_id $argv[1]
 
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
