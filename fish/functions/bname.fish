@@ -1,4 +1,5 @@
 function bname -d "Generates a Git branch name using a Jira Ticket ID"
+    # TODO: Add handling to join scopes together when multiple are listed in the ticket summary (E.g, 'eRx: DrFirst: Some Summary')
     # TODO: Only add "EMR-" prefix if not passed in argument to bname
     # TODO: Cut off the summary after the first n characters - would be nice to ensure that only whole words are output
     set -l jira_ticket_id $argv[1]
