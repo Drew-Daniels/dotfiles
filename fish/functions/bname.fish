@@ -1,4 +1,6 @@
 function bname -d "Generates a Git branch name using a Jira Ticket ID"
+    # TODO: Get ticket id from branch name if no argument provided
+    # TODO: Gracefully exit if no argument provided, and no jira ticket found using git branch name
     # TODO: Add error handling
     # TODO: Enable getting jira id from all forms:
     # - EMR-12345 (already covered)
@@ -36,7 +38,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
-    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary')
+    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed "s/’//g")
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
