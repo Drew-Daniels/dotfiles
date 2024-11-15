@@ -49,11 +49,16 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
     # if 2 colons, then there are multiple scopes
-    if test $num_colons = 2
+    if test $num_colons = 0
+        set issue_scope ""
+        set issue_summary (echo $issue_scope_and_summary | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
+    else if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1,2 | tr '[:space:]' '-' | tr ':' '-' | sed 's/--/-/g' | tr a-z A-Z | sed 's/-$//' | sed 's/(//g' | sed 's/)//')
+        set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
     else
         set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1 | tr '[:space:]' '-' | tr ':' '-' | sed 's/--/-/g' | tr a-z A-Z | sed 's/-$//' | sed 's/(//g' | sed 's/)//')
+        set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
     end
 
@@ -61,21 +66,21 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     # TODO: Store shared string in a variable
     if test $issue_type = Story
         if set -q _flag_c
-            echo -n "feat/$jira_ticket_id/$issue_scope-$issue_summary" | pbcopy
+            echo -n "feat/$jira_ticket_id/$issue_scope$issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: feat/$jira_ticket_id/$issue_scope-$issue_summary"
+                echo "Copied Git Branch Name to Clipboard: feat/$jira_ticket_id/$issue_scope$issue_summary"
             end
         else
-            echo -n "feat/$jira_ticket_id/$issue_scope-$issue_summary"
+            echo -n "feat/$jira_ticket_id/$issue_scope$issue_summary"
         end
     else
         if set -q _flag_c
-            echo -n "fix/$jira_ticket_id/$issue_scope-$issue_summary" | pbcopy
+            echo -n "fix/$jira_ticket_id/$issue_scope$issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: fix/$jira_ticket_id/$issue_scope-$issue_summary"
+                echo "Copied Git Branch Name to Clipboard: fix/$jira_ticket_id/$issue_scope$issue_summary"
             end
         else
-            echo -n "fix/$jira_ticket_id/$issue_scope-$issue_summary"
+            echo -n "fix/$jira_ticket_id/$issue_scope$issue_summary"
         end
     end
 
