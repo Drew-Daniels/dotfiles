@@ -1351,9 +1351,22 @@ local function yank_buffer_file_path()
   vim.notify("Copied Buffer File Path to Clipboard: " .. vim.fn.getreg("+"), vim.log.levels.INFO)
 end
 
-vim.keymap.set("n", "<leader>Y", yank_buffer_file_path, {
+-- TODO: Dedupe shared steps
+local function yank_buffer_file_name()
+  local full_path = vim.api.nvim_buf_get_name(0)
+  local file_name = vim.fn.fnamemodify(full_path, ":t")
+  vim.fn.setreg("+", file_name)
+  vim.notify("Copied Buffer File Name to Clipboard: " .. vim.fn.getreg("+"), vim.log.levels.INFO)
+end
+
+vim.keymap.set("n", "<leader>Yp", yank_buffer_file_path, {
   silent = true,
   desc = "Yank Buffer File Path to Clipboard",
+})
+
+vim.keymap.set("n", "<leader>Yn", yank_buffer_file_name, {
+  silent = true,
+  desc = "Yank Buffer File Name to Clipboard",
 })
 
 vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
