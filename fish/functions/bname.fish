@@ -1,5 +1,4 @@
 function bname -d "Generates a Git branch name using a Jira Ticket ID"
-    # TODO: Get ticket id from branch name if no argument provided
     # TODO: Gracefully exit if no argument provided, and no jira ticket found using git branch name
     # TODO: Add error handling
     # TODO: Enable getting jira id from all forms:
@@ -27,7 +26,11 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     # refactor shared functionality with prd into separate function
     # TODO: Cut off the summary after the first n characters - would be nice to ensure that only whole words are output
-    set -l jira_ticket_id $argv[1]
+    if test -z "$argv"
+        set jira_ticket_id (jlink -i)
+    else
+        set jira_ticket_id $argv[1]
+    end
 
     if not string match -qi "*emr*" $jira_ticket_id
         set jira_ticket_id EMR-$jira_ticket_id
