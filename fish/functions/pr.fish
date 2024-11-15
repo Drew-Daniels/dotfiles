@@ -1,5 +1,4 @@
 function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
-    # TODO: Allow users to pass in arguments for Jira issue id/key instead of always needing to take it from current branch name
     set -l options q/quiet c/clipboard h/help
     argparse $options -- $argv
 
@@ -11,13 +10,20 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
         printf "  -h/--help       Prints help and exits\n"
     end
 
-    set -l jira_issue_md_link (jlink -m)
-    set -l jira_issue_id (jlink -i)
+    if test -z "$argv"
+        set jira_issue_id (jlink -i)
+        set jira_issue_md_link (jlink -m)
+    else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
+        # TODO: Only add EMR prefix if user did not include this already
+        set jira_issue_id $argv
+        set jira_issue_url (jira open $jira_issue_id -n | tr -d '\n')
+        set jira_issue_md_link "[EMR-$jira_issue_id]($jira_issue_url)"
+    end
 
     set -l gh_number_and_link (gh search prs $jira_issue_id --assignee="@me" --json=number,title,url --match=title --limit=1 | jq -r '.[0] | [.number, .url] | join(" ")')
 
     if string match -q " " "$gh_number_and_link"
-        echo "No PR found for Jira Issue: $jira_issue_id"
+        echo "No PR found for Jira Issue $jira_issue_id under your name"
         return 1
     end
 
