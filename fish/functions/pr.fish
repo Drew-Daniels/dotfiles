@@ -14,10 +14,15 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
         set jira_issue_id (jlink -i)
         set jira_issue_md_link (jlink -m)
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
-        # TODO: Only add EMR prefix if user did not include this already
         set jira_issue_id $argv
         set jira_issue_url (jira open $jira_issue_id -n | tr -d '\n')
-        set jira_issue_md_link "[EMR-$jira_issue_id]($jira_issue_url)"
+        # TODO: See if there's a way to dedupe this functionality since jlink already handles some of this
+        if not string match -qi "*emr*" $jira_issue_id
+            set jira_issue_id EMR-$jira_issue_id
+        else
+            set jira_issue_id (echo $jira_issue_id | tr a-z A-Z)
+        end
+        set jira_issue_md_link "[$jira_issue_id]($jira_issue_url)"
     end
 
     set -l gh_number_and_link (gh search prs $jira_issue_id --assignee="@me" --json=number,title,url --match=title --limit=1 | jq -r '.[0] | [.number, .url] | join(" ")')
