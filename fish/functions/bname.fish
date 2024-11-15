@@ -1,11 +1,5 @@
 function bname -d "Generates a Git branch name using a Jira Ticket ID"
-    # TODO: Gracefully exit if no argument provided, and no jira ticket found using git branch name
     # TODO: Add error handling
-    # TODO: Enable getting jira id from all forms:
-    # - EMR-12345 (already covered)
-    # - 12345 (already covered)
-    # - https://kipusystems.atlassian.net/browse/EMR-17631
-    # - https://kipusystems.atlassian.net/browse/EMR-17631?atlOrigin=eyJpIjoiNDg0YzVkMDE0ZTA3NDMzYmEyNmQyMDY3ZjBhNGQ5ZDMiLCJwIjoiaiJ9
     set -l options h/help q/quiet c/clipboard
 
     argparse $options -- $argv
@@ -30,6 +24,11 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         set jira_ticket_id (jlink -i)
     else
         set jira_ticket_id $argv[1]
+    end
+
+    if test -z "$jira_ticket_id"
+        echo "A Jira Ticket Number/Key must be provided as an argument or referenced in the current branch name"
+        return 1
     end
 
     if not string match -qi "*emr*" $jira_ticket_id
