@@ -1,5 +1,4 @@
 function bname -d "Generates a Git branch name using a Jira Ticket ID"
-    # TODO: Add error handling
     set -l options h/help q/quiet c/clipboard
 
     argparse $options -- $argv
@@ -49,7 +48,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
     # if 2 colons, then there are multiple scopes
-    # TODO: Add handling for when the scope(s) contain spaces, need to replace with dashes
     if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1,2 | tr '[:space:]' '-' | sed 's/--/-/' | tr ':' '-' | tr a-z A-Z | sed 's/-$//')
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//')
