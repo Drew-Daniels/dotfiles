@@ -22,8 +22,12 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     # TODO: Cut off the summary after the first n characters - would be nice to ensure that only whole words are output
     if test -z "$argv"
         set jira_ticket_id (jlink -i)
+    else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
+        set jira_ticket_id $argv
     else
-        set jira_ticket_id $argv[1]
+        echo "A Jira Ticket Number/Key must be provided as an argument or referenced in the current branch name"
+        echo "Example: bname 12345"
+        return 1
     end
 
     if test -z "$jira_ticket_id"
