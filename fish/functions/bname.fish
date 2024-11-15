@@ -3,6 +3,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
 
     argparse $options -- $argv
 
+    # TODO: Update help message to include optional argument for jira ticket id/key
     if set --query _flag_help
         printf "Usage: bname [OPTIONS]\n\n"
         printf "Options:\n"
