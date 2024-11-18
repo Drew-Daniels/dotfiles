@@ -37,10 +37,10 @@ function prd -d "Generates a Description for a Given PR"
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
     # if 2 colons, then there are multiple scopes
     if test $num_colons = 2
-        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | tr '[:space:]' '-' | sed 's/:-/:/' | sed 's/-$//' | tr a-z A-Z)
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | sed 's/:-/:/' | sed 's/-$//')
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //')
     else
-        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | tr '[:space:]' '-' | sed 's/-$//' | tr a-z A-Z)
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/-$//')
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //')
     end
 
