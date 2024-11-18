@@ -38,10 +38,10 @@ function prd -d "Generates a Description for a Given PR"
     # if 2 colons, then there are multiple scopes
     if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | sed 's/:-/:/' | sed 's/-$//')
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //')
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | sed 's/ $//')
     else
         set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/-$//')
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //')
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | sed 's/ $//')
     end
 
     # TODO: Store shared string in another variable
