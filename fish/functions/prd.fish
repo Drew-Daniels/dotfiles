@@ -19,7 +19,15 @@ function prd -d "Generates a Description for a Given PR"
     end
 
     # Refactor this and bname so this functionality is stripped into a separate function
-    set -l jira_ticket_id $argv[1]
+    if test -z "$argv"
+        set jira_ticket_id (jlink -i)
+    else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
+        set jira_ticket_id $argv
+    else
+        echo "A Jira Ticket Number/Key must be provided as an argument or referenced in the current branch name"
+        echo "Example: prd 12345"
+        return 1
+    end
 
     if not string match -qi "*emr*" $jira_ticket_id
         set jira_ticket_id EMR-$jira_ticket_id
