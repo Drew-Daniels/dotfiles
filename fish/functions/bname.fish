@@ -17,7 +17,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         return 1
     end
 
-    # refactor shared functionality with prd into separate function
     if test -z "$argv"
         set jira_ticket_id (jlink -i)
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
@@ -52,7 +51,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//' | sed 's/(//' | sed 's/)//' | sed 's/\.//')
     else
-        # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
         echo "Cannot parse Jira Issue with more than 2 scopes"
     end
 

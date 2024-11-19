@@ -17,7 +17,6 @@ function prd -d "Generates a Description for a Given PR"
         return 1
     end
 
-    # Refactor this and bname so this functionality is stripped into a separate function
     if test -z "$argv"
         set jira_ticket_id (jlink -i)
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
@@ -53,11 +52,9 @@ function prd -d "Generates a Description for a Given PR"
         set issue_scope "($issue_scope)"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | sed 's/ $//')
     else
-        # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
         echo "Cannot parse Jira Issue with more than 2 scopes"
     end
 
-    # TODO: Store shared string in another variable
     if test $issue_type = Story
         if set -q _flag_c
             echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary" | pbcopy

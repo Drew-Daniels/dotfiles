@@ -17,7 +17,6 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
         set jira_issue_id $argv
         set jira_issue_url (jira open $jira_issue_id -n | tr -d '\n')
-        # TODO: See if there's a way to dedupe this functionality since jlink already handles some of this
         if not string match -qi "*emr*" $jira_issue_id
             set jira_issue_id EMR-$jira_issue_id
         else
