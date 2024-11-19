@@ -59,7 +59,7 @@ function prd -d "Generates a Description for a Given PR"
         if set -q _flag_c
             echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: feat($issue_scope): [$jira_ticket_id] $issue_summary"
+                echo "Copied GitHub PR Description to Clipboard: feat$issue_scope: [$jira_ticket_id] $issue_summary"
             end
         else
             echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary"
