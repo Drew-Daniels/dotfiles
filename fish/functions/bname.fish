@@ -43,11 +43,10 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
-    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed 's/"//g' | sed "s/’//g" | sed "s/'//g" | sed "s/\+/and/" | head -c 110)
+    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed 's/"//g' | sed "s/’//g" | sed "s/'//g" | sed "s/\+/and/" | sed 's/,//g' | head -c 110)
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
-    # if 2 colons, then there are multiple scopes
     if test $num_colons = 0
         set issue_scope ""
         set issue_summary (echo $issue_scope_and_summary | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//' | sed 's/\.//')
