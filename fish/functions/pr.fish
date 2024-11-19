@@ -11,7 +11,6 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
         return 0
     end
 
-    # TODO: Add validation
     if test -z "$argv"
         set jira_issue_id (jlink -i)
         set jira_issue_md_link (jlink -m)

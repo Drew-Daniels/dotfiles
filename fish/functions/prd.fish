@@ -24,8 +24,8 @@ function prd -d "Generates a Description for a Given PR"
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
         set jira_ticket_id $argv
     else
-        echo "A Jira Ticket Number/Key must be provided as an argument or referenced in the current branch name"
-        echo "Example: prd 12345"
+        printf "A Jira Ticket ID/Key must be provided as an argument or referenced in the current branch name\n\n"
+        printf "Examples: \n prd 12345 \n prd EMR-12345"
         return 1
     end
 
