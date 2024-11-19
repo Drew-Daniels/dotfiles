@@ -41,34 +41,40 @@ function prd -d "Generates a Description for a Given PR"
 
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
-    # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
-    # if 2 colons, then there are multiple scopes
-    if test $num_colons = 2
+    if test $num_colons = 0
+        set issue_scope ""
+        set issue_summary (echo $issue_scope_and_summary | sed 's/ $//')
+    else if test $num_colons = 1
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/-$//')
+        set issue_scope "($issue_scope)"
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | sed 's/ $//')
+    else if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | sed 's/:-/:/' | sed 's/-$//')
+        set issue_scope "($issue_scope)"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | sed 's/ $//')
     else
-        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/-$//')
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | sed 's/ $//')
+        # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
+        echo "Cannot parse Jira Issue with more than 2 scopes"
     end
 
     # TODO: Store shared string in another variable
     if test $issue_type = Story
         if set -q _flag_c
-            echo -n "feat($issue_scope): [$jira_ticket_id] $issue_summary" | pbcopy
+            echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary" | pbcopy
             if test -z "$_flag_q"
                 echo "Copied GitHub PR Description to Clipboard: feat($issue_scope): [$jira_ticket_id] $issue_summary"
             end
         else
-            echo -n "feat($issue_scope): [$jira_ticket_id] $issue_summary"
+            echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary"
         end
     else
         if set -q _flag_c
-            echo -n "fix($issue_scope): [$jira_ticket_id] $issue_summary" | pbcopy
+            echo -n "fix$issue_scope: [$jira_ticket_id] $issue_summary" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: fix($issue_scope): [$jira_ticket_id] $issue_summary"
+                echo "Copied GitHub PR Description to Clipboard: fix$issue_scope: [$jira_ticket_id] $issue_summary"
             end
         else
-            echo -n "fix($issue_scope): [$jira_ticket_id] $issue_summary"
+            echo -n "fix$issue_scope: [$jira_ticket_id] $issue_summary"
         end
     end
 end
