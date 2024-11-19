@@ -1142,22 +1142,24 @@ vim.api.nvim_create_user_command("SU", function(opts)
 end, { range = false, nargs = 1 })
 
 -- TODO: Flesh out this command
+-- Retros are every odd week
+-- Fix the logic to handle when current week is even
 vim.api.nvim_create_user_command("Retro", function(opts)
-  local date = os.date("%Y-%m-%d")
-  if opts.fargs[1] == "yesterday" then
-    date = os.date("%Y-%m-%d", os.time() - 86400)
-  elseif opts.fargs[1] == "today" then
-    date = os.date("%Y-%m-%d")
-  elseif opts.fargs[1] == "tomorrow" and os.date("%w") == "5" then
-    -- If today is Friday, then next business day is Monday
-    date = os.date("%Y-%m-%d", os.time() + 86400 * 3)
-  elseif opts.fargs[1] == "tomorrow" then
-    date = os.date("%Y-%m-%d", os.time() + 86400)
+  local date = os.date("*t")
+  local current_week_number = math.floor((date.yday - date.wday + 10) / 7)
+  local dest_week_number
+
+  if opts.fargs[1] == "psprint" then
+    dest_week_number = current_week_number - 2
+  elseif opts.fargs[1] == "csprint" then
+    dest_week_number = current_week_number
+  elseif opts.fargs[1] == "nsprint" and os.date("%w") == "5" then
+    dest_week_number = current_week_number + 2
   else
-    print("Invalid date")
+    print("Invalid argument (must be 'psprint', 'csprint', or 'nsprint')")
     return
   end
-  vim.cmd("e ~/projects/work_notes/retro/2024/" .. date .. ".norg")
+  vim.cmd("e ~/projects/work_notes/retro/2024/" .. dest_week_number .. ".norg")
 end, { range = false, nargs = 1 })
 
 vim.api.nvim_create_user_command("Ticket", function(opts)
