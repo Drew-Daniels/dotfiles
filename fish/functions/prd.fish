@@ -56,22 +56,24 @@ function prd -d "Generates a Description for a Given PR"
     end
 
     if test $issue_type = Story
+        set -l desc "feat$issue_scope: [$jira_ticket_id] $issue_summary"
         if set -q _flag_c
-            echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary" | pbcopy
+            echo -n "$desc" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: feat$issue_scope: [$jira_ticket_id] $issue_summary"
+                echo "Copied GitHub PR Description to Clipboard: $desc"
             end
         else
-            echo -n "feat$issue_scope: [$jira_ticket_id] $issue_summary"
+            echo -n "$desc"
         end
     else
+        set -l desc "fix$issue_scope: [$jira_ticket_id] $issue_summary"
         if set -q _flag_c
-            echo -n "fix$issue_scope: [$jira_ticket_id] $issue_summary" | pbcopy
+            echo -n "$desc" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: fix$issue_scope: [$jira_ticket_id] $issue_summary"
+                echo "Copied GitHub PR Description to Clipboard: $desc"
             end
         else
-            echo -n "fix$issue_scope: [$jira_ticket_id] $issue_summary"
+            echo -n "$desc"
         end
     end
 end
