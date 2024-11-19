@@ -2,7 +2,7 @@ name: work_notes
 root: <%= ENV["PROJECTS_DIR"] %>/work_notes
 
 windows:
-  - work_notes:
+  - 1)work_notes:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - work_notes:
@@ -10,3 +10,11 @@ windows:
           - fish
           - cls
           - nvim -c "SU today"
+  - 2)retro:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - retro:
+          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
+          - fish
+          - cls
+          - nvim -c "Retro csprint"

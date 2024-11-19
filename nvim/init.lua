@@ -1143,18 +1143,25 @@ end, { range = false, nargs = 1 })
 
 -- TODO: Flesh out this command
 -- Retros are every odd week
--- Fix the logic to handle when current week is even
+-- TODO: Use csprint as default argument
 vim.api.nvim_create_user_command("Retro", function(opts)
   local date = os.date("*t")
   local current_week_number = math.floor((date.yday - date.wday + 10) / 7)
+  local is_odd_week_number = current_week_number % 2 == 1
   local dest_week_number
 
   if opts.fargs[1] == "psprint" then
-    dest_week_number = current_week_number - 2
+    if is_odd_week_number then
+      dest_week_number = current_week_number - 2
+    else
+      dest_week_number = current_week_number - 1
+    end
   elseif opts.fargs[1] == "csprint" then
-    dest_week_number = current_week_number
-  elseif opts.fargs[1] == "nsprint" and os.date("%w") == "5" then
-    dest_week_number = current_week_number + 2
+    if is_odd_week_number then
+      dest_week_number = current_week_number
+    else
+      dest_week_number = current_week_number + 1
+    end
   else
     print("Invalid argument (must be 'psprint', 'csprint', or 'nsprint')")
     return
