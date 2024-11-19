@@ -3,13 +3,15 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
     argparse $options -- $argv
 
     if set --query _flag_help
-        printf "Usage: pr [OPTIONS]\n\n"
+        printf "Usage: pr <JIRA_TICKET_ID|JIRA_TICKET_KEY> [OPTIONS]\n\n"
         printf "Options:\n"
         printf "  -c/--clipboard  Copy result to clipboard\n"
         printf "  -q/--quiet      Don't print anything\n"
         printf "  -h/--help       Prints help and exits\n"
+        return 0
     end
 
+    # TODO: Add validation
     if test -z "$argv"
         set jira_issue_id (jlink -i)
         set jira_issue_md_link (jlink -m)
