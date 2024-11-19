@@ -60,7 +60,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         if set -q _flag_c
             echo -n "$branch_name" | pbcopy
             if test -z "$_flag_q"
-                echo "$logging_prefix$branch_name"
+                printf "$logging_prefix\n $branch_name"
             end
         else
             echo -n "$branch_name"
@@ -70,7 +70,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         if set -q _flag_c
             echo -n "$branch_name" | pbcopy
             if test -z "$_flag_q"
-                echo "$logging_prefix$branch_name"
+                printf "$logging_prefix\n $branch_name"
             end
         else
             echo -n "$branch_name"
