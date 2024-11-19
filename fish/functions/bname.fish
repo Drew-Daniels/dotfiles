@@ -54,12 +54,13 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         echo "Cannot parse Jira Issue with more than 2 scopes"
     end
 
+    set -l logging_prefix "Copied Git Branch Name to Clipboard: "
     if test $issue_type = Story
         set -l branch_name "feat/$jira_ticket_id/$issue_scope$issue_summary"
         if set -q _flag_c
             echo -n "$branch_name" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: $branch_name"
+                echo "$logging_prefix$branch_name"
             end
         else
             echo -n "$branch_name"
@@ -69,7 +70,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         if set -q _flag_c
             echo -n "$branch_name" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: $branch_name"
+                echo "$logging_prefix$branch_name"
             end
         else
             echo -n "$branch_name"
