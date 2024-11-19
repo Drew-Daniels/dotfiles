@@ -19,7 +19,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     end
 
     # refactor shared functionality with prd into separate function
-    # TODO: Cut off the summary after the first n characters - would be nice to ensure that only whole words are output
     if test -z "$argv"
         set jira_ticket_id (jlink -i)
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
@@ -44,7 +43,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
-    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed "s/’//g")
+    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed "s/’//g" | string shorten -m 110)
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
     # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
