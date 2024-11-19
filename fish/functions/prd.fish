@@ -44,7 +44,7 @@ function prd -d "Generates a Description for a Given PR"
         set issue_scope ""
         set issue_summary (echo $issue_scope_and_summary | sed 's/ $//')
     else if test $num_colons = 1
-        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/-$//')
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/ $//' | sed 's/-$//')
         set issue_scope "($issue_scope)"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | sed 's/ $//')
     else if test $num_colons = 2
