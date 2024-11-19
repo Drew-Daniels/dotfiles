@@ -29,11 +29,6 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         return 1
     end
 
-    if test -z "$jira_ticket_id"
-        echo "A Jira Ticket Number/Key must be provided as an argument or referenced in the current branch name"
-        return 1
-    end
-
     if not string match -qi "*emr*" $jira_ticket_id
         set jira_ticket_id EMR-$jira_ticket_id
     else
