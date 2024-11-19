@@ -25,6 +25,10 @@ function pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Requ
             set jira_issue_id (echo $jira_issue_id | tr a-z A-Z)
         end
         set jira_issue_md_link "[$jira_issue_id]($jira_issue_url)"
+    else
+        printf "A Jira Ticket ID/Key must be provided as an argument or referenced in the current branch name\n\n"
+        printf "Examples: \n pr 12345 \n pr EMR-12345"
+        return 1
     end
 
     set -l gh_number_and_link (gh search prs $jira_issue_id --assignee="@me" --json=number,title,url --match=title --limit=1 | jq -r '.[0] | [.number, .url] | join(" ")')
