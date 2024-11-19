@@ -55,12 +55,13 @@ function prd -d "Generates a Description for a Given PR"
         echo "Cannot parse Jira Issue with more than 2 scopes"
     end
 
+    set -l logging_prefix "Copied GitHub PR Description to Clipboard: "
     if test $issue_type = Story
         set -l desc "feat$issue_scope: [$jira_ticket_id] $issue_summary"
         if set -q _flag_c
             echo -n "$desc" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: $desc"
+                printf "$logging_prefix\n $desc"
             end
         else
             echo -n "$desc"
@@ -70,7 +71,7 @@ function prd -d "Generates a Description for a Given PR"
         if set -q _flag_c
             echo -n "$desc" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied GitHub PR Description to Clipboard: $desc"
+                printf "$logging_prefix\n $desc"
             end
         else
             echo -n "$desc"
