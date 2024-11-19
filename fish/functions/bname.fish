@@ -55,22 +55,24 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     end
 
     if test $issue_type = Story
+        set -l branch_name "feat/$jira_ticket_id/$issue_scope$issue_summary"
         if set -q _flag_c
-            echo -n "feat/$jira_ticket_id/$issue_scope$issue_summary" | pbcopy
+            echo -n "$branch_name" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: feat/$jira_ticket_id/$issue_scope$issue_summary"
+                echo "Copied Git Branch Name to Clipboard: $branch_name"
             end
         else
-            echo -n "feat/$jira_ticket_id/$issue_scope$issue_summary"
+            echo -n "$branch_name"
         end
     else
+        set -l branch_name "fix/$jira_ticket_id/$issue_scope$issue_summary"
         if set -q _flag_c
-            echo -n "fix/$jira_ticket_id/$issue_scope$issue_summary" | pbcopy
+            echo -n "$branch_name" | pbcopy
             if test -z "$_flag_q"
-                echo "Copied Git Branch Name to Clipboard: fix/$jira_ticket_id/$issue_scope$issue_summary"
+                echo "Copied Git Branch Name to Clipboard: $branch_name"
             end
         else
-            echo -n "fix/$jira_ticket_id/$issue_scope$issue_summary"
+            echo -n "$branch_name"
         end
     end
 
