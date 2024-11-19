@@ -20,9 +20,15 @@ return {
           <>
 
         * Work TODO
+        ** EMR-
+          - ( ) <>
+        ** Nice-to-haves
           - ( ) <>
 
         * Personal TODO
+        ** Health
+          - ( ) <>
+        ** Social
           - ( ) <>
 
       ]],
