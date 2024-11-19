@@ -41,22 +41,22 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed 's/"//g' | sed "s/’//g" | sed "s/'//g" | sed "s/\+/and/" | sed 's/,//g' | head -c 110)
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
-    # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
     if test $num_colons = 0
         set issue_scope ""
         set issue_summary (echo $issue_scope_and_summary | tr ' ' '-' | tr A-Z a-z | sed 's/(//' | sed 's/)//' | sed 's/\.//')
+    else if test $num_colons = 1
+        set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1 | tr '[:space:]' '-' | tr ':' '-' | sed 's/--/-/g' | tr a-z A-Z | sed 's/-$//' | sed 's/(//g' | sed 's/)//')
+        set issue_scope "$issue_scope-"
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//' | sed 's/(//' | sed 's/)//' | sed 's/\.//')
     else if test $num_colons = 2
         set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1,2 | tr '[:space:]' '-' | tr ':' '-' | sed 's/--/-/g' | tr a-z A-Z | sed 's/-$//' | sed 's/(//g' | sed 's/)//')
         set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//' | sed 's/(//' | sed 's/)//' | sed 's/\.//')
     else
-        set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1 | tr '[:space:]' '-' | tr ':' '-' | sed 's/--/-/g' | tr a-z A-Z | sed 's/-$//' | sed 's/(//g' | sed 's/)//')
-        set issue_scope "$issue_scope-"
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//' | sed 's/(//' | sed 's/)//' | sed 's/\.//')
+        # TODO: Not sure the likelihood of having more than 2 scopes, but would be good to account for this scenario too
+        echo "Cannot parse Jira Issue with more than 2 scopes"
     end
 
-    # TODO: This functionality of either copying or echoing to stdout is used in a bunch of these utility functions, can probably make this into a reusable function
-    # TODO: Store shared string in a variable
     if test $issue_type = Story
         if set -q _flag_c
             echo -n "feat/$jira_ticket_id/$issue_scope$issue_summary" | pbcopy
