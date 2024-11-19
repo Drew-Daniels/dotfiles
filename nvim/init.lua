@@ -1141,6 +1141,25 @@ vim.api.nvim_create_user_command("SU", function(opts)
   vim.cmd("e ~/projects/work_notes/su/2024/" .. date .. ".norg")
 end, { range = false, nargs = 1 })
 
+-- TODO: Flesh out this command
+vim.api.nvim_create_user_command("Retro", function(opts)
+  local date = os.date("%Y-%m-%d")
+  if opts.fargs[1] == "yesterday" then
+    date = os.date("%Y-%m-%d", os.time() - 86400)
+  elseif opts.fargs[1] == "today" then
+    date = os.date("%Y-%m-%d")
+  elseif opts.fargs[1] == "tomorrow" and os.date("%w") == "5" then
+    -- If today is Friday, then next business day is Monday
+    date = os.date("%Y-%m-%d", os.time() + 86400 * 3)
+  elseif opts.fargs[1] == "tomorrow" then
+    date = os.date("%Y-%m-%d", os.time() + 86400)
+  else
+    print("Invalid date")
+    return
+  end
+  vim.cmd("e ~/projects/work_notes/retro/2024/" .. date .. ".norg")
+end, { range = false, nargs = 1 })
+
 vim.api.nvim_create_user_command("Ticket", function(opts)
   local ticket_no = opts.fargs[1]
   local desc = opts.fargs[2]
@@ -1155,16 +1174,17 @@ vim.api.nvim_create_user_command("Ticket", function(opts)
   vim.cmd("e ~/projects/work_notes/tickets/KEET-" .. ticket_no .. "-" .. desc .. ".norg")
 end, { nargs = "*" })
 
---TODO: Create a 'OOO' command to create One on One files
+--TODO: Create a 'Retro' command to create retrospective files
 
+-- TODO: Rename `standup_template` to standup
 vim.cmd([[
   augroup neorg_cmds
     autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/standup_template.norg
-    autocmd BufNewFile ~/projects/work_notes/ooo/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/ooo_template.norg
+    autocmd BufNewFile ~/projects/work_notes/retro/**/*.norg 0read ~/projects/dotfiles/nvim/norg/templates/retro.norg
     autocmd FileType norg setlocal conceallevel=3
     " Figure out how to stop folds from getting created on buffers created after first entering into a .norg buffer
     autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
-    autocmd BufWritePost ~/projects/work_notes/ooo/**/*.norg silent !git -C ~/projects/work_notes/ooo/ add . && git -C ~/projects/work_notes/ooo/ commit -m "Update work notes" && git -C ~/projects/work_notes/ooo/ push
+    autocmd BufWritePost ~/projects/work_notes/retro/**/*.norg silent !git -C ~/projects/work_notes/retro/ add . && git -C ~/projects/work_notes/retro/ commit -m "Update work notes" && git -C ~/projects/work_notes/retro/ push
     " Figure out why recursive file pattern like ~/projects/home_notes/**/*.norg doesn't work?
     autocmd BufWritePost ~/projects/home_notes/*.norg silent !git -C ~/projects/home_notes/ add . && git -C ~/projects/home_notes/ commit -m "Update home notes" && git -C ~/projects/home_notes/ push
   augroup END
