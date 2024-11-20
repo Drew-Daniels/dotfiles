@@ -50,8 +50,12 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | cut -d ':' -f1,2 | tr '[:space:]' '-' | tr ':' '-' | sed 's/--/-/g; s/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
         set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//;s/(//g; s/)//g; s/\.//g;')
+    else if test $num_colons = 3
+        set issue_scope (echo $issue_scope_and_summary | tr '/' '-' | sed 's/ *: */:/g' | cut -d ':' -f1,2,3 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
+        set issue_scope "$issue_scope-"
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f4 | sed 's/ //' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//;s/(//g; s/)//g; s/\.//g;')
     else
-        echo "Cannot parse Jira Issue with more than 2 scopes"
+        echo "Cannot parse Jira Issue with more than 3 scopes"
     end
 
     set -l logging_prefix "Copied Git Branch Name to Clipboard: "
