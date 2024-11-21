@@ -18,7 +18,7 @@ function _jg_bname -d "Generates a Git branch name using a Jira Ticket ID"
     end
 
     if test -z "$argv"
-        set jira_ticket_id (jlink -i)
+        set jira_ticket_id (jg link -i)
     else if test (echo $argv[1] | grep -o '[0-9]\{5\}')
         set jira_ticket_id $argv
     else
