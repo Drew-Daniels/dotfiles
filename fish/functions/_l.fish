@@ -1,10 +1,10 @@
-function jlink -d "Copies Jira Issue Link for Current Git Branch"
+function _l -d "Copies Jira Issue Link for Current Git Branch"
     set -l options i/id m/markdown h/help q/quiet c/clipboard
 
     argparse $options -- $argv
 
     if set --query _flag_help
-        printf "Usage: jlink [OPTIONS]\n\n"
+        printf "Usage: jg l [OPTIONS]\n\n"
         printf "Options:\n"
         printf "  -h/--help       Prints help and exits\n"
         printf "  -i/--id         Get Issue ID\n"
@@ -14,7 +14,6 @@ function jlink -d "Copies Jira Issue Link for Current Git Branch"
         return 0
     end
 
-    # validate
     if set -q _flag_i _flag_m
         echo "Cannot specify both -i and -m"
         return 1

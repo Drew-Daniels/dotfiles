@@ -1,10 +1,10 @@
-function bname -d "Generates a Git branch name using a Jira Ticket ID"
+function _bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l options h/help q/quiet c/clipboard
 
     argparse $options -- $argv
 
     if set --query _flag_help
-        printf "Usage: bname <JIRA_TICKET_ID|JIRA_TICKET_KEY> [OPTIONS]\n\n"
+        printf "Usage: jg bname <JIRA_TICKET_ID|JIRA_TICKET_KEY> [OPTIONS]\n\n"
         printf "Options:\n"
         printf "  -h/--help       Prints help and exits\n"
         printf "  -q/--quiet      Don't print anything\n"
@@ -23,7 +23,7 @@ function bname -d "Generates a Git branch name using a Jira Ticket ID"
         set jira_ticket_id $argv
     else
         printf "A Jira Ticket ID/Key must be provided as an argument or referenced in the current branch name\n\n"
-        printf "Examples: \n pr 12345 \n pr EMR-12345"
+        printf "Examples: \n bname 12345 \n bname EMR-12345"
         return 1
     end
 
