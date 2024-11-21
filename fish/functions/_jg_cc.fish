@@ -1,10 +1,10 @@
-function _jg_prd -d "Generates a Description for a Given PR"
+function _jg_cc -d "Generates a Conventional Commit Message from a Jira Issue ID/Key"
     set -l options h/help q/quiet c/clipboard
 
     argparse $options -- $argv
 
     if set --query _flag_help
-        printf "Usage: jg prd <JIRA_TICKET_ID|JIRA_TICKET_KEY> [OPTIONS]\n\n"
+        printf "Usage: jg cc <JIRA_TICKET_ID|JIRA_TICKET_KEY> [OPTIONS]\n\n"
         printf "Options:\n"
         printf "  -h/--help       Prints help and exits\n"
         printf "  -q/--quiet      Don't print anything\n"
@@ -23,7 +23,7 @@ function _jg_prd -d "Generates a Description for a Given PR"
         set jira_ticket_id $argv
     else
         printf "A Jira Ticket ID/Key must be provided as an argument or referenced in the current branch name\n\n"
-        printf "Examples: \n prd 12345 \n prd EMR-12345"
+        printf "Examples: \n cc 12345 \n cc EMR-12345"
         return 1
     end
 

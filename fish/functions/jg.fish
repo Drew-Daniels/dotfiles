@@ -12,8 +12,8 @@ function jg --argument-names cmd -d "Jira Genie"
             _jg_bname $argv[2..-1]
         case pr
             _jg_pr $argv[2..-1]
-        case prd
-            _jg_prd $argv[2..-1]
+        case cc
+            _jg_cc $argv[2..-1]
         case '*'
             echo "Unknown command: $cmd"
             _jg_help
