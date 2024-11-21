@@ -1,6 +1,6 @@
 complete --command jg --exclusive --long help --description "Print help"
 complete --command jg --exclusive --long version --description "Print version"
-complete --command jg --exclusive --condition __fish_use_subcommand --arguments jlink --description "Copies Jira Issue Link for Current Git Branch"
+complete --command jg --exclusive --condition __fish_use_subcommand --arguments link --description "Copies Jira Issue Link for Current Git Branch"
 complete --command jg --exclusive --condition __fish_use_subcommand --arguments bname --description "Generates a Git branch name using a Jira Ticket ID"
 complete --command jg --exclusive --condition __fish_use_subcommand --arguments pr --description "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
 complete --command jg --exclusive --condition __fish_use_subcommand --arguments prd --description "Generates a Description for a Given PR"
