@@ -1,4 +1,4 @@
-function _pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
+function _jg_pr -d "Generates a Slack Message to Link to a Jira Ticket and Pull Request"
     set -l options q/quiet c/clipboard h/help
     argparse $options -- $argv
 

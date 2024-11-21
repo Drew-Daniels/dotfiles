@@ -1,4 +1,4 @@
-function _bname -d "Generates a Git branch name using a Jira Ticket ID"
+function _jg_bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l options h/help q/quiet c/clipboard
 
     argparse $options -- $argv

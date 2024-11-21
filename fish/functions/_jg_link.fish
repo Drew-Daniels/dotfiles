@@ -1,4 +1,4 @@
-function _l -d "Copies Jira Issue Link for Current Git Branch"
+function _jg_link -d "Copies Jira Issue Link for Current Git Branch"
     set -l options i/id m/markdown h/help q/quiet c/clipboard
 
     argparse $options -- $argv
