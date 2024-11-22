@@ -44,11 +44,11 @@ function _jg_cc -d "Generates a Conventional Commit Message from a Jira Issue ID
         set issue_scope ""
         set issue_summary (echo $issue_scope_and_summary | sed 's/ $//')
     else if test $num_colons = 1
-        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/ $//; s/-$//;')
+        set issue_scope (echo $issue_scope_and_summary | sed 's/ *\/ */\//g' | cut -d ':' -f1 | sed 's/ $//; s/-$//;')
         set issue_scope "($issue_scope)"
-        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //; s/ $//;')
+        set issue_summary (echo $issue_scope_and_summary | sed 's/ *\/ *\///g' | cut -d ':' -f2 | sed 's/ //; s/ $//;')
     else if test $num_colons = 2
-        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | sed 's/:-/:/; s/-$//;')
+        set issue_scope (echo $issue_scope_and_summary | sed 's/ *\/ */\//g' | cut -d ':' -f1,2 | sed 's/:-/:/; s/-$//;')
         set issue_scope "($issue_scope)"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //; s/ $//;')
     else
