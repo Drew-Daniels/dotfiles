@@ -141,4 +141,7 @@ if status is-interactive
 
     # jira
     jira completion fish | source
+
+    # docker
+    docker completion fish | source
 end
