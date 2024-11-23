@@ -138,4 +138,7 @@ if status is-interactive
 
     # 1password
     op completion fish | source
+
+    # jira
+    jira completion fish | source
 end
