@@ -1,19 +1,9 @@
 .DS_Store
 configstore
 
-# fish
-fish/*
-
-!fish/config.fish
-!fish/fish_plugins
-!fish/completions
-!fish/functions
 *tide*
 
 github-copilot
-
-fish/completions/asdf.fish
-fish/completions/docker*
 
 gitk
 
@@ -35,3 +25,4 @@ docs/project_notes.md
 zsh/last_aws_sso_login
 op
 scripts/work
+fish/fish_variables
