@@ -841,7 +841,9 @@ require("catppuccin").setup({
 -- vim.o.background = "dark"
 vim.o.background = "light"
 -- vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme catppuccin")
+vim.opt.termguicolors = true
+vim.cmd("colorscheme zenbones")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                  CLIPBOARD-IMAGE.NVIM                   │
@@ -1363,7 +1365,6 @@ set.number = true
 set.relativenumber = true
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set.syntax = "on"
-set.termguicolors = true
 set.virtualedit = "block"
 set.inccommand = "split"
 
