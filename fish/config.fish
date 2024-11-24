@@ -146,9 +146,16 @@ if status is-interactive
     docker completion fish | source
 
     # theme
-    if test $OS_THEME_DARK = 0
+    # TODO: This works, but if I change my theme and want to keep my existing session open, this env var won't be updated
+    defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
+    set -l os_theme_query_status $status
+    echo $os_theme_query_status
+    if test $os_theme_query_status -eq 1
+        # this setting is only set when using dark mode
+        set -gx OS_THEME_DARK 0
         fish_config theme choose "Mono Lace"
     else
+        set -gx OS_THEME_DARK 1
         fish_config theme choose "Base16 Default Dark"
     end
 end
