@@ -45,6 +45,10 @@
       {
         "language": "html",
         "path": "./html.json"
+      },
+      {
+        "language": "toml",
+        "path": "./toml.json"
       }
     ]
   }
