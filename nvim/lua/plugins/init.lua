@@ -21,6 +21,7 @@ return require("lazy").setup({
       path = "~/projects",
     },
   },
+  { "cormacrelf/dark-notify" },
   {
     "zenbones-theme/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme

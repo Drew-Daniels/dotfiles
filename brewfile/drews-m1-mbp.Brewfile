@@ -38,6 +38,9 @@ tap homebrew/services
 
 tap ankitpokhrel/jira-cli
 
+tap cormacrelf/tap
+brew dark-notify
+
 tap jstkdng/programs
 
 tap oven-sh/bun
@@ -48,7 +51,7 @@ tap teamookla/speedtest
 
 # App Store applications
 appstore 302584613 Amazon Kindle (7.23)
-appstore 823766827 OneDrive (24.206.1013)
+appstore 823766827 OneDrive (24.216.1027)
 appstore 1303222628 Paprika Recipe Manager 3 (3.8.0)
 appstore 1596283165 rcmd (2.6.5)
 appstore 1549370672 Save to Raindrop.io (5.6.57)

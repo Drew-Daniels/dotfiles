@@ -8,6 +8,62 @@ require("legendary").setup({
   },
 })
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      GRUVBOX-NVIM                       │
+--          │       https://github.com/ellisonleao/gruvbox.nvim       │
+--          ╰─────────────────────────────────────────────────────────╯
+-- CATPPUCCIN.NVIM
+-- https://github.com/catppuccin/nvim
+require("catppuccin").setup({
+  flavour = "latte",
+})
+
+-- vim.o.background = "light"
+-- vim.o.background = "dark"
+
+vim.opt.termguicolors = true
+
+-- LIGHT MODE
+-- vim.cmd("colorscheme zenbones")
+-- vim.cmd("colorscheme catppuccin")
+
+-- DARK MODE
+-- vim.cmd("colorscheme gruvbox")
+
+require("dark_notify").run({
+  schemes = {
+    light = "zenbones",
+    dark = "gruvbox",
+  },
+})
+
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                         LUALINE                         │
+--          │      https://github.com/nvim-lualine/lualine.nvim       │
+--          ╰─────────────────────────────────────────────────────────╯
+local function getCodeiumStatus()
+  return "codeium: " .. vim.fn["codeium#GetStatusString"]()
+end
+
+require("lualine").setup({
+  -- LIGHT MODE
+  options = { theme = "onelight" },
+  -- DARK MODE
+  -- options = { theme = "gruvbox-material" },
+  sections = {
+    lualine_x = {
+      -- "grapple",
+      getCodeiumStatus,
+    },
+  },
+  --TODO: Figure out how to show codeium status string in lualine
+  -- winbar = {
+  --   lualine_a = {
+  --     "codeium#GetStatusString()"
+  --   },
+  -- }
+})
+
 --           ╭───────────────────────────────────────────────────────╮
 --           │                         MASON                         │
 --           │ https://github.com/williamboman/mason.nvim/issues/130 │
@@ -664,33 +720,6 @@ require("scissors").setup({
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
---          │                         LUALINE                         │
---          │      https://github.com/nvim-lualine/lualine.nvim       │
---          ╰─────────────────────────────────────────────────────────╯
-local function getCodeiumStatus()
-  return "codeium: " .. vim.fn["codeium#GetStatusString"]()
-end
-
-require("lualine").setup({
-  -- LIGHT MODE
-  options = { theme = "onelight" },
-  -- DARK MODE
-  -- options = { theme = "gruvbox-material" },
-  sections = {
-    lualine_x = {
-      -- "grapple",
-      getCodeiumStatus,
-    },
-  },
-  --TODO: Figure out how to show codeium status string in lualine
-  -- winbar = {
-  --   lualine_a = {
-  --     "codeium#GetStatusString()"
-  --   },
-  -- }
-})
-
---          ╭─────────────────────────────────────────────────────────╮
 --          │                      CONFORM.NVIM                       │
 --          │        https://github.com/stevearc/conform.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -830,28 +859,6 @@ vim.api.nvim_create_user_command("Format", function(args)
   end
   require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
-
---          ╭─────────────────────────────────────────────────────────╮
---          │                      GRUVBOX-NVIM                       │
---          │       https://github.com/ellisonleao/gruvbox.nvim       │
---          ╰─────────────────────────────────────────────────────────╯
--- CATPPUCCIN.NVIM
--- https://github.com/catppuccin/nvim
-require("catppuccin").setup({
-  flavour = "latte",
-})
-
-vim.o.background = "light"
--- vim.o.background = "dark"
-
-vim.opt.termguicolors = true
-
--- LIGHT MODE
-vim.cmd("colorscheme zenbones")
--- vim.cmd("colorscheme catppuccin")
-
--- DARK MODE
--- vim.cmd("colorscheme gruvbox")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                  CLIPBOARD-IMAGE.NVIM                   │
