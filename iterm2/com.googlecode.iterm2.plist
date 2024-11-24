@@ -3272,9 +3272,9 @@
 					<key>algorithm</key>
 					<integer>0</integer>
 					<key>auto-rainbow style</key>
-					<integer>0</integer>
+					<integer>3</integer>
 					<key>font</key>
-					<string>.AppleSystemUIFont 12</string>
+					<string>.SFNS-Regular 12</string>
 					<key>remove empty components</key>
 					<false/>
 				</dict>
@@ -3298,13 +3298,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.199462890625</real>
+									<real>0.25685083866119385</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>1</real>
+									<real>0.26314079761505127</real>
 									<key>Red Component</key>
-									<real>0.0</real>
+									<real>0.46736389398574829</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3312,9 +3312,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3334,13 +3334,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.0</real>
+									<real>0.27628022432327271</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.77999997138977051</real>
+									<real>0.44696700572967529</real>
 									<key>Red Component</key>
-									<real>1</real>
+									<real>0.49079304933547974</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3348,9 +3348,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3370,13 +3370,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.0</real>
+									<real>0.27980655431747437</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>1</real>
+									<real>0.49612599611282349</real>
 									<key>Red Component</key>
-									<real>0.44000005722045898</real>
+									<real>0.38949710130691528</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3384,9 +3384,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3406,13 +3406,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.0</real>
+									<real>0.34907305240631104</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.5712890625</real>
+									<real>0.49410247802734375</real>
 									<key>Red Component</key>
-									<real>1</real>
+									<real>0.31301218271255493</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3420,9 +3420,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3450,13 +3450,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.04547119140625</real>
+									<real>0.49486726522445679</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>1</real>
+									<real>0.46466845273971558</real>
 									<key>Red Component</key>
-									<real>0.0</real>
+									<real>0.3037407398223877</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3464,9 +3464,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3488,13 +3488,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.5</real>
+									<real>0.4847680926322937</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.25</real>
+									<real>0.2742055356502533</real>
 									<key>Red Component</key>
-									<real>0.41999999999999993</real>
+									<real>0.2546534538269043</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3502,9 +3502,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3530,13 +3530,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.998687744140625</real>
+									<real>0.48575568199157715</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.998687744140625</real>
+									<real>0.25785335898399353</real>
 									<key>Red Component</key>
-									<real>0.998687744140625</real>
+									<real>0.39616438746452332</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3544,9 +3544,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -3576,13 +3576,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.99908447265625</real>
+									<real>0.379524827003479</real>
 									<key>Color Space</key>
-									<string>sRGB</string>
+									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.99908447265625</real>
+									<real>0.26313775777816772</real>
 									<key>Red Component</key>
-									<real>0.99908447265625</real>
+									<real>0.4673653244972229</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3590,9 +3590,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
+								<string>.SFNS-Regular 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
