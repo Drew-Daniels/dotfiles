@@ -144,4 +144,10 @@ if status is-interactive
 
     # docker
     docker completion fish | source
+
+    # theme
+    # light mode
+    fish_config theme choose "Mono Lace"
+    # dark mode
+    # fish_config theme choose "Base16 Default Dark"
 end
