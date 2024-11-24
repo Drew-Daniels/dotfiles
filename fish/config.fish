@@ -146,7 +146,6 @@ if status is-interactive
     docker completion fish | source
 
     # theme
-    echo $OS_THEME_DARK
     if test $OS_THEME_DARK = 0
         fish_config theme choose "Mono Lace"
     else
