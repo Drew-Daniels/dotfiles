@@ -49,6 +49,10 @@
       {
         "language": "toml",
         "path": "./toml.json"
+      },
+      {
+        "language": "zsh",
+        "path": "./zsh.json"
       }
     ]
   }
