@@ -2967,6 +2967,8 @@
 				<key>Red Component</key>
 				<real>0.9137254901960784</real>
 			</dict>
+			<key>Cursor Shadow</key>
+			<true/>
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -3260,7 +3262,7 @@
 			<key>Silence Bell</key>
 			<true/>
 			<key>Smart Cursor Color (Dark)</key>
-			<false/>
+			<true/>
 			<key>Smart Cursor Color (Light)</key>
 			<false/>
 			<key>Status Bar Layout</key>
