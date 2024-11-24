@@ -18,17 +18,7 @@ require("catppuccin").setup({
   flavour = "latte",
 })
 
--- vim.o.background = "light"
--- vim.o.background = "dark"
-
 vim.opt.termguicolors = true
-
--- LIGHT MODE
--- vim.cmd("colorscheme zenbones")
--- vim.cmd("colorscheme catppuccin")
-
--- DARK MODE
--- vim.cmd("colorscheme gruvbox")
 
 require("dark_notify").run({
   schemes = {
@@ -46,11 +36,11 @@ local function getCodeiumStatus()
   return "codeium: " .. vim.fn["codeium#GetStatusString"]()
 end
 
+local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
+local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
+
 require("lualine").setup({
-  -- LIGHT MODE
-  options = { theme = "onelight" },
-  -- DARK MODE
-  -- options = { theme = "gruvbox-material" },
+  options = { theme = THEME },
   sections = {
     lualine_x = {
       -- "grapple",

@@ -230,3 +230,13 @@ alias ber="bundle exec rspec"
 # 1password
 eval "$(op completion zsh)"
 compdef _op op
+
+# theme
+# this setting is only set when using dark mode
+defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
+os_theme_query_status=$?
+if [[ "$os_theme_query_status" == 1 ]]; then
+  export OS_THEME_DARK=0
+else
+  export OS_THEME_DARK=1
+fi
