@@ -151,7 +151,9 @@ if status is-interactive
     if test $os_theme_query_status -eq 1
         # this setting is only set when using dark mode
         fish_config theme choose "Mono Lace"
+        set -g OS_THEME_DARK 0
     else
         fish_config theme choose "Base16 Default Dark"
+        set -g OS_THEME_DARK 1
     end
 end

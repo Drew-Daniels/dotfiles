@@ -32,7 +32,8 @@ vim.opt.termguicolors = true
 
 require("dark_notify").run({
   schemes = {
-    light = "zenbones",
+    -- light = "zenbones",
+    light = "catppuccin",
     dark = "gruvbox",
   },
 })
