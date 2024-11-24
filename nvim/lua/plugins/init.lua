@@ -21,6 +21,7 @@ return require("lazy").setup({
       path = "~/projects",
     },
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",

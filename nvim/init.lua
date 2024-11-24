@@ -672,7 +672,8 @@ local function getCodeiumStatus()
 end
 
 require("lualine").setup({
-  options = { theme = "gruvbox-material" },
+  -- options = { theme = "gruvbox-material" },
+  options = { theme = "onelight" },
   sections = {
     lualine_x = {
       -- "grapple",
@@ -832,8 +833,15 @@ end, { range = true })
 --          │                      GRUVBOX-NVIM                       │
 --          │       https://github.com/ellisonleao/gruvbox.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
-vim.o.background = "dark"
-vim.cmd("colorscheme gruvbox")
+-- CATPPUCCIN.NVIM
+-- https://github.com/catppuccin/nvim
+require("catppuccin").setup({
+  flavour = "latte",
+})
+-- vim.o.background = "dark"
+vim.o.background = "light"
+-- vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme catppuccin")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                  CLIPBOARD-IMAGE.NVIM                   │

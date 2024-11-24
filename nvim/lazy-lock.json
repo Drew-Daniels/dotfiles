@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "blink.cmp": { "branch": "main", "commit": "75cadbcd2657ed01326ca2b0e5e4d78a77127ca3" },
   "bufresize.nvim": { "branch": "master", "commit": "3b19527ab936d6910484dcc20fb59bdb12322d8b" },
+  "catppuccin": { "branch": "main", "commit": "a4c64d7605f6eb95674e322bbbedfaa00aab7904" },
   "clipboard-image.nvim": { "branch": "main", "commit": "4ab6f7f1fa4ea97866c0e0f6160f6a36ef174438" },
   "codeium.vim": { "branch": "main", "commit": "605ab06780c9c42a63fc8afa8c0bd02b3b51b66f" },
   "comment-box.nvim": { "branch": "main", "commit": "06bb771690bc9df0763d14769b779062d8f12bc5" },
