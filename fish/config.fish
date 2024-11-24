@@ -146,10 +146,8 @@ if status is-interactive
     docker completion fish | source
 
     # theme
-    # this setting is only set when using dark mode
-    defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
-    set -l os_theme_query_status $status
-    if test $os_theme_query_status -eq 1
+    echo $OS_THEME_DARK
+    if test $OS_THEME_DARK = 0
         fish_config theme choose "Mono Lace"
     else
         fish_config theme choose "Base16 Default Dark"
