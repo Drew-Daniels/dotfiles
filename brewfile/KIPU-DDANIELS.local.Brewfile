@@ -46,6 +46,7 @@ brew python-packaging
 brew python@3.12
 brew python@3.13
 brew redis
+brew tcl-tk
 brew tcl-tk@8
 brew telnet
 brew v8
@@ -64,6 +65,9 @@ tap homebrew/services
 
 tap ankitpokhrel/jira-cli
 
+tap cormacrelf/tap
+brew dark-notify
+
 tap mongodb/brew
 brew mongodb-community@6.0
 brew mongodb-database-tools
@@ -76,4 +80,5 @@ tap teamookla/speedtest
 
 # App Store applications
 appstore 1596283165 rcmd (2.6.5)
+appstore 1530751461 Snippety (8.1.83)
 appstore 497799835 Xcode (16.1)

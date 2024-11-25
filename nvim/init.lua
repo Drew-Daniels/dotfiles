@@ -20,6 +20,7 @@ require("catppuccin").setup({
 
 vim.opt.termguicolors = true
 
+-- Requires `brew install cormacrelf/tap/dark-notify`
 require("dark_notify").run({
   schemes = {
     light = "zenbones",
