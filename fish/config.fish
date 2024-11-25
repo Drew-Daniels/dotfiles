@@ -149,7 +149,6 @@ if status is-interactive
     # TODO: This works, but if I change my theme and want to keep my existing session open, this env var won't be updated
     defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
     set -l os_theme_query_status $status
-    echo $os_theme_query_status
     if test $os_theme_query_status -eq 1
         # this setting is only set when using dark mode
         set -gx OS_THEME_DARK 0
