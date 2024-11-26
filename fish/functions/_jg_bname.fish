@@ -36,22 +36,22 @@ function _jg_bname -d "Generates a Git branch name using a Jira Ticket ID"
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
-    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed 's/"//g; s/’//g; s/\'//g; s/\+/and/g; s/ *, */ /g; s/ *-> */ /g; s/ *> */ /g;' | head -c 110)
+    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed 's/"//g; s/’//g; s/\'//g; s/\+/and/g; s/ *, */ /g; s/ *-> */ /g; s/ *> */ /g; s/ *\/ */ /g;' | head -c 110)
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
     if test $num_colons = 0
         set issue_scope ""
         set issue_summary (echo $issue_scope_and_summary | sed 's/ $//;' | tr ' ' '-' | tr A-Z a-z | sed 's/(//g; s/)//g; s/\.//g;')
     else if test $num_colons = 1
-        set issue_scope (echo $issue_scope_and_summary | sed 's/ *: */:/g; s/ *\/ */-/g' | cut -d ':' -f1 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
+        set issue_scope (echo $issue_scope_and_summary | sed 's/ *: */:/g;' | cut -d ':' -f1 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
         set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //; s/ $//;' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//;s/(//g; s/)//g; s/\.//g;')
     else if test $num_colons = 2
-        set issue_scope (echo $issue_scope_and_summary | sed 's/ *: */:/g; s/ *\/ */-/g' | cut -d ':' -f1,2 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
+        set issue_scope (echo $issue_scope_and_summary | sed 's/ *: */:/g;' | cut -d ':' -f1,2 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
         set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //; s/ $//;' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//;s/(//g; s/)//g; s/\.//g;')
     else if test $num_colons = 3
-        set issue_scope (echo $issue_scope_and_summary | sed 's/ *: */:/g; s/ *\/ */-/g' | cut -d ':' -f1,2,3 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
+        set issue_scope (echo $issue_scope_and_summary | sed 's/ *: */:/g;' | cut -d ':' -f1,2,3 | tr '[:space:]' '-' | tr ':' '-' | sed 's/-$//; s/(//g; s/)//g;' | tr a-z A-Z)
         set issue_scope "$issue_scope-"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f4 | sed 's/ //; s/ $//;' | tr ' ' '-' | tr A-Z a-z | sed 's/-$//;s/(//g; s/)//g; s/\.//g;')
     else
