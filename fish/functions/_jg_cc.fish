@@ -36,7 +36,7 @@ function _jg_cc -d "Generates a Conventional Commit Message from a Jira Issue ID
     set -l raw_issue_data (jira issue view $jira_ticket_id --raw)
 
     set -l issue_type (echo $raw_issue_data | jq -r '.fields.issuetype.name')
-    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary')
+    set -l issue_scope_and_summary (echo $raw_issue_data | jq -r '.fields.summary' | sed -r 's/ +/ /g; s/ ,/,/g;')
 
     set -l num_colons (echo $issue_scope_and_summary | grep -o ':' | wc -l | tr -d '[:space:]')
 
@@ -44,11 +44,11 @@ function _jg_cc -d "Generates a Conventional Commit Message from a Jira Issue ID
         set issue_scope ""
         set issue_summary (echo $issue_scope_and_summary | sed 's/ $//;')
     else if test $num_colons = 1
-        set issue_scope (echo $issue_scope_and_summary | sed 's/ *\/ */\//g; s/ *: */:/g;' | cut -d ':' -f1 | sed 's/ $//; s/-$//;')
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1 | sed 's/ $//; s/-$//;')
         set issue_scope "($issue_scope)"
-        set issue_summary (echo $issue_scope_and_summary | sed 's/ *\/ *\///g;' | cut -d ':' -f2 | sed 's/ //; s/ $//;')
+        set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f2 | sed 's/ //; s/ $//;')
     else if test $num_colons = 2
-        set issue_scope (echo $issue_scope_and_summary | sed 's/ *\/ */\//g; s/ *: */:/g;' | cut -d ':' -f1,2 | sed 's/:-/:/; s/-$//;')
+        set issue_scope (echo $issue_scope_and_summary | cut -d ':' -f1,2 | sed 's/:-/:/; s/-$//;')
         set issue_scope "($issue_scope)"
         set issue_summary (echo $issue_scope_and_summary | cut -d ':' -f3 | sed 's/ //; s/ $//;')
     else if test $num_colons = 3
