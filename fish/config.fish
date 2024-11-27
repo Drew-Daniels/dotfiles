@@ -125,7 +125,6 @@ if status is-interactive
     docker completion fish | source
 
     # theme
-    # TODO: This works, but if I change my theme and want to keep my existing session open, this env var won't be updated
     defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
     set -l os_theme_query_status $status
     if test $os_theme_query_status -eq 1

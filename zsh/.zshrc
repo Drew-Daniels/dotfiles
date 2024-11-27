@@ -49,9 +49,6 @@ alias ts="mux start project"
 export MUX_LAYOUT=main-horizontal
 export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 
-# tmuxp
-export TMUXP_CONFIGDIR=$XDG_CONFIG_HOME/tmuxp
-
 # homebrew
 PATH="/usr/local/sbin:$PATH"
 
@@ -76,13 +73,6 @@ export HOMEBREW_BUNDLE_NO_LOCK=1
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
-
-# pip zsh completion start
-#compdef -P pip[0-9.]#
-#compadd $( COMP_WORDS="$words[*]" \
-#           COMP_CWORD=$((CURRENT-1)) \
-#           PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
-# pip zsh completion end
 
 # jless
 alias yless="jless --yaml"
