@@ -712,7 +712,7 @@ local conform_utils = require("conform.util")
 ---@param rel_project_path string
 local function in_project(rel_project_path)
   -- TODO: Use env var here instead of hardcoding projects path
-  local project_dir = vim.fn.expand("$HOME/projects/" .. rel_project_path)
+  local project_dir = vim.fn.expand("$PROJECTS_DIR" .. rel_project_path)
   local root_dir = vim.fs.root(0, ".git")
 
   return root_dir == project_dir
