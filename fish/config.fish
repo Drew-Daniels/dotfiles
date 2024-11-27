@@ -6,24 +6,15 @@ if status is-interactive
     set -g fish_greeting
 
     # general
-    set -gx XDG_CONFIG_HOME ~/projects/dotfiles
-    set -gx EDITOR nvim
-    set -gx VISUAL nvim
     alias cls "printf '\33c\e[3J'"
 
     # pnpm
-    set -gx PNPM_HOME "/Users/drew.daniels/Library/pnpm"
     fish_add_path PNPM_HOME
-
-    # nvim
-    set -gx VIMCONFIG ~/.config/nvim
-    set -gx VIMDATA ~/.local/share/nvim
 
     # fisher
     set -gx FISHER_PATH $XDG_CONFIG_HOME/fish
 
     # starship
-    set -gx STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/starship.toml
     starship init fish | source
 
     # fzf.fish
@@ -36,9 +27,6 @@ if status is-interactive
     if test -f (brew --prefix)/etc/brew-wrap.fish
         source (brew --prefix)/etc/brew-wrap.fish
     end
-
-    set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/homebrew/Brewfile
-    set -gx HOMEBREW_BUNDLE_NO_LOCK 1
 
     # tmux
     alias tn="tmux new -s"
@@ -94,8 +82,6 @@ if status is-interactive
         rm -f -- "$tmp"
     end
 
-    set -gx YAZI_CONFIG_HOME "$XDG_CONFIG_HOME/yazi"
-
     # gitlab
     alias gll "$XDG_CONFIG_HOME/scripts/gll.sh"
 
@@ -111,15 +97,8 @@ if status is-interactive
     # mise
     /opt/homebrew/bin/mise activate fish | source
 
-    set -gx MISE_RUBY_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-gems"
-    set -gx MISE_NODE_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-npm-packages"
-    set -gx MISE_PYTHON_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/default-python-packages"
-
     # playwright
     alias psr "npx playwright show-report"
-
-    # solargraph - https://github.com/castwide/solargraph
-    set -gx SOLARGRAPH_GLOBAL_CONFIG "$XDG_CONFIG_HOME/solargraph/config.yml"
 
     # htmlbeautifier
     alias hb htmlbeautifier
