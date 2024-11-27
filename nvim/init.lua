@@ -319,10 +319,10 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     keymaps = {
       --TODO: how to inform whichkey that <leader>s should be used for this?
-      init_selection = "<Leader>si", -- select start
-      node_incremental = "<Leader>sn", -- select node (incremental)
-      scope_incremental = "<Leader>ss", -- select scope
-      node_decremental = "<Leader>sd", -- select node (decremental)
+      init_selection = "<leader>si", -- select start
+      node_incremental = "<leader>sn", -- select node (incremental)
+      scope_incremental = "<leader>ss", -- select scope
+      node_decremental = "<leader>sd", -- select node (decremental)
     },
   },
   indent = {
