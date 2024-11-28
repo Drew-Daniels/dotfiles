@@ -759,7 +759,7 @@ require("conform").setup({
     sql = { "sqlfmt" },
     javascript = { "project_eslint", "fallback_eslint" },
     javascriptreact = { "prettier" },
-    typescript = { "project_eslint", "fallback_eslint" },
+    typescript = { "eslint" },
     typescriptreact = { "prettier" },
     -- vue = { "eslint" },
     vue = { "project_eslint", "fallback_eslint" },
