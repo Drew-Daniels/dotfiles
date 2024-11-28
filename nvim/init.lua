@@ -439,11 +439,17 @@ lspconfig.basedpyright.setup({
 
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
 -- https://github.com/neovim/nvim-lspconfig/issues/2508
+local root_dir = vim.fs.root(0, ".git")
+local use_flat_config = false
+if vim.fn.filereadable(root_dir .. "/eslint.config.js") == 1 then
+  use_flat_config = true
+end
+
 lspconfig.eslint.setup({
   settings = {
     workingDirectories = { mode = "auto" },
     experimental = {
-      useFlatConfig = true,
+      useFlatConfig = use_flat_config,
     },
   },
 })
