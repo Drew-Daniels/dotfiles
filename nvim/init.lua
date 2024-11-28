@@ -445,25 +445,6 @@ lspconfig.eslint.setup({
     experimental = {
       useFlatConfig = true,
     },
-    --TODO: Figure out why this doesn't work
-    -- root_dir = function(fname)
-    --   local eslintConfigs = {
-    --     ".eslintrc.js",
-    --     ".eslintrc.cjs",
-    --     ".eslintrc.yaml",
-    --     ".eslintrc.yml",
-    --     ".eslintrc.json",
-    --     ".eslintrc",
-    --     "eslint.config.js",
-    --   }
-    --
-    --   local util = require("lspconfig.util")
-    --
-    --   local pkgJson = util.root_pattern("package.json")(fname)
-    --   local eslintConfig = util.root_pattern(unpack(eslintConfigs))(fname)
-    --
-    --   return pkgJson and eslintConfig
-    -- end,
   },
 })
 
