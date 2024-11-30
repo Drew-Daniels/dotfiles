@@ -6,7 +6,6 @@ windows:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - work_notes:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
           - nvim -c "SU today"
@@ -14,7 +13,6 @@ windows:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - retro:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
           - nvim -c "Retro csprint"

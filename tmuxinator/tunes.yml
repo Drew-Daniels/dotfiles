@@ -8,7 +8,6 @@ windows:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
-          - <%= ENV["MUXLSHELL_RUN_CMD"] %>
           - fish
           - cls
           - sp
