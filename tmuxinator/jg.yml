@@ -1,0 +1,18 @@
+name: jg
+root: <%= ENV["PROJECTS_DIR"] %>/jg
+on_project_exit: clear
+
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - nvim
+        - dev:
+          - fish
+          - cls
+        - cmd:
+          - fish
+          - cls
