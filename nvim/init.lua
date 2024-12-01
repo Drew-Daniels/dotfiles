@@ -16,14 +16,18 @@ require("legendary").setup({
 vim.opt.termguicolors = true
 
 -- Requires `brew install cormacrelf/tap/dark-notify`
-require("dark_notify").run({
-  schemes = {
-    light = "zenbones",
-    -- light = "gruvbox",
-    -- dark = "zenbones",
-    dark = "gruvbox",
-  },
-})
+-- require("dark_notify").run({
+--   schemes = {
+--     light = "zenbones",
+--     -- light = "gruvbox",
+--     dark = "zenbones",
+--     -- dark = "gruvbox",
+--   },
+-- })
+
+vim.cmd([[
+  colorscheme zenbones
+]])
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                         LUALINE                         │
@@ -33,12 +37,13 @@ local function getCodeiumStatus()
   return "codeium: " .. vim.fn["codeium#GetStatusString"]()
 end
 
-local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
+-- local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
 -- local THEME = IS_DARK_MODE and "gruvbox-material" or "gruvbox_light"
-local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
+-- local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
 
 require("lualine").setup({
-  options = { theme = THEME },
+  -- options = { theme = THEME },
+  options = { theme = "iceberg" },
   sections = {
     lualine_x = {
       -- "grapple",

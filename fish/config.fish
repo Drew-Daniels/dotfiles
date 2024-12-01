@@ -133,6 +133,6 @@ if status is-interactive
         fish_config theme choose "Mono Lace"
     else
         set -gx OS_THEME_DARK 1
-        fish_config theme choose "Base16 Default Dark"
+        fish_config theme choose "Mono Smoke"
     end
 end
