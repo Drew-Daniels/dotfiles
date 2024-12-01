@@ -6,6 +6,7 @@ BUNDLE_GEMS__GITHUB__COM=""
 # <github-username:github-oauth-token>
 BUNDLE_GITHUB__COM=""
 JIRA_API_TOKEN=''
+JIRA_API_HOSTNAME=''
 # git config email - <first>.<last>@<company>.com
 EMAIL=''
 WORK_HOSTNAME=''
