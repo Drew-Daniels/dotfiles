@@ -18,8 +18,8 @@ vim.opt.termguicolors = true
 -- Requires `brew install cormacrelf/tap/dark-notify`
 require("dark_notify").run({
   schemes = {
-    -- light = "zenbones",
-    light = "gruvbox",
+    light = "zenbones",
+    -- light = "gruvbox",
     -- dark = "zenbones",
     dark = "gruvbox",
   },
@@ -34,8 +34,8 @@ local function getCodeiumStatus()
 end
 
 local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
-local THEME = IS_DARK_MODE and "gruvbox-material" or "gruvbox_light"
--- local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
+-- local THEME = IS_DARK_MODE and "gruvbox-material" or "gruvbox_light"
+local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
 
 require("lualine").setup({
   options = { theme = THEME },
