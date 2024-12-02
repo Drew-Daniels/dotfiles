@@ -21,6 +21,10 @@ return require("lazy").setup({
       path = "~/projects",
     },
   },
+  {
+    "stevearc/dressing.nvim",
+    opts = {},
+  },
   { "cormacrelf/dark-notify" },
   {
     "zenbones-theme/zenbones.nvim",
