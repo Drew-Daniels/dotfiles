@@ -78,6 +78,19 @@ sudo luarocks install luasocket
 luarocks install --local magick
 ```
 
+## Configuring `tmux`:
+
+```bash
+cd ~/projects/dotfiles
+
+# clone tpm plugins. These are not included in the repo so they need to be cloned manually
+git clone https://github.com/tmux-plugins/tpm.git tmux/plugins/tpm
+git clone https://github.com/nordtheme/tmux.git tmux/plugins/tmux
+# any others
+```
+
+Launch `tmux` and run `<PREFIX> + I` to reload the config
+
 ## Restart
 
 ```bash
