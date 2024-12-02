@@ -1304,7 +1304,6 @@ end, { expr = true, silent = true, desc = "Codeium Clear" })
 vim.cmd([[
   let g:codeium_filetypes = {
     \ "norg": v:false,
-    \ "markdown": v:false,
     \ }
   let g:codeium_os = "Darwin"
   let g:codeium_arch = "arm"
