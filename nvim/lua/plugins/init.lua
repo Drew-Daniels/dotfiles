@@ -228,11 +228,12 @@ return require("lazy").setup({
   },
   {
     "iamcco/markdown-preview.nvim",
-    -- NOTE: Try this solution if :MarkdownPreview stops working
-    -- https://github.com/iamcco/markdown-preview.nvim/issues/695#issue-2483430386
-    build = function()
-      vim.fn["mkdp#util#install"]()
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
+    ft = { "markdown" },
   },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { "tpope/vim-rails" },
