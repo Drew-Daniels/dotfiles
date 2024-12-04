@@ -240,26 +240,26 @@ require("nvim-treesitter.configs").setup({
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = { query = "@function.outer", desc = "Select outer function" },
+        ["of"] = { query = "@function.outer", desc = "Select outer function" },
         ["if"] = { query = "@function.inner", desc = "Select inner function" },
-        ["ac"] = { query = "@class.outer", desc = "Select outer class" },
+        ["oc"] = { query = "@class.outer", desc = "Select outer class" },
         ["ic"] = { query = "@class.inner", desc = "Select inner class" },
-        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+        ["os"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
         ["is"] = { query = "@scope.inner", query_group = "locals", desc = "Select inner language scope" },
-        ["al"] = { query = "@loop.outer", desc = "Select outer loop" },
+        ["ol"] = { query = "@loop.outer", desc = "Select outer loop" },
         ["il"] = { query = "@loop.inner", desc = "Select inner loop" },
-        ["ab"] = { query = "@block.outer", desc = "Select outer block" },
+        ["ob"] = { query = "@block.outer", desc = "Select outer block" },
         --TODO: Figure out how to select blocks without the curly braces
         ["ib"] = { query = "@block.inner", desc = "Select inner block", kind = "exclusive" },
-        ["ad"] = { query = "@conditional.outer", desc = "Select outer conditional" },
+        ["od"] = { query = "@conditional.outer", desc = "Select outer conditional" },
         ["id"] = { query = "@conditional.inner", desc = "Select inner conditional" },
-        ["ap"] = { query = "@parameter.outer", desc = "Select outer parameter" },
+        ["op"] = { query = "@parameter.outer", desc = "Select outer parameter" },
         ["ip"] = { query = "@parameter.inner", desc = "Select inner parameter" },
-        ["aP"] = { query = "@parameter.outer", mode = "a", desc = "Select outer parameter (inclusive)" },
+        ["oP"] = { query = "@parameter.outer", mode = "a", desc = "Select outer parameter (inclusive)" },
         ["iP"] = { query = "@parameter.inner", mode = "a", desc = "Select inner parameter (inclusive)" },
-        ["a,"] = { query = "@parameter.outer", mode = "i", desc = "Select outer parameter (exclusive)" },
+        ["o,"] = { query = "@parameter.outer", mode = "i", desc = "Select outer parameter (exclusive)" },
         ["i,"] = { query = "@parameter.inner", mode = "i", desc = "Select inner parameter (exclusive)" },
-        ["a;"] = {
+        ["o;"] = {
           query = "@parameter.outer",
           mode = "a",
           kind = "inclusive",
@@ -271,7 +271,7 @@ require("nvim-treesitter.configs").setup({
           kind = "inclusive",
           desc = "Select inner parameter (inclusive)",
         },
-        ["a:"] = {
+        ["o:"] = {
           query = "@parameter.outer",
           mode = "i",
           kind = "exclusive",
@@ -283,9 +283,9 @@ require("nvim-treesitter.configs").setup({
           kind = "exclusive",
           desc = "Select inner parameter (exclusive)",
         },
-        ["a/"] = { query = "@comment.outer", desc = "Select outer comment" },
+        ["o/"] = { query = "@comment.outer", desc = "Select outer comment" },
         ["i/"] = { query = "@comment.inner", desc = "Select inner comment" },
-        ["a#"] = {
+        ["o#"] = {
           query = "@comment.outer",
           mode = "i",
           kind = "inclusive",
