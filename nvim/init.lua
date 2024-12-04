@@ -1125,14 +1125,14 @@ end, { range = false, nargs = 1 })
 
 vim.api.nvim_create_user_command("SU", function(opts)
   local date = os.date("%Y-%m-%d")
-  if opts.fargs[1] == "yesterday" then
+  if opts.fargs[1] == "yd" then
     date = os.date("%Y-%m-%d", os.time() - 86400)
-  elseif opts.fargs[1] == "today" then
+  elseif opts.fargs[1] == "td" then
     date = os.date("%Y-%m-%d")
-  elseif opts.fargs[1] == "tomorrow" and os.date("%w") == "5" then
-    -- If today is Friday, then next business day is Monday
+  elseif opts.fargs[1] == "tm" and os.date("%w") == "5" then
+    -- If td is Friday, then next business day is Monday
     date = os.date("%Y-%m-%d", os.time() + 86400 * 3)
-  elseif opts.fargs[1] == "tomorrow" then
+  elseif opts.fargs[1] == "tm" then
     date = os.date("%Y-%m-%d", os.time() + 86400)
   else
     print("Invalid date")
