@@ -1247,7 +1247,7 @@ require("gitsigns").setup({
     end
 
     -- Navigation
-    map("n", "]c", function()
+    map("n", "]h", function()
       if vim.wo.diff then
         return "]c"
       end
@@ -1257,7 +1257,7 @@ require("gitsigns").setup({
       return "<Ignore>"
     end, { expr = true, desc = "Next Hunk" })
 
-    map("n", "[c", function()
+    map("n", "[h", function()
       if vim.wo.diff then
         return "[c"
       end
