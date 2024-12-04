@@ -9,10 +9,11 @@ windows:
           - fish
           - cls
           - nvim -c "SU today"
-  - 2)retro:
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - retro:
-          - fish
-          - cls
-          - nvim -c "Retro csprint"
+  # don't really use this all that much
+  # - 2)retro:
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - retro:
+  #         - fish
+  #         - cls
+  #         - nvim -c "Retro csprint"
