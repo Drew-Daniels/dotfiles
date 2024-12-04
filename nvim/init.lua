@@ -793,7 +793,7 @@ require("conform").setup({
     },
     fallback_rubocop = {
       command = "bundle",
-      args = { "--auto-correct", "--format", "quiet", "$FILENAME" },
+      args = { "exec", "rubocop", "--auto-correct", "--format", "quiet", "$FILENAME" },
       stdin = false,
       condition = function()
         return not in_hm()
