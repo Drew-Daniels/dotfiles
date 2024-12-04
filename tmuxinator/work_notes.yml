@@ -8,7 +8,7 @@ windows:
         - work_notes:
           - fish
           - cls
-          - nvim -c "SU today"
+          - nvim -c "SU td"
   # don't really use this all that much
   # - 2)retro:
   #     layout: <%= ENV["MUX_LAYOUT"] %>
