@@ -43,7 +43,7 @@ end
 
 require("lualine").setup({
   -- options = { theme = THEME },
-  options = { theme = "iceberg" },
+  options = { theme = "zebones" },
   sections = {
     lualine_x = {
       -- "grapple",
