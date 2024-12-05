@@ -6,4 +6,5 @@ function _jg_help -d "Prints help and exits"
     printf "  bname   Generates a Git branch name using a Jira Ticket ID\n"
     printf "  pr      Generates a Slack Message to Link to a Jira Ticket and Pull Request\n"
     printf "  prd     Generates a Description for a Given PR\n"
+    printf "  find    Finds the latest GH PR for a given Jira Ticket ID or Key\n"
 end
