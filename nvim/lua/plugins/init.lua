@@ -196,7 +196,8 @@ return require("lazy").setup({
     lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
     -- dev = true,
-    version = "v0.7.1", -- v0.7.2 causes neovim to exit when inserting text in norg files, but potentially others?
+    version = "v0.7.2",
+    -- version = "v0.7.1", -- v0.7.2 causes neovim to exit when inserting text in norg files, but potentially others?
     -- NOTE: Need to run this build manually
     -- build = "cargo build --release",
   },
