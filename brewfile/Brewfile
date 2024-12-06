@@ -95,12 +95,10 @@ brew libtiff
 brew libtool
 brew libunibreak
 brew libunistring
-brew libuv
 brew libvidstab
 brew libvmaf
 brew libvorbis
 brew libvpx
-brew libvterm
 brew libx11
 brew libxau
 brew libxcb
@@ -119,10 +117,7 @@ brew libxt
 brew libxtst
 brew libyaml
 brew little-cms2
-brew lpeg
 brew lsd
-brew luajit
-brew luv
 brew lz4
 brew lzo
 brew m4
@@ -132,9 +127,7 @@ brew mesa
 brew mise
 brew mpdecimal
 brew mpg123
-brew msgpack
 brew ncurses
-brew neovim --HEAD
 brew nettle
 brew oniguruma
 brew opencore-amr
@@ -168,9 +161,7 @@ brew tesseract
 brew theora
 brew tmux
 brew tree
-brew tree-sitter
 brew unbound
-brew unibilium
 brew usage
 brew utf8proc --HEAD
 brew webp
