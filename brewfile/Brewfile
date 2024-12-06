@@ -134,7 +134,7 @@ brew mpdecimal
 brew mpg123
 brew msgpack
 brew ncurses
-brew neovim
+brew neovim --HEAD
 brew nettle
 brew oniguruma
 brew opencore-amr
@@ -172,7 +172,7 @@ brew tree-sitter
 brew unbound
 brew unibilium
 brew usage
-brew utf8proc
+brew utf8proc --HEAD
 brew webp
 brew wget
 brew x264
