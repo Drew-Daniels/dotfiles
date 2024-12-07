@@ -709,7 +709,8 @@ local conform_utils = require("conform.util")
 ---@param rel_project_path string
 local function in_project(rel_project_path)
   -- TODO: Use env var here instead of hardcoding projects path
-  local project_dir = vim.fn.expand("$PROJECTS_DIR" .. rel_project_path)
+  local joined = "$PROJECTS_DIR/" .. rel_project_path
+  local project_dir = vim.fn.expand(joined)
   local root_dir = vim.fs.root(0, ".git")
 
   return root_dir == project_dir
@@ -721,6 +722,10 @@ end
 
 local function in_fs()
   return in_project("friendly-snippets")
+end
+
+local function in_ss()
+  return in_project("schemastore")
 end
 
 -- checks if the current buffer/file is in one of the directories provided
@@ -787,7 +792,7 @@ require("conform").setup({
     custom_jq = {
       command = "jq",
       condition = function()
-        return not in_fs()
+        return not in_fs() and not in_ss()
       end,
     },
     project_rubocop = {
