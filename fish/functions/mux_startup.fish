@@ -4,6 +4,6 @@ function mux_startup -d "Starts up tmuxinator projects"
 
     for project in $projects
         echo "Starting $project"
-        mux $project -a=false
+        mux start $project --attach=false
     end
 end
