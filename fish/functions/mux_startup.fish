@@ -1,6 +1,5 @@
 function mux_startup -d "Starts up tmuxinator projects"
-    set -l projects_str dotfiles work_notes healthmatters
-    set -l projects (string split ' ' $projects_str)
+    set -l projects (string split ' ' $DEFAULT_TMUXINATOR_PROJECTS)
 
     for project in $projects
         echo "Starting $project"
