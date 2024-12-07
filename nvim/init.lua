@@ -755,7 +755,7 @@ require("conform").setup({
       return
     end
 
-    if in_hm() or in_fs() then
+    if in_hm() or in_fs() or in_ss() then
       -- always use project formatter
       return { timeout_ms = 500, lsp_format = "never", quiet = true }
     else
