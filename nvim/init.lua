@@ -535,7 +535,7 @@ lspconfig.basedpyright.setup({
 -- https://github.com/neovim/nvim-lspconfig/issues/2508
 local root_dir = vim.fs.root(0, ".git")
 local use_flat_config = false
-if vim.fn.filereadable(root_dir .. "/eslint.config.js") == 1 then
+if root_dir ~= nil and vim.fn.filereadable(root_dir .. "/eslint.config.js") == 1 then
   use_flat_config = true
 end
 
