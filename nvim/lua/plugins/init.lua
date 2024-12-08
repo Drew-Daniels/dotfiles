@@ -196,7 +196,8 @@ return require("lazy").setup({
     lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
     -- dev = true,
-    version = "v0.7.3",
+    -- version = "v0.7.3",
+    version = "v0.*",
     -- NOTE: Need to run this build manually
     -- build = "cargo build --release",
   },
