@@ -1,4 +1,5 @@
 name: friendly-snippets
+root: <%= ENV["PROJECTS_DIR"] %>/friendly-snippets
 
 windows:
   - root:
