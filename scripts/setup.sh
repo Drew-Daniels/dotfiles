@@ -6,7 +6,7 @@ mise_dir=$dotfiles_dir/mise
 mkdir -p $mise_dir
 
 local_mise_conf=~/.config/mise/config.local.toml
-cp $mise_dir/config.local.toml $local_mise_conf
+cp $mise_dir/config.local.template.toml $local_mise_conf
 
 # generate '.env.local' file to be manually configured
 local_env_file_template=$dotfiles_dir/.env.template
