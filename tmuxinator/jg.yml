@@ -1,6 +1,5 @@
 name: jg
 root: <%= ENV["PROJECTS_DIR"] %>/jg
-on_project_exit: clear
 
 windows:
   - root:

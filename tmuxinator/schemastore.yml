@@ -1,6 +1,5 @@
 name: schemastore
 root: <%= ENV["PROJECTS_DIR"] %>/schemastore
-on_project_exit: clear
 
 windows:
   - root:

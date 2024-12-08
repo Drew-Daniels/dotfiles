@@ -1,6 +1,5 @@
 name: jg_fish
 root: <%= ENV["PROJECTS_DIR"] %>/jg.fish
-on_project_exit: clear
 
 windows:
   - root:
