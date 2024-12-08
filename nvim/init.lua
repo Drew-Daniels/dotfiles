@@ -387,7 +387,90 @@ require("web-tools").setup({
   },
 })
 
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       BLINK.CMP                         │
+--          │         https://github.com/Saghen/blink.cmp             │
+--          ╰─────────────────────────────────────────────────────────╯
+require("blink-cmp").setup({
+  keymap = {
+    ["<C-u>"] = { "scroll_documentation_up" },
+    ["<C-d>"] = { "scroll_documentation_down" },
+    ["<C-n>"] = { "select_next" },
+    ["<C-p>"] = { "select_prev" },
+    ["<C-e>"] = { "accept" },
+    ["<C-space>"] = { "show" },
+    ["<C-q>"] = { "hide" },
+    ["<C-k>"] = { "show_documentation" },
+    ["<C-j>"] = { "snippet_forward" },
+    ["<C-h>"] = { "snippet_backward" },
+  },
+  nerd_font_variant = "mono",
+  highlight = {
+    use_nvim_cmp_as_default = true,
+  },
+  windows = {
+    documentation = {
+      auto_show = true,
+    },
+  },
+  sources = {
+    completion = {
+      enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
+    },
+    providers = {
+      lsp = { fallback_for = { "lazydev" } },
+      lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+    },
+    snippets = {
+      name = "Snippets",
+      module = "blink.cmp.sources.snippets",
+      score_offset = -3,
+      opts = {
+        friendly_snippets = true,
+        search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+        global_snippets = { "all" },
+        extended_filetypes = {
+          eruby = { "ruby", "javascript" },
+          typescript = { "javascript" },
+          vue = { "javascript", "html", "css" },
+        },
+        ignored_filetypes = {},
+      },
+    },
+  },
+})
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
+    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
+    vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
+    vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { unpack(opts), desc = "code ACTIONS" })
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
+    vim.keymap.set("n", "gR", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
+    -- conform.nvim should handle formatting
+    -- vim.keymap.set("n", "<space>f", function()
+    -- 	vim.lsp.buf.format({ async = true })
+    -- end, { unpack(opts), desc = "format" })
+  end,
+  desc = "Initialize LSP on LspAttach event",
+})
+-- Language Server Configuration END
+
 -- TODO: Add lazydev setup call here
+-- TODO: Merge LSP config with blink
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-LSPCONFIG                      │
 --          │        https://github.com/neovim/nvim-lspconfig         │
@@ -579,88 +662,6 @@ local npairs = require("nvim-autopairs")
 npairs.setup({
   check_ts = true,
 })
-
---          ╭─────────────────────────────────────────────────────────╮
---          │                       BLINK.CMP                         │
---          │         https://github.com/Saghen/blink.cmp             │
---          ╰─────────────────────────────────────────────────────────╯
-require("blink-cmp").setup({
-  keymap = {
-    ["<C-u>"] = { "scroll_documentation_up" },
-    ["<C-d>"] = { "scroll_documentation_down" },
-    ["<C-n>"] = { "select_next" },
-    ["<C-p>"] = { "select_prev" },
-    ["<C-e>"] = { "accept" },
-    ["<C-space>"] = { "show" },
-    ["<C-q>"] = { "hide" },
-    ["<C-k>"] = { "show_documentation" },
-    ["<C-j>"] = { "snippet_forward" },
-    ["<C-h>"] = { "snippet_backward" },
-  },
-  nerd_font_variant = "mono",
-  highlight = {
-    use_nvim_cmp_as_default = true,
-  },
-  windows = {
-    documentation = {
-      auto_show = true,
-    },
-  },
-  sources = {
-    completion = {
-      enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
-    },
-    providers = {
-      lsp = { fallback_for = { "lazydev" } },
-      lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-    },
-    snippets = {
-      name = "Snippets",
-      module = "blink.cmp.sources.snippets",
-      score_offset = -3,
-      opts = {
-        friendly_snippets = true,
-        search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-        global_snippets = { "all" },
-        extended_filetypes = {
-          eruby = { "ruby", "javascript" },
-          typescript = { "javascript" },
-          vue = { "javascript", "html", "css" },
-        },
-        ignored_filetypes = {},
-      },
-    },
-  },
-})
-
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
-    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
-    vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
-    vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { unpack(opts), desc = "code ACTIONS" })
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
-    vim.keymap.set("n", "gR", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
-    -- conform.nvim should handle formatting
-    -- vim.keymap.set("n", "<space>f", function()
-    -- 	vim.lsp.buf.format({ async = true })
-    -- end, { unpack(opts), desc = "format" })
-  end,
-  desc = "Initialize LSP on LspAttach event",
-})
--- Language Server Configuration END
 
 require("scissors").setup({
   snippetDir = vim.fn.stdpath("config") .. "/snippets",
