@@ -467,10 +467,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
   desc = "Initialize LSP on LspAttach event",
 })
--- Language Server Configuration END
 
 -- TODO: Add lazydev setup call here
--- TODO: Merge LSP config with blink
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-LSPCONFIG                      │
 --          │        https://github.com/neovim/nvim-lspconfig         │
@@ -507,7 +506,7 @@ local servers = {
   "tflint",
 }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({})
+  lspconfig[lsp].setup({ capabilities = capabilities })
 end
 
 -- lspconfig.vuels.setup({
@@ -517,6 +516,7 @@ end
 -- if vim.fn.hostname() == "drews-mbp-1" then
 lspconfig.solargraph.setup({
   filetypes = { "ruby", "eruby" },
+  capabilities = capabilities,
 })
 -- end
 
@@ -528,6 +528,7 @@ lspconfig.basedpyright.setup({
       },
     },
   },
+  capabilities = capabilities,
 })
 
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
@@ -545,6 +546,7 @@ lspconfig.eslint.setup({
       useFlatConfig = use_flat_config,
     },
   },
+  capabilities = capabilities,
 })
 
 lspconfig.cssls.setup({
@@ -568,6 +570,7 @@ lspconfig.cssls.setup({
       },
     },
   },
+  capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
@@ -578,6 +581,7 @@ lspconfig.lua_ls.setup({
       },
     },
   },
+  capabilities = capabilities,
 })
 
 lspconfig.typos_lsp.setup({
@@ -585,6 +589,7 @@ lspconfig.typos_lsp.setup({
   init_options = {
     config = "~/projects/dotfiles/typos/typos.toml",
   },
+  capabilities = capabilities,
 })
 
 -- https://www.npbee.me/posts/deno-and-typescript-in-a-monorepo-neovim-lsp
@@ -637,6 +642,7 @@ require("typescript-tools").setup({
       completeFunctionCalls = false,
     },
   },
+  capabilities = capabilities,
 })
 
 lspconfig.denols.setup({
@@ -651,6 +657,7 @@ lspconfig.denols.setup({
       },
     },
   },
+  capabilities = capabilities,
 })
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
