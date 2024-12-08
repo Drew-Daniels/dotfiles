@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-local_mise_conf=~/.config/mise/config.local.toml
+dotfiles_dir=~/projects/dotfiles
+mise_dir=$dotfiles_dir/mise
 
-test -f $local_mise_conf || touch $local_mise_conf
+mkdir -p $mise_dir
+
+local_mise_conf=~/.config/mise/config.local.toml
+cp $mise_dir/config.local.toml $local_mise_conf
 
 # generate '.env.local' file to be manually configured
-local_env_file_template=~/projects/dotfiles/.env.template
-local_env_file=~/projects/dotfiles/.env.local
+local_env_file_template=$dotfiles_dir/.env.template
+local_env_file=$dotfiles_dir/.env.local
 
 cp $local_env_file_template $local_env_file
 
 # configure zsh
-echo ". ~/projects/dotfiles/zsh/.zshrc" >~/.zshrc
+echo ". $dotfiles_dir/zsh/.zshrc" >~/.zshrc
 
 # configure git
-cat ~/projects/dotfiles/git/.gitconfig.template >~/.gitconfig
+cat $dotfiles_dir/git/.gitconfig.template >~/.gitconfig
