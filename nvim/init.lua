@@ -420,21 +420,21 @@ require("blink-cmp").setup({
     providers = {
       lsp = { fallback_for = { "lazydev" } },
       lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-    },
-    snippets = {
-      name = "Snippets",
-      module = "blink.cmp.sources.snippets",
-      score_offset = -3,
-      opts = {
-        friendly_snippets = true,
-        search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-        global_snippets = { "all" },
-        extended_filetypes = {
-          eruby = { "ruby", "javascript" },
-          typescript = { "javascript" },
-          vue = { "javascript", "html", "css" },
+      snippets = {
+        name = "Snippets",
+        module = "blink.cmp.sources.snippets",
+        score_offset = -3,
+        opts = {
+          friendly_snippets = true,
+          search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+          global_snippets = { "all" },
+          extended_filetypes = {
+            eruby = { "ruby", "javascript" },
+            typescript = { "javascript" },
+            vue = { "javascript", "html", "css" },
+          },
+          ignored_filetypes = {},
         },
-        ignored_filetypes = {},
       },
     },
   },
