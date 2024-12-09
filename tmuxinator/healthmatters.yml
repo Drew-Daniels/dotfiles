@@ -212,7 +212,7 @@ windows:
   - 6)stack:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - sidekiq:
+        - main:
           - fish
           - cls
           - bin/dev
@@ -222,7 +222,7 @@ windows:
   - 7)sidekiq:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
-        - sidekiq:
+        - main:
           - fish
           - cls
           - bundle exec sidekiq
