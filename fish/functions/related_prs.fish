@@ -11,8 +11,9 @@ function related_prs -d "Finds related pull requests and copies the results to t
         return 0
     end
 
-    # TODO: Figure out how to filter to just open PRs, or closed and merged PRs (i.e., do not include PRs that were closed but not merged)
-    set -l pr_urls (gh search prs "$argv" --assignee=@me --json=url | jq -r '.[].url')
+    set -l open_pr_urls (gh search prs "$argv" --assignee=@me --state=open --json=url | jq -r '.[].url')
+    set -l merged_pr_urls (gh search prs "$argv" --assignee=@me --merged --json=url | jq -r '.[].url')
+    set -l pr_urls (string join " " $open_pr_urls $merged_pr_urls)
 
     if test -z "$pr_urls"
         echo "No PRs found for $argv"
