@@ -15,7 +15,7 @@ function create_pr -d "Creates a PR"
         end
     end
 
-    gh pr create --base encounters-dev --title=$title --assignee=@me --web --draft --template=./tmp/kipu_pr_body.md
+    # gh pr create --base encounters-dev --title=$title --assignee=@me --web --draft --template=./tmp/kipu_pr_body.md
 
     rm ./tmp/kipu_pr_body.md
 end
