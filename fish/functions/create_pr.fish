@@ -15,10 +15,7 @@ function create_pr -d "Creates a PR"
         end
     end
 
-    # https://cli.github.com/manual/gh_pr_create
-    echo "Creating PR"
     gh pr create --base encounters-dev --title=$title --assignee=@me --web --draft --template=./tmp/kipu_pr_body.md
 
-    echo "Removing tmp file"
     rm ./tmp/kipu_pr_body.md
 end
