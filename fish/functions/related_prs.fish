@@ -18,15 +18,12 @@ function related_prs -d "Finds related pull requests and copies the results to t
         return 1
     end
 
-    set -l joined (string join "\n- " $pr_urls)
-    set -l joined "- $joined"
-
     if set -q _flag_c
-        printf $joined | pbcopy
+        echo $pr_urls | pbcopy
         if test -z "$_flag_q"
-            printf "Copied to Clipboard:\n$joined"
+            printf "Copied to Clipboard:\n$pr_urls"
         end
     else
-        printf $joined
+        echo $pr_urls
     end
 end
