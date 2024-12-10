@@ -16,6 +16,7 @@ brew gcc
 brew gcc@11
 brew gdbm
 brew gnu-getopt
+brew gnu-sed
 brew gnupg
 brew icu4c@75
 brew isl
@@ -31,10 +32,17 @@ brew libksba
 brew libmpc
 brew libtommath
 brew libusb
+brew libuv
+brew libvterm
 brew libxml2
 brew llvm
+brew lpeg
+brew luajit
+brew luv
 brew mongosh
 brew mpfr
+brew msgpack
+brew neovim
 brew node
 brew npth
 brew openldap
@@ -46,9 +54,12 @@ brew python-packaging
 brew python@3.12
 brew python@3.13
 brew redis
+brew rust
 brew tcl-tk
 brew tcl-tk@8
 brew telnet
+brew tree-sitter
+brew unibilium
 brew v8
 brew z3
 
@@ -56,6 +67,7 @@ tap homebrew/cask
 cask 1password-cli
 cask 1password@nightly
 cask alfred
+cask keycastr
 cask michaelvillar-timer
 cask protonvpn
 
@@ -80,5 +92,5 @@ tap teamookla/speedtest
 
 # App Store applications
 appstore 1596283165 rcmd (2.6.5)
-appstore 1530751461 Snippety (8.1.83)
+appstore 1530751461 Snippety (9.0.84)
 appstore 497799835 Xcode (16.1)
