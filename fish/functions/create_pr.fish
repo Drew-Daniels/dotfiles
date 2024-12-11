@@ -25,5 +25,5 @@ function create_pr -d "Creates a PR"
 
     gh pr create --base main --title=$title --assignee=@me --draft --body-file=$tmp_file
 
-    # rm $tmp_file
+    rm $tmp_file
 end
