@@ -226,4 +226,4 @@ eval "$(op completion zsh)"
 compdef _op op
 
 # backups
-export BACKUPS_DIR="~/backups"
+export BACKUPS_DIR="$HOME"/backups
