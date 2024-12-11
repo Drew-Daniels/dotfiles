@@ -224,3 +224,6 @@ alias ber="bundle exec rspec"
 # 1password
 eval "$(op completion zsh)"
 compdef _op op
+
+# backups
+export BACKUPS_DIR="~/backups"
