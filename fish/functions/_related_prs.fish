@@ -1,4 +1,4 @@
-function related_prs -d "Finds related pull requests and copies the results to the clipboard"
+function _related_prs -d "Finds related pull requests and copies the results to the clipboard"
     set -l options q/quiet c/clipboard h/help
     argparse $options -- $argv
 

@@ -1,11 +1,15 @@
 function create_pr -d "Creates a PR"
     set -l title (jg cc)
+    set -l tmp_file $PWD/tmp/pr_body.md
     printf "PR Title:\n\t$title\n"
 
-    bat $XDG_CONFIG_HOME/pr_body_template.md >./tmp/pr_body.md
+    cat $XDG_CONFIG_HOME/work/pr_body_template.md >$tmp_file
 
     set -l issue_key (jg key)
-    set -l related_prs (related_prs $issue_key)
+    # TODO: Modify to use 'jg related' at some point
+    set -l related_prs (_related_prs $issue_key)
+
+    # TODO: Modify to include link to the Jira ticket in the body
 
     if test $status -eq 0
         set -l line_num 8
@@ -17,8 +21,9 @@ function create_pr -d "Creates a PR"
     end
 
     printf "PR Body:\n"
-    bat ./tmp/pr_body.md
-    # gh pr create --base encounters-dev --title=$title --assignee=@me --web --draft --template=./tmp/pr_body.md
+    cat $tmp_file
 
-    rm ./tmp/pr_body.md
+    gh pr create --base main --title=$title --assignee=@me --draft --body-file=$tmp_file
+
+    # rm $tmp_file
 end
