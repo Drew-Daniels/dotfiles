@@ -1,10 +1,9 @@
 function resetdb -d "Resets local database to a back up from S3, and sets everything up for first time use"
     set -l user (whoami)
     set -l dbname $WORK_DB_NAME
-    set -l s3_backup $S3_BACKUP_PATH
+    set -l s3_backup s3://$S3_BACKUP_PATH
     set -l local_backup $LOCAL_BACKUP_PATH
-
-    backupdb
+    set -l jobs 14
 
     dropdb $dbname -f
 
@@ -12,7 +11,7 @@ function resetdb -d "Resets local database to a back up from S3, and sets everyt
 
     aws s3 cp $s3_backup $local_backup
 
-    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d $dbname -j 8 $local_backup
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d $dbname -j $jobs $local_backup
 
     bundle exec rake db:migrate
 
