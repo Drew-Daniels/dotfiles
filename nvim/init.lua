@@ -755,7 +755,8 @@ require("conform").setup({
     typescriptreact = { "prettier" },
     -- vue = { "eslint" },
     vue = { "project_eslint", "fallback_eslint" },
-    css = { "prettier" },
+    -- TODO: Figure out how to disable prettier from running in folders other than emr-v3
+    -- css = { "prettier" },
     less = { "prettier" },
     -- TODO: Figure out how to disable prettier from running in folders other than emr-v3
     -- scss = { "prettier" },
