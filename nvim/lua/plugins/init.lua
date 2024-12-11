@@ -184,7 +184,9 @@ return require("lazy").setup({
   "stevearc/conform.nvim",
   "ray-x/web-tools.nvim",
   "ludovicchabant/vim-gutentags",
-  "RRethy/nvim-treesitter-endwise",
+  -- "RRethy/nvim-treesitter-endwise",
+  -- Using fork until https://github.com/RRethy/nvim-treesitter-endwise/pull/42 is merged
+  "metiulekm/nvim-treesitter-endwise",
   "tpope/vim-fugitive", -- Git operations, tools in neovim
   "tpope/vim-rhubarb", -- Fugitive-companion to interact with github
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
