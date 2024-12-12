@@ -1,4 +1,13 @@
 function create_pr -d "Creates a PR"
+    set -l options b/base
+    argparse $options -- $argv
+
+    if test -z "$_flag_b"
+        set -l base_branch main
+    else
+        set -l base_branch $_flag_b
+    end
+
     set -l title (jg cc)
     set -l jira_ticket_md_link (jg url -m | sed -E 's/^/    - /')
     set -l tmp_file $PWD/tmp/pr_body.md
@@ -28,7 +37,7 @@ function create_pr -d "Creates a PR"
     printf "PR Body:\n"
     bat $tmp_file --paging=never
 
-    gh pr create --base main --title=$title --assignee=@me --draft --body-file=$tmp_file
+    gh pr create --base $base_branch --title=$title --assignee=@me --draft --body-file=$tmp_file
 
     gh pr view --web
 
