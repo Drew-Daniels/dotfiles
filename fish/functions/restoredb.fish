@@ -26,6 +26,4 @@ function restoredb -d "Restores database for current branch from backup"
         echo "Backup for $current_branch does not exist"
     end
 
-    bundle install
-
 end
