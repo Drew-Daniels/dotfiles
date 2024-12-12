@@ -11,12 +11,9 @@ function add_reviewers -d "Add reviewers to a pull request"
         return 1
     end
 
-    set -l reviewers (string split , $REVIEWERS)
+    set -l reviewers $REVIEWERS
     echo $reviewers
 
-    for reviewer in $reviewers
-        echo "Adding $reviewer as reviewer"
-        gh pr edit --add-reviewer $reviewer
-    end
+    gh pr edit --add-reviewer=$reviewers
 
 end
