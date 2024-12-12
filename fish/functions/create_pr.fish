@@ -1,5 +1,6 @@
 function create_pr -d "Creates a PR"
     set -l title (jg cc)
+    set -l jira_ticket_md_link (jg url -m)
     set -l tmp_file $PWD/tmp/pr_body.md
     printf "PR Title:\n\t$title\n"
 
@@ -12,6 +13,11 @@ function create_pr -d "Creates a PR"
     # TODO: Modify to include link to the Jira ticket in the body
 
     if test $status -eq 0
+        # Append jira ticket link
+        gsed -i "/Link/a $jira_ticket_md_link" $tmp_file
+
+        # TODO: Format these as markdown links
+        # Insert links to related PRs
         set -l line_num 8
         for pr in (string split " " $related_prs)
             set -l var (string join '' $line_num i)
@@ -21,9 +27,10 @@ function create_pr -d "Creates a PR"
     end
 
     printf "PR Body:\n"
-    cat $tmp_file
+    bat $tmp_file --paging=never
+    # cat $tmp_file
 
-    gh pr create --base main --title=$title --assignee=@me --draft --body-file=$tmp_file
+    # gh pr create --base main --title=$title --assignee=@me --draft --body-file=$tmp_file
 
-    rm $tmp_file
+    # rm $tmp_file
 end
