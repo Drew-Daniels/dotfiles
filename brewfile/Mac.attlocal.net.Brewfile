@@ -16,6 +16,7 @@ brew gcc
 brew gcc@11
 brew gdbm
 brew gnu-getopt
+brew gnu-sed
 brew gnupg
 brew icu4c@75
 brew isl
@@ -92,4 +93,4 @@ tap teamookla/speedtest
 # App Store applications
 appstore 1596283165 rcmd (2.6.5)
 appstore 1530751461 Snippety (9.0.84)
-appstore 497799835 Xcode (16.1)
+appstore 497799835 Xcode (16.2)
