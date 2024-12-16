@@ -204,28 +204,28 @@ require("nvim-treesitter.configs").setup({
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        ["]m"] = { query = "@function.outer", desc = "Next method (start)" },
+        ["]f"] = { query = "@function.outer", desc = "Next function (start)" },
         ["]c"] = { query = "@class.outer", desc = "Next class (start)" },
         ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope (start)" },
         ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold (start)" },
         ["]d"] = { query = "@conditional.outer", desc = "Next Conditional (start)" },
       },
       goto_next_end = {
-        ["]M"] = { query = "@function.outer", desc = "Next method (end)" },
+        ["]F"] = { query = "@function.outer", desc = "Next function (end)" },
         ["]C"] = { query = "@class.outer", desc = "Next class (end)" },
         ["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope (end)" },
         ["]Z"] = { query = "@fold", query_group = "folds", desc = "Next fold (end)" },
         ["]D"] = { query = "@conditional.outer", desc = "Next Conditional (end)" },
       },
       goto_previous_start = {
-        ["[m"] = { query = "@function.outer", desc = "Previous method (start)" },
+        ["[f"] = { query = "@function.outer", desc = "Previous function (start)" },
         ["[c"] = { query = "@class.outer", desc = "Previous class (start)" },
         ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope (start)" },
         ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (start)" },
         ["[d"] = { query = "@conditional.outer", desc = "Previous Conditional (start)" },
       },
       goto_previous_end = {
-        ["[M"] = { query = "@function.outer", desc = "Previous method (end)" },
+        ["[F"] = { query = "@function.outer", desc = "Previous function (end)" },
         ["[C"] = { query = "@class.outer", desc = "Previous class (end)" },
         ["[S"] = { query = "@scope", query_group = "locals", desc = "Previous scope (end)" },
         ["[Z"] = { query = "@fold", query_group = "folds", desc = "Previous fold (end)" },
