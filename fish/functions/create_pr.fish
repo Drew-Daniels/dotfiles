@@ -37,7 +37,7 @@ function create_pr -d "Creates a PR"
     printf "PR Body:\n"
     bat $tmp_file --paging=never
 
-    gh pr create --base $base_branch --title=$title --assignee=@me --draft --body-file=$tmp_file
+    gh pr create --base="$base_branch" --title="$title" --assignee=@me --draft --body-file=$tmp_file
 
     gh pr view --web
 
