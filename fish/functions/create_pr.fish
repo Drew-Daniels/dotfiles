@@ -26,7 +26,7 @@ function create_pr -d "Creates a PR"
     # TODO: Format these as markdown links
     set -l related_prs (_related_prs $issue_key)
     if test $status -eq 0
-        set -l line_num 8
+        set -l line_num 9
         for pr in (string split " " $related_prs)
             set -l var (string join '' $line_num i)
             gsed -i "$var - $pr" ./tmp/pr_body.md
