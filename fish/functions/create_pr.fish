@@ -9,7 +9,7 @@ function create_pr -d "Creates a PR"
     end
 
     set -l title (jg cc)
-    set -l jira_ticket_md_link (jg url -m | sed -E 's/^/    - /')
+    set -l jira_ticket_md_link (jg url -m)
     set -l tmp_file $PWD/tmp/pr_body.md
     printf "PR Title:\n\t$title\n"
 
@@ -18,8 +18,7 @@ function create_pr -d "Creates a PR"
     set -l issue_key (jg key)
 
     # Insert Jira ticket link
-    # TODO: Figure out why sed is trimming the whitespace before the appended text
-    gsed -i "6 a $jira_ticket_md_link" $tmp_file
+    gsed -i "s#insert-ticket-link-here#$jira_ticket_md_link#g;" $tmp_file
 
     # Insert links to related PRs
     # TODO: Modify to use 'jg related' at some point
