@@ -1,12 +1,11 @@
 function create_pr -d "Creates a PR"
-    set -l options b/base
+    set -l options b/base=
     argparse $options -- $argv
 
-    # TODO: Figure out why passing branch is not changing the branch used
-    if test -z "$_flag_b"
-        set -l base_branch main
+    if test -z "$_flag_base"
+        set base_branch main
     else
-        set -l base_branch $_flag_b
+        set base_branch $_flag_b
     end
 
     set -l title (jg cc)
