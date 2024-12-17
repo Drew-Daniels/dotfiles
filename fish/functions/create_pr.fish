@@ -2,6 +2,7 @@ function create_pr -d "Creates a PR"
     set -l options b/base
     argparse $options -- $argv
 
+    # TODO: Figure out why passing branch is not changing the branch used
     if test -z "$_flag_b"
         set -l base_branch main
     else
