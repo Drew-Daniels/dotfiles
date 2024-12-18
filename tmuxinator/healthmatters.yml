@@ -209,17 +209,27 @@ windows:
   #       - cmd:
   #         - fish
   #         - cls
-  - 6)stack:
+  - 6)rails:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - main:
           - fish
           - cls
-          - bin/dev
+          - bundle _1.17.3_ exec rails s
         - cmd:
           - fish
           - cls
-  - 7)sidekiq:
+  - 7)js:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - main:
+          - fish
+          - cls
+          - pnpm start
+        - cmd:
+          - fish
+          - cls
+  - 8)sidekiq:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - main:
