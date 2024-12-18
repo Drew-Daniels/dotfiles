@@ -16,18 +16,16 @@ require("legendary").setup({
 vim.opt.termguicolors = true
 
 -- Requires `brew install cormacrelf/tap/dark-notify`
--- require("dark_notify").run({
---   schemes = {
---     light = "zenbones",
---     -- light = "gruvbox",
---     dark = "zenbones",
---     -- dark = "gruvbox",
---   },
--- })
-
-vim.cmd([[
-  colorscheme zenbones
-]])
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                       DARK-NOTIFY                       │
+--          │        https://github.com/cormacrelf/dark-notify        │
+--          ╰─────────────────────────────────────────────────────────╯
+require("dark_notify").run({
+  schemes = {
+    light = "zenbones",
+    dark = "zenbones",
+  },
+})
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                         LUALINE                         │
