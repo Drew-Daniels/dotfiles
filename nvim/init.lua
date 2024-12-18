@@ -514,12 +514,10 @@ end
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
--- if vim.fn.hostname() == "drews-mbp-1" then
-lspconfig.solargraph.setup({
-  filetypes = { "ruby", "eruby" },
-  capabilities = capabilities,
-})
--- end
+-- lspconfig.solargraph.setup({
+--   filetypes = { "ruby", "eruby" },
+--   capabilities = capabilities,
+-- })
 
 lspconfig.basedpyright.setup({
   settings = {
