@@ -892,6 +892,7 @@ require("grapple").setup({
 local wk = require("which-key")
 
 -- TODO: Figure out how to filter FzfLua to just app/ folder and not include search results in spec/
+-- TODO: Figure out how to localize search results with <leader>fs to just files that are in the current directory or below
 wk.add({
   -- Miscellaneous
   { "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
