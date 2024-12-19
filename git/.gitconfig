@@ -9,8 +9,12 @@
   side-by-side = true
   line-numbers = true
   hyperlinks = true
-  ; Figure out how to get hyperlinks to work with neovim
+  ; If I can figure out how to create URL protocol association to nvim, use this
   ; hyperlinks-file-link-format = "nvim://{path}:{line}"
+  ; Need to figure out how to have delta pass line number in hyperlinks - path comes through just fine though
+  ; hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}&line={line}"
+  ; Even this isn't ideal because this just opens nvim in the termin running the server, so it's kind of a weird workflow
+  ; hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}"
 [merge]
   conflictstyle = zdiff3
 [filter "lfs"]
