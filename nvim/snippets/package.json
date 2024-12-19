@@ -27,6 +27,10 @@
         "path": "./ruby.json"
       },
       {
+        "language": "eruby",
+        "path": "./eruby.json"
+      },
+      {
         "language": "json",
         "path": "./json.json"
       },
