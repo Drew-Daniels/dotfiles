@@ -456,7 +456,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
     vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
     vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
-    vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { unpack(opts), desc = "code ACTIONS" })
+    -- vim.keymap.set({ "n", "v" }, "<leader>lc", vim.lsp.buf.code_action, { unpack(opts), desc = "Code Actions" })
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
     vim.keymap.set("n", "gR", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
     -- conform.nvim should handle formatting
@@ -893,18 +893,25 @@ local wk = require("which-key")
 wk.add({
   -- Miscellaneous
   { "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
-  { "<leader>sh", "<cmd>FzfLua search_history<cr>", desc = "Search History" },
   { "<leader>m", "<cmd>Grapple tag<cr>", desc = "Grapple Tag" },
   { "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple Move" },
   { "<leader>z", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Suggest" },
+  -- Box
+  { "<leader>b", group = "Box" },
+  { "<leader>bb", "<cmd>CBccbox<cr>", desc = "Box Title" },
+  { "<leader>bt", "<cmd>CBllline<cr>", desc = "Titled Line" },
+  { "<leader>bl", "<cmd>CBline<cr>", desc = "Simple Line" },
+  { "<leader>bm", "<cmd>CBllbox14<cr>", desc = "Marked" },
+  { "<leader>bq", "<cmd>CBllbox13<cr>", desc = "Quote" },
+  { "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
   -- Codeium
-  { "<leader>C", group = "[C]odeium" },
+  { "<leader>C", group = "Codeium" },
   { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
   { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
   { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
   { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
   -- Comment Box
-  { "<leader>c", group = "[c]omment Box" },
+  { "<leader>c", group = "Comment Box" },
   -- nesting so I don't have to repeat the mode
   {
     mode = { "n", "v" },
@@ -915,10 +922,6 @@ wk.add({
     { "<leader>cq", "<cmd>CBllbox13<cr>", desc = "[q]uoted" },
     { "<leader>cr", "<cmd>CBd<cr>", desc = "[r]emove box" },
   },
-  -- Ex commands
-  { "<leader>e", group = "[E]x Commands" },
-  { "<leader>ec", "<cmd>FzfLua commands<cr>", desc = "Ex Commands" },
-  { "<leader>eh", "<cmd>FzfLua command_history<cr>", desc = "Ex Command History" },
   -- Diffview
   { "<leader>d", group = "Diffview" },
   { "<leader>da", "<cmd>DiffviewFileHistory<cr>", desc = "All Files" },
@@ -930,43 +933,31 @@ wk.add({
   { "<leader>dm", "<cmd>DiffviewOpen main..@<cr>", desc = "Main to Current" },
   { "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Quit" },
   { "<leader>dx", "<cmd>DiffviewFileHistory<cr>", desc = "Selected" },
+  -- Ex commands
+  { "<leader>e", group = "Ex Commands" },
+  { "<leader>el", "<cmd>FzfLua commands<cr>", desc = "List" },
+  { "<leader>eh", "<cmd>FzfLua command_history<cr>", desc = "History" },
   -- Files
   { "<leader>f", group = "Files" },
   { "<leader>fa", "<cmd>FzfLua autocommands<cr>", desc = "Autocommands" },
   { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+  { "<leader>fc", "<cmd>FzfLua changes<cr>", desc = "Changes" },
   { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "File(s)" },
   { "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
   { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Git-tracked File(s)" },
-  { "<leader>fi", "<cmd>FzfLua media_files<cr>", desc = "Images & Media File(s)" },
-  { "<leader>fl", "<cmd>FzfLua resume<cr>", desc = "Last Search Results" },
   { "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
   { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent File(s)" },
   { "<leader>ft", "<cmd>FzfLua filetypes<cr>", desc = "Filetypes" },
   { "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "Marks" },
   -- Git
   { "<leader>g", group = "Git" },
-  { "<leader>gf", "<cmd>FzfLua git_bcommits<cr>", desc = "File History" },
   { "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Branches" },
-  { "<leader>gc", "<cmd>FzfLua git_commits<cr>", desc = "Commits" },
+  { "<leader>gB", "<cmd>FzfLua git_blame<cr>", desc = "Blame" },
+  { "<leader>gc", "<cmd>FzfLua git_bcommits<cr>", desc = "Commits (Buffer)" },
+  { "<leader>gC", "<cmd>FzfLua git_commits<cr>", desc = "Commits (Project)" },
   { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Status" },
-  { "<leader>gw", "<cmd>FzfLua git_stash<cr>", desc = "WIP (Stashed)" },
-  -- Requests
-  { "<leader>R", group = "Request" },
-  { "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
-  { "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview" },
-  { "<leader>Rr", "<Plug>RestNvimLast", desc = "Repeat Last" },
-  -- Browse URLs
-  { "<leader>B", group = "Browse URLs" },
-  { "<leader>Ba", "<cmd>UrlView<cr>", desc = "All URLs" },
-  { "<leader>Bp", "<cmd>UrlView lazy<cr>", desc = "Plugin URLs" },
-  -- Box
-  { "<leader>b", group = "Box" },
-  { "<leader>bb", "<cmd>CBccbox<cr>", desc = "Box Title" },
-  { "<leader>bt", "<cmd>CBllline<cr>", desc = "Titled Line" },
-  { "<leader>bl", "<cmd>CBline<cr>", desc = "Simple Line" },
-  { "<leader>bm", "<cmd>CBllbox14<cr>", desc = "Marked" },
-  { "<leader>bq", "<cmd>CBllbox13<cr>", desc = "Quote" },
-  { "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
+  { "<leader>gt", "<cmd>FzfLua git_tags<cr>", desc = "Tags" },
+  { "<leader>gS", "<cmd>FzfLua git_stash<cr>", desc = "stash" },
   -- Hunks
   { "<leader>h", group = "Hunks", desc = "Hunks" },
   -- Keymaps
@@ -974,30 +965,23 @@ wk.add({
   { "<leader>kl", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
   -- LSP
   { "<leader>l", group = "LSP" },
+  { "<leader>lc", "<cmd>FzfLua lsp_code_actions<cr>", desc = "Code Actions" },
+  { "<leader>ld", "<cmd>FzfLua diagnostics_document<cr>", desc = "Diagnostics" },
   { "<leader>lD", "<cmd>FzfLua lsp_definitions()<cr>", desc = "Definitions" },
-  { "<leader>ld", "<cmd>FzfLua diagnostics<cr>", desc = "Diagnostics" },
   { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
+  { "<leader>li", "<cmd>FzfLua lsp_implementations<cr>", desc = "Implementations" },
   { "<leader>lI", "<cmd>LspInfo<cr>", desc = "Info" },
   { "<leader>ll", "<cmd>lua vim.diagnostic.loclist()<cr>", desc = "Set Location List" },
   { "<leader>lo", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Open Float" },
   { "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
-  { "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
-  { "<leader>lt", "<cmd>FzfLua lsp_type_definitions<cr>", desc = "Type Definitions" },
+  { "<leader>lS", "<cmd>LspStart<cr>", desc = "Start LSP" },
+  { "<leader>lt", "<cmd>FzfLua lsp_typedefs<cr>", desc = "Type Definitions" },
+  { "<leader>lT", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
   { "<leader>lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Go-To Prev Diagnostic" },
   { "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Go-To Next Diagnostic" },
+  { "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
   { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
   { "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
-  { "<leader>lS", "<cmd>LspStart<cr>", desc = "Start LSP" },
-  -- { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Actions" },
-  -- <leader>lc change name
-  { "<leader>lT", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                    live-server.nvim                     │
-  --          │    https://github.com/barrett-ruth/live-server.nvim     │
-  --          ╰─────────────────────────────────────────────────────────╯
-  { "<leader>L", group = "Live Server" },
-  { "<leader>Ls", "<cmd>LiveServerStart<cr>", desc = "Start" },
-  { "<leader>Lt", "<cmd>LiveServerStop<cr>", desc = "Stop" },
   -- Neogen
   { "<leader>N", group = "Neogen" },
   {
@@ -1010,16 +994,41 @@ wk.add({
   -- Quickfix
   { "<leader>q", group = "Quickfix" },
   { "<leader>ql", "<cmd>FzfLua quickfix<cr>", desc = "List" },
+  { "<leader>qs", "<cmd>FzfLua quickfix_stack<cr>", desc = "Stack" },
   { "<leader>qh", "<cmd>FzfLua quickfix_history<cr>", desc = "History" },
-  -- Reload
-  { "<leader>r", group = "Reload" },
+  -- Requests
+  { "<leader>R", group = "Request" },
+  { "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
+  { "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview" },
+  { "<leader>Rr", "<Plug>RestNvimLast", desc = "Repeat Last" },
+  -- Tabs
+  { "<leader>t", "<cmd>FzfLua tabs<cr>", desc = "Tabs" },
+  -- Tags
+  { "<leader>T", group = "Tags" },
+  { "<leader>Tb", "<cmd>FzfLua btags<cr>", desc = "Buffer" },
+  { "<leader>Tp", "<cmd>FzfLua tags<cr>", desc = "Project" },
+  { "<leader>Ts", "<cmd>FzfLua grep<cr>", desc = "Search" },
+  { "<leader>Ts", "<cmd>FzfLua grep<cr>", desc = "Search" },
+  -- URLs
+  { "<leader>u", group = "URLs" },
+  { "<leader>ua", "<cmd>UrlView<cr>", desc = "All URLs" },
+  { "<leader>up", "<cmd>UrlView lazy<cr>", desc = "Plugin URLs" },
+  -- Search
+  { "<leader>s", group = "Search" },
+  { "<leader>sl", "<cmd>FzfLua grep_last<cr>", desc = "Last" },
+  { "<leader>sL", "<cmd>FzfLua grep_loclist<cr>", desc = "Location List" },
+  { "<leader>sv", "<cmd>FzfLua grep_visual<cr>", desc = "Visual selection" },
+  { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "'word' under cursor" },
+  { "<leader>sW", "<cmd>FzfLua grep_cWORD<cr>", desc = "'WORD' under cursor" },
+  { "<leader>sm", "<cmd>FzfLua manpages<cr>", desc = "Manpages" },
+  { "<leader>sb", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Buffer" },
+  { "<leader>sq", "<cmd>FzfLua lgrep_quickfix<cr>", desc = "Quickfix List" },
   -- Scratch
   { "<leader>S", group = "Scratch" },
   { "<leader>Su", "<cmd>Scratch<cr>", desc = "Scratch Unnamed" },
   { "<leader>Sn", "<cmd>ScratchWithName<cr>", desc = "Scratch Named" },
   { "<leader>So", "<cmd>ScratchOpen<cr>", desc = "Scratch Open" },
   { "<leader>Ss", "<cmd>ScratchOpenFzf<cr>", desc = "Scratch Search" },
-
   -- Word
   { "<leader>w", group = "Word" },
   { "<leader>wd", "<cmd>FzfLua thesaurus lookup<cr>", desc = "Definition" },
