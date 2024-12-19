@@ -476,6 +476,7 @@ local capabilities = require("blink.cmp").get_lsp_capabilities()
 --          ╰─────────────────────────────────────────────────────────╯
 local lspconfig = require("lspconfig")
 
+-- TODO: See if Solargraph can be used after upgrading to 2.7
 local servers = {
   "emmet_language_server",
   "jsonls",
