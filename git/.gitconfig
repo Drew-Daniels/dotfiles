@@ -6,7 +6,7 @@
   diffFilter = delta --color-only
 [delta]
   navigate = true
-  side-by-side = true
+  ; side-by-side = true
   line-numbers = true
   hyperlinks = true
   ; If I can figure out how to create URL protocol association to nvim, use this
