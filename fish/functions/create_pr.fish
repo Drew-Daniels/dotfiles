@@ -13,6 +13,7 @@ function create_pr -d "Creates a PR"
     set -l tmp_file $PWD/tmp/pr_body.md
     printf "PR Title:\n\t$title\n"
 
+    # TODO: Use mktemp instead
     cat $XDG_CONFIG_HOME/work/pr_body_template.md >$tmp_file
 
     set -l issue_key (jg key)

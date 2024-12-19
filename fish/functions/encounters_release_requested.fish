@@ -11,6 +11,7 @@ function encounters_release_requested -d "Generates a Slack message when a relea
     end
 
     # Create temp file from template
+    # TODO: Use mktemp instead
     cat $encounters_release_requested_template >$tmp_file
 
     # Ping /heartbeat to get last release information

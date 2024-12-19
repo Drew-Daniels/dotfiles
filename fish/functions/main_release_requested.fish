@@ -10,6 +10,7 @@ function main_release_requested -d "Generates a Slack message when a release is 
     end
 
     # Create temp file from template
+    # TODO: Use mktemp instead
     cat $main_release_requested_template >$tmp_file
 
     # Ping /heartbeat to get last release information
