@@ -897,20 +897,6 @@ wk.add({
   { "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple Move" },
   { "<leader>z", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Suggest" },
   -- Box
-  { "<leader>b", group = "Box" },
-  { "<leader>bb", "<cmd>CBccbox<cr>", desc = "Box Title" },
-  { "<leader>bt", "<cmd>CBllline<cr>", desc = "Titled Line" },
-  { "<leader>bl", "<cmd>CBline<cr>", desc = "Simple Line" },
-  { "<leader>bm", "<cmd>CBllbox14<cr>", desc = "Marked" },
-  { "<leader>bq", "<cmd>CBllbox13<cr>", desc = "Quote" },
-  { "<leader>br", "<cmd>CBd<cr>", desc = "Remove Box Around Comment" },
-  -- Codeium
-  { "<leader>C", group = "Codeium" },
-  { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
-  { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
-  { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
-  { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
-  -- Comment Box
   { "<leader>c", group = "Comment Box" },
   -- nesting so I don't have to repeat the mode
   {
@@ -922,6 +908,17 @@ wk.add({
     { "<leader>cq", "<cmd>CBllbox13<cr>", desc = "[q]uoted" },
     { "<leader>cr", "<cmd>CBd<cr>", desc = "[r]emove box" },
   },
+  { "<leadder>c", group = "Completions" },
+  { "<leader>cp", "<cmd>FzfLua complete_path<cr>", desc = "Path Under Cursor (incl dirs)" },
+  { "<leader>cf", "<cmd>FzfLua complete_file<cr>", desc = "File Under Cursor (excl dirs)" },
+  { "<leader>cl", "<cmd>FzfLua complete_line<cr>", desc = "Complete Line (Current Buffer only)" },
+  { "<leader>cL", "<cmd>FzfLua complete_bline<cr>", desc = "Complete Line (All Open Buffers)" },
+  -- Codeium
+  { "<leader>C", group = "Codeium" },
+  { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
+  { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
+  { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
+  { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
   -- Diffview
   { "<leader>d", group = "Diffview" },
   { "<leader>da", "<cmd>DiffviewFileHistory<cr>", desc = "All Files" },
