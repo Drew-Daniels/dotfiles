@@ -8,6 +8,9 @@
   navigate = true
   side-by-side = true
   line-numbers = true
+  hyperlinks = true
+  ; Figure out how to get hyperlinks to work with neovim
+  ; hyperlinks-file-link-format = "nvim://{path}:{line}"
 [merge]
   conflictstyle = zdiff3
 [filter "lfs"]

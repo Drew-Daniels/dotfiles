@@ -7,6 +7,7 @@ brew awscli
 brew certifi
 brew cffi
 brew cryptography
+brew duti
 brew file-formula
 brew git-delta
 brew icu4c@75
