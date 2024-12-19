@@ -15,6 +15,10 @@
   ; hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}&line={line}"
   ; Even this isn't ideal because this just opens nvim in the termin running the server, so it's kind of a weird workflow
   ; hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}"
+  map-styles = bold purple => syntax magenta, bold cyan => syntax blue
+  features = navigation
+[diff]
+  colorMoved = default
 [merge]
   conflictstyle = zdiff3
 [filter "lfs"]
