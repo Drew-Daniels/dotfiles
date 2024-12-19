@@ -390,6 +390,7 @@ require("web-tools").setup({
 --          │                       BLINK.CMP                         │
 --          │         https://github.com/Saghen/blink.cmp             │
 --          ╰─────────────────────────────────────────────────────────╯
+-- TODO: Figure out how to have .erb snippets have a higher precedence than normal ruby snippets, so I don't have to scroll past the first few suggestions
 require("blink-cmp").setup({
   keymap = {
     ["<C-u>"] = { "scroll_documentation_up" },
