@@ -944,12 +944,12 @@ wk.add({
   { "<leader>ft", "<cmd>FzfLua filetypes<cr>", desc = "Filetypes" },
   { "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "Marks" },
   -- Git
-  { "<leader>G", group = "Git" },
-  { "<leader>Gf", "<cmd>FzfLua git_bcommits<cr>", desc = "File History" },
-  { "<leader>Gb", "<cmd>FzfLua git_branches<cr>", desc = "Branches" },
-  { "<leader>Gc", "<cmd>FzfLua git_commits<cr>", desc = "Commits" },
-  { "<leader>Gs", "<cmd>FzfLua git_status<cr>", desc = "Status" },
-  { "<leader>Gw", "<cmd>FzfLua git_stash<cr>", desc = "WIP (Stashed)" },
+  { "<leader>g", group = "Git" },
+  { "<leader>gf", "<cmd>FzfLua git_bcommits<cr>", desc = "File History" },
+  { "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Branches" },
+  { "<leader>gc", "<cmd>FzfLua git_commits<cr>", desc = "Commits" },
+  { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Status" },
+  { "<leader>gw", "<cmd>FzfLua git_stash<cr>", desc = "WIP (Stashed)" },
   -- Requests
   { "<leader>R", group = "Request" },
   { "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
