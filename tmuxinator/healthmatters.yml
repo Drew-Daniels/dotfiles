@@ -18,6 +18,7 @@ windows:
         - editor:
           - fish
           - cls
+          - nvim
         - cmd:
           - fish
           - cls
@@ -40,6 +41,7 @@ windows:
         - cmd:
           - fish
           - cls
+          - nvim
   # - app:
   #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/app
   #     layout: <%= ENV["MUX_LAYOUT"] %>
