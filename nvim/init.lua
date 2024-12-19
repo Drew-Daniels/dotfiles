@@ -1014,6 +1014,8 @@ wk.add({
   { "<leader>up", "<cmd>UrlView lazy<cr>", desc = "Plugin URLs" },
   -- Search
   { "<leader>s", group = "Search" },
+  { "<leader>sb", "<cmd>FzfLua builtin<cr>", desc = "Builtins" },
+  { "<leader>sc", "<cmd>FzfLua colorschemes<cr>", desc = "Colorschemes" },
   { "<leader>sl", "<cmd>FzfLua grep_last<cr>", desc = "Last" },
   { "<leader>sL", "<cmd>FzfLua grep_loclist<cr>", desc = "Location List" },
   { "<leader>sv", "<cmd>FzfLua grep_visual<cr>", desc = "Visual selection" },
@@ -1022,6 +1024,9 @@ wk.add({
   { "<leader>sm", "<cmd>FzfLua manpages<cr>", desc = "Manpages" },
   { "<leader>sb", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Buffer" },
   { "<leader>sq", "<cmd>FzfLua lgrep_quickfix<cr>", desc = "Quickfix List" },
+  { "<leader>sr", "<cmd>FzfLua registers<cr>", desc = "Registers" },
+  { "<leader>sh", "<cmd>FzfLua helptags<cr>", desc = "Helptags" },
+  { "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
   -- Scratch
   { "<leader>S", group = "Scratch" },
   { "<leader>Su", "<cmd>Scratch<cr>", desc = "Scratch Unnamed" },
