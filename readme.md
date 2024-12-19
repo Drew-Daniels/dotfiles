@@ -96,3 +96,10 @@ Launch `tmux` and run `<PREFIX> + I` to reload the config
 ```bash
 sudo shutdown -r now
 ```
+
+### TODO
+
+- [ ] Look into using `homebrew-bundle` instead of `homebrew-file`
+- [ ] Figure out how to get terminal hyperlinks working for custom nvim file protocol
+- [ ] Look into using `fzf-lua` instead of `telescope`
+- [ ] TUI LLMs
