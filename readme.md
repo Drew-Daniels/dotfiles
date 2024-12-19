@@ -102,4 +102,6 @@ sudo shutdown -r now
 - [ ] Look into using `homebrew-bundle` instead of `homebrew-file`
 - [ ] Figure out how to get terminal hyperlinks working for custom nvim file protocol
 - [ ] Look into using `fzf-lua` instead of `telescope`
-- [ ] TUI LLMs
+- [ ] TUI LLMs:
+  - https://github.com/pythops/tenere
+  - https://github.com/jackMort/ChatGPT.nvim
