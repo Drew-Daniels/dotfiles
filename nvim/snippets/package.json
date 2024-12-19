@@ -53,6 +53,10 @@
       {
         "language": "zsh",
         "path": "./zsh.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./markdown.json"
       }
     ]
   }
