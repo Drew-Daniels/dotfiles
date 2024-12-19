@@ -12,15 +12,18 @@ brew cryptography
 brew dcraw
 brew dnsmasq
 brew dos2unix
+brew duti
 brew gcc
 brew gcc@11
 brew gdbm
+brew git-delta
 brew gnu-getopt
 brew gnu-sed
 brew gnupg
 brew icu4c@75
 brew isl
 brew kubernetes-cli
+brew less
 brew libassuan
 brew libavif
 brew libdeflate
@@ -91,6 +94,8 @@ tap rcmdnk/file
 tap teamookla/speedtest
 
 # App Store applications
+appstore 1569813296 1Password for Safari (8.10.56)
+appstore 1475824389 OneLogin for Safari (3.5.6)
 appstore 1596283165 rcmd (2.6.5)
 appstore 1530751461 Snippety (9.0.84)
-appstore 497799835 Xcode (16.1)
+appstore 497799835 Xcode (16.2)

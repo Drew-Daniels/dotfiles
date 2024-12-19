@@ -22,6 +22,15 @@ return require("lazy").setup({
     },
   },
   {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup({})
+    end,
+  },
+  {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
@@ -118,10 +127,13 @@ return require("lazy").setup({
     "windwp/nvim-autopairs",
     event = "InsertEnter",
   },
-  { "LukasPietzschmann/telescope-tabs" },
   { "LudoPinelli/comment-box.nvim" },
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-context" },
+  {
+    "nvim-telescope/telescope-media-files.nvim",
+    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+  },
   { "mrjones2014/legendary.nvim", priority = 2000, lazy = false },
   {
     "kwkarlwang/bufresize.nvim",
@@ -130,10 +142,6 @@ return require("lazy").setup({
     end,
   },
   { "mrjones2014/smart-splits.nvim" },
-  {
-    "nvim-telescope/telescope-media-files.nvim",
-    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-  },
   {
     "vhyrro/luarocks.nvim",
     priority = 3000,
@@ -144,10 +152,6 @@ return require("lazy").setup({
     dependencies = { "luarocks.nvim" },
     lazy = false,
     version = "*",
-  },
-  {
-    "piersolenski/telescope-import.nvim",
-    requires = "nvim-telescope/telescope.nvim",
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",

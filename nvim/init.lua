@@ -868,19 +868,6 @@ require("notify").setup({
 local telescope = require("telescope")
 telescope.load_extension("notify")
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                    TELESCOPE-IMPORT                     │
---          │  https://github.com/piersolenski/telescope-import.nvim  │
---          ╰─────────────────────────────────────────────────────────╯
-telescope.load_extension("import")
-
---          ╭─────────────────────────────────────────────────────────╮
---          │                     TELESCOPE-TABS                      │
---          │   https://github.com/LukasPietzschmann/telescope-tabs   │
---          ╰─────────────────────────────────────────────────────────╯
-telescope.load_extension("telescope-tabs")
-require("telescope-tabs").setup()
-
 --        ╭─────────────────────────────────────────────────────────────╮
 --        │                    TELESCOPE-MEDIA-FILES                    │
 --        │https://github.com/nvim-telescope/telescope-media-files.nvim │
@@ -905,12 +892,11 @@ local wk = require("which-key")
 
 wk.add({
   -- Miscellaneous
-  { "<leader>I", "<cmd>Telescope import<cr>", desc = "Import" },
   { "<leader>p", "<cmd>Format<cr>", desc = "Pretty" },
-  { "<leader>sh", "<cmd>Telescope search_history<cr>", desc = "Search History" },
+  { "<leader>sh", "<cmd>FzfLua search_history<cr>", desc = "Search History" },
   { "<leader>m", "<cmd>Grapple tag<cr>", desc = "Grapple Tag" },
   { "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple Move" },
-  { "<leader>z", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggest" },
+  { "<leader>z", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Suggest" },
   -- Codeium
   { "<leader>C", group = "[C]odeium" },
   { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
@@ -931,8 +917,8 @@ wk.add({
   },
   -- Ex commands
   { "<leader>e", group = "[E]x Commands" },
-  { "<leader>ec", "<cmd>Telescope commands<cr>", desc = "Ex Commands" },
-  { "<leader>eh", "<cmd>Telescope command_history<cr>", desc = "Ex Command History" },
+  { "<leader>ec", "<cmd>FzfLua commands<cr>", desc = "Ex Commands" },
+  { "<leader>eh", "<cmd>FzfLua command_history<cr>", desc = "Ex Command History" },
   -- Diffview
   { "<leader>d", group = "Diffview" },
   { "<leader>da", "<cmd>DiffviewFileHistory<cr>", desc = "All Files" },
@@ -946,24 +932,24 @@ wk.add({
   { "<leader>dx", "<cmd>DiffviewFileHistory<cr>", desc = "Selected" },
   -- Files
   { "<leader>f", group = "Files" },
-  { "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Autocommands" },
-  { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-  { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File(s)" },
-  { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Live Search" },
-  { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git-tracked File(s)" },
-  { "<leader>fi", "<cmd>Telescope media_files<cr>", desc = "Images & Media File(s)" },
-  { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search Results" },
+  { "<leader>fa", "<cmd>FzfLua autocommands<cr>", desc = "Autocommands" },
+  { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+  { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "File(s)" },
+  { "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
+  { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Git-tracked File(s)" },
+  { "<leader>fi", "<cmd>FzfLua media_files<cr>", desc = "Images & Media File(s)" },
+  { "<leader>fl", "<cmd>FzfLua resume<cr>", desc = "Last Search Results" },
   { "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
-  { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File(s)" },
-  { "<leader>ft", "<cmd>Telescope filetypes<cr>", desc = "Filetypes" },
-  { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+  { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent File(s)" },
+  { "<leader>ft", "<cmd>FzfLua filetypes<cr>", desc = "Filetypes" },
+  { "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "Marks" },
   -- Git
   { "<leader>G", group = "Git" },
-  { "<leader>Gf", "<cmd>Telescope git_bcommits<cr>", desc = "File History" },
-  { "<leader>Gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
-  { "<leader>Gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
-  { "<leader>Gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
-  { "<leader>Gw", "<cmd>Telescope git_stash<cr>", desc = "WIP (Stashed)" },
+  { "<leader>Gf", "<cmd>FzfLua git_bcommits<cr>", desc = "File History" },
+  { "<leader>Gb", "<cmd>FzfLua git_branches<cr>", desc = "Branches" },
+  { "<leader>Gc", "<cmd>FzfLua git_commits<cr>", desc = "Commits" },
+  { "<leader>Gs", "<cmd>FzfLua git_status<cr>", desc = "Status" },
+  { "<leader>Gw", "<cmd>FzfLua git_stash<cr>", desc = "WIP (Stashed)" },
   -- Requests
   { "<leader>R", group = "Request" },
   { "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
@@ -985,18 +971,18 @@ wk.add({
   { "<leader>h", group = "Hunks", desc = "Hunks" },
   -- Keymaps
   { "<leader>k", group = "Keymaps" },
-  { "<leader>kl", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+  { "<leader>kl", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
   -- LSP
   { "<leader>l", group = "LSP" },
-  { "<leader>lD", "<cmd>Telescope lsp_definitions()<cr>", desc = "Definitions" },
-  { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+  { "<leader>lD", "<cmd>FzfLua lsp_definitions()<cr>", desc = "Definitions" },
+  { "<leader>ld", "<cmd>FzfLua diagnostics<cr>", desc = "Diagnostics" },
   { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
   { "<leader>lI", "<cmd>LspInfo<cr>", desc = "Info" },
   { "<leader>ll", "<cmd>lua vim.diagnostic.loclist()<cr>", desc = "Set Location List" },
   { "<leader>lo", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Open Float" },
   { "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
-  { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-  { "<leader>lt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Type Definitions" },
+  { "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
+  { "<leader>lt", "<cmd>FzfLua lsp_type_definitions<cr>", desc = "Type Definitions" },
   { "<leader>lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Go-To Prev Diagnostic" },
   { "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Go-To Next Diagnostic" },
   { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
@@ -1021,13 +1007,10 @@ wk.add({
   },
   { "<leader>nc", "<cmd>lua require('neogen').generate({ type = 'class' })<cr>", desc = "Generate Class Annotation" },
   { "<leader>nt", "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", desc = "Generate Type Annotation" },
-  -- Tabs
-  { "<leader>t", group = "Tabs" },
-  { "<leader>tl", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "List" },
   -- Quickfix
   { "<leader>q", group = "Quickfix" },
-  { "<leader>ql", "<cmd>Telescope quickfix<cr>", desc = "List" },
-  { "<leader>qh", "<cmd>Telescope quickfix_history<cr>", desc = "History" },
+  { "<leader>ql", "<cmd>FzfLua quickfix<cr>", desc = "List" },
+  { "<leader>qh", "<cmd>FzfLua quickfix_history<cr>", desc = "History" },
   -- Reload
   { "<leader>r", group = "Reload" },
   -- Scratch
@@ -1039,8 +1022,8 @@ wk.add({
 
   -- Word
   { "<leader>w", group = "Word" },
-  { "<leader>wd", "<cmd>Telescope thesaurus lookup<cr>", desc = "Definition" },
-  { "<leader>ws", "<cmd>Telescope thesaurus query<cr>", desc = "Search" },
+  { "<leader>wd", "<cmd>FzfLua thesaurus lookup<cr>", desc = "Definition" },
+  { "<leader>ws", "<cmd>FzfLua thesaurus query<cr>", desc = "Search" },
 })
 
 require("diffview").setup({
@@ -1208,7 +1191,7 @@ vim.api.nvim_create_user_command("Browse", function(opts)
 end, { nargs = 1 })
 
 require("urlview").setup({
-  default_picker = "telescope",
+  default_picker = "fzflua",
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -1309,7 +1292,7 @@ require("octo").setup({
 })
 
 require("scratch").setup({
-  file_picker = "telescope",
+  file_picker = "fzflua",
   filetypes = { "js", "json", "sql", "sh", "ruby" },
 })
 
