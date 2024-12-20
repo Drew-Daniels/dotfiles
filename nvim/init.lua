@@ -111,7 +111,6 @@ require("mason-lspconfig").setup({
     -- "clj-kondo",
     "ruff",
     "basedpyright",
-    "solargraph",
   },
 })
 
