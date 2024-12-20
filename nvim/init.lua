@@ -742,7 +742,7 @@ require("conform").setup({
     lua = { "stylua" },
     html = { "htmlbeautifier" },
     ruby = { "project_rubocop", "fallback_rubocop" },
-    eruby = { "htmlbeautifier" },
+    eruby = { "project_htmlbeautifier", "fallback_htmlbeautifier" },
     fish = { "fish_indent" },
     json = { "custom_jq" },
     sh = { "shfmt" },
@@ -769,6 +769,16 @@ require("conform").setup({
       command = "jq",
       condition = function()
         return not in_fs() and not in_ss()
+      end,
+    },
+    project_htmlbeautifier = {
+      command = "htmlbeautifier",
+      condition = run_project_formatter,
+    },
+    fallback_htmlbeautifier = {
+      command = "htmlbeautifier",
+      condition = function()
+        return not in_hm()
       end,
     },
     project_rubocop = {
