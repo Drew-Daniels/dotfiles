@@ -742,7 +742,7 @@ require("conform").setup({
     lua = { "stylua" },
     html = { "htmlbeautifier" },
     ruby = { "project_rubocop", "fallback_rubocop" },
-    eruby = { "htmlbeaufifier" },
+    eruby = { "htmlbeautifier" },
     fish = { "fish_indent" },
     json = { "custom_jq" },
     sh = { "shfmt" },
