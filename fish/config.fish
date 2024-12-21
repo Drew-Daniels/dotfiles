@@ -135,4 +135,7 @@ if status is-interactive
         set -gx OS_THEME_DARK 1
         fish_config theme choose "Mono Smoke"
     end
+
+    # keepassxc
+    alias kxc keepassxc-cli
 end

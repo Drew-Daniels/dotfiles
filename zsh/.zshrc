@@ -227,3 +227,6 @@ compdef _op op
 
 # backups
 export BACKUPS_DIR="$HOME"/backups
+
+# keepassxc
+alias kxc="keepassxc-cli"
