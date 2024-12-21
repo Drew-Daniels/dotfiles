@@ -49,6 +49,7 @@ cask postgres-unofficial
 cask raspberry-pi-imager
 cask signal
 cask slack
+cask standard-notes
 cask tor-browser
 cask vitalsource-bookshelf
 cask zoom
