@@ -1104,18 +1104,12 @@ require("neorg").setup({
         workspaces = {
           su = "~/projects/work_notes/su/2024",
           ooo = "~/projects/work_notes/ooo/2024",
-          home = "~/projects/home_notes",
         },
       },
     },
     ["core.keybinds"] = { config = { default_keybinds = {} } },
   },
 })
-
-vim.api.nvim_create_user_command("Note", function(opts)
-  local name = opts.fargs[1]
-  vim.cmd("e ~/projects/home_notes/" .. name .. ".norg")
-end, { range = false, nargs = 1 })
 
 vim.api.nvim_create_user_command("SU", function(opts)
   local date = os.date("%Y-%m-%d")
@@ -1188,8 +1182,6 @@ vim.cmd([[
     " Figure out how to stop folds from getting created on buffers created after first entering into a .norg buffer
     autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
     autocmd BufWritePost ~/projects/work_notes/retro/**/*.norg silent !git -C ~/projects/work_notes/retro/ add . && git -C ~/projects/work_notes/retro/ commit -m "Update work notes" && git -C ~/projects/work_notes/retro/ push
-    " Figure out why recursive file pattern like ~/projects/home_notes/**/*.norg doesn't work?
-    autocmd BufWritePost ~/projects/home_notes/*.norg silent !git -C ~/projects/home_notes/ add . && git -C ~/projects/home_notes/ commit -m "Update home notes" && git -C ~/projects/home_notes/ push
   augroup END
 ]])
 
