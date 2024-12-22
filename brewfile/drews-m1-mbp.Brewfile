@@ -44,6 +44,7 @@ tap homebrew/cask
 cask 1password-cli
 cask 1password@nightly
 cask alfred
+cask chatgpt
 cask discord
 cask element
 cask postgres-unofficial
