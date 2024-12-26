@@ -4,7 +4,7 @@ function remove_reviewers -d "Remove reviewers from a pull request"
         return 1
     end
 
-    set -l reviewers (string split , $REVIEWERS)
+    set -l reviewers $REVIEWERS
 
     gh pr edit --remove-reviewer $reviewers
 end
