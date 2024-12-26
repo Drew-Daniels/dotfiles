@@ -518,6 +518,11 @@ end
 --   capabilities = capabilities,
 -- })
 
+lspconfig.standardrb.setup({
+  -- cmd = { "bundle", "exec", "standardrb", "--lsp" },
+  capabilities = capabilities,
+})
+
 lspconfig.basedpyright.setup({
   settings = {
     python = {
@@ -528,6 +533,12 @@ lspconfig.basedpyright.setup({
   },
   capabilities = capabilities,
 })
+
+-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
+-- lspconfig.standardrb.setup({
+--   cmd = { "bundle", "exec", "standardrb", "--lsp" },
+--   capabilities = capabilities,
+-- })
 
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
 -- https://github.com/neovim/nvim-lspconfig/issues/2508
@@ -740,7 +751,7 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
-    ruby = { "project_rubocop", "fallback_rubocop" },
+    ruby = { "project_rubocop", "fallback_rubocop", "project_standardrb" },
     eruby = { "htmlbeautifier" },
     -- eruby = { "project_htmlbeautifier", "fallback_htmlbeautifier" },
     fish = { "fish_indent" },
@@ -794,6 +805,16 @@ require("conform").setup({
       condition = function()
         return not in_hm()
       end,
+    },
+    -- TODO: Figure out why this is also running rubocop autofix, but running this same command manually doesn't
+    project_standardrb = {
+      command = "bundle",
+      args = { "exec", "standardrb", "--fix", "-f", "quiet", "$FILENAME" },
+      stdin = false,
+      condition = function()
+        return in_hm()
+      end,
+      exit_codes = { 0, 1 },
     },
     project_eslint = {
       cwd = require("conform.util").root_file(".git"),
@@ -1345,8 +1366,8 @@ set.virtualedit = "block"
 set.inccommand = "split"
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on
--- vim.lsp.set_log_level("debug")
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("off")
 
 -- disable mouse
 set.mouse = ""
