@@ -519,6 +519,7 @@ end
 --   capabilities = capabilities,
 -- })
 
+-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
 lspconfig.standardrb.setup({
   -- cmd = { "bundle", "exec", "standardrb", "--lsp" },
   capabilities = capabilities,
@@ -534,12 +535,6 @@ lspconfig.basedpyright.setup({
   },
   capabilities = capabilities,
 })
-
--- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
--- lspconfig.standardrb.setup({
---   cmd = { "bundle", "exec", "standardrb", "--lsp" },
---   capabilities = capabilities,
--- })
 
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
 -- https://github.com/neovim/nvim-lspconfig/issues/2508
