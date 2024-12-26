@@ -89,6 +89,7 @@ require("mason-lspconfig").setup({
     "jsonls",
     "lua_ls",
     "sqlls",
+    "standardrb",
     "marksman",
     "tailwindcss",
     "terraformls",
