@@ -1362,8 +1362,8 @@ set.virtualedit = "block"
 set.inccommand = "split"
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on
-vim.lsp.set_log_level("debug")
--- vim.lsp.set_log_level("off")
+-- vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("off")
 
 -- disable mouse
 set.mouse = ""
