@@ -476,7 +476,6 @@ local capabilities = require("blink.cmp").get_lsp_capabilities()
 --          ╰─────────────────────────────────────────────────────────╯
 local lspconfig = require("lspconfig")
 
--- TODO: See if Solargraph can be used after upgrading to 2.7
 local servers = {
   "emmet_language_server",
   "jsonls",
@@ -492,8 +491,6 @@ local servers = {
   "cucumber_language_server",
   "tailwindcss",
   "terraformls",
-  -- Do not install 'solargraph' with Mason, since the version used depends on Ruby version
-  -- "solargraph",
   "sqlls",
   "vimls",
   "prismals",
@@ -514,10 +511,10 @@ end
 -- 	cmd = { "vue-language-server", "--stdio" },
 -- })
 
--- lspconfig.solargraph.setup({
---   filetypes = { "ruby", "eruby" },
---   capabilities = capabilities,
--- })
+lspconfig.solargraph.setup({
+  filetypes = { "ruby", "eruby" },
+  capabilities = capabilities,
+})
 
 -- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
 lspconfig.standardrb.setup({
@@ -747,9 +744,9 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
+    -- TODO: Add another variation of project_standardrb that only runs in hm
     -- See comment below for 'project_standardrb' - for some reason running `bundle exec standardrb --fix ...` also corrects Rubcop offsenses when run via conform.nvim, but doesn't when run manually
     -- ruby = { "project_rubocop", "fallback_rubocop", "project_standardrb" },
-    -- ruby = { "project_rubocop", "fallback_rubocop" },
     ruby = { "project_rubocop", "fallback_rubocop", "standardrb" },
     eruby = { "htmlbeautifier" },
     -- eruby = { "project_htmlbeautifier", "fallback_htmlbeautifier" },
