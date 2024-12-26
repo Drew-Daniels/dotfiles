@@ -747,7 +747,10 @@ require("conform").setup({
     c = { "clang-format" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
-    ruby = { "project_rubocop", "fallback_rubocop", "project_standardrb" },
+    -- See comment below for 'project_standardrb' - for some reason running `bundle exec standardrb --fix ...` also corrects Rubcop offsenses when run via conform.nvim, but doesn't when run manually
+    -- ruby = { "project_rubocop", "fallback_rubocop", "project_standardrb" },
+    -- ruby = { "project_rubocop", "fallback_rubocop" },
+    ruby = { "project_rubocop", "fallback_rubocop", "standardrb" },
     eruby = { "htmlbeautifier" },
     -- eruby = { "project_htmlbeautifier", "fallback_htmlbeautifier" },
     fish = { "fish_indent" },
