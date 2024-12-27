@@ -224,7 +224,7 @@ eval "$(op completion zsh)"
 compdef _op op
 
 # backups
-export BACKUPS_DIR="$HOME"/backups
+# export BACKUP_DIR="$HOME"/backups
 
 # keepassxc
 alias kxc="keepassxc-cli"

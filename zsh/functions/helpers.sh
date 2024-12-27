@@ -9,23 +9,23 @@ force_quit_sidekiq() {
 
 backupdb() {
   # TODO: Set default backup dirs
-  # TODO: Rename WORK_DB_NAME env var to something else
-  if [ -z "$WORK_DB_NAME" ]; then
-    echo "WORK_DB_NAME is not set"
+  # TODO: Rename BACKUP_DB_NAME env var to something else
+  if [ -z "$BACKUP_DB_NAME" ]; then
+    echo "BACKUP_DB_NAME is not set"
     exit 1
   fi
 
-  if [ -z "$BACKUPS_DIR" ]; then
-    echo "BACKUPS_DIR is not set"
+  if [ -z "$BACKUP_DIR" ]; then
+    echo "BACKUP_DIR is not set"
     exit 1
   fi
 
   user=$(whoami)
-  db_name=$WORK_DB_NAME
+  db_name=$BACKUP_DB_NAME
   current_branch=$(git branch --show-current)
   # TODO: Add error handling for more complex branch names that don't follow feat|fix/ABC-XXXXX/summary-of-changes format
   dump_file_name=$(echo "$current_branch" | tr '/' '_')
-  db_backup_path="$BACKUPS_DIR/$dump_file_name.dump"
+  db_backup_path="$BACKUP_DIR/$dump_file_name.dump"
 
   echo "Backing up $current_branch database ($db_name) to $db_backup_path"
   pg_dump -U "$user" -d "$db_name" -f "$db_backup_path" -v --format=custom
@@ -40,11 +40,11 @@ backupdb() {
 
 restoredb() {
   user=$(whoami)
-  db_name=$WORK_DB_NAME
+  db_name=$BACKUP_DB_NAME
   current_branch=$(git branch --show-current)
   # TODO: Add error handling for more complex branch names that don't follow feat|fix/ABC-XXXXX/summary-of-changes format
   dump_file_name=$(echo "$current_branch" | tr '/' '_')
-  db_backup_path="$BACKUPS_DIR/$dump_file_name.dump"
+  db_backup_path="$BACKUP_DIR/$dump_file_name.dump"
   jobs=$(nproc)
 
   if [ -f "$db_backup_path" ]; then
