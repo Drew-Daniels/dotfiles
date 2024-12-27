@@ -45,7 +45,7 @@ brew luv
 brew mongosh
 brew mpfr
 brew msgpack
-brew neovim --HEAD
+brew neovim
 brew node
 brew npth
 brew openldap
@@ -58,7 +58,6 @@ brew python@3.12
 brew python@3.13
 brew redis
 brew rust
-brew shfmt
 brew tcl-tk
 brew tcl-tk@8
 brew telnet
@@ -97,6 +96,6 @@ tap teamookla/speedtest
 # App Store applications
 appstore 1569813296 1Password for Safari (8.10.56)
 appstore 1475824389 OneLogin for Safari (3.5.6)
-appstore 1596283165 rcmd (2.7.0)
+appstore 1596283165 rcmd (2.6.5)
 appstore 1530751461 Snippety (9.0.84)
 appstore 497799835 Xcode (16.2)

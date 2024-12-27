@@ -61,6 +61,7 @@ local mason_options = {
     "stylua",
     "prettier",
     "nxls",
+    "shfmt",
     "shellcheck",
     "sqlfmt",
   },
