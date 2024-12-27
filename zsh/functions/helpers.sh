@@ -8,29 +8,31 @@ force_quit_sidekiq() {
 }
 
 backupdb() {
-  # TODO: Set default backup dirs
-  # TODO: Rename BACKUP_DB_NAME env var to something else
   if [ -z "$BACKUP_DB_NAME" ]; then
-    echo "BACKUP_DB_NAME is not set"
-    exit 1
+    echo "BACKUP_DB_NAME is not set - defaulting to kipu_demo_development"
+    db_name="kipu_demo_development"
+  else
+    db_name=$BACKUP_DB_NAME
   fi
 
   if [ -z "$BACKUP_DIR" ]; then
-    echo "BACKUP_DIR is not set"
-    exit 1
+    echo "BACKUP_DIR is not set - defaulting to $HOME/backups"
+    db_backup_dir="$HOME/backups"
+  else
+    db_backup_dir=$BACKUP_DIR
   fi
 
   user=$(whoami)
-  db_name=$BACKUP_DB_NAME
   current_branch=$(git branch --show-current)
-  # TODO: Add error handling for more complex branch names that don't follow feat|fix/ABC-XXXXX/summary-of-changes format
+  # Branch name 'type/ABC-XXXXX/summary-of-changes' transforms into filename 'type_ABC-XXXXX_summary-of-changes'
   dump_file_name=$(echo "$current_branch" | tr '/' '_')
-  db_backup_path="$BACKUP_DIR/$dump_file_name.dump"
+  db_backup_path="$db_backup_dir/$dump_file_name.dump"
 
   echo "Backing up $current_branch database ($db_name) to $db_backup_path"
+
+  mkdir -p "$db_backup_dir"
   pg_dump -U "$user" -d "$db_name" -f "$db_backup_path" -v --format=custom
 
-  # TODO: Verify what happens if any errors are generated during migrations - does this cause the script to indicate failure?
   if [ $? -eq 0 ]; then
     echo "Successfully backed up $current_branch database to $db_backup_path"
   else
@@ -39,12 +41,25 @@ backupdb() {
 }
 
 restoredb() {
+  if [ -z "$BACKUP_DB_NAME" ]; then
+    echo "BACKUP_DB_NAME is not set - defaulting to kipu_demo_development"
+    db_name="kipu_demo_development"
+  else
+    db_name=$BACKUP_DB_NAME
+  fi
+
+  if [ -z "$BACKUP_DIR" ]; then
+    echo "BACKUP_DIR is not set - defaulting to $HOME/backups"
+    db_backup_dir="$HOME/backups"
+  else
+    db_backup_dir=$BACKUP_DIR
+  fi
+
   user=$(whoami)
-  db_name=$BACKUP_DB_NAME
   current_branch=$(git branch --show-current)
-  # TODO: Add error handling for more complex branch names that don't follow feat|fix/ABC-XXXXX/summary-of-changes format
+  # Branch name 'type/ABC-XXXXX/summary-of-changes' transforms into filename 'type_ABC-XXXXX_summary-of-changes'
   dump_file_name=$(echo "$current_branch" | tr '/' '_')
-  db_backup_path="$BACKUP_DIR/$dump_file_name.dump"
+  db_backup_path="$db_backup_dir/$dump_file_name.dump"
   jobs=$(nproc)
 
   if [ -f "$db_backup_path" ]; then
@@ -59,9 +74,9 @@ restoredb() {
     pg_restore --verbose --clean --no-acl --no-owner -h localhost -U "$user" -d "$db_name" -j "$jobs" "$db_backup_path"
 
     if [ $? -eq 0 ]; then
-      echo "Database ($db_name) for $current_branch restored"
+      echo "Database ($db_name) restore for $current_branch completed"
     else
-      echo "Database ($db_name) for $current_branch restore completed with errors"
+      echo "Database ($db_name) restore for $current_branch completed with errors"
     fi
   else
     echo "Backup for $current_branch does not exist"
