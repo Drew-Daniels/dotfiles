@@ -1,4 +1,4 @@
-function backupdb -d "Backs up the database used for current branch"
+function _backupdb -d "Backs up the database used for current branch"
     set -l user (whoami)
     set -l db_name $WORK_DB_NAME
     set -l current_branch (git branch --show-current)

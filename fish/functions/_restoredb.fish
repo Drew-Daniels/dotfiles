@@ -1,4 +1,4 @@
-function restoredb -d "Restores database for current branch from backup"
+function _restoredb -d "Restores database for current branch from backup"
     set -l user (whoami)
     set -l db_name $WORK_DB_NAME
     set -l current_branch $(git branch --show-current)
