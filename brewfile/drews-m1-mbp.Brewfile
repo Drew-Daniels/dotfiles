@@ -23,10 +23,12 @@ brew libksba
 brew libmagic
 brew libusb
 brew libuv
+brew libvterm
 brew llvm
 brew lpeg
 brew luajit
 brew luv
+brew msgpack
 brew neovim
 brew npth
 brew pinentry
@@ -35,6 +37,7 @@ brew python-packaging
 brew python@3.12
 brew python@3.13
 brew rust
+brew shellcheck
 brew tcl-tk@8
 brew tree-sitter
 brew unibilium
@@ -77,7 +80,7 @@ tap teamookla/speedtest
 appstore 302584613 Amazon Kindle (7.23.2)
 appstore 823766827 OneDrive (24.226.1110)
 appstore 1303222628 Paprika Recipe Manager 3 (3.8.0)
-appstore 1596283165 rcmd (2.6.5)
+appstore 1596283165 rcmd (2.7.0)
 appstore 1549370672 Save to Raindrop.io (5.6.57)
 appstore 1530751461 Snippety (9.0.84)
 appstore 497799835 Xcode (16.2)
