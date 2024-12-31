@@ -23,7 +23,7 @@ vim.opt.termguicolors = true
 require("dark_notify").run({
   schemes = {
     light = "zenbones",
-    dark = "gruvbox",
+    dark = "zenbones",
   },
 })
 
@@ -35,13 +35,13 @@ local function getCodeiumStatus()
   return "codeium: " .. vim.fn["codeium#GetStatusString"]()
 end
 
-local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
+-- local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
 -- local THEME = IS_DARK_MODE and "gruvbox-material" or "gruvbox_light"
-local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
+-- local THEME = IS_DARK_MODE and "gruvbox-material" or "onelight"
 
 require("lualine").setup({
-  options = { theme = THEME },
-  -- options = { theme = "zenbones" },
+  -- options = { theme = THEME },
+  options = { theme = "zenbones" },
   sections = {
     lualine_x = {
       -- "grapple",
