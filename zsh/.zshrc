@@ -150,10 +150,10 @@ iterm2_print_user_vars() {
   ip=$(curl -s ifconfig.me | awk '{print $1}')
   whois_response=$(whois "$ip")
   iterm2_set_user_var publicIP "$ip"
-  iterm2_set_user_var city $(echo "$whois_response" | grep "City:" | awk '{print $2}')
-  iterm2_set_user_var stateProv $(echo "$whois_response" | grep "StateProv:" | awk '{print $2}')
-  iterm2_set_user_var country $(echo "$whois_response" | grep "Country:" | awk '{print $2}')
-  iterm2_set_user_var orgName $(echo "$whois_response" | grep "OrgName:" | awk '{print $2}')
+  iterm2_set_user_var city $(echo "$whois_response" | sed -n 's/^City: \(.*\)/\1/p' | xargs)
+  iterm2_set_user_var stateProv $(echo "$whois_response" | sed -n 's/^StateProv: \(.*\)/\1/p' | xargs)
+  iterm2_set_user_var country $(echo "$whois_response" | sed -n 's/^Country: \(.*\)/\1/p' | xargs)
+  iterm2_set_user_var orgName $(echo "$whois_response" | sed -n 's/^OrgName: \(.*\)/\1/p' | xargs)
 }
 
 iterm2_print_user_vars
