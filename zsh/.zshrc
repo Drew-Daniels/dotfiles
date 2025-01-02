@@ -145,7 +145,12 @@ alias cspell="cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 
 # iterm2
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# TODO: Get current public IP of home network through referencing DDNS network hostname
+iterm2_print_user_vars() {
+  iterm2_set_user_var publicIP $(curl -s ifconfig.me | awk '{print $1}')
+}
+
+iterm2_print_user_vars
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
