@@ -3716,13 +3716,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.64945751428604126</real>
+									<real>0.64793694019317627</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.79763239622116089</real>
+									<real>0.78190523386001587</real>
 									<key>Red Component</key>
-									<real>0.8823578953742981</real>
+									<real>0.8798561692237854</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3752,13 +3752,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.65879416465759277</real>
+									<real>0.65958398580551147</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.89816814661026001</real>
+									<real>0.89919322729110718</real>
 									<key>Red Component</key>
-									<real>0.85299986600875854</real>
+									<real>0.8796347975730896</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3788,13 +3788,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.65540963411331177</real>
+									<real>0.65632796287536621</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.89377599954605103</real>
+									<real>0.89496761560440063</real>
 									<key>Red Component</key>
-									<real>0.72450786828994751</real>
+									<real>0.76210778951644897</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3832,13 +3832,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.75608235597610474</real>
+									<real>0.69797295331954956</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.89269918203353882</real>
+									<real>0.89270001649856567</real>
 									<key>Red Component</key>
-									<real>0.68831443786621094</real>
+									<real>0.68831330537796021</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3870,13 +3870,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.89560514688491821</real>
+									<real>0.82982355356216431</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.88390237092971802</real>
+									<real>0.89269793033599854</real>
 									<key>Red Component</key>
-									<real>0.68605834245681763</real>
+									<real>0.68831604719161987</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3912,13 +3912,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.8851432204246521</real>
+									<real>0.89110654592514038</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.72423571348190308</real>
+									<real>0.81993860006332397</real>
 									<key>Red Component</key>
-									<real>0.64865356683731079</real>
+									<real>0.67023450136184692</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3958,13 +3958,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.88093757629394531</real>
+									<real>0.88250887393951416</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.63235300779342651</real>
+									<real>0.67652899026870728</real>
 									<key>Red Component</key>
-									<real>0.68538665771484375</real>
+									<real>0.63888150453567505</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -3992,7 +3992,7 @@
 								<key>base: priority</key>
 								<real>5</real>
 								<key>expression</key>
-								<string>\(user.publicIP), \(user.orgName)</string>
+								<string>\(user.status)</string>
 								<key>maxwidth</key>
 								<real>+infinity</real>
 								<key>minwidth</key>
@@ -4004,13 +4004,57 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.88331323862075806</real>
+									<real>0.88136154413223267</real>
 									<key>Color Space</key>
 									<string>P3</string>
 									<key>Green Component</key>
-									<real>0.63943564891815186</real>
+									<real>0.63362252712249756</real>
 									<key>Red Component</key>
-									<real>0.82552188634872437</real>
+									<real>0.71302109956741333</real>
+								</dict>
+							</dict>
+							<key>layout advanced configuration dictionary value</key>
+							<dict>
+								<key>algorithm</key>
+								<integer>0</integer>
+								<key>auto-rainbow style</key>
+								<integer>0</integer>
+								<key>remove empty components</key>
+								<false/>
+							</dict>
+						</dict>
+					</dict>
+					<dict>
+						<key>class</key>
+						<string>iTermStatusBarSwiftyStringComponent</string>
+						<key>configuration</key>
+						<dict>
+							<key>knobs</key>
+							<dict>
+								<key>base: compression resistance</key>
+								<integer>1</integer>
+								<key>base: priority</key>
+								<real>5</real>
+								<key>expression</key>
+								<string>\(user.publicIP) \(user.orgName)</string>
+								<key>maxwidth</key>
+								<real>+infinity</real>
+								<key>minwidth</key>
+								<string>0</string>
+								<key>shared font</key>
+								<string></string>
+								<key>shared text color</key>
+								<dict>
+									<key>Alpha Component</key>
+									<real>1</real>
+									<key>Blue Component</key>
+									<real>0.8835868239402771</real>
+									<key>Color Space</key>
+									<string>P3</string>
+									<key>Green Component</key>
+									<real>0.64024609327316284</real>
+									<key>Red Component</key>
+									<real>0.8397631049156189</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -4038,7 +4082,7 @@
 								<key>base: priority</key>
 								<real>5</real>
 								<key>expression</key>
-								<string>\(user.city), \(user.stateProv), \(user.country)</string>
+								<string>\(user.city) \(user.stateProv) \(user.country)</string>
 								<key>maxwidth</key>
 								<real>+infinity</real>
 								<key>minwidth</key>
