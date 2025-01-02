@@ -147,7 +147,9 @@ export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 # iterm2
 # TODO: Get current public IP of home network through referencing DDNS network hostname
 iterm2_print_user_vars() {
-  iterm2_set_user_var publicIP $(curl -s ifconfig.me | awk '{print $1}')
+  ip=$(curl -s ifconfig.me | awk '{print $1}')
+  iterm2_set_user_var publicIP "$ip"
+  iterm2_set_user_var city $(whois "$ip" | grep "City:" | awk '{print $2}')
 }
 
 iterm2_print_user_vars
