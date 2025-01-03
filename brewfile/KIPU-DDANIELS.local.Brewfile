@@ -29,6 +29,7 @@ brew libavif
 brew libdeflate
 brew libffi
 brew libgcrypt
+brew libgit2@1.8
 brew libgpg-error
 brew libiconv
 brew libksba
@@ -58,6 +59,7 @@ brew python@3.12
 brew python@3.13
 brew redis
 brew rust
+brew shellcheck
 brew tcl-tk
 brew tcl-tk@8
 brew telnet
