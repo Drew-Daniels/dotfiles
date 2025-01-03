@@ -155,6 +155,10 @@ iterm2_print_user_vars() {
   iterm2_set_user_var stateProv $(echo "$whois_response" | sed -n 's/^StateProv: \(.*\)/\1/p' | xargs)
   iterm2_set_user_var country $(echo "$whois_response" | sed -n 's/^Country: \(.*\)/\1/p' | xargs)
   iterm2_set_user_var orgName $(echo "$whois_response" | sed -n 's/^OrgName: \(.*\)/\1/p' | xargs)
+
+  homeIP=$(nslookup $HOME_DDNS_HOSTNAME 8.8.8.8 | rg "Address" | tail -1 | awk '{print $2}' | tr -d '\n')
+  matches=$([ "$ip" = "$homeIP" ] && echo "HOME-NET" || echo "OUTSIDE-NET")
+  iterm2_set_user_var using_home_ip $(echo "$matches")
 }
 
 iterm2_print_user_vars
