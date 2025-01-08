@@ -145,7 +145,6 @@ alias cspell="cspell --config $XDG_CONFIG_HOME/cspell/cspell.yml"
 export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 
 # iterm2
-# TODO: Get current public IP of home network through referencing DDNS network hostname
 iterm2_print_user_vars() {
   ip=$(curl -s ifconfig.me | awk '{print $1}')
   whois_response=$(whois "$ip")
