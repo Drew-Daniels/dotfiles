@@ -160,7 +160,7 @@ iterm2_print_user_vars() {
   iterm2_set_user_var using_home_ip $(echo "$matches")
 }
 
-iterm2_print_user_vars
+[[ ! $TMUX ]] && iterm2_print_user_vars
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
