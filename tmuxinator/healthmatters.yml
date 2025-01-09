@@ -29,6 +29,7 @@ windows:
           - fish
           - cls
           - bundle _1.17.3_ exec rails c
+          - C-l
         - cmd:
           - fish
           - cls
