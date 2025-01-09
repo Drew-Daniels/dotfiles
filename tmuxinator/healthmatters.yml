@@ -102,26 +102,26 @@ windows:
   #       - cmd:
   #         - fish
   #         - cls
-  - 4)emr-v3:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v3
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
-  - 5)emr-v2:
-      root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v2
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-          - fish
-          - cls
-        - cmd:
-          - fish
-          - cls
+  # - 4)emr-v3:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v3
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
+  # - 5)emr-v2:
+  #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/projects/emr-v2
+  #     layout: <%= ENV["MUX_LAYOUT"] %>
+  #     panes:
+  #       - editor:
+  #         - fish
+  #         - cls
+  #       - cmd:
+  #         - fish
+  #         - cls
   # - webpack-configs:
   #     root: <%= ENV["PROJECTS_DIR"] %>/sites/healthmatters/js/config/webpack
   #     layout: <%= ENV["MUX_LAYOUT"] %>
@@ -212,7 +212,7 @@ windows:
   #       - cmd:
   #         - fish
   #         - cls
-  - 6)rails:
+  - 4)rails:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - main:
@@ -222,7 +222,7 @@ windows:
         - cmd:
           - fish
           - cls
-  - 7)js:
+  - 5)js:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - main:
@@ -232,7 +232,7 @@ windows:
         - cmd:
           - fish
           - cls
-  - 8)sidekiq:
+  - 6)sidekiq:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - main:
