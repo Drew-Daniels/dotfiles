@@ -59,6 +59,8 @@ cask slack
 cask standard-notes
 cask tor-browser
 cask vitalsource-bookshelf
+cask whatsapp
+cask wireshark
 cask zoom
 
 tap homebrew/bundle
