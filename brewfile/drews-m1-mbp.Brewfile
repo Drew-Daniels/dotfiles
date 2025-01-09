@@ -18,6 +18,7 @@ brew libassuan
 brew libavif
 brew libdeflate
 brew libgcrypt
+brew libgit2@1.8
 brew libgpg-error
 brew libksba
 brew libmagic
@@ -49,6 +50,7 @@ cask 1password@nightly
 cask alfred
 cask chatgpt
 cask discord
+cask docker
 cask element
 cask postgres-unofficial
 cask raspberry-pi-imager
@@ -79,7 +81,7 @@ tap teamookla/speedtest
 # App Store applications
 appstore 302584613 Amazon Kindle (7.23.2)
 appstore 823766827 OneDrive (24.226.1110)
-appstore 1303222628 Paprika Recipe Manager 3 (3.8.0)
+appstore 1303222628 Paprika Recipe Manager 3 (3.8.1)
 appstore 1596283165 rcmd (2.7.0)
 appstore 1549370672 Save to Raindrop.io (5.6.57)
 appstore 1530751461 Snippety (9.0.84)

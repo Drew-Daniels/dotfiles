@@ -191,7 +191,6 @@ brew zstd
 tap homebrew/cask
 cask alex313031-thorium
 cask dbeaver-community
-cask docker
 cask drawio
 cask firefox
 cask font-jetbrains-mono-nerd-font
