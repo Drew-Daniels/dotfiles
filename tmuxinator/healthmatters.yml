@@ -248,8 +248,8 @@ windows:
         - main:
           - fish
           - cls
-          - mise shell ruby@3
-          - mailcatcher
+          # - mise shell ruby@3
+          # - open http://127.0.0.1:1080
         - cmd:
           - fish
           - cls
