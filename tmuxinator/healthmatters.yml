@@ -242,3 +242,14 @@ windows:
         - cmd:
           - fish
           - cls
+  - 7)mailcatcher:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - main:
+          - fish
+          - cls
+          - mise shell ruby@3
+          - mailcatcher
+        - cmd:
+          - fish
+          - cls
