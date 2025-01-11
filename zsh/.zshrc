@@ -73,9 +73,6 @@ export HOMEBREW_BUNDLE_NO_LOCK=1
 # jless
 alias yless="jless --yaml"
 
-# zoxide
-eval "$(zoxide init --cmd j zsh)"
-
 # mise
 export MISE_CONFIG_DIR="$XDG_CONFIG_HOME/mise"
 # development, testing, production
@@ -85,6 +82,9 @@ eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
 export MISE_RUBY_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-gems"
 export MISE_NODE_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-npm-packages"
 export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-python-packages"
+
+# zoxide
+eval "$(zoxide init --cmd j zsh)"
 
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
