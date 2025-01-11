@@ -2,13 +2,10 @@
 # tap repositories and their packages
 
 tap homebrew/core
-brew awscli
 brew bash
 brew bdw-gc
 brew binutils
 brew c-ares
-brew cffi
-brew cryptography
 brew dcraw
 brew dnsmasq
 brew dos2unix
@@ -46,24 +43,19 @@ brew luv
 brew mongosh
 brew mpfr
 brew msgpack
-brew neovim
 brew node
 brew npth
 brew openldap
 brew openssl@1.1
 brew pinentry
 brew pv
-brew pycparser
 brew python-packaging
 brew python@3.12
 brew python@3.13
 brew redis
-brew rust
-brew shellcheck
 brew tcl-tk
 brew tcl-tk@8
 brew telnet
-brew tree-sitter
 brew unibilium
 brew v8
 brew z3
@@ -72,6 +64,7 @@ tap homebrew/cask
 cask 1password-cli
 cask 1password@nightly
 cask alfred
+cask docker
 cask keycastr
 cask michaelvillar-timer
 cask protonvpn
@@ -81,6 +74,9 @@ tap homebrew/bundle
 tap homebrew/services
 
 tap ankitpokhrel/jira-cli
+
+tap aquaproj/aqua
+brew aqua
 
 tap cormacrelf/tap
 brew dark-notify

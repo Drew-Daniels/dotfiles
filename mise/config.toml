@@ -1,4 +1,5 @@
 [tools]
+bun = "latest"
 python = "3.12.5"
 node = "22.5.1"
 golang = "1.21.1"
@@ -6,6 +7,19 @@ aws-vault = "7.2.0"
 deno = "1.45.2"
 java = "17.0.2"
 ruby = "3.3.4"
+neovim = "latest"
+"aqua:BurntSushi/ripgrep" = "latest"
+"aqua:JohnnyMorganz/StyLua" = "latest"
+"aqua:Orange-OpenSource/hurl" = "latest"
+"aqua:PaulJuliusMartinez/jless" = "latest"
+"aqua:cli/cli" = "latest"
+"aqua:junegunn/fzf" = "latest"
+"aqua:rhysd/actionlint" = "latest"
+"aqua:sharkdp/fd" = "latest"
+"aqua:sxyazi/yazi" = "latest"
+"aqua:jqlang/jq" = "latest"
+"aqua:aws/aws-cli" = "latest"
+"aqua:tree-sitter" = "latest"
 
 [settings]
 legacy_version_file = true
