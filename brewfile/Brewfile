@@ -104,7 +104,6 @@ brew libxt
 brew libxtst
 brew libyaml
 brew little-cms2
-brew lsd
 brew lz4
 brew lzo
 brew m4

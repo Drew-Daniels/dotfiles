@@ -28,6 +28,7 @@ tmux = "latest"
 zoxide = "latest"
 bat = "latest"
 dust = "latest"
+lsd = "latest"
 
 [settings]
 legacy_version_file = true
