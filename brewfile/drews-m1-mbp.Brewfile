@@ -10,9 +10,7 @@ brew duti
 brew file-formula
 brew git-delta
 brew gnupg
-brew icu4c@75
 brew imagemagick --HEAD
-brew leiningen
 brew less
 brew libassuan
 brew libavif
@@ -62,7 +60,6 @@ brew dark-notify
 tap jstkdng/programs
 
 tap oven-sh/bun
-brew bun
 
 tap rcmdnk/file
 

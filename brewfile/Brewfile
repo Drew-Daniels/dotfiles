@@ -97,7 +97,6 @@ brew ncurses
 brew nettle
 brew oniguruma
 brew openexr
-brew openjdk
 brew openjpeg
 brew openssl@3
 brew p11-kit
