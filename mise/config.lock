@@ -1,0 +1,124 @@
+[tools.1password-cli]
+version = "2.30.3"
+backend = "asdf:1password-cli"
+
+[tools."aqua:BurntSushi/ripgrep"]
+version = "14.1.1"
+backend = "aqua:BurntSushi/ripgrep"
+
+[tools."aqua:JohnnyMorganz/StyLua"]
+version = "2.0.2"
+backend = "aqua:JohnnyMorganz/StyLua"
+
+[tools."aqua:Orange-OpenSource/hurl"]
+version = "6.0.0"
+backend = "aqua:Orange-OpenSource/hurl"
+
+[tools."aqua:PaulJuliusMartinez/jless"]
+version = "0.9.0"
+backend = "aqua:PaulJuliusMartinez/jless"
+
+[tools."aqua:aws/aws-cli"]
+version = "2.22.33"
+backend = "aqua:aws/aws-cli"
+
+[tools."aqua:cli/cli"]
+version = "2.65.0"
+backend = "aqua:cli/cli"
+
+[tools."aqua:jqlang/jq"]
+version = "1.7.1"
+backend = "aqua:jqlang/jq"
+
+[tools."aqua:junegunn/fzf"]
+version = "0.57.0"
+backend = "aqua:junegunn/fzf"
+
+[tools."aqua:rhysd/actionlint"]
+version = "1.7.6"
+backend = "aqua:rhysd/actionlint"
+
+[tools."aqua:sharkdp/fd"]
+version = "10.2.0"
+backend = "aqua:sharkdp/fd"
+
+[tools."aqua:sxyazi/yazi"]
+version = "0.4.2"
+backend = "aqua:sxyazi/yazi"
+
+[tools."aqua:tree-sitter"]
+version = "0.24.6"
+backend = "aqua:tree-sitter"
+
+[tools.aws-vault]
+version = "7.2.0"
+backend = "aqua:99designs/aws-vault"
+
+[tools.aws-vault.checksums]
+"aws-vault-darwin-arm64.dmg" = "sha256:9887eb8f6c2bd431e814b32b9ec8a6bd394dbeb0c60822d76ed9be3c84ca1cc5"
+
+[tools.bat]
+version = "0.25.0"
+backend = "ubi:sharkdp/bat"
+
+[tools.bat-extras]
+version = "2024.08.24"
+backend = "asdf:bat-extras"
+
+[tools.bun]
+version = "1.1.43"
+backend = "core:bun"
+
+[tools.deno]
+version = "1.45.2"
+backend = "core:deno"
+
+[tools.deno.checksums]
+"deno-aarch64-apple-darwin.zip" = "sha256:de9627d06ae4d6b9960430ad294789cfb55f327b31e6d032c0c3b1ad7b7e45c1"
+
+[tools.dust]
+version = "1.1.1"
+backend = "ubi:bootandy/dust"
+
+[tools.dust.checksums]
+dust-macos-aarch64 = "sha256:4402a028983c261537c858141fb05377b2087aa78bd6a05182c376b207c3be99"
+
+[tools.ffmpeg]
+version = "7.1"
+backend = "asdf:ffmpeg"
+
+[tools.go]
+version = "1.21.1"
+backend = "core:go"
+
+[tools.java]
+version = "17.0.2"
+backend = "core:java"
+
+[tools.neovim]
+version = "0.10.3"
+backend = "aqua:neovim/neovim"
+
+[tools.node]
+version = "22.5.1"
+backend = "asdf:node"
+
+[tools.python]
+version = "3.12.5"
+backend = "core:python"
+
+[tools.ruby]
+version = "3.3.4"
+backend = "core:ruby"
+
+[tools.starship]
+version = "1.22.1"
+backend = "ubi:starship/starship"
+
+[tools.tmux]
+version = "3.5a"
+backend = "asdf:tmux"
+
+[tools.zoxide]
+version = "0.9.6"
+backend = "ubi:ajeetdsouza/zoxide"

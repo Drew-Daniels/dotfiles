@@ -19,7 +19,6 @@ brew coreutils
 brew ctags
 brew curl
 brew dav1d
-brew dust
 brew expat
 brew fish
 brew flac
