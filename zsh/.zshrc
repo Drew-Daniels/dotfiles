@@ -80,6 +80,9 @@ alias yless="jless --yaml"
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 
+# aqua
+export AQUA_GLOBAL_CONFIG="$XDG_CONFIG_HOME/aqua/config.yaml"
+
 # mise
 export MISE_CONFIG_DIR="$XDG_CONFIG_HOME/mise"
 # development, testing, production
