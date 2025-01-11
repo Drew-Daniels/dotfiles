@@ -20,6 +20,7 @@ neovim = "latest"
 "aqua:jqlang/jq" = "latest"
 "aqua:aws/aws-cli" = "latest"
 "aqua:tree-sitter" = "latest"
+1password-cli = "latest"
 
 [settings]
 legacy_version_file = true

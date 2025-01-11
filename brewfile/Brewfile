@@ -198,7 +198,6 @@ tap homebrew/bundle
 tap homebrew/services
 
 tap ankitpokhrel/jira-cli
-brew jira-cli
 
 tap oven-sh/bun
 

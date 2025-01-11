@@ -61,7 +61,6 @@ brew v8
 brew z3
 
 tap homebrew/cask
-cask 1password-cli
 cask 1password@nightly
 cask alfred
 cask docker
@@ -74,9 +73,9 @@ tap homebrew/bundle
 tap homebrew/services
 
 tap ankitpokhrel/jira-cli
+brew jira-cli
 
 tap aquaproj/aqua
-brew aqua
 
 tap cormacrelf/tap
 brew dark-notify
