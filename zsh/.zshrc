@@ -70,10 +70,6 @@ fi
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 export HOMEBREW_BUNDLE_NO_LOCK=1
 
-# starship
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-eval "$(starship init zsh)"
-
 # jless
 alias yless="jless --yaml"
 
@@ -89,6 +85,10 @@ eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
 export MISE_RUBY_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-gems"
 export MISE_NODE_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-npm-packages"
 export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-python-packages"
+
+# starship
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+eval "$(starship init zsh)"
 
 # ruby
 export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"

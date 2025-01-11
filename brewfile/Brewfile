@@ -7,8 +7,6 @@ brew aribb24
 brew ast-grep
 brew autoconf
 brew automake
-brew bat
-brew bat-extras
 brew brotli
 brew ca-certificates
 brew cairo
@@ -23,7 +21,6 @@ brew curl
 brew dav1d
 brew dust
 brew expat
-brew ffmpeg
 brew fish
 brew flac
 brew fontconfig
@@ -43,7 +40,6 @@ brew gping
 brew graphite2
 brew harfbuzz
 brew highway
-brew imagemagick --HEAD
 brew imath
 brew jasper
 brew jbig2dec
@@ -145,11 +141,9 @@ brew snappy
 brew speex
 brew sqlite
 brew srt
-brew starship
 brew svt-av1
 brew tesseract
 brew theora
-brew tmux
 brew tree
 brew unbound
 brew usage
@@ -174,7 +168,6 @@ brew xxhash
 brew xz
 brew zeromq
 brew zimg
-brew zoxide
 brew zstd
 
 tap homebrew/cask

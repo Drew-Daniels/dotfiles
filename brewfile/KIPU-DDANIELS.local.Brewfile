@@ -18,6 +18,7 @@ brew gnu-getopt
 brew gnu-sed
 brew gnupg
 brew icu4c@75
+brew imagemagick --HEAD
 brew isl
 brew kubernetes-cli
 brew less
