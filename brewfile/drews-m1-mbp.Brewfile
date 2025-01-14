@@ -27,6 +27,7 @@ brew pycparser
 brew python-packaging
 brew python@3.12
 brew python@3.13
+brew speedtest-cli
 brew tcl-tk@8
 
 tap homebrew/cask
