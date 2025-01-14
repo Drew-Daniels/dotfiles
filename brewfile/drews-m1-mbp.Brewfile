@@ -21,6 +21,11 @@ brew libgpg-error
 brew libksba
 brew libmagic
 brew libusb
+brew libuv
+brew lpeg
+brew luajit
+brew luv
+brew neovim --HEAD
 brew npth
 brew pinentry
 brew pycparser
@@ -29,6 +34,8 @@ brew python@3.12
 brew python@3.13
 brew speedtest-cli
 brew tcl-tk@8
+brew tree-sitter
+brew unibilium
 
 tap homebrew/cask
 cask 1password@nightly
