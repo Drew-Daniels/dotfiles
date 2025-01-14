@@ -31,11 +31,11 @@ backend = "aqua:PaulJuliusMartinez/jless"
 "jless-v0.9.0-x86_64-apple-darwin.zip" = "sha256:8228d44b918af7e904a75df10f85dabf29cdedac17156d870c80968e6836b04f"
 
 [tools."aqua:aws/aws-cli"]
-version = "2.22.33"
+version = "2.22.34"
 backend = "aqua:aws/aws-cli"
 
 [tools."aqua:aws/aws-cli".checksums]
-"AWSCLIV2-2.22.33.pkg" = "sha256:5e3983e4203bd7aaa51fe295acf3d5da175ba9220d76de603b10e30b13b0641e"
+"AWSCLIV2-2.22.34.pkg" = "sha256:0df498f7938801c0060fd3a6764a7bf10eaa4170766ddb33771263deb5d96ce3"
 
 [tools."aqua:cli/cli"]
 version = "2.65.0"
@@ -80,11 +80,11 @@ backend = "aqua:sxyazi/yazi"
 "yazi-aarch64-apple-darwin.zip" = "sha256:654d6ede9310690d772947b82874f63e4db14de57db5f355813e92fff257420d"
 
 [tools."aqua:tree-sitter"]
-version = "0.24.6"
+version = "0.24.7"
 backend = "aqua:tree-sitter"
 
 [tools."aqua:tree-sitter".checksums]
-"tree-sitter-macos-arm64.gz" = "sha256:2035f8bcbf4c3ee5936c5c7900690ebd42d0ee458f4984b4fe604aeef83e429d"
+"tree-sitter-macos-arm64.gz" = "sha256:5ef21da1bb7c9dccbce685ebe264881efc5187688a8fcd2385cb6269dec63905"
 
 [tools.aws-vault]
 version = "7.2.0"
