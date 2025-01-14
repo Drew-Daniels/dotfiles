@@ -404,9 +404,9 @@ require("blink-cmp").setup({
     ["<C-j>"] = { "snippet_forward" },
     ["<C-h>"] = { "snippet_backward" },
   },
-  nerd_font_variant = "mono",
-  highlight = {
+  appearance = {
     use_nvim_cmp_as_default = true,
+    nerd_font_variant = "mono",
   },
   completion = {
     documentation = {
@@ -414,12 +414,9 @@ require("blink-cmp").setup({
     },
   },
   sources = {
-    completion = {
-      enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
-    },
+    default = {"lsp", "path", "snippets", "buffer", "lazydev" },
     providers = {
-      lsp = { fallback_for = { "lazydev" } },
-      lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+      lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks =  { "lsp" } },
       snippets = {
         name = "Snippets",
         module = "blink.cmp.sources.snippets",
@@ -468,8 +465,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Initialize LSP on LspAttach event",
 })
 
--- TODO: Add lazydev setup call here
-local capabilities = require("blink.cmp").get_lsp_capabilities()
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-LSPCONFIG                      │
 --          │        https://github.com/neovim/nvim-lspconfig         │
@@ -504,7 +499,7 @@ local servers = {
   "tflint",
 }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({ capabilities = capabilities })
+  lspconfig[lsp].setup({})
 end
 
 -- lspconfig.vuels.setup({
@@ -513,13 +508,11 @@ end
 
 lspconfig.solargraph.setup({
   filetypes = { "ruby", "eruby" },
-  capabilities = capabilities,
 })
 
 -- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
 lspconfig.standardrb.setup({
   -- cmd = { "bundle", "exec", "standardrb", "--lsp" },
-  capabilities = capabilities,
 })
 
 lspconfig.basedpyright.setup({
@@ -530,7 +523,6 @@ lspconfig.basedpyright.setup({
       },
     },
   },
-  capabilities = capabilities,
 })
 
 --TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
@@ -548,7 +540,6 @@ lspconfig.eslint.setup({
       useFlatConfig = use_flat_config,
     },
   },
-  capabilities = capabilities,
 })
 
 lspconfig.cssls.setup({
@@ -572,7 +563,6 @@ lspconfig.cssls.setup({
       },
     },
   },
-  capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
@@ -583,7 +573,6 @@ lspconfig.lua_ls.setup({
       },
     },
   },
-  capabilities = capabilities,
 })
 
 lspconfig.typos_lsp.setup({
@@ -591,7 +580,6 @@ lspconfig.typos_lsp.setup({
   init_options = {
     config = "~/projects/dotfiles/typos/typos.toml",
   },
-  capabilities = capabilities,
 })
 
 -- https://www.npbee.me/posts/deno-and-typescript-in-a-monorepo-neovim-lsp
@@ -644,7 +632,6 @@ require("typescript-tools").setup({
       completeFunctionCalls = false,
     },
   },
-  capabilities = capabilities,
 })
 
 lspconfig.denols.setup({
@@ -659,7 +646,6 @@ lspconfig.denols.setup({
       },
     },
   },
-  capabilities = capabilities,
 })
 
 -- RECOMMENDED 'nvim-lspconfig' SETUP
