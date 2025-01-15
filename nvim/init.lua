@@ -75,6 +75,7 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 end, {})
 
 require("mason-lspconfig").setup({
+  automatic_installation = false,
   ensure_installed = {
     "bashls",
     "clangd",
