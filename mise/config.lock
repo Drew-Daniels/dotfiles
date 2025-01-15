@@ -31,11 +31,11 @@ backend = "aqua:PaulJuliusMartinez/jless"
 "jless-v0.9.0-x86_64-apple-darwin.zip" = "sha256:8228d44b918af7e904a75df10f85dabf29cdedac17156d870c80968e6836b04f"
 
 [tools."aqua:aws/aws-cli"]
-version = "2.22.34"
+version = "2.22.35"
 backend = "aqua:aws/aws-cli"
 
 [tools."aqua:aws/aws-cli".checksums]
-"AWSCLIV2-2.22.34.pkg" = "sha256:0df498f7938801c0060fd3a6764a7bf10eaa4170766ddb33771263deb5d96ce3"
+"AWSCLIV2-2.22.35.pkg" = "sha256:878a047ccb7cbccc0b31737a2e2eb6c07d8c0c5d436581f6500bb56bd224acca"
 
 [tools."aqua:cli/cli"]
 version = "2.65.0"
