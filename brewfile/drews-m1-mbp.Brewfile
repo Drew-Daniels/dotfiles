@@ -3,14 +3,23 @@
 
 tap homebrew/core
 brew ansible
+brew awscli
+brew bat
+brew bat-extras
 brew certifi
 brew cffi
 brew cryptography
+brew dust
 brew duti
 brew file-formula
+brew fzf
+brew gh
 brew git-delta
 brew gnupg
+brew hurl
 brew imagemagick --HEAD
+brew jless
+brew jq
 brew less
 brew libassuan
 brew libavif
@@ -32,12 +41,19 @@ brew pycparser
 brew python-packaging
 brew python@3.12
 brew python@3.13
+brew ripgrep
 brew speedtest-cli
+brew starship
+brew stylua
 brew tcl-tk@8
+brew tmux
 brew tree-sitter
 brew unibilium
+brew yazi
+brew zoxide
 
 tap homebrew/cask
+cask 1password-cli
 cask 1password@nightly
 cask alfred
 cask chatgpt
