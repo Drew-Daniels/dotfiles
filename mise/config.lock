@@ -1,108 +1,9 @@
-[tools.1password-cli]
-version = "2.30.3"
-backend = "asdf:1password-cli"
-
-[tools."aqua:BurntSushi/ripgrep"]
-version = "14.1.1"
-backend = "aqua:BurntSushi/ripgrep"
-
-[tools."aqua:BurntSushi/ripgrep".checksums]
-"ripgrep-14.1.1-aarch64-apple-darwin.tar.gz" = "sha256:24ad76777745fbff131c8fbc466742b011f925bfa4fffa2ded6def23b5b937be"
-
-[tools."aqua:JohnnyMorganz/StyLua"]
-version = "2.0.2"
-backend = "aqua:JohnnyMorganz/StyLua"
-
-[tools."aqua:JohnnyMorganz/StyLua".checksums]
-"stylua-macos-aarch64.zip" = "sha256:126be217b089755af3c681d0597585136d181864470232899a6de31f68ba16fd"
-
-[tools."aqua:Orange-OpenSource/hurl"]
-version = "6.0.0"
-backend = "aqua:Orange-OpenSource/hurl"
-
-[tools."aqua:Orange-OpenSource/hurl".checksums]
-"hurl-6.0.0-aarch64-apple-darwin.tar.gz" = "sha256:9fe286d6b2e69c8bb804ce90fabf21897b568e53350f171981e6c66f69bf85dc"
-
-[tools."aqua:PaulJuliusMartinez/jless"]
-version = "0.9.0"
-backend = "aqua:PaulJuliusMartinez/jless"
-
-[tools."aqua:PaulJuliusMartinez/jless".checksums]
-"jless-v0.9.0-x86_64-apple-darwin.zip" = "sha256:8228d44b918af7e904a75df10f85dabf29cdedac17156d870c80968e6836b04f"
-
-[tools."aqua:aws/aws-cli"]
-version = "2.22.35"
-backend = "aqua:aws/aws-cli"
-
-[tools."aqua:aws/aws-cli".checksums]
-"AWSCLIV2-2.22.35.pkg" = "sha256:878a047ccb7cbccc0b31737a2e2eb6c07d8c0c5d436581f6500bb56bd224acca"
-
-[tools."aqua:cli/cli"]
-version = "2.65.0"
-backend = "aqua:cli/cli"
-
-[tools."aqua:cli/cli".checksums]
-"gh_2.65.0_macOS_arm64.zip" = "sha256:5acb7110fa6f18d2e1a7bea41526bb8532584f4a10067b40217488bf9f3ad9ab"
-
-[tools."aqua:jqlang/jq"]
-version = "1.7.1"
-backend = "aqua:jqlang/jq"
-
-[tools."aqua:jqlang/jq".checksums]
-jq-macos-arm64 = "sha256:0bbe619e663e0de2c550be2fe0d240d076799d6f8a652b70fa04aea8a8362e8a"
-
-[tools."aqua:junegunn/fzf"]
-version = "0.57.0"
-backend = "aqua:junegunn/fzf"
-
-[tools."aqua:junegunn/fzf".checksums]
-"fzf-0.57.0-darwin_arm64.tar.gz" = "sha256:b4e1c5322652bc2672c32dc37993f8d501df7aecb3fa9e545a3d80eca8ae9a2f"
-
-[tools."aqua:rhysd/actionlint"]
-version = "1.7.6"
-backend = "aqua:rhysd/actionlint"
-
-[tools."aqua:rhysd/actionlint".checksums]
-"actionlint_1.7.6_darwin_arm64.tar.gz" = "sha256:9a7c9cb2b627bb137ef68742eead2dd5b78f3ddc44876e84c37d323ba28b4710"
-
-[tools."aqua:sharkdp/fd"]
-version = "10.2.0"
-backend = "aqua:sharkdp/fd"
-
-[tools."aqua:sharkdp/fd".checksums]
-"fd-v10.2.0-aarch64-apple-darwin.tar.gz" = "sha256:ae6327ba8c9a487cd63edd8bddd97da0207887a66d61e067dfe80c1430c5ae36"
-
-[tools."aqua:sxyazi/yazi"]
-version = "0.4.2"
-backend = "aqua:sxyazi/yazi"
-
-[tools."aqua:sxyazi/yazi".checksums]
-"yazi-aarch64-apple-darwin.zip" = "sha256:654d6ede9310690d772947b82874f63e4db14de57db5f355813e92fff257420d"
-
-[tools."aqua:tree-sitter"]
-version = "0.24.7"
-backend = "aqua:tree-sitter"
-
-[tools."aqua:tree-sitter".checksums]
-"tree-sitter-macos-arm64.gz" = "sha256:5ef21da1bb7c9dccbce685ebe264881efc5187688a8fcd2385cb6269dec63905"
-
 [tools.aws-vault]
 version = "7.2.0"
 backend = "aqua:99designs/aws-vault"
 
 [tools.aws-vault.checksums]
 "aws-vault-darwin-arm64.dmg" = "sha256:9887eb8f6c2bd431e814b32b9ec8a6bd394dbeb0c60822d76ed9be3c84ca1cc5"
-
-[tools.bat]
-version = "0.25.0"
-backend = "ubi:sharkdp/bat"
-
-[tools.bat.checksums]
-bat-macos-aarch64 = "sha256:0d17225e26fe164e0c681e06a0ccf7fd7e479a987eca1c1503c8473a2ac6d207"
-
-[tools.bat-extras]
-version = "2024.08.24"
-backend = "asdf:bat-extras"
 
 [tools.bun]
 version = "1.1.43"
@@ -118,17 +19,6 @@ backend = "core:deno"
 [tools.deno.checksums]
 "deno-aarch64-apple-darwin.zip" = "sha256:de9627d06ae4d6b9960430ad294789cfb55f327b31e6d032c0c3b1ad7b7e45c1"
 
-[tools.dust]
-version = "1.1.1"
-backend = "ubi:bootandy/dust"
-
-[tools.dust.checksums]
-dust-macos-aarch64 = "sha256:4402a028983c261537c858141fb05377b2087aa78bd6a05182c376b207c3be99"
-
-[tools.ffmpeg]
-version = "7.1"
-backend = "asdf:ffmpeg"
-
 [tools.go]
 version = "1.21.1"
 backend = "core:go"
@@ -136,13 +26,6 @@ backend = "core:go"
 [tools.java]
 version = "17.0.2"
 backend = "core:java"
-
-[tools.lsd]
-version = "1.1.5"
-backend = "aqua:lsd-rs/lsd"
-
-[tools.lsd.checksums]
-"lsd-v1.1.5-x86_64-apple-darwin.tar.gz" = "sha256:4245e4e8f6fc14376a1f96d210dcf7c55954afacb831c965d2759259cba516ef"
 
 [tools.node]
 version = "22.5.1"
@@ -155,21 +38,3 @@ backend = "core:python"
 [tools.ruby]
 version = "3.3.4"
 backend = "core:ruby"
-
-[tools.starship]
-version = "1.22.1"
-backend = "ubi:starship/starship"
-
-[tools.starship.checksums]
-starship-macos-aarch64 = "sha256:b9ab4b442b161828a307911797b232de6fbd62e262928921b50cf517d9ca8cae"
-
-[tools.tmux]
-version = "3.5a"
-backend = "asdf:tmux"
-
-[tools.zoxide]
-version = "0.9.6"
-backend = "ubi:ajeetdsouza/zoxide"
-
-[tools.zoxide.checksums]
-zoxide-macos-aarch64 = "sha256:fa7a04a98a13ac99cfa4d2d084055709dcddb338649231e1b47fe33c7a1ff730"
