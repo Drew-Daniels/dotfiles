@@ -1,16 +1,9 @@
-[tools.aws-vault]
-version = "7.2.0"
-backend = "aqua:99designs/aws-vault"
-
-[tools.aws-vault.checksums]
-"aws-vault-darwin-arm64.dmg" = "sha256:9887eb8f6c2bd431e814b32b9ec8a6bd394dbeb0c60822d76ed9be3c84ca1cc5"
-
 [tools.bun]
-version = "1.1.43"
+version = "1.1.45"
 backend = "core:bun"
 
 [tools.bun.checksums]
-"bun-darwin-aarch64.zip" = "sha256:dec6e207ce0e1e7c66edb4802fa7aef8429e394419bd6aa5a821ae5c30aea011"
+"bun-darwin-aarch64.zip" = "sha256:2cc497daee4817aa6ce3e258ebf17262bc4202e5276871f18748aa928254bd66"
 
 [tools.deno]
 version = "1.45.2"
