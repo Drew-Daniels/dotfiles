@@ -99,6 +99,7 @@ brew rubberband
 brew sdl2
 brew shellcheck
 brew snappy
+brew speedtest-cli
 brew speex
 brew srt
 brew starship
