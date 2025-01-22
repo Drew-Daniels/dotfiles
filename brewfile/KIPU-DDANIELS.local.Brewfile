@@ -20,6 +20,7 @@ brew dnsmasq
 brew dos2unix
 brew dust
 brew duti
+brew fd
 brew ffmpeg
 brew flac
 brew frei0r
