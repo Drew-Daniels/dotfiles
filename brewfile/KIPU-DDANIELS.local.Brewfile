@@ -126,6 +126,7 @@ cask 1password-cli
 cask 1password@nightly
 cask alfred
 cask docker
+cask jiggler
 cask keycastr
 cask michaelvillar-timer
 cask protonvpn
@@ -156,5 +157,5 @@ tap teamookla/speedtest
 appstore 1569813296 1Password for Safari (8.10.56)
 appstore 1475824389 OneLogin for Safari (3.5.6)
 appstore 1596283165 rcmd (2.7.0)
-appstore 1530751461 Snippety (9.0.84)
+appstore 1530751461 Snippety (9.1.85)
 appstore 497799835 Xcode (16.2)
