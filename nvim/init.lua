@@ -64,6 +64,7 @@ local mason_options = {
     "shfmt",
     "shellcheck",
     "sqlfmt",
+    "coffeesense-language-server",
   },
   max_concurrent_installers = 10,
 }
@@ -478,6 +479,7 @@ local servers = {
   "html",
   "bashls",
   "clangd",
+  "coffeesense",
   "cssmodules_ls",
   "docker_compose_language_service",
   "dockerls",
