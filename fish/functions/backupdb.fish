@@ -1,9 +1,13 @@
-function _backupdb -d "Backs up the database used for current branch"
+function backupdb -d "Backs up the database used for current branch"
     set -l user (whoami)
-    set -l db_name $WORK_DB_NAME
     set -l current_branch (git branch --show-current)
-    set -l dump_file_name (string split -r -m 1 "/" $current_branch | tail -n 1)
-    set -l db_backup_path $BACKUPS_DIR/$dump_file_name.dump
+    set -l db_name kipu_demo_development_$current_branch
+    set -l db_backup_path $BACKUPS_DIR/$db_name.dump
+
+    # exit with an error when not on main or encounters-dev branch
+    if test $current_branch != main && test $current_branch != encounters-dev
+        echo "Must be on main or encounters-dev branch to backup"
+    end
 
     echo "Backing up $current_branch database ($db_name) to $db_backup_path"
     pg_dump -U $user -d $db_name -f $db_backup_path -v --format=custom
