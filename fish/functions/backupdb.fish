@@ -2,7 +2,9 @@ function backupdb -d "Backs up the database used for current branch"
     set -l user (whoami)
     set -l current_branch (git branch --show-current)
     set -l db_name kipu_demo_development_$current_branch
-    set -l db_backup_path $BACKUPS_DIR/$db_name.dump
+    set -l db_backup_path ~/backups/$db_name.dump
+
+    # TODO: Figure out why '-v' file keeps getting created when running this in project repo
 
     # exit with an error when not on main or encounters-dev branch
     if test $current_branch != main && test $current_branch != encounters-dev

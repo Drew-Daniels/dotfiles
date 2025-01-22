@@ -2,7 +2,7 @@ function restoredb -d "Restores database for current branch from backup"
     set -l user (whoami)
     set -l current_branch $(git branch --show-current)
     set -l db_name kipu_demo_development_$current_branch
-    set -l db_backup_path $BACKUPS_DIR/$db_name.dump
+    set -l db_backup_path ~/backups/$db_name.dump
     set -l jobs 14
 
     # exit with an error when not on main or encounters-dev branch
