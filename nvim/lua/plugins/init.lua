@@ -27,7 +27,11 @@ return require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
+      require("fzf-lua").setup({
+        lsp = {
+          async_or_timeout = 10000,
+        },
+      })
     end,
   },
   {
