@@ -32,6 +32,7 @@ brew libmagic
 brew libusb
 brew libuv
 brew lpeg
+brew lsd
 brew luajit
 brew luv
 brew neovim --HEAD
@@ -90,10 +91,10 @@ tap rcmdnk/file
 tap teamookla/speedtest
 
 # App Store applications
-appstore 302584613 Amazon Kindle (7.23.2)
+appstore 302584613 Amazon Kindle (7.24)
 appstore 823766827 OneDrive (24.226.1110)
 appstore 1303222628 Paprika Recipe Manager 3 (3.8.1)
 appstore 1596283165 rcmd (2.7.0)
-appstore 1549370672 Save to Raindrop.io (5.6.68)
-appstore 1530751461 Snippety (9.0.84)
+appstore 1549370672 Save to Raindrop.io (5.6.71)
+appstore 1530751461 Snippety (9.1.85)
 appstore 497799835 Xcode (16.2)
