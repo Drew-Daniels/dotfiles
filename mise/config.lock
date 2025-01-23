@@ -1,9 +1,9 @@
 [tools.bun]
-version = "1.1.45"
+version = "1.2.0"
 backend = "core:bun"
 
 [tools.bun.checksums]
-"bun-darwin-aarch64.zip" = "sha256:2cc497daee4817aa6ce3e258ebf17262bc4202e5276871f18748aa928254bd66"
+"bun-darwin-aarch64.zip" = "sha256:fa72173cb2220d00e2d2650fefdc0b5b37bfd8bb33d8d671b50efb409c2f5745"
 
 [tools.deno]
 version = "1.45.2"
