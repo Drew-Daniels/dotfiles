@@ -9,6 +9,9 @@
 --glob=!.git/*
 --glob=!yarn.lock
 --glob=!.yarn
+--glob=!sql
+--glob=!doc
+--glob=!spec
+--glob=!db
 
 --smart-case
-
