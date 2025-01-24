@@ -64,6 +64,7 @@ local mason_options = {
     "shfmt",
     "shellcheck",
     "sqlfmt",
+    "reformat-gherkin",
   },
   max_concurrent_installers = 10,
 }
@@ -729,6 +730,7 @@ require("conform").setup({
   end,
   formatters_by_ft = {
     c = { "clang-format" },
+    cucumber = { "reformat-gherkin" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
     -- TODO: Add another variation of project_standardrb that only runs in hm
