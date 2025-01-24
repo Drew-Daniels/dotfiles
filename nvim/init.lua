@@ -766,6 +766,7 @@ require("conform").setup({
     reformat_gherkin = {
       command = "reformat-gherkin",
       stdin = false,
+      args = { "$FILENAME" },
     },
     custom_jq = {
       command = "jq",
