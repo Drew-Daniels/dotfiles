@@ -64,8 +64,7 @@ local mason_options = {
     "shfmt",
     "shellcheck",
     "sqlfmt",
-    -- TODO: Uninstall local python version and install via Mason once I get the formatter config working
-    -- "reformat-gherkin",
+    "reformat-gherkin",
   },
   max_concurrent_installers = 10,
 }
