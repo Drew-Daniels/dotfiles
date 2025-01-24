@@ -7,3 +7,6 @@ openpyxl
 PyYAML
 
 neovim
+
+# formatting .feature files
+reformat-gherkin
