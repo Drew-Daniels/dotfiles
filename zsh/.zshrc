@@ -26,6 +26,10 @@ alias pn="pnpm"
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 
+# fzf
+export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/.fzfrc"
+
 # nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
