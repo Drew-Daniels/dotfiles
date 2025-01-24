@@ -64,7 +64,8 @@ local mason_options = {
     "shfmt",
     "shellcheck",
     "sqlfmt",
-    "reformat-gherkin",
+    -- TODO: Uninstall local python version and install via Mason once I get the formatter config working
+    -- "reformat-gherkin",
   },
   max_concurrent_installers = 10,
 }
@@ -730,7 +731,8 @@ require("conform").setup({
   end,
   formatters_by_ft = {
     c = { "clang-format" },
-    cucumber = { "reformat-gherkin" },
+    -- https://github.com/stevearc/conform.nvim/issues/633
+    cucumber = { "reformat_gherkin" },
     lua = { "stylua" },
     html = { "htmlbeautifier" },
     -- TODO: Add another variation of project_standardrb that only runs in hm
@@ -761,6 +763,10 @@ require("conform").setup({
     python = { "ruff" },
   },
   formatters = {
+    reformat_gherkin = {
+      command = "reformat-gherkin",
+      stdin = false,
+    },
     custom_jq = {
       command = "jq",
       condition = function()
