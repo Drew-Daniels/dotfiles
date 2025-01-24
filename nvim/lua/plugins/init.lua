@@ -31,6 +31,9 @@ return require("lazy").setup({
         lsp = {
           async_or_timeout = 10000,
         },
+        grep = {
+          RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
+        },
       })
     end,
   },

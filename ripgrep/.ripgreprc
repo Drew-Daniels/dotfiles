@@ -1,11 +1,14 @@
-# limit search output
---max-columns=150
---max-columns-preview
+# default fzflua options
+--column 
+--line-number 
+--no-heading
+--color=always 
+--smart-case 
+--max-columns=4096 
+-e
 
-# Include dotfiles in search
+# my custom options
 --hidden
-
-# But not files in .git folders
 --glob=!.git/*
 --glob=!yarn.lock
 --glob=!.yarn
@@ -13,5 +16,3 @@
 --glob=!doc
 --glob=!spec
 --glob=!db
-
---smart-case
