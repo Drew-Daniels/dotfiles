@@ -25,7 +25,6 @@ brew libassuan
 brew libavif
 brew libdeflate
 brew libgcrypt
-brew libgit2@1.8
 brew libgpg-error
 brew libksba
 brew libmagic
@@ -37,6 +36,7 @@ brew luajit
 brew luv
 brew neovim --HEAD
 brew npth
+brew ollama
 brew pinentry
 brew pycparser
 brew python-packaging
