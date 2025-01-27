@@ -32,12 +32,14 @@ brew libksba
 brew libmagic
 brew libusb
 brew libuv
+brew libvterm
 brew llama.cpp
 brew lpeg
 brew lsd
 brew luajit
 brew luv
-brew neovim --HEAD
+brew msgpack
+brew neovim
 brew npth
 brew ollama
 brew pinentry
