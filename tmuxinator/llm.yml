@@ -2,7 +2,7 @@ name: llm
 root: <%= ENV["PROJECTS_DIR"] %>
 on_project_stop:
   - docker stop open-webui
-  - ollama stop deepseek-r1:7b
+  - ollama stop <%= ENV["DEFAULT_OLLAMA_MODEL"] %>
 
 windows:
   - 1)ollama:
@@ -11,7 +11,7 @@ windows:
         - editor:
           - fish
           - cls
-          - ollama run deepseek-r1:7b
+          - ollama run <%= ENV["DEFAULT_OLLAMA_MODEL"] %>
         - cmd:
           - fish
           - cls

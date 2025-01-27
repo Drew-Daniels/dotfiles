@@ -388,6 +388,17 @@ require("web-tools").setup({
   },
 })
 
+require("codecompanion").setup({
+  strategies = {
+    chat = {
+      adapter = "ollama",
+    },
+    inline = {
+      adapter = "ollama",
+    },
+  },
+})
+
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       BLINK.CMP                         │
 --          │         https://github.com/Saghen/blink.cmp             │
@@ -416,6 +427,9 @@ require("blink-cmp").setup({
     },
   },
   sources = {
+    per_filetype = {
+      codecompanion = { "codecompanion" },
+    },
     default = { "lsp", "path", "snippets", "buffer", "lazydev" },
     providers = {
       lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
@@ -934,11 +948,9 @@ wk.add({
     { "<leader>cq", "<cmd>CBllbox13<cr>", desc = "[q]uoted" },
     { "<leader>cr", "<cmd>CBd<cr>", desc = "[r]emove box" },
   },
-  { "<leadder>c", group = "Completions" },
-  { "<leader>cp", "<cmd>FzfLua complete_path<cr>", desc = "Path Under Cursor (incl dirs)" },
-  { "<leader>cf", "<cmd>FzfLua complete_file<cr>", desc = "File Under Cursor (excl dirs)" },
-  { "<leader>cl", "<cmd>FzfLua complete_line<cr>", desc = "Complete Line (Current Buffer only)" },
-  { "<leader>cL", "<cmd>FzfLua complete_bline<cr>", desc = "Complete Line (All Open Buffers)" },
+  -- CodeCompanion
+  { "<leadder>c", group = "CodeCompanion" },
+  { "<leader>ca", "<cmd>CodeCompanionActions<cr>", desc = "Actions" },
   -- Codeium
   { "<leader>C", group = "Codeium" },
   { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
