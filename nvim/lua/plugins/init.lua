@@ -21,9 +21,9 @@ return require("lazy").setup({
       path = "~/projects",
     },
   },
-  {
-    "ggml-org/llama.vim",
-  },
+  -- {
+  --   "ggml-org/llama.vim",
+  -- },
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -125,12 +125,11 @@ return require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  -- Currently broken?
-  -- {
-  --   "Exafunction/codeium.vim",
-  --   event = "BufEnter",
-  --   -- dev = true,
-  -- },
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    -- dev = true,
+  },
   { "lewis6991/gitsigns.nvim" },
   { "sindrets/diffview.nvim" },
   { "axieax/urlview.nvim" },
