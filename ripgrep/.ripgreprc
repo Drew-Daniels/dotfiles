@@ -5,7 +5,6 @@
 --glob=!sql
 --glob=!doc
 --glob=!spec
---glob=!db
 --glob=!*.md
 --glob=!vendor
 --glob=!package-lock.json
