@@ -18,7 +18,7 @@ if status is-interactive
     starship init fish | source
 
     # fzf.fish
-    fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl
+    fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv
 
     # homebrew
     fish_add_path /usr/local/sbin
