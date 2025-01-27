@@ -30,6 +30,7 @@ brew libksba
 brew libmagic
 brew libusb
 brew libuv
+brew llama.cpp
 brew lpeg
 brew lsd
 brew luajit

@@ -31,9 +31,9 @@ require("dark_notify").run({
 --          │                         LUALINE                         │
 --          │      https://github.com/nvim-lualine/lualine.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
-local function getCodeiumStatus()
-  return "codeium: " .. vim.fn["codeium#GetStatusString"]()
-end
+-- local function getCodeiumStatus()
+--   return "codeium: " .. vim.fn["codeium#GetStatusString"]()
+-- end
 
 -- local IS_DARK_MODE = os.getenv("OS_THEME_DARK") == "1"
 -- local THEME = IS_DARK_MODE and "gruvbox-material" or "gruvbox_light"
@@ -45,7 +45,7 @@ require("lualine").setup({
   sections = {
     lualine_x = {
       -- "grapple",
-      getCodeiumStatus,
+      -- getCodeiumStatus,
     },
   },
 })
@@ -940,11 +940,11 @@ wk.add({
   { "<leader>cl", "<cmd>FzfLua complete_line<cr>", desc = "Complete Line (Current Buffer only)" },
   { "<leader>cL", "<cmd>FzfLua complete_bline<cr>", desc = "Complete Line (All Open Buffers)" },
   -- Codeium
-  { "<leader>C", group = "Codeium" },
-  { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
-  { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
-  { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
-  { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
+  -- { "<leader>C", group = "Codeium" },
+  -- { "<leader>Ce", "<cmd>Codeium Enable<cr>", desc = "Codeium Enable" },
+  -- { "<leader>Cd", "<cmd>Codeium Disable<cr>", desc = "Codeium Disable" },
+  -- { "<leader>Ct", "<cmd>Codeium Toggle<cr>", desc = "Codeium Toggle" },
+  -- { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
   -- Diffview
   { "<leader>d", group = "Diffview" },
   { "<leader>da", "<cmd>DiffviewFileHistory<cr>", desc = "All Files" },
@@ -1287,27 +1287,27 @@ require("gitsigns").setup({
 --          │                         Codeium                         │
 --          │       https://github.com/Exafunction/codeium.vim        │
 --          ╰─────────────────────────────────────────────────────────╯
-vim.g.codeium_disable_bindings = 1
-vim.g.codeium_no_map_tab = 1
--- defaults: https://github.com/Exafunction/codeium.vim?tab=readme-ov-file#%EF%B8%8F-keybindings
--- set the Meta key in iTerm2 > Preferences > Profiles > Keys > Left Option Key to Esc+
-vim.keymap.set("i", "<C-g>", function()
-  return vim.fn["codeium#Accept"]()
-end, { expr = true, silent = true, desc = "Codeium Accept" })
-
-vim.keymap.set("i", "<C-x>", function()
-  return vim.fn["codeium#Clear"]()
-end, { expr = true, silent = true, desc = "Codeium Clear" })
-
-vim.cmd([[
-  let g:codeium_filetypes = {
-    \ "norg": v:false,
-    \ "text": v:false,
-    \ }
-  let g:codeium_os = "Darwin"
-  let g:codeium_arch = "arm"
-]])
-
+-- vim.g.codeium_disable_bindings = 1
+-- vim.g.codeium_no_map_tab = 1
+-- -- defaults: https://github.com/Exafunction/codeium.vim?tab=readme-ov-file#%EF%B8%8F-keybindings
+-- -- set the Meta key in iTerm2 > Preferences > Profiles > Keys > Left Option Key to Esc+
+-- vim.keymap.set("i", "<C-g>", function()
+--   return vim.fn["codeium#Accept"]()
+-- end, { expr = true, silent = true, desc = "Codeium Accept" })
+--
+-- vim.keymap.set("i", "<C-x>", function()
+--   return vim.fn["codeium#Clear"]()
+-- end, { expr = true, silent = true, desc = "Codeium Clear" })
+--
+-- vim.cmd([[
+--   let g:codeium_filetypes = {
+--     \ "norg": v:false,
+--     \ "text": v:false,
+--     \ }
+--   let g:codeium_os = "Darwin"
+--   let g:codeium_arch = "arm"
+-- ]])
+--
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     NVIM-COLORIZER                      │
 --          │     https://github.com/norcalli/nvim-colorizer.lua      │

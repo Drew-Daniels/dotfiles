@@ -22,6 +22,9 @@ return require("lazy").setup({
     },
   },
   {
+    "ggml-org/llama.vim",
+  },
+  {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -123,11 +126,11 @@ return require("lazy").setup({
     opts = {},
   },
   -- Currently broken?
-  {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
-    -- dev = true,
-  },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   event = "BufEnter",
+  --   -- dev = true,
+  -- },
   { "lewis6991/gitsigns.nvim" },
   { "sindrets/diffview.nvim" },
   { "axieax/urlview.nvim" },
