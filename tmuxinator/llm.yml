@@ -1,8 +1,8 @@
 name: llm
 root: <%= ENV["PROJECTS_DIR"] %>
 on_project_stop:
-- docker stop open-webui
-- ollama stop deepseek-r1
+  - docker stop open-webui
+  - ollama stop deepseek-r1:7b
 
 windows:
   - 1)ollama:
