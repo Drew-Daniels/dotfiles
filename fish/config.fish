@@ -138,4 +138,7 @@ if status is-interactive
 
     # keepassxc
     alias kxc keepassxc-cli
+
+    # ollama
+    alias ol ollama
 end

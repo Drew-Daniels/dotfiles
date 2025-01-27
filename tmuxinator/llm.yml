@@ -1,0 +1,29 @@
+name: llm
+root: <%= ENV["PROJECTS_DIR"] %>
+on_project_stop:
+- docker stop open-webui
+- ollama stop deepseek-r1
+
+windows:
+  - 1)ollama:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          - ollama run deepseek-r1:7b
+        - cmd:
+          - fish
+          - cls
+  - 2)web-ui:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+          - fish
+          - cls
+          # first time
+          # - docker run -d -p 8080:8080 -e WEBUI_AUTH=False -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main
+          - docker start open-webui
+        - cmd:
+          - fish
+          - cls
