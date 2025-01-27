@@ -247,6 +247,3 @@ compdef _op op
 
 # keepassxc
 alias kxc="keepassxc-cli"
-
-# ollama
-export DEFAULT_OLLAMA_MODEL="codellama"
