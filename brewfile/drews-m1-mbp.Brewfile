@@ -15,7 +15,9 @@ brew file-formula
 brew fzf
 brew gh
 brew git-delta
+brew git-lfs
 brew gnupg
+brew huggingface-cli
 brew hurl
 brew imagemagick --HEAD
 brew jless
