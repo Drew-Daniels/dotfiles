@@ -1,4 +1,4 @@
-function mux_startup -d "Starts up tmuxinator projects"
+function mstartup -d "Starts up tmuxinator projects"
     set -l projects (string split ' ' $DEFAULT_TMUXINATOR_PROJECTS)
 
     for project in $projects
