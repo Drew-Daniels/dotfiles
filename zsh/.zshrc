@@ -66,6 +66,9 @@ fi
 # brew curl shell completion
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
+# clang
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
 # jless
 alias yless="jless --yaml"
 

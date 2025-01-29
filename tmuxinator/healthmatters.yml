@@ -242,7 +242,18 @@ windows:
         - cmd:
           - fish
           - cls
-  - 7)mailcatcher:
+  - 7)errbit:
+      root: <%= ENV["PROJECTS_DIR"] %>/sites/errbit
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - main:
+          - fish
+          - cls
+          - bundle exec rails server -p 3006
+        - cmd:
+          - fish
+          - cls
+  - 8)mailcatcher:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - main:
