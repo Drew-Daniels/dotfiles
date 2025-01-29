@@ -36,10 +36,7 @@ sed -i -e "s/.*MACHINE*.*/MACHINE=$machine/" .env.local
 ## Install dependencies managed with [`homebrew-bundle`](https://github.com/Homebrew/homebrew-bundle)
 
 ```bash
-# Install global dependencies
-brew bundle --global
-
-# Install workstation-specific dependencies
+# Install dependencies
 brew bundle
 ```
 
