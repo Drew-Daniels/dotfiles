@@ -4,7 +4,7 @@
   "bufresize.nvim": { "branch": "master", "commit": "3b19527ab936d6910484dcc20fb59bdb12322d8b" },
   "catppuccin": { "branch": "main", "commit": "f67b886d65a029f12ffa298701fb8f1efd89295d" },
   "clipboard-image.nvim": { "branch": "main", "commit": "4ab6f7f1fa4ea97866c0e0f6160f6a36ef174438" },
-  "codecompanion.nvim": { "branch": "main", "commit": "c051ff4fc9d23516c4d5f5906be78de82d6f6690" },
+  "codecompanion.nvim": { "branch": "main", "commit": "5fa8325af087195167f9fa4dc517756ff4a0ead9" },
   "codeium.vim": { "branch": "main", "commit": "000de972de76f357c03da14f4f8dd9a969d4fe8c" },
   "comment-box.nvim": { "branch": "main", "commit": "06bb771690bc9df0763d14769b779062d8f12bc5" },
   "conform.nvim": { "branch": "master", "commit": "363243c03102a531a8203311d4f2ae704c620d9b" },
