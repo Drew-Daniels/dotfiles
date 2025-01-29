@@ -33,12 +33,14 @@ sed -i -e "s/.*MACHINE*.*/MACHINE=$machine/" .env.local
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Install dependencies managed with [`homebrew-file`](https://github.com/rcmdnk/homebrew-file)
+## Install dependencies managed with [`homebrew-bundle`](https://github.com/Homebrew/homebrew-bundle)
 
 ```bash
-brew install rcmdnk/file/brew-file
+# Install global dependencies
+brew bundle --global
 
-brew file install
+# Install workstation-specific dependencies
+brew bundle
 ```
 
 ## Install [iTerm2](https://iterm2.com/)

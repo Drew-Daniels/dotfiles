@@ -66,9 +66,6 @@ fi
 # brew curl shell completion
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
-export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
-export HOMEBREW_BUNDLE_NO_LOCK=1
-
 # jless
 alias yless="jless --yaml"
 
