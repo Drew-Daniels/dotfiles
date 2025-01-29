@@ -158,7 +158,6 @@ tap ankitpokhrel/jira-cli
 tap oven-sh/bun
 
 tap rcmdnk/file
-brew brew-file
 
 tap teamookla/speedtest
 

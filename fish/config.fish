@@ -23,11 +23,6 @@ if status is-interactive
     # homebrew
     fish_add_path /usr/local/sbin
 
-    # https://homebrew-file.readthedocs.io/en/latest/installation.html
-    if test -f (brew --prefix)/etc/brew-wrap.fish
-        source (brew --prefix)/etc/brew-wrap.fish
-    end
-
     # tmux
     alias tn="tmux new -s"
     alias ta="tmux attach -t"

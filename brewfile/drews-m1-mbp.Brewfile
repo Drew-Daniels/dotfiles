@@ -95,6 +95,7 @@ tap teamookla/speedtest
 
 # App Store applications
 appstore 302584613 Amazon Kindle (7.24)
+appstore 997079563 Kiwix (3.7.1)
 appstore 823766827 OneDrive (24.226.1110)
 appstore 1303222628 Paprika Recipe Manager 3 (3.8.1)
 appstore 1596283165 rcmd (2.7.0)
