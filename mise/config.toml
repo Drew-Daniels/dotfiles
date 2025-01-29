@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
-python = "3.12.5"
+# python = "3.12.5"
+python = "3.10"
 node = "22.5.1"
 golang = "1.21.1"
 deno = "1.45.2"
