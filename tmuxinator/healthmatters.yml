@@ -265,3 +265,4 @@ windows:
         - cmd:
           - fish
           - cls
+          - mise shell ruby@3
