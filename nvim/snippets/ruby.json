@@ -11,7 +11,7 @@
     "body": [
       "<<~SQL",
       "  $0",
-      "SQL"
+      "SQL\n"
     ],
     "prefix": "sql"
   }
