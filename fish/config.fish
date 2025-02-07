@@ -108,7 +108,8 @@ if status is-interactive
 
     # bundler
     alias be "bundle exec"
-    alias ber "bundle exec rspec"
+    # alias ber "bundle exec rspec"
+    alias ber "bundle exec rake"
 
     # 1password
     op completion fish | source
