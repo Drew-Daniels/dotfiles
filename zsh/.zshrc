@@ -159,7 +159,9 @@ iterm2_print_user_vars() {
   iterm2_set_user_var using_home_ip $(echo "$matches")
 }
 
-[[ ! $TMUX ]] && iterm2_print_user_vars
+if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ]; then
+  iterm2_print_user_vars
+fi
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
