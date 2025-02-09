@@ -32,3 +32,6 @@ size = 12
   [font.normal]
   family = "JetBrainsMono Nerd Font"
   style = "Medium"
+
+[terminal.shell]
+  program = "fish"
