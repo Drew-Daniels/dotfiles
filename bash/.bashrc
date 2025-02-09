@@ -11,7 +11,6 @@ NEWLINE=$'\n'
 
 export EDITOR="nvim"
 
-setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
