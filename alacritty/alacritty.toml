@@ -1,0 +1,4 @@
+[general]
+import = [
+    "themes/themes/alabaster.toml"
+]
