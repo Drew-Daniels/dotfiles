@@ -245,3 +245,7 @@ compdef _op op
 
 # keepassxc
 alias kxc="keepassxc-cli"
+
+# alacritty-themes
+# https://www.npmjs.com/package/alacritty-themes/v/5.1.1
+alias at="alacritty-themes"
