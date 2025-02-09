@@ -1,7 +1,7 @@
 
 [general]
 import = [
-  "/Users/drew/.local/share/mise/installs/node/22.5.1/lib/node_modules/alacritty-themes/themes/Argonaut.toml"
+  "themes/themes/argonaut.toml"
 ]
 
 [env]
