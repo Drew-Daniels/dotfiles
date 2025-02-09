@@ -1,7 +1,7 @@
 
 [general]
 import = [
-  "themes/themes/argonaut.toml"
+  "themes/themes/gruvbox_dark.toml"
 ]
 
 [env]
