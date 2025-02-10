@@ -2,6 +2,10 @@
 	editor = nvim
 	autocrlf = false
   pager = delta
+[credential]
+	helper = cache --timeout 21600 # 6 hours
+	helper = oauth
+	helper = osxkeychain
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -30,8 +34,6 @@
 	name = Drew Daniels
 [init]
 	defaultBranch = main
-[credential]
-	helper = osxkeychain
 [checkout]
 	defaultRemote = origin
 [tag]
