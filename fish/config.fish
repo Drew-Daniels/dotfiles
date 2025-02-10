@@ -1,5 +1,30 @@
 if status is-interactive
-    fish_add_path /opt/homebrew/bin
+    switch (uname)
+	    case Linux
+		    /usr/bin/mise activate fish | source
+	    # TODO: make specific to macos
+	    case '*'
+		    # homebrew
+		    fish_add_path /opt/homebrew/bin
+		    fish_add_path /usr/local/sbin
+
+		    # mise
+		    /opt/homebrew/bin/mise activate fish | source
+
+		    # TODO: Figure out how to do this on linux
+		    # theme
+		    defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
+		    set -l os_theme_query_status $status
+		    if test $os_theme_query_status -eq 1
+			# this setting is only set when using dark mode
+			set -gx OS_THEME_DARK 0
+			fish_config theme choose "Mono Lace"
+		    else
+			set -gx OS_THEME_DARK 1
+			fish_config theme choose "Base16 Default Dark"
+		    end
+
+    end
 
     # fish-specific
     # turn off greeting
@@ -19,9 +44,6 @@ if status is-interactive
 
     # fzf.fish
     fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
-
-    # homebrew
-    fish_add_path /usr/local/sbin
 
     # tmux
     alias tn="tmux new -s"
@@ -64,9 +86,6 @@ if status is-interactive
 
     alias pn="pnpm"
 
-    # neovim
-    alias upgrade_nvim "brew upgrade nvim --fetch-HEAD"
-
     # yazi
     function ya
         set tmp (mktemp -t "yazi-cwd.XXXXX")
@@ -88,9 +107,6 @@ if status is-interactive
 
     # java
     fish_add_path "/opt/apache-maven-3.8.5/bin"
-
-    # mise
-    /opt/homebrew/bin/mise activate fish | source
 
     # playwright
     alias psr "npx playwright show-report"
@@ -119,18 +135,6 @@ if status is-interactive
 
     # docker
     docker completion fish | source
-
-    # theme
-    defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
-    set -l os_theme_query_status $status
-    if test $os_theme_query_status -eq 1
-        # this setting is only set when using dark mode
-        set -gx OS_THEME_DARK 0
-        fish_config theme choose "Mono Lace"
-    else
-        set -gx OS_THEME_DARK 1
-        fish_config theme choose "Base16 Default Dark"
-    end
 
     # keepassxc
     alias kxc keepassxc-cli
