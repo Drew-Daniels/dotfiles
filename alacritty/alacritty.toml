@@ -30,5 +30,5 @@ size = 12
   family = "JetBrainsMono Nerd Font"
   style = "Medium"
 
-# [terminal.shell]
-#   program = "fish"
+[terminal.shell]
+  program = "fish"
