@@ -48,7 +48,6 @@ alias tk="tmux kill-session -t"
 alias mux=tmuxinator
 alias ts="mux start project"
 export MUX_LAYOUT=main-horizontal
-export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
 
 # jless
 alias yless="jless --yaml"
@@ -61,6 +60,7 @@ export MISE_ENV="development"
 export MISE_RUBY_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-gems"
 export MISE_NODE_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-npm-packages"
 export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/mise/.default-python-packages"
+eval "$(mise activate bash)"
 
 # zoxide
 eval "$(zoxide init --cmd j bash)"
@@ -83,14 +83,6 @@ batdiff() {
 }
 # lsd
 alias ls="lsd"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh ]] && . ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh || true
-
-# go
-# TODO: Figure out why $GOPATH is unset when sourcing this file - likely because mise starts up after, but still, would be nice to not have to hard-code
-export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 
 # yazi
 function ya() {
