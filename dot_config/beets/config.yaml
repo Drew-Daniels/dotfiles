@@ -1,0 +1,6 @@
+directory: ~/Music
+library: ~/data/musiclibrary.db
+# Just update the metadata in-place
+import:
+  copy: no
+plugins: fetchart
