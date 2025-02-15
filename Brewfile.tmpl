@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.hostname "drews-m1-mbp" -}}
+{{-   include "Brewfile_drews-m1-mbp" -}}
+{{- else if eq .chezmoi.hostname "work" -}}
+{{-   include "Brewfile_work" -}}
+{{- end -}}
