@@ -1,7 +1,4 @@
 # TODO: Would be nice to have all the shared configuration between .bashrc and .zshrc in another file and imported somehow
-# export env vars that vary by machine and that need to be *immediately* loaded into the shell process
-set -o allexport && source ~/projects/dotfiles/.env.local && set +o allexport
-
 parse_git_branch() {
   git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
