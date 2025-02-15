@@ -32,21 +32,11 @@ pacman -S chezmoi
 chezmoi init https://github.com/Drew-Daniels/dotfiles.git
 ```
 
-## Configure local environment
-
 ## Install dependencies managed with [`homebrew-bundle`](https://github.com/Homebrew/homebrew-bundle)
 
 ```bash
 brew bundle
 ```
-
-## Install [iTerm2](https://iterm2.com/)
-
-Configure: `CMD+,` > General > Settings:
-
-- Check `Load settings from custom folder or URL`
-- Set path to `~/.config/iterm2`
-- Set "Save Changes" option to "When Quitting"
 
 ## Install [`lua 5.1`](https://www.lua.org/manual/5.4/readme.html)
 
