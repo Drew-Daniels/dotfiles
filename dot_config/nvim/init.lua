@@ -34,12 +34,6 @@ require("dark_notify").run({
 })
 
 --          ╭─────────────────────────────────────────────────────────╮
---          │                      chezmoi.nvim                       │
---          │          https://github.com/xvzc/chezmoi.nvim           │
---          ╰─────────────────────────────────────────────────────────╯
-require("chezmoi").setup({})
-
---          ╭─────────────────────────────────────────────────────────╮
 --          │                         LUALINE                         │
 --          │      https://github.com/nvim-lualine/lualine.nvim       │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -331,7 +325,11 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 		-- https://github.com/nvim-treesitter/nvim-treesitter/issues/1352#issuecomment-1449638327
-		disable = { "embedded_template" },
+		disable = function()
+			if string.find(vim.bo.filetype, "chezmoitmpl") or vim.bo.filetype == "embedded_template" then
+				return true
+			end
+		end,
 	},
 	incremental_selection = {
 		enable = true,
