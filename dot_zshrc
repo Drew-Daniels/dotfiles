@@ -155,9 +155,6 @@ if [ "$MACHINE" = "work" ]; then
   eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
 
   export DEFAULT_TMUXINATOR_PROJECTS="config dotfiles work_notes healthmatters"
-
-  # TODO: Could probably find a better place for this
-  export DOTDROP_PROFILE=work
 fi
 
 # playwright
