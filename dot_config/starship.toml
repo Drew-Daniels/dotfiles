@@ -1,4 +1,3 @@
-# This dotfile is managed using dotdrop
 # TODO: Figure out how to change starship configuration depending on OS theme
 format = """
 $username\

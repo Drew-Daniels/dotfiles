@@ -1,4 +1,3 @@
-# This dotfile is managed using dotdrop
 if status is-interactive
     switch (uname)
         case Linux
