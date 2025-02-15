@@ -1,5 +1,7 @@
-# TODO: Figure out where this went, or if it's still needed
-# . ~/projects/dotfiles/zsh/secrets
+# This dotfile is managed using dotdrop
+# TODO: Would be nice to have all the shared configuration between .bashrc and .zshrc in another file and imported somehow
+# export env vars that vary by machine and that need to be *immediately* loaded into the shell process
+set -o allexport && source ~/projects/dotfiles/.env.local && set +o allexport
 
 parse_git_branch() {
   git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
@@ -20,19 +22,9 @@ export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)$
 export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 alias pn="pnpm"
-# pnpm end
 
-# Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# ripgrep
-export RIPGREP_CONFIG_PATH="~/.config/ripgrep/.ripgreprc"
-# search for pattern in filenames
-alias rgf="rg --files | rg"
+# fzf
+export FZF_DEFAULT_COMMAND="fd --type f"
 
 # nvim
 export VIMCONFIG=~/.config/nvim
@@ -43,17 +35,12 @@ export PROJECTS_DIR=~/projects
 alias cls="printf '\33c\e[3J'"
 alias arm="/usr/bin/env arch -arm64 zsh"
 alias intel="/usr/bin/env arch -x86_64 zsh"
-alias pclean="~/projects/dotfiles/scripts/clean-parsers.sh"
 
 # tmux
-# export TERM=screen-256color
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tl="tmux ls"
 alias tk="tmux kill-session -t"
-
-# tmuxp
-export TMUXP_LAYOUT=main-vertical
 
 # tmuxinator
 alias mux=tmuxinator
@@ -74,31 +61,29 @@ fi
 # brew curl shell completion
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
-# starship
-eval "$(starship init zsh)"
-
-# pip zsh completion start
-#compdef -P pip[0-9.]#
-#compadd $( COMP_WORDS="$words[*]" \
-#           COMP_CWORD=$((CURRENT-1)) \
-#           PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
-# pip zsh completion end
+# clang
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # jless
 alias yless="jless --yaml"
 
+# mise
+# development, testing, production
+export MISE_ENV="development"
+eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
+
 # zoxide
 eval "$(zoxide init --cmd j zsh)"
 
-# mise
-eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
+# starship
+eval "$(starship init zsh)"
 
 # bat
-alias cat="bat"
 alias man="batman"
 alias pb="prettybat"
-alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+# these lines are breaking postgres dropdb command for some reason
+# alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+# alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 batdiff() {
   git diff --name-only --relative --diff-filter=d | xargs bat
 }
@@ -126,15 +111,6 @@ function ya() {
   rm -f -- "$tmp"
 }
 
-# gitlab
-alias gll="~/projects/dotfiles/scripts/gll.sh"
-
-# neovim can't use aliases in command mode, so making scripts globally available
-export PATH="$PATH:~/projects/dotfiles/scripts"
-
-# cspell
-alias cspell="cspell --config ~/.config/cspell/cspell.yml"
-
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
@@ -142,11 +118,25 @@ alias cspell="cspell --config ~/.config/cspell/cspell.yml"
 # java
 export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 
-# multipass
-alias mp="multipass"
-
 # iterm2
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+iterm2_print_user_vars() {
+  ip=$(curl -s ifconfig.me | awk '{print $1}')
+  whois_response=$(whois "$ip")
+  iterm2_set_user_var publicIP "$ip"
+  iterm2_set_user_var status $(ping -c 1 google.com >/dev/null && echo "" || echo "OFFLINE")
+  iterm2_set_user_var city $(echo "$whois_response" | sed -n 's/^City: \(.*\)/\1/p' | xargs)
+  iterm2_set_user_var stateProv $(echo "$whois_response" | sed -n 's/^StateProv: \(.*\)/\1/p' | xargs)
+  iterm2_set_user_var country $(echo "$whois_response" | sed -n 's/^Country: \(.*\)/\1/p' | xargs)
+  iterm2_set_user_var orgName $(echo "$whois_response" | sed -n 's/^OrgName: \(.*\)/\1/p' | xargs)
+
+  homeIP=$(nslookup $HOME_DDNS_HOSTNAME 8.8.8.8 | grep "Address" | tail -1 | awk '{print $2}' | tr -d '\n')
+  matches=$([ "$ip" = "$homeIP" ] && echo "HOME-NET" || echo "OUTSIDE-NET")
+  iterm2_set_user_var using_home_ip $(echo "$matches")
+}
+
+if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ]; then
+  iterm2_print_user_vars
+fi
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
@@ -159,12 +149,69 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
+# work
+if [ "$MACHINE" = "work" ]; then
+
+  eval "$(aws configure export-credentials --format env --profile kipu-dev)"
+  eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
+
+  export DEFAULT_TMUXINATOR_PROJECTS="config dotfiles work_notes healthmatters"
+
+  # TODO: Could probably find a better place for this
+  export DOTDROP_PROFILE=work
+fi
+
 # playwright
 alias psr="npx playwright show-report"
-
-# ssh
-ssh-add -A 2>/dev/null
 
 # vcpkg - https://github.com/Microsoft/vcpkg
 export VCPKG_ROOT=~/projects/vcpkg
 export PATH="$VCPKG_ROOT:$PATH"
+
+# solargraph - https://github.com/castwide/solargraph
+
+# htmlbeautifier
+alias hb="htmlbeautifier"
+
+# work
+if [ -f ~/projects/dotfiles/dotfiles/zsh/functions/work.sh ]; then
+  . ~/projects/dotfiles/dotfiles/zsh/functions/work.sh
+fi
+
+. ~/projects/dotfiles/dotfiles/zsh/functions/helpers.sh
+
+# spotify_player
+alias sp="spotify_player"
+
+# Run rubocop only on ruby files that have changed
+alias rcdiff="git diff --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
+# Run rspec only on ruby files that have changed
+alias rsdiff="git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
+
+# bundler
+alias be="bundle exec"
+# alias ber="bundle exec rspec"
+alias ber="bundle exec rake"
+
+# 1password
+eval "$(op completion zsh)"
+compdef _op op
+
+# backups
+# export BACKUP_DIR="$HOME"/backups
+
+# keepassxc
+alias kxc="keepassxc-cli"
+
+# alacritty-themes
+# https://www.npmjs.com/package/alacritty-themes/v/5.1.1
+alias at="alacritty-themes"
+
+# git
+# alias git="TZ=UTC git"
+
+# export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
+# export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
+
+# dotdrop
+alias dot="~/projects/dotfiles/dotdrop.sh"
