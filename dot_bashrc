@@ -135,6 +135,3 @@ alias at="alacritty-themes"
 
 # export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
 # export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
-
-# dotdrop
-alias dot="~/projects/dotfiles/dotdrop.sh"
