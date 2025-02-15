@@ -2,3 +2,4 @@ tags
 tags.*
 */fish/fish_variables
 */mise/config.local.toml
+Brewfile_*
