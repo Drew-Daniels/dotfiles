@@ -1,0 +1,16 @@
+name: friendly-snippets
+root: <%= ENV["PROJECTS_DIR"] %>/friendly-snippets
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - dev:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls

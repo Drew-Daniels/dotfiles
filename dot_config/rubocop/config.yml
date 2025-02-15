@@ -1,0 +1,8 @@
+# require:
+#   - rubocop-rails
+#   - rubocop-performance
+#   - rubocop-rspec
+#   - rubocop-erb
+#
+AllCops:
+  NewCops: enable

@@ -1,0 +1,100 @@
+{
+  "allowWindowSwitcher" : true,
+  "appSwitcherUseNumbersForWindows" : false,
+  "enableAssignHotkey" : true,
+  "specialKey" : "equal",
+  "enableHideOnFocusHotkey" : false,
+  "windowKeyPatterns" : [
+    {
+      "id" : "com.sublimetext.4",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.3",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "pattern" : ".* — [^\\w\\d]*(.)",
+      "id" : "com.sublimetext.2"
+    },
+    {
+      "id" : "com.sublimetext.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.visualstudio.code.oss",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.visualstudio.code",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCodiumInsiders",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCode",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCodeInsiders",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCod",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "pattern" : ".* — [^\\w\\d]*(.)",
+      "id" : "com.todesktop."
+    }
+  ],
+  "showWindowSwitcher" : true,
+  "windowSwitcherAppearance" : "compact",
+  "hideStaticSettings" : true,
+  "activateAllWindows" : true,
+  "windowTriggerKeys" : [
+    5
+  ],
+  "windowSwitchOSDDelay" : 0,
+  "windowKeyAssignments" : [
+
+  ],
+  "minimizeKey" : "minus",
+  "ignoredApps" : [
+    "com.apple.AppStore",
+    "com.apple.MobileSMS",
+    "com.apple.iCal",
+    "io.raindrop.macapp",
+    "com.apple.shortcuts"
+  ],
+  "fnWindowSwitching" : false,
+  "keyTapThreshold" : 0.14,
+  "appSwitcherFeatures" : 38,
+  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "appKeyAssignments" : [
+
+  ],
+  "windowOnlySwitchOSDDelay" : 0,
+  "showAppSwitcher" : true,
+  "ignoredKeys" : [
+
+  ],
+  "whenAlreadyFocusedAction" : 2,
+  "windowSwitcherFeatures" : 57,
+  "notificationsPermissionsGranted" : false,
+  "alwaysHideOthers" : false,
+  "triggerKeys" : [
+    4
+  ],
+  "windowSwitcherDimFocused" : false,
+  "switcherScreenPlacement" : 8,
+  "enableStaticCycle" : false,
+  "appSortReverse" : false,
+  "focusOnKeyUp" : false,
+  "zeroAsLastFocusedWindow" : false,
+  "appSort" : "name",
+  "hideOnlyFocusedAppOnMinus" : false,
+  "enableCycleHotkey" : true
+}

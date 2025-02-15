@@ -1,0 +1,16 @@
+--hidden
+--glob=!.git/*
+--glob=!yarn.lock
+--glob=!.yarn
+--glob=!sql
+--glob=!doc
+--glob=!spec
+--glob=!*.md
+--glob=!vendor
+--glob=!package-lock.json
+--glob=!.standard_todo.yml
+--glob=!pnpm-lock.yaml
+--glob=!.rubocop
+--glob=!.github
+--glob=!Gemfile.lock
+--glob=!db/structure*

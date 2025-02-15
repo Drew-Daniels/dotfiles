@@ -1,0 +1,19 @@
+name: <%= @args[0] %>
+# usage: 
+# cd foo
+# tmuxinator start project foo
+
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - dev:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls
