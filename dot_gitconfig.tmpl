@@ -1,0 +1,59 @@
+[user]
+	email = {{ .email | quote }}
+[core]
+	editor = nvim
+	autocrlf = false
+  pager = delta
+[credential]
+	helper = cache --timeout 21600 # 6 hours
+	helper = oauth
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  ; side-by-side = true
+  line-numbers = true
+  hyperlinks = true
+  ; If I can figure out how to create URL protocol association to nvim, use this
+  ; hyperlinks-file-link-format = "nvim://{path}:{line}"
+  ; Need to figure out how to have delta pass line number in hyperlinks - path comes through just fine though
+  ; hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}&line={line}"
+  ; Even this isn't ideal because this just opens nvim in the termin running the server, so it's kind of a weird workflow
+  ; hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}"
+  map-styles = bold purple => syntax magenta, bold cyan => syntax blue
+  features = navigation
+[diff]
+  colorMoved = default
+[merge]
+  conflictstyle = zdiff3
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = Drew Daniels
+[init]
+	defaultBranch = main
+[checkout]
+	defaultRemote = origin
+[tag]
+  sort = -version:refname
+[submodule "plugins/tpm"]
+	url = https://github.com/tmux-plugins/tpm
+	active = true
+[submodule "tmux/plugins/tpm"]
+	url = https://github.com/tmux-plugins/tpm
+	active = true
+[submodule "tmux/plugins/tmux-powerline"]
+	url = https://github.com/erikw/tmux-powerline.git
+	active = true
+[submodule "tmux/plugins/tmux-mem-cpu-load"]
+	url = https://github.com/thewtex/tmux-mem-cpu-load.git
+	active = true
+[submodule "vim-tmux-navigator"]
+	url = https://github.com/christoomey/vim-tmux-navigator
+	active = true
+[submodule "tmux/plugins/vim-tmux-navigator"]
+	url = https://github.com/christoomey/vim-tmux-navigator
+	active = true
