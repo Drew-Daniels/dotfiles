@@ -1,0 +1,22 @@
+{
+  "TODO": {
+    "body": "// TODO: ${0}",
+    "prefix": "td"
+  },
+  "Debug Log": {
+    "body": "console.log(\"${1}: \", ${0})",
+    "prefix": "dl"
+  },
+  "Debugger": {
+    "body": "debugger;",
+    "prefix": "db"
+  },
+  "ESLint Disable": {
+    "body": "/* eslint-disable */",
+    "prefix": "ed"
+  },
+  "ESLint Ignore": {
+    "body": "/* eslint-ignore ${0} */",
+    "prefix": "ei"
+  }
+}

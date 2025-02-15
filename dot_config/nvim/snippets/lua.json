@@ -1,0 +1,10 @@
+{
+  "TODO": {
+    "body": "-- TODO: ${0}",
+    "prefix": "td"
+  },
+  "Vim Notify": {
+    "body": "vim.notify(\"${0}\", vim.log.levels.INFO)",
+    "prefix": "vn"
+  }
+}

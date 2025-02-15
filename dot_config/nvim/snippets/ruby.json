@@ -1,0 +1,18 @@
+{
+  "Debug Log": {
+    "body": "pp \"${1}: #{${0}}\"",
+    "prefix": "dl"
+  },
+  "TODO": {
+    "body": "# TODO: ${0}",
+    "prefix": "td"
+  },
+  "sql": {
+    "body": [
+      "<<~SQL",
+      "  $0",
+      "SQL\n"
+    ],
+    "prefix": "sql"
+  }
+}

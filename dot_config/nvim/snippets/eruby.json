@@ -1,0 +1,10 @@
+{
+  "TODO": {
+    "body": "<%# TODO: ${0} %>",
+    "prefix": "td"
+  },
+  "Insert pry call": {
+    "prefix": "pry",
+    "body": "<%= binding.pry %>"
+  }
+}
