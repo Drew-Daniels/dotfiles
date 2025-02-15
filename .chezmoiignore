@@ -1,7 +1,6 @@
 tags
 tags.*
 */fish/fish_variables
-*/mise/config.local.toml
 Brewfile_*
 */iterm2/sockets
 */iterm2/symlink_AppSupport
