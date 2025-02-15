@@ -1,0 +1,42 @@
+[tools.bun]
+version = "1.2.2"
+backend = "core:bun"
+
+[tools.bun.checksums]
+"bun-linux-x64-baseline.zip" = "sha256:cad7756a6ee16f3432a328f8023fc5cd431106822eacfa6d6d3afbad6fdc24db"
+
+[tools.deno]
+version = "1.45.2"
+backend = "core:deno"
+
+[tools.deno.checksums]
+"deno-x86_64-unknown-linux-gnu.zip" = "sha256:bd92822f0b12fc0e9e050c494c43226d40b1acda6c8acc86c85843ed37f7de95"
+
+[tools.go]
+version = "1.21.1"
+backend = "core:go"
+
+[tools.go.checksums]
+"go1.21.1.linux-amd64.tar.gz" = "sha256:b3075ae1ce5dab85f89bc7905d1632de23ca196bd8336afd93fa97434cfa55ae"
+
+[tools.java]
+version = "17.0.2"
+backend = "core:java"
+
+[tools.java.checksums]
+"openjdk-17.0.2_linux-x64_bin.tar.gz" = "sha256:0022753d0cceecacdd3a795dd4cea2bd7ffdf9dc06e22ffd1be98411742fbb44"
+
+[tools.node]
+version = "22.5.1"
+backend = "asdf:node"
+
+[tools.node.checksums]
+"node-v22.5.1-linux-x64.tar.gz" = "sha256:2a7b8b8aa5c739ae55233d59f78736911a8a5da5ea1c63f0e843da270d039499"
+
+[tools.python]
+version = "3.9.21"
+backend = "core:python"
+
+[tools.ruby]
+version = "3.3.4"
+backend = "core:ruby"

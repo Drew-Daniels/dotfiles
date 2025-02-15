@@ -1,0 +1,10 @@
+[tools]
+python = "3.11.5"
+node = "22.5.1"
+golang = "1.21.1"
+aws-vault = "7.2.0"
+deno = "1.45.2"
+java = "17.0.2"
+usage = "0.3.0"
+ruby = "3.3.4"
+
