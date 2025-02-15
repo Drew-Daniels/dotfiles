@@ -25,6 +25,10 @@ return require("lazy").setup({
   --   "ggml-org/llama.vim",
   -- },
   {
+    "xvzc/chezmoi.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
     "olimorris/codecompanion.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
