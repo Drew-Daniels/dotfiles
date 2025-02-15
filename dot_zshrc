@@ -30,7 +30,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # ripgrep
-export RIPGREP_CONFIG_PATH="~/projects/dotfiles/ripgrep/.ripgreprc"
+export RIPGREP_CONFIG_PATH="~/.config/ripgrep/.ripgreprc"
 # search for pattern in filenames
 alias rgf="rg --files | rg"
 
@@ -75,7 +75,6 @@ fi
 fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 
 # starship
-export STARSHIP_CONFIG="~/projects/dotfiles/starship/starship.toml"
 eval "$(starship init zsh)"
 
 # pip zsh completion start
@@ -127,8 +126,6 @@ function ya() {
   rm -f -- "$tmp"
 }
 
-export YAZI_CONFIG_HOME="~/projects/dotfiles/yazi"
-
 # gitlab
 alias gll="~/projects/dotfiles/scripts/gll.sh"
 
@@ -136,7 +133,7 @@ alias gll="~/projects/dotfiles/scripts/gll.sh"
 export PATH="$PATH:~/projects/dotfiles/scripts"
 
 # cspell
-alias cspell="cspell --config ~/projects/dotfiles/cspell/cspell.yml"
+alias cspell="cspell --config ~/.config/cspell/cspell.yml"
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -164,9 +161,6 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # playwright
 alias psr="npx playwright show-report"
-
-# beets
-export BEETSDIR="~/projects/dotfiles/beets"
 
 # ssh
 ssh-add -A 2>/dev/null
