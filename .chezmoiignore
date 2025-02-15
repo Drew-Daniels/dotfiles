@@ -5,7 +5,13 @@ Brewfile_*
 */iterm2/sockets
 */iterm2/symlink_AppSupport
 README.md
-{{ $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-{{- if ne $computerName "KIPU-DDANIELS" -}}
+{{ if eq .chezmoi.os "darwin" -}}
+  {{- $computerName := output "scutil" "--get" "ComputerName" | trim -}}
+  {{- if ne $computerName "KIPU-DDANIELS" -}}
+  */mise/config.local.toml
+  {{- end -}}
+{{- else -}}
 */mise/config.local.toml
-{{- end }}
+.zshrc
+Brewfile*
+{{ end }}
