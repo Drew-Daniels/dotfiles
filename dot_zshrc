@@ -1,4 +1,5 @@
-. ~/projects/dotfiles/zsh/secrets
+# TODO: Figure out where this went, or if it's still needed
+# . ~/projects/dotfiles/zsh/secrets
 
 parse_git_branch() {
   git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
