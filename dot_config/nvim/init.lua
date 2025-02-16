@@ -210,14 +210,6 @@ vim.cmd([[
   augroup END
 ]])
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                       COPILOT.VIM                       │
---          │          https://github.com/github/copilot.vim          │
---          ╰─────────────────────────────────────────────────────────╯
-vim.cmd([[
-  let g:copilot_filetypes = { 'norg': v:false }
-]])
-
 -- ── GENERAL ─────────────────────────────────────────────────────────
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on
