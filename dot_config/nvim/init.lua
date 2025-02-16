@@ -1,21 +1,7 @@
 require("config.lazy")
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                       DARK-NOTIFY                       │
---          │        https://github.com/cormacrelf/dark-notify        │
---          ╰─────────────────────────────────────────────────────────╯
-
 -- TODO: Figure out to set colorscheme based on OS setting in a cross-platform way (Linux and MacOS)
 vim.cmd("colorscheme gruvbox")
-
-require("dark_notify").run({
-	schemes = {
-		-- light = "zenbones",
-		-- dark = "zenbones",
-		light = "zenbones",
-		dark = "gruvbox",
-	},
-})
 
 local conform_utils = require("conform.util")
 
