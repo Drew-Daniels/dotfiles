@@ -6,9 +6,10 @@ Brewfile_*
 */iterm2/symlink_AppSupport
 README.md
 {{ if eq .chezmoi.os "darwin" -}}
+.bashrc
   {{- $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-  {{- if ne $computerName "KIPU-DDANIELS" -}}
-  */mise/config.local.toml
+  {{- if ne $computerName "KIPU-DDANIELS" }}
+*/mise/config.local.toml
   {{- end -}}
 {{- else -}}
 */mise/config.local.toml
