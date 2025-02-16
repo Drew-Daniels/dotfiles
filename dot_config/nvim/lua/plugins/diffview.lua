@@ -7,7 +7,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("diffview").setup(opts)
-  end,
 }

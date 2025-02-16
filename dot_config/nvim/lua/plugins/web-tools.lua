@@ -13,7 +13,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("web-tools").setup(opts)
-  end
 }

@@ -2,16 +2,13 @@ return {
   "ibhagwan/fzf-lua",
   -- optional for icon support
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    -- calling `setup` is optional for customization
-    require("fzf-lua").setup({
-      lsp = {
-        async_or_timeout = 10000,
-      },
-      grep = {
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case",
-        RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
-      },
-    })
-  end,
+  opts = {
+    lsp = {
+      async_or_timeout = 10000,
+    },
+    grep = {
+      rg_opts = "--column --line-number --no-heading --color=always --smart-case",
+      RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
+    },
+  },
 }

@@ -18,7 +18,4 @@ return {
       ["core.keybinds"] = { config = { default_keybinds = {} } },
     },
   },
-  config = function(_, opts)
-    require("neorg").setup(opts)
-  end
 }

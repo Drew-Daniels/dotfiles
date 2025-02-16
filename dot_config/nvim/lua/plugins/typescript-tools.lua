@@ -42,7 +42,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("typescript-tools").setup(opts)
-  end
 }

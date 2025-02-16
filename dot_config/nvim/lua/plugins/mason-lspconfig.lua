@@ -41,7 +41,4 @@ return {
 			"basedpyright",
 		},
 	},
-	config = function(_, opts)
-		require("mason-lspconfig").setup(opts)
-	end,
 }

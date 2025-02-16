@@ -5,7 +5,4 @@ return {
     snippetDir = vim.fn.stdpath("config") .. "/snippets",
     jsonFormatter = "jq",
   },
-  config = function(_, opts)
-    require("scissors").setup(opts)
-  end,
 }

@@ -9,7 +9,4 @@ return {
       smart_splits = {},
     },
   },
-  config = function(_, opts)
-    require("legendary").setup(opts)
-  end,
 }

@@ -156,7 +156,4 @@ return {
 		-- 	},
 		-- },
 	},
-	config = function(_, opts)
-		require("conform").setup(opts)
-	end,
 }

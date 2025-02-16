@@ -14,7 +14,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("codecompanion").setup(opts)
-  end,
 }

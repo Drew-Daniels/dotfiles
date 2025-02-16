@@ -9,7 +9,4 @@ return {
       width = 150,
     },
   },
-  config = function(_, opts)
-    require("grapple").setup(opts)
-  end,
 }
