@@ -218,8 +218,8 @@ return {
 		},
 	},
 	config = function(_, options)
-		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.configs").setup(options)
+
 		-- Use LspAttach autocommand to only map the following keys
 		-- after the language server attaches to the current buffer
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -247,5 +247,7 @@ return {
 			end,
 			desc = "Initialize LSP on LspAttach event",
 		})
+
+		require("ts_context_commentstring").setup()
 	end,
 }

@@ -218,13 +218,6 @@ end)
 -- custom file associations
 require("vim.treesitter.language").register("http", "hurl")
 
---       ╭───────────────────────────────────────────────────────────────╮
---       │                     NVIM-TS-COMMENTSTRING                     │
---       │https://github.com/JoosepAlviste/nvim-ts-context-commentstring │
---       ╰───────────────────────────────────────────────────────────────╯
----@diagnostic disable-next-line: missing-parameter
-require("ts_context_commentstring").setup()
-
 vim.api.nvim_create_user_command("SU", function(opts)
 	local date = os.date("%Y-%m-%d")
 	if opts.fargs[1] == "yd" then
