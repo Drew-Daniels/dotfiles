@@ -186,37 +186,6 @@ vim.api.nvim_create_user_command("Format", function(args)
 	require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
 
--- TODO: Might want to create this command in the plugin/mason.lua file?
--- vim.api.nvim_create_user_command("MasonInstallAll", function()
--- 	vim.cmd("MasonInstall " .. table.concat(mason_options.ensure_installed, " "))
--- end, {})
-
-local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-
--- Repeat movement with ; and ,
--- ensure ; goes forward and , goes backward regardless of the last direction
--- TODO: Need to find a better key for repeat_last_move_previous than , since , is my localleader
--- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next, { desc = "Repeat last move next" })
--- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous, { desc = "Repeat last move previous" })
-
-vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
-
--- This repeats the last query with always previous direction and to the start of the range.
-vim.keymap.set({ "n", "x", "o" }, "<home>", function()
-	ts_repeat_move.repeat_last_move({ forward = false, start = true, desc = "Repeat last move" })
-end)
-
--- This repeats the last query with always next direction and to the end of the range.
-vim.keymap.set({ "n", "x", "o" }, "<end>", function()
-	ts_repeat_move.repeat_last_move({ forward = true, start = false, desc = "Repeat last move" })
-end)
-
--- custom file associations
-require("vim.treesitter.language").register("http", "hurl")
-
 vim.api.nvim_create_user_command("SU", function(opts)
 	local date = os.date("%Y-%m-%d")
 	if opts.fargs[1] == "yd" then
