@@ -449,23 +449,6 @@ end, { range = true })
 require("ts_context_commentstring").setup()
 
 --          ╭─────────────────────────────────────────────────────────╮
---          │                       NVIM-NOTIFY                       │
---          │         https://github.com/rcarriga/nvim-notify         │
---          ╰─────────────────────────────────────────────────────────╯
-
-local telescope = require("telescope")
-telescope.load_extension("notify")
-
---        ╭─────────────────────────────────────────────────────────────╮
---        │                    TELESCOPE-MEDIA-FILES                    │
---        │https://github.com/nvim-telescope/telescope-media-files.nvim │
---        ╰─────────────────────────────────────────────────────────────╯
-telescope.load_extension("media_files")
-telescope.setup({
-	extensions = { media_files = { file_types = { "png", "jpg", "jpeg", "mp4", "webm", "pdf" }, find_cmd = "rg" } },
-})
-
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     WHICH-KEY.NVIM                      │
 --          │         https://github.com/folke/which-key.nvim         │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -619,21 +602,6 @@ wk.add({
 	{ "<leader>w", group = "Word" },
 	{ "<leader>wd", "<cmd>FzfLua thesaurus lookup<cr>", desc = "Definition" },
 	{ "<leader>ws", "<cmd>FzfLua thesaurus query<cr>", desc = "Search" },
-})
-
-telescope.load_extension("fzf")
-
---        ╭────────────────────────────────────────────────────────────╮
---        │                    TELESCOPE-FZF-NATIVE                    │
---        │https://github.com/nvim-telescope/telescope-fzf-native.nvim │
---        ╰────────────────────────────────────────────────────────────╯
----@diagnostic disable-next-line: missing-parameter
-telescope.setup({
-	extensions = {
-		import = {
-			insert_at_top = true,
-		},
-	},
 })
 
 vim.api.nvim_create_user_command("SU", function(opts)
