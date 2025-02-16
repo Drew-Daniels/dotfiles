@@ -770,7 +770,7 @@ require("conform").setup({
 		-- eruby = { "htmlbeautifier" },
 		fish = { "fish_indent" },
 		json = { "custom_jq" },
-		sh = { "shfmt" },
+		sh = { "shfmt", "shellcheck" },
 		sql = { "sqlfmt" },
 		javascript = { "project_eslint", "fallback_eslint" },
 		javascriptreact = { "prettier" },
@@ -783,7 +783,7 @@ require("conform").setup({
 		less = { "prettier" },
 		-- TODO: Figure out how to disable prettier from running in folders other than emr-v3
 		-- scss = { "prettier" },
-		zsh = { "shfmt" },
+		zsh = { "shfmt", "shellcheck" },
 		markdown = { "prettier" },
 		norg = { "typos-lsp" },
 		clojure = { "cljfmt" },

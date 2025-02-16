@@ -130,7 +130,9 @@ iterm2_print_user_vars() {
   iterm2_set_user_var using_home_ip $(echo "$matches")
 }
 
-if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ]; then
+is_chezmoi_subshell=$(ps | rg $PPID -m1 | rg "chezmoi" | wc -l | awk '{print $1}')
+
+if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ] && [ "$is_chezmoi_subshell" -ne "1" ]; then
   iterm2_print_user_vars
 fi
 
