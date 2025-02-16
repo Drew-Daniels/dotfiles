@@ -1,5 +1,7 @@
 return {
 	"stevearc/conform.nvim",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
 	config = function()
 		local conform_utils = require("conform.util")
 
@@ -45,6 +47,8 @@ return {
 			return in_hm() and buff_in_dir(vim.fn.expand("%:p:h"), enabled_dirs)
 		end
 
+		---@module "conform"
+		---@type conform.setupOpts
 		local opts = {
 			format_after_save = function(bufnr)
 				local ignore_filetypes = { "norg" }
