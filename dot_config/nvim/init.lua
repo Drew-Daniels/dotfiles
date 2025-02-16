@@ -1,6 +1,5 @@
 require("config.lazy")
 
--- Requires `brew install cormacrelf/tap/dark-notify`
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       DARK-NOTIFY                       │
 --          │        https://github.com/cormacrelf/dark-notify        │
