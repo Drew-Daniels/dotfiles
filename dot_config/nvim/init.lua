@@ -271,15 +271,6 @@ vim.cmd([[
   let g:copilot_filetypes = { 'norg': v:false }
 ]])
 
---          ╭─────────────────────────────────────────────────────────╮
---          │                       VIM-RHUBARB                       │
---          │          https://github.com/tpope/vim-rhubarb           │
---          ╰─────────────────────────────────────────────────────────╯
--- TODO: Figure out if this function can be created in the vim-rhubarb plugin file
-vim.api.nvim_create_user_command("Browse", function(opts)
-	vim.fn.system({ "open", opts.fargs[1] })
-end, { nargs = 1 })
-
 -- ── GENERAL ─────────────────────────────────────────────────────────
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on

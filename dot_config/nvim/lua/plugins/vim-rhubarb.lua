@@ -1,3 +1,8 @@
 return {
-	"tpope/vim-rhubarb"
+	"tpope/vim-rhubarb",
+	config = function()
+		vim.api.nvim_create_user_command("Browse", function(opts)
+			vim.fn.system({ "open", opts.fargs[1] })
+		end, { nargs = 1 })
+	end,
 }
