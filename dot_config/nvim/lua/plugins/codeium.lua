@@ -21,5 +21,15 @@ return {
 	end,
 	config = function()
 		require("codeium").setup({})
+
+		-- defaults: https://github.com/Exafunction/codeium.vim?tab=readme-ov-file#%EF%B8%8F-keybindings
+		-- set the Meta key in iTerm2 > Preferences > Profiles > Keys > Left Option Key to Esc+
+		vim.keymap.set("i", "<C-g>", function()
+			return vim.fn["codeium#Accept"]()
+		end, { expr = true, silent = true, desc = "Codeium Accept" })
+
+		vim.keymap.set("i", "<C-x>", function()
+			return vim.fn["codeium#Clear"]()
+		end, { expr = true, silent = true, desc = "Codeium Clear" })
 	end,
 }
