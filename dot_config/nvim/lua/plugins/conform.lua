@@ -95,7 +95,8 @@ return {
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
 				python = { "ruff" },
-				yaml = { "yamlfmt" },
+				-- need to figure out why this formatter is borking config/database.yml files
+				-- yaml = { "yamlfmt" },
 			},
 			formatters = {
 				custom_jq = {
