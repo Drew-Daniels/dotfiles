@@ -155,7 +155,7 @@ if [ "$computer_name" = "KIPU-DDANIELS" ]; then
   eval "$(aws configure export-credentials --format env --profile kipu-dev)"
   eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
 
-  export DEFAULT_TMUXINATOR_PROJECTS="work_notes healthmatters"
+  export DEFAULT_TMUXINATOR_PROJECTS="home work_notes healthmatters"
 fi
 
 # playwright
