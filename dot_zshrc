@@ -148,12 +148,14 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 complete -C '/usr/local/bin/aws_completer' aws
 
 # work
-if [ "$MACHINE" = "work" ]; then
+computer_name=$(scutil --get ComputerName)
+
+if [ "$computer_name" = "KIPU-DDANIELS" ]; then
 
   eval "$(aws configure export-credentials --format env --profile kipu-dev)"
   eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
 
-  export DEFAULT_TMUXINATOR_PROJECTS="config dotfiles work_notes healthmatters"
+  export DEFAULT_TMUXINATOR_PROJECTS="work_notes healthmatters"
 fi
 
 # playwright
