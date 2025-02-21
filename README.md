@@ -34,6 +34,26 @@ chezmoi init https://github.com/Drew-Daniels/dotfiles.git
 
 ## Install dependencies managed with [`homebrew-bundle`](https://github.com/Homebrew/homebrew-bundle)
 
+Install `rustup`
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Install `mise`:
+
+```bash
+brew install mise
+```
+
+Install runtimes managed with `mise`:
+
+```bash
+mise install
+```
+
+Install other dependencies:
+
 ```bash
 brew bundle
 ```
