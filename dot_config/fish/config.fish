@@ -26,6 +26,9 @@ if status is-interactive
 
     end
 
+    # helpers
+    set computerName (scutil --get ComputerName)
+
     # fish
     # turn off greeting
     set -g fish_greeting
@@ -118,7 +121,9 @@ if status is-interactive
     op completion fish | source
 
     # jira
-    jira completion fish | source
+    if test $computerName = KIPU-DDANIELS
+        jira completion fish | source
+    end
 
     # docker
     docker completion fish | source
