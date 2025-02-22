@@ -108,6 +108,53 @@ exit
 
 Then, restart computer so it picks up these changes.
 
+### Install `cosign`
+
+```bash
+curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64"
+sudo mv cosign-linux-amd64 /usr/local/bin/cosign
+sudo chmod +x /usr/local/bin/cosign
+```
+
+### Install `chezmoi`
+
+Download the pre-built Debian package for `chezmoi`:
+
+https://www.chezmoi.io/install/#one-line-binary-install
+
+Download the checksum file, checksum file signature, and public signing key:
+
+```bash
+curl --location --remote-name-all \
+       https://github.com/twpayne/chezmoi/releases/download/v2.59.1/chezmoi_2.59.1_checksums.txt \
+       https://github.com/twpayne/chezmoi/releases/download/v2.59.1/chezmoi_2.59.1_checksums.txt.sig \
+       https://github.com/twpayne/chezmoi/releases/download/v2.59.1/chezmoi_cosign.pub
+```
+
+Verify the signature
+
+```bash
+cosign verify-blob --key=chezmoi_cosign.pub \
+                     --signature=chezmoi_2.59.1_checksums.txt.sig \
+                     chezmoi_2.59.1_checksums.txt
+```
+
+Verify the shasum of downloaded Debian package:
+
+```bash
+sha256sum --check chezmoi_2.59.1_checksums.txt --ignore-missing
+```
+
+Install the `chezmoi` Debian package
+
+### Initialize Dotfiles
+
+Download a local copy of dotfiles, and apply changes from source to target:
+
+```bash
+chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
+```
+
 ### `git-credential-oauth`
 
 https://github.com/hickford/git-credential-oauth
