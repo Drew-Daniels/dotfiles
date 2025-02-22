@@ -126,7 +126,8 @@ if status is-interactive
     end
 
     # docker
-    docker completion fish | source
+    # TODO: Deactivate for now, until I'm able to install Docker Desktop on Debian
+    # docker completion fish | source
 
     # keepassxc
     alias kxc keepassxc-cli
