@@ -12,6 +12,9 @@ export VISUAL="nvim"
 
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
+# delta
+export PATH="$PATH:/home/drew/.local/bin"
+
 # pnpm
 export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
