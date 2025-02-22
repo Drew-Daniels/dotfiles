@@ -249,6 +249,28 @@ Allows `neovim` and other applications to access system clipboard.
 sudo apt install wl-clipboard
 ```
 
+### `lua 5.1`
+
+https://www.lua.org/manual/5.4/readme.html
+https://www.lua.org/ftp/
+
+```bash
+# required to build lua 5.1 from source
+sudo apt-get install libreadline-dev
+
+# download and unzip source folder
+cd lua-5.1.5
+
+# build
+make linux
+
+# verify
+make test
+
+# install
+sudo make install
+```
+
 ### `stylua`
 https://github.com/JohnnyMorganz/StyLua
 
