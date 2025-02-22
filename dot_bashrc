@@ -23,6 +23,7 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 # nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # general
 export PROJECTS_DIR=~/projects
