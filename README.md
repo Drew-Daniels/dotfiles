@@ -177,14 +177,6 @@ sudo apt update
 sudo apt install -y mise
 ```
 
-### `dotbot`
-
-```bash
-cd ~/.config/dotbot
-pip install dotbot
-dotbot -C install.conf.yaml
-```
-
 ### `ripgrep`
 
 https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
