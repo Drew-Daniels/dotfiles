@@ -67,6 +67,7 @@ cd lua-5.1.5
 make macosx
 make test
 sudo make install
+# is this next step necessary?
 make local
 ```
 
@@ -270,6 +271,10 @@ make test
 # install
 sudo make install
 ```
+
+### `luarocks`
+
+Follow the same luarocks installation steps as in OS X Workstation setup notes
 
 ### `stylua`
 https://github.com/JohnnyMorganz/StyLua
