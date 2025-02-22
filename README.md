@@ -89,6 +89,7 @@ luarocks install --local magick
 ```
 
 ## Reboot
+
 # Debian Workstation Setup Notes
 
 ## Resources
@@ -96,6 +97,7 @@ luarocks install --local magick
 Helpful article on security & verifying packages: https://wiki.debian.org/SecureApt
 
 ## User Setup
+
 Add my non-root local user (drew) to sudoers file:
 
 ```bash
@@ -107,6 +109,7 @@ exit
 Then, restart computer so it picks up these changes.
 
 ### `git-credential-oauth`
+
 https://github.com/hickford/git-credential-oauth
 https://tracker.debian.org/pkg/git-credential-oauth
 
@@ -115,9 +118,11 @@ sudo apt-get install git-credential-oauth
 ```
 
 ### `1Password`
+
 https://support.1password.com/install-linux/#debian-or-ubuntu
 
 `1Password Desktop App`:
+
 ```bash
 # Add the key for the 1Password apt repository:
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
@@ -147,6 +152,7 @@ sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
 ```
 
 ### `rustup`
+
 https://rustup.rs/
 
 ```bash
@@ -155,6 +161,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ### `mise`
+
 https://mise.jdx.dev/installing-mise.html#apt
 
 ```bash
@@ -171,20 +178,22 @@ sudo apt install -y mise
 ```
 
 ### `ripgrep`
-https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
 
+https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
 
 ```bash
 sudo apt-get install ripgrep
 ```
 
 ### `delta`
+
 https://dandavison.github.io/delta/installation.html
 https://github.com/dandavison/delta/releases
 
 Install via `.deb` package listed under the latest release
 
 ### `starship`
+
 https://starship.rs/guide/
 
 ```bash
@@ -192,6 +201,7 @@ curl -sS https://starship.rs/install.sh | sh
 ```
 
 ### `fish`
+
 https://fishshell.com/
 
 https://software.opensuse.org/download.html?project=shells%3Afish%3Arelease%3A3&package=fish
@@ -204,6 +214,7 @@ sudo apt install fish
 ```
 
 ### `fzf`
+
 https://junegunn.github.io/fzf/installation/
 
 ```bash
@@ -211,6 +222,7 @@ sudo apt install fzf
 ```
 
 ### `fd`
+
 https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian
 
 ```bash
@@ -219,6 +231,7 @@ ln -s $(which fdfind) ~/.local/bin/fd
 ```
 
 ### `bat`
+
 https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-apt
 
 ```bash
@@ -227,16 +240,19 @@ ln -s /usr/bin/batcat ~/.local/bin/bat
 ```
 
 ### `ctags`
+
 https://github.com/universal-ctags/ctags-nightly-build/releases
 
 Install `.deb` package under releases page
 
 ### `awscli`
+
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 Can run the following commands to install without verifying or, use the guided steps in the link.
 
 #### Unverified Install
+
 ```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
@@ -244,6 +260,7 @@ sudo ./aws/install
 ```
 
 ### `wl-clipboard`
+
 Allows `neovim` and other applications to access system clipboard.
 
 ```bash
@@ -277,6 +294,7 @@ sudo make install
 Follow the same luarocks installation steps as in OS X Workstation setup notes
 
 ### `stylua`
+
 https://github.com/JohnnyMorganz/StyLua
 
 ```bash
@@ -285,6 +303,7 @@ cargo install stylua
 ```
 
 ### `neovim`
+
 https://github.com/neovim/neovim/blob/master/INSTALL.md#debian
 
 ```bash
@@ -297,7 +316,15 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 npm i -g yarn tree-sitter-cli
 ```
 
+Post install:
+
+```bash
+nvim
+# :MasonInstall ruff basedpyright clang-format jsonlint stlyua prettier nxls shfmt shellcheck sqlfmt reformat-gherkin yamlfmt
+```
+
 ### `tmux`
+
 https://github.com/tmux/tmux/wiki/Installing#binary-packages
 
 ```bash
@@ -305,6 +332,7 @@ sudo apt install tmux
 ```
 
 ### `tmuxinator`
+
 https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#rubygems
 
 ```bash
@@ -312,14 +340,15 @@ gem install tmuxinator
 ```
 
 ### `jless`
-https://jless.io/
 
+https://jless.io/
 
 ```bash
 cargo install jless
 ```
 
 ### `yazi`
+
 https://yazi-rs.github.io/docs/installation/#debian
 
 ```bash
@@ -333,6 +362,7 @@ sudo mv target/release/yazi target/release/ya /usr/local/bin/
 ```
 
 ### `alacritty`
+
 https://github.com/alacritty/alacritty/blob/master/INSTALL.md
 
 There are no precompiled binaries for linux. Need to build from source.
@@ -356,11 +386,13 @@ sudo update-desktop-database
 ```
 
 ### Standard Notes
+
 https://standardnotes.com/download/linux
 
 Download the `.AppImage` file, and run the following commands
 
 #### TODO:
+
 Look at creating a `.desktop` file to be able to easily open Standard Notes using the quick access menu on KDE.
 
 ```bash
@@ -372,6 +404,7 @@ mv standard-notes-3.195.25-linux-x86_64.AppImage ~/Applications/
 ```
 
 ### `Docker Desktop`
+
 https://docs.docker.com/desktop/setup/install/linux/debian/
 
 ```bash

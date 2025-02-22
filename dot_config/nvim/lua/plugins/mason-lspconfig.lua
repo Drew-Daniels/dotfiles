@@ -37,8 +37,6 @@ return {
 			-- linter
 			-- https://github.com/williamboman/mason-lspconfig.nvim/issues/450
 			-- "clj-kondo",
-			"ruff",
-			"basedpyright",
 		},
 	},
 }
