@@ -36,6 +36,9 @@ if status is-interactive
     # general
     alias cls "printf '\33c\e[3J'"
 
+    # neovim
+    fish_add_path /opt/nvim-linux-x86_64/bin
+
     # pnpm
     fish_add_path PNPM_HOME
 
