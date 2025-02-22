@@ -3,7 +3,10 @@ if status is-interactive
         case Linux
             /usr/bin/mise activate fish | source
             # TODO: make specific to macos
+            set computerName (hostname)
         case '*'
+            # helpers
+            set computerName (scutil --get ComputerName)
             # homebrew
             fish_add_path /opt/homebrew/bin
             fish_add_path /usr/local/sbin
@@ -25,9 +28,6 @@ if status is-interactive
             end
 
     end
-
-    # helpers
-    set computerName (scutil --get ComputerName)
 
     # fish
     # turn off greeting
