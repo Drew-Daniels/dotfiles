@@ -248,10 +248,10 @@ sudo dpkg -i git-delta_0.18.2_amd64.deb
 
 ### `starship`
 
-https://starship.rs/guide/
+https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation
 
 ```bash
-curl -sS https://starship.rs/install.sh | sh
+cargo install starship --locked
 ```
 
 ### `fish`
