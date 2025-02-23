@@ -155,13 +155,30 @@ Download a local copy of dotfiles, and apply changes from source to target:
 chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
 ```
 
-### `git-credential-oauth`
+### `rustup`
 
-https://github.com/hickford/git-credential-oauth
-https://tracker.debian.org/pkg/git-credential-oauth
+https://rustup.rs/
 
 ```bash
-sudo apt-get install git-credential-oauth
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# restart terminal
+```
+
+### `mise`
+
+https://mise.jdx.dev/installing-mise.html#apt
+
+```bash
+# pre-reqs for building native C ruby extensions
+sudo apt-get install build-essential libz-dev libffi-dev libyaml-dev libssl-dev
+# pre-reqs for mise
+sudo apt update -y && sudo apt install -y gpg sudo wget curl
+# mise installation
+sudo install -dm 755 /etc/apt/keyrings
+wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+sudo apt update
+sudo apt install -y mise
 ```
 
 ### `1Password`
@@ -198,30 +215,13 @@ sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
  curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 ```
 
-### `rustup`
+### `git-credential-oauth`
 
-https://rustup.rs/
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# restart terminal
-```
-
-### `mise`
-
-https://mise.jdx.dev/installing-mise.html#apt
+https://github.com/hickford/git-credential-oauth
+https://tracker.debian.org/pkg/git-credential-oauth
 
 ```bash
-# pre-reqs for building native C ruby extensions
-sudo apt-get install build-essential libz-dev libffi-dev libyaml-dev libssl-dev
-# pre-reqs for mise
-sudo apt update -y && sudo apt install -y gpg sudo wget curl
-# mise installation
-sudo install -dm 755 /etc/apt/keyrings
-wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
-echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
-sudo apt update
-sudo apt install -y mise
+sudo apt-get install git-credential-oauth
 ```
 
 ### `ripgrep`
@@ -338,15 +338,12 @@ sudo make install
 
 ### `luarocks`
 
-Follow the same luarocks installation steps as in OS X Workstation setup notes
-
-### `stylua`
-
-https://github.com/JohnnyMorganz/StyLua
-
 ```bash
-# by default, builds for lua 5.1
-cargo install stylua
+wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+tar zxpf luarocks-3.11.1.tar.gz
+cd luarocks-3.11.1
+./configure && make && sudo make install
+sudo luarocks install luasocket
 ```
 
 ### `jetbrains-mono-nerd-font`
@@ -364,13 +361,13 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 https://github.com/neovim/neovim/blob/master/INSTALL.md#debian
 
 ```bash
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-
 # yarn required by (?)
 # tree-sitter-cli required by Swift LSP
 npm i -g yarn tree-sitter-cli
+
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ```
 
 Post install:
@@ -396,28 +393,6 @@ https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#rubygems
 gem install tmuxinator
 ```
 
-### `jless`
-
-https://jless.io/
-
-```bash
-cargo install jless
-```
-
-### `yazi`
-
-https://yazi-rs.github.io/docs/installation/#debian
-
-```bash
-sudo apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
-
-cd ~/projects
-git clone https://github.com/sxyazi/yazi.git
-cd yazi
-cargo build --release --locked
-sudo mv target/release/yazi target/release/ya /usr/local/bin/
-```
-
 ### `alacritty`
 
 https://github.com/alacritty/alacritty/blob/master/INSTALL.md
@@ -434,12 +409,31 @@ rustup update stable
 sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev scdoc desktop-file-utils
 
 # build
+cargo build --release
 
 # post-build
 sudo cp target/release/alacritty /usr/local/bin
 sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
+```
+
+### `yazi`
+
+https://yazi-rs.github.io/docs/installation/#crates
+
+```bash
+sudo apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+
+cargo install --locked yazi-fm yazi-cli
+```
+
+### `jless`
+
+https://jless.io/
+
+```bash
+cargo install jless
 ```
 
 ### Standard Notes
