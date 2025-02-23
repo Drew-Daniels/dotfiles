@@ -476,3 +476,9 @@ mv standard-notes-3.195.25-linux-x86_64.AppImage ~/Applications/
 ### `Docker Desktop`
 
 https://docs.docker.com/desktop/setup/install/linux/
+
+### `openssh-server`
+
+```bash
+sudo apt install openssh-server
+```
