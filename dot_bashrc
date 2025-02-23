@@ -52,9 +52,6 @@ export MISE_ENV="development"
 
 eval "$(mise activate bash)"
 
-# zoxide
-eval "$(zoxide init --cmd j bash)"
-
 # starship
 eval "$(starship init bash)"
 
@@ -75,7 +72,7 @@ function ya() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
   yazi "$@" --cwd-file="$tmp"
   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
+    cd -- "$cwd" || exit
   fi
   rm -f -- "$tmp"
 }
@@ -133,6 +130,9 @@ alias at="alacritty-themes"
 # git
 # does the same thing as setting both env vars below
 # alias git="TZ=UTC git"
+
+# zoxide
+eval "$(zoxide init --cmd j bash)"
 
 # export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
 # export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
