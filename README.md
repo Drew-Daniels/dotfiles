@@ -280,7 +280,8 @@ sudo apt install fzf
 https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian
 
 ```bash
-apt-get install fd-find
+mkdir p ~/.local/bin
+sudo apt install fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
 ```
 
