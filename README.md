@@ -293,6 +293,17 @@ sudo apt install bat
 ln -s /usr/bin/batcat ~/.local/bin/bat
 ```
 
+### `bat-extras`
+
+https://github.com/eth-p/bat-extras/tree/master
+
+```bash
+cd ~/projects
+git clone https://github.com/eth-p/bat-extras.git
+cd bat-extras
+./build.sh --install
+```
+
 ### `ctags`
 
 https://github.com/universal-ctags/ctags-nightly-build/releases
