@@ -229,8 +229,8 @@ sudo apt-get install git-credential-oauth
 https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
 
 ```bash
-$ curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
-$ sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
+sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
 ```
 
 ### `delta`
@@ -239,6 +239,12 @@ https://dandavison.github.io/delta/installation.html
 https://github.com/dandavison/delta/releases
 
 Install via `.deb` package listed under the latest release
+
+```bash
+curl -LO https://github.com/dandavison/delta/releases/download/0.18.2/delta-https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
+
+sudo dpkg -i git-delta_0.18.2_amd64.deb
+```
 
 ### `starship`
 
