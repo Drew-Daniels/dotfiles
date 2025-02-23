@@ -213,7 +213,7 @@ https://mise.jdx.dev/installing-mise.html#apt
 
 ```bash
 # pre-reqs for building native C ruby extensions
-sudo apt-get install build-essentials libz-dev libff-dev libyaml-dev libssl-dev
+sudo apt-get install build-essential libz-dev libffi-dev libyaml-dev libssl-dev
 # pre-reqs for mise
 sudo apt update -y && sudo apt install -y gpg sudo wget curl
 # mise installation
