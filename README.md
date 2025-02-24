@@ -482,3 +482,9 @@ https://docs.docker.com/desktop/setup/install/linux/
 ```bash
 sudo apt install openssh-server
 ```
+
+### `restic`
+
+```bash
+sudo apt install restic
+```
