@@ -138,3 +138,6 @@ eval "$(zoxide init --cmd j bash)"
 # export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
 . "$HOME/.cargo/env"
 source /home/drew/projects/alacritty/extra/completions/alacritty.bash
+
+# restic
+export RESTIC_PASSWORD_COMMAND="op read op://Personal/restic/password -n"
