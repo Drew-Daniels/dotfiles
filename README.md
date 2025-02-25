@@ -494,3 +494,9 @@ sudo apt install restic
 ```bash
 cargo install du-dust
 ```
+
+### `kiwix`
+
+```bash
+sudo apt install kiwix
+```
