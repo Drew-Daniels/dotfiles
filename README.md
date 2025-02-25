@@ -488,3 +488,9 @@ sudo apt install openssh-server
 ```bash
 sudo apt install restic
 ```
+
+### `dust`
+
+```bash
+cargo install du-dust
+```
