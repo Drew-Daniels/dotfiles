@@ -487,6 +487,10 @@ sudo apt install openssh-server
 
 ```bash
 sudo apt install restic
+
+sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
+
+# fish completions are already stored in dotfiles
 ```
 
 ### `dust`
