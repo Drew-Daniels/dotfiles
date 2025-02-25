@@ -493,6 +493,20 @@ sudo restic generate --bash-completion /usr/share/bash-completion/completions/re
 # fish completions are already stored in dotfiles
 ```
 
+### `resticprofile`
+
+```bash
+curl -LO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
+
+mkdir resticprofile_0.29.1_linux_amd64
+
+tar -xzpf resticprofile_0.29.1_linux_amd64.tar.gz -C resticprofile_0.29.1_linux_amd64
+
+sudo cp resticprofile_0.29.1_linux_amd64/resticprofile /usr/local/bin/
+
+rm -rf restic*
+```
+
 ### `dust`
 
 ```bash
