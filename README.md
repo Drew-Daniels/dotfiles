@@ -512,3 +512,9 @@ cargo install du-dust
 ```bash
 sudo apt install kiwix
 ```
+
+### `rofi`
+
+```bash
+sudo apt install rofi
+```
