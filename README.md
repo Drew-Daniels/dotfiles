@@ -551,3 +551,9 @@ sudo usermod -aG video $USER
 
 sudo apt install brightnessctl
 ```
+
+### `strawberry`
+
+```bash
+sudo apt install strawberry
+```
