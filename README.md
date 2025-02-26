@@ -542,3 +542,9 @@ sudo apt install uuid-runtime
 ```bash
 sudo apt install i3
 ```
+
+### `brightnessctl`
+
+```bash
+sudo apt install brightnessctl
+```
