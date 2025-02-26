@@ -546,5 +546,8 @@ sudo apt install i3
 ### `brightnessctl`
 
 ```bash
+# TODO: Is this necessary?
+sudo usermod -aG video $USER
+
 sudo apt install brightnessctl
 ```
