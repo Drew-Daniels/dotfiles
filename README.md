@@ -542,11 +542,3 @@ sudo apt install uuid-runtime
 ```bash
 sudo apt install i3
 ```
-
-### `pulseaudio`
-
-For controlling audio in `i3` with `pactl`:
-
-```bash
-sudo apt install pulseaudio
-```
