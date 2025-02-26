@@ -140,4 +140,5 @@ eval "$(zoxide init --cmd j bash)"
 source /home/drew/projects/alacritty/extra/completions/alacritty.bash
 
 # restic
-export RESTIC_PASSWORD_COMMAND="op read op://Personal/restic/password -n"
+# Cannot use 1Password CLI as root, so need to set password manually
+# export RESTIC_PASSWORD_COMMAND="op read op://Personal/restic/password -n"
