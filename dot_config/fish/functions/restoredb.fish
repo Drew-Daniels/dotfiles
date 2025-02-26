@@ -4,7 +4,7 @@ function restoredb -d "Restores database for current branch from backup"
     set -l branch_data (string split / $current_branch)
     set -l db_name $branch_data[2] || set -l db_name $branch_data[1]
     set -l full_db_name kipu_demo_development_$db_name
-    set -l db_backup_path ~/backups/$full_db_name.dump
+    set -l db_backup_path ~/backups/$full_db_name
     set -l jobs (nproc)
 
     if test -f $db_backup_path
