@@ -557,3 +557,9 @@ sudo apt install brightnessctl
 ```bash
 sudo apt install strawberry
 ```
+
+### `feh`
+
+```bash
+sudo apt install feh
+```
