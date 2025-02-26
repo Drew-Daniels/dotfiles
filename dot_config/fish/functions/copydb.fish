@@ -9,9 +9,9 @@ function copydb -d "Copies the database from another backup"
     set -l user (whoami)
     set -l current_branch $(git branch --show-current)
     set -l branch_data (string split / $current_branch)
-    set -l source_db_backup_path ~/backups/$source_db_name.dump
-    set -l target_db_backup_path ~/backups/$target_db_name.dump
-    set -l jobs 14
+    set -l source_db_backup_path ~/backups/$source_db_name
+    set -l target_db_backup_path ~/backups/$target_db_name
+    set -l jobs (nproc)
 
     if test -f $source_db_backup_path
         echo "Copying source backup from $source_db_backup_path to $target_db_backup_path"
