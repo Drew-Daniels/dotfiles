@@ -1,5 +1,6 @@
 configuration {
     modi: [window, windowcd, run, ssh, drun, keys, filebrowser];
+/*  TODO: add normal-window: true option once this is merged in: https://github.com/davatorium/rofi/issues/1996*/
 /*	font: "mono 12";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -51,7 +52,7 @@ configuration {
 /*	drun-use-desktop-cache: false;*/
 /*	drun-reload-desktop-cache: false;*/
 /*	normalize-match: false;*/
-/*	steal-focus: false;*/
+    steal-focus: true;
 /*	application-fallback-icon: ;*/
 /*	pid: "/run/user/1000/rofi.pid";*/
 /*	display-window: ;*/
