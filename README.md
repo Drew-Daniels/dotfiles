@@ -528,3 +528,11 @@ sudo apt install rofi
 ```bash
 sudo apt install speedtest-cli
 ```
+
+### `uuid-runtime`
+
+For creating unique identifiers (like when working with S3)
+
+```bash
+sudo apt install uuid-runtime
+```
