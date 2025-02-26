@@ -20,12 +20,6 @@ Create a [GitHub Personal Access Token](https://docs.github.com/en/authenticatio
 brew install chezmoi
 ```
 
-### `Arch`
-
-```sh
-pacman -S chezmoi
-```
-
 ## Clone and Set Up Dotfiles using `chezmoi`
 
 ```bash
