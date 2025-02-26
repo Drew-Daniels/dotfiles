@@ -515,6 +515,10 @@ sudo apt install kiwix
 
 ### `rofi`
 
+Ensure that whatever commands are attached to keybinds attach the `-normal-window` flag:
+
+https://github.com/swaywm/sway/issues/267
+
 ```bash
 sudo apt install rofi
 ```
