@@ -536,3 +536,9 @@ For creating unique identifiers (like when working with S3)
 ```bash
 sudo apt install uuid-runtime
 ```
+
+### `i3`
+
+```bash
+sudo apt install i3
+```
