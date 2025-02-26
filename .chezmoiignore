@@ -7,6 +7,7 @@ Brewfile_*
 README.md
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
+*/i3
   {{- $computerName := output "scutil" "--get" "ComputerName" | trim -}}
   {{- if ne $computerName "KIPU-DDANIELS" }}
 */mise/config.local.toml
