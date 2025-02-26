@@ -522,3 +522,9 @@ https://github.com/swaywm/sway/issues/267
 ```bash
 sudo apt install rofi
 ```
+
+### `speedtest-cli`
+
+```bash
+sudo apt install speedtest-cli
+```
