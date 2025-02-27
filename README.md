@@ -471,6 +471,14 @@ mv standard-notes-3.195.25-linux-x86_64.AppImage ~/Applications/
 
 https://docs.docker.com/desktop/setup/install/linux/
 
+Might need to also run this command, if I get the "Docker can't conecto to Docker Daemon" error message:
+
+https://stackoverflow.com/a/73564032/13175926
+
+```bash
+docker context use default
+```
+
 ### `openssh-server`
 
 ```bash
