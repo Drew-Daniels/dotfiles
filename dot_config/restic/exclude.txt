@@ -1,3 +1,5 @@
 # TODO: See if I can use expansion instead of absolute path
 /home/drew/.cache
 /home/drew/.cargo
+# Don't include this unless I start using Docker more often
+**/Docker.raw
