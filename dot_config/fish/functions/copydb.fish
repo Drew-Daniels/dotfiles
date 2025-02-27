@@ -13,9 +13,6 @@ function copydb -d "Copies the database from another backup"
     set -l target_db_backup_path ~/backups/$target_db_name
     set -l jobs (nproc)
 
-    echo $source_db_backup_path
-    echo $target_db_backup_path
-
     if test -d $source_db_backup_path
         echo "Copying source backup from $source_db_backup_path to $target_db_backup_path"
         cp -R $source_db_backup_path $target_db_backup_path
