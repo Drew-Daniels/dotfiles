@@ -1,11 +1,5 @@
 # Installation Process on a New Machine
 
-## Setup GitHub Authentication
-
-Create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
-
-[Use this token when cloning this repo](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#using-a-personal-access-token-on-the-command-line) instead of my GitHub password.
-
 ## Install Pre-Requisites for Running [`chezmoi`](https://www.chezmoi.io/):
 
 ### `MacOS`:
@@ -25,8 +19,6 @@ brew install chezmoi
 ```bash
 chezmoi init https://github.com/Drew-Daniels/dotfiles.git
 ```
-
-## Install dependencies managed with [`homebrew-bundle`](https://github.com/Homebrew/homebrew-bundle)
 
 Install `rustup`
 
@@ -61,8 +53,6 @@ cd lua-5.1.5
 make macosx
 make test
 sudo make install
-# is this next step necessary?
-make local
 ```
 
 ## Install [`luarocks`](https://luarocks.org/)
@@ -82,7 +72,7 @@ sudo luarocks install luasocket
 luarocks install --local magick
 ```
 
-## Reboot
+Reboot
 
 # Debian Workstation Setup Notes
 
