@@ -1,7 +1,9 @@
 require("config.lazy")
 
--- TODO: Figure out to set colorscheme based on OS setting in a cross-platform way (Linux and MacOS)
-vim.cmd("colorscheme gruvbox")
+if vim.loop.os_uname().sysname == "Linux" then
+	-- can't rely on dark-notify to work on linux
+	vim.cmd("colorscheme gruvbox")
+end
 
 vim.api.nvim_create_user_command("SU", function(opts)
 	local date = os.date("%Y-%m-%d")
