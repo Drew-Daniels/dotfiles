@@ -471,6 +471,14 @@ mv standard-notes-3.195.25-linux-x86_64.AppImage ~/Applications/
 
 https://docs.docker.com/desktop/setup/install/linux/
 
+```bash
+# start docker daemon on every boot
+sudo systemctl enable docker
+
+# verify docker daemon is running
+sudo systemctl status docker
+```
+
 ### `openssh-server`
 
 ```bash
