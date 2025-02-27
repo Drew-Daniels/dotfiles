@@ -8,6 +8,9 @@ README.md
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
+*/apt
+*/rofi
+*/restic
   {{- $computerName := output "scutil" "--get" "ComputerName" | trim -}}
   {{- if ne $computerName "KIPU-DDANIELS" }}
 */mise/config.local.toml
