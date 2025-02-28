@@ -7,7 +7,7 @@ function restoredb -d "Restores database for current branch from backup"
     set -l db_backup_path ~/backups/$full_db_name
     set -l jobs (nproc)
 
-    if test -f $db_backup_path
+    if test -d $db_backup_path
         echo "Dropping $full_db_name"
         dropdb $full_db_name -f
 
