@@ -561,3 +561,9 @@ sudo apt install strawberry
 ```bash
 sudo apt install feh
 ```
+
+### `nmap`
+
+```bash
+sudo apt install nmap
+```
