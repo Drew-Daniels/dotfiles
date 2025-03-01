@@ -50,8 +50,8 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-# TODO: Maybe use alacritty instead
-bindsym $mod+Return exec konsole
+# bindsym $mod+Return exec konsole
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
