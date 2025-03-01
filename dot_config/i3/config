@@ -200,5 +200,5 @@ bindsym $mod+Shift+x exec i3lock
 exec always feh --bg-scale /home/drew/Pictures/blocks-wallpaper.jpg
 
 # default startup apps
-exec firefox
+exec thorium-browser
 exec alacritty
