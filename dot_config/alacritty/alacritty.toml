@@ -3,6 +3,9 @@ import = [
   "themes/themes/gruvbox_dark.toml"
 ]
 
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
 [window]
 decorations = "buttonless"
 
@@ -27,3 +30,4 @@ size = 10
 
 [terminal.shell]
   program = "fish"
+
