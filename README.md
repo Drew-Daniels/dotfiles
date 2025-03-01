@@ -567,3 +567,16 @@ sudo apt install feh
 ```bash
 sudo apt install nmap
 ```
+
+### `thorium`
+
+```bash
+# NOTE: update to the latest release, if necessary
+curl -O -L "https://github.com/Alex313031/thorium/releases/latest/download/thorium-browser_130.0.6723.174_SSE4.deb"
+
+# install deps
+sudo apt install fonts-liberation libu2f-udev
+
+# install
+sudo dpkg -i thorium-browser_130.0.6723.174_SSE4.deb
+```
