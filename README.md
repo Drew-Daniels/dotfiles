@@ -600,3 +600,9 @@ sudo apt update
 
 sudo apt install openvpn3
 ```
+
+### `wireguard`
+
+```bash
+sudo apt install wireguard
+```
