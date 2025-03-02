@@ -145,3 +145,6 @@ source /home/drew/projects/alacritty/extra/completions/alacritty.bash
 
 # apt, dpkg
 alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/packages'
+
+# Standard Notes
+export PATH="$PATH:/opt/standard_notes"

@@ -451,10 +451,7 @@ Look at creating a `.desktop` file to be able to easily open Standard Notes usin
 
 ```bash
 chmod a+x standard-notes-3.195.25-linux-x86_64.AppImage
-mv standard-notes-3.195.25-linux-x86_64.AppImage ~/Applications/
-
-# run
-~/Applications/standard-notes-3.195.25-linux-x86_64.AppImage
+mv standard-notes-3.195.25-linux-x86_64.AppImage /opt/standard_notes/standard_notes
 ```
 
 ### `Docker Desktop`
