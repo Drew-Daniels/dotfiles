@@ -605,4 +605,9 @@ sudo apt install openvpn3
 
 ```bash
 sudo apt install wireguard
+
+# Create and download client configuration file from Wireguard server
+
+# move into wireguard configuration folder
+sudo mv client.conf /etc/wireguard/wg0.conf
 ```
