@@ -609,3 +609,11 @@ nmcli connection stop wg0
 # to start again
 nmcli connection start wg0
 ```
+
+### `plocate`
+
+Provides the `updatedb` and `locate` commands:
+
+```bash
+sudo apt install plocate
+```
