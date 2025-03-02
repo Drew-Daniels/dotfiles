@@ -580,3 +580,21 @@ sudo apt install fonts-liberation libu2f-udev
 # install
 sudo dpkg -i thorium-browser_130.0.6723.174_SSE4.deb
 ```
+
+### `openvpn3`
+
+```bash
+sudo apt install apt-transport-https
+
+# switch to root
+su
+
+# enter root pwd
+curl -sSfL https://packages.openvpn.net/packages-repo.gpg >/etc/apt/keyrings/openvpn.asc
+
+echo "deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian bookworm main" >>/etc/apt/sources.list.d/openvpn3.list
+
+sudo apt update
+
+sudo apt install openvpn3
+```
