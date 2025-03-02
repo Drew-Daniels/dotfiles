@@ -371,6 +371,18 @@ npm i -g yarn tree-sitter-cli
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+
+# update sudoers file so I can use neovim as root
+sudo visudo
+```
+
+```sudoers
+# add /opt/nvim-linux-x86_64/bin to secure path so I can use neovim as root
+
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nvim-linux-x86_64/bin"
+
+# use neovim as default editor with root
+Defaults:%sudo env_keep += "EDITOR"
 ```
 
 Post install:
