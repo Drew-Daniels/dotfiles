@@ -583,6 +583,8 @@ sudo dpkg -i thorium-browser_130.0.6723.174_SSE4.deb
 
 ### `openvpn3`
 
+https://community.openvpn.net/openvpn/wiki/OpenVPN3Linux
+
 ```bash
 sudo apt install apt-transport-https
 
