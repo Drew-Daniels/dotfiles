@@ -610,4 +610,13 @@ sudo apt install wireguard
 
 # move into wireguard configuration folder
 sudo mv client.conf /etc/wireguard/wg0.conf
+
+# import the client profile
+sudo nmcli connection import type wireguard file "/etc/wireguard/wg0.conf"
+
+# to stop the connection
+nmcli connection stop wg0
+
+# to start again
+nmcli connection start wg0
 ```
