@@ -605,6 +605,9 @@ nmcli connection stop wg0
 
 # to start again
 nmcli connection start wg0
+
+# don't autoconnect on startup
+nmcli connection modify wg0 autoconnect no
 ```
 
 ### `plocate`
