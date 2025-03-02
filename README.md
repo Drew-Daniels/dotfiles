@@ -580,3 +580,9 @@ sudo apt install fonts-liberation libu2f-udev
 # install
 sudo dpkg -i thorium-browser_130.0.6723.174_SSE4.deb
 ```
+
+### `ovpn`
+
+```bash
+sudo apt install openvpn
+```
