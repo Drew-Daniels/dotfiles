@@ -640,5 +640,8 @@ sudo apt install ./balena-etcher_2.1.0_amd64.deb
 ### `gparted`
 
 ```bash
+# for fat32
+sudo apt install dosfstools mtools
+
 sudo apt install gparted
 ```
