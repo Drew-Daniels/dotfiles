@@ -645,3 +645,15 @@ sudo apt install dosfstools mtools
 
 sudo apt install gparted
 ```
+
+Miscellaneous notes on ejecting a USB drive on Debian:
+
+```bash
+# unmount
+sudo eject /dev/sdb
+
+# shut down
+udisksctl power-off -b /dev/sdb
+
+# physically pull out USB
+```
