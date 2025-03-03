@@ -636,3 +636,9 @@ sudo apt install plocate
 curl -LO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_2.1.0_amd64.deb"
 sudo apt install ./balena-etcher_2.1.0_amd64.deb
 ```
+
+### `gparted`
+
+```bash
+sudo apt install gparted
+```
