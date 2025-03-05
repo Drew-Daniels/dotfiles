@@ -657,3 +657,12 @@ udisksctl power-off -b /dev/sdb
 
 # physically pull out USB
 ```
+
+### `zoom`
+
+Download latest `.deb` package: https://zoom.us/download?os=linux
+
+```bash
+cd ~/Downloads
+sudo apt install ./zoom_amd64.deb
+```
