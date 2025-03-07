@@ -11,7 +11,7 @@ function sign_in -d "Signs in with curl and saves cookie"
         -F "user[login]=$KIPU_CAS_USER_LOGIN" \
         -F "user[password]=$KIPU_CAS_USER_PASSWORD" \
         -F "authenticity_token=$csrf_token" \
-        -c ~/projects/sites/healthmatters/tmp/cookie.txt
+        -c $KIPU_CAS_COOKIE_PATH
     if test $status -eq 0
         echo "Signed in"
     else
