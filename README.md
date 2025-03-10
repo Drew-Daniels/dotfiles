@@ -703,3 +703,14 @@ sudo apt install libcurl4-openssl-dev libnotify-dev
 Then, follow the instructions for building and installing cmusfm:
 
 https://github.com/Arkq/cmusfm?tab=readme-ov-file#installation
+
+```bash
+# initialize, and create config if one doesn't already exist
+cmusfm init
+
+# set as status display program for cmus
+cmus
+
+# ... in cmus ...
+:set status_display_program=cmusfm
+```
