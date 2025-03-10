@@ -5,7 +5,9 @@ unbind C-b
 # use zsh if on macos, otherwise use /bin/bash
 {{ if eq .chezmoi.os "darwin" }}
   set -g default-shell /bin/zsh
-{{ end }}
+{{ else -}}
+  set -g default-shell /usr/bin/bash
+{{- end }}
 
 # set the delay between prefix and command
 set -s escape-time 1
