@@ -669,14 +669,37 @@ sudo apt install ./zoom_amd64.deb
 
 ### Other
 
+`keep-presence`
 https://github.com/carrot69/keep-presence
 
 ```bash
 python3 -m pip install keep_presence
 ```
 
+`tidal-dl-ng`
 https://github.com/exislow/tidal-dl-ng
 
 ```bash
 pip install --upgrade tidal-dl-ng[gui]
 ```
+
+`cmus`
+https://github.com/cmus/cmus
+
+```bash
+sudo apt install cmus
+```
+
+`cmusfm`
+
+Install pre-reqs:
+
+```bash
+# install dependencies for cmusfm
+sudo apt install libcurl4-openssl-dev libnotify-dev
+
+```
+
+Then, follow the instructions for building and installing cmusfm:
+
+https://github.com/Arkq/cmusfm?tab=readme-ov-file#installation
