@@ -666,3 +666,11 @@ Download latest `.deb` package: https://zoom.us/download?os=linux
 cd ~/Downloads
 sudo apt install ./zoom_amd64.deb
 ```
+
+### Other
+
+https://github.com/carrot69/keep-presence
+
+```bash
+python3 -m pip install keep_presence
+```
