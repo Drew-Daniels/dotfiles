@@ -2,7 +2,10 @@ set -g prefix C-a
 unbind C-b
 
 # set default shell for tmux to use
-set -g default-shell /bin/zsh
+# use zsh if on macos, otherwise use /bin/bash
+{{ if eq .chezmoi.os "darwin" }}
+  set -g default-shell /bin/zsh
+{{ end }}
 
 # set the delay between prefix and command
 set -s escape-time 1
@@ -93,14 +96,20 @@ set -g default-terminal "tmux-256color"
 setw -g mode-keys vi
 
 # configure tmux to load through wrapper script
-set -g default-command "reattach-to-user-namespace -l /bin/zsh"
+{{ if eq .chezmoi.os "darwin" }}
+  set -g default-command "reattach-to-user-namespace -l /bin/zsh"
+{{ end }}
 
 # Add binding to enable copying directly to system clipboard
-bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+{{ if eq .chezmoi.os "darwin" }}
+  bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+{{ end }}
 
 # Add binding to enable pasting directly from system clipboard
-bind C-v run \
-"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
+{{ if eq .chezmoi.os "darwin" }}
+  bind C-v run \
+  "tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
+{{ end }}
 
 # Log output to a text file on demand
 bind P pipe-pane -o "cat >> ~/#W.log" \; display "Toggled logging to ~/#W.log"
