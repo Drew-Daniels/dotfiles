@@ -6,6 +6,4 @@ windows:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - editor:
-            - fish
-            - cls
-            - sp
+            - cmus
