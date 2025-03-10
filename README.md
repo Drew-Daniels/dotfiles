@@ -674,3 +674,9 @@ https://github.com/carrot69/keep-presence
 ```bash
 python3 -m pip install keep_presence
 ```
+
+https://github.com/exislow/tidal-dl-ng
+
+```bash
+pip install --upgrade tidal-dl-ng[gui]
+```
