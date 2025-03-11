@@ -714,3 +714,13 @@ cmus
 # ... in cmus ...
 :set status_display_program=cmusfm
 ```
+
+`librewolf`
+
+https://librewolf.net/installation/debian/
+
+```bash
+sudo extrepo enable librewolf
+
+sudo apt update && sudo apt install librewolf -y
+```
