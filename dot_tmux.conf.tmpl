@@ -6,7 +6,7 @@ unbind C-b
 {{ if eq .chezmoi.os "darwin" }}
   set -g default-shell /bin/zsh
 {{ else -}}
-  set -g default-shell /usr/bin/bash
+  set -g default-command bash
   set -ga terminal-overrides ",*256col*:Tc"
   set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
   set-environment -g COLORTERM "truecolor"
