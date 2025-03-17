@@ -740,3 +740,13 @@ echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --prin
 sudo apt update
 sudo apt install mullvad-vpn
 ```
+
+`foliate`
+
+Ebook reader
+
+https://johnfactotum.github.io/foliate/
+
+```bash
+sudo apt install foliate
+```
