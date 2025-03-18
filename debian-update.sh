@@ -15,3 +15,9 @@ unzip awscliv2.zip
 # cleanup
 rm awscliv2.zip
 rm -rf aws
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          rustup                          │
+#          │                    https://rustup.rs/                    │
+#          ╰──────────────────────────────────────────────────────────╯
+rustup update
