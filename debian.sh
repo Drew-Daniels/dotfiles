@@ -5,6 +5,12 @@
 set -e
 
 arch=$(arch)
+if [ "$arch" = "x86_64" ]; then
+  platform='amd64'
+else
+  echo "Unknown platform"
+  exit 1
+fi
 
 # pre-flight
 if [ ! -d ~/projects ]; then
@@ -37,8 +43,8 @@ pkg=cosign
 
 if [ ! -f "/usr/local/bin/cosign" ]; then
   echo "Installing $pkg"
-  curl -LO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-amd64"
-  sudo mv $pkg-linux-amd64 /usr/local/bin/$pkg
+  curl -LO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-$platform"
+  sudo mv $pkg-linux-$platform /usr/local/bin/$pkg
   sudo chmod +x /usr/local/bin/$pkg
   echo "Installed $pkg"
 else
@@ -56,23 +62,23 @@ if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   # Download .deb pkg, the checksum file, checksum file signature, and public signing key:
   curl --location --remote-name-all \
-    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_linux_amd64.deb" \
-    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_checksums.txt" \
-    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_checksums.txt.sig" \
-    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_cosign.pub"
+    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_linux_$platform.deb" \
+    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt" \
+    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt.sig" \
+    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_cosign.pub"
 
   # verify the signature on the checksums file is valid
-  cosign_verification_status=$(cosign verify-blob --key=chezmoi_cosign.pub --signature=chezmoi_2.59.1_checksums.txt.sig chezmoi_2.59.1_checksums.txt)
+  cosign_verification_status=$(cosign verify-blob --key=${pkg}_cosign.pub --signature=${pkg}_${version}_checksums.txt.sig ${pkg}_${version}_checksums.txt)
 
   if [ "$cosign_verification_status" -eq 1 ]; then
     exit 1
   fi
 
   # verify the checksum matches
-  if sha256sum --check chezmoi_2.59.1_checksums.txt --ignore-missing --status; then
-    # install chezmoi
-    sudo apt install ./chezmoi_2.60.1_linux_amd64.deb
-    echo "Installed chezmoi"
+  if sha256sum --check ${pkg}_${version}_checksums.txt --ignore-missing --status; then
+    # install ${pkg}
+    sudo apt install ./${pkg}_${version}_linux_${platform}.deb
+    echo "Installed ${pkg}"
   else
     echo "Encountered an error "
     exit 1
@@ -121,7 +127,7 @@ if ! command -v mise; then
   # mise installation
   sudo install -dm 755 /etc/apt/keyrings
   wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1>/dev/null
-  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=${platform}] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
   sudo apt update
   sudo apt install -y mise
   echo "Installed mise"
@@ -139,7 +145,7 @@ if ! command -v 1password; then
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
 
   # Add the 1Password apt repository:
-  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/${platform} stable main" | sudo tee /etc/apt/sources.list.d/1password.list
 
   # Add the debsig-verify policy
   sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
@@ -192,7 +198,7 @@ pkg="ripgrep"
 
 if command -v rg; then
   echo "Installing ripgrep"
-  curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
+  curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_${platform}.deb
   sudo apt install ./ripgrep_14.1.0-1_amd64.deb
   echo "Installed ripgrep"
 else
@@ -203,13 +209,16 @@ fi
 #          │                          delta                           │
 #          │       https://github.com/dandavison/delta/releases       │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v delta; then
-  echo "Installing delta"
-  curl -LO https://github.com/dandavison/delta/releases/download/0.18.2/delta-https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
-  sudo apt install ./git-delta_0.18.2_amd64.deb
-  echo "Installed delta"
+pkg='delta'
+version='0.18.2'
+
+if command -v $pkg; then
+  echo "Installing $pkg"
+  curl -LO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
+  sudo apt install ./git-delta_${version}_amd64.deb
+  echo "Installed $pkg"
 else
-  echo "Already installed delta"
+  echo "Already installed $pkg"
 fi
 
 #╭──────────────────────────────────────────────────────────────────────────────────╮
@@ -313,7 +322,7 @@ fi
 # verifying in programmic install
 # https://github.com/aws/aws-cli/issues/6230
 if command -v aws; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
 fi
@@ -331,14 +340,16 @@ fi
 #          │                         lua 5.1                          │
 #          │        https://www.lua.org/manual/5.4/readme.html        │
 #          ╰──────────────────────────────────────────────────────────╯
+version="5.1.5"
+
 # TODO: Might want to update this to specifically check if lua 5.1 installed
 if command -v lua; then
   # install build dependencies
   sudo apt-get install libreadline-dev
 
   # download
-  curl -LO https://www.lua.org/ftp/lua-5.1.5.tar.gz
-  cd lua-5.1.5 || exit
+  curl -LO https://www.lua.org/ftp/lua-${version}.tar.gz
+  cd lua-${version} || exit
   # build
   make linux
   # verify
@@ -351,9 +362,11 @@ fi
 #          │                         luarocks                         │
 #          │                  https://luarocks.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
+version="3.11.1"
+
 if command -v luarocks; then
-  wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-  tar zxpf luarocks-3.11.1.tar.gz
+  wget https://luarocks.org/releases/luarocks-${version}.tar.gz
+  tar zxpf luarocks-${version}.tar.gz
   cd luarocks-3.11.1 || exit
   ./configure && make && sudo make install
   sudo luarocks install luasocket
@@ -363,8 +376,10 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
+version="3.0.2"
+
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
-  wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip &&
+  wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/JetBrainsMono.zip &&
     cd ~/.local/share/fonts &&
     unzip JetBrainsMono.zip &&
     rm JetBrainsMono.zip &&
@@ -378,9 +393,9 @@ if command -v nvim; then
   # TODO: Figure out what requires 'yarn'
   # tree-sitter-cli required by Swift LSP
   npm i -g yarn tree-sitter-cli
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+  curl -LO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz"
   sudo rm -rf /opt/nvim
-  sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+  sudo tar -C /opt -xzf "nvim-linux-${arch}.tar.gz"
 fi
 
 # update sudoers file so I can use neovim as root
@@ -486,10 +501,12 @@ fi
 #          │                      standard notes                      │
 #          │         https://standardnotes.com/download/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
+version='3.195.25'
+
 if command -v standard_notes; then
-  curl -LO https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-3.195.25-linux-x86_64.AppImage
-  chmod a+x standard-notes-3.195.25-linux-x86_64.AppImage
-  mv standard-notes-3.195.25-linux-x86_64.AppImage /opt/standard_notes/standard_notes
+  curl -LO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-${arch}.AppImage"
+  chmod a+x "standard-notes-${version}-linux-${arch}.AppImage"
+  mv "standard-notes-${version}-linux-${arch}.AppImage" /opt/standard_notes/standard_notes
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -549,11 +566,13 @@ fi
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯
+version='0.29.1'
+
 if command -v resticprofile; then
   curl -LO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
-  mkdir resticprofile_0.29.1_linux_amd64
-  tar -xzpf resticprofile_0.29.1_linux_amd64.tar.gz -C resticprofile_0.29.1_linux_amd64
-  sudo cp resticprofile_0.29.1_linux_amd64/resticprofile /usr/local/bin/
+  mkdir "resticprofile_${version}_linux_${platform}"
+  tar -xzpf "resticprofile_${version}_linux_${platform}.tar.gz" -C resticprofile_${version}_linux_${platform}
+  sudo cp resticprofile_${version}_linux_${platform}/resticprofile /usr/local/bin/
   rm -rf restic*
 fi
 
@@ -635,9 +654,11 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
+version=''
+
 if command -v mergiraf; then
-  curl -LO https://codeberg.org/mergiraf/mergiraf/releases/download/v0.6.0/mergiraf_x86_64-unknown-linux-gnu.tar.gz
-  tar xzf mergiraf_x86_64-unknown-linux-gnu.tar.gz
+  curl -LO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_${arch}-unknown-linux-gnu.tar.gz"
+  tar xzf "mergiraf_${arch}-unknown-linux-gnu.tar.gz"
   sudo mv mergiraf /usr/local/bin/
 fi
 
@@ -701,9 +722,11 @@ fi
 #│                                         balena-etcher                                         │
 #│https://github.com/balena-io/etcher#debian-and-ubuntu-based-package-repository-gnulinux-x86x64 │
 #╰───────────────────────────────────────────────────────────────────────────────────────────────╯
+version='2.1.0'
+
 if command -v balena-etcher; then
-  curl -LO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_2.1.0_amd64.deb"
-  sudo apt install ./balena-etcher_2.1.0_amd64.deb
+  curl -LO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_${version}_${platform}.deb"
+  sudo apt install ./balena-etcher_${version}_${platform}.deb
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -727,8 +750,10 @@ fi
 #          │                           zoom                           │
 #          │            https://zoom.us/download?os=linux             │
 #          ╰──────────────────────────────────────────────────────────╯
+version='6.4.0.471'
+
 if command -v zoom; then
-  curl -LO https://zoom.us/client/6.4.0.471/zoom_amd64.deb
+  curl -LO https://zoom.us/client/${version}/zoom_amd64.deb
   sudo apt install ./zoom_amd64.deb
 fi
 
