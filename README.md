@@ -31,3 +31,11 @@ cd ~/.local/share/chezmoi
 # bootstrap
 sudo ./debian.sh
 ```
+
+### Maintenance
+
+Some packages have to be manually updated outside of package managers like, `apt`. To update them run:
+
+```bash
+sudo ./debian-update.sh
+```
