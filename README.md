@@ -29,7 +29,7 @@ Then, restart computer so it picks up these changes.
 ```bash
 cd ~/.local/share/chezmoi
 # bootstrap
-sudo ./debian.sh
+sudo ./debian-install.sh
 ```
 
 ### Maintenance

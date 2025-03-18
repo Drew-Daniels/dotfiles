@@ -3,6 +3,7 @@
 # Updates packages that have to be manually updated outside of 'apt'
 # TODO: Add check to see if there is a later version available, and only install if it is differerent version from current install
 # TODO: Suppress curl output
+# TODO: Perform installation steps in a /tmp folder
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│                                    awscli                                    │
 #│https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html │
