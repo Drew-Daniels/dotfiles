@@ -5,7 +5,7 @@
     "description": "Create a TODO"
   },
   "Shebang": {
-    "body": "#!/user/bin/env ${0}",
+    "body": "#!/usr/bin/env ${0}",
     "prefix": "sh"
   }
 }

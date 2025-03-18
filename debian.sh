@@ -1,4 +1,4 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 
 # exit on error
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
@@ -16,6 +16,8 @@ fi
 if [ ! -d ~/projects ]; then
   mkdir ~/projects
 fi
+
+sudo apt update -y
 
 # TODO: Look into creating bash loading spinner library similar to:
 #   https://github.com/molovo/revolver/blob/master/revolver
@@ -41,7 +43,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg=cosign
 
-if [ ! -f "/usr/local/bin/cosign" ]; then
+if [ ! -f "/usr/local/bin/$pkg" ]; then
   echo "Installing $pkg"
   curl -LO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-$platform"
   sudo mv $pkg-linux-$platform /usr/local/bin/$pkg
@@ -76,8 +78,7 @@ if ! command -v $pkg >/dev/null 2>&1; then
 
   # verify the checksum matches
   if sha256sum --check ${pkg}_${version}_checksums.txt --ignore-missing --status; then
-    # install ${pkg}
-    sudo apt install ./${pkg}_${version}_linux_${platform}.deb
+    sudo apt install -y ./${pkg}_${version}_linux_${platform}.deb
     echo "Installed ${pkg}"
   else
     echo "Encountered an error "
@@ -118,21 +119,23 @@ fi
 #          │                           mise                           │
 #          │                  https://mise.jdx.dev/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v mise; then
-  echo "Installing mise"
+pkg='mise'
+
+if ! command -v $pkg; then
+  echo "Installing $pkg"
   # pre-reqs for building native C ruby extensions
-  sudo apt-get install build-essential libz-dev libffi-dev libyaml-dev libssl-dev
+  sudo apt install -y build-essential libz-dev libffi-dev libyaml-dev libssl-dev
   # pre-reqs for mise
-  sudo apt update -y && sudo apt install -y gpg sudo wget curl
+  sudo apt install -y gpg sudo wget curl
   # mise installation
   sudo install -dm 755 /etc/apt/keyrings
   wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1>/dev/null
   echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=${platform}] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
   sudo apt update
-  sudo apt install -y mise
-  echo "Installed mise"
+  sudo apt install -y $pkg
+  echo "Installed $pkg"
 else
-  echo "Already installed mise"
+  echo "Already installed $pkg"
 fi
 
 #        ╭──────────────────────────────────────────────────────────────╮
@@ -156,7 +159,7 @@ if ! command -v $pkg; then
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 
   # Install 1Password Desktop
-  sudo apt update && sudo apt install $pkg
+  sudo apt update && sudo apt install -y $pkg
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -170,17 +173,7 @@ pkg='1password-cli'
 
 if ! command -v op; then
   echo "Installing $pkg"
-  curl -sS https://downloads.1password.com/linux/keys/1password.asc |
-    sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg &&
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
-    sudo tee /etc/apt/sources.list.d/1password.list &&
-    sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/ &&
-    curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol |
-    sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol &&
-    sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22 &&
-    curl -sS https://downloads.1password.com/linux/keys/1password.asc |
-    sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg &&
-    sudo apt update && sudo apt install $pkg
+  sudo apt update && sudo apt install -y $pkg
   # TODO: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
   echo "Installed $pkg"
 else
@@ -203,7 +196,7 @@ pkg="ripgrep"
 if command -v rg; then
   echo "Installing ripgrep"
   curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_${platform}.deb
-  sudo apt install ./ripgrep_14.1.0-1_amd64.deb
+  sudo apt install -y ./ripgrep_14.1.0-1_amd64.deb
   echo "Installed ripgrep"
 else
   echo "Already installed ripgrep"
@@ -219,7 +212,7 @@ version='0.18.2'
 if command -v $pkg; then
   echo "Installing $pkg"
   curl -LO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
-  sudo apt install ./git-delta_${version}_amd64.deb
+  sudo apt install -y ./git-delta_${version}_amd64.deb
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -246,7 +239,7 @@ if command -v fish; then
   echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
   curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg >/dev/null
   sudo apt update
-  sudo apt install fish
+  sudo apt install -y fish
   echo "Installed fish"
 else
   echo "Already installed fish"
@@ -258,7 +251,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v fzf; then
   echo "Installing fzf"
-  sudo apt install fzf
+  sudo apt install -y fzf
   echo "Installed fzf"
 else
   echo "Already installed fzf"
@@ -270,7 +263,7 @@ fi
 #          ╰───────────────────────────────────────────────────────────╯
 if command -v fd; then
   mkdir p ~/.local/bin
-  sudo apt install fd-find
+  sudo apt install -y fd-find
   ln -s "$(which fdfind)" ~/.local/bin/fd
 fi
 
@@ -279,7 +272,7 @@ fi
 #    │https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-apt │
 #    ╰──────────────────────────────────────────────────────────────────────╯
 if command -v bat; then
-  sudo apt install bat
+  sudo apt install -y bat
   ln -s /usr/bin/batcat ~/.local/bin/bat
 fi
 
@@ -311,7 +304,7 @@ if command -v ctags; then
   echo "Installing $pkg"
   # TODO: Generalize this URL - the checksum is included might make it difficult to update
   curl -LO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/2025.03.17%2Bcff205ee0d66994f1e26e0b7e3c9c482c7595bbc/uctags-${release_date}-linux-${arch}.deb"
-  sudo apt install "./uctags-${release_date}-linux-${arch}.deb"
+  sudo apt install -y "./uctags-${release_date}-linux-${arch}.deb"
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -337,7 +330,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # allows neovim to access clipboard via wayland
 if command -v wl-copy; then
-  sudo apt install wl-clipboard
+  sudo apt install -y wl-clipboard
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -419,7 +412,7 @@ fi
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
 if command -v tmux; then
-  sudo apt install tmux
+  sudo apt install -y tmux
 fi
 
 #     ╭─────────────────────────────────────────────────────────────────────╮
@@ -443,7 +436,7 @@ if command -v alacritty; then
   rustup update stable
 
   # install pre-reqs
-  sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev scdoc desktop-file-utils
+  sudo apt install -y cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev scdoc desktop-file-utils
 
   # build
   cargo build --release
@@ -463,7 +456,7 @@ fi
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v jq; then
-  sudo apt install jq
+  sudo apt install -y jq
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -471,7 +464,7 @@ fi
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v imagemagick; then
-  sudo apt install imagemagick
+  sudo apt install -y imagemagick
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -479,7 +472,7 @@ fi
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v zoxide; then
-  sudo apt install zoxide
+  sudo apt install -y zoxide
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -488,7 +481,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v yazi; then
   # install deps
-  sudo apt install ffmpeg 7zip poppler-utils
+  sudo apt install -y ffmpeg 7zip poppler-utils
   # install yazi
   cargo install --locked yazi-fm yazi-cli
 fi
@@ -518,7 +511,7 @@ fi
 #          │   https://docs.docker.com/desktop/setup/install/linux/   │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v docker; then
-  sudo apt install gnome-terminal
+  sudo apt install -y gnome-terminal
 
   # Add Docker's official GPG key:
   sudo apt-get update
@@ -541,7 +534,7 @@ if command -v docker; then
   curl -LO https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb
 
   # Install
-  sudo apt install ./docker-desktop-amd64.deb
+  sudo apt install -y ./docker-desktop-amd64.deb
 
   systemctl --user start docker-desktop
   # https://stackoverflow.com/a/73564032/13175926
@@ -553,14 +546,14 @@ fi
 #          │                      OpenSSH Server                      │
 #          │                 https://www.openssh.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
-sudo apt install openssh-server
+sudo apt install -y openssh-server
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          restic                          │
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v restic; then
-  sudo apt install restic
+  sudo apt install -y restic
   sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
 fi
 
@@ -593,7 +586,7 @@ fi
 #          │       https://tracker.debian.org/teams/kiwix-team/       │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v kiwix-desktop; then
-  sudo apt install kiwix
+  sudo apt install -y kiwix
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -601,7 +594,7 @@ fi
 #          │            https://github.com/davatorium/rofi            │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v rofi; then
-  sudo apt install rofi
+  sudo apt install -y rofi
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -609,7 +602,7 @@ fi
 #          │          https://github.com/sivel/speedtest-cli          │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v speedtest-cli; then
-  sudo apt install speedtest-cli
+  sudo apt install -y speedtest-cli
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -618,7 +611,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: For creating unique identifiers (like when working with S3)
 if command -v uuidgen; then
-  sudo apt install uuid-runtime
+  sudo apt install -y uuid-runtime
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -626,7 +619,7 @@ fi
 #          │                 https://github.com/i3/i3                 │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v i3; then
-  sudo apt install i3
+  sudo apt install -y i3
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -635,7 +628,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v brightnessctl; then
   sudo usermod -aG video "$USER"
-  sudo apt install brightnessctl
+  sudo apt install -y brightnessctl
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -643,7 +636,7 @@ fi
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v strawberry; then
-  sudo apt install strawberry
+  sudo apt install -y strawberry
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -651,7 +644,7 @@ fi
 #          │               https://github.com/derf/feh                │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v feh; then
-  sudo apt install feh
+  sudo apt install -y feh
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -671,7 +664,7 @@ fi
 #          │                https://svn.nmap.org/nmap/                │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v nmap; then
-  sudo apt install nmap
+  sudo apt install -y nmap
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -679,10 +672,10 @@ fi
 #          │          https://github.com/Alex313031/thorium           │
 #          ╰──────────────────────────────────────────────────────────╯
 # install dependencies
-sudo apt install fonts-liberation libu2f-udev
+sudo apt install -y fonts-liberation libu2f-udev
 # download
 curl -LO "https://github.com/Alex313031/thorium/releases/latest/download/thorium-browser_130.0.6723.174_SSE4.deb"
-sudo apt install ./thorium-browser_130.0.6723.174_SSE4.deb
+sudo apt install -y ./thorium-browser_130.0.6723.174_SSE4.deb
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         openvpn                          │
@@ -690,7 +683,7 @@ sudo apt install ./thorium-browser_130.0.6723.174_SSE4.deb
 #          ╰──────────────────────────────────────────────────────────╯
 # usage: sudo openvpn <config>
 if [ ! -x /sbin/openvpn ]; then
-  sudo apt install openvpn
+  sudo apt install -y openvpn
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -698,7 +691,7 @@ fi
 #          │            https://www.wireguard.com/install/            │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v wg; then
-  sudo apt install wireguard
+  sudo apt install -y wireguard
 fi
 # Notes on creating and using client configurations
 # # Create and download client configuration file from Wireguard server
@@ -719,7 +712,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Provides `updatedb` and `locate` commands - alternative to `locate`
 if command -v plocate; then
-  sudo apt install plocate
+  sudo apt install -y plocate
 fi
 
 #╭───────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -730,17 +723,17 @@ version='2.1.0'
 
 if command -v balena-etcher; then
   curl -LO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_${version}_${platform}.deb"
-  sudo apt install ./balena-etcher_${version}_${platform}.deb
+  sudo apt install -y ./balena-etcher_${version}_${platform}.deb
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         gparted                          │
 #          │                   https://gparted.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-# NOTE: for fat32
 if command -v gparted; then
-  sudo apt install dosfstools mtools
-  sudo apt install gparted
+  # NOTE: for fat32
+  sudo apt install -y dosfstools mtools
+  sudo apt install -y gparted
 fi
 
 # NOTE: Miscellaneous notes on unmounting and shutting down USB drives
@@ -758,7 +751,7 @@ version='6.4.0.471'
 
 if command -v zoom; then
   curl -LO https://zoom.us/client/${version}/zoom_amd64.deb
-  sudo apt install ./zoom_amd64.deb
+  sudo apt install -y ./zoom_amd64.deb
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -783,7 +776,7 @@ fi
 #          │               https://github.com/cmus/cmus               │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v cmus; then
-  sudo apt install cmus
+  sudo apt install -y cmus
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -792,7 +785,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v cmusfm; then
   # install dependencies
-  sudo apt install libcurl4-openssl-dev libnotify-dev
+  sudo apt install -y libcurl4-openssl-dev libnotify-dev
   # configure
   autoreconf --install
   mkdir build && cd build || exit
@@ -831,7 +824,7 @@ if command -v mullvad; then
   echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$(dpkg --print-architecture)] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mullvad.list
   # Install the package
   sudo apt update
-  sudo apt install mullvad-vpn
+  sudo apt install -y mullvad-vpn
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -839,8 +832,13 @@ fi
 #          │         https://johnfactotum.github.io/foliate/          │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v foliate; then
-  sudo apt install foliate
+  sudo apt install -y foliate
 fi
 
 # TODO: Only reboot if something in the system environment has changed as a result of code run in this file. Might be hard to determine/track this. Might be able to use a local variable to track when a change is made, that is worth rebooting for.
+
+# cleanup
+sudo apt autoremove -y
+sudo apt autoclean -y
+
 # reboot
