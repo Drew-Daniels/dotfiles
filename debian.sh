@@ -29,25 +29,27 @@ sudo chmod +x /usr/local/bin/cosign
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-curl -LO https://github.com/twpayne/chezmoi/releases/download/v2.60.1/chezmoi_2.60.1_linux_amd64.deb
-
-# Download the checksum file, checksum file signature, and public signing key:
+# Download .deb package, the checksum file, checksum file signature, and public signing key:
 curl --location --remote-name-all \
+  https://github.com/twpayne/chezmoi/releases/download/v2.60.1/chezmoi_2.60.1_linux_amd64.deb \
   https://github.com/twpayne/chezmoi/releases/download/v2.59.1/chezmoi_2.59.1_checksums.txt \
   https://github.com/twpayne/chezmoi/releases/download/v2.59.1/chezmoi_2.59.1_checksums.txt.sig \
   https://github.com/twpayne/chezmoi/releases/download/v2.59.1/chezmoi_cosign.pub
 
-# verify the signature
-cosign verify-blob --key=chezmoi_cosign.pub \
-  --signature=chezmoi_2.59.1_checksums.txt.sig \
-  chezmoi_2.59.1_checksums.txt
+# verify the signature on the checksums file is valid
+cosign_verification_status=$(cosign verify-blob --key=chezmoi_cosign.pub --signature=chezmoi_2.59.1_checksums.txt.sig chezmoi_2.59.1_checksums.txt)
+
+if [ "$cosign_verification_status" -eq 1 ]; then
+  exit 1
+fi
 
 # verify the checksum matches
-# TODO: Automate the check here
-sha256sum --check chezmoi_2.59.1_checksums.txt --ignore-missing
-
-# install chezmoi
-sudo apt install ./chezmoi_2.60.1_linux_amd64.deb
+if sha256sum --check chezmoi_2.59.1_checksums.txt --ignore-missing --status; then
+  # install chezmoi
+  sudo apt install ./chezmoi_2.60.1_linux_amd64.deb
+else
+  exit 1
+fi
 
 # initialize dotfiles
 # github
@@ -118,8 +120,10 @@ sudo apt-get install git-credential-oauth
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 sudo apt install ./ripgrep_14.1.0-1_amd64.deb
 
-# delta
-# https://github.com/dandavison/delta/releases
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          delta                           │
+#          │       https://github.com/dandavison/delta/releases       │
+#          ╰──────────────────────────────────────────────────────────╯
 curl -LO https://github.com/dandavison/delta/releases/download/0.18.2/delta-https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
 
 sudo apt install ./git-delta_0.18.2_amd64.deb
