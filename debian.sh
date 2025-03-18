@@ -139,13 +139,15 @@ fi
 #        │                   ## 1Password Desktop App                   │
 #        │https://support.1password.com/install-linux/#debian-or-ubuntu │
 #        ╰──────────────────────────────────────────────────────────────╯
-if ! command -v 1password; then
-  echo "Installing 1password"
+pkg='1password'
+
+if ! command -v $pkg; then
+  echo "Installing $pkg"
   # Add the key for the 1Password apt repository:
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
 
   # Add the 1Password apt repository:
-  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/${platform} stable main" | sudo tee /etc/apt/sources.list.d/1password.list
+  echo "deb [arch=${platform} signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/${platform} stable main" | sudo tee /etc/apt/sources.list.d/1password.list
 
   # Add the debsig-verify policy
   sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
@@ -154,18 +156,20 @@ if ! command -v 1password; then
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 
   # Install 1Password Desktop
-  sudo apt update && sudo apt install 1password
-  echo "Installed 1password"
+  sudo apt update && sudo apt install $pkg
+  echo "Installed $pkg"
 else
-  echo "Already installed 1password"
+  echo "Already installed $pkg"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      1Password CLI                       │
 #          │  https://developer.1password.com/docs/cli/get-started/   │
 #          ╰──────────────────────────────────────────────────────────╯
+pkg='1password-cli'
+
 if ! command -v op; then
-  echo "Installing 1password-cli"
+  echo "Installing $pkg"
   curl -sS https://downloads.1password.com/linux/keys/1password.asc |
     sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg &&
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
@@ -176,11 +180,11 @@ if ! command -v op; then
     sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22 &&
     curl -sS https://downloads.1password.com/linux/keys/1password.asc |
     sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg &&
-    sudo apt update && sudo apt install 1password-cli
+    sudo apt update && sudo apt install $pkg
   # TODO: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
-  echo "Installed 1password-cli"
+  echo "Installed $pkg"
 else
-  echo "Already installed 1password-cli"
+  echo "Already installed $pkg"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
