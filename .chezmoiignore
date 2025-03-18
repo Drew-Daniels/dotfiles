@@ -5,6 +5,7 @@ Brewfile_*
 */iterm2/sockets
 */iterm2/symlink_AppSupport
 README.md
+debian.sh
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
