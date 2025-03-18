@@ -606,3 +606,5 @@ sudo apt install mullvad-vpn
 #          │         https://johnfactotum.github.io/foliate/          │
 #          ╰──────────────────────────────────────────────────────────╯
 sudo apt install foliate
+
+reboot

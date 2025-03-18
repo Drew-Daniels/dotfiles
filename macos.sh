@@ -66,3 +66,4 @@ sudo luarocks install luasocket
 luarocks install --local magick
 
 # reboot
+shutdown -r
