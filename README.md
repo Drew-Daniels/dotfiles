@@ -1,21 +1,20 @@
 # Installation Process on a New Machine
 
-## Install Pre-Requisites for Running [`chezmoi`](https://www.chezmoi.io/):
+## `MacOS` Workstation Setup Notes:
 
-### `MacOS` Workstation Setup Notes:
+### User Setup
+
+NOTE: Will need Administrator privileges to use `root` permission
 
 ```bash
+cd ~/.local/share/chezmoi
 # bootstrap
 sudo ./macos.sh
 ```
 
-# Debian Workstation Setup Notes
+## Debian Workstation Setup Notes
 
-## Resources
-
-Helpful article on security & verifying packages: https://wiki.debian.org/SecureApt
-
-## User Setup
+### User Setup
 
 Add my non-root local user (drew) to sudoers file:
 
