@@ -1045,7 +1045,7 @@ fi
 #          │                    gnome-disk-utility                    │
 #          │    https://gitlab.gnome.org/GNOME/gnome-disk-utility     │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v gnome-disk-utility; then
+if ! command -v gnome-disks; then
   echo "Installing gnome-disk-utility"
   sudo apt install gnome-disk-utility
   echo "Installed gnome-disk-utility"
