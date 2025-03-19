@@ -1027,6 +1027,20 @@ else
   echo "Already installed pavucontrol"
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                        usbimager                         │
+#          │           https://gitlab.com/bztsrc/usbimager            │
+#          ╰──────────────────────────────────────────────────────────╯
+if command -v usbimager; then
+  echo "Installing usbimager"
+  curl -sLO https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.10-amd64.deb
+  apt install -y ./usbimager_1.0.10-amd64.deb
+  rm usbimager_1.0.10-amd64.deb
+  echo "Installed usbimager"
+else
+  echo "Already installled usbimager"
+fi
+
 # TODO: Only reboot if something in the system environment has changed as a result of code run in this file. Might be hard to determine/track this. Might be able to use a local variable to track when a change is made, that is worth rebooting for.
 
 # cleanup
