@@ -15,9 +15,6 @@ export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)$
 # delta
 export PATH="$PATH:/home/drew/.local/bin"
 
-# balena-cli
-export PATH="$PATH:/opt/balena-cli"
-
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f"
 

@@ -262,9 +262,13 @@ fi
 #          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
 #          ╰───────────────────────────────────────────────────────────╯
 if command -v fd; then
+  echo "Installing fd"
   mkdir p ~/.local/bin
   sudo apt install -y fd-find
   ln -s "$(which fdfind)" ~/.local/bin/fd
+  echo "Installed fd"
+else
+  echo "Already installed fd"
 fi
 
 #    ╭──────────────────────────────────────────────────────────────────────╮
@@ -272,8 +276,12 @@ fi
 #    │https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-apt │
 #    ╰──────────────────────────────────────────────────────────────────────╯
 if command -v bat; then
+  echo "Installing bat"
   sudo apt install -y bat
   ln -s /usr/bin/batcat ~/.local/bin/bat
+  echo "Installed bat"
+else
+  echo "Already installed bat"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -320,9 +328,13 @@ fi
 # verifying in programmic install
 # https://github.com/aws/aws-cli/issues/6230
 if command -v aws; then
+  echo "Installing awscli"
   curl -s "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
+  echo "Installed awscli"
+else
+  echo "Already installed awscli"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -331,7 +343,11 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # allows neovim to access clipboard via wayland
 if command -v wl-copy; then
+  echo "Installing wl-clipboard"
   sudo apt install -y wl-clipboard
+  echo "Installed wl-clipboard"
+else
+  echo "Already installed wl-clipboard"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -342,6 +358,7 @@ version="5.1.5"
 
 # TODO: Might want to update this to specifically check if lua 5.1 installed
 if command -v lua; then
+  echo "Installing lua v5.1"
   # install build dependencies
   sudo apt-get install libreadline-dev
 
@@ -354,6 +371,9 @@ if command -v lua; then
   make test
   # install
   sudo make install
+  echo "Installed lua v5.1"
+else
+  echo "Already installed lua v5.1"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -363,11 +383,15 @@ fi
 version="3.11.1"
 
 if command -v luarocks; then
+  echo "Installing luarocks"
   wget https://luarocks.org/releases/luarocks-${version}.tar.gz
   tar zxpf luarocks-${version}.tar.gz
   cd luarocks-3.11.1 || exit
   ./configure && make && sudo make install
   sudo luarocks install luasocket
+  echo "Installed luarocks"
+else
+  echo "Already installed luarocks"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -377,23 +401,31 @@ fi
 version="3.0.2"
 
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
+  echo "Installing JetBrainsMonoNerdFont"
   wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/JetBrainsMono.zip &&
     cd ~/.local/share/fonts &&
     unzip JetBrainsMono.zip &&
     rm JetBrainsMono.zip &&
     fc-cache -fv
+  echo "Installed JetBrainsMonoNerdFont"
+else
+  echo "Already installed JetBrainsMonoNerdFont"
 fi
 #        ╭───────────────────────────────────────────────────────────────╮
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
 if command -v nvim; then
+  echo "Installing neovim"
   # TODO: Figure out what requires 'yarn'
   # tree-sitter-cli required by Swift LSP
   npm i -g yarn tree-sitter-cli
   curl -sLO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz"
   sudo rm -rf /opt/nvim
   sudo tar -C /opt -xzf "nvim-linux-${arch}.tar.gz"
+  echo "Installed neovim"
+else
+  echo "Already installed neovim"
 fi
 
 # update sudoers file so I can use neovim as root
@@ -413,7 +445,11 @@ fi
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
 if command -v tmux; then
+  echo "Installing tmux"
   sudo apt install -y tmux
+  echo "Installed tmux"
+else
+  echo "Already installed tmux"
 fi
 
 #     ╭─────────────────────────────────────────────────────────────────────╮
@@ -422,7 +458,11 @@ fi
 #     ╰─────────────────────────────────────────────────────────────────────╯
 
 if command -v tmuxinator; then
+  echo "Installing tmuxinator"
   gem install tmuxinator
+  echo "Installed tmuxinator"
+else
+  echo "Already installed tmuxinator"
 fi
 
 #        ╭──────────────────────────────────────────────────────────────╮
@@ -431,6 +471,7 @@ fi
 #        ╰──────────────────────────────────────────────────────────────╯
 # NOTE: There are no precompiled binaries for linux. Need to build from source.
 if command -v alacritty; then
+  echo "Installing alacritty"
   git clone https://github.com/alacritty/alacritty.git ~/projects/alacritty
   cd ~/projects/alacritty || exit
   rustup override set stable
@@ -450,6 +491,9 @@ if command -v alacritty; then
 
   # go back ~
   cd ~ || exit
+  echo "Installed alactritty"
+else
+  echo "Already installed alacritty"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -457,7 +501,11 @@ fi
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v jq; then
+  echo "Installing jq"
   sudo apt install -y jq
+  echo "Installed jq"
+else
+  echo "Already installed jq"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -465,7 +513,11 @@ fi
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v imagemagick; then
+  echo "Installing imagemagick"
   sudo apt install -y imagemagick
+  echo "Installed imagemagick"
+else
+  echo "Already installed imagemagick"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -473,7 +525,11 @@ fi
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v zoxide; then
+  echo "Installing zoxide"
   sudo apt install -y zoxide
+  echo "Installed zoxide"
+else
+  echo "Already installed zoxide"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -481,10 +537,14 @@ fi
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v yazi; then
+  echo "Installing yazi"
   # install deps
   sudo apt install -y ffmpeg 7zip poppler-utils
   # install yazi
   cargo install --locked yazi-fm yazi-cli
+  echo "Installed yazi"
+else
+  echo "Already installed yazi"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -492,7 +552,11 @@ fi
 #          │                    https://jless.io/                     │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v jless; then
+  echo "Installing jless"
   cargo install jless
+  echo "Installed jless"
+else
+  echo "Already installed jless"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -502,9 +566,13 @@ fi
 version='3.195.25'
 
 if command -v standard_notes; then
+  echo "Installing standard notes"
   curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-${arch}.AppImage"
   chmod a+x "standard-notes-${version}-linux-${arch}.AppImage"
   mv "standard-notes-${version}-linux-${arch}.AppImage" /opt/standard_notes/standard_notes
+  echo "Installed standard notes"
+else
+  echo "Already installed standard notes"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -512,6 +580,7 @@ fi
 #          │   https://docs.docker.com/desktop/setup/install/linux/   │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v docker; then
+  echo "Installing docker"
   sudo apt install -y gnome-terminal
 
   # Add Docker's official GPG key:
@@ -541,6 +610,9 @@ if command -v docker; then
   # https://stackoverflow.com/a/73564032/13175926
   # NOTE: If I get an "Can't connect to Docker Daemon" error, run:
   # docker context use default
+  echo "Installed docker"
+else
+  echo "Already installed docker"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -554,8 +626,12 @@ sudo apt install -y openssh-server
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v restic; then
+  echo "Installing restic"
   sudo apt install -y restic
   sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
+  echo "Installed restic"
+else
+  echo "Already installed restic"
 fi
 
 # NOTE: fish completions are already stored in dotfiles
@@ -567,11 +643,15 @@ fi
 version='0.29.1'
 
 if command -v resticprofile; then
+  echo "Installing resticprofile"
   curl -sLO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
   mkdir "resticprofile_${version}_linux_${platform}"
   tar -xzpf "resticprofile_${version}_linux_${platform}.tar.gz" -C resticprofile_${version}_linux_${platform}
   sudo cp resticprofile_${version}_linux_${platform}/resticprofile /usr/local/bin/
   rm -rf restic*
+  echo "Installed resticprofile"
+else
+  echo "Already installed resticprofile"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -579,7 +659,11 @@ fi
 #          │             https://github.com/bootandy/dust             │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v dust; then
+  echo "Installing dust"
   cargo install du-dust
+  echo "Installed dust"
+else
+  echo "Already installed dust"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -587,7 +671,11 @@ fi
 #          │       https://tracker.debian.org/teams/kiwix-team/       │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v kiwix-desktop; then
+  echo "Installing kiwix-desktop"
   sudo apt install -y kiwix
+  echo "Installed kiwix-desktop"
+else
+  echo "Already installed kiwix-desktop"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -595,7 +683,11 @@ fi
 #          │            https://github.com/davatorium/rofi            │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v rofi; then
+  echo "Installing rofi"
   sudo apt install -y rofi
+  echo "Installed rofi"
+else
+  echo "Already installed rofi"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -612,7 +704,11 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: For creating unique identifiers (like when working with S3)
 if command -v uuidgen; then
+  echo "Installing uuidgen"
   sudo apt install -y uuid-runtime
+  echo "Installed uuidgen"
+else
+  echo "Already installed uuidgen"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -620,7 +716,11 @@ fi
 #          │                 https://github.com/i3/i3                 │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v i3; then
+  echo "Installing i3"
   sudo apt install -y i3
+  echo "Installed i3"
+else
+  echo "Already installed i3"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -628,8 +728,12 @@ fi
 #          │       https://github.com/Hummer12007/brightnessctl       │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v brightnessctl; then
+  echo "Installing brightnessctl"
   sudo usermod -aG video "$USER"
   sudo apt install -y brightnessctl
+  echo "Installed brightnessctl"
+else
+  echo "Already installed brightnessctl"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -637,7 +741,11 @@ fi
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v strawberry; then
+  echo "Installing strawberry"
   sudo apt install -y strawberry
+  echo "Installed strawberry"
+else
+  echo "Already installed strawberry"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -645,7 +753,11 @@ fi
 #          │               https://github.com/derf/feh                │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v feh; then
+  echo "Installing feh"
   sudo apt install -y feh
+  echo "Installed feh"
+else
+  echo "Already installed feh"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -655,9 +767,13 @@ fi
 version=''
 
 if command -v mergiraf; then
+  echo "Installing mergiraf"
   curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_${arch}-unknown-linux-gnu.tar.gz"
   tar xzf "mergiraf_${arch}-unknown-linux-gnu.tar.gz"
   sudo mv mergiraf /usr/local/bin/
+  echo "Installed mergiraf"
+else
+  echo "Already installed mergiraf"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -754,24 +870,18 @@ else
   echo "Already installed balena-etcher"
 fi
 
-# TODO: Pull in the latest release instead of hardcoded version
-if command -v balena; then
-  echo "Installing balena-cli"
-  curl -sLO https://github.com/balena-io/balena-cli/releases/download/v21.1.0/balena-cli-v21.1.0-linux-x64-standalone.zip
-  unzip balena-cli-v21.1.0-linux-x64-standalone.zip
-  mv balena-cli /opt/
-  rm balena-cli-v21.1.0-linux-x64-standalone.zip
-  echo "Installed balena-cli"
-fi
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         gparted                          │
 #          │                   https://gparted.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v gparted; then
+  echo "Installing gparted"
   # NOTE: for fat32
   sudo apt install -y dosfstools mtools
   sudo apt install -y gparted
+  echo "Installed gparted"
+else
+  echo "Already installed gparted"
 fi
 
 # NOTE: Miscellaneous notes on unmounting and shutting down USB drives
@@ -788,8 +898,12 @@ fi
 version='6.4.0.471'
 
 if command -v zoom; then
+  echo "Installing zoom"
   curl -sLO https://zoom.us/client/${version}/zoom_amd64.deb
   sudo apt install -y ./zoom_amd64.deb
+  echo "Installed zoom"
+else
+  echo "Already installed zoom"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -798,7 +912,11 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # for keeping computer awake during long-running processes
 if command -v keep_presence; then
+  echo "Installing keep-presence"
   python3 -m pip install keep_presence
+  echo "Installed keep-presence"
+else
+  echo "Already installed keep-presence"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -806,7 +924,11 @@ fi
 #          │          https://github.com/exislow/tidal-dl-ng          │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v tidal-dl-ng; then
+  echo "Installing tidal-dl-ng"
   pip install --upgrade tidal-dl-ng[gui]
+  echo "Installed tidal-dl-ng"
+else
+  echo "Already installed tidal-dl-ng"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -814,7 +936,11 @@ fi
 #          │               https://github.com/cmus/cmus               │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v cmus; then
+  echo "Installing cmus"
   sudo apt install -y cmus
+  echo "Installed cmus"
+else
+  echo "Already installed cmus"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -822,6 +948,7 @@ fi
 #          │              https://github.com/Arkq/cmusfm              │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v cmusfm; then
+  echo "Installing cmusfm"
   # install dependencies
   sudo apt install -y libcurl4-openssl-dev libnotify-dev
   # configure
@@ -830,6 +957,9 @@ if command -v cmusfm; then
   ../configure --enable-libnotify
   # build & install
   make && make install
+  echo "Installed cmusfm"
+else
+  echo "Already installed cmusfm"
 fi
 
 # NOTE: Post-installation steps
@@ -845,8 +975,12 @@ fi
 #          │        https://librewolf.net/installation/debian/        │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v librewolf; then
+  echo "Installing librewolf"
   sudo extrepo enable librewolf
   sudo apt update && sudo apt install librewolf -y
+  echo "Installed librewolf"
+else
+  echo "Already installed librewolf"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -854,6 +988,7 @@ fi
 #          │        https://mullvad.net/en/download/vpn/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v mullvad; then
+  echo "Installing mullvad"
   # TODO: Check if mullvad keyring is already installed, and listed as a repository
 
   # Download the Mullvad signing key
@@ -863,6 +998,9 @@ if command -v mullvad; then
   # Install the package
   sudo apt update
   sudo apt install -y mullvad-vpn
+  echo "Installed mullvad"
+else
+  echo "Already installed mullvad"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -870,7 +1008,23 @@ fi
 #          │         https://johnfactotum.github.io/foliate/          │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v foliate; then
+  echo "Installing foliate"
   sudo apt install -y foliate
+  echo "Installed foliate"
+else
+  echo "Already installed foliate"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                pulse audio volume control                │
+#          │ https://freedesktop.org/software/pulseaudio/pavucontrol/ │
+#          ╰──────────────────────────────────────────────────────────╯
+if command -v pavucontrol; then
+  echo "Installing pavucontrol"
+  sudo apt install -y pavucontrol
+  echo "Installed pavucontrol"
+else
+  echo "Already installed pavucontrol"
 fi
 
 # TODO: Only reboot if something in the system environment has changed as a result of code run in this file. Might be hard to determine/track this. Might be able to use a local variable to track when a change is made, that is worth rebooting for.
