@@ -45,7 +45,7 @@ pkg=cosign
 
 if [ ! -f "/usr/local/bin/$pkg" ]; then
   echo "Installing $pkg"
-  curl -LO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-$platform"
+  curl -sLO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-$platform"
   sudo mv $pkg-linux-$platform /usr/local/bin/$pkg
   sudo chmod +x /usr/local/bin/$pkg
   echo "Installed $pkg"
@@ -63,7 +63,7 @@ version=2.60.1
 if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   # Download .deb pkg, the checksum file, checksum file signature, and public signing key:
-  curl --location --remote-name-all \
+  curl --silent --location --remote-name-all \
     "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_linux_$platform.deb" \
     "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt" \
     "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt.sig" \
@@ -195,7 +195,7 @@ pkg="ripgrep"
 
 if command -v rg; then
   echo "Installing ripgrep"
-  curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_${platform}.deb
+  curl -sLO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_${platform}.deb
   sudo apt install -y ./ripgrep_14.1.0-1_amd64.deb
   echo "Installed ripgrep"
 else
@@ -211,7 +211,7 @@ version='0.18.2'
 
 if command -v $pkg; then
   echo "Installing $pkg"
-  curl -LO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
+  curl -sLO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
   sudo apt install -y ./git-delta_${version}_amd64.deb
   echo "Installed $pkg"
 else
@@ -298,12 +298,13 @@ fi
 #       │https://github.com/universal-ctags/ctags-nightly-build/releases │
 #       ╰────────────────────────────────────────────────────────────────╯
 pkg="ctags"
+# TODO: De-hardcode the date and checksum here and just pull the latest release
 release_date="2025.03.17"
+release_commit_SHA="cff205ee0d66994f1e26e0b7e3c9c482c7595bbc"
 
 if command -v ctags; then
   echo "Installing $pkg"
-  # TODO: Generalize this URL - the checksum is included might make it difficult to update
-  curl -LO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/2025.03.17%2Bcff205ee0d66994f1e26e0b7e3c9c482c7595bbc/uctags-${release_date}-linux-${arch}.deb"
+  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${release_date}%2B${release_commit_SHA}/uctags-${release_date}-linux-${arch}.deb"
   sudo apt install -y "./uctags-${release_date}-linux-${arch}.deb"
   echo "Installed $pkg"
 else
@@ -319,7 +320,7 @@ fi
 # verifying in programmic install
 # https://github.com/aws/aws-cli/issues/6230
 if command -v aws; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscliv2.zip"
+  curl -s "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
 fi
@@ -345,7 +346,7 @@ if command -v lua; then
   sudo apt-get install libreadline-dev
 
   # download
-  curl -LO https://www.lua.org/ftp/lua-${version}.tar.gz
+  curl -sLO https://www.lua.org/ftp/lua-${version}.tar.gz
   cd lua-${version} || exit
   # build
   make linux
@@ -390,7 +391,7 @@ if command -v nvim; then
   # TODO: Figure out what requires 'yarn'
   # tree-sitter-cli required by Swift LSP
   npm i -g yarn tree-sitter-cli
-  curl -LO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz"
+  curl -sLO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz"
   sudo rm -rf /opt/nvim
   sudo tar -C /opt -xzf "nvim-linux-${arch}.tar.gz"
 fi
@@ -501,7 +502,7 @@ fi
 version='3.195.25'
 
 if command -v standard_notes; then
-  curl -LO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-${arch}.AppImage"
+  curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-${arch}.AppImage"
   chmod a+x "standard-notes-${version}-linux-${arch}.AppImage"
   mv "standard-notes-${version}-linux-${arch}.AppImage" /opt/standard_notes/standard_notes
 fi
@@ -531,7 +532,7 @@ if command -v docker; then
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
   # Download latest release
-  curl -LO https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb
+  curl -sLO https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb
 
   # Install
   sudo apt install -y ./docker-desktop-amd64.deb
@@ -566,7 +567,7 @@ fi
 version='0.29.1'
 
 if command -v resticprofile; then
-  curl -LO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
+  curl -sLO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
   mkdir "resticprofile_${version}_linux_${platform}"
   tar -xzpf "resticprofile_${version}_linux_${platform}.tar.gz" -C resticprofile_${version}_linux_${platform}
   sudo cp resticprofile_${version}_linux_${platform}/resticprofile /usr/local/bin/
@@ -654,7 +655,7 @@ fi
 version=''
 
 if command -v mergiraf; then
-  curl -LO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_${arch}-unknown-linux-gnu.tar.gz"
+  curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_${arch}-unknown-linux-gnu.tar.gz"
   tar xzf "mergiraf_${arch}-unknown-linux-gnu.tar.gz"
   sudo mv mergiraf /usr/local/bin/
 fi
@@ -664,7 +665,11 @@ fi
 #          │                https://svn.nmap.org/nmap/                │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v nmap; then
+  echo "Installing nmap"
   sudo apt install -y nmap
+  echo "Installed nmap"
+else
+  echo "Already installed nmap"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -672,10 +677,16 @@ fi
 #          │          https://github.com/Alex313031/thorium           │
 #          ╰──────────────────────────────────────────────────────────╯
 # install dependencies
-sudo apt install -y fonts-liberation libu2f-udev
-# download
-curl -LO "https://github.com/Alex313031/thorium/releases/latest/download/thorium-browser_130.0.6723.174_SSE4.deb"
-sudo apt install -y ./thorium-browser_130.0.6723.174_SSE4.deb
+pkg="thorium-browser"
+if command -v $pkg; then
+  echo "Installing thorium"
+  sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
+    http://dl.thorium.rocks/debian/dists/stable/thorium.list &&
+    sudo apt update
+  echo "Installed thorium"
+else
+  echo "Already installed thorium"
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         openvpn                          │
@@ -683,7 +694,11 @@ sudo apt install -y ./thorium-browser_130.0.6723.174_SSE4.deb
 #          ╰──────────────────────────────────────────────────────────╯
 # usage: sudo openvpn <config>
 if [ ! -x /sbin/openvpn ]; then
+  echo "Installing openvpn"
   sudo apt install -y openvpn
+  echo "Installing openvpn"
+else
+  echo "Already installed openvpn"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -691,7 +706,11 @@ fi
 #          │            https://www.wireguard.com/install/            │
 #          ╰──────────────────────────────────────────────────────────╯
 if command -v wg; then
+  echo "Installing wireguard"
   sudo apt install -y wireguard
+  echo "Installed wireguard"
+else
+  echo "Already installed wireguard"
 fi
 # Notes on creating and using client configurations
 # # Create and download client configuration file from Wireguard server
@@ -712,7 +731,11 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Provides `updatedb` and `locate` commands - alternative to `locate`
 if command -v plocate; then
+  echo "Installing plocate"
   sudo apt install -y plocate
+  echo "Installed plocate"
+else
+  echo "Already installed plocate"
 fi
 
 #╭───────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -721,9 +744,24 @@ fi
 #╰───────────────────────────────────────────────────────────────────────────────────────────────╯
 version='2.1.0'
 
+# TODO: Is installing GUI necessary if I have CLI installed?
 if command -v balena-etcher; then
-  curl -LO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_${version}_${platform}.deb"
+  echo "Installing balena-etcher"
+  curl -sLO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_${version}_${platform}.deb"
   sudo apt install -y ./balena-etcher_${version}_${platform}.deb
+  echo "Installed balena-etcher"
+else
+  echo "Already installed balena-etcher"
+fi
+
+# TODO: Pull in the latest release instead of hardcoded version
+if command -v balena; then
+  echo "Installing balena-cli"
+  curl -sLO https://github.com/balena-io/balena-cli/releases/download/v21.1.0/balena-cli-v21.1.0-linux-x64-standalone.zip
+  unzip balena-cli-v21.1.0-linux-x64-standalone.zip
+  mv balena-cli /opt/
+  rm balena-cli-v21.1.0-linux-x64-standalone.zip
+  echo "Installed balena-cli"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -750,7 +788,7 @@ fi
 version='6.4.0.471'
 
 if command -v zoom; then
-  curl -LO https://zoom.us/client/${version}/zoom_amd64.deb
+  curl -sLO https://zoom.us/client/${version}/zoom_amd64.deb
   sudo apt install -y ./zoom_amd64.deb
 fi
 
