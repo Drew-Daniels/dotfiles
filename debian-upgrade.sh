@@ -91,14 +91,6 @@ else
   echo "universal-ctags up-to-date"
 fi
 
-#╭───────────────────────────────────────────────────────────────────────────────────────────────╮
-#│                                         balena-etcher                                         │
-#│https://github.com/balena-io/etcher#debian-and-ubuntu-based-package-repository-gnulinux-x86x64 │
-#╰───────────────────────────────────────────────────────────────────────────────────────────────╯
-# TODO: balena-etcher
-# TODO: Add SHA verification step - SHAs are posted with each release
-latest_version=$(curl -sL https://api.github.com/repos/balena-io/etcher/releases/latest | jq '.tag_name' | sed 's/"//g; s/v//')
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           zoom                           │
 #          │            https://zoom.us/download?os=linux             │

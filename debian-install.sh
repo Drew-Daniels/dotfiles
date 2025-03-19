@@ -854,22 +854,6 @@ else
   echo "Already installed plocate"
 fi
 
-#╭───────────────────────────────────────────────────────────────────────────────────────────────╮
-#│                                         balena-etcher                                         │
-#│https://github.com/balena-io/etcher#debian-and-ubuntu-based-package-repository-gnulinux-x86x64 │
-#╰───────────────────────────────────────────────────────────────────────────────────────────────╯
-version='2.1.0'
-
-# TODO: Is installing GUI necessary if I have CLI installed?
-if ! command -v balena-etcher; then
-  echo "Installing balena-etcher"
-  curl -sLO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_${version}_${platform}.deb"
-  sudo apt install -y ./balena-etcher_${version}_${platform}.deb
-  echo "Installed balena-etcher"
-else
-  echo "Already installed balena-etcher"
-fi
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         gparted                          │
 #          │                   https://gparted.org/                   │
