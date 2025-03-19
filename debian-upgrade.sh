@@ -52,10 +52,6 @@ fi
 #          │                          delta                           │
 #          │       https://github.com/dandavison/delta/releases       │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: git-delta
-# Can get the latest release using this URL: https://api.github.com/repos/dandavison/delta/releases/latest
-# Can similarly do this for any repo on github that posts releases to GitHub
-# TODO: Make this into a reusable function that takes a GitHub Owner, Repo, and returns the latest release tag
 latest=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g')
 current=$(delta --version | cut -d ' ' -f2)
 
