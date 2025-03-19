@@ -193,7 +193,7 @@ sudo apt-get install git-credential-oauth
 #    ╰──────────────────────────────────────────────────────────────────────╯
 pkg="ripgrep"
 
-if command -v rg; then
+if ! command -v rg; then
   echo "Installing ripgrep"
   curl -sLO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_${platform}.deb
   sudo apt install -y ./ripgrep_14.1.0-1_amd64.deb
@@ -209,7 +209,7 @@ fi
 pkg='delta'
 version='0.18.2'
 
-if command -v $pkg; then
+if ! command -v $pkg; then
   echo "Installing $pkg"
   curl -sLO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
   sudo apt install -y ./git-delta_${version}_amd64.deb
@@ -222,7 +222,7 @@ fi
 #│                                     starship                                     │
 #│https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation │
 #╰──────────────────────────────────────────────────────────────────────────────────╯
-if command -v starship; then
+if ! command -v starship; then
   echo "Installing starship"
   cargo install starship --locked
   echo "Installed starship"
@@ -234,7 +234,7 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v fish; then
+if ! command -v fish; then
   echo "Installing fish"
   echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
   curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg >/dev/null
@@ -249,7 +249,7 @@ fi
 #          │                           fzf                            │
 #          │       https://junegunn.github.io/fzf/installation/       │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v fzf; then
+if ! command -v fzf; then
   echo "Installing fzf"
   sudo apt install -y fzf
   echo "Installed fzf"
@@ -261,7 +261,7 @@ fi
 #          │                            fd                             │
 #          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
 #          ╰───────────────────────────────────────────────────────────╯
-if command -v fd; then
+if ! command -v fd; then
   echo "Installing fd"
   mkdir p ~/.local/bin
   sudo apt install -y fd-find
@@ -275,7 +275,7 @@ fi
 #    │                                 bat                                  │
 #    │https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-apt │
 #    ╰──────────────────────────────────────────────────────────────────────╯
-if command -v bat; then
+if ! command -v bat; then
   echo "Installing bat"
   sudo apt install -y bat
   ln -s /usr/bin/batcat ~/.local/bin/bat
@@ -290,7 +290,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg="bat-extras"
 
-if command -v batgrep; then
+if ! command -v batgrep; then
   echo "Installing $pkg"
   cd ~/projects || exit
   git clone https://github.com/eth-p/$pkg.git
@@ -310,7 +310,7 @@ pkg="ctags"
 release_date="2025.03.17"
 release_commit_SHA="cff205ee0d66994f1e26e0b7e3c9c482c7595bbc"
 
-if command -v ctags; then
+if ! command -v ctags; then
   echo "Installing $pkg"
   curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${release_date}%2B${release_commit_SHA}/uctags-${release_date}-linux-${arch}.deb"
   sudo apt install -y "./uctags-${release_date}-linux-${arch}.deb"
@@ -327,7 +327,7 @@ fi
 # NOTE: There is not currently a way to programmatically get the AWS public key, so have to install without
 # verifying in programmic install
 # https://github.com/aws/aws-cli/issues/6230
-if command -v aws; then
+if ! command -v aws; then
   echo "Installing awscli"
   curl -s "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
@@ -342,7 +342,7 @@ fi
 #          │         https://github.com/bugaevc/wl-clipboard          │
 #          ╰──────────────────────────────────────────────────────────╯
 # allows neovim to access clipboard via wayland
-if command -v wl-copy; then
+if ! command -v wl-copy; then
   echo "Installing wl-clipboard"
   sudo apt install -y wl-clipboard
   echo "Installed wl-clipboard"
@@ -357,7 +357,7 @@ fi
 version="5.1.5"
 
 # TODO: Might want to update this to specifically check if lua 5.1 installed
-if command -v lua; then
+if ! command -v lua; then
   echo "Installing lua v5.1"
   # install build dependencies
   sudo apt-get install libreadline-dev
@@ -382,7 +382,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version="3.11.1"
 
-if command -v luarocks; then
+if ! command -v luarocks; then
   echo "Installing luarocks"
   wget https://luarocks.org/releases/luarocks-${version}.tar.gz
   tar zxpf luarocks-${version}.tar.gz
@@ -415,7 +415,7 @@ fi
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
-if command -v nvim; then
+if ! command -v nvim; then
   echo "Installing neovim"
   # TODO: Figure out what requires 'yarn'
   # tree-sitter-cli required by Swift LSP
@@ -444,7 +444,7 @@ fi
 #         │                            tmux                             │
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
-if command -v tmux; then
+if ! command -v tmux; then
   echo "Installing tmux"
   sudo apt install -y tmux
   echo "Installed tmux"
@@ -457,7 +457,7 @@ fi
 #     │https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#rubygems │
 #     ╰─────────────────────────────────────────────────────────────────────╯
 
-if command -v tmuxinator; then
+if ! command -v tmuxinator; then
   echo "Installing tmuxinator"
   gem install tmuxinator
   echo "Installed tmuxinator"
@@ -470,7 +470,7 @@ fi
 #        │https://github.com/alacritty/alacritty/blob/master/INSTALL.md │
 #        ╰──────────────────────────────────────────────────────────────╯
 # NOTE: There are no precompiled binaries for linux. Need to build from source.
-if command -v alacritty; then
+if ! command -v alacritty; then
   echo "Installing alacritty"
   git clone https://github.com/alacritty/alacritty.git ~/projects/alacritty
   cd ~/projects/alacritty || exit
@@ -500,7 +500,7 @@ fi
 #          │                            jq                            │
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v jq; then
+if ! command -v jq; then
   echo "Installing jq"
   sudo apt install -y jq
   echo "Installed jq"
@@ -512,7 +512,7 @@ fi
 #          │                       imagemagick                        │
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v imagemagick; then
+if ! command -v imagemagick; then
   echo "Installing imagemagick"
   sudo apt install -y imagemagick
   echo "Installed imagemagick"
@@ -524,7 +524,7 @@ fi
 #          │                          zoxide                          │
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v zoxide; then
+if ! command -v zoxide; then
   echo "Installing zoxide"
   sudo apt install -y zoxide
   echo "Installed zoxide"
@@ -536,7 +536,7 @@ fi
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v yazi; then
+if ! command -v yazi; then
   echo "Installing yazi"
   # install deps
   sudo apt install -y ffmpeg 7zip poppler-utils
@@ -551,7 +551,7 @@ fi
 #          │                          jless                           │
 #          │                    https://jless.io/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v jless; then
+if ! command -v jless; then
   echo "Installing jless"
   cargo install jless
   echo "Installed jless"
@@ -565,7 +565,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version='3.195.25'
 
-if command -v standard_notes; then
+if ! command -v standard_notes; then
   echo "Installing standard notes"
   curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-${arch}.AppImage"
   chmod a+x "standard-notes-${version}-linux-${arch}.AppImage"
@@ -579,7 +579,7 @@ fi
 #          │                      docker desktop                      │
 #          │   https://docs.docker.com/desktop/setup/install/linux/   │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v docker; then
+if ! command -v docker; then
   echo "Installing docker"
   sudo apt install -y gnome-terminal
 
@@ -625,7 +625,7 @@ sudo apt install -y openssh-server
 #          │                          restic                          │
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v restic; then
+if ! command -v restic; then
   echo "Installing restic"
   sudo apt install -y restic
   sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
@@ -642,7 +642,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version='0.29.1'
 
-if command -v resticprofile; then
+if ! command -v resticprofile; then
   echo "Installing resticprofile"
   curl -sLO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
   mkdir "resticprofile_${version}_linux_${platform}"
@@ -658,7 +658,7 @@ fi
 #          │                           dust                           │
 #          │             https://github.com/bootandy/dust             │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v dust; then
+if ! command -v dust; then
   echo "Installing dust"
   cargo install du-dust
   echo "Installed dust"
@@ -670,7 +670,7 @@ fi
 #          │                          kiwix                           │
 #          │       https://tracker.debian.org/teams/kiwix-team/       │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v kiwix-desktop; then
+if ! command -v kiwix-desktop; then
   echo "Installing kiwix-desktop"
   sudo apt install -y kiwix
   echo "Installed kiwix-desktop"
@@ -682,7 +682,7 @@ fi
 #          │                           rofi                           │
 #          │            https://github.com/davatorium/rofi            │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v rofi; then
+if ! command -v rofi; then
   echo "Installing rofi"
   sudo apt install -y rofi
   echo "Installed rofi"
@@ -694,7 +694,7 @@ fi
 #          │                      speedtest-cli                       │
 #          │          https://github.com/sivel/speedtest-cli          │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v speedtest-cli; then
+if ! command -v speedtest-cli; then
   sudo apt install -y speedtest-cli
 fi
 
@@ -703,7 +703,7 @@ fi
 #          │       https://packages.debian.org/sid/uuid-runtime       │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: For creating unique identifiers (like when working with S3)
-if command -v uuidgen; then
+if ! command -v uuidgen; then
   echo "Installing uuidgen"
   sudo apt install -y uuid-runtime
   echo "Installed uuidgen"
@@ -715,7 +715,7 @@ fi
 #          │                            i3                            │
 #          │                 https://github.com/i3/i3                 │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v i3; then
+if ! command -v i3; then
   echo "Installing i3"
   sudo apt install -y i3
   echo "Installed i3"
@@ -727,7 +727,7 @@ fi
 #          │                      brightnessctl                       │
 #          │       https://github.com/Hummer12007/brightnessctl       │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v brightnessctl; then
+if ! command -v brightnessctl; then
   echo "Installing brightnessctl"
   sudo usermod -aG video "$USER"
   sudo apt install -y brightnessctl
@@ -740,7 +740,7 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v strawberry; then
+if ! command -v strawberry; then
   echo "Installing strawberry"
   sudo apt install -y strawberry
   echo "Installed strawberry"
@@ -752,7 +752,7 @@ fi
 #          │                           feh                            │
 #          │               https://github.com/derf/feh                │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v feh; then
+if ! command -v feh; then
   echo "Installing feh"
   sudo apt install -y feh
   echo "Installed feh"
@@ -766,7 +766,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version=''
 
-if command -v mergiraf; then
+if ! command -v mergiraf; then
   echo "Installing mergiraf"
   curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_${arch}-unknown-linux-gnu.tar.gz"
   tar xzf "mergiraf_${arch}-unknown-linux-gnu.tar.gz"
@@ -780,7 +780,7 @@ fi
 #          │                           nmap                           │
 #          │                https://svn.nmap.org/nmap/                │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v nmap; then
+if ! command -v nmap; then
   echo "Installing nmap"
   sudo apt install -y nmap
   echo "Installed nmap"
@@ -794,7 +794,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # install dependencies
 pkg="thorium-browser"
-if command -v $pkg; then
+if ! command -v $pkg; then
   echo "Installing thorium"
   sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
     http://dl.thorium.rocks/debian/dists/stable/thorium.list &&
@@ -821,7 +821,7 @@ fi
 #          │                        wireguard                         │
 #          │            https://www.wireguard.com/install/            │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v wg; then
+if ! command -v wg; then
   echo "Installing wireguard"
   sudo apt install -y wireguard
   echo "Installed wireguard"
@@ -846,7 +846,7 @@ fi
 #          │                https://plocate.sesse.net/                │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Provides `updatedb` and `locate` commands - alternative to `locate`
-if command -v plocate; then
+if ! command -v plocate; then
   echo "Installing plocate"
   sudo apt install -y plocate
   echo "Installed plocate"
@@ -861,7 +861,7 @@ fi
 version='2.1.0'
 
 # TODO: Is installing GUI necessary if I have CLI installed?
-if command -v balena-etcher; then
+if ! command -v balena-etcher; then
   echo "Installing balena-etcher"
   curl -sLO "https://github.com/balena-io/etcher/releases/latest/download/balena-etcher_${version}_${platform}.deb"
   sudo apt install -y ./balena-etcher_${version}_${platform}.deb
@@ -874,7 +874,7 @@ fi
 #          │                         gparted                          │
 #          │                   https://gparted.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v gparted; then
+if ! command -v gparted; then
   echo "Installing gparted"
   # NOTE: for fat32
   sudo apt install -y dosfstools mtools
@@ -897,7 +897,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version='6.4.0.471'
 
-if command -v zoom; then
+if ! command -v zoom; then
   echo "Installing zoom"
   curl -sLO https://zoom.us/client/${version}/zoom_amd64.deb
   sudo apt install -y ./zoom_amd64.deb
@@ -911,7 +911,7 @@ fi
 #          │        https://github.com/carrot69/keep-presence         │
 #          ╰──────────────────────────────────────────────────────────╯
 # for keeping computer awake during long-running processes
-if command -v keep_presence; then
+if ! command -v keep_presence; then
   echo "Installing keep-presence"
   python3 -m pip install keep_presence
   echo "Installed keep-presence"
@@ -923,7 +923,7 @@ fi
 #          │                       tidal-dl-ng                        │
 #          │          https://github.com/exislow/tidal-dl-ng          │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v tidal-dl-ng; then
+if ! command -v tidal-dl-ng; then
   echo "Installing tidal-dl-ng"
   pip install --upgrade tidal-dl-ng[gui]
   echo "Installed tidal-dl-ng"
@@ -935,7 +935,7 @@ fi
 #          │                           cmus                           │
 #          │               https://github.com/cmus/cmus               │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v cmus; then
+if ! command -v cmus; then
   echo "Installing cmus"
   sudo apt install -y cmus
   echo "Installed cmus"
@@ -947,7 +947,7 @@ fi
 #          │                          cmusfm                          │
 #          │              https://github.com/Arkq/cmusfm              │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v cmusfm; then
+if ! command -v cmusfm; then
   echo "Installing cmusfm"
   # install dependencies
   sudo apt install -y libcurl4-openssl-dev libnotify-dev
@@ -974,7 +974,7 @@ fi
 #          │                        librewolf                         │
 #          │        https://librewolf.net/installation/debian/        │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v librewolf; then
+if ! command -v librewolf; then
   echo "Installing librewolf"
   sudo extrepo enable librewolf
   sudo apt update && sudo apt install librewolf -y
@@ -987,7 +987,7 @@ fi
 #          │                         mullvad                          │
 #          │        https://mullvad.net/en/download/vpn/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v mullvad; then
+if ! command -v mullvad; then
   echo "Installing mullvad"
   # TODO: Check if mullvad keyring is already installed, and listed as a repository
 
@@ -1007,7 +1007,7 @@ fi
 #          │                         foliate                          │
 #          │         https://johnfactotum.github.io/foliate/          │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v foliate; then
+if ! command -v foliate; then
   echo "Installing foliate"
   sudo apt install -y foliate
   echo "Installed foliate"
@@ -1019,7 +1019,7 @@ fi
 #          │                pulse audio volume control                │
 #          │ https://freedesktop.org/software/pulseaudio/pavucontrol/ │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v pavucontrol; then
+if ! command -v pavucontrol; then
   echo "Installing pavucontrol"
   sudo apt install -y pavucontrol
   echo "Installed pavucontrol"
@@ -1031,7 +1031,7 @@ fi
 #          │                        usbimager                         │
 #          │           https://gitlab.com/bztsrc/usbimager            │
 #          ╰──────────────────────────────────────────────────────────╯
-if command -v usbimager; then
+if ! command -v usbimager; then
   echo "Installing usbimager"
   curl -sLO https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.10-amd64.deb
   apt install -y ./usbimager_1.0.10-amd64.deb
@@ -1039,6 +1039,18 @@ if command -v usbimager; then
   echo "Installed usbimager"
 else
   echo "Already installled usbimager"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                    gnome-disk-utility                    │
+#          │    https://gitlab.gnome.org/GNOME/gnome-disk-utility     │
+#          ╰──────────────────────────────────────────────────────────╯
+if ! command -v gnome-disk-utility; then
+  echo "Installing gnome-disk-utility"
+  sudo apt install gnome-disk-utility
+  echo "Installed gnome-disk-utility"
+else
+  echo "Already installed gnome-disk-utility"
 fi
 
 # TODO: Only reboot if something in the system environment has changed as a result of code run in this file. Might be hard to determine/track this. Might be able to use a local variable to track when a change is made, that is worth rebooting for.
