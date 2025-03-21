@@ -42,12 +42,13 @@ export MUX_LAYOUT=main-horizontal
 alias yless="jless --yaml"
 
 # mise
-# development, testing, production
-export MISE_ENV="development"
-
 # TODO: Eventually remove mise - until now this is a hack to stop the error when this
 # gets sourced on NixOS, where mise is not installed
-eval "$(command -v mise && mise activate bash)"
+if command -v mise >/dev/null; then
+  # development, testing, production
+  export MISE_ENV="development"
+  eval "$(mise activate bash)"
+fi
 
 # starship
 eval "$(starship init bash)"

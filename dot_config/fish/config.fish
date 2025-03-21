@@ -1,8 +1,8 @@
 if status is-interactive
     switch (uname)
         case Linux
-	    if command -q mise
-              mise activate fish | source
+            if command -q mise
+                mise activate fish | source
             end
             # TODO: make specific to macos
             set computerName (hostname)
