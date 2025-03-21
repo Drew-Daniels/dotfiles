@@ -45,7 +45,9 @@ alias yless="jless --yaml"
 # development, testing, production
 export MISE_ENV="development"
 
-eval "$(mise activate bash)"
+# TODO: Eventually remove mise - until now this is a hack to stop the error when this
+# gets sourced on NixOS, where mise is not installed
+eval "$(command -v mise && mise activate bash)"
 
 # starship
 eval "$(starship init bash)"
