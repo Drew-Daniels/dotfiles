@@ -39,3 +39,11 @@ Some packages have to be manually updated outside of package managers like, `apt
 ```bash
 sudo ./debian-update.sh
 ```
+
+## `NixOS` Workstation Setup Notes
+
+```bash
+curl --silent --location --remote-name-all \
+    https://channels.nixos.org/nixos-24.11/latest-nixos-plasma6-x86_64-linux.iso.sha256 \
+    https://channels.nixos.org/nixos-24.11/latest-nixos-plasma6-x86_64-linux.iso
+```
