@@ -133,7 +133,7 @@ eval "$(zoxide init --cmd j bash)"
 
 # export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
 # export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
-. "$HOME/.cargo/env"
+test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 source /home/drew/projects/alacritty/extra/completions/alacritty.bash
 
 # restic
