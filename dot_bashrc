@@ -146,3 +146,6 @@ alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/p
 
 # Standard Notes
 export PATH="$PATH:/opt/standard_notes"
+
+# helpers
+alias get_public_ip="curl https://ipinfo.io/ip"
