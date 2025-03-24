@@ -1,1 +1,3 @@
-CARGO_PATH_HELPER_PATH="$HOME/.cargo/env.fish" test -f $CARGO_PATH_HELPER_PATH && source $CARGO_PATH_HELPER_PATH
+if test -e $HOME/.cargo/env.fish
+    source $HOME/.cargo/env.fish
+end
