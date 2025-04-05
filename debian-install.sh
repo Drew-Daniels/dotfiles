@@ -1070,6 +1070,23 @@ else
   echo "Already installed veracrypt"
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          zulip                           │
+#          │   https://chat.fhir.org/help/desktop-app-install-guide   │
+#          ╰──────────────────────────────────────────────────────────╯
+if ! command -v zulip; then
+  echo "Installing zulip"
+  sudo curl -fL -o /etc/apt/trusted.gpg.d/zulip-desktop.asc \
+    https://download.zulip.com/desktop/apt/zulip-desktop.asc
+  echo "deb https://download.zulip.com/desktop/apt stable main" |
+    sudo tee /etc/apt/sources.list.d/zulip-desktop.list
+  sudo apt update
+  sudo apt install zulip
+  echo "Installed zulip"
+else
+  echo "Already installed zulip"
+fi
+
 # TODO: Only reboot if something in the system environment has changed as a result of code run in this file. Might be hard to determine/track this. Might be able to use a local variable to track when a change is made, that is worth rebooting for.
 
 # cleanup
