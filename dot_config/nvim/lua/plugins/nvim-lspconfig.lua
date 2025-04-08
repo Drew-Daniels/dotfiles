@@ -1,28 +1,25 @@
 local servers = {
-	"emmet_language_server",
-	"jsonls",
-	"html",
-	"clangd",
-	"cssmodules_ls",
-	"docker_compose_language_service",
-	"dockerls",
-	"emmet_language_server",
-	"yamlls",
-	"marksman",
-	"cucumber_language_server",
-	"tailwindcss",
-	"terraformls",
-	"sqlls",
-	"vimls",
-	"prismals",
-	"volar",
-	"nil_ls",
-	"clojure_lsp",
-	-- turning off for now: https://github.com/nrwl/nx-console/issues/2019
-	-- "nxls",
-	"ruff",
-	"basedpyright",
-	"tflint",
+	jsonls = {},
+	html = {},
+	clangd = {},
+	cssmodules_ls = {},
+	docker_compose_language_service = {},
+	dockerls = {},
+	emmet_language_server = {},
+	yamlls = {},
+	marksman = {},
+	cucumber_language_server = {},
+	tailwindcss = {},
+	terraformls = {},
+	sqlls = {},
+	vimls = {},
+	prismals = {},
+	volar = {},
+	nil_ls = {},
+	clojure_lsp = {},
+	ruff = {},
+	basedpyright = {},
+	tflint = {},
 }
 
 return {
@@ -30,8 +27,9 @@ return {
 	config = function(_, _)
 		local lspconfig = require("lspconfig")
 
-		for _, lsp in ipairs(servers) do
-			lspconfig[lsp].setup({})
+		for server, config in pairs(servers) do
+			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			lspconfig[server].setup(config)
 		end
 
 		lspconfig.bashls.setup({
