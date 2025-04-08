@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	dependencies = "rafamadriz/friendly-snippets",
 	-- dev = true,
-	version = "v0.13.*",
+	version = "v0.14.*",
 	-- version = "v0.*",
 	-- NOTE: Need to run this build manually
 	-- build = "cargo build --release",
