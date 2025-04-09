@@ -8,18 +8,23 @@ sudo mkdir -p /usr/local/bin
 #          │                         homebrew                         │
 #          │                     https://brew.sh/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command -v brew >/dev/null 2>&1; then
+	echo "Installing homebrew"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	echo "Installed homebrew"
+end
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
 # TODO: Build from source for bettery security, or verify
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
-
-# initialize dotfiles
-# chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
-chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+if ! command -v chezmoi >/dev/null 2>&1; then
+	sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+	# initialize dotfiles
+	# chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
+	chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+end
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          rustup                          │
