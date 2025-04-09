@@ -64,7 +64,7 @@ sudo make install
 #          │                         luarocks                         │
 #          │                  https://luarocks.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
 tar zxpf luarocks-3.11.1.tar.gz
 cd luarocks-3.11.1 || exit
 ./configure && make && sudo make install
