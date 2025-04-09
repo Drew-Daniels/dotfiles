@@ -1,4 +1,4 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 
 mkdir -p ~/projects
 
@@ -26,6 +26,8 @@ if ! command -v chezmoi >/dev/null 2>&1; then
 	# initialize dotfiles
 	# chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
 	chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+  # Remove after cloning dotfiles, since chezmoi should ideally be managed via homebrew for easier updates
+  sudo rm /usr/local/bin/chezmoi
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
