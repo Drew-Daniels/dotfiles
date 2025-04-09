@@ -4,6 +4,8 @@ mkdir -p ~/projects
 
 git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
 
+git clone https://github.com/Drew-Daniels/work_notes.git ~/projects/work_notes
+
 sudo mkdir -p /usr/local/bin
 
 #          ╭──────────────────────────────────────────────────────────╮
