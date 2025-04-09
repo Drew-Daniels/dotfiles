@@ -1,6 +1,9 @@
 #!/user/bin/env bash
 
 mkdir ~/projects
+
+sudo mkdir -p /usr/local/bin
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         homebrew                         │
 #          │                     https://brew.sh/                     │
@@ -11,7 +14,8 @@ mkdir ~/projects
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-brew install chezmoi
+# TODO: Build from source for bettery security, or verify
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 
 # initialize dotfiles
 # chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
