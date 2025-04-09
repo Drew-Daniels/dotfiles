@@ -2,6 +2,8 @@
 
 mkdir -p ~/projects
 
+git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
+
 sudo mkdir -p /usr/local/bin
 
 #          ╭──────────────────────────────────────────────────────────╮
