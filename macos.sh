@@ -12,7 +12,7 @@ if ! command -v brew >/dev/null 2>&1; then
 	echo "Installing homebrew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo "Installed homebrew"
-end
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
@@ -24,7 +24,7 @@ if ! command -v chezmoi >/dev/null 2>&1; then
 	# initialize dotfiles
 	# chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
 	chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
-end
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          rustup                          │
