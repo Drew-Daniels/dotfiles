@@ -237,7 +237,6 @@ brew "yazi"
 brew "zoxide"
 brew "ankitpokhrel/jira-cli/jira-cli"
 brew "cormacrelf/tap/dark-notify"
-brew "mongodb/brew/mongodb-community@6.0"
 cask "1password-cli"
 cask "1password@nightly"
 cask "alfred"
@@ -248,7 +247,6 @@ cask "firefox"
 cask "font-jetbrains-mono-nerd-font"
 cask "google-chrome"
 cask "iterm2"
-cask "jiggler"
 cask "keycastr"
 cask "michaelvillar-timer"
 cask "obs"
@@ -258,7 +256,6 @@ cask "raindropio"
 cask "rectangle"
 cask "spotify"
 cask "tidal"
-mas "OneLogin for Safari", id: 1475824389
 mas "rcmd", id: 1596283165
 mas "Save to Raindrop.io", id: 1549370672
 mas "Snippety", id: 1530751461
