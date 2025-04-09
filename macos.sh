@@ -60,6 +60,10 @@ make macosx
 make test
 # install
 sudo make install
+
+# cleanup
+rm -rf lua-5.1.5*
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         luarocks                         │
 #          │                  https://luarocks.org/                   │
@@ -75,4 +79,5 @@ sudo luarocks install luasocket
 luarocks install --local magick
 
 # reboot
+# TODO: Figure out why this fails
 shutdown -r
