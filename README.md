@@ -5,11 +5,8 @@
 ### User Setup
 
 NOTE: Will need Administrator privileges to use `root` permission
-
-```bash
-cd ~/.local/share/chezmoi
-# bootstrap
-sudo ./macos.sh
+```zsh
+/bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles.git)"
 ```
 
 ## Debian Workstation Setup Notes
