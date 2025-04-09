@@ -1,6 +1,6 @@
 #!/user/bin/env bash
 
-mkdir ~/projects
+mkdir -p ~/projects
 
 sudo mkdir -p /usr/local/bin
 
