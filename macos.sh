@@ -64,6 +64,8 @@ mise install
 # install other homebrew-managed deps
 brew bundle
 
+# rm binaries that should be managed with homebrew from now on
+sudo rm /usr/local/bin/cosign
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         lua 5.1                          │
 #          │        https://www.lua.org/manual/5.4/readme.html        │
