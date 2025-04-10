@@ -31,6 +31,10 @@ age-keygen -o $HOME/key.txt
 # copy public key, and add it as an entry to `recipients` key in ~/.local/share/chezmoi/.chezmoi.toml.tmpl
 ```
 
+#### `rcmd` Configuration
+
+Open `rcmd` in menu bar and navigate to Settings > Import JSON > `~/.config/rcmd/settings.json`
+
 ## Debian Workstation Setup Notes
 
 ### User Setup
