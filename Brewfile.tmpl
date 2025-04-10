@@ -1,6 +1,5 @@
-{{- $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-{{- if eq $computerName "US-MBA-H67XXF5Y0X" -}}
-    {{- include "Brewfile_US-MBA-H67XXF5Y0X" -}}
+{{- if eq $homeOrWork "home" -}}
+    {{- include "Brewfile_home" -}}
 {{- else -}}
-    {{- include "Brewfile_drews-m1-mbp" -}}
+    {{- include "Brewfile_work" -}}
 {{- end -}}
