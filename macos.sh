@@ -57,7 +57,7 @@ mise install
 #          │                     homebrew bundle                      │
 #          │   https://docs.brew.sh/Brew-Bundle-and-Brewfile#usage    │
 #          ╰──────────────────────────────────────────────────────────╯
-brew bundle
+brew bundle --file=~/Brewfile
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         lua 5.1                          │
