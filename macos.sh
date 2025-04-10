@@ -83,5 +83,4 @@ sudo luarocks install luasocket
 luarocks install --local magick
 
 # reboot
-# TODO: Figure out why this fails
-shutdown -r
+sudo shutdown -r now
