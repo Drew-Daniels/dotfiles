@@ -6,7 +6,7 @@ git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/frien
 
 git clone https://github.com/Drew-Daniels/work_notes.git ~/projects/work_notes
 
-sudo mkdir -p /usr/local/bin
+mkdir -p /usr/local/bin
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         homebrew                         │
@@ -28,7 +28,7 @@ if ! command -v chezmoi >/dev/null 2>&1; then
 	# chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
 	chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
   # Remove after cloning dotfiles, since chezmoi should ideally be managed via homebrew for easier updates
-  sudo rm /usr/local/bin/chezmoi
+  rm /usr/local/bin/chezmoi
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -63,7 +63,7 @@ make macosx
 # verify
 make test
 # install
-sudo make install
+make install
 
 # cleanup
 rm -rf lua-5.1.5*
@@ -75,12 +75,12 @@ rm -rf lua-5.1.5*
 curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
 tar zxpf luarocks-3.11.1.tar.gz
 cd luarocks-3.11.1 || exit
-./configure && make && sudo make install
-sudo luarocks install luasocket
+./configure && make && make install
+luarocks install luasocket
 
 # install luarocks-managed modules
 # https://github.com/3rd/image.nvim
 luarocks install --local magick
 
 # reboot
-sudo shutdown -r now
+shutdown -r now

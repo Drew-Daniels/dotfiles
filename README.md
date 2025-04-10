@@ -7,7 +7,7 @@
 NOTE: Will need Administrator privileges to use `root` permission
 
 ```zsh
-/bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles.git)"
+sudo /bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles.git)"
 ```
 
 #### `iterm2` Configuration
