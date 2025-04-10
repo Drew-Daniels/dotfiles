@@ -22,7 +22,6 @@ fi
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Build from source for bettery security, or verify
 if ! command -v chezmoi >/dev/null 2>&1; then
 	sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 	# initialize dotfiles
@@ -37,7 +36,6 @@ fi
 #          │                    https://rustup.rs/                    │
 #          ╰──────────────────────────────────────────────────────────╯
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# restart terminal
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           mise                           │
