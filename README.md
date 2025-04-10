@@ -6,6 +6,12 @@
 
 NOTE: Will need Administrator privileges to use `root` permission
 
+#### App Store
+
+Sign into the App Store using personal Apple account - since I'll need to be authenticated for `brew bundle` to download MAS apps
+
+#### Download and Install Dotfiles
+
 ```zsh
 sudo /bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles.git)"
 ```
