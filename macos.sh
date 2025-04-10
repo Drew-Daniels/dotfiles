@@ -23,6 +23,19 @@ if ! command -v /opt/homebrew/bin/brew >/dev/null 2>&1; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                   git-credential-oauth                   │
+#          │     https://github.com/hickford/git-credential-oauth     │
+#          ╰──────────────────────────────────────────────────────────╯
+# NOTE: May need to install git-credential-oauth before trying to install dotfiles since this is how we'll authenticate with remote repo prior to cloning
+# /opt/homebrew/bin/brew git-credential-oauth
+#
+# cat << EOF > ~/.gitconfig
+# [credential]
+# 	helper = cache --timeout 21600 # 6 hours
+# 	helper = oauth
+# EOF
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
