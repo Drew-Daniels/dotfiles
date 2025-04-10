@@ -35,6 +35,12 @@ age-keygen -o $HOME/key.txt
 
 Open `rcmd` in menu bar and navigate to Settings > Import JSON > `~/.config/rcmd/settings.json`
 
+#### `XCode` Configuration
+
+Open `XCode` and:
+- Accept Terms
+- Install tooling for MacOS and iOS
+
 ## Debian Workstation Setup Notes
 
 ### User Setup
