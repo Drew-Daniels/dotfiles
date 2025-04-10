@@ -18,6 +18,13 @@ Open `iterm2`, open Settings > General > Settings and under `External settings`,
 
 Install MacOS Distribution: https://www.patreon.com/c/jonaskvinge/posts
 
+#### `age` encryption
+
+```bash
+age-keygen -o $HOME/key.txt
+# copy public key, and add it as an entry to `recipients` key in ~/.local/share/chezmoi/.chezmoi.toml.tmpl
+```
+
 ## Debian Workstation Setup Notes
 
 ### User Setup
