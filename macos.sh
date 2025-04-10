@@ -3,8 +3,13 @@
 mkdir -p ~/projects
 mkdir -p /usr/local/bin
 
-git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
-git clone https://github.com/Drew-Daniels/work_notes.git ~/projects/work_notes
+if [ ! -d ~/projects/friendly-snippets ]; then
+  git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
+fi
+
+if [ ! -d ~/projects/work_notes ]; then
+  git clone https://github.com/Drew-Daniels/work_notes.git ~/projects/work_notes
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         homebrew                         │
