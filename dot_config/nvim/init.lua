@@ -35,7 +35,7 @@ end, { nargs = "*" })
 -- TODO: De-hardcode paths here
 vim.cmd([[
   augroup neorg_cmds
-    autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/projects/dotfiles/dotfiles/nvim/norg/templates/standup_template.norg
+    autocmd BufNewFile ~/projects/work_notes/su/**/*.norg 0read ~/.config/nvim/norg/templates/standup_template.norg
     autocmd FileType norg setlocal conceallevel=3
     " Figure out how to stop folds from getting created on buffers created after first entering into a .norg buffer
     autocmd BufWritePost ~/projects/work_notes/su/**/*.norg silent !git -C ~/projects/work_notes/su/ add . && git -C ~/projects/work_notes/su/ commit -m "Update work notes" && git -C ~/projects/work_notes/su/ push
