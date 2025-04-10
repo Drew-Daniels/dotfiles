@@ -1,7 +1,5 @@
 tap "ankitpokhrel/jira-cli"
 tap "cormacrelf/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "jstkdng/programs"
 tap "mongodb/brew"
 tap "oven-sh/bun"
