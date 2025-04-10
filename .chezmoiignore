@@ -14,8 +14,7 @@ debian-update.sh
 */apt
 */rofi
 */restic
-  {{- $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-  {{- if ne $computerName "KIPU-DDANIELS" }}
+  {{- if eq .homeOrWork "home" }}
 */mise/config.local.toml
   {{- end -}}
 {{- else -}}
