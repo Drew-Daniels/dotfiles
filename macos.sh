@@ -1,12 +1,10 @@
 #!/bin/zsh
 
 mkdir -p ~/projects
+mkdir -p /usr/local/bin
 
 git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
-
 git clone https://github.com/Drew-Daniels/work_notes.git ~/projects/work_notes
-
-mkdir -p /usr/local/bin
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         homebrew                         │
@@ -35,7 +33,9 @@ fi
 #          │                          rustup                          │
 #          │                    https://rustup.rs/                    │
 #          ╰──────────────────────────────────────────────────────────╯
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+if ! command -v rustup >/dev/null 2>&1; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           mise                           │
@@ -43,44 +43,46 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #          ╰──────────────────────────────────────────────────────────╯
 brew install mise
 
-# install mise-managed runtimes
 mise install
 
-# install other homebrew-managed deps
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                     homebrew bundle                      │
+#          │   https://docs.brew.sh/Brew-Bundle-and-Brewfile#usage    │
+#          ╰──────────────────────────────────────────────────────────╯
 brew bundle
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         lua 5.1                          │
 #          │        https://www.lua.org/manual/5.4/readme.html        │
 #          ╰──────────────────────────────────────────────────────────╯
-# download
-curl -LO http://www.lua.org/ftp/lua-5.1.5.tar.gz
-# unpack
-tar xvzf lua-5.1.5.tar.gz
-cd lua-5.1.5 || exit
-# build
-make macosx
-# verify
-make test
-# install
-make install
+if ! command -v lua >/dev/null 2>&1; then
+  curl -LO http://www.lua.org/ftp/lua-5.1.5.tar.gz
+  tar xvzf lua-5.1.5.tar.gz
 
-# cleanup
-rm -rf lua-5.1.5*
+  cd lua-5.1.5 || exit
+
+  make macosx
+  make test
+  make install
+
+  rm -rf lua-5.1.5*
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         luarocks                         │
 #          │                  https://luarocks.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-tar zxpf luarocks-3.11.1.tar.gz
-cd luarocks-3.11.1 || exit
-./configure && make && make install
-luarocks install luasocket
+if ! command -v luarocks >/dev/null 2>&1; then
+  curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+  tar zxpf luarocks-3.11.1.tar.gz
+  cd luarocks-3.11.1 || exit
+  ./configure && make && make install
+  luarocks install luasocket
 
-# install luarocks-managed modules
-# https://github.com/3rd/image.nvim
-luarocks install --local magick
+  # install luarocks-managed modules
+  # https://github.com/3rd/image.nvim
+  luarocks install --local magick
+fi
 
 # reboot
 shutdown -r now
