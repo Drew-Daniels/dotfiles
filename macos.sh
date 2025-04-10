@@ -47,7 +47,9 @@ fi
 #          │                           mise                           │
 #          │                  https://mise.jdx.dev/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-brew install mise
+if ! command -v mise >/dev/null 2>&1; then
+  brew install mise
+fi
 
 mise install
 
