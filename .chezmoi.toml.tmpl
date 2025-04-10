@@ -1,11 +1,14 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $homeOrWork :promptStringOnce . "homeOrWork" "Is this a 'home' or 'work' machine? Choose" -}}
 encryption = "age"
 [age]
     identity = "~/key.txt"
+    # TODO: Think through how to create new 'age' keys when setting up a new machine
     # work, debian, ...
     recipients = ["age17jq9eawpv2mqsc3sy9hh9wf4l6hndm2vkawpvngcr8p5z0wkn4kqtn3jn4", "age1dhcq4f7ka2uhxyxmmm5nl88tcllu9dct77zdga08pauf5u29qp5q9k5hhj"]
 [data]
     email = {{ $email | quote }}
+    homeOrWork = {{ $homeOrWork | quote }}
 [merge]
     command = "nvim"
     args = ["-d", "{{ "{{" }}.Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }}.Target {{ "}}" }}"]
