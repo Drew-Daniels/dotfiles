@@ -19,19 +19,6 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                          cosign                          │
-#          │            https://github.com/SigStore/cosign            │
-#          ╰──────────────────────────────────────────────────────────╯
-# TODO: Add cosign verification step: https://docs.sigstore.dev/cosign/system_config/installation/#verifying-cosign-releases
-if ! command -v cosign >/dev/null 2>&1; then
-  echo "Installing cosign"
-  curl -sLO "https://github.com/sigstore/cosign/releases/latest/download/cosign-darwin-arm64"
-  chmod u+x cosign-darwin-arm64
-  sudo mv cosign-darwin-arm64 /usr/local/bin/cosign
-  echo "Installed cosign"
-fi
-
-#          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
@@ -64,8 +51,6 @@ mise install
 # install other homebrew-managed deps
 brew bundle
 
-# rm binaries that should be managed with homebrew from now on
-sudo rm /usr/local/bin/cosign
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         lua 5.1                          │
 #          │        https://www.lua.org/manual/5.4/readme.html        │
