@@ -15,7 +15,8 @@ fi
 #          │                         homebrew                         │
 #          │                     https://brew.sh/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v brew >/dev/null 2>&1; then
+# NOTE: Need to use the full path here because 'brew' won't be on PATH until dotfiles are installed
+if ! command -v /opt/homebrew/bin/brew >/dev/null 2>&1; then
 	echo "Installing homebrew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo "Installed homebrew"
