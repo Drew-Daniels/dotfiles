@@ -1,6 +1,4 @@
 tap "cormacrelf/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "jstkdng/programs"
 tap "localstack/tap"
 tap "oven-sh/bun"
