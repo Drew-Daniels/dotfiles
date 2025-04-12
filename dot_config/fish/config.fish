@@ -13,6 +13,9 @@ if status is-interactive
             fish_add_path /opt/homebrew/bin
             fish_add_path /usr/local/sbin
 
+            # rancher desktop
+            fish_add_path ~/.rd/bin
+
             # mise
             /opt/homebrew/bin/mise activate fish | source
 
