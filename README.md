@@ -41,6 +41,12 @@ Open `XCode` and:
 - Accept Terms
 - Install tooling for MacOS and iOS
 
+#### `mongodb` Configuration:
+
+```bash
+brew services start mongodb/brew/mongodb-community
+```
+
 ## Debian Workstation Setup Notes
 
 ### User Setup
