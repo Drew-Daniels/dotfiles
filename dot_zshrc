@@ -202,4 +202,4 @@ alias at="alacritty-themes"
 # export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
 
 # rancher desktop
-export PATH="$PATH:~/.rd/bin"
+export PATH="$PATH:$HOME/.rd/bin"
