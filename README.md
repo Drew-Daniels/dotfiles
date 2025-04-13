@@ -88,12 +88,12 @@ Edit this line:
 ```bash
 # from
 <IfModule dir_module>
-    DirectoryIndex index.php index.html
+    DirectoryIndex index.html
 </IfModule>
 
 # to
 <IfModule dir_module>
-    DirectoryIndex index.html
+    DirectoryIndex index.php index.html
 </IfModule>
 ```
 
