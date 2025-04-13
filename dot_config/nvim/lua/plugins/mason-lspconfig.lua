@@ -25,6 +25,7 @@ return {
 			"vimls",
 			"yamlls",
 			"ts_ls",
+			"phpactor",
 			"prismals",
 			"pylsp",
 			"denols",

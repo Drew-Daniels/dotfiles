@@ -13,6 +13,7 @@ local servers = {
 	terraformls = {},
 	sqlls = {},
 	vimls = {},
+	phpactor = {},
 	prismals = {},
 	volar = {},
 	nil_ls = {},
