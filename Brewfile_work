@@ -20,9 +20,11 @@ brew "chezmoi"
 brew "cmake"
 brew "cmake-docs"
 brew "comby"
+brew "curl"
+brew "php", restart_service: :changed
+brew "composer"
 brew "coreutils"
 brew "ctags"
-brew "curl"
 brew "dust"
 brew "duti"
 brew "fd"
@@ -95,3 +97,7 @@ cask "rectangle"
 cask "slack"
 cask "tidal"
 cask "zulip"
+mas "rcmd", id: 1596283165
+mas "Save to Raindrop.io", id: 1549370672
+mas "Snippety", id: 1530751461
+mas "Xcode", id: 497799835
