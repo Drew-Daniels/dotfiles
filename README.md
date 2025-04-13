@@ -47,6 +47,14 @@ Open `XCode` and:
 brew services start mongodb/brew/mongodb-community
 ```
 
+#### `apache` Configuration
+
+```bash
+brew install httpd
+
+brew services start httpd
+```
+
 #### `PHP` Configuration
 
 ```bash
@@ -54,14 +62,13 @@ brew services start php
 ```
 
 ```bash
-sudo cat << EOF >> /etc/apache2/httpd.conf
+sudo cat << EOF >> /opt/homebrew/etc/httpd/httpd.conf
 ### CUSTOM BEGIN ###
 LoadModule php_module /opt/homebrew/opt/php/lib/httpd/modules/libphp.so
 
 <FilesMatch \.php$>
   SetHandler application/x-httpd-php
 </FilesMatch>
-
 ### CUSTOM END ###
 EOF
 ```
