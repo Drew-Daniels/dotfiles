@@ -16,6 +16,9 @@ if status is-interactive
             # rancher desktop
             fish_add_path $HOME/.rd/bin
 
+            # composer
+            fish_add_path (composer global config bin-dir --absolute --quiet)
+
             # mise
             /opt/homebrew/bin/mise activate fish | source
 

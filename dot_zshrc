@@ -203,3 +203,6 @@ alias at="alacritty-themes"
 
 # rancher desktop
 export PATH="$PATH:$HOME/.rd/bin"
+
+# composer
+export PATH="$PATH:$(composer global config bin-dir --absolute --quiet)"
