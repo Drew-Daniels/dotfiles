@@ -43,6 +43,13 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.api.nvim_create_augroup("filetype_html", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.html.en" },
+	command = "set filetype=html",
+	group = "filetype_html",
+})
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on
