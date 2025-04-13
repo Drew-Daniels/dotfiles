@@ -43,6 +43,8 @@ Open `XCode` and:
 
 #### `mongodb` Configuration:
 
+Optionally:
+
 ```bash
 brew services start mongodb/brew/mongodb-community
 ```
@@ -51,8 +53,16 @@ brew services start mongodb/brew/mongodb-community
 
 ```bash
 brew install httpd
+```
 
-brew services start httpd
+Optionally: 
+
+```bash
+# to start
+apachectl start
+
+# to stop
+apachectl stop
 ```
 
 #### `PHP` Configuration
