@@ -47,6 +47,39 @@ Open `XCode` and:
 brew services start mongodb/brew/mongodb-community
 ```
 
+#### `PHP` Configuration
+
+```bash
+brew services start php
+```
+
+```bash
+sudo cat << EOF >> /etc/apache2/httpd.conf
+### CUSTOM BEGIN ###
+LoadModule php_module /opt/homebrew/opt/php/lib/httpd/modules/libphp.so
+
+<FilesMatch \.php$>
+  SetHandler application/x-httpd-php
+</FilesMatch>
+
+### CUSTOM END ###
+EOF
+```
+
+Edit this line:
+
+```bash
+# from
+<IfModule dir_module>
+    DirectoryIndex index.php index.html
+</IfModule>
+
+# to
+<IfModule dir_module>
+    DirectoryIndex index.html
+</IfModule>
+```
+
 ## Debian Workstation Setup Notes
 
 ### User Setup
