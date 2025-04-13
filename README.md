@@ -72,7 +72,7 @@ brew services start php
 ```
 
 ```bash
-sudo cat << EOF >> /opt/homebrew/etc/httpd/httpd.conf
+cat << EOF >> /opt/homebrew/etc/httpd/httpd.conf
 ### CUSTOM BEGIN ###
 LoadModule php_module /opt/homebrew/opt/php/lib/httpd/modules/libphp.so
 
