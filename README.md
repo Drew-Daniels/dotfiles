@@ -82,3 +82,8 @@ curl --silent --location --remote-name-all \
     https://channels.nixos.org/nixos-24.11/latest-nixos-plasma6-x86_64-linux.iso.sha256 \
     https://channels.nixos.org/nixos-24.11/latest-nixos-plasma6-x86_64-linux.iso
 ```
+
+# Roadmap
+
+QOL Updates:
+- Look into using [etckeeper](https://etckeeper.branchable.com/README/) to manage `/etc` files, since `chezmoi` cannot manage files outside of `~`
