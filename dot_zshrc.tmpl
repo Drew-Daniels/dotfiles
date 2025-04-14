@@ -147,17 +147,6 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
-# work
-computer_name=$(scutil --get ComputerName)
-
-if [ "$computer_name" = "KIPU-DDANIELS" ]; then
-
-  eval "$(aws configure export-credentials --format env --profile kipu-dev)"
-  eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
-
-  export DEFAULT_TMUXINATOR_PROJECTS="work_notes"
-fi
-
 # playwright
 alias psr="npx playwright show-report"
 
@@ -185,9 +174,6 @@ alias ber="bundle exec rake"
 eval "$(op completion zsh)"
 compdef _op op
 
-# backups
-# export BACKUP_DIR="$HOME"/backups
-
 # keepassxc
 alias kxc="keepassxc-cli"
 
@@ -201,8 +187,9 @@ alias at="alacritty-themes"
 # export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
 # export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
 
+{{- if eq .homeOrWork "work" -}}
 # rancher desktop
 export PATH="$PATH:$HOME/.rd/bin"
-
 # composer
 export PATH="$PATH:$(composer global config bin-dir --absolute --quiet)"
+{{- end -}}
