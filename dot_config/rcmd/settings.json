@@ -1,9 +1,11 @@
 {
-  "allowWindowSwitcher" : true,
-  "appSwitcherUseNumbersForWindows" : false,
-  "enableAssignHotkey" : true,
-  "specialKey" : "equal",
-  "enableHideOnFocusHotkey" : false,
+  "windowTriggerKeys" : [
+    5
+  ],
+  "windowKeyAssignments" : [
+
+  ],
+  "minimizeKey" : "minus",
   "windowKeyPatterns" : [
     {
       "id" : "com.sublimetext.4",
@@ -14,8 +16,8 @@
       "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
-      "pattern" : ".* — [^\\w\\d]*(.)",
-      "id" : "com.sublimetext.2"
+      "id" : "com.sublimetext.2",
+      "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
       "id" : "com.sublimetext.",
@@ -46,55 +48,53 @@
       "pattern" : ".* — [^\\w\\d]*(.)"
     },
     {
-      "pattern" : ".* — [^\\w\\d]*(.)",
-      "id" : "com.todesktop."
+      "id" : "com.todesktop.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
     }
   ],
-  "showWindowSwitcher" : true,
-  "windowSwitcherAppearance" : "compact",
-  "hideStaticSettings" : true,
-  "activateAllWindows" : true,
-  "windowTriggerKeys" : [
-    5
-  ],
-  "windowSwitchOSDDelay" : 0,
-  "windowKeyAssignments" : [
-
-  ],
-  "minimizeKey" : "minus",
-  "ignoredApps" : [
-    "com.apple.AppStore",
-    "com.apple.MobileSMS",
-    "com.apple.iCal",
-    "io.raindrop.macapp",
-    "com.apple.shortcuts"
-  ],
-  "fnWindowSwitching" : false,
-  "keyTapThreshold" : 0.14,
-  "appSwitcherFeatures" : 38,
-  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "hideOnlyFocusedAppOnMinus" : false,
+  "enableHideOnFocusHotkey" : false,
+  "switcherScreenPlacement" : 8,
   "appKeyAssignments" : [
 
   ],
-  "windowOnlySwitchOSDDelay" : 0,
-  "showAppSwitcher" : true,
-  "ignoredKeys" : [
-
-  ],
+  "activateAllWindows" : true,
+  "zeroAsLastFocusedWindow" : false,
+  "appSortReverse" : false,
   "whenAlreadyFocusedAction" : 2,
-  "windowSwitcherFeatures" : 57,
-  "notificationsPermissionsGranted" : false,
-  "alwaysHideOthers" : false,
+  "enableCycleHotkey" : true,
   "triggerKeys" : [
     4
   ],
+  "windowSwitcherAppearance" : "compact",
+  "keyTapThreshold" : 0.14,
+  "showAppSwitcher" : true,
   "windowSwitcherDimFocused" : false,
-  "switcherScreenPlacement" : 8,
-  "enableStaticCycle" : false,
-  "appSortReverse" : false,
+  "windowSwitchOSDDelay" : 0,
+  "hideStaticSettings" : true,
+  "enableAssignHotkey" : true,
+  "ignoredApps" : [
+    "com.apple.iCal",
+    "com.apple.MobileSMS",
+    "io.raindrop.macapp",
+    "com.apple.shortcuts",
+    "com.apple.AppStore"
+  ],
+  "notificationsPermissionsGranted" : false,
+  "specialKey" : "equal",
+  "appSwitcherFeatures" : 38,
   "focusOnKeyUp" : false,
-  "zeroAsLastFocusedWindow" : false,
+  "enableStaticCycle" : false,
+  "windowSwitcherFeatures" : 57,
+  "windowOnlySwitchOSDDelay" : 0,
   "appSort" : "name",
-  "hideOnlyFocusedAppOnMinus" : false,
-  "enableCycleHotkey" : true
+  "showWindowSwitcher" : true,
+  "allowWindowSwitcher" : true,
+  "alwaysHideOthers" : false,
+  "appSwitcherUseNumbersForWindows" : false,
+  "fnWindowSwitching" : false,
+  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "ignoredKeys" : [
+
+  ]
 }
