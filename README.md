@@ -38,6 +38,7 @@ Open `rcmd` in menu bar and navigate to Settings > Import JSON > `~/.config/rcmd
 #### `XCode` Configuration
 
 Open `XCode` and:
+
 - Accept Terms
 - Install tooling for MacOS and iOS
 
@@ -55,7 +56,7 @@ brew services start mongodb/brew/mongodb-community
 brew install httpd
 ```
 
-Optionally: 
+Optionally:
 
 ```bash
 # to start
@@ -136,4 +137,7 @@ curl --silent --location --remote-name-all \
 # Roadmap
 
 QOL Updates:
+
+- Look at doing something like this to have more control & modularity over what formulae, casks, and Mac App Store apps get installed:
+  - https://www.chezmoi.io/user-guide/advanced/install-packages-declaratively/
 - Look into using [etckeeper](https://etckeeper.branchable.com/README/) to manage `/etc` files, since `chezmoi` cannot manage files outside of `~`
