@@ -44,10 +44,10 @@ if status is-interactive
     # general
     alias cls "printf '\33c\e[3J'"
 
+    {{ if eq .chezmoi.os "linux" }}
     # neovim
-    {{- if eq .chezmoi.os "linux" -}}
     fish_add_path /opt/nvim-linux-x86_64/bin
-    {{- end -}}
+    {{ end }}
 
     # pnpm
     fish_add_path PNPM_HOME
@@ -133,18 +133,18 @@ if status is-interactive
     # 1password
     op completion fish | source
 
+    {{ if eq .homeOrWork "work" }}
     # jira
-    {{- if eq .homeOrWork "work" -}}
     jira completion fish | source
-    {{- end -}}
+    {{ end }}
 
-    # docker
     # TODO: Deactivate for now, until I'm able to install Docker Desktop on Debian
     # TODO: Figure out if this can also be enabled when using Rancher instead of Docker Desktop
     # I.e., not sure if completions are included
-    {{- if (and(eq .chezmoi.os "darwin") (eq .homeOrWork "home")) -}}
+    {{ if (and (eq .chezmoi.os "darwin") (eq .homeOrWork "home")) }}
+    # docker
     docker completion fish | source
-    {{- -}}
+    {{ end }}
 
     # keepassxc
     alias kxc keepassxc-cli
