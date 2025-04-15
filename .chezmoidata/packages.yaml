@@ -1,0 +1,8 @@
+packages:
+  darwin:
+    brews:
+    - 'git'
+    casks:
+    - 'google-chrome'
+    mas_apps:
+    - 'rcmd'
