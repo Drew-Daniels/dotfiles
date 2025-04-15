@@ -84,4 +84,9 @@ compdef _op op
 export PATH="$PATH:$HOME/.rd/bin"
 # composer
 export PATH="$PATH:$(composer global config bin-dir --absolute --quiet)"
+# jira-cli
+# TODO: Look into making just 1 call to get all of these
+export JIRA_HOSTNAME=$(op item get nzd745uynzi2xs3reubrgfsfmq --fields label=hostname)
+export JIRA_API_TOKEN=$(op item get nzd745uynzi2xs3reubrgfsfmq --fields label=api_token)
+export JIRA_API_EMAIL=$(op item get nzd745uynzi2xs3reubrgfsfmq --fields label=email)
 {{- end -}}
