@@ -138,6 +138,5 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- Refactor `./run_onchange_install-packages.sh.tmpl` script so that it runs when `./.chezmoidata/packages.yaml` changes too
-  - Also refactor Debian install logic to use this method for installing packages with `apt` instead of running the `debian-install` script
+- Figure out how to *uninstall* brew packages after they have been *removed* from `./.chezmoidata/packages.yaml`
 - Look into using [etckeeper](https://etckeeper.branchable.com/README/) to manage `/etc` files, since `chezmoi` cannot manage files outside of `~`
