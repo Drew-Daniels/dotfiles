@@ -12,6 +12,9 @@ export VISUAL="nvim"
 
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
+# mise
+export MISE_ENV="development"
+
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f"
 
@@ -58,12 +61,6 @@ function ya() {
   fi
   rm -f -- "$tmp"
 }
-
-# java
-export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
-
-# aws cli
-complete -C '/usr/local/bin/aws_completer' aws
 
 # playwright
 alias psr="npx playwright show-report"

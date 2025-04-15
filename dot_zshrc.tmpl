@@ -1,48 +1,4 @@
-# TODO: Would be nice to have all the shared configuration between .bashrc and .zshrc in another file and imported somehow
-parse_git_branch() {
-  git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
-}
-COLOR_DEF='%f'
-COLOR_USR='%F{243}'
-COLOR_DIR='%F{197}'
-COLOR_GIT='%F{39}'
-NEWLINE=$'\n'
-
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-setopt PROMPT_SUBST
-export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
-
-# pnpm
-export PNPM_HOME="/Users/drew.daniels/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-alias pn="pnpm"
-
-# fzf
-export FZF_DEFAULT_COMMAND="fd --type f"
-
-# nvim
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
-
-# general
-export PROJECTS_DIR=~/projects
-alias cls="printf '\33c\e[3J'"
-alias arm="/usr/bin/env arch -arm64 zsh"
-alias intel="/usr/bin/env arch -x86_64 zsh"
-
-# tmux
-alias tn="tmux new -s"
-alias ta="tmux attach -t"
-alias tl="tmux ls"
-alias tk="tmux kill-session -t"
-
-# tmuxinator
-alias mux=tmuxinator
-alias ts="mux start project"
-export MUX_LAYOUT=main-horizontal
-export MUX_SHELL_RUN_CMD="arch -x86_64 zsh"
+{{- template "base.sh.tmpl" }}
 
 # homebrew
 PATH="/usr/local/sbin:$PATH"
@@ -60,12 +16,7 @@ fpath=("$(brew --prefix)/opt/curl/share/zsh/site-functions" $fpath)
 # clang
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
-# jless
-alias yless="jless --yaml"
-
 # mise
-# development, testing, production
-export MISE_ENV="development"
 eval "$(/opt/homebrew/opt/mise/bin/mise activate zsh)"
 
 # zoxide
@@ -73,18 +24,6 @@ eval "$(zoxide init --cmd j zsh)"
 
 # starship
 eval "$(starship init zsh)"
-
-# bat
-alias man="batman"
-alias pb="prettybat"
-# these lines are breaking postgres dropdb command for some reason
-# alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-# alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
-batdiff() {
-  git diff --name-only --relative --diff-filter=d | xargs bat
-}
-# lsd
-alias ls="lsd"
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -97,22 +36,9 @@ export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
 # neovim
 alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
 
-# yazi
-function ya() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-}
-
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# java
-export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 
 # iterm2
 iterm2_print_user_vars() {
@@ -141,51 +67,16 @@ autoload -Uz compinit bashcompinit
 compinit
 bashcompinit
 
-# terraform
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
+# TODO: See about moving this either into base.sh.tmpl or another template file - since this needs to be called after compinit
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
-# playwright
-alias psr="npx playwright show-report"
-
-# vcpkg - https://github.com/Microsoft/vcpkg
-export VCPKG_ROOT=~/projects/vcpkg
-export PATH="$VCPKG_ROOT:$PATH"
-
-# htmlbeautifier
-alias hb="htmlbeautifier"
-
-# spotify_player
-alias sp="spotify_player"
-
-# Run rubocop only on ruby files that have changed
-alias rcdiff="git diff --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
-# Run rspec only on ruby files that have changed
-alias rsdiff="git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
-
-# bundler
-alias be="bundle exec"
-# alias ber="bundle exec rspec"
-alias ber="bundle exec rake"
+# terraform
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # 1password
 eval "$(op completion zsh)"
 compdef _op op
-
-# keepassxc
-alias kxc="keepassxc-cli"
-
-# alacritty-themes
-# https://www.npmjs.com/package/alacritty-themes/v/5.1.1
-alias at="alacritty-themes"
-
-# git
-# alias git="TZ=UTC git"
-
-# export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
-# export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
 
 {{- if eq .homeOrWork "work" -}}
 # rancher desktop
