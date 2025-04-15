@@ -24,7 +24,6 @@ packages:
       - 'chezmoi'
       - 'cmake'
       - 'cmake-docs'
-      - 'comby'
       - 'coreutils'
       - 'ctags'
       - 'curl'
