@@ -12,16 +12,12 @@ export VISUAL="nvim"
 
 export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
-# delta
-export PATH="$PATH:/home/drew/.local/bin"
-
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f"
 
 # nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # general
 export PROJECTS_DIR=~/projects
@@ -40,18 +36,6 @@ export MUX_LAYOUT=main-horizontal
 
 # jless
 alias yless="jless --yaml"
-
-# mise
-# TODO: Eventually remove mise - until now this is a hack to stop the error when this
-# gets sourced on NixOS, where mise is not installed
-if command -v mise >/dev/null; then
-  # development, testing, production
-  export MISE_ENV="development"
-  eval "$(mise activate bash)"
-fi
-
-# starship
-eval "$(starship init bash)"
 
 # bat
 alias man="batman"
@@ -81,14 +65,6 @@ export PATH="$PATH:/opt/apache-maven-3.8.5/bin"
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws
 
-# work
-if [ "$MACHINE" = "work" ]; then
-  eval "$(aws configure export-credentials --format env --profile kipu-dev)"
-  eval "export AWS_REGION=$(aws configure get region --profile kipu-dev)"
-
-  export DEFAULT_TMUXINATOR_PROJECTS="dotfiles work_notes healthmatters"
-fi
-
 # playwright
 alias psr="npx playwright show-report"
 
@@ -115,9 +91,6 @@ alias be="bundle exec"
 # alias ber="bundle exec rspec"
 alias ber="bundle exec rake"
 
-# 1password
-eval "$(op completion bash)"
-
 # keepassxc
 alias kxc="keepassxc-cli"
 
@@ -128,24 +101,6 @@ alias at="alacritty-themes"
 # git
 # does the same thing as setting both env vars below
 # alias git="TZ=UTC git"
-
-# zoxide
-eval "$(zoxide init --cmd j bash)"
-
-# export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
-# export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
-test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
-ALACRITTY_COMPLETIONS_FILE=/home/drew/projects/alacritty/extra/completions/alacritty.bash test -f source $ALACRITTY_COMPLETIONS_FILE && source $ALACRITTY_COMPLETIONS_FILE
-
-# restic
-# Cannot use 1Password CLI as root, so need to set password manually
-# export RESTIC_PASSWORD_COMMAND="op read op://Personal/restic/password -n"
-
-# apt, dpkg
-alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/packages'
-
-# Standard Notes
-export PATH="$PATH:/opt/standard_notes"
 
 # helpers
 alias get_public_ip="curl https://ipinfo.io/ip"

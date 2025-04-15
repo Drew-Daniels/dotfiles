@@ -1,0 +1,40 @@
+{{ template "base.sh.tmpl" }}
+
+# mise
+# TODO: Eventually remove mise - until now this is a hack to stop the error when this
+# gets sourced on NixOS, where mise is not installed
+if command -v mise >/dev/null; then
+  # development, testing, production
+  export MISE_ENV="development"
+  eval "$(mise activate bash)"
+fi
+
+# delta
+export PATH="$PATH:/home/drew/.local/bin"
+
+# nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+# starship
+eval "$(starship init bash)"
+
+# 1password
+eval "$(op completion bash)"
+
+# zoxide
+eval "$(zoxide init --cmd j bash)"
+
+# export GIT_AUTHOR_DATE="$(date -u +%F)T00:00:00+0000"
+# export GIT_COMMITER_DATE="$GIT_AUTHOR_DATE"
+test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
+ALACRITTY_COMPLETIONS_FILE=/home/drew/projects/alacritty/extra/completions/alacritty.bash test -f source $ALACRITTY_COMPLETIONS_FILE && source $ALACRITTY_COMPLETIONS_FILE
+
+# restic
+# Cannot use 1Password CLI as root, so need to set password manually
+# export RESTIC_PASSWORD_COMMAND="op read op://Personal/restic/password -n"
+
+# apt, dpkg
+alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/packages'
+
+# Standard Notes
+export PATH="$PATH:/opt/standard_notes"
