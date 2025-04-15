@@ -7,7 +7,7 @@ packages:
       - 'localstack/tap'
       - 'pulumi/tap'
       - 'teamookla/speedtest'
-      head-brews:
+      head_brews:
       - 'imagemagick'
       - 'utf8proc'
       brews:
@@ -98,7 +98,7 @@ packages:
       # - "Xcode", id: 497799835
     home:
       taps: []
-      head-brews: []
+      head_brews: []
       brews:
       - 'alex313031-thorium'
       - 'discord'
@@ -124,7 +124,7 @@ packages:
       taps:
       - 'ankitpokhrel/jira-cli'
       - 'mongodb/brew'
-      head-brews: []
+      head_brews: []
       brews:
       - 'php'
       - 'composer'
