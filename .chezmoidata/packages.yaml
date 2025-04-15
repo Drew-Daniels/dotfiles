@@ -91,11 +91,11 @@ packages:
       - 'rectangle'
       - 'tidal'
       - 'zulip'
-      mas_apps: []
-      # - "rcmd", id: 1596283165
-      # - "Save to Raindrop.io", id: 1549370672
-      # - "Snippety", id: 1530751461
-      # - "Xcode", id: 497799835
+      mas_apps:
+        "rcmd": 1596283165
+        "Save to Raindrop.io": 1549370672
+        "Snippety": 1530751461
+        "Xcode": 497799835
     home:
       taps: []
       head_brews: []
@@ -115,11 +115,11 @@ packages:
       - 'vitalsource-bookshelf'
       - 'zoom'
       casks: []
-      mas_apps: []
-      # - "Kiwix", id: 997079563
-      # - "OneDrive", id: 823766827
-      # - "Paprika Recipe Manager 3", id: 1303222628
-      # - "Kindle", id: 302584613
+      mas_apps:
+        "Kiwix": 997079563
+        "OneDrive": 823766827
+        "Paprika Recipe Manager 3": 1303222628
+        "Kindle": 302584613
     work:
       taps:
       - 'ankitpokhrel/jira-cli'
@@ -134,4 +134,4 @@ packages:
       casks:
       - 'rancher'
       - 'lynx'
-      mas_apps: []
+      mas_apps: {}
