@@ -34,5 +34,22 @@ cask {{ . | quote }}
 mas {{ $key | quote }}, id: {{ $value }}
 {{ end -}}
 {{ end -}}
+{{ if eq .homeOrWork "work" -}}
+{{ range .packages.darwin.work.taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.work.head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .packages.darwin.work.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.work.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .packages.darwin.work.mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ end -}}
 EOF
 {{ end -}}
