@@ -138,6 +138,6 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- Look at doing something like this to have more control & modularity over what formulae, casks, and Mac App Store apps get installed:
-  - https://www.chezmoi.io/user-guide/advanced/install-packages-declaratively/
+- Refactor `./run_onchange_install-packages.sh.tmpl` script so that it runs when `./.chezmoidata/packages.yaml` changes too
+  - Also refactor Debian install logic to use this method for installing packages with `apt` instead of running the `debian-install` script
 - Look into using [etckeeper](https://etckeeper.branchable.com/README/) to manage `/etc` files, since `chezmoi` cannot manage files outside of `~`
