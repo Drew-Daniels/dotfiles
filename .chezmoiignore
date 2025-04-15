@@ -14,6 +14,8 @@ debian-update.sh
 */apt
 */rofi
 */restic
+debian-install.sh
+debian-upgrade.sh
   {{- if eq .homeOrWork "home" }}
 */mise/config.local.toml
   {{- end -}}
