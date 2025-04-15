@@ -1,8 +1,137 @@
 packages:
   darwin:
-    brews:
-    - 'git'
-    casks:
-    - 'google-chrome'
-    mas_apps:
-    - 'rcmd'
+    common:
+      taps:
+      - 'cormacrelf/tap'
+      - 'jstkdng/programs'
+      - 'localstack/tap'
+      - 'pulumi/tap'
+      - 'teamookla/speedtest'
+      head-brews:
+      - 'imagemagick'
+      - 'utf8proc'
+      brews:
+      - 'git'
+      - 'age'
+      - 'ast-grep'
+      - 'automake'
+      - 'awscli'
+      - 'bat'
+      - 'bat-extras'
+      - 'cairo'
+      - 'harfbuzz'
+      - 'chafa'
+      - 'chezmoi'
+      - 'cmake'
+      - 'cmake-docs'
+      - 'comby'
+      - 'coreutils'
+      - 'ctags'
+      - 'curl'
+      - 'dust'
+      - 'duti'
+      - 'fd'
+      - 'file-formula'
+      - 'ncurses'
+      - 'fish'
+      - 'fzf'
+      - 'gh'
+      - 'tesseract'
+      - 'ghostscript'
+      - 'git'
+      - 'git-credential-oauth'
+      - 'git-delta'
+      - 'git-gui'
+      - 'gnupg'
+      - 'gping'
+      - 'libyaml'
+      - 'hurl'
+      - 'shared-mime-info'
+      - 'libheif'
+      - 'jless'
+      - 'jq'
+      - 'less'
+      - 'libgit2@1.7'
+      - 'lsd'
+      - 'mas'
+      - 'maven'
+      - 'mergiraf'
+      - 'mise'
+      - 'neovim'
+      - 'pkgconf'
+      - 'pngpaste'
+      - 'reattach-to-user-namespace'
+      - 'ripgrep'
+      - 'speedtest-cli'
+      - 'starship'
+      - 'stylua'
+      - 'tmux'
+      - 'tree'
+      - 'wget'
+      - 'xdotool'
+      - 'xxhash'
+      - 'yazi'
+      - 'zoxide'
+      - 'cormacrelf/tap/dark-notify'
+      - 'localstack/tap/localstack-cli'
+      - 'pulumi/tap/pulumi'
+      casks:
+      - '1password-cli'
+      - '1password@nightly'
+      - 'alfred'
+      - 'dbeaver-community'
+      - 'docker'
+      - 'drawio'
+      - 'font-jetbrains-mono-nerd-font'
+      - 'iterm2'
+      - 'obs'
+      - 'postgres-unofficial'
+      - 'postman'
+      - 'raindropio'
+      - 'rectangle'
+      - 'tidal'
+      - 'zulip'
+      mas_apps: []
+      # - "rcmd", id: 1596283165
+      # - "Save to Raindrop.io", id: 1549370672
+      # - "Snippety", id: 1530751461
+      # - "Xcode", id: 497799835
+    home:
+      taps: []
+      head-brews: []
+      brews:
+      - 'alex313031-thorium'
+      - 'discord'
+      - 'element'
+      - 'firefox'
+      - 'google-chrome'
+      - 'josm'
+      - 'raspberry-pi-imager'
+      - 'signal'
+      - 'spotify'
+      - 'standard-notes'
+      - 'whatsapp'
+      - 'wireshark'
+      - 'vitalsource-bookshelf'
+      - 'zoom'
+      casks: []
+      mas_apps: []
+      # - "Kiwix", id: 997079563
+      # - "OneDrive", id: 823766827
+      # - "Paprika Recipe Manager 3", id: 1303222628
+      # - "Kindle", id: 302584613
+    work:
+      taps:
+      - 'ankitpokhrel/jira-cli'
+      - 'mongodb/brew'
+      head-brews: []
+      brews:
+      - 'php'
+      - 'composer'
+      - 'httpd'
+      - 'ankitpokhrel/jira-cli/jira-cli'
+      - 'glab'
+      casks:
+      - 'rancher'
+      - 'lynx'
+      mas_apps: []
