@@ -14,5 +14,8 @@ brew {{ . | quote }}
 {{ range .packages.darwin.common.casks -}}
 cask {{ . | quote }}
 {{ end -}}
+{{ range $key, $value := .packages.darwin.common.mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
 EOF
 {{ end -}}
