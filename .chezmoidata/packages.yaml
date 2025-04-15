@@ -80,7 +80,6 @@ packages:
       - '1password@nightly'
       - 'alfred'
       - 'dbeaver-community'
-      - 'docker'
       - 'drawio'
       - 'font-jetbrains-mono-nerd-font'
       - 'iterm2'
@@ -102,6 +101,7 @@ packages:
       brews: []
       casks:
       - 'alex313031-thorium'
+      - 'docker'
       - 'discord'
       - 'element'
       - 'firefox'
