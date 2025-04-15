@@ -99,7 +99,8 @@ packages:
     home:
       taps: []
       head_brews: []
-      brews:
+      brews: []
+      casks:
       - 'alex313031-thorium'
       - 'discord'
       - 'element'
@@ -114,7 +115,6 @@ packages:
       - 'wireshark'
       - 'vitalsource-bookshelf'
       - 'zoom'
-      casks: []
       mas_apps:
         "Kiwix": 997079563
         "OneDrive": 823766827

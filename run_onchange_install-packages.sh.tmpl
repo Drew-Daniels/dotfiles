@@ -17,5 +17,22 @@ cask {{ . | quote }}
 {{ range $key, $value := .packages.darwin.common.mas_apps -}}
 mas {{ $key | quote }}, id: {{ $value }}
 {{ end -}}
+{{ if eq .homeOrWork "home" -}}
+{{ range .packages.darwin.home.taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.home.head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .packages.darwin.home.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.home.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .packages.darwin.home.mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ end -}}
 EOF
 {{ end -}}
