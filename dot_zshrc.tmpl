@@ -41,29 +41,30 @@ alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # iterm2
-iterm2_print_user_vars() {
-  ip=$(curl -s ifconfig.me | awk '{print $1}')
-  whois_response=$(whois "$ip")
-  iterm2_set_user_var publicIP "$ip"
-  iterm2_set_user_var status $(ping -c 1 google.com >/dev/null && echo "" || echo "OFFLINE")
-  iterm2_set_user_var city $(echo "$whois_response" | sed -n 's/^City: \(.*\)/\1/p' | xargs)
-  iterm2_set_user_var stateProv $(echo "$whois_response" | sed -n 's/^StateProv: \(.*\)/\1/p' | xargs)
-  iterm2_set_user_var country $(echo "$whois_response" | sed -n 's/^Country: \(.*\)/\1/p' | xargs)
-  iterm2_set_user_var orgName $(echo "$whois_response" | sed -n 's/^OrgName: \(.*\)/\1/p' | xargs)
-
-  home_ddns_hostname=$(op item get hfg6pheaifln27gpjqfygrgmsu --fields label=ddns_hostname)
-  homeIP=$(nslookup $home_ddns_hostname 8.8.8.8 | grep "Address" | tail -1 | awk '{print $2}' | tr -d '\n')
-  matches=$([ "$ip" = "$homeIP" ] && echo "HOME-NET" || echo "OUTSIDE-NET")
-  iterm2_set_user_var using_home_ip $(echo "$matches")
-}
-
-is_chezmoi_subshell=$(ps | rg $PPID -m1 | rg "chezmoi" | wc -l | awk '{print $1}')
-
-if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ] && [ "$is_chezmoi_subshell" -ne "1" ]; then
-  if command -v op >/dev/null 2>&1; then
-    iterm2_print_user_vars
-  fi
-fi
+# TODO: Look into using iTerm2 Python scripting functionality to do this logic, so this doesn't run every time I open a new shell, but just whenever opening a new iTerm2 window
+# iterm2_print_user_vars() {
+#   ip=$(curl -s ifconfig.me | awk '{print $1}')
+#   whois_response=$(whois "$ip")
+#   iterm2_set_user_var publicIP "$ip"
+#   iterm2_set_user_var status $(ping -c 1 google.com >/dev/null && echo "" || echo "OFFLINE")
+#   iterm2_set_user_var city $(echo "$whois_response" | sed -n 's/^City: \(.*\)/\1/p' | xargs)
+#   iterm2_set_user_var stateProv $(echo "$whois_response" | sed -n 's/^StateProv: \(.*\)/\1/p' | xargs)
+#   iterm2_set_user_var country $(echo "$whois_response" | sed -n 's/^Country: \(.*\)/\1/p' | xargs)
+#   iterm2_set_user_var orgName $(echo "$whois_response" | sed -n 's/^OrgName: \(.*\)/\1/p' | xargs)
+#
+#   home_ddns_hostname=$(op item get hfg6pheaifln27gpjqfygrgmsu --fields label=ddns_hostname)
+#   homeIP=$(nslookup $home_ddns_hostname 8.8.8.8 | grep "Address" | tail -1 | awk '{print $2}' | tr -d '\n')
+#   matches=$([ "$ip" = "$homeIP" ] && echo "HOME-NET" || echo "OUTSIDE-NET")
+#   iterm2_set_user_var using_home_ip $(echo "$matches")
+# }
+#
+# is_chezmoi_subshell=$(ps | rg $PPID -m1 | rg "chezmoi" | wc -l | awk '{print $1}')
+#
+# if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ] && [ "$is_chezmoi_subshell" -ne "1" ]; then
+#   if command -v op >/dev/null 2>&1; then
+#     iterm2_print_user_vars
+#   fi
+# fi
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
