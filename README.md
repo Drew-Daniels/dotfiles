@@ -138,5 +138,8 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- Figure out how to *uninstall* brew packages after they have been *removed* from `./.chezmoidata/packages.yaml`
+- Figure out how to _uninstall_ brew packages after they have been _removed_ from `./.chezmoidata/packages.yaml`
+- Look into using something like this to handle initial dotfiles setup instead of requiring `./macos.sh` to be run:
+  - https://www.chezmoi.io/user-guide/advanced/install-your-password-manager-on-init/
+  - https://www.chezmoi.io/reference/configuration-file/hooks/
 - Look into using [etckeeper](https://etckeeper.branchable.com/README/) to manage `/etc` files, since `chezmoi` cannot manage files outside of `~`
