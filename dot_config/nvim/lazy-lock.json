@@ -41,7 +41,7 @@
   "nvim-scissors": { "branch": "main", "commit": "f137284f8ad1aeb5e6d5fecf46957e3757841d05" },
   "nvim-snippets": { "branch": "main", "commit": "56b4052f71220144689caaa2e5b66222ba5661eb" },
   "nvim-treesitter": { "branch": "master", "commit": "684eeac91ed8e297685a97ef70031d19ac1de25a" },
-  "nvim-treesitter-context": { "branch": "master", "commit": "b8ec6e391020a3ee18547f3343b25fc7c9ada9cc" },
+  "nvim-treesitter-context": { "branch": "master", "commit": "6daca3ad780f045550b820f262002f35175a6c04" },
   "nvim-treesitter-endwise": { "branch": "master", "commit": "8b6436303dda9ce6ed4b3733fd15703eb3589c36" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "205e3369bc83d8cb83f7409c36120e24611f8c5c" },
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
