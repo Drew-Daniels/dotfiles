@@ -65,6 +65,7 @@ packages:
       - 'speedtest-cli'
       - 'starship'
       - 'stylua'
+      - 'sops'
       - 'tmux'
       - 'tree'
       - 'wget'
@@ -117,7 +118,6 @@ packages:
       - 'zoom'
       mas_apps:
         "Kiwix": 997079563
-        "OneDrive": 823766827
         "Paprika Recipe Manager 3": 1303222628
         "Kindle": 302584613
     work:
