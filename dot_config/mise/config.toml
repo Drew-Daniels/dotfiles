@@ -3,7 +3,7 @@ _.file = "~/.env"
 
 [tools]
 python = "3.11.5"
-node = "22.5.1"
+node = "22.14.0"
 golang = "1.21.1"
 deno = "1.45.2"
 java = "17.0.2"
