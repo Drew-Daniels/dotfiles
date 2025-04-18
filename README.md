@@ -138,6 +138,10 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- Create a post-install script that automatically:
+  - Generates a new `age` encryption key to `~/.config/mise/age.txt`
+  - Exports shared secrets that are used across all computers (like Home DDNS hostname) to `~/.env`
+  - Encrypts this file using the new encryption key
 - Figure out how to _uninstall_ brew packages after they have been _removed_ from `./.chezmoidata/packages.yaml`
 - Look into using something like this to handle initial dotfiles setup instead of requiring `./macos.sh` to be run:
   - https://www.chezmoi.io/user-guide/advanced/install-your-password-manager-on-init/
