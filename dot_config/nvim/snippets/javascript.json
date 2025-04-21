@@ -5,7 +5,7 @@
   },
   "NOTE": {
     "body": "// NOTE: ${0}",
-    "prefix": "td"
+    "prefix": "nt"
   },
   "Debug Log": {
     "body": "console.log(\"${1}: \", ${0})",
