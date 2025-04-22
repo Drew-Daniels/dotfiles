@@ -1,4 +1,4 @@
-name: fhir-schema-export
+name: fsx
 root: <%= ENV["PROJECTS_DIR"] %>/fhir-schema-export
 windows:
   - root:
