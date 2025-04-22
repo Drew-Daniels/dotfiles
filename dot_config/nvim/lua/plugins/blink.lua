@@ -16,7 +16,8 @@ return {
 			["<C-e>"] = { "accept" },
 			["<C-space>"] = { "show" },
 			["<C-q>"] = { "hide" },
-			["<C-k>"] = { "show_documentation" },
+			-- TODO: Conflicting with diacritic keybinding
+			-- ["<C-k>"] = { "show_documentation" },
 			["<C-j>"] = { "snippet_forward" },
 			["<C-h>"] = { "snippet_backward" },
 		},
