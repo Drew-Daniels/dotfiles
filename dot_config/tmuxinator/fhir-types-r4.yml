@@ -1,0 +1,15 @@
+name: fhir-types-r4
+root: <%= ENV["PROJECTS_DIR"] %>/fhir-types-r4
+on_project_stop:
+  - docker compose stop
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
