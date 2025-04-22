@@ -1,0 +1,25 @@
+name: patient-api
+root: <%= ENV["PROJECTS_DIR"] %>/patient-api
+on_project_stop:
+  - docker compose stop
+windows:
+  - 1)root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+  - 2)stack:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - main:
+            - fish
+            - cls
+            - docker compose up
+        - cmd:
+            - fish
+            - cls
