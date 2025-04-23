@@ -22,16 +22,15 @@ const config = {
       }
     },
     card: {
-      label: 'Card',
+      label: 'Req. Cardinality',
       value({ max, min }) {
         return formatResourceCardinality(min, max)
       },
     },
     implementationCardinality: {
-      label: 'Impl. Card',
-      value(_el) {
-        // placeholder
-        return ''
+      label: 'Actual Cardinality',
+      value({ max, min }) {
+        return formatResourceCardinality(min, max)
       },
     },
     // TODO: Figure out a way to enable fields that accept both defaults to just specify the field name, and let the CLI do the rest
