@@ -134,4 +134,5 @@ packages:
       casks:
       - 'rancher'
       - 'lynx'
+      - 'google-drive'
       mas_apps: {}
