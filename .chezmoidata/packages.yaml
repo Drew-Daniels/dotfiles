@@ -91,6 +91,7 @@ packages:
       - 'rectangle'
       - 'tidal'
       - 'zulip'
+      - 'zoom'
       mas_apps:
         "rcmd": 1596283165
         "Save to Raindrop.io": 1549370672
@@ -115,7 +116,6 @@ packages:
       - 'whatsapp'
       - 'wireshark'
       - 'vitalsource-bookshelf'
-      - 'zoom'
       mas_apps:
         "Kiwix": 997079563
         "Paprika Recipe Manager 3": 1303222628
