@@ -1,5 +1,5 @@
-name: fhir-types-r4
-root: <%= ENV["PROJECTS_DIR"] %>/fhir-types-r4
+name: patient-api-types
+root: <%= ENV["PROJECTS_DIR"] %>/patient-api-types
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>
