@@ -7,6 +7,7 @@ packages:
       - 'localstack/tap'
       - 'pulumi/tap'
       - 'teamookla/speedtest'
+      - 'smithy-lang/tap'
       head_brews:
       - 'imagemagick'
       - 'utf8proc'
@@ -65,6 +66,7 @@ packages:
       - 'speedtest-cli'
       - 'starship'
       - 'stylua'
+      - 'smithy-cli'
       - 'sops'
       - 'tmux'
       - 'tree'
