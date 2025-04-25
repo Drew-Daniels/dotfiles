@@ -11,6 +11,7 @@ local servers = {
 	cucumber_language_server = {},
 	tailwindcss = {},
 	terraformls = {},
+	smithy_ls = {},
 	sqlls = {},
 	vimls = {},
 	phpactor = {},

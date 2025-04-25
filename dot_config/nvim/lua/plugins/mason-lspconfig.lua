@@ -17,6 +17,7 @@ return {
 			"lua_ls",
 			"sqlls",
 			"standardrb",
+			"smithy_ls",
 			"marksman",
 			"tailwindcss",
 			"terraformls",

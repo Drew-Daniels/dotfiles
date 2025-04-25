@@ -49,6 +49,7 @@ return {
 			"hurl",
 			"nginx",
 			"passwd",
+			"smithy",
 			"svelte",
 			"swift",
 			"tmux",
