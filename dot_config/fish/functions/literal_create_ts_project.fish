@@ -1,5 +1,6 @@
 function create_ts_project -d "Scaffolds a new TS project"
     # TODO: Allow specification of package manager to use: npm, yarn, pnpm
+    # TODO: Add a 'build' script command to `package.json#scripts` that runs 'tsc'
     if count $argv >/dev/null
         mkdir -p $argv
         cd $argv
@@ -8,6 +9,7 @@ function create_ts_project -d "Scaffolds a new TS project"
         npx tsc --init --outdir "./dist"
         git init
         touch index.ts
+        echo dist >>.gitignore
         git add .
         git commit -m "Initial commit"
         return 0
