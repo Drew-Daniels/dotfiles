@@ -1,4 +1,5 @@
 function create_ts_project -d "Scaffolds a new TS project"
+    # TODO: Allow specification of package manager to use: npm, yarn, pnpm
     if count $argv >/dev/null
         mkdir -p $argv
         cd $argv
