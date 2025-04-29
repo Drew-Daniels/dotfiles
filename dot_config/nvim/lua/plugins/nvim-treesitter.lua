@@ -17,6 +17,7 @@ return {
 			"clojure",
 			"dockerfile",
 			"embedded_template",
+			"fsh",
 			"fish",
 			"html",
 			"http",
