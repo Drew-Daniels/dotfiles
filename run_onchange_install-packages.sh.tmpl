@@ -14,6 +14,9 @@ brew {{ . | quote }}, args: ["HEAD"]
 {{ range .packages.darwin.common.brews -}}
 brew {{ . | quote }}
 {{ end -}}
+{{ range .packages.darwin.common.no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
 {{ range .packages.darwin.common.casks -}}
 cask {{ . | quote }}
 {{ end -}}
@@ -29,6 +32,9 @@ brew {{ . | quote }}, args: ["HEAD"]
 {{ end -}}
 {{ range .packages.darwin.home.brews -}}
 brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.common.no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
 {{ end -}}
 {{ range .packages.darwin.home.casks -}}
 cask {{ . | quote }}
@@ -46,6 +52,9 @@ brew {{ . | quote }}, args: ["HEAD"]
 {{ end -}}
 {{ range .packages.darwin.work.brews -}}
 brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.common.no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
 {{ end -}}
 {{ range .packages.darwin.work.casks -}}
 cask {{ . | quote }}

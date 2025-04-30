@@ -78,6 +78,8 @@ packages:
       - 'cormacrelf/tap/dark-notify'
       - 'localstack/tap/localstack-cli'
       - 'pulumi/tap/pulumi'
+      no_quarantine_casks:
+      - 'wine-stable'
       casks:
       - '1password-cli'
       - '1password@nightly'
@@ -103,6 +105,7 @@ packages:
       taps: []
       head_brews: []
       brews: []
+      no_quarantine_casks: []
       casks:
       - 'alex313031-thorium'
       - 'docker'
@@ -133,6 +136,7 @@ packages:
       - 'httpd'
       - 'ankitpokhrel/jira-cli/jira-cli'
       - 'glab'
+      no_quarantine_casks: []
       casks:
       - 'rancher'
       - 'lynx'
