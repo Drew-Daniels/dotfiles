@@ -56,9 +56,9 @@ const config = {
       label: "Binding",
       value(el) {
         // TODO: Refactor - feels flimsy
-        if (el.binding) {
-          const extensions = el.binding.extension
-          const binding = extensions.find((ext) => ext.valueString).valueString
+        if (el.binding && el.binding.extension) {
+          const extensions = el.binding.extension || []
+          const binding = extensions.find((ext) => ext.valueString)?.valueString
           const bindingStrength = el.binding.strength
           return `${binding}(${bindingStrength})`
         }
