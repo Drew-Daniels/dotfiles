@@ -1,0 +1,10 @@
+name: sa
+root: <%= ENV["PROJECTS_DIR"] %>
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+            - fish
+            - cls
+            - python3 -m stay-awake
