@@ -115,5 +115,12 @@ if ! command -v pnpm >/dev/null 2>&1; then
   corepack enable pnpm
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                       Postgres.app                       │
+#          │                 https://postgresapp.com/                 │
+#          ╰──────────────────────────────────────────────────────────╯
+sudo mkdir -p /etc/paths.d && 
+  echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+
 # reboot
 shutdown -r now
