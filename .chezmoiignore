@@ -20,4 +20,5 @@ debian-upgrade.sh
 {{- else -}}
 .zshrc
 Brewfile*
+Library/Application Support/Cursor/User/settings.json
 {{ end }}
