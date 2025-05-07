@@ -118,18 +118,18 @@ return {
 			},
 		})
 
-		lspconfig.denols.setup({
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
-			init_options = {
-				lint = true,
-				suggest = {
-					imports = {
-						hosts = {
-							["https://deno.land"] = true,
-						},
-					},
-				},
-			},
-		})
+		-- lspconfig.denols.setup({
+		-- 	root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
+		-- 	init_options = {
+		-- 		lint = true,
+		-- 		suggest = {
+		-- 			imports = {
+		-- 				hosts = {
+		-- 					["https://deno.land"] = true,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 	end,
 }
