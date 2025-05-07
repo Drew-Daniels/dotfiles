@@ -12,33 +12,7 @@ return {
 			use_flat_config = true
 		end
 
-		vim.lsp.enable({
-			-- TODO: Need to figure out why nvim-lspconfig fails to attach to buffers when basedpyright configuration is loaded
-			-- "basedpyright",
-			"clangd",
-			"clojure_lsp",
-			"cssmodules_ls",
-			"cucumber_language_server",
-			"docker_compose_language_service",
-			"dockerls",
-			"emmet_language_server",
-			"html",
-			"jsonls",
-			"marksman",
-			"nil_ls",
-			"phpactor",
-			"prismals",
-			"ruff",
-			"smithy_ls",
-			"sqlls",
-			"tailwindcss",
-			"tflint",
-			"terraformls",
-			"vimls",
-			"volar",
-			"yamlls",
-		})
-
+		-- TODO: Figure out why configuring basedpyright fails
 		-- vim.lsp.config("basedpyright", {
 		-- 	capabilities = capabilities,
 		-- 	settings = {
