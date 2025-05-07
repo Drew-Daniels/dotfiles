@@ -1,67 +1,10 @@
-local servers = {
-	jsonls = {},
-	html = {},
-	clangd = {},
-	cssmodules_ls = {},
-	docker_compose_language_service = {},
-	dockerls = {},
-	emmet_language_server = {},
-	yamlls = {},
-	marksman = {},
-	cucumber_language_server = {},
-	tailwindcss = {},
-	terraformls = {},
-	smithy_ls = {},
-	sqlls = {},
-	vimls = {},
-	phpactor = {},
-	prismals = {},
-	volar = {},
-	nil_ls = {},
-	clojure_lsp = {},
-	ruff = {},
-	basedpyright = {},
-	tflint = {},
-}
-
 return {
 	"neovim/nvim-lspconfig",
 	config = function(_, _)
 		local lspconfig = require("lspconfig")
-
-		for server, config in pairs(servers) do
-			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-			lspconfig[server].setup(config)
-		end
-
-		lspconfig.bashls.setup({
-			filetypes = { "bash", "sh", "zsh" },
-		})
-
-		-- lspconfig.vuels.setup({
-		-- 	cmd = { "vue-language-server", "--stdio" },
-		-- })
-
-		lspconfig.solargraph.setup({
-			filetypes = { "ruby", "eruby" },
-		})
-
-		-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
-		lspconfig.standardrb.setup({
-			-- cmd = { "bundle", "exec", "standardrb", "--lsp" },
-		})
-
-		lspconfig.basedpyright.setup({
-			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-					},
-				},
-			},
-		})
-
-		--TODO: Deactive eslint lsp when in an "ignored" directory so things are less noisy
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		-- TODO: Modularize configuration so that 'capabilities = capabilities' setting is used for every lsp
+		--TODO: Deactivate eslint lsp when in an "ignored" directory so things are less noisy
 		-- https://github.com/neovim/nvim-lspconfig/issues/2508
 		local root_dir = vim.fs.root(0, ".git")
 		local use_flat_config = false
@@ -69,16 +12,59 @@ return {
 			use_flat_config = true
 		end
 
-		lspconfig.eslint.setup({
-			settings = {
-				workingDirectories = { mode = "auto" },
-				experimental = {
-					useFlatConfig = use_flat_config,
-				},
-			},
+		vim.lsp.enable({
+			-- TODO: Need to figure out why nvim-lspconfig fails to attach to buffers when basedpyright configuration is loaded
+			-- "basedpyright",
+			"clangd",
+			"clojure_lsp",
+			"cssmodules_ls",
+			"cucumber_language_server",
+			"docker_compose_language_service",
+			"dockerls",
+			"emmet_language_server",
+			"html",
+			"jsonls",
+			"marksman",
+			"nil_ls",
+			"phpactor",
+			"prismals",
+			"ruff",
+			"smithy_ls",
+			"sqlls",
+			"tailwindcss",
+			"tflint",
+			"terraformls",
+			"vimls",
+			"volar",
+			"yamlls",
 		})
 
-		lspconfig.cssls.setup({
+		-- vim.lsp.config("basedpyright", {
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				typeCheckingMode = "off",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+
+		vim.lsp.config("bashls", {
+			capabilities = capabilities,
+			filetypes = { "bash", "sh", "zsh" },
+		})
+
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("clojure_lsp", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("cssls", {
+			capabilities = capabilities,
 			settings = {
 				css = {
 					validate = true,
@@ -101,7 +87,61 @@ return {
 			},
 		})
 
-		lspconfig.lua_ls.setup({
+		vim.lsp.config("cssmodules_ls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("cucumber_language_server", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("denols", {
+			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
+			init_options = {
+				lint = true,
+				suggest = {
+					imports = {
+						hosts = {
+							["https://deno.land"] = true,
+						},
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("docker_compose_language_service", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("dockerls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("emmet_language_server", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("eslint", {
+			capabilities = capabilities,
+			settings = {
+				workingDirectories = { mode = "auto" },
+				experimental = {
+					useFlatConfig = use_flat_config,
+				},
+			},
+		})
+
+		vim.lsp.config("html", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("jsonls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -111,25 +151,75 @@ return {
 			},
 		})
 
-		lspconfig.typos_lsp.setup({
+		vim.lsp.config("marksman", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("nil_ls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("phpactor", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("prismals", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("ruff", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("smithy_ls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("sqlls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("standardrb", {
+			capabilities = capabilities,
+			-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
+			-- cmd = { "bundle", "exec", "standardrb", "--lsp" },
+		})
+
+		vim.lsp.config("tailwindcss", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("terraformls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("tflint", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("typos_lsp", {
+			capabilities = capabilities,
 			filetypes = { "markdown", "norg" },
 			init_options = {
 				config = "~/projects/dotfiles/typos/typos.toml",
 			},
 		})
 
-		-- lspconfig.denols.setup({
-		-- 	root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
-		-- 	init_options = {
-		-- 		lint = true,
-		-- 		suggest = {
-		-- 			imports = {
-		-- 				hosts = {
-		-- 					["https://deno.land"] = true,
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
+		vim.lsp.config("vimls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("volar", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("vuels", {
+			capabilities = capabilities,
+			cmd = { "vue-language-server", "--stdio" },
+		})
+
+		vim.lsp.config("yamlls", {
+			capabilities = capabilities,
+		})
 	end,
 }
