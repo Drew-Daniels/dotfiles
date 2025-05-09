@@ -415,6 +415,7 @@ fi
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
+# TODO: Add shasum verification step
 if ! command -v nvim; then
   echo "Installing neovim"
   # TODO: Figure out what requires 'yarn'
