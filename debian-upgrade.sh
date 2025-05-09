@@ -20,12 +20,21 @@ current=$(nvim --version | cut -d ' ' -f2 | head -n1)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading neovim"
   pkg_name="nvim-linux-x86_64.tar.gz"
+  checksums_filename="shasum.txt"
   base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
-  curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/shasum.txt"
-  sudo rm -rf /opt/nvim
-  sudo tar -C /opt -xzf "$pkg_name"
-  rm "$pkg_name"
-  echo "Upgraded neovim"
+  curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/$checksums_filename"
+  download_checksum=$(sha256sum "$pkg_name")
+  verified_checksum=$(grep "linux-x86_64.tar" <shasum.txt)
+
+  if [ "$download_checksum" == "$verified_checksum" ]; then
+    echo "Neovim checksum verified"
+    sudo rm -rf /opt/nvim
+    sudo tar -C /opt -xzf "$pkg_name"
+    rm "$pkg_name" "$checksums_filename"
+    echo "Upgraded neovim"
+  else
+    echo "Could not upgrade neovim - verify checksums"
+  fi
 else
   echo "Neovim up-to-date"
 fi
