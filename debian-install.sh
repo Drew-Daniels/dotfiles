@@ -4,14 +4,6 @@
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
 
-arch=$(arch)
-if [ "$arch" = "x86_64" ]; then
-  platform='amd64'
-else
-  echo "Unknown platform"
-  exit 1
-fi
-
 # pre-flight
 if [ ! -d ~/projects ]; then
   mkdir ~/projects
@@ -45,8 +37,8 @@ pkg=cosign
 
 if [ ! -f "/usr/local/bin/$pkg" ]; then
   echo "Installing $pkg"
-  curl -sLO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-$platform"
-  sudo mv $pkg-linux-$platform /usr/local/bin/$pkg
+  curl -sLO "https://github.com/sigstore/$pkg/releases/latest/download/$pkg-linux-x86_64"
+  sudo mv $pkg-linux-x86_64 /usr/local/bin/$pkg
   sudo chmod +x /usr/local/bin/$pkg
   echo "Installed $pkg"
 else
@@ -64,7 +56,7 @@ if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   # Download .deb pkg, the checksum file, checksum file signature, and public signing key:
   curl --silent --location --remote-name-all \
-    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_linux_$platform.deb" \
+    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_linux_x86_64.deb" \
     "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt" \
     "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt.sig" \
     "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_cosign.pub"
