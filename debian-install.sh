@@ -78,7 +78,7 @@ if ! command -v $pkg >/dev/null 2>&1; then
 
   # verify the checksum matches
   if sha256sum --check ${pkg}_${version}_checksums.txt --ignore-missing --status; then
-    sudo apt install -y ./${pkg}_${version}_linux_${platform}.deb
+    sudo apt install -y ./${pkg}_${version}_linux_x86_64.deb
     echo "Installed ${pkg}"
   else
     echo "Encountered an error "
@@ -130,7 +130,7 @@ if ! command -v $pkg; then
   # mise installation
   sudo install -dm 755 /etc/apt/keyrings
   wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1>/dev/null
-  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=${platform}] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=x86_64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
   sudo apt update
   sudo apt install -y $pkg
   echo "Installed $pkg"
@@ -150,7 +150,7 @@ if ! command -v $pkg; then
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
 
   # Add the 1Password apt repository:
-  echo "deb [arch=${platform} signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/${platform} stable main" | sudo tee /etc/apt/sources.list.d/1password.list
+  echo "deb [arch=x86_64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/x86_64 stable main" | sudo tee /etc/apt/sources.list.d/1password.list
 
   # Add the debsig-verify policy
   sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
@@ -195,7 +195,7 @@ pkg="ripgrep"
 
 if ! command -v rg; then
   echo "Installing ripgrep"
-  curl -sLO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_${platform}.deb
+  curl -sLO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_x86_64.deb
   sudo apt install -y ./ripgrep_14.1.0-1_amd64.deb
   echo "Installed ripgrep"
 else
@@ -661,9 +661,9 @@ version='0.29.1'
 if ! command -v resticprofile; then
   echo "Installing resticprofile"
   curl -sLO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
-  mkdir "resticprofile_${version}_linux_${platform}"
-  tar -xzpf "resticprofile_${version}_linux_${platform}.tar.gz" -C resticprofile_${version}_linux_${platform}
-  sudo cp resticprofile_${version}_linux_${platform}/resticprofile /usr/local/bin/
+  mkdir "resticprofile_${version}_linux_x86_64"
+  tar -xzpf "resticprofile_${version}_linux_x86_64.tar.gz" -C resticprofile_${version}_linux_x86_64
+  sudo cp resticprofile_${version}_linux_x86_64/resticprofile /usr/local/bin/
   rm -rf restic*
   echo "Installed resticprofile"
 else
