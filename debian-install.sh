@@ -4,9 +4,14 @@
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
 
-# pre-flight
-if [ ! -d ~/projects ]; then
-  mkdir ~/projects
+mkdir -p ~/projects
+
+if [ ! -d ~/projects/friendly-snippets ]; then
+  git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
+fi
+
+if [ ! -d ~/projects/jg ]; then
+  git clone https://codeberg.org/drewdaniels/jg.git ~/projects/jg
 fi
 
 sudo apt update -y
