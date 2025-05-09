@@ -17,6 +17,25 @@ if ! command -v jq; then
   exit 1
 fi
 
+#        ╭───────────────────────────────────────────────────────────────╮
+#        │                            neovim                             │
+#        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
+#        ╰───────────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/neovim/neovim/releases/latest | jq '.tag_name' | sed 's/"//g')
+current=$(nvim --version | cut -d ' ' -f2 | head -n1)
+
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading neovim"
+  pkg_name="nvim-linux-${arch}.tar.gz"
+  curl -sLO "https://github.com/neovim/neovim/releases/latest/download/$pkg_name"
+  sudo rm -rf /opt/nvim
+  sudo tar -C /opt -xzf "$pkg_name"
+  rm "$pkg_name"
+  echo "Upgraded neovim"
+else
+  echo "Neovim up-to-date"
+fi
+
 # TODO: Uncomment once done hashing out the rest
 # sudo apt update -y
 
