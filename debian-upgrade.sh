@@ -4,14 +4,6 @@
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
 
-arch=$(arch)
-if [ "$arch" = "x86_64" ]; then
-  platform='amd64'
-else
-  echo "Unknown platform"
-  exit 1
-fi
-
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq must be installed"
   exit 1
@@ -27,8 +19,9 @@ current=$(nvim --version | cut -d ' ' -f2 | head -n1)
 
 if [ "$current" != "$latest" ]; then
   echo "Upgrading neovim"
-  pkg_name="nvim-linux-${arch}.tar.gz"
-  curl -sLO "https://github.com/neovim/neovim/releases/latest/download/$pkg_name"
+  pkg_name="nvim-linux-x86_64.tar.gz"
+  base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
+  curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/shasum.txt"
   sudo rm -rf /opt/nvim
   sudo tar -C /opt -xzf "$pkg_name"
   rm "$pkg_name"
@@ -102,8 +95,8 @@ current_SHA_abbr=$(ctags --version | head -n1 | sed 's/.*(\([a-z0-9]*\)).*/\1/')
 
 if [ "$current_SHA_abbr" != "$latest_SHA_abbr" ]; then
   echo "Upgrading universal-ctags"
-  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${latest_release_date}%2B${latest_SHA_full}/uctags-${latest_release_date}-linux-${arch}.deb"
-  pkg_path="./uctags-${latest_release_date}-linux-${arch}.deb"
+  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${latest_release_date}%2B${latest_SHA_full}/uctags-${latest_release_date}-linux-x86_64.deb"
+  pkg_path="./uctags-${latest_release_date}-linux-x86_64.deb"
   sudo apt -qq install -y "$pkg_path"
   rm "$pkg_path"
   echo "Upgraded universal-ctags"
