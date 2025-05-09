@@ -21,6 +21,7 @@ fi
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
+# TODO: Add step to verify checksums from latest release before installing
 latest=$(curl -sL https://api.github.com/repos/neovim/neovim/releases/latest | jq '.tag_name' | sed 's/"//g')
 current=$(nvim --version | cut -d ' ' -f2 | head -n1)
 
