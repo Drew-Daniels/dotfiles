@@ -13,7 +13,7 @@ Sign into the App Store using personal Apple account - since I'll need to be aut
 #### Download and Install Dotfiles
 
 ```zsh
-sudo /bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles.git)"
+sudo /bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles/raw/branch/main/macos.sh)"
 ```
 
 #### `iterm2` Configuration
