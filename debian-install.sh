@@ -54,29 +54,27 @@ fi
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-pkg=chezmoi
-version=2.60.1
-
-if ! command -v $pkg >/dev/null 2>&1; then
-  echo "Installing $pkg"
+if ! command -v chezmoi >/dev/null 2>&1; then
+  echo "Installing chezmoi"
+  version=$(curl -sL https://api.github.com/repos/twpayne/chezmoi/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   # Download .deb pkg, the checksum file, checksum file signature, and public signing key:
   curl --silent --location --remote-name-all \
-    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_linux_x86_64.deb" \
-    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt" \
-    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_${version}_checksums.txt.sig" \
-    "https://github.com/twpayne/${pkg}/releases/download/v$version/${pkg}_cosign.pub"
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_linux_x86_64.deb" \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_checksums.txt" \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_checksums.txt.sig" \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_cosign.pub"
 
   # verify the signature on the checksums file is valid
-  cosign_verification_status=$(cosign verify-blob --key=${pkg}_cosign.pub --signature=${pkg}_${version}_checksums.txt.sig ${pkg}_${version}_checksums.txt)
+  cosign_verification_status=$(cosign verify-blob --key=chezmoi_cosign.pub --signature="chezmoi_${version}_checksums.txt.sig" "chezmoi_${version}_checksums.txt")
 
   if [ "$cosign_verification_status" -eq 1 ]; then
     exit 1
   fi
 
   # verify the checksum matches
-  if sha256sum --check ${pkg}_${version}_checksums.txt --ignore-missing --status; then
-    sudo apt install -y ./${pkg}_${version}_linux_x86_64.deb
-    echo "Installed ${pkg}"
+  if sha256sum --check "chezmoi_${version}_checksums.txt" --ignore-missing --status; then
+    sudo apt install -y "./chezmoi_${version}_linux_x86_64.deb"
+    echo "Installed chezmoi"
   else
     echo "Encountered an error "
     exit 1
