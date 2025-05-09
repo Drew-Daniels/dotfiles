@@ -25,10 +25,7 @@ if [ "$current" != "$latest" ]; then
 
   curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/$checksums_filename"
 
-  download_checksum=$(sha256sum "$pkg_name")
-  verified_checksum=$(grep "linux-x86_64.tar" <shasum.txt)
-
-  if [ "$download_checksum" == "$verified_checksum" ]; then
+  if sha256sum --check "$checksums_filename" --ignore-missing --status; then
     echo "Neovim checksum verified"
     sudo rm -rf /opt/nvim
     sudo tar -C /opt -xzf "$pkg_name"
