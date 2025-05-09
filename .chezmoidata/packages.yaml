@@ -2,6 +2,7 @@ packages:
   darwin:
     common:
       taps:
+      - 'ariga/tap'
       - 'cormacrelf/tap'
       - 'jstkdng/programs'
       - 'localstack/tap'
@@ -12,6 +13,7 @@ packages:
       - 'imagemagick'
       - 'utf8proc'
       brews:
+      - 'ariga/tap/atlas'
       - 'git'
       - 'age'
       - 'ast-grep'
