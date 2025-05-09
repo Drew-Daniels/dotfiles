@@ -421,10 +421,25 @@ if ! command -v nvim; then
   # TODO: Figure out what requires 'yarn'
   # tree-sitter-cli required by Swift LSP
   npm i -g yarn tree-sitter-cli
-  curl -sLO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz"
-  sudo rm -rf /opt/nvim
-  sudo tar -C /opt -xzf "nvim-linux-${arch}.tar.gz"
-  echo "Installed neovim"
+
+  pkg_name="nvim-linux-x86_64.tar.gz"
+  checksums_filename="shasum.txt"
+  base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
+
+  curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/$checksums_filename"
+
+  download_checksum=$(sha256sum "$pkg_name")
+  verified_checksum=$(grep "linux-x86_64.tar" <shasum.txt)
+
+  if [ "$download_checksum" == "$verified_checksum" ]; then
+    echo "Neovim checksum verified"
+    sudo rm -rf /opt/nvim
+    sudo tar -C /opt -xzf "$pkg_name"
+    rm "$pkg_name" "$checksums_filename"
+    echo "Installed neovim"
+  else
+    echo "Could not install neovim - verify checksums"
+  fi
 else
   echo "Already installed neovim"
 fi

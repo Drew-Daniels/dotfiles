@@ -13,16 +13,18 @@ fi
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
-# TODO: Add step to verify checksums from latest release before installing
 latest=$(curl -sL https://api.github.com/repos/neovim/neovim/releases/latest | jq '.tag_name' | sed 's/"//g')
 current=$(nvim --version | cut -d ' ' -f2 | head -n1)
 
 if [ "$current" != "$latest" ]; then
   echo "Upgrading neovim"
+
   pkg_name="nvim-linux-x86_64.tar.gz"
   checksums_filename="shasum.txt"
   base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
+
   curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/$checksums_filename"
+
   download_checksum=$(sha256sum "$pkg_name")
   verified_checksum=$(grep "linux-x86_64.tar" <shasum.txt)
 
