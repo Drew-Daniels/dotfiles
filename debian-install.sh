@@ -68,6 +68,7 @@ if ! command -v chezmoi >/dev/null 2>&1; then
   cosign_verification_status=$(cosign verify-blob --key=chezmoi_cosign.pub --signature="chezmoi_${version}_checksums.txt.sig" "chezmoi_${version}_checksums.txt")
 
   if [ "$cosign_verification_status" -eq 1 ]; then
+    echo "Signatures on Chemzoi checksums file is invalid"
     exit 1
   fi
 
