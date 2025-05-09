@@ -27,7 +27,7 @@ return {
 			{ "<leader>ca", "<cmd>CodeCompanionActions<cr>", desc = "Actions" },
 			-- Chezmoi
 			{ "<leadder>C", group = "Chezmoi" },
-			{ "<leader>Cf", "<cmd>ChezmoiFzf<cr>", desc = "Find" },
+			{ "<leader>Ce", "<cmd>ChezmoiFzf<cr>", desc = "Edit" },
 			{ "<leader>Cl", "<cmd>ChezmoiList<cr>", desc = "List" },
 			-- Codeium
 			-- { "<leader>C", group = "Codeium" },
