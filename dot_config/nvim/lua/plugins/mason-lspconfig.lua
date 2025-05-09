@@ -27,6 +27,7 @@ return {
 			"yamlls",
 			"ts_ls",
 			"phpactor",
+			"postgres_lsp",
 			"prismals",
 			"pylsp",
 			-- "denols",
