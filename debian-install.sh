@@ -767,6 +767,14 @@ else
   echo "Already installed feh"
 fi
 
+if ! command -v xmlstarlet >/dev/null 2>&1; then
+  echo "Installing xmlstarlet"
+  sudo apt install xmlstarlet
+  echo "Installed xmlstarlet"
+else
+  echo "Already installed xmlstarlet"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
@@ -776,6 +784,7 @@ version=''
 
 if ! command -v mergiraf; then
   echo "Installing mergiraf"
+  # https://codeberg.org/<username>/<repository>/releases/latest/download/
   curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_x86_64-unknown-linux-gnu.tar.gz"
   tar xzf "mergiraf_x86_64-unknown-linux-gnu.tar.gz"
   sudo mv mergiraf /usr/local/bin/
