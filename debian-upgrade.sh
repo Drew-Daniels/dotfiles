@@ -217,12 +217,6 @@ fi
 # TODO: alacritty - need to build custom logic to pull down new changes and rebuild
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                      standard notes                      │
-#          │         https://standardnotes.com/download/linux         │
-#          ╰──────────────────────────────────────────────────────────╯
-# TODO: standardnotes
-
-#          ╭──────────────────────────────────────────────────────────╮
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯

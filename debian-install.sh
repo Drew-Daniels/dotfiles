@@ -576,8 +576,8 @@ fi
 #          │                      standard notes                      │
 #          │         https://standardnotes.com/download/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
+# Static version is fine because the application once installed will automatically fetch and install updates
 version='3.195.25'
-
 if ! command -v standard_notes; then
   echo "Installing standard notes"
   curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-x86_64.AppImage"
