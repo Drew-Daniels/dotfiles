@@ -29,9 +29,6 @@ else
   exit 1
 fi
 
-# TODO: Break up this script into a pre-install and install script so one can be used to add a user to sudoers file, and the other can be used to actually install all packages
-
-# TODO: Make sure to jump back to ~ after cd'ing to specific directories
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          cosign                          │
 #          │            https://github.com/sigstore/cosign            │
@@ -306,8 +303,8 @@ release_commit_SHA="cff205ee0d66994f1e26e0b7e3c9c482c7595bbc"
 
 if ! command -v ctags; then
   echo "Installing $pkg"
-  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${release_date}%2B${release_commit_SHA}/uctags-${release_date}-linux-${arch}.deb"
-  sudo apt install -y "./uctags-${release_date}-linux-${arch}.deb"
+  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${release_date}%2B${release_commit_SHA}/uctags-${release_date}-linux-x86_64.deb"
+  sudo apt install -y "./uctags-${release_date}-linux-x86_64.deb"
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -323,7 +320,7 @@ fi
 # https://github.com/aws/aws-cli/issues/6230
 if ! command -v aws; then
   echo "Installing awscli"
-  curl -s "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscliv2.zip"
+  curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
   echo "Installed awscli"
@@ -577,9 +574,9 @@ version='3.195.25'
 
 if ! command -v standard_notes; then
   echo "Installing standard notes"
-  curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-${arch}.AppImage"
-  chmod a+x "standard-notes-${version}-linux-${arch}.AppImage"
-  mv "standard-notes-${version}-linux-${arch}.AppImage" /opt/standard_notes/standard_notes
+  curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-x86_64.AppImage"
+  chmod a+x "standard-notes-${version}-linux-x86_64.AppImage"
+  mv "standard-notes-${version}-linux-x86_64.AppImage" /opt/standard_notes/standard_notes
   echo "Installed standard notes"
 else
   echo "Already installed standard notes"
@@ -774,12 +771,13 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Fix blank version here
 version=''
 
 if ! command -v mergiraf; then
   echo "Installing mergiraf"
-  curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_${arch}-unknown-linux-gnu.tar.gz"
-  tar xzf "mergiraf_${arch}-unknown-linux-gnu.tar.gz"
+  curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_x86_64-unknown-linux-gnu.tar.gz"
+  tar xzf "mergiraf_x86_64-unknown-linux-gnu.tar.gz"
   sudo mv mergiraf /usr/local/bin/
   echo "Installed mergiraf"
 else
