@@ -192,3 +192,27 @@ fi
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
 # TODO: jetbrains-mono-nerd-font
+
+#        ╭──────────────────────────────────────────────────────────────╮
+#        │                          alacritty                           │
+#        │https://github.com/alacritty/alacritty/blob/master/INSTALL.md │
+#        ╰──────────────────────────────────────────────────────────────╯
+# TODO: alacritty - need to build custom logic to pull down new changes and rebuild
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                      standard notes                      │
+#          │         https://standardnotes.com/download/linux         │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: standardnotes
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                      resticprofile                       │
+#          │    https://github.com/creativeprojects/resticprofile     │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: resticprofile
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                        usbimager                         │
+#          │           https://gitlab.com/bztsrc/usbimager            │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: usbimager
