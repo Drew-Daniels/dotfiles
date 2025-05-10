@@ -118,7 +118,18 @@ fi
 #    │                               ripgrep                                │
 #    │https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation │
 #    ╰──────────────────────────────────────────────────────────────────────╯
-# TODO: ripgrep
+pkg="ripgrep"
+latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(rg --version | head -n1 | cut -d ' ' -f2)
+
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading ${pkg}"
+  curl -sLO "https://github.com/BurntSushi/${pkg}/releases/download/${latest}/${pkg}_${latest}_x86_64.deb"
+  sudo apt install -y ./${pkg}_14.1.0-1_amd64.deb
+  echo "Upgraded ${pkg}"
+else
+  echo "Ripgrep already up-to-date"
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          delta                           │

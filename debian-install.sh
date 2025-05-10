@@ -183,10 +183,11 @@ sudo apt-get install git-credential-oauth
 #    │https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation │
 #    ╰──────────────────────────────────────────────────────────────────────╯
 pkg="ripgrep"
+version=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! command -v rg; then
   echo "Installing ripgrep"
-  curl -sLO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_x86_64.deb
+  curl -sLO "https://github.com/BurntSushi/ripgrep/releases/download/${version}/ripgrep_${version}_x86_64.deb"
   sudo apt install -y ./ripgrep_14.1.0-1_amd64.deb
   echo "Installed ripgrep"
 else
