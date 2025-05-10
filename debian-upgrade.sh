@@ -63,22 +63,25 @@ current=$(nvim --version | cut -d ' ' -f2 | head -n1)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading neovim"
 
+  base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
   pkg_name="nvim-linux-x86_64.tar.gz"
   checksums_filename="shasum.txt"
-  base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
 
-  # TODO: Fix checksum logic - will fail if one of the checksums can't be verified
   curl --silent --location --remote-name-all "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
-  sha256sum --check "$checksums_filename"
-  if sha256sum --check "$checksums_filename" --status; then
-    echo "Neovim checksum verified"
-    sudo rm -rf /opt/nvim
-    sudo tar -C /opt -xzf "$pkg_name"
-    rm "$pkg_name" "$checksums_filename"
-    echo "Upgraded neovim"
-  else
-    echo "Could not upgrade neovim - verify checksums"
+
+  download_checksum=$(sha256sum <$pkg_name)
+  verified_checksum=$(grep "linux-x86_64" <$checksums_filename)
+
+  if [ "$download_checksum" != "$verified_checksum" ]; then
+    echo "Checksum verification failed: $download_checksum vs. $verified_checksum"
+    exit 1
   fi
+
+  echo "Neovim checksum verified"
+  sudo rm -rf /opt/nvim
+  sudo tar -C /opt -xzf "$pkg_name"
+  rm "$pkg_name" "$checksums_filename"
+  echo "Upgraded neovim"
 else
   echo "Neovim up-to-date"
 fi
