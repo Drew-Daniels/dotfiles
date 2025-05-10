@@ -183,12 +183,18 @@ sudo apt-get install git-credential-oauth
 #    │https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation │
 #    ╰──────────────────────────────────────────────────────────────────────╯
 pkg="ripgrep"
-version=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! command -v rg; then
   echo "Installing ripgrep"
-  curl -sLO "https://github.com/BurntSushi/ripgrep/releases/download/${version}/ripgrep_${version}_x86_64.deb"
-  sudo apt install -y ./ripgrep_14.1.0-1_amd64.deb
+  base_url="https://github.com/BurntSushi/ripgrep/releases/download/${latest}"
+  # TODO: Figure out why a -1 is always appended to version?
+  deb="$base_url/ripgrep_${latest}-1_amd64.deb"
+  sha="$base_url/ripgrep_${latest}-1_amd64.deb.sha256"
+  # TODO: Verify SHA
+  curl --silent --location --remote-name-all "$base_url/$deb" "$base_url/$sha"
+  sudo apt install -y "./$deb"
+  rm "$deb" "$sha"
   echo "Installed ripgrep"
 else
   echo "Already installed ripgrep"
