@@ -9,6 +9,50 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         chezmoi                          │
+#          │                 https://www.chezmoi.io/                  │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: Rename
+version=$(curl -sL https://api.github.com/repos/twpayne/chezmoi/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(chezmoi --version | cut -d ' ' -f3 | cut -d 'v' -f2 | cut -d ',' -f1)
+
+if [ "$current" != "$version" ]; then
+  echo "Upgrading chezmoi"
+  chezmoi_base_path="https://github.com/twpayne/chezmoi/releases/download/v${version}"
+
+  deb="chezmoi_${version}_linux_amd64.deb"
+  checksums="chezmoi_${version}_checksums.txt"
+  checksum_sigs="chezmoi_${version}_checksums.txt.sig"
+  pkey="chezmoi_cosign.pub"
+
+  curl --silent --location --remote-name-all "${chezmoi_base_path}/${deb}" "${chezmoi_base_path}/${checksums}" "${chezmoi_base_path}/${checksum_sigs}" "${chezmoi_base_path}/${pkey}"
+
+  # verify the signature on the checksums file is valid
+  cosign verify-blob --key=$pkey --signature="$checksum_sigs" "$checksums"
+
+  cosign_verification_status=$?
+  if [ "$cosign_verification_status" -eq 1 ]; then
+    echo "Signatures on Chemzoi checksums file is invalid"
+    exit 1
+  fi
+
+  # verify the checksum matches
+  download_checksum=$(sha256sum "$deb")
+  verified_checksum=$(grep "linux_amd64.deb" <"$checksums")
+
+  if [ "$download_checksum" != "$verified_checksum" ]; then
+    echo "Checksum verification failed: $download_checksum vs. $verified_checksum"
+    exit 1
+  fi
+
+  sudo apt install -y "./$deb"
+  rm "$deb" "$checksums" "$checksum_sigs" "$pkey"
+  echo "Installed chezmoi"
+else
+  echo "Chezmoi up-to-date"
+fi
+
 #        ╭───────────────────────────────────────────────────────────────╮
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
@@ -23,9 +67,10 @@ if [ "$current" != "$latest" ]; then
   checksums_filename="shasum.txt"
   base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
 
-  curl -sLO "$base_repo_path/$pkg_name" -O "$base_repo_path/$checksums_filename"
-
-  if sha256sum --check "$checksums_filename" --ignore-missing --status; then
+  # TODO: Fix checksum logic - will fail if one of the checksums can't be verified
+  curl --silent --location --remote-name-all "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
+  sha256sum --check "$checksums_filename"
+  if sha256sum --check "$checksums_filename" --status; then
     echo "Neovim checksum verified"
     sudo rm -rf /opt/nvim
     sudo tar -C /opt -xzf "$pkg_name"
