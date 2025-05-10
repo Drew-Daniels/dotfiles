@@ -198,12 +198,12 @@ fi
 #          │       https://github.com/dandavison/delta/releases       │
 #          ╰──────────────────────────────────────────────────────────╯
 pkg='delta'
-version='0.18.2'
+version=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! command -v $pkg; then
   echo "Installing $pkg"
   curl -sLO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
-  sudo apt install -y ./git-delta_${version}_amd64.deb
+  sudo apt install -y ./git-delta_"${version}"_amd64.deb
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
