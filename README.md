@@ -115,7 +115,7 @@ Then, restart computer so it picks up these changes.
 ```bash
 cd ~/.local/share/chezmoi
 # bootstrap
-sudo ./debian-install.sh
+./debian-install.sh
 ```
 
 ### Maintenance
@@ -123,7 +123,7 @@ sudo ./debian-install.sh
 Some packages have to be manually updated outside of package managers like, `apt`. To update them run:
 
 ```bash
-sudo ./debian-update.sh
+./debian-update.sh
 ```
 
 ## `NixOS` Workstation Setup Notes
