@@ -220,7 +220,20 @@ fi
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: resticprofile
+latest=$(curl -sL https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(resticprofile version | cut -d ' ' -f3)
+
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading resticprofile"
+  curl -sLO "https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_${latest}_linux_amd64.tar.gz"
+  mkdir "resticprofile_${latest}_linux_amd64"
+  tar -xzpf "resticprofile_${latest}_linux_amd64.tar.gz" -C "resticprofile_${latest}_linux_amd64"
+  sudo cp "resticprofile_${latest}_linux_amd64/resticprofile" /usr/local/bin/
+  rm -rf restic*
+  echo "Upgraded resticprofile"
+else
+  echo "resticprofile is up-to-date"
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        usbimager                         │
