@@ -140,10 +140,6 @@ fi
 #       │                             ctags                              │
 #       │https://github.com/universal-ctags/ctags-nightly-build/releases │
 #       ╰────────────────────────────────────────────────────────────────╯
-# TODO: Build in SHA-verification step
-# get the first 7 characters of the latest release commit SHA
-# keep a reference to the entire SHA since we'll use this to fetch the latest ctags release
-
 latest_tag_name=$(curl -sL https://api.github.com/repos/universal-ctags/ctags-nightly-build/releases/latest | jq '.tag_name' | sed 's/"//g')
 latest_release_date=$(echo "$latest_tag_name" | cut -d '+' -f1)
 
