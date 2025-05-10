@@ -199,7 +199,7 @@ if (("$last_modified_as_date" < "$latest_release_date_as_date")); then
   fonts_dir="$HOME/.local/share/fonts"
   echo "Upgrading JetBrainsMonoNerdFont"
   wget -P "$fonts_dir" "https://github.com/ryanoasis/nerd-fonts/releases/download/${latest_release_tag}/JetBrainsMono.zip"
-  unzip "$fonts_dir/JetBrainsMono.zip" -d "$fonts_dir"
+  unzip -o "$fonts_dir/JetBrainsMono.zip" -d "$fonts_dir"
   rm "$fonts_dir/JetBrainsMono.zip"
   fc-cache -fv
   echo "Upgraded JetBrainsMonoNerdFont"
