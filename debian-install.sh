@@ -20,13 +20,6 @@ sudo apt update -y
 #   https://github.com/molovo/revolver/blob/master/revolver
 #   https://willcarh.art/blog/how-to-write-better-bash-spinners
 # TODO: Add logging to indicate overall progress
-# TODO: Determine if the 'sudo' modifiers are necessary if running the entire script with 'sudo' prefix
-# TODO: Build in checks to alert user if there is a newer version of a pkg hosted on github
-#       Ex.) chezmoi, delta, or any other package downloaded from GitHub releases
-# TODO: Figure out how to make this script idempotent
-#   Uninstall unzipped directories when they're no longer necessary
-#   rm *.deb files when no longer needed
-# TODO: Look into breaking up this script into smaller scripts, where each one handles running all the various installation steps, including installing dependencies and removing files after use
 
 # TODO: check if current user is a sudoer
 # if not, indicate this is required an exit
