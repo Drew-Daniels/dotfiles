@@ -93,16 +93,20 @@ fi
 #│                                    awscli                                    │
 #│https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html │
 #╰──────────────────────────────────────────────────────────────────────────────╯
-# TODO: Figure out how to check for latest available version before attempting to install
-echo "Upgrading awscli"
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+# TODO: Figure out a way to fetch latest public key to verify before installing
+latest=$(curl -sL https://raw.githubusercontent.com/aws/aws-cli/v2/CHANGELOG.rst | sed '5!d')
+current=$(aws --version | cut -d '/' -f2 | cut -d ' ' -f1)
 
-# cleanup
-rm awscliv2.zip
-rm -rf aws
-echo "Upgraded awscli"
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading AWS CLI"
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+  rm -rf awscliv2.zip aws
+  echo "Upgraded AWS CLI"
+else
+  echo "AWS CLI is up-to-date"
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          rustup                          │
