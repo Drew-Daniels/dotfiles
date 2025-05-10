@@ -396,7 +396,6 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
-# version="3.0.2"
 latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
