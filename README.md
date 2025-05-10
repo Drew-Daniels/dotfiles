@@ -112,10 +112,10 @@ exit
 
 Then, restart computer so it picks up these changes.
 
+Download and install dotfiles, and all dev environment dependencies:
+
 ```bash
-cd ~/.local/share/chezmoi
-# bootstrap
-./debian-install.sh
+/bin/bash -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles/raw/branch/main/debian-install.sh)"
 ```
 
 ### Maintenance
@@ -138,6 +138,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into making `debian-upgrade.sh` script globally available
 - Create a post-install script that automatically:
   - Generates a new `age` encryption key to `~/.config/mise/age.txt`
   - Exports shared secrets that are used across all computers (like Home DDNS hostname) to `~/.env`
