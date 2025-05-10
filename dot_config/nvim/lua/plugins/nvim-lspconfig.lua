@@ -12,17 +12,17 @@ return {
 			use_flat_config = true
 		end
 
-		vim.lsp.config("basedpyright", {
-			capabilities = capabilities,
-			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-					},
-				},
-			},
-		})
-
+		-- vim.lsp.config("basedpyright", {
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				typeCheckingMode = "off",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		--
 		vim.lsp.config("bashls", {
 			capabilities = capabilities,
 			filetypes = { "bash", "sh", "zsh" },
