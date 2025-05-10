@@ -21,9 +21,14 @@ sudo apt update -y
 #   https://willcarh.art/blog/how-to-write-better-bash-spinners
 # TODO: Add logging to indicate overall progress
 
-# TODO: check if current user is a sudoer
-# if not, indicate this is required an exit
-# if so, continue
+# Check if the current user is a sudoer
+if sudo -l &>/dev/null; then
+  echo "The current user has sudo privileges."
+else
+  echo "The current user does not have sudo privileges."
+  exit 1
+fi
+
 # TODO: Break up this script into a pre-install and install script so one can be used to add a user to sudoers file, and the other can be used to actually install all packages
 
 # TODO: Make sure to jump back to ~ after cd'ing to specific directories
