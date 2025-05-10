@@ -779,11 +779,11 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Fix blank version here
-version=''
+version=$(xmlstarlet sel -t -v "//channel/item[1]/title" releases.rss | cut -d ' ' -f2)
 
-if ! command -v mergiraf; then
+if ! command -v mergiraf >/dev/null 2>&1; then
   echo "Installing mergiraf"
+  # TODO: Would be nice if I could get the latest release similar to from github?
   # https://codeberg.org/<username>/<repository>/releases/latest/download/
   curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${version}/mergiraf_x86_64-unknown-linux-gnu.tar.gz"
   tar xzf "mergiraf_x86_64-unknown-linux-gnu.tar.gz"
