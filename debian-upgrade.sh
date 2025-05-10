@@ -156,6 +156,7 @@ fi
 #       │                             ctags                              │
 #       │https://github.com/universal-ctags/ctags-nightly-build/releases │
 #       ╰────────────────────────────────────────────────────────────────╯
+# TODO: Fixme - always 'upgrading' even when latest version
 latest_tag_name=$(curl -sL https://api.github.com/repos/universal-ctags/ctags-nightly-build/releases/latest | jq '.tag_name' | sed 's/"//g')
 latest_release_date=$(echo "$latest_tag_name" | cut -d '+' -f1)
 
@@ -176,12 +177,6 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                           zoom                           │
-#          │            https://zoom.us/download?os=linux             │
-#          ╰──────────────────────────────────────────────────────────╯
-# TODO: zoom
-
-#          ╭──────────────────────────────────────────────────────────╮
 #          │                        veracrypt                         │
 #          │        https://www.veracrypt.fr/en/Downloads.html        │
 #          ╰──────────────────────────────────────────────────────────╯
@@ -191,7 +186,29 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: jetbrains-mono-nerd-font
+# TODO: Figure out how to store data for reuse (getting latest tag and release date from same response)
+latest_release_tag=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest_release_date=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.published_at' | sed 's/"//g' | cut -d 'T' -f1)
+# TODO: Doesn't matter which specific one is checked, since they all are updated at the same time
+last_modified=$(date +%F -r ~/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf)
+
+latest_release_date_as_date=$(date -d "$latest_release_date" +%s)
+last_modified_as_date=$(date -d "$last_modified" +%s)
+
+if (("$last_modified_as_date" < "$latest_release_date_as_date")); then
+  fonts_dir="$HOME/.local/share/fonts"
+  echo "Upgrading JetBrainsMonoNerdFont"
+  wget -P "$fonts_dir" "https://github.com/ryanoasis/nerd-fonts/releases/download/${latest_release_tag}/JetBrainsMono.zip"
+  unzip "$fonts_dir/JetBrainsMono.zip" -d "$fonts_dir"
+  rm "$fonts_dir/JetBrainsMono.zip"
+  fc-cache -fv
+  echo "Upgraded JetBrainsMonoNerdFont"
+else
+  echo "JetBrainsMonoNerdFont is up-to-date"
+fi
+# TODO: Get the last modified date of currently installed jetbrains font, and if it is before the date of the latest release, replace it with the latest release
+# jq '.published_at'
+# "2025-04-24T18:23:06Z"
 
 #        ╭──────────────────────────────────────────────────────────────╮
 #        │                          alacritty                           │
