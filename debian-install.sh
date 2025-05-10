@@ -891,16 +891,16 @@ fi
 #          │                           zoom                           │
 #          │            https://zoom.us/download?os=linux             │
 #          ╰──────────────────────────────────────────────────────────╯
-version='6.4.0.471'
-
-if ! command -v zoom; then
-  echo "Installing zoom"
-  curl -sLO https://zoom.us/client/${version}/zoom_amd64.deb
-  sudo apt install -y ./zoom_amd64.deb
-  echo "Installed zoom"
-else
-  echo "Already installed zoom"
-fi
+# version='6.4.0.471'
+#
+# if ! command -v zoom; then
+#   echo "Installing zoom"
+#   curl -sLO https://zoom.us/client/${version}/zoom_amd64.deb
+#   sudo apt install -y ./zoom_amd64.deb
+#   echo "Installed zoom"
+# else
+#   echo "Already installed zoom"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      keep-presence                       │
