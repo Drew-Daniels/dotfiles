@@ -156,7 +156,7 @@ fi
 #       │                             ctags                              │
 #       │https://github.com/universal-ctags/ctags-nightly-build/releases │
 #       ╰────────────────────────────────────────────────────────────────╯
-# TODO: Fixme - always 'upgrading' even when latest version
+# TODO: Fixme - always 'upgrading' even when latest version. It's not a huge deal because these are released nightly, but inconvient if I'm running this more than once a day
 latest_tag_name=$(curl -sL https://api.github.com/repos/universal-ctags/ctags-nightly-build/releases/latest | jq '.tag_name' | sed 's/"//g')
 latest_release_date=$(echo "$latest_tag_name" | cut -d '+' -f1)
 
