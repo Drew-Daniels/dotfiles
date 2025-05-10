@@ -186,3 +186,9 @@ fi
 #          │        https://www.veracrypt.fr/en/Downloads.html        │
 #          ╰──────────────────────────────────────────────────────────╯
 # TODO: veracrypt
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                 jetbrains-mono-nerd-font                 │
+#          │            https://www.jetbrains.com/lp/mono/            │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: jetbrains-mono-nerd-font

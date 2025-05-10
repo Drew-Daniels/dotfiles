@@ -396,12 +396,13 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
-version="3.0.2"
+# version="3.0.2"
+latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
   echo "Installing JetBrainsMonoNerdFont"
-  wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/JetBrainsMono.zip &&
-    cd ~/.local/share/fonts &&
+  wget -P "$HOME/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip &&"
+  cd ~/.local/share/fonts &&
     unzip JetBrainsMono.zip &&
     rm JetBrainsMono.zip &&
     fc-cache -fv
