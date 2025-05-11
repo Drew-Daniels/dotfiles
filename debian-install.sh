@@ -588,6 +588,7 @@ if ! command -v yq >/dev/null; then
   base_url="https://github.com/mikefarah/yq/releases/download/${latest}"
   curl --silent --location --remote-name-all "$base_url/yq_linux_amd64.tar.gz" "$base_url/extract-checksum.sh" "$base_url/checksums_hashes_order" "$base_url/checksums"
 
+  # TODO: Not a huge fan of running an arbitrary script here - may want to store a trusted copy of this locally (or a SHA of it) and stop this from running if the contents change in newer versions
   chmod +x ./extract-checksum.sh
 
   if ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status; then

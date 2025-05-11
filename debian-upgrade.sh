@@ -258,11 +258,17 @@ latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq
 current=$(yq --version | cut -d ' ' -f4)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading yq"
-  curl -sLO "https://github.com/mikefarah/yq/releases/download/${latest}/yq_linux_amd64.tar.gz"
-  tar xzf "yq_linux_amd64.tar.gz"
-  sudo mv yq_linux_amd64 /usr/local/bin/yq
-  rm yq_linux_amd64.tar.gz
-  echo "Upgraded yq"
+  curl --silent --location --remote-name-all "$base_url/yq_linux_amd64.tar.gz" "$base_url/extract-checksum.sh" "$base_url/checksums_hashes_order" "$base_url/checksums"
+  chmod +x ./extract-checksum.sh
+
+  if ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status; then
+    tar xzf "yq_linux_amd64.tar.gz"
+    sudo mv yq_linux_amd64 /usr/local/bin/yq
+    rm yq_linux_amd64.tar.gz
+    echo "Upgraded yq"
+  else
+    echo "Could not upgrade yq - verify checksums"
+  fi
 else
   echo "yq up-to-date"
 fi
