@@ -183,10 +183,10 @@ sudo apt-get install git-credential-oauth
 #    │https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation │
 #    ╰──────────────────────────────────────────────────────────────────────╯
 pkg="ripgrep"
-latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! command -v rg; then
   echo "Installing ripgrep"
+  latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   base_url="https://github.com/BurntSushi/ripgrep/releases/download/${latest}"
   # TODO: Figure out why a -1 is always appended to version?
   deb="$base_url/ripgrep_${latest}-1_amd64.deb"
@@ -205,10 +205,10 @@ fi
 #          │       https://github.com/dandavison/delta/releases       │
 #          ╰──────────────────────────────────────────────────────────╯
 pkg='delta'
-version=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 
 if ! command -v $pkg; then
   echo "Installing $pkg"
+  version=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   curl -sLO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
   sudo apt install -y ./git-delta_"${version}"_amd64.deb
   echo "Installed $pkg"
@@ -401,10 +401,9 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
-
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
   echo "Installing JetBrainsMonoNerdFont"
+  latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   wget -P "$HOME/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip"
   cd ~/.local/share/fonts
   unzip JetBrainsMono.zip
@@ -584,9 +583,10 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 
 if ! command -v yq >/dev/null; then
-  latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
   echo "Installing yq"
-  curl -sLO "https://github.com/mikefarah/yq/releases/download/${latest}/yq_linux_amd64.tar.gz"
+  latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
+  base_url="https://github.com/mikefarah/yq/releases/download/${latest}"
+  curl --silent --location --remote-name-all "$base_url/yq_linux_amd64.tar.gz" "$base_url/checksums"
   tar xzf "yq_linux_amd64.tar.gz"
   sudo mv yq_linux_amd64 /usr/local/bin/yq
   rm yq_linux_amd64.tar.gz
@@ -601,9 +601,9 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # TODO: Verify checksums - do this once I configure 'yq' package so I can parse the 'latest_linux.yml' file using it
 # TODO: Once installed, whats the right command name to check?
-latest=$(curl -sL https://api.github.com/repos/standardnotes/app/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d '@' -f3)
 if ! command -v standard_notes; then
   echo "Installing standard notes"
+  latest=$(curl -sL https://api.github.com/repos/standardnotes/app/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d '@' -f3)
   # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
   deb="standard-notes-${latest}-linux-amd64.deb"
   curl -LO "https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13/standard-notes-${latest}-linux-amd64.deb"
@@ -810,10 +810,9 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Download .rss file
-version=$(xmlstarlet sel -t -v "//channel/item[1]/title" releases.rss | cut -d ' ' -f2)
-
 if ! command -v mergiraf >/dev/null 2>&1; then
+  # TODO: Download .rss file
+  version=$(xmlstarlet sel -t -v "//channel/item[1]/title" releases.rss | cut -d ' ' -f2)
   echo "Installing mergiraf"
   # TODO: Would be nice if I could get the latest release similar to from github?
   # https://codeberg.org/<username>/<repository>/releases/latest/download/
