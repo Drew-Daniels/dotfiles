@@ -578,17 +578,31 @@ else
   echo "Already installed jless"
 fi
 
+if ! command -v yq >/dev/null; then
+  latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
+  echo "Installing yq"
+  curl -sLO "https://github.com/mikefarah/yq/releases/download/${latest}/yq_linux_amd64.tar.gz"
+  tar xzf "yq_linux_amd64.tar.gz"
+  sudo mv yq_linux_amd64 /usr/local/bin/yq
+  rm yq_linux_amd64.tar.gz
+  echo "Installed yq"
+else
+  echo "Already installed yq"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      standard notes                      │
 #          │         https://standardnotes.com/download/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
-# Static version is fine because the application once installed will automatically fetch and install updates
-version='3.195.25'
+# TODO: Verify checksums - do this once I configure 'yq' package so I can parse the 'latest_linux.yml' file using it
+# TODO: Once installed, whats the right command name to check?
+latest=$(curl -sL https://api.github.com/repos/standardnotes/app/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d '@' -f3)
 if ! command -v standard_notes; then
   echo "Installing standard notes"
-  curl -sLO "https://github.com/standardnotes/app/releases/download/%40standardnotes/desktop%403.195.25/standard-notes-${version}-linux-x86_64.AppImage"
-  chmod a+x "standard-notes-${version}-linux-x86_64.AppImage"
-  mv "standard-notes-${version}-linux-x86_64.AppImage" /opt/standard_notes/standard_notes
+  # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
+  deb="standard-notes-${latest}-linux-amd64.deb"
+  curl -LO "https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13/standard-notes-${latest}-linux-amd64.deb"
+  sudo apt install -y "./$deb"
   echo "Installed standard notes"
 else
   echo "Already installed standard notes"
