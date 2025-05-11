@@ -254,7 +254,18 @@ fi
 #          │                            yq                            │
 #          │             https://github.com/mikefarah/yq              │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: yq
+latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
+current=$(yq --version | cut -d ' ' -f4)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading yq"
+  curl -sLO "https://github.com/mikefarah/yq/releases/download/${latest}/yq_linux_amd64.tar.gz"
+  tar xzf "yq_linux_amd64.tar.gz"
+  sudo mv yq_linux_amd64 /usr/local/bin/yq
+  rm yq_linux_amd64.tar.gz
+  echo "Upgraded yq"
+else
+  echo "yq up-to-date"
+fi
 
 # cleanup
 sudo apt autoremove -y
