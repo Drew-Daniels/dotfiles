@@ -13,7 +13,7 @@ Sign into the App Store using personal Apple account - since I'll need to be aut
 #### Download and Install Dotfiles
 
 ```zsh
-sudo /bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles/raw/branch/main/macos.sh)"
+/bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles/raw/branch/main/macos.sh)"
 ```
 
 #### `iterm2` Configuration
@@ -123,6 +123,7 @@ Download and install dotfiles, and all dev environment dependencies:
 Some packages have to be manually updated outside of package managers like, `apt`. To update them run:
 
 ```bash
+chezmoi cd
 ./debian-update.sh
 ```
 
