@@ -578,6 +578,11 @@ else
   echo "Already installed jless"
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                            yq                            │
+#          │             https://github.com/mikefarah/yq              │
+#          ╰──────────────────────────────────────────────────────────╯
+
 if ! command -v yq >/dev/null; then
   latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
   echo "Installing yq"

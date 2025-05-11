@@ -250,6 +250,12 @@ else
   echo "usbimager is up-to-date"
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                            yq                            │
+#          │             https://github.com/mikefarah/yq              │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: yq
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
