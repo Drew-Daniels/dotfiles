@@ -291,9 +291,10 @@ pkg="bat-extras"
 if ! command -v batgrep; then
   echo "Installing $pkg"
   cd ~/projects || exit
-  git clone https://github.com/eth-p/$pkg.git
+  git clone https://github.com/eth-p/$pkg.git ~/projects/bat-extras
   cd $pkg || exit
   ./build.sh --install
+  cd ~
   echo "Installed $pkg"
 else
   echo "Installed $pkg"
@@ -369,6 +370,7 @@ if ! command -v lua; then
   make test
   # install
   sudo make install
+  cd ~
   echo "Installed lua v5.1"
 else
   echo "Already installed lua v5.1"
@@ -384,9 +386,12 @@ if ! command -v luarocks; then
   echo "Installing luarocks"
   wget https://luarocks.org/releases/luarocks-${version}.tar.gz
   tar zxpf luarocks-${version}.tar.gz
-  cd luarocks-3.11.1 || exit
-  ./configure && make && sudo make install
+  cd "luarocks-${version}" || exit
+  ./configure
+  make
+  sudo make install
   sudo luarocks install luasocket
+  cd ~
   echo "Installed luarocks"
 else
   echo "Already installed luarocks"
@@ -400,11 +405,12 @@ latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/lat
 
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
   echo "Installing JetBrainsMonoNerdFont"
-  wget -P "$HOME/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip &&"
-  cd ~/.local/share/fonts &&
-    unzip JetBrainsMono.zip &&
-    rm JetBrainsMono.zip &&
-    fc-cache -fv
+  wget -P "$HOME/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip"
+  cd ~/.local/share/fonts
+  unzip JetBrainsMono.zip
+  rm JetBrainsMono.zip
+  fc-cache -fv
+  cd ~
   echo "Installed JetBrainsMonoNerdFont"
 else
   echo "Already installed JetBrainsMonoNerdFont"
@@ -965,6 +971,7 @@ if ! command -v cmusfm; then
   ../configure --enable-libnotify
   # build & install
   make && make install
+  cd ~
   echo "Installed cmusfm"
 else
   echo "Already installed cmusfm"
