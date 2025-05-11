@@ -607,14 +607,18 @@ fi
 #          │                      standard notes                      │
 #          │         https://standardnotes.com/download/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Verify checksums - do this once I configure 'yq' package so I can parse the 'latest_linux.yml' file using it
+# TODO: Verify checksums - do this once I configure 'yq' package so I can parse the 'latest-linux.yml' file using it. Need standard notes to fix the SHA512 issue first though.
 # TODO: Once installed, whats the right command name to check?
 if ! command -v standard_notes; then
   echo "Installing standard notes"
   latest=$(curl -sL https://api.github.com/repos/standardnotes/app/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d '@' -f3)
   # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
+  # TODO: Make a bug report - the latest-linux.yml file labels the generated SHAs as being 512, but they don't eappear to be - or if they are, the .deb file content has been altered
+  base_url="https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13"
   deb="standard-notes-${latest}-linux-amd64.deb"
-  curl -LO "https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13/standard-notes-${latest}-linux-amd64.deb"
+  curl -L --remote-name-all "$base_url/$deb" "$base_url/latest-linux.yml"
+  verified_checksum=$(yq '.sha512' latest-linux.yml)
+  download_checksum=$(sha512sum <"$deb")
   sudo apt install -y "./$deb"
   rm "$deb"
   echo "Installed standard notes"
