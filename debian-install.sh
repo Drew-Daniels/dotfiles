@@ -608,6 +608,7 @@ if ! command -v standard_notes; then
   deb="standard-notes-${latest}-linux-amd64.deb"
   curl -LO "https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13/standard-notes-${latest}-linux-amd64.deb"
   sudo apt install -y "./$deb"
+  rm "$deb"
   echo "Installed standard notes"
 else
   echo "Already installed standard notes"
