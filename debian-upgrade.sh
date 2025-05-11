@@ -249,3 +249,7 @@ if [ "$current" != "$latest" ]; then
 else
   echo "usbimager is up-to-date"
 fi
+
+# cleanup
+sudo apt autoremove -y
+sudo apt autoclean -y
