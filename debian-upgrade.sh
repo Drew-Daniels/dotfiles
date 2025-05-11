@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# exit on error
-# NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
-set -e
-
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq must be installed"
   exit 1
@@ -239,4 +235,17 @@ fi
 #          │                        usbimager                         │
 #          │           https://gitlab.com/bztsrc/usbimager            │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: usbimager
+#
+latest=$(curl -sL https://gitlab.com/bztsrc/usbimager/-/releases.atom | xmlstarlet sel -N atom="http://www.w3.org/2005/Atom" -t -v "/atom:feed/atom:entry[1]/atom:title" | cut -d ' ' -f2)
+current=$(usbimager --version)
+
+if [ "$current" != "$latest" ]; then
+  echo "Updating usbimager"
+  deb="usbimager_${latest}-amd64.deb"
+  curl -sLO "https://gitlab.com/bztsrc/usbimager/-/raw/binaries/$deb"
+  apt install -y "./$deb"
+  rm "$deb"
+  echo "usbimager updated"
+else
+  echo "usbimager is up-to-date"
+fi

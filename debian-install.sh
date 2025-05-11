@@ -785,6 +785,7 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Download .rss file
 version=$(xmlstarlet sel -t -v "//channel/item[1]/title" releases.rss | cut -d ' ' -f2)
 
 if ! command -v mergiraf >/dev/null 2>&1; then
