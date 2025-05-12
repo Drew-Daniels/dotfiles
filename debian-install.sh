@@ -97,7 +97,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg="rustup"
 
-if ! command -v $pkg; then
+if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   # TODO: Restart terminal
@@ -112,7 +112,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg='mise'
 
-if ! command -v $pkg; then
+if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   # pre-reqs for building native C ruby extensions
   sudo apt install -y build-essential libz-dev libffi-dev libyaml-dev libssl-dev
@@ -135,7 +135,7 @@ fi
 #        ╰──────────────────────────────────────────────────────────────╯
 pkg='1password'
 
-if ! command -v $pkg; then
+if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   # Add the key for the 1Password apt repository:
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
@@ -212,7 +212,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg='delta'
 
-if ! command -v $pkg; then
+if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing $pkg"
   version=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   curl -sLO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
@@ -863,7 +863,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # install dependencies
 pkg="thorium-browser"
-if ! command -v $pkg; then
+if ! command -v $pkg >/dev/null 2>&1; then
   echo "Installing thorium"
   sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
     http://dl.thorium.rocks/debian/dists/stable/thorium.list &&
