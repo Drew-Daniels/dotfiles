@@ -426,10 +426,6 @@ fi
 #        ╰───────────────────────────────────────────────────────────────╯
 if ! command -v nvim; then
   echo "Installing neovim"
-  # TODO: Figure out what requires 'yarn'
-  # tree-sitter-cli required by Swift LSP
-  npm i -g yarn tree-sitter-cli
-
   pkg_name="nvim-linux-x86_64.tar.gz"
   checksums_filename="shasum.txt"
   base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
