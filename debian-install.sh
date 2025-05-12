@@ -162,7 +162,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg='1password-cli'
 
-if ! command -v op; then
+if ! command -v op >/dev/null 2>&1; then
   echo "Installing $pkg"
   sudo apt update && sudo apt install -y $pkg
   # TODO: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
@@ -175,7 +175,7 @@ fi
 #          │                   git-credential-oauth                   │
 #          │     https://github.com/hickford/git-credential-oauth     │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v git-credential-oauth; then
+if ! command -v git-credential-oauth >/dev/null 2>&1; then
   echo "Installing git-credential-oauth"
   sudo apt-get install git-credential-oauth
   echo "Installed git-credential-oauth"
@@ -187,7 +187,7 @@ fi
 #    ╰──────────────────────────────────────────────────────────────────────╯
 pkg="ripgrep"
 
-if ! command -v rg; then
+if ! command -v rg >/dev/null 2>&1; then
   echo "Installing ripgrep"
   latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   base_url="https://github.com/BurntSushi/ripgrep/releases/download/${latest}"
@@ -226,7 +226,7 @@ fi
 #│                                     starship                                     │
 #│https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation │
 #╰──────────────────────────────────────────────────────────────────────────────────╯
-if ! command -v starship; then
+if ! command -v starship >/dev/null 2>&1; then
   echo "Installing starship"
   cargo install starship --locked
   echo "Installed starship"
@@ -238,7 +238,7 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v fish; then
+if ! command -v fish >/dev/null 2>&1; then
   echo "Installing fish"
   echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
   curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg >/dev/null
@@ -253,7 +253,7 @@ fi
 #          │                           fzf                            │
 #          │       https://junegunn.github.io/fzf/installation/       │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v fzf; then
+if ! command -v fzf >/dev/null 2>&1; then
   echo "Installing fzf"
   sudo apt install -y fzf
   echo "Installed fzf"
@@ -265,7 +265,7 @@ fi
 #          │                            fd                             │
 #          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
 #          ╰───────────────────────────────────────────────────────────╯
-if ! command -v fd; then
+if ! command -v fd >/dev/null 2>&1; then
   echo "Installing fd"
   mkdir p ~/.local/bin
   sudo apt install -y fd-find
@@ -279,7 +279,7 @@ fi
 #    │                                 bat                                  │
 #    │https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-apt │
 #    ╰──────────────────────────────────────────────────────────────────────╯
-if ! command -v bat; then
+if ! command -v bat >/dev/null 2>&1; then
   echo "Installing bat"
   sudo apt install -y bat
   ln -s /usr/bin/batcat ~/.local/bin/bat
@@ -294,7 +294,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 pkg="bat-extras"
 
-if ! command -v batgrep; then
+if ! command -v batgrep >/dev/null 2>&1; then
   echo "Installing $pkg"
   cd ~/projects || exit
   git clone https://github.com/eth-p/$pkg.git ~/projects/bat-extras
@@ -315,7 +315,7 @@ latest_tag_name=$(curl -sL https://api.github.com/repos/universal-ctags/ctags-ni
 latest_release_date=$(echo "$latest_tag_name" | cut -d '+' -f1)
 latest_SHA_full=$(echo "$latest_tag_name" | cut -d '+' -f2)
 
-if ! command -v ctags; then
+if ! command -v ctags >/dev/null 2>&1; then
   echo "Installing $pkg"
   curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${latest_release_date}%2B${latest_SHA_full}/uctags-${latest_release_date}-linux-x86_64.deb"
   sudo apt install -y "./uctags-${latest_release_date}-linux-x86_64.deb"
@@ -333,7 +333,7 @@ fi
 # NOTE: There is not currently a way to programmatically get the AWS public key, so have to install without
 # verifying in programmic install
 # https://github.com/aws/aws-cli/issues/6230
-if ! command -v aws; then
+if ! command -v aws >/dev/null 2>&1; then
   echo "Installing awscli"
   curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
@@ -348,7 +348,7 @@ fi
 #          │         https://github.com/bugaevc/wl-clipboard          │
 #          ╰──────────────────────────────────────────────────────────╯
 # allows neovim to access clipboard via wayland
-if ! command -v wl-copy; then
+if ! command -v wl-copy >/dev/null 2>&1; then
   echo "Installing wl-clipboard"
   sudo apt install -y wl-clipboard
   echo "Installed wl-clipboard"
@@ -390,7 +390,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version="3.11.1"
 
-if ! command -v luarocks; then
+if ! command -v luarocks >/dev/null 2>&1; then
   echo "Installing luarocks"
   wget https://luarocks.org/releases/luarocks-${version}.tar.gz
   tar zxpf luarocks-${version}.tar.gz
@@ -426,7 +426,7 @@ fi
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
-if ! command -v nvim; then
+if ! command -v nvim >/dev/null 2>&1; then
   echo "Installing neovim"
   pkg_name="nvim-linux-x86_64.tar.gz"
   checksums_filename="shasum.txt"
@@ -466,7 +466,7 @@ fi
 #         │                            tmux                             │
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
-if ! command -v tmux; then
+if ! command -v tmux >/dev/null 2>&1; then
   echo "Installing tmux"
   sudo apt install -y tmux
   echo "Installed tmux"
@@ -479,7 +479,7 @@ fi
 #     │https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#rubygems │
 #     ╰─────────────────────────────────────────────────────────────────────╯
 
-if ! command -v tmuxinator; then
+if ! command -v tmuxinator >/dev/null 2>&1; then
   echo "Installing tmuxinator"
   gem install tmuxinator
   echo "Installed tmuxinator"
@@ -492,7 +492,7 @@ fi
 #        │https://github.com/alacritty/alacritty/blob/master/INSTALL.md │
 #        ╰──────────────────────────────────────────────────────────────╯
 # NOTE: There are no precompiled binaries for linux. Need to build from source.
-if ! command -v alacritty; then
+if ! command -v alacritty >/dev/null 2>&1; then
   echo "Installing alacritty"
   git clone https://github.com/alacritty/alacritty.git ~/projects/alacritty
   cd ~/projects/alacritty || exit
@@ -522,7 +522,7 @@ fi
 #          │                            jq                            │
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v jq; then
+if ! command -v jq >/dev/null 2>&1; then
   echo "Installing jq"
   sudo apt install -y jq
   echo "Installed jq"
@@ -534,7 +534,7 @@ fi
 #          │                       imagemagick                        │
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v imagemagick; then
+if ! command -v imagemagick >/dev/null 2>&1; then
   echo "Installing imagemagick"
   sudo apt install -y imagemagick
   echo "Installed imagemagick"
@@ -546,7 +546,7 @@ fi
 #          │                          zoxide                          │
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v zoxide; then
+if ! command -v zoxide >/dev/null 2>&1; then
   echo "Installing zoxide"
   sudo apt install -y zoxide
   echo "Installed zoxide"
@@ -558,7 +558,7 @@ fi
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v yazi; then
+if ! command -v yazi >/dev/null 2>&1; then
   echo "Installing yazi"
   # install deps
   sudo apt install -y ffmpeg 7zip poppler-utils
@@ -573,7 +573,7 @@ fi
 #          │                          jless                           │
 #          │                    https://jless.io/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v jless; then
+if ! command -v jless >/dev/null 2>&1; then
   echo "Installing jless"
   cargo install jless
   echo "Installed jless"
@@ -611,7 +611,7 @@ fi
 #          │                      standard notes                      │
 #          │         https://standardnotes.com/download/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v standard-notes; then
+if ! command -v standard-notes >/dev/null 2>&1; then
   echo "Installing standard notes"
   latest=$(curl -sL https://api.github.com/repos/standardnotes/app/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d '@' -f3)
   # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
@@ -635,7 +635,7 @@ fi
 #          │                      docker desktop                      │
 #          │   https://docs.docker.com/desktop/setup/install/linux/   │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v docker; then
+if ! command -v docker >/dev/null 2>&1; then
   echo "Installing docker"
   sudo apt install -y gnome-terminal
 
@@ -681,7 +681,7 @@ sudo apt install -y openssh-server
 #          │                          restic                          │
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v restic; then
+if ! command -v restic >/dev/null 2>&1; then
   echo "Installing restic"
   sudo apt install -y restic
   sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
@@ -698,7 +698,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 version='0.29.1'
 
-if ! command -v resticprofile; then
+if ! command -v resticprofile >/dev/null 2>&1; then
   echo "Installing resticprofile"
   curl -sLO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
   mkdir "resticprofile_${version}_linux_x86_64"
@@ -714,7 +714,7 @@ fi
 #          │                           dust                           │
 #          │             https://github.com/bootandy/dust             │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v dust; then
+if ! command -v dust >/dev/null 2>&1; then
   echo "Installing dust"
   cargo install du-dust
   echo "Installed dust"
@@ -726,7 +726,7 @@ fi
 #          │                          kiwix                           │
 #          │       https://tracker.debian.org/teams/kiwix-team/       │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v kiwix-desktop; then
+if ! command -v kiwix-desktop >/dev/null 2>&1; then
   echo "Installing kiwix-desktop"
   sudo apt install -y kiwix
   echo "Installed kiwix-desktop"
@@ -738,7 +738,7 @@ fi
 #          │                           rofi                           │
 #          │            https://github.com/davatorium/rofi            │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v rofi; then
+if ! command -v rofi >/dev/null 2>&1; then
   echo "Installing rofi"
   sudo apt install -y rofi
   echo "Installed rofi"
@@ -750,7 +750,7 @@ fi
 #          │                      speedtest-cli                       │
 #          │          https://github.com/sivel/speedtest-cli          │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v speedtest-cli; then
+if ! command -v speedtest-cli >/dev/null 2>&1; then
   sudo apt install -y speedtest-cli
 fi
 
@@ -759,7 +759,7 @@ fi
 #          │       https://packages.debian.org/sid/uuid-runtime       │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: For creating unique identifiers (like when working with S3)
-if ! command -v uuidgen; then
+if ! command -v uuidgen >/dev/null 2>&1; then
   echo "Installing uuidgen"
   sudo apt install -y uuid-runtime
   echo "Installed uuidgen"
@@ -783,7 +783,7 @@ fi
 #          │                      brightnessctl                       │
 #          │       https://github.com/Hummer12007/brightnessctl       │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v brightnessctl; then
+if ! command -v brightnessctl >/dev/null 2>&1; then
   echo "Installing brightnessctl"
   sudo usermod -aG video "$USER"
   sudo apt install -y brightnessctl
@@ -796,7 +796,7 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v strawberry; then
+if ! command -v strawberry >/dev/null 2>&1; then
   echo "Installing strawberry"
   sudo apt install -y strawberry
   echo "Installed strawberry"
@@ -808,7 +808,7 @@ fi
 #          │                           feh                            │
 #          │               https://github.com/derf/feh                │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v feh; then
+if ! command -v feh >/dev/null 2>&1; then
   echo "Installing feh"
   sudo apt install -y feh
   echo "Installed feh"
@@ -843,7 +843,7 @@ fi
 #          │                           nmap                           │
 #          │                https://svn.nmap.org/nmap/                │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v nmap; then
+if ! command -v nmap >/dev/null 2>&1; then
   echo "Installing nmap"
   sudo apt install -y nmap
   echo "Installed nmap"
@@ -884,7 +884,7 @@ fi
 #          │                        wireguard                         │
 #          │            https://www.wireguard.com/install/            │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v wg; then
+if ! command -v wg >/dev/null 2>&1; then
   echo "Installing wireguard"
   sudo apt install -y wireguard
   echo "Installed wireguard"
@@ -909,7 +909,7 @@ fi
 #          │                https://plocate.sesse.net/                │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Provides `updatedb` and `locate` commands - alternative to `locate`
-if ! command -v plocate; then
+if ! command -v plocate >/dev/null 2>&1; then
   echo "Installing plocate"
   sudo apt install -y plocate
   echo "Installed plocate"
@@ -921,7 +921,7 @@ fi
 #          │                         gparted                          │
 #          │                   https://gparted.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v gparted; then
+if ! command -v gparted >/dev/null 2>&1; then
   echo "Installing gparted"
   # NOTE: for fat32
   sudo apt install -y dosfstools mtools
@@ -944,7 +944,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # version='6.4.0.471'
 #
-# if ! command -v zoom; then
+# if ! command -v zoom >/dev/null 2>&1; then
 #   echo "Installing zoom"
 #   curl -sLO https://zoom.us/client/${version}/zoom_amd64.deb
 #   sudo apt install -y ./zoom_amd64.deb
@@ -958,7 +958,7 @@ fi
 #          │        https://github.com/carrot69/keep-presence         │
 #          ╰──────────────────────────────────────────────────────────╯
 # for keeping computer awake during long-running processes
-if ! command -v keep_presence; then
+if ! command -v keep_presence >/dev/null 2>&1; then
   echo "Installing keep-presence"
   python3 -m pip install keep_presence
   echo "Installed keep-presence"
@@ -970,7 +970,7 @@ fi
 #          │                       tidal-dl-ng                        │
 #          │          https://github.com/exislow/tidal-dl-ng          │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v tidal-dl-ng; then
+if ! command -v tidal-dl-ng >/dev/null 2>&1; then
   echo "Installing tidal-dl-ng"
   pip install --upgrade tidal-dl-ng[gui]
   echo "Installed tidal-dl-ng"
@@ -982,7 +982,7 @@ fi
 #          │                           cmus                           │
 #          │               https://github.com/cmus/cmus               │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v cmus; then
+if ! command -v cmus >/dev/null 2>&1; then
   echo "Installing cmus"
   sudo apt install -y cmus
   echo "Installed cmus"
@@ -994,7 +994,7 @@ fi
 #          │                          cmusfm                          │
 #          │              https://github.com/Arkq/cmusfm              │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v cmusfm; then
+if ! command -v cmusfm >/dev/null 2>&1; then
   echo "Installing cmusfm"
   # install dependencies
   sudo apt install -y libcurl4-openssl-dev libnotify-dev
@@ -1022,7 +1022,7 @@ fi
 #          │                        librewolf                         │
 #          │        https://librewolf.net/installation/debian/        │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v librewolf; then
+if ! command -v librewolf >/dev/null 2>&1; then
   echo "Installing librewolf"
   sudo extrepo enable librewolf
   sudo apt update && sudo apt install librewolf -y
@@ -1035,7 +1035,7 @@ fi
 #          │                         mullvad                          │
 #          │        https://mullvad.net/en/download/vpn/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v mullvad; then
+if ! command -v mullvad >/dev/null 2>&1; then
   echo "Installing mullvad"
   # TODO: Check if mullvad keyring is already installed, and listed as a repository
 
@@ -1055,7 +1055,7 @@ fi
 #          │                         foliate                          │
 #          │         https://johnfactotum.github.io/foliate/          │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v foliate; then
+if ! command -v foliate >/dev/null 2>&1; then
   echo "Installing foliate"
   sudo apt install -y foliate
   echo "Installed foliate"
@@ -1067,7 +1067,7 @@ fi
 #          │                pulse audio volume control                │
 #          │ https://freedesktop.org/software/pulseaudio/pavucontrol/ │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v pavucontrol; then
+if ! command -v pavucontrol >/dev/null 2>&1; then
   echo "Installing pavucontrol"
   sudo apt install -y pavucontrol
   echo "Installed pavucontrol"
@@ -1079,7 +1079,7 @@ fi
 #          │                        usbimager                         │
 #          │           https://gitlab.com/bztsrc/usbimager            │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v usbimager; then
+if ! command -v usbimager >/dev/null 2>&1; then
   echo "Installing usbimager"
   curl -sLO https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.10-amd64.deb
   apt install -y ./usbimager_1.0.10-amd64.deb
@@ -1093,7 +1093,7 @@ fi
 #          │                    gnome-disk-utility                    │
 #          │    https://gitlab.gnome.org/GNOME/gnome-disk-utility     │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v gnome-disks; then
+if ! command -v gnome-disks >/dev/null 2>&1; then
   echo "Installing gnome-disk-utility"
   sudo apt install gnome-disk-utility
   echo "Installed gnome-disk-utility"
@@ -1103,7 +1103,7 @@ fi
 
 # TODO: Look into using LUKS instead
 # TODO: Get the latest version of veracrypt
-if ! command -v veracrypt; then
+if ! command -v veracrypt >/dev/null 2>&1; then
   echo "Installing veracrypt"
 
   # download veracrypt public key and import into keyring
@@ -1140,7 +1140,7 @@ fi
 #          │                          zulip                           │
 #          │   https://chat.fhir.org/help/desktop-app-install-guide   │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v zulip; then
+if ! command -v zulip >/dev/null 2>&1; then
   echo "Installing zulip"
   sudo curl -fL -o /etc/apt/trusted.gpg.d/zulip-desktop.asc \
     https://download.zulip.com/desktop/apt/zulip-desktop.asc
@@ -1157,7 +1157,7 @@ fi
 #          │                          signal                          │
 #          │            https://signal.org/download/linux/            │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v signal-desktop; then
+if ! command -v signal-desktop >/dev/null 2>&1; then
   # 1. Install our official public software signing key:
   wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor >signal-desktop-keyring.gpg
   cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg >/dev/null
