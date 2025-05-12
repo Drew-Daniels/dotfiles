@@ -175,8 +175,11 @@ fi
 #          │                   git-credential-oauth                   │
 #          │     https://github.com/hickford/git-credential-oauth     │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Figure out good way to check for apt-installed pkgs
-sudo apt-get install git-credential-oauth
+if ! command -v git-credential-oauth; then
+  echo "Installing git-credential-oauth"
+  sudo apt-get install git-credential-oauth
+  echo "Installed git-credential-oauth"
+fi
 
 #    ╭──────────────────────────────────────────────────────────────────────╮
 #    │                               ripgrep                                │
