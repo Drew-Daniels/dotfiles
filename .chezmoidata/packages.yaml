@@ -112,6 +112,7 @@ packages:
       - 'alex313031-thorium'
       - 'docker'
       - 'discord'
+      - 'electrum'
       - 'element'
       - 'firefox'
       - 'google-chrome'
