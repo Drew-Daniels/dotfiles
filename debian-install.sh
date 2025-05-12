@@ -191,11 +191,14 @@ if ! command -v rg; then
   # TODO: Figure out why a -1 is always appended to version?
   deb="$base_url/ripgrep_${latest}-1_amd64.deb"
   sha="$base_url/ripgrep_${latest}-1_amd64.deb.sha256"
-  # TODO: Verify SHA
-  curl --silent --location --remote-name-all "$base_url/$deb" "$base_url/$sha"
-  sudo apt install -y "./$deb"
-  rm "$deb" "$sha"
-  echo "Installed ripgrep"
+  if sha256sum -c "$sha" --status; then
+    sudo apt install -y "./$deb"
+    rm "$deb" "$sha"
+    echo "Upgraded ${pkg}"
+  else
+    echo "Could not upgrade $pkg - verify checksums"
+    exit 1
+  fi
 else
   echo "Already installed ripgrep"
 fi

@@ -121,13 +121,17 @@ current=$(rg --version | head -n1 | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading ${pkg}"
   base_url="https://github.com/BurntSushi/ripgrep/releases/download/${latest}"
-  # TODO: Verify SHA
   deb="ripgrep_${latest}-1_amd64.deb"
   sha="ripgrep_${latest}-1_amd64.deb.sha256"
   curl --silent --location --remote-name-all "$base_url/$deb" "$base_url/$sha"
-  sudo apt install -y "./$deb"
-  rm "$deb" "$sha"
-  echo "Upgraded ${pkg}"
+  if sha256sum -c "$sha" --status; then
+    sudo apt install -y "./$deb"
+    rm "$deb" "$sha"
+    echo "Upgraded ${pkg}"
+  else
+    echo "Could not upgrade $pkg - verify checksums"
+    exit 1
+  fi
 else
   echo "Ripgrep up-to-date"
 fi
