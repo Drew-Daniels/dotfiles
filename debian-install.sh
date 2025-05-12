@@ -308,14 +308,15 @@ fi
 #       │https://github.com/universal-ctags/ctags-nightly-build/releases │
 #       ╰────────────────────────────────────────────────────────────────╯
 pkg="ctags"
-# TODO: De-hardcode the date and checksum here and just pull the latest release
-release_date="2025.03.17"
-release_commit_SHA="cff205ee0d66994f1e26e0b7e3c9c482c7595bbc"
+latest_tag_name=$(curl -sL https://api.github.com/repos/universal-ctags/ctags-nightly-build/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest_release_date=$(echo "$latest_tag_name" | cut -d '+' -f1)
+latest_SHA_full=$(echo "$latest_tag_name" | cut -d '+' -f2)
 
 if ! command -v ctags; then
   echo "Installing $pkg"
-  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${release_date}%2B${release_commit_SHA}/uctags-${release_date}-linux-x86_64.deb"
-  sudo apt install -y "./uctags-${release_date}-linux-x86_64.deb"
+  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${latest_release_date}%2B${latest_SHA_full}/uctags-${latest_release_date}-linux-x86_64.deb"
+  sudo apt install -y "./uctags-${latest_release_date}-linux-x86_64.deb"
+  rm "./uctags-${latest_release_date}-linux-x86_64.deb"
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -1099,6 +1100,7 @@ else
   echo "Already installed gnome-disk-utility"
 fi
 
+# TODO: Get the latest version of veracrypt
 if ! command -v veracrypt; then
   echo "Installing veracrypt"
 
