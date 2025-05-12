@@ -361,13 +361,12 @@ fi
 #          │        https://www.lua.org/manual/5.4/readme.html        │
 #          ╰──────────────────────────────────────────────────────────╯
 version="5.1.5"
+current=$(lua -v 2>&1 | cut -d ' ' -f2)
 
-# TODO: Might want to update this to specifically check if lua 5.1 installed
-if ! command -v lua; then
-  echo "Installing lua v5.1"
+if [ "$current" != "$version" ]; then
+  echo "Installing lua v5.1.5"
   # install build dependencies
   sudo apt-get install libreadline-dev
-
   # download
   curl -sLO https://www.lua.org/ftp/lua-${version}.tar.gz
   cd lua-${version} || exit
@@ -378,9 +377,9 @@ if ! command -v lua; then
   # install
   sudo make install
   cd ~
-  echo "Installed lua v5.1"
+  echo "Installed lua v5.1.5"
 else
-  echo "Already installed lua v5.1"
+  echo "Already installed lua v5.1.5"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
