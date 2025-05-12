@@ -219,8 +219,11 @@ cd ~/projects/alacritty/ || exit
 git pull
 latest=$(git rev-parse --short @)
 if [ "$current" != "$latest" ]; then
+  if [ "$TERM" == "alacritty" ]; then
+    echo "Re-run in another terminal emulator - will not be able to upgrade alacritty while using alacritty"
+    exit 1
+  fi
   echo "Upgrading alacritty"
-  # TODO: Exit with error when terminal emulator running is alacritty - since this will cause post-build steps to fail
   # build
   cargo build --release
 
