@@ -116,8 +116,10 @@ fi
 #          │                       Postgres.app                       │
 #          │                 https://postgresapp.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
-sudo mkdir -p /etc/paths.d &&
-  echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+if [[ ! -f "/etc/paths.d/postgresapp" ]]; then
+  sudo mkdir -p /etc/paths.d &&
+    echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+fi
 
 # reboot
 shutdown -r now
