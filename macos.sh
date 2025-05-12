@@ -122,4 +122,4 @@ if [[ ! -f "/etc/paths.d/postgresapp" ]]; then
 fi
 
 # reboot
-shutdown -r now
+# shutdown -r now
