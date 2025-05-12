@@ -273,6 +273,24 @@ else
   echo "yq up-to-date"
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         mergiraf                         │
+#          │          https://mergiraf.org/installation.html          │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" releases.rss | cut -d ' ' -f2)
+# TODO: This likely won't return the exact right version number needed here - need to refactor once glibc dep issue sorted out
+current=$(mergiraf --version)
+
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading mergiraf"
+  curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${latest}/mergiraf_x86_64-unknown-linux-gnu.tar.gz"
+  tar xzf "mergiraf_x86_64-unknown-linux-gnu.tar.gz"
+  sudo mv mergiraf /usr/local/bin/
+  echo "Upgraded mergiraf"
+else
+  echo "Mergiraf up-to-date"
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
