@@ -113,18 +113,6 @@ if ! command -v luarocks >/dev/null 2>&1; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                          nodejs                          │
-#          │            https://github.com/nodejs/corepack            │
-#          ╰──────────────────────────────────────────────────────────╯
-if ! command -v yarn >/dev/null 2>&1; then
-  corepack enable yarn
-fi
-
-if ! command -v pnpm >/dev/null 2>&1; then
-  corepack enable pnpm
-fi
-
-#          ╭──────────────────────────────────────────────────────────╮
 #          │                       Postgres.app                       │
 #          │                 https://postgresapp.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
