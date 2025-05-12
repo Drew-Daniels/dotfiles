@@ -376,6 +376,8 @@ if [ "$current" != "$version" ]; then
   make test
   # install
   sudo make install
+  # cleanup
+  rm -rf lua-5.1.5*
   cd ~
   echo "Installed lua v5.1.5"
 else

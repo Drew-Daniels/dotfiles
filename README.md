@@ -139,6 +139,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
       -- Alacritty does not support them, Konsole does, but there's not a way to deactivate them in Konsole, so need to use a font without ligatures support to disable across all emulators
 - [ ] Look into making `debian-upgrade.sh` script globally available

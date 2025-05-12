@@ -21,9 +21,9 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Need to use the full path here because 'brew' won't be on PATH until dotfiles are installed
 if ! command -v /opt/homebrew/bin/brew >/dev/null 2>&1; then
-	echo "Installing homebrew"
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	echo "Installed homebrew"
+  echo "Installing homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "Installed homebrew"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -44,10 +44,10 @@ fi
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
 if ! command -v chezmoi >/dev/null 2>&1; then
-	sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
-	# initialize dotfiles
-	# chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
-	chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+  # initialize dotfiles
+  # chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
+  chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
   # Remove after cloning dotfiles, since chezmoi should ideally be managed via homebrew for easier updates
   rm /usr/local/bin/chezmoi
 fi
@@ -74,17 +74,28 @@ mise install
 #          │                         lua 5.1                          │
 #          │        https://www.lua.org/manual/5.4/readme.html        │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v lua >/dev/null 2>&1; then
-  curl -LO http://www.lua.org/ftp/lua-5.1.5.tar.gz
-  tar xvzf lua-5.1.5.tar.gz
+version="5.1.5"
+current=$(lua -v 2>&1 | cut -d ' ' -f2)
 
-  cd lua-5.1.5 || exit
-
+if [ "$current" != "$version" ]; then
+  echo "Installing lua v$version"
+  # install build dependencies
+  sudo apt-get install libreadline-dev
+  # download
+  curl -sLO https://www.lua.org/ftp/lua-${version}.tar.gz
+  cd lua-${version} || exit
+  # build
   make macosx
+  # verify
   make test
-  make install
-
-  rm -rf lua-5.1.5*
+  # install
+  sudo make install
+  # cleanup
+  rm -rf lua-${version}*
+  cd ~
+  echo "Installed lua v5.1.5"
+else
+  echo "Already installed lua v5.1.5"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -119,7 +130,7 @@ fi
 #          │                       Postgres.app                       │
 #          │                 https://postgresapp.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
-sudo mkdir -p /etc/paths.d && 
+sudo mkdir -p /etc/paths.d &&
   echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
 
 # reboot
