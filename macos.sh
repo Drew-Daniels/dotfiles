@@ -79,8 +79,6 @@ current=$(lua -v 2>&1 | cut -d ' ' -f2)
 
 if [ "$current" != "$version" ]; then
   echo "Installing lua v$version"
-  # install build dependencies
-  sudo apt-get install libreadline-dev
   # download
   curl -sLO https://www.lua.org/ftp/lua-${version}.tar.gz
   cd lua-${version} || exit
