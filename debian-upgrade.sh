@@ -302,21 +302,21 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
-# TODO: This likely won't return the exact right version number needed here - need to refactor once glibc dep issue sorted out
-current=$(mergiraf --version)
-
-if [ "$current" != "$latest" ]; then
-  echo "Upgrading mergiraf"
-  tgz="mergiraf_x86_64-unknown-linux-gnu.tar.gz"
-  curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${latest}/$tgz"
-  tar xzf "$tgz"
-  sudo mv mergiraf /usr/local/bin/
-  rm "$tgz"
-  echo "Upgraded mergiraf"
-else
-  echo "Mergiraf up-to-date"
-fi
+# latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
+# # TODO: This likely won't return the exact right version number needed here - need to refactor once glibc dep issue sorted out
+# current=$(mergiraf --version)
+# # TODO: Re-enable once upgraded to later Debian version (trixie from bookworm)
+# if [ "$current" != "$latest" ]; then
+#   echo "Upgrading mergiraf"
+#   tgz="mergiraf_x86_64-unknown-linux-gnu.tar.gz"
+#   curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${latest}/$tgz"
+#   tar xzf "$tgz"
+#   sudo mv mergiraf /usr/local/bin/
+#   rm "$tgz"
+#   echo "Upgraded mergiraf"
+# else
+#   echo "Mergiraf up-to-date"
+# fi
 
 # cleanup
 sudo apt autoremove -y
