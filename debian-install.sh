@@ -620,12 +620,19 @@ if ! command -v standard_notes; then
   # TODO: Make a bug report - the latest-linux.yml file labels the generated SHAs as being 512, but they don't eappear to be - or if they are, the .deb file content has been altered
   base_url="https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13"
   deb="standard-notes-${latest}-linux-amd64.deb"
-  curl -L --remote-name-all "$base_url/$deb" "$base_url/latest-linux.yml"
-  verified_checksum=$(yq '.sha512' latest-linux.yml)
-  download_checksum=$(sha512sum <"$deb")
-  sudo apt install -y "./$deb"
-  rm "$deb"
-  echo "Installed standard notes"
+  # curl -L --remote-name-all "$base_url/$deb" "$base_url/latest-linux.yml" "$base_url/SHA256SUMS"
+  curl -L --remote-name-all "$base_url/$deb" "$base_url/SHA256SUMS"
+  # verified_checksum=$(yq '.sha512' latest-linux.yml)
+  verified_checksum=$(rg "linux-amd64.deb" <SHA256SUMS)
+  download_checksum=$(sha256sum "$deb")
+  if [ "$download_checksum" == "$verified_checksum" ]; then
+    sudo apt install -y "./$deb"
+    # rm "$deb" "latest-linux.yml" "SHA256SUMS"
+    rm "$deb" "SHA256SUMS"
+    echo "Installed standard notes"
+  else
+    echo "Could not install Standard Notes - verify checksums"
+  fi
 else
   echo "Already installed standard notes"
 fi
@@ -1156,20 +1163,22 @@ fi
 #          │                          signal                          │
 #          │            https://signal.org/download/linux/            │
 #          ╰──────────────────────────────────────────────────────────╯
-# 1. Install our official public software signing key:
-wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor >signal-desktop-keyring.gpg
-cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg >/dev/null
+if ! command -v signal-desktop; then
+  # 1. Install our official public software signing key:
+  wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor >signal-desktop-keyring.gpg
+  cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg >/dev/null
 
-# 2. Add our repository to your list of repositories:
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |
-  sudo tee /etc/apt/sources.list.d/signal-xenial.list
+  # 2. Add our repository to your list of repositories:
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |
+    sudo tee /etc/apt/sources.list.d/signal-xenial.list
 
-# 3. Update your package database and install Signal:
-sudo apt update && sudo apt install signal-desktop
+  # 3. Update your package database and install Signal:
+  sudo apt update && sudo apt install signal-desktop
 
-# 4. cleanup
-rm signal-desktop-keyring.gpg
+  # 4. cleanup
+  rm signal-desktop-keyring.gpg
 
+fi
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
