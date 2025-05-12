@@ -3,3 +3,5 @@ jgit
 fsh-sushi
 gofsh
 oclif
+tree-sitter-cli
+yarn
