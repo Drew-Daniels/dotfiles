@@ -165,7 +165,7 @@ pkg='1password-cli'
 if ! command -v op >/dev/null 2>&1; then
   echo "Installing $pkg"
   sudo apt update && sudo apt install -y $pkg
-  # TODO: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
+  # NOTE: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -592,7 +592,22 @@ if ! command -v yq >/dev/null; then
   base_url="https://github.com/mikefarah/yq/releases/download/${latest}"
   curl --silent --location --remote-name-all "$base_url/yq_linux_amd64.tar.gz" "$base_url/extract-checksum.sh" "$base_url/checksums_hashes_order" "$base_url/checksums"
 
-  # TODO: Not a huge fan of running an arbitrary script here - may want to store a trusted copy of this locally (or a SHA of it) and stop this from running if the contents change in newer versions
+  # NOTE: Adding echo to put a newline after script contents, for readability
+  cat extract-checksum.sh && printf '\n\n'
+
+  while true; do
+    read -p "Does the above script look safe?" yesno
+    case $yesno in
+    [Yy]*)
+      break
+      ;;
+    [Nn]*)
+      exit
+      ;;
+    *) echo "Answer either yes or no!" ;;
+    esac
+  done
+
   chmod +x ./extract-checksum.sh
 
   if ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status; then
