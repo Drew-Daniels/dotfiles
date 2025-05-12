@@ -82,9 +82,6 @@ else
   echo "Neovim up-to-date"
 fi
 
-# TODO: Uncomment once done hashing out the rest
-# sudo apt update -y
-
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│                                    awscli                                    │
 #│https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html │
@@ -322,5 +319,7 @@ fi
 # fi
 
 # cleanup
+# sudo apt update -y
+# sudo apt upgrade -y
 sudo apt autoremove -y
 sudo apt autoclean -y
