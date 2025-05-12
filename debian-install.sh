@@ -412,7 +412,7 @@ fi
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
   echo "Installing JetBrainsMonoNerdFont"
   latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
-  wget -P "$HOME/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip"
+  wget -P "$HOME/.local/share/fonts" "https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip"
   cd ~/.local/share/fonts
   unzip JetBrainsMono.zip
   rm JetBrainsMono.zip
