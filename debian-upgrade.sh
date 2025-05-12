@@ -101,7 +101,7 @@ if [ "$current" != "$latest" ]; then
   rm -rf awscliv2.zip aws
   echo "Upgraded AWS CLI"
 else
-  echo "AWS CLI is up-to-date"
+  echo "AWS CLI up-to-date"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -129,7 +129,7 @@ if [ "$current" != "$latest" ]; then
   rm "$deb" "$sha"
   echo "Upgraded ${pkg}"
 else
-  echo "Ripgrep already up-to-date"
+  echo "Ripgrep up-to-date"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -200,7 +200,7 @@ if (("$last_modified_as_date" < "$latest_release_date_as_date")); then
   fc-cache -fv
   echo "Upgraded JetBrainsMonoNerdFont"
 else
-  echo "JetBrainsMonoNerdFont is up-to-date"
+  echo "JetBrainsMonoNerdFont up-to-date"
 fi
 # TODO: Get the last modified date of currently installed jetbrains font, and if it is before the date of the latest release, replace it with the latest release
 # jq '.published_at'
@@ -228,7 +228,7 @@ if [ "$current" != "$latest" ]; then
   rm -rf restic*
   echo "Upgraded resticprofile"
 else
-  echo "resticprofile is up-to-date"
+  echo "resticprofile up-to-date"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -247,7 +247,7 @@ if [ "$current" != "$latest" ]; then
   rm "$deb"
   echo "usbimager updated"
 else
-  echo "usbimager is up-to-date"
+  echo "usbimager up-to-date"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
