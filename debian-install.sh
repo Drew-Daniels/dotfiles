@@ -1102,39 +1102,6 @@ else
 fi
 
 # TODO: Look into using LUKS instead
-# TODO: Get the latest version of veracrypt
-if ! command -v veracrypt >/dev/null 2>&1; then
-  echo "Installing veracrypt"
-
-  # download veracrypt public key and import into keyring
-  curl -sL 'https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc' | gpg --import >/dev/null 2>&1
-  if [ ! $? -eq 0 ]; then
-    echo "Could not import Veracrypt Public Key"
-    exit 1
-  fi
-
-  # sign veracrypt public key with private pgp key signature
-  gpg --lsign-key 5069A233D55A0EEB174A5FC3821ACD02680D16DE
-
-  # download .deb signature and .deb
-  curl --silent --location --remote-name-all \
-    'https://launchpad.net/veracrypt/trunk/1.26.20/+download/veracrypt-1.26.20-Debian-12-amd64.deb' \
-    'https://launchpad.net/veracrypt/trunk/1.26.20/+download/veracrypt-1.26.20-Debian-12-amd64.deb.sig'
-
-  # verify signature
-  gpg --verify veracrypt-1.26.20-Debian-12-amd64.deb.sig veracrypt-1.26.20-Debian-12-amd64.deb >/dev/null 2>&1
-  if [ ! $? -eq 0 ]; then
-    echo "Signature invalid"
-    exit 1
-  fi
-
-  # Install
-  sudo apt install -y ./veracrypt-1.26.20-Debian-12-amd64.deb
-
-  echo "Installed veracrypt"
-else
-  echo "Already installed veracrypt"
-fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          zulip                           │
