@@ -594,7 +594,7 @@ if ! command -v yq >/dev/null; then
   if ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status; then
     tar xzf "yq_linux_amd64.tar.gz"
     sudo mv yq_linux_amd64 /usr/local/bin/yq
-    rm yq_linux_amd64.tar.gz extract-checksums.sh checksums_hashes_order checksums
+    rm yq_linux_amd64.tar.gz extract-checksum.sh checksums_hashes_order checksums yq.1 install-man-page.sh
     echo "Installed yq"
   else
     echo "Could not install yq - verify checksums"
