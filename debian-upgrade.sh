@@ -179,7 +179,7 @@ fi
 #          │                        veracrypt                         │
 #          │        https://www.veracrypt.fr/en/Downloads.html        │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: veracrypt
+# TODO: Look into using LUKS instead
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                 jetbrains-mono-nerd-font                 │
@@ -213,7 +213,27 @@ fi
 #        │                          alacritty                           │
 #        │https://github.com/alacritty/alacritty/blob/master/INSTALL.md │
 #        ╰──────────────────────────────────────────────────────────────╯
-# TODO: alacritty - need to build custom logic to pull down new changes and rebuild
+# TODO: Refactor sed expression so that it discards all content up to first parenthesis (so 'cut' part isn't needed before)
+current=$(alacritty --version | cut -d ' ' -f3 | sed 's/(\([^/)]*\))/\1/g')
+cd ~/projects/alacritty/ || exit
+git pull
+latest=$(git rev-parse --short @)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading alacritty"
+  # TODO: Exit with error when terminal emulator running is alacritty - since this will cause post-build steps to fail
+  # build
+  cargo build --release
+
+  # post-build
+  sudo cp target/release/alacritty /usr/local/bin
+  sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+  sudo desktop-file-install extra/linux/Alacritty.desktop
+  sudo update-desktop-database
+  echo "Upgraded alactritty"
+else
+  echo "Alacritty up-to-date"
+fi
+cd ~ || exit
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      resticprofile                       │

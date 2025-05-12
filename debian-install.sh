@@ -1098,6 +1098,7 @@ else
   echo "Already installed gnome-disk-utility"
 fi
 
+# TODO: Look into using LUKS instead
 # TODO: Get the latest version of veracrypt
 if ! command -v veracrypt; then
   echo "Installing veracrypt"
