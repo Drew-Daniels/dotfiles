@@ -6,8 +6,8 @@ Brewfile_*
 */iterm2/symlink_AppSupport
 README.md
 macos.sh
-debian.sh
-debian-update.sh
+debian-install.sh
+debian-upgrade.sh
 */mise/age.txt
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
