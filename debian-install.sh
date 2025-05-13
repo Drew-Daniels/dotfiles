@@ -774,14 +774,14 @@ latest=$(curl -sL https://api.github.com/repos/creativeprojects/resticprofile/re
 current=$(resticprofile version | cut -d ' ' -f3)
 if ! command -v resticprofile >/dev/null 2>&1; then
   echo "Installing resticprofile"
-  base_url="https://github.com/creativeprojects/resticprofile/releases/latest/download"
+  base_url="https://github.com/creativeprojects/resticprofile/releases/download/v${latest}/"
   tgz="resticprofile_${latest}_linux_amd64.tar.gz"
   checksums="checksums.txt"
-  curl -sLO "$base_url/$tgz" "$base_url/$checksums"
-  verified_checksum=$(grep <"$checksums" | linux_amd64.tar.gz)
+  curl -sL --remote-name-all "$base_url/$tgz" "$base_url/$checksums"
+  verified_checksum=$(grep "no_self_update_${latest}_linux_amd64.tar.gz" <"$checksums")
   download_checksum=$(sha256sum "$tgz")
   if [ "$download_checksum" != "$verified_checksum" ]; then
-    echo "Could not install resticprofile - verify checksums"
+    echo "Could not upgrade resticprofile - verify checksums"
     exit 1
   fi
   mkdir "resticprofile_${latest}_linux_amd64"

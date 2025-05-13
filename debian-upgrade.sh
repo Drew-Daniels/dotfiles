@@ -61,7 +61,7 @@ if [ "$current" != "$version" ]; then
 
   # verify the checksum matches
   download_checksum=$(sha256sum "$deb")
-  verified_checksum=$(grep "linux_amd64.deb" <"$checksums")
+  verified_checksum=$(grep linux_amd64.deb <"$checksums")
 
   if [ "$download_checksum" != "$verified_checksum" ]; then
     echo "Checksum verification failed: $download_checksum vs. $verified_checksum"
@@ -92,7 +92,7 @@ if [ "$current" != "$latest" ]; then
   curl --silent --location --remote-name-all "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
 
   download_checksum=$(sha256sum <$pkg_name)
-  verified_checksum=$(grep "linux-x86_64" <$checksums_filename)
+  verified_checksum=$(grep linux-x86_64 <$checksums_filename)
 
   if [ "$download_checksum" != "$verified_checksum" ]; then
     echo "Checksum verification failed: $download_checksum vs. $verified_checksum"
@@ -261,14 +261,13 @@ cd ~ || exit
 #          ╰──────────────────────────────────────────────────────────╯
 latest=$(curl -sL https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 current=$(resticprofile version | cut -d ' ' -f3)
-
 if [ "$current" != "$latest" ]; then
   echo "Upgrading resticprofile"
-  base_url="https://github.com/creativeprojects/resticprofile/releases/latest/download"
+  base_url="https://github.com/creativeprojects/resticprofile/releases/download/v${latest}/"
   tgz="resticprofile_${latest}_linux_amd64.tar.gz"
   checksums="checksums.txt"
-  curl -sLO "$base_url/$tgz" "$base_url/$checksums"
-  verified_checksum=$(grep <"$checksums" | linux_amd64.tar.gz)
+  curl -sL --remote-name-all "$base_url/$tgz" "$base_url/$checksums"
+  verified_checksum=$(grep "no_self_update_${latest}_linux_amd64.tar.gz" <"$checksums")
   download_checksum=$(sha256sum "$tgz")
   if [ "$download_checksum" != "$verified_checksum" ]; then
     echo "Could not upgrade resticprofile - verify checksums"
@@ -358,7 +357,7 @@ if [ "$current" != "$latest" ]; then
   tgz="$bin.tar.gz"
   checksums="fzf_${latest}_checksums.txt"
   curl -sL --remote-name-all "$base_url/$tgz" "$base_url/$checksums"
-  verified_sha=$(grep <"$checksums" linux_amd64.tar.gz)
+  verified_sha=$(grep linux_amd64.tar.gz <"$checksums")
   download_sha=$(sha256sum "$tgz")
 
   if [ "$download_sha" != "$verified_sha" ]; then
