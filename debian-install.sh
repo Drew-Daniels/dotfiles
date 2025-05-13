@@ -868,6 +868,7 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Pull from GitHub releases: https://github.com/strawberrymusicplayer/strawberry/releases/tag/1.2.10
 if ! command -v strawberry >/dev/null 2>&1; then
   echo "Installing strawberry"
   sudo apt install -y strawberry
@@ -880,6 +881,7 @@ fi
 #          │                           feh                            │
 #          │               https://github.com/derf/feh                │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Look into building feh from source: https://feh.finalrewind.org/
 if ! command -v feh >/dev/null 2>&1; then
   echo "Installing feh"
   sudo apt install -y feh
