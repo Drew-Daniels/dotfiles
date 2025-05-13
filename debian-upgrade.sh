@@ -332,7 +332,7 @@ if [ "$current" != "$latest" ]; then
   fi
 
   tar xzf "$tgz"
-  sudo mv "$bin" "/usr/local/bin/$bin"
+  sudo mv fzf /usr/local/bin/
 
   rm "$tgz" "$checksums"
   echo "Upgraded fzf"
