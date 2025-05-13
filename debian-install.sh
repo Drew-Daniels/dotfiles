@@ -1048,7 +1048,6 @@ fi
 #          │                       tidal-dl-ng                        │
 #          │          https://github.com/exislow/tidal-dl-ng          │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Upgrade
 if ! command -v tidal-dl-ng >/dev/null 2>&1; then
   echo "Installing tidal-dl-ng"
   pip install --upgrade tidal-dl-ng[gui]

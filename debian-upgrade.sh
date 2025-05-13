@@ -474,6 +474,20 @@ else
   echo "$pkg up-to-date"
 fi
 cd ~ || exit
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                       tidal-dl-ng                        │
+#          │          https://github.com/exislow/tidal-dl-ng          │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/exislow/tidal-dl-ng/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(tidal-dl-ng --version)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading tidal-dl-ng"
+  pip install --upgrade tidal-dl-ng[gui]
+  echo "Upgraded tidal-dl-ng"
+else
+  echo "tidal-dl-ng up-to-date"
+fi
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
