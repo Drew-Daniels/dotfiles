@@ -15,6 +15,7 @@ if [ ! -d ~/projects/jg ]; then
 fi
 
 sudo apt update -y
+sudo apt upgrade -y
 
 # TODO: Look into creating bash loading spinner library similar to:
 #   https://github.com/molovo/revolver/blob/master/revolver
