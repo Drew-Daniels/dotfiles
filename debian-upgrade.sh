@@ -390,6 +390,26 @@ else
   echo "Bat up-to-date"
 fi
 
+#         ╭─────────────────────────────────────────────────────────────╮
+#         │                            tmux                             │
+#         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
+#         ╰─────────────────────────────────────────────────────────────╯
+#
+latest=$(curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | jq '.tag_name' | sed 's/"//g')
+current=$(tmux -V | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading tmux"
+  tgz="tmux-${latest}.tar.gz"
+  curl -sLO "https://github.com/tmux/tmux/releases/download/${latest}/${tgz}"
+  tar -zxf tmux-*.tar.gz
+  cd tmux-*/ || exit
+  ./configure
+  make && sudo make install
+  echo "Upgraded tmux"
+else
+  echo "Tmux up-to-date"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
