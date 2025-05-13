@@ -534,13 +534,12 @@ fi
 #          │                       imagemagick                        │
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
-latest="7.1.1-47"
-if ! command -v imagemagick >/dev/null 2>&1; then
+if ! command -v magick >/dev/null 2>&1; then
   echo "Installing imagemagick"
   latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[0].browser_download_url' | sed 's/"//g')
-  curl -L "$latest_download_url" -o imagemagick
-  chmod +x imagemagick
-  sudo mv imagemagick /usr/local/bin/
+  curl -L "$latest_download_url" -o magick
+  chmod +x magick
+  sudo mv magick /usr/local/bin/
   echo "Installed imagemagick"
 else
   echo "Already installed imagemagick"
