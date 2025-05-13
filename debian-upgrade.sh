@@ -432,7 +432,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 #
 latest=$(curl -sL https://api.github.com/repos/hickford/git-credential-oauth/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
-current=$(git-credential-oauth version)
+current=$(git-credential-oauth version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading git-credential-oauth"
   tgz="git-credential-oauth_${latest}_linux_amd64.tar.gz"
