@@ -1112,6 +1112,7 @@ fi
 #          │                pulse audio volume control                │
 #          │ https://freedesktop.org/software/pulseaudio/pavucontrol/ │
 #          ╰──────────────────────────────────────────────────────────╯
+# NOTE: Tried downloading latest version, building, and installing manually but some of the build time dependencies are incompatible with my current Debian version
 if ! command -v pavucontrol >/dev/null 2>&1; then
   echo "Installing pavucontrol"
   sudo apt install -y pavucontrol
