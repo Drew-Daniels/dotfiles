@@ -537,7 +537,6 @@ fi
 latest="7.1.1-47"
 if ! command -v imagemagick >/dev/null 2>&1; then
   echo "Installing imagemagick"
-  # TODO: Do I need to interpolate the short SHA in the binary name, or is this something else?
   latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[0].browser_download_url' | sed 's/"//g')
   curl -L "$latest_download_url" -o imagemagick
   chmod +x imagemagick
