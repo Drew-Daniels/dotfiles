@@ -239,6 +239,8 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Refactor to pull latest version from GitHub release: https://github.com/fish-shell/fish-shell/releases/tag/4.0.2
+# NOTE: Also add verifcation step
 if ! command -v fish >/dev/null 2>&1; then
   echo "Installing fish"
   echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
