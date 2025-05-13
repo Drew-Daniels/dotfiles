@@ -263,7 +263,7 @@ latest=$(curl -sL https://api.github.com/repos/restic/restic/releases/latest | j
 current=$(restic version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading restic"
-  restic self-update
+  sudo restic self-update
   echo "Upgraded restic"
 else
   echo "restic up-to-date"
