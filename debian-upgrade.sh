@@ -293,6 +293,24 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                       imagemagick                        │
+#          │        https://github.com/ImageMagick/ImageMagick        │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.tag_name')
+current=$(magick -version | head -n1 | cut -d ' ' -f3)
+
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading imagemagick"
+  latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[0].browser_download_url' | sed 's/"//g')
+  curl -L "$latest_download_url" -o magick
+  chmod +x magick
+  sudo mv magick /usr/local/bin/
+  echo "Upgraded imagemagick"
+else
+  echo "Imagemagick up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
