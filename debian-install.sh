@@ -734,14 +734,14 @@ fi
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯
-version='0.29.1'
-
+latest=$(curl -sL https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(resticprofile version | cut -d ' ' -f3)
 if ! command -v resticprofile >/dev/null 2>&1; then
   echo "Installing resticprofile"
-  curl -sLO https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_0.29.1_linux_amd64.tar.gz
-  mkdir "resticprofile_${version}_linux_x86_64"
-  tar -xzpf "resticprofile_${version}_linux_x86_64.tar.gz" -C resticprofile_${version}_linux_x86_64
-  sudo cp resticprofile_${version}_linux_x86_64/resticprofile /usr/local/bin/
+  curl -sLO "https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_${latest}_linux_amd64.tar.gz"
+  mkdir "resticprofile_${latest}_linux_amd64"
+  tar -xzpf "resticprofile_${latest}_linux_amd64.tar.gz" -C "resticprofile_${latest}_linux_amd64"
+  sudo cp "resticprofile_${latest}_linux_amd64/resticprofile" /usr/local/bin/
   rm -rf restic*
   echo "Installed resticprofile"
 else
