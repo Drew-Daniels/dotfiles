@@ -139,10 +139,6 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- [ ] Go through all `apt` managed packages and see which ones are very behind major versions and refactor to pull from GitHub
-      -- `fish-shell`
-      -- `fd`
-      -- Probably others
 - [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Look into just having one "install" and "upgrade" script that intalls/upgrades depending on environment state, rather than having to manage 2 different scripts as dependencies change
 - [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
