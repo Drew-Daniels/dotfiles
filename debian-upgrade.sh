@@ -448,6 +448,23 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                        bat-extras                        │
+#          │     https://github.com/eth-p/bat-extras/tree/master      │
+#          ╰──────────────────────────────────────────────────────────╯
+pkg="bat-extras"
+cd ~/projects/bat-extras || exit
+current=$(git rev-parse --short @)
+git pull
+latest=$(git rev-parse --short @)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading $pkg"
+  ./build.sh --install
+  echo "Upgraded $pkg"
+else
+  echo "$pkg up-to-date"
+fi
+cd ~ || exit
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯

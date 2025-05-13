@@ -340,7 +340,6 @@ fi
 #          │     https://github.com/eth-p/bat-extras/tree/master      │
 #          ╰──────────────────────────────────────────────────────────╯
 pkg="bat-extras"
-
 if ! command -v batgrep >/dev/null 2>&1; then
   echo "Installing $pkg"
   cd ~/projects || exit
