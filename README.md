@@ -144,6 +144,7 @@ QOL Updates:
 - [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
       -- Alacritty does not support them, Konsole does, but there's not a way to deactivate them in Konsole, so need to use a font without ligatures support to disable across all emulators
 - [ ] Look into making `debian-upgrade.sh` script globally available
+- [ ] Create PR in `bat` repo to add `i3config` syntax support, similar to: https://github.com/sharkdp/bat/issues/3214
 - Create a post-install script that automatically:
   - Generates a new `age` encryption key to `~/.config/mise/age.txt`
   - Exports shared secrets that are used across all computers (like Home DDNS hostname) to `~/.env`
