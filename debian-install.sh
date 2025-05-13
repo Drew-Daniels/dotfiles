@@ -538,7 +538,8 @@ fi
 # TODO: Create a security policy following guide here: https://imagemagick.org/script/security-policy.php
 if ! command -v magick >/dev/null 2>&1; then
   echo "Installing imagemagick"
-  latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[0].browser_download_url' | sed 's/"//g')
+  # TODO: Use this logic everywhere else that I am interpolating version numbers, commit SHAs, etc. - seems more foolproof
+  latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[] | select(.name | contains("clang-x86_64.AppImage")) | .browser_download_url' | sed 's/"//g')
   curl -L "$latest_download_url" -o magick
   chmod +x magick
   sudo mv magick /usr/local/bin/
