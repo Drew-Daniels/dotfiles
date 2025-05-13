@@ -534,6 +534,7 @@ fi
 #          │                       imagemagick                        │
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Create a security policy following guide here: https://imagemagick.org/script/security-policy.php
 if ! command -v magick >/dev/null 2>&1; then
   echo "Installing imagemagick"
   latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[0].browser_download_url' | sed 's/"//g')
