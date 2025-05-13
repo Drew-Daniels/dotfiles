@@ -194,6 +194,7 @@ if ! command -v rg >/dev/null 2>&1; then
   # TODO: Figure out why a -1 is always appended to version?
   deb="$base_url/ripgrep_${latest}-1_amd64.deb"
   sha="$base_url/ripgrep_${latest}-1_amd64.deb.sha256"
+  curl --silent --location --remote-name-all "$base_url/$deb" "$base_url/$sha"
   if sha256sum -c "$sha" --status; then
     sudo apt install -y "./$deb"
     rm "$deb" "$sha"
