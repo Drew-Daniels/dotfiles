@@ -868,10 +868,13 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Pull from GitHub releases: https://github.com/strawberrymusicplayer/strawberry/releases/tag/1.2.10
+latest=$(curl -sL https://api.github.com/repos/strawberrymusicplayer/strawberry/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+os_release_codename=$(grep VERSION_CODENAME </etc/os-release | cut -d '=' -f2)
 if ! command -v strawberry >/dev/null 2>&1; then
   echo "Installing strawberry"
-  sudo apt install -y strawberry
+  deb="strawberry_${latest}-${os_release_codename}_amd64.deb"
+  curl -sLO "https://github.com/strawberrymusicplayer/strawberry/releases/download/${latest}/${deb}"
+  sudo apt install -y "./$deb"
   echo "Installed strawberry"
 else
   echo "Already installed strawberry"
