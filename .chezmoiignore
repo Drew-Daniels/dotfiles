@@ -17,6 +17,7 @@ debian-upgrade.sh
 */restic
 debian-install.sh
 debian-upgrade.sh
+.xbindkeyssrc
 {{- else -}}
 .zshrc
 Brewfile*
