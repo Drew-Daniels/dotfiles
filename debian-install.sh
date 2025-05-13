@@ -615,6 +615,8 @@ fi
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Look into just downloading binary instead of using crates.io (eliminate manual build step):
+# https://github.com/sxyazi/yazi/releases/download/v25.4.8/yazi-x86_64-unknown-linux-gnu.zip
 if ! command -v yazi >/dev/null 2>&1; then
   echo "Installing yazi"
   # install deps
