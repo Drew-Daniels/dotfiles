@@ -535,6 +535,20 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                           yazi                           │
+#          │   https://yazi-rs.github.io/docs/installation/#crates    │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/sxyazi/yazi/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(yazi --version | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading yazi"
+  cargo install --locked yazi-fm yazi-cli
+  echo "Upgraded yazi"
+else
+  echo "Yazi up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
