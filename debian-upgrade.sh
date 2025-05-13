@@ -549,6 +549,20 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                          jless                           │
+#          │                    https://jless.io/                     │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/PaulJuliusMartinez/jless/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(jless --version | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading jless"
+  cargo install jless
+  echo "Upgraded jless"
+else
+  echo "Jless up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
