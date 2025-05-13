@@ -46,6 +46,23 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                            jq                            │
+#          │               https://jqlang.org/download/               │
+#          ╰──────────────────────────────────────────────────────────╯
+# 
+# NOTE: Always installing a static version of jq, which can subsequently be upgraded later when running the upgrade script
+if ! command -v jq >/dev/null 2>&1; then
+  echo "Installing jq"
+  bin="jq-linux-amd64"
+  curl -sLO "https://github.com/jqlang/jq/releases/download/jq-1.7.1/${bin}"
+  chmod +x "$bin"
+  sudo mv jq-linux-amd64 /usr/local/bin/jq
+  echo "Installed jq"
+else
+  echo "Already installed jq"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
@@ -546,18 +563,6 @@ if ! command -v alacritty >/dev/null 2>&1; then
   echo "Installed alactritty"
 else
   echo "Already installed alacritty"
-fi
-
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                            jq                            │
-#          │               https://jqlang.org/download/               │
-#          ╰──────────────────────────────────────────────────────────╯
-if ! command -v jq >/dev/null 2>&1; then
-  echo "Installing jq"
-  sudo apt install -y jq
-  echo "Installed jq"
-else
-  echo "Already installed jq"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮

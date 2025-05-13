@@ -6,6 +6,22 @@ if ! command -v jq >/dev/null 2>&1; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                            jq                            │
+#          │               https://jqlang.org/download/               │
+#          ╰──────────────────────────────────────────────────────────╯
+#
+latest=$(curl -sL https://api.github.com/repos/jqlang/jq/releases/latest | jq '.tag_name' | sed 's/"//g')
+current=$(jq --version)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading jq"
+  curl -sLO "https://github.com/jqlang/jq/releases/download/${latest}/jq-linux-amd64"
+  chmod +x
+  sudo mv jq-linux-amd64 /usr/local/bin/
+  echo "Upgraded jq"
+else
+  echo "Already installed jq"
+fi
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
