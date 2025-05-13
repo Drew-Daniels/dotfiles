@@ -762,8 +762,13 @@ if ! command -v restic >/dev/null 2>&1; then
   zip="restic_${latest}_linux_amd64.bz2"
   signed_checksums="SHA256SUMS.asc"
   checksums="SHA256SUMS"
+  curl -sL https://restic.net/gpg-key-alex.asc | gpg --import
+  gpg --lsign-key CF8F18F2844575973F79D4E191A6868BD3F7A907
   curl -sL --remote-name-all "$base_url/$zip" "$base_url/$checksums" "$base_url/$signed_checksums"
-  # TODO: Verify checksums file
+  if ! gpg --verify SHA256SUMS.asc SHA256SUMS; then
+    echo "Invalid GPG signature"
+    exit 1
+  fi
   verified_checksum=$(grep linux_amd64.bz2 <"$checksums")
   download_checksum=$(sha256sum "$zip")
   if [ "$download_checksum" != "$verified_checksum" ]; then
