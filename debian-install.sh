@@ -254,10 +254,9 @@ fi
 #          │                           fzf                            │
 #          │       https://junegunn.github.io/fzf/installation/       │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
-current=$(fzf --version | cut -d ' ' -f1)
 if ! command -v fzf >/dev/null 2>&1; then
   echo "Installing fzf"
+  latest=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
   base_url="https://github.com/junegunn/fzf/releases/download/v${latest}"
   bin="fzf-${latest}-linux_amd64"
   tgz="$bin.tar.gz"

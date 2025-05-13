@@ -311,6 +311,36 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                           fzf                            │
+#          │       https://junegunn.github.io/fzf/installation/       │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+current=$(fzf --version | cut -d ' ' -f1)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading fzf"
+  base_url="https://github.com/junegunn/fzf/releases/download/v${latest}"
+  bin="fzf-${latest}-linux_amd64"
+  tgz="$bin.tar.gz"
+  checksums="fzf_${latest}_checksums.txt"
+  curl -sL --remote-name-all "$base_url/$tgz" "$base_url/$checksums"
+  verified_sha=$(grep <"$checksums" linux_amd64.tar.gz)
+  download_sha=$(sha256sum "$tgz")
+
+  if [ "$download_sha" != "$verified_sha" ]; then
+    echo "Could not install fzf - verify checksums"
+    exit 1
+  fi
+
+  tar xzf "$tgz"
+  sudo mv "$bin" "/usr/local/bin/$bin"
+
+  rm "$tgz" "$checksums"
+  echo "Upgraded fzf"
+else
+  echo "Fzf up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
