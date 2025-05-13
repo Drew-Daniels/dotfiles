@@ -49,7 +49,8 @@ fi
 #          │                            jq                            │
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
-# 
+#
+# TODO: Add checksum verification step: https://github.com/jqlang/jq/releases/tag/jq-1.7.1
 # NOTE: Always installing a static version of jq, which can subsequently be upgraded later when running the upgrade script
 if ! command -v jq >/dev/null 2>&1; then
   echo "Installing jq"
@@ -192,9 +193,17 @@ fi
 #          │                   git-credential-oauth                   │
 #          │     https://github.com/hickford/git-credential-oauth     │
 #          ╰──────────────────────────────────────────────────────────╯
+#
+latest=$(curl -sL https://api.github.com/repos/hickford/git-credential-oauth/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
 if ! command -v git-credential-oauth >/dev/null 2>&1; then
   echo "Installing git-credential-oauth"
-  sudo apt-get install git-credential-oauth
+  tgz="git-credential-oauth_${latest}_linux_amd64.tar.gz"
+  curl -sLO "https://github.com/hickford/git-credential-oauth/releases/download/v${latest}/${tgz}"
+  # NOTE: Adding 'skip-old-files' option because the archive contains a README.md file that clobbers my own
+  tar --skip-old-files -xzf "$tgz"
+  chmod +x git-credential-oauth
+  sudo mv git-credential-oauth /usr/local/bin/
+  rm "$tgz" LICENSE.txt
   echo "Installed git-credential-oauth"
 fi
 
