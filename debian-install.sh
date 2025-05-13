@@ -756,8 +756,20 @@ sudo apt install -y openssh-server
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
 if ! command -v restic >/dev/null 2>&1; then
+  latest=$(curl -sL https://api.github.com/repos/restic/restic/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
   echo "Installing restic"
-  sudo apt install -y restic
+  base_url="https://github.com/restic/restic/releases/download/v${latest}/"
+  zip="restic_${latest}_linux_amd64.bz2"
+  signed_checksums="SHA256SUMS.asc"
+  checksums="SHA256SUMS"
+  curl -sL --remote-name-all "$base_url/$zip" "$base_url/$checksums" "$base_url/$signed_checksums"
+  # TODO: Verify checksums file
+  verified_checksum=$(grep linux_amd64.bz2 <"$checksums")
+  download_checksum=$(sha256sum "$zip")
+  if [ "$download_checksum" != "$verified_checksum" ]; then
+    echo "Could not install restic - verify checksums"
+    exit 1
+  fi
   sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
   echo "Installed restic"
 else
