@@ -55,8 +55,9 @@ fi
 if ! command -v jq >/dev/null 2>&1; then
   echo "Installing jq"
   bin="jq-linux-amd64"
+  checksums="sha256sum.txt"
   base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
-  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/sha256sum.txt"
+  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
   verified_sha=$(grep jq-linux-amd64 <sha256sum.txt)
   download_sha=$(sha256sum "$bin")
   if [ "$download_sha" != "$verified_sha" ]; then
@@ -65,6 +66,7 @@ if ! command -v jq >/dev/null 2>&1; then
   fi
   chmod +x "$bin"
   sudo mv jq-linux-amd64 /usr/local/bin/jq
+  rm "$checksums"
   echo "Installed jq"
 else
   echo "Already installed jq"
