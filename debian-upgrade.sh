@@ -14,9 +14,19 @@ latest=$(curl -sL https://api.github.com/repos/jqlang/jq/releases/latest | jq '.
 current=$(jq --version)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading jq"
-  curl -sLO "https://github.com/jqlang/jq/releases/download/${latest}/jq-linux-amd64"
-  chmod +x
-  sudo mv jq-linux-amd64 /usr/local/bin/
+  bin="jq-linux-amd64"
+  checksums="sha256sum.txt"
+  base_url="https://github.com/jqlang/jq/releases/download/${latest}/"
+  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
+  verified_sha=$(grep jq-linux-amd64 <sha256sum.txt)
+  download_sha=$(sha256sum "$bin")
+  if [ "$download_sha" != "$verified_sha" ]; then
+    echo "Could not install jq - verify checksums"
+    exit 1
+  fi
+  chmod +x "$bin"
+  sudo mv jq-linux-amd64 /usr/local/bin/jq
+  rm "$checksums"
   echo "Upgraded jq"
 else
   echo "Already installed jq"
