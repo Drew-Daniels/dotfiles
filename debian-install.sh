@@ -239,16 +239,13 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Add a check for newer major releases - so I can manually add new apt source and remove the old one, and install latest fish binary
+latest_major=$(curl -sL https://api.github.com/repos/fish-shell/fish-shell/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g' | cut -c1)
+os_release_no=$(grep VERSION_ID </etc/os-release | cut -d '=' -f2 | sed 's/"//g')
 if ! command -v fish >/dev/null 2>&1; then
-  echo "Installing fish"
-  echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:4.list
-  curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:4/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_4.gpg >/dev/null
+  echo "deb http://download.opensuse.org/repositories/shells:/fish:/release:/${latest_major}/Debian_${os_release_no}/ /" | sudo tee "/etc/apt/sources.list.d/shells:fish:release:${latest_major}.list"
+  curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:${latest_major}/Debian_${os_release_no}/Release.key" | gpg --dearmor | sudo tee "/etc/apt/trusted.gpg.d/shells_fish_release_${latest_major}.gpg" >/dev/null
   sudo apt update
   sudo apt install fish
-  echo "Installed fish"
-else
-  echo "Already installed fish"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮

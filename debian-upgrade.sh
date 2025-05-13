@@ -359,6 +359,21 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                           fish                           │
+#          │                  https://fishshell.com/                  │
+#          ╰──────────────────────────────────────────────────────────╯
+latest_major=$(curl -sL https://api.github.com/repos/fish-shell/fish-shell/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g' | cut -c1)
+current_major=$(fish --version | cut -d ' ' -f3 | cut -c1)
+os_release_no=$(grep VERSION_ID </etc/os-release | cut -d '=' -f2 | sed 's/"//g')
+if [ "$current_major" != "$latest_major" ]; then
+  echo "deb http://download.opensuse.org/repositories/shells:/fish:/release:/${latest_major}/Debian_${os_release_no}/ /" | sudo tee "/etc/apt/sources.list.d/shells:fish:release:${latest_major}.list"
+  curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:${latest_major}/Debian_${os_release_no}/Release.key" | gpg --dearmor | sudo tee "/etc/apt/trusted.gpg.d/shells_fish_release_${latest_major}.gpg" >/dev/null
+  sudo apt update
+  sudo apt install fish
+  sudo rm "/etc/apt/sources.list.d/shells:fish:release:${current_major}.list"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
