@@ -256,6 +256,20 @@ fi
 cd ~ || exit
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                          restic                          │
+#          │             https://github.com/restic/restic             │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/restic/restic/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(restic version | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading restic"
+  restic self-update
+  echo "Upgraded restic"
+else
+  echo "restic up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯
