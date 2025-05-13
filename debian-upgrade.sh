@@ -520,6 +520,20 @@ else
   echo "Already installed dust"
 fi
 
+#╭──────────────────────────────────────────────────────────────────────────────────╮
+#│                                     starship                                     │
+#│https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation │
+#╰──────────────────────────────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/starship/starship/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(starship --version | head -n1 | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading starship"
+  cargo install starship --locked
+  echo "Upgraded starship"
+else
+  echo "Starship up-to-date"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
