@@ -427,6 +427,27 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                   git-credential-oauth                   │
+#          │     https://github.com/hickford/git-credential-oauth     │
+#          ╰──────────────────────────────────────────────────────────╯
+#
+latest=$(curl -sL https://api.github.com/repos/hickford/git-credential-oauth/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(git-credential-oauth version)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading git-credential-oauth"
+  tgz="git-credential-oauth_${latest}_linux_amd64.tar.gz"
+  curl -sLO "https://github.com/hickford/git-credential-oauth/releases/download/v${latest}/${tgz}"
+  # NOTE: Adding 'skip-old-files' option because the archive contains a README.md file that clobbers my own
+  tar --skip-old-files -xzf "$tgz"
+  chmod +x git-credential-oauth
+  sudo mv git-credential-oauth /usr/local/bin/
+  rm "$tgz" LICENSE.txt
+  echo "Upgraded git-credential-oauth"
+else
+  echo "git-credential-oauth up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
