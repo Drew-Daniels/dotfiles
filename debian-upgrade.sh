@@ -373,6 +373,23 @@ if [ "$current_major" != "$latest_major" ]; then
   sudo rm "/etc/apt/sources.list.d/shells:fish:release:${current_major}.list"
 fi
 
+#╭───────────────────────────────────────────────────────────────────────────────────────────╮
+#│                                            bat                                            │
+#│https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-most-recent-deb-packages │
+#╰───────────────────────────────────────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+current=$(bat --version | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading bat"
+  deb="bat_${latest}_amd64.deb"
+  curl -sLO "https://github.com/sharkdp/bat/releases/download/v${latest}/${deb}"
+  sudo apt install -y "./${deb}"
+  rm "$deb"
+  echo "Upgraded bat"
+else
+  echo "Bat up-to-date"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
