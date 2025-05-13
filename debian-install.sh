@@ -809,7 +809,7 @@ fi
 #          │                            i3                            │
 #          │                 https://github.com/i3/i3                 │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v i3; then
+if ! command -v i3 >/dev/null 2>&1; then
   echo "Installing i3"
   sudo apt install -y i3
   echo "Installed i3"
