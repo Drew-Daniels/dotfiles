@@ -349,7 +349,10 @@ current=$(fd --version | cut -d ' ' -f2)
 
 if [ "$current" != "$latest" ]; then
   echo "Upgrading fd"
-  # TODO: Implement
+  deb="fd_${latest}_amd64.deb"
+  curl -sLO "https://github.com/sharkdp/fd/releases/download/v${latest}/${deb}"
+  sudo apt install -y "./${deb}"
+  rm "$deb"
   echo "Upgraded fd"
 else
   echo "fd up-to-date"
