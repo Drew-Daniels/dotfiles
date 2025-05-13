@@ -264,7 +264,16 @@ current=$(resticprofile version | cut -d ' ' -f3)
 
 if [ "$current" != "$latest" ]; then
   echo "Upgrading resticprofile"
-  curl -sLO "https://github.com/creativeprojects/resticprofile/releases/latest/download/resticprofile_${latest}_linux_amd64.tar.gz"
+  base_url="https://github.com/creativeprojects/resticprofile/releases/latest/download"
+  tgz="resticprofile_${latest}_linux_amd64.tar.gz"
+  checksums="checksums.txt"
+  curl -sLO "$base_url/$tgz" "$base_url/$checksums"
+  verified_checksum=$(grep <"$checksums" | linux_amd64.tar.gz)
+  download_checksum=$(sha256sum "$tgz")
+  if [ "$download_checksum" != "$verified_checksum" ]; then
+    echo "Could not upgrade resticprofile - verify checksums"
+    exit 1
+  fi
   mkdir "resticprofile_${latest}_linux_amd64"
   tar -xzpf "resticprofile_${latest}_linux_amd64.tar.gz" -C "resticprofile_${latest}_linux_amd64"
   sudo cp "resticprofile_${latest}_linux_amd64/resticprofile" /usr/local/bin/
@@ -501,6 +510,7 @@ if [ "$current" != "$latest" ]; then
   deb="strawberry_${latest}-${os_release_codename}_amd64.deb"
   curl -sLO "https://github.com/strawberrymusicplayer/strawberry/releases/download/${latest}/${deb}"
   sudo apt install -y "./$deb"
+  rm "$deb"
   echo "Installed strawberry"
 else
   echo "Already installed strawberry"
