@@ -239,6 +239,7 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Add a check for newer major releases - so I can manually add new apt source and remove the old one, and install latest fish binary
 if ! command -v fish >/dev/null 2>&1; then
   echo "Installing fish"
   echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:4.list
