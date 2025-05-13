@@ -296,7 +296,7 @@ fi
 #          │                       imagemagick                        │
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.tag_name')
+latest=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.tag_name' | sed 's/"//g')
 current=$(magick -version | head -n1 | cut -d ' ' -f3)
 
 if [ "$current" != "$latest" ]; then
