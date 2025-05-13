@@ -603,6 +603,7 @@ fi
 #          │                          zoxide                          │
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Install latest from GitHub
 if ! command -v zoxide >/dev/null 2>&1; then
   echo "Installing zoxide"
   sudo apt install -y zoxide
