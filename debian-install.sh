@@ -487,9 +487,18 @@ fi
 #         │                            tmux                             │
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
+#
+latest=$(curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | jq '.tag_name' | sed 's/"//g')
 if ! command -v tmux >/dev/null 2>&1; then
+  echo "Installing tmux build dependencies"
+  sudo apt install -y libevent-dev ncurses-dev build-essential bison pkg-config
   echo "Installing tmux"
-  sudo apt install -y tmux
+  tgz="tmux-${latest}.tar.gz"
+  curl -sLO "https://github.com/tmux/tmux/releases/download/${latest}/${tgz}"
+  tar -zxf tmux-*.tar.gz
+  cd tmux-*/
+  ./configure
+  make && sudo make install
   echo "Installed tmux"
 else
   echo "Already installed tmux"
