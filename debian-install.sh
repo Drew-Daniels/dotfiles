@@ -798,6 +798,7 @@ fi
 #          │                          kiwix                           │
 #          │       https://tracker.debian.org/teams/kiwix-team/       │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Look into building from source to get latest release: https://github.com/kiwix/kiwix-desktop?tab=readme-ov-file#dependencies
 if ! command -v kiwix-desktop >/dev/null 2>&1; then
   echo "Installing kiwix-desktop"
   sudo apt install -y kiwix

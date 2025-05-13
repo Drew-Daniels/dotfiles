@@ -507,6 +507,20 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                           dust                           │
+#          │             https://github.com/bootandy/dust             │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/bootandy/dust/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(dust --version | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Installing dust"
+  cargo install du-dust
+  echo "Installed dust"
+else
+  echo "Already installed dust"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
