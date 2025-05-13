@@ -309,21 +309,6 @@ else
   echo "Already installed bat"
 fi
 
-#    ╭──────────────────────────────────────────────────────────────────────╮
-#    │                                 bat                                  │
-#    │https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-apt │
-#    ╰──────────────────────────────────────────────────────────────────────╯
-# https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_amd64.deb
-latest=$()
-if ! command -v bat >/dev/null 2>&1; then
-  echo "Installing bat"
-  sudo apt install -y bat
-  ln -s /usr/bin/batcat ~/.local/bin/bat
-  echo "Installed bat"
-else
-  echo "Already installed bat"
-fi
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        bat-extras                        │
 #          │     https://github.com/eth-p/bat-extras/tree/master      │
