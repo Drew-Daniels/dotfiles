@@ -854,6 +854,10 @@ else
   echo "Already installed feh"
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                        xmlstarlet                        │
+#          │       https://xmlstar.sourceforge.net/download.php       │
+#          ╰──────────────────────────────────────────────────────────╯
 if ! command -v xmlstarlet >/dev/null 2>&1; then
   echo "Installing xmlstarlet"
   sudo apt install xmlstarlet
