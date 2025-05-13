@@ -285,11 +285,13 @@ fi
 #          │                            fd                             │
 #          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
 #          ╰───────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
 if ! command -v fd >/dev/null 2>&1; then
   echo "Installing fd"
-  mkdir p ~/.local/bin
-  sudo apt install -y fd-find
-  ln -s "$(which fdfind)" ~/.local/bin/fd
+  deb="fd_${latest}_amd64.deb"
+  curl -sLO "https://github.com/sharkdp/fd/releases/download/v${latest}/${deb}"
+  sudo apt install -y "./${deb}"
+  rm "$deb"
   echo "Installed fd"
 else
   echo "Already installed fd"

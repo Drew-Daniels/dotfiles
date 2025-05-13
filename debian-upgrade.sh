@@ -340,6 +340,21 @@ else
   echo "Fzf up-to-date"
 fi
 
+#          ╭───────────────────────────────────────────────────────────╮
+#          │                            fd                             │
+#          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
+#          ╰───────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+current=$(fd --version | cut -d ' ' -f2)
+
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading fd"
+  # TODO: Implement
+  echo "Upgraded fd"
+else
+  echo "fd up-to-date"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
