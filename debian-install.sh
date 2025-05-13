@@ -51,12 +51,18 @@ fi
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
 #
-# TODO: Add checksum verification step: https://github.com/jqlang/jq/releases/tag/jq-1.7.1
 # NOTE: Always installing a static version of jq, which can subsequently be upgraded later when running the upgrade script
 if ! command -v jq >/dev/null 2>&1; then
   echo "Installing jq"
   bin="jq-linux-amd64"
-  curl -sLO "https://github.com/jqlang/jq/releases/download/jq-1.7.1/${bin}"
+  base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
+  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/sha256sum.txt"
+  verified_sha=$(grep jq-linux-amd64 <sha256sum.txt)
+  download_sha=$(sha256sum "$bin")
+  if [ "$download_sha" != "$verified_sha" ]; then
+    echo "Could not install jq - verify checksums"
+    exit 1
+  fi
   chmod +x "$bin"
   sudo mv jq-linux-amd64 /usr/local/bin/jq
   echo "Installed jq"
