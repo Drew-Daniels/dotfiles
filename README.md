@@ -139,6 +139,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into installing [newsboat](https://newsboat.org/releases/2.39/docs/newsboat.html) RSS feed reader
 - [ ] Look into using [mutt](https://gitlab.com/muttmua/mutt) email client
 - [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots
 - [ ] Use `xbindkeys` to adjust volume control sensitivity
