@@ -53,7 +53,7 @@ fi
 #
 # TODO: Use authentication
 if uninstalled jq; then
-  latest=$(curl -s https://api.github.com/repos/jqlang/jq/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+  latest=$(get_latest_gh_release_data "jqlang" "jq" | grep -oP '"tag_name": "\K(.*)(?=")')
 
   bin="jq-linux-amd64"
   checksums="sha256sum.txt"
