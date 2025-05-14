@@ -140,6 +140,7 @@ curl --silent --location --remote-name-all \
 QOL Updates:
 
 - [ ] Migrate to using [sway](https://github.com/swaywm/sway) from `i3`
+  - [ ] Can migrate to using [bemenu](https://github.com/Cloudef/bemenu) instead of `dmenu` too, since the latter doesn't work with `wayland`
 - [ ] Look into installing [newsboat](https://newsboat.org/releases/2.39/docs/newsboat.html) RSS feed reader
 - [ ] Look into using [mutt](https://gitlab.com/muttmua/mutt) email client
 - [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots

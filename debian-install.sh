@@ -603,10 +603,27 @@ fi
 #          │                          zoxide                          │
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Install latest from GitHub
 if ! command -v zoxide >/dev/null 2>&1; then
   echo "Installing zoxide"
-  sudo apt install -y zoxide
+  curl -sSfLO https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
+  cat install.sh
+
+  while true; do
+    read -p "Does the above script look safe?" yesno
+    case $yesno in
+    [Yy]*)
+      chmod +x install.sh
+      break
+      ;;
+    [Nn]*)
+      exit
+      ;;
+    *) echo "Answer either yes or no!" ;;
+    esac
+  done
+
+  ./install.sh
+
   echo "Installed zoxide"
 else
   echo "Already installed zoxide"
