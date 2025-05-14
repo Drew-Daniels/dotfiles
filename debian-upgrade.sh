@@ -614,7 +614,7 @@ fi
 #          │                          beets                           │
 #          │             https://github.com/beetbox/beets             │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "beetbox" "beets")
+latest=$(get_latest_gh_release_tag "beetbox" "beets" | cut -d 'v' -f2)
 current=$(beet --version | head -n1 | cut -d ' ' -f3)
 if [ "$current" != "$latest" ]; then
   pip install --upgrade beets
