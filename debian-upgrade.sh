@@ -620,6 +620,25 @@ if ! command -v beets >/dev/null; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                          resvg                           │
+#          │           https://github.com/linebender/resvg            │
+#          ╰──────────────────────────────────────────────────────────╯
+# NOTE: Library used to display SVG images in yazi
+# NOTE: Likely won't be able to use this until upgrading to next major Debian release
+# resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
+# latest=$(get_latest_gh_release_tag "linebender" "resvg")
+# # TODO: Need to confirm the right command to get current version - can't until debian using a compatible glibc version
+# current=$(resvg --version)
+# if uninstalled resvg; then
+#   latest=$(get_latest_gh_release_tag "linebender" "resvg")
+#   tgz="resvg-linux-x86_64.tar.gz"
+#   curl -sLO "https://github.com/linebender/resvg/releases/download/${latest}/${tgz}"
+#   tar -xzf "$tgz"
+#   sudo mv resvg /usr/local/bin/
+#   rm "$tgz"
+# fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯

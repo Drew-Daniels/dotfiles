@@ -203,7 +203,7 @@ fi
 #          │     https://github.com/hickford/git-credential-oauth     │
 #          ╰──────────────────────────────────────────────────────────╯
 #
-latest=$(curl -sL https://api.github.com/repos/hickford/git-credential-oauth/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "hickford" "git-credential-oauth" | cut -d 'v' -f2)
 if uninstalled git-credential-oauth; then
   echo "Installing git-credential-oauth"
   tgz="git-credential-oauth_${latest}_linux_amd64.tar.gz"
@@ -224,7 +224,7 @@ pkg="ripgrep"
 
 if uninstalled rg; then
   echo "Installing ripgrep"
-  latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+  latest=$(get_latest_gh_release_tag "BurntSushi" "ripgrep" | cut -d 'v' -f2)
   base_url="https://github.com/BurntSushi/ripgrep/releases/download/${latest}"
   # TODO: Figure out why a -1 is always appended to version?
   deb="$base_url/ripgrep_${latest}-1_amd64.deb"
@@ -250,9 +250,9 @@ pkg='delta'
 
 if uninstalled $pkg; then
   echo "Installing $pkg"
-  version=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
-  curl -sLO "https://github.com/dandavison/delta/releases/download/${version}/git-delta_${version}_amd64.deb"
-  sudo apt install -y ./git-delta_"${version}"_amd64.deb
+  latest=$(get_latest_gh_release_tag "dandavison" "delta")
+  curl -sLO "https://github.com/dandavison/delta/releases/download/${latest}/git-delta_${latest}_amd64.deb"
+  sudo apt install -y ./git-delta_"${latest}"_amd64.deb
   echo "Installed $pkg"
 else
   echo "Already installed $pkg"
@@ -274,7 +274,7 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-latest_major=$(curl -sL https://api.github.com/repos/fish-shell/fish-shell/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g' | cut -c1)
+latest_major=$(get_latest_gh_release_tag "fish-shell" "fish-shell" | sed 's/v//g' | cut -c1)
 os_release_no=$(grep VERSION_ID </etc/os-release | cut -d '=' -f2 | sed 's/"//g')
 if uninstalled fish; then
   echo "deb http://download.opensuse.org/repositories/shells:/fish:/release:/${latest_major}/Debian_${os_release_no}/ /" | sudo tee "/etc/apt/sources.list.d/shells:fish:release:${latest_major}.list"
@@ -289,7 +289,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if uninstalled fzf; then
   echo "Installing fzf"
-  latest=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+  latest=$(get_latest_gh_release_tag "junegunn" "fzf" | sed 's/v//g')
   base_url="https://github.com/junegunn/fzf/releases/download/v${latest}"
   bin="fzf-${latest}-linux_amd64"
   tgz="$bin.tar.gz"
@@ -316,7 +316,7 @@ fi
 #          │                            fd                             │
 #          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
 #          ╰───────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+latest=$(get_latest_gh_release_tag "sharkdp" "fd" | sed 's/v//g')
 if uninstalled fd; then
   echo "Installing fd"
   deb="fd_${latest}_amd64.deb"
@@ -332,7 +332,7 @@ fi
 #│                                            bat                                            │
 #│https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-most-recent-deb-packages │
 #╰───────────────────────────────────────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+latest=$(get_latest_gh_release_tag "sharkdp" "bat" | sed 's/v//g')
 if uninstalled bat; then
   echo "Installing bat"
   deb="bat_${latest}_amd64.deb"
@@ -466,7 +466,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
   echo "Installing JetBrainsMonoNerdFont"
-  latest=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+  latest=$(get_latest_gh_release_tag "ryanoasis" "nerd-fonts" | cut -d 'v' -f2)
   wget -P "$HOME/.local/share/fonts" "https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip"
   cd ~/.local/share/fonts
   unzip JetBrainsMono.zip
@@ -522,7 +522,7 @@ fi
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
 #
-latest=$(curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "tmux" "tmux")
 if uninstalled tmux; then
   echo "Installing tmux build dependencies"
   sudo apt install -y libevent-dev ncurses-dev build-essential bison pkg-config
@@ -638,6 +638,22 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                          resvg                           │
+#          │           https://github.com/linebender/resvg            │
+#          ╰──────────────────────────────────────────────────────────╯
+# NOTE: Library used to display SVG images in yazi
+# NOTE: Likely won't be able to use this until upgrading to next major Debian release
+# resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
+# if uninstalled resvg; then
+#   latest=$(get_latest_gh_release_tag "linebender" "resvg")
+#   tgz="resvg-linux-x86_64.tar.gz"
+#   curl -sLO "https://github.com/linebender/resvg/releases/download/${latest}/${tgz}"
+#   tar -xzf "$tgz"
+#   sudo mv resvg /usr/local/bin/
+#   rm "$tgz"
+# fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
@@ -673,7 +689,7 @@ fi
 
 if uninstalled yq; then
   echo "Installing yq"
-  latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
+  latest=$(get_latest_gh_release_tag "mikefarah" "yq")
   base_url="https://github.com/mikefarah/yq/releases/download/${latest}"
   curl --silent --location --remote-name-all "$base_url/yq_linux_amd64.tar.gz" "$base_url/extract-checksum.sh" "$base_url/checksums_hashes_order" "$base_url/checksums"
 
@@ -700,7 +716,7 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 if uninstalled standard-notes; then
   echo "Installing standard notes"
-  latest=$(curl -sL https://api.github.com/repos/standardnotes/app/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d '@' -f3)
+  latest=$(get_latest_gh_release_tag "standardnotes" "app" | cut -d '@' -f3)
   # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
   base_url="https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13"
   deb="standard-notes-${latest}-linux-amd64.deb"
@@ -769,7 +785,7 @@ sudo apt install -y openssh-server
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
 if uninstalled restic; then
-  latest=$(curl -sL https://api.github.com/repos/restic/restic/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+  latest=$(get_latest_gh_release_tag "restic" "restic" | cut -d 'v' -f2)
   echo "Installing restic"
   base_url="https://github.com/restic/restic/releases/download/v${latest}/"
   zip="restic_${latest}_linux_amd64.bz2"
@@ -800,7 +816,7 @@ fi
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "creativeprojects" "resticprofile" | cut -d 'v' -f2)
 current=$(resticprofile version | cut -d ' ' -f3)
 if uninstalled resticprofile; then
   echo "Installing resticprofile"
@@ -910,7 +926,7 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/strawberrymusicplayer/strawberry/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "strawberrymusicplayer" "strawberry" | cut -d 'v' -f2)
 os_release_codename=$(grep VERSION_CODENAME </etc/os-release | cut -d '=' -f2)
 if uninstalled strawberry; then
   echo "Installing strawberry"
@@ -952,6 +968,8 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
+# NOTE: Likely won't be able to use this until upgrading to next major Debian release
+# mergiraf: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.39' not found (required by mergiraf)
 latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
 if uninstalled mergiraf; then
   echo "Installing mergiraf"
