@@ -29,7 +29,7 @@ if [ "$current" != "$latest" ]; then
   rm "$checksums"
   echo "Upgraded jq"
 else
-  echo "Already installed jq"
+  echo "jq up-to-date"
 fi
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         chezmoi                          │
@@ -526,7 +526,7 @@ if [ "$current" != "$latest" ]; then
   rm "$deb"
   echo "Installed strawberry"
 else
-  echo "Already installed strawberry"
+  echo "Strawberry up-to-date"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -540,7 +540,7 @@ if [ "$current" != "$latest" ]; then
   cargo install du-dust
   echo "Installed dust"
 else
-  echo "Already installed dust"
+  echo "dust up-to-date"
 fi
 
 #╭──────────────────────────────────────────────────────────────────────────────────╮
