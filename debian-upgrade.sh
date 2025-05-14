@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# exit on error
+# NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
+set -e
+
+source ./utils.sh
+
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq must be installed"
   exit 1
@@ -10,7 +16,7 @@ fi
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
 #
-latest=$(curl -sL https://api.github.com/repos/jqlang/jq/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "jqlang" "jq")
 current=$(jq --version)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading jq"
@@ -35,17 +41,16 @@ fi
 #          │                         chezmoi                          │
 #          │                 https://www.chezmoi.io/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Rename
-version=$(curl -sL https://api.github.com/repos/twpayne/chezmoi/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "twpayne" "chezmoi" | cut -d 'v' -f2)
 current=$(chezmoi --version | cut -d ' ' -f3 | cut -d 'v' -f2 | cut -d ',' -f1)
 
-if [ "$current" != "$version" ]; then
+if [ "$current" != "$latest" ]; then
   echo "Upgrading chezmoi"
-  chezmoi_base_path="https://github.com/twpayne/chezmoi/releases/download/v${version}"
+  chezmoi_base_path="https://github.com/twpayne/chezmoi/releases/download/v${latest}"
 
-  deb="chezmoi_${version}_linux_amd64.deb"
-  checksums="chezmoi_${version}_checksums.txt"
-  checksum_sigs="chezmoi_${version}_checksums.txt.sig"
+  deb="chezmoi_${latest}_linux_amd64.deb"
+  checksums="chezmoi_${latest}_checksums.txt"
+  checksum_sigs="chezmoi_${latest}_checksums.txt.sig"
   pkey="chezmoi_cosign.pub"
 
   curl --silent --location --remote-name-all "${chezmoi_base_path}/${deb}" "${chezmoi_base_path}/${checksums}" "${chezmoi_base_path}/${checksum_sigs}" "${chezmoi_base_path}/${pkey}"
@@ -79,7 +84,7 @@ fi
 #        │                            neovim                             │
 #        │https://github.com/neovim/neovim/blob/master/INSTALL.md#debian │
 #        ╰───────────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/neovim/neovim/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "neovim" "neovim")
 current=$(nvim --version | cut -d ' ' -f2 | head -n1)
 
 if [ "$current" != "$latest" ]; then
@@ -138,7 +143,7 @@ fi
 #    │https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation │
 #    ╰──────────────────────────────────────────────────────────────────────╯
 pkg="ripgrep"
-latest=$(curl -sL https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "BurntSushi" "ripgrep" | cut -d 'v' -f2)
 current=$(rg --version | head -n1 | cut -d ' ' -f2)
 
 if [ "$current" != "$latest" ]; then
@@ -163,7 +168,7 @@ fi
 #          │                          delta                           │
 #          │       https://github.com/dandavison/delta/releases       │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/dandavison/delta/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "dandavison" "delta")
 current=$(delta --version | cut -d ' ' -f2)
 
 if [ "$current" != "$latest" ]; then
@@ -179,7 +184,7 @@ fi
 #       │                             ctags                              │
 #       │https://github.com/universal-ctags/ctags-nightly-build/releases │
 #       ╰────────────────────────────────────────────────────────────────╯
-latest_tag_name=$(curl -sL https://api.github.com/repos/universal-ctags/ctags-nightly-build/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest_tag_name=$(get_latest_gh_release_tag "universal-ctags" "ctags-nightly-build")
 latest_release_date=$(echo "$latest_tag_name" | cut -d '+' -f1)
 
 latest_SHA_full=$(echo "$latest_tag_name" | cut -d '+' -f2)
@@ -259,7 +264,7 @@ cd ~ || exit
 #          │                          restic                          │
 #          │             https://github.com/restic/restic             │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/restic/restic/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "restic" "restic" | cut -d 'v' -f2)
 current=$(restic version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading restic"
@@ -273,7 +278,7 @@ fi
 #          │                      resticprofile                       │
 #          │    https://github.com/creativeprojects/resticprofile     │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "creativeprojects" "resticprofile" | cut -d 'v' -f2)
 current=$(resticprofile version | cut -d ' ' -f3)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading resticprofile"
@@ -319,7 +324,7 @@ fi
 #          │                            yq                            │
 #          │             https://github.com/mikefarah/yq              │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/mikefarah/yq/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "mikefarah" "yq")
 current=$(yq --version | cut -d ' ' -f4)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading yq"
@@ -344,7 +349,7 @@ fi
 #          │                       imagemagick                        │
 #          │        https://github.com/ImageMagick/ImageMagick        │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "ImageMagick" "ImageMagick")
 current=$(magick -version | head -n1 | cut -d ' ' -f3)
 
 if [ "$current" != "$latest" ]; then
@@ -362,7 +367,7 @@ fi
 #          │                           fzf                            │
 #          │       https://junegunn.github.io/fzf/installation/       │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+latest=$(get_latest_gh_release_tag "junegunn" "fzf" | sed 's/v//g')
 current=$(fzf --version | cut -d ' ' -f1)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading fzf"
@@ -392,9 +397,8 @@ fi
 #          │                            fd                             │
 #          │https://github.com/sharkdp/fd?tab=readme-ov-file#on-debian │
 #          ╰───────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+latest=$(get_latest_gh_release_tag "sharkdp" "fd" | sed 's/v//g')
 current=$(fd --version | cut -d ' ' -f2)
-
 if [ "$current" != "$latest" ]; then
   echo "Upgrading fd"
   deb="fd_${latest}_amd64.deb"
@@ -410,7 +414,7 @@ fi
 #          │                           fish                           │
 #          │                  https://fishshell.com/                  │
 #          ╰──────────────────────────────────────────────────────────╯
-latest_major=$(curl -sL https://api.github.com/repos/fish-shell/fish-shell/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g' | cut -c1)
+latest_major=$(get_latest_gh_release_tag "fish-shell" "fish-shell" | sed 's/v//g' | cut -c1)
 current_major=$(fish --version | cut -d ' ' -f3 | cut -c1)
 os_release_no=$(grep VERSION_ID </etc/os-release | cut -d '=' -f2 | sed 's/"//g')
 if [ "$current_major" != "$latest_major" ]; then
@@ -425,7 +429,7 @@ fi
 #│                                            bat                                            │
 #│https://github.com/sharkdp/bat?tab=readme-ov-file#on-ubuntu-using-most-recent-deb-packages │
 #╰───────────────────────────────────────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest | jq '.tag_name' | sed 's/"//g;s/v//g')
+latest=$(get_latest_gh_release_tag "sharkdp" "bat" | sed 's/v//g')
 current=$(bat --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading bat"
@@ -443,7 +447,7 @@ fi
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
 #         ╰─────────────────────────────────────────────────────────────╯
 #
-latest=$(curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | jq '.tag_name' | sed 's/"//g')
+latest=$(get_latest_gh_release_tag "tmux" "tmux")
 current=$(tmux -V | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading tmux"
@@ -463,7 +467,7 @@ fi
 #          │     https://github.com/hickford/git-credential-oauth     │
 #          ╰──────────────────────────────────────────────────────────╯
 #
-latest=$(curl -sL https://api.github.com/repos/hickford/git-credential-oauth/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "hickford" "git-credential-oauth" | cut -d 'v' -f2)
 current=$(git-credential-oauth version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading git-credential-oauth"
@@ -501,7 +505,7 @@ cd ~ || exit
 #          │                       tidal-dl-ng                        │
 #          │          https://github.com/exislow/tidal-dl-ng          │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/exislow/tidal-dl-ng/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "exislow" "tidal-dl-ng" | cut -d 'v' -f2)
 current=$(tidal-dl-ng --version)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading tidal-dl-ng"
@@ -515,7 +519,7 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/strawberrymusicplayer/strawberry/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "strawberrymusicplayer" "strawberry" | cut -d 'v' -f2)
 current=$(strawberry --version | cut -d ' ' -f2)
 os_release_codename=$(grep VERSION_CODENAME </etc/os-release | cut -d '=' -f2)
 if [ "$current" != "$latest" ]; then
@@ -533,7 +537,7 @@ fi
 #          │                           dust                           │
 #          │             https://github.com/bootandy/dust             │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/bootandy/dust/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "bootandy" "dust" | cut -d 'v' -f2)
 current=$(dust --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Installing dust"
@@ -547,7 +551,7 @@ fi
 #│                                     starship                                     │
 #│https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation │
 #╰──────────────────────────────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/starship/starship/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "starship" "starship" | cut -d 'v' -f2)
 current=$(starship --version | head -n1 | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading starship"
@@ -561,7 +565,7 @@ fi
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/sxyazi/yazi/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "yazi" "yazi" | cut -d 'v' -f2)
 current=$(yazi --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading yazi"
@@ -575,7 +579,7 @@ fi
 #          │                          jless                           │
 #          │                    https://jless.io/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/PaulJuliusMartinez/jless/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "PaulJuliusMartinez" "jless" | cut -d 'v' -f2)
 current=$(jless --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading jless"
@@ -589,26 +593,13 @@ fi
 #          │                          zoxide                          │
 #          │          https://github.com/ajeetdsouza/zoxide           │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://api.github.com/repos/ajeetdsouza/zoxide/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "ajeetdsouza" "zoxide" | cut -d 'v' -f2)
 current=$(zoxide --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading zoxide"
   curl -sSfLO https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
-  cat install.sh
 
-  while true; do
-    read -p "Does the above script look safe?" yesno
-    case $yesno in
-    [Yy]*)
-      chmod +x install.sh
-      break
-      ;;
-    [Nn]*)
-      exit
-      ;;
-    *) echo "Answer either yes or no!" ;;
-    esac
-  done
+  approve_script_execution "install.sh"
 
   ./install.sh
 
