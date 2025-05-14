@@ -1272,6 +1272,15 @@ if ! command -v signal-desktop >/dev/null 2>&1; then
   rm signal-desktop-keyring.gpg
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          beets                           │
+#          │             https://github.com/beetbox/beets             │
+#          ╰──────────────────────────────────────────────────────────╯
+
+if ! command -v beets >/dev/null; then
+  pip install beets
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
