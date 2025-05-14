@@ -641,6 +641,7 @@ fi
 #          │                          resvg                           │
 #          │           https://github.com/linebender/resvg            │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Look into installing through crates.io to sidestep compatibility issue
 # NOTE: Library used to display SVG images in yazi
 # NOTE: Likely won't be able to use this until upgrading to next major Debian release
 # resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
@@ -657,7 +658,8 @@ fi
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Look into just downloading binary instead of using crates.io (eliminate manual build step):
+# TODO: Look into just downloading binary instead of using crates.io (eliminate manual build step)
+# NOTE: Can't do this ^ until upgrading to next major debian release
 # https://github.com/sxyazi/yazi/releases/download/v25.4.8/yazi-x86_64-unknown-linux-gnu.zip
 if uninstalled yazi; then
   echo "Installing yazi"
@@ -968,6 +970,7 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
+# TODO: Look into installing via crates.io to work around glibc compatibility issue
 # NOTE: Likely won't be able to use this until upgrading to next major Debian release
 # mergiraf: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.39' not found (required by mergiraf)
 latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
