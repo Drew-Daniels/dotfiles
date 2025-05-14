@@ -625,9 +625,8 @@ fi
 #          │           https://github.com/linebender/resvg            │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Library used to display SVG images in yazi
-# NOTE: Likely won't be able to use this until upgrading to next major Debian release
 # resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
-latest=$(get_latest_gh_release_tag "linebender" "resvg")
+latest=$(get_latest_gh_release_tag "linebender" "resvg" | sed 's/v//g')
 current=$(resvg --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   cargo install --locked resvg
