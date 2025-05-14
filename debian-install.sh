@@ -519,9 +519,6 @@ fi
 # # use neovim as default editor with root
 # Defaults:%sudo env_keep += "EDITOR"
 
-# post install
-# nvim -c "MasonInstall ruff basedpyright clang-format jsonlint stylua prettier nxls shfmt shellcheck sqlfmt reformat-gherkin yamlfmt"
-
 #         ╭─────────────────────────────────────────────────────────────╮
 #         │                            tmux                             │
 #         │https://github.com/tmux/tmux/wiki/Installing#binary-packages │
