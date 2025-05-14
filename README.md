@@ -139,6 +139,9 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
+  - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
+- [ ] [cava](https://github.com/karlstav/cava) audio-visualizer
 - [ ] Migrate to using [sway](https://github.com/swaywm/sway) from `i3`
   - [ ] Can migrate to using [bemenu](https://github.com/Cloudef/bemenu) instead of `dmenu` too, since the latter doesn't work with `wayland`
 - [ ] Look into installing [newsboat](https://newsboat.org/releases/2.39/docs/newsboat.html) RSS feed reader
