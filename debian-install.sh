@@ -641,18 +641,14 @@ fi
 #          │                          resvg                           │
 #          │           https://github.com/linebender/resvg            │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Look into installing through crates.io to sidestep compatibility issue
 # NOTE: Library used to display SVG images in yazi
-# NOTE: Likely won't be able to use this until upgrading to next major Debian release
+# NOTE: Installing via crates.io because downloading the plain binary requires an incompatible glibc version than version required by Debian Bookworm
 # resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
-# if uninstalled resvg; then
-#   latest=$(get_latest_gh_release_tag "linebender" "resvg")
-#   tgz="resvg-linux-x86_64.tar.gz"
-#   curl -sLO "https://github.com/linebender/resvg/releases/download/${latest}/${tgz}"
-#   tar -xzf "$tgz"
-#   sudo mv resvg /usr/local/bin/
-#   rm "$tgz"
-# fi
+if uninstalled resvg; then
+  echo "Installing resvg"
+  cargo install --locked resvg
+  echo "Installed resvg"
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           yazi                           │
@@ -970,15 +966,11 @@ fi
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
-# TODO: Look into installing via crates.io to work around glibc compatibility issue
-# NOTE: Likely won't be able to use this until upgrading to next major Debian release
+# NOTE: Installing via crates.io because of glibc compatibility issue with Debian bookworm
 # mergiraf: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.39' not found (required by mergiraf)
-latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
 if uninstalled mergiraf; then
   echo "Installing mergiraf"
-  curl -sLO "https://codeberg.org/mergiraf/mergiraf/releases/download/v${latest}/mergiraf_x86_64-unknown-linux-gnu.tar.gz"
-  tar xzf "mergiraf_x86_64-unknown-linux-gnu.tar.gz"
-  sudo mv mergiraf /usr/local/bin/
+  cargo install --locked mergiraf
   echo "Installed mergiraf"
 else
   echo "Already installed mergiraf"
