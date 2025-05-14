@@ -153,9 +153,8 @@ QOL Updates:
       -- Alacritty does not support them, Konsole does, but there's not a way to deactivate them in Konsole, so need to use a font without ligatures support to disable across all emulators
 - [ ] Look into making `debian-upgrade.sh` script globally available
 - Create a post-install script that automatically:
-  - Generates a new `age` encryption key to `~/.config/mise/age.txt`
   - Exports shared secrets that are used across all computers (like Home DDNS hostname) to `~/.env`
-  - Encrypts this file using the new encryption key
+  - Look into using an `run_after*` script so that it runs after all dependencies are installed
 - Figure out how to _uninstall_ brew packages after they have been _removed_ from `./.chezmoidata/packages.yaml`
 - Look into using something like this to handle initial dotfiles setup instead of requiring `./macos.sh` to be run:
   - https://www.chezmoi.io/user-guide/advanced/install-your-password-manager-on-init/
