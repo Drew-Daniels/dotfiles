@@ -1284,7 +1284,7 @@ fi
 #          │             https://github.com/beetbox/beets             │
 #          ╰──────────────────────────────────────────────────────────╯
 
-if uninstalled beets; then
+if uninstalled beet; then
   pip install beets
 fi
 
