@@ -139,7 +139,6 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- [ ] Look into making authenticated API requests to GitHub to avoid rate-limiting: https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#rate-limiting
 - [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
   - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
 - [ ] [cava](https://github.com/karlstav/cava) audio-visualizer
