@@ -51,7 +51,6 @@ fi
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
 #
-# TODO: Use authentication
 if uninstalled jq; then
   latest=$(get_latest_gh_release_data "jqlang" "jq" | grep -oP '"tag_name": "\K(.*)(?=")')
 
