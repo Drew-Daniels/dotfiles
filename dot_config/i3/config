@@ -195,8 +195,8 @@ bindsym $mod+Shift+x exec i3lock
 
 # Monitor brightness controls
 # TODO: Figure out why these aren't working - maybe KDE Plasma or something else is hijacking these?
-# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set -10
-# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 exec --no-startup-id feh --bg-scale /home/drew/Pictures/blocks-wallpaper.jpg
 
 # default startup apps
