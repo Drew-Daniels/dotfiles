@@ -6,7 +6,7 @@
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
 
-source ./utils.sh
+source ./.utils.sh
 
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq must be installed"

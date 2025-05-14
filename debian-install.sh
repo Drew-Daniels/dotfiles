@@ -4,7 +4,7 @@
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
 
-source ./utils.sh
+source ./.utils.sh
 
 mkdir -p ~/projects
 
