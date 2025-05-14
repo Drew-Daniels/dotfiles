@@ -520,7 +520,7 @@ fi
 # Defaults:%sudo env_keep += "EDITOR"
 
 # post install
-# nvim -c "MasonInstall ruff basedpyright clang-format jsonlint stlyua prettier nxls shfmt shellcheck sqlfmt reformat-gherkin yamlfmt"
+# nvim -c "MasonInstall ruff basedpyright clang-format jsonlint stylua prettier nxls shfmt shellcheck sqlfmt reformat-gherkin yamlfmt"
 
 #         ╭─────────────────────────────────────────────────────────────╮
 #         │                            tmux                             │
