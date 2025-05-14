@@ -1253,14 +1253,6 @@ if ! command -v signal-desktop >/dev/null 2>&1; then
   rm signal-desktop-keyring.gpg
 fi
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                        xbindkeys                         │
-#          │            https://www.nongnu.org/xbindkeys/             │
-#          ╰──────────────────────────────────────────────────────────╯
-if ! command -v xbindkeys >/dev/null; then
-  sudo apt install xbindkeys
-fi
-
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
