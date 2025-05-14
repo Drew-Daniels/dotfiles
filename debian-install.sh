@@ -624,6 +624,8 @@ if ! command -v zoxide >/dev/null 2>&1; then
 
   ./install.sh
 
+  rm install.sh
+
   echo "Installed zoxide"
 else
   echo "Already installed zoxide"

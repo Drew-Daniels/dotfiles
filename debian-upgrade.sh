@@ -586,6 +586,40 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                          zoxide                          │
+#          │          https://github.com/ajeetdsouza/zoxide           │
+#          ╰──────────────────────────────────────────────────────────╯
+latest=$(curl -sL https://api.github.com/repos/ajeetdsouza/zoxide/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+current=$(zoxide --version | cut -d ' ' -f2)
+if [ "$current" != "$latest" ]; then
+  echo "Upgrading zoxide"
+  curl -sSfLO https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
+  cat install.sh
+
+  while true; do
+    read -p "Does the above script look safe?" yesno
+    case $yesno in
+    [Yy]*)
+      chmod +x install.sh
+      break
+      ;;
+    [Nn]*)
+      exit
+      ;;
+    *) echo "Answer either yes or no!" ;;
+    esac
+  done
+
+  ./install.sh
+
+  rm install.sh
+
+  echo "Upgraded zoxide"
+else
+  echo "Zoxide up-to-date"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
