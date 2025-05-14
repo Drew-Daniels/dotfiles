@@ -51,21 +51,27 @@ fi
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
 #
-# NOTE: Always installing a static version of jq, which can subsequently be upgraded later when running the upgrade script
+# TODO: Use authentication
 if uninstalled jq; then
-  echo "Installing jq"
+  latest=$(curl -s https://api.github.com/repos/jqlang/jq/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+
   bin="jq-linux-amd64"
   checksums="sha256sum.txt"
-  base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
+
+  base_url="https://github.com/jqlang/jq/releases/download/${latest}/"
+
   curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
-  verified_sha=$(grep jq-linux-amd64 <sha256sum.txt)
-  download_sha=$(sha256sum "$bin")
+
+  verified_sha=$(grep "$bin" <"$checksums" | awk '{print $1}')
+  download_sha=$(sha256sum "$bin" | awk '{print $1}')
+
   if [ "$download_sha" != "$verified_sha" ]; then
     echo "Could not install jq - verify checksums"
     exit 1
   fi
+
   chmod +x "$bin"
-  sudo mv jq-linux-amd64 /usr/local/bin/jq
+  sudo mv "$bin" /usr/local/bin/jq
   rm "$checksums"
   echo "Installed jq"
 else
