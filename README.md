@@ -139,6 +139,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into using [mutt](https://gitlab.com/muttmua/mutt) email client
 - [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots
 - [ ] Use `xbindkeys` to adjust volume control sensitivity
 - [ ] Create base template setup script for creating common directories used on both MacOS and linux
