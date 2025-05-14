@@ -565,7 +565,7 @@ fi
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "yazi" "yazi" | cut -d 'v' -f2)
+latest=$(get_latest_gh_release_tag "sxyazi" "yazi" | cut -d 'v' -f2)
 current=$(yazi --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading yazi"
