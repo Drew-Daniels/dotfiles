@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Make sure that all 'curl' requests made to github api use authentication
+
 # exit on error
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
@@ -207,7 +209,7 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
-latest_release_info=$(curl -sL https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest)
+latest_release_info=$(get_latest_gh_release_data "ryanoasis" "nerd-fonts")
 latest_release_tag=$(echo "$latest_release_info" | jq -r '.tag_name')
 latest_release_date=$(echo "$latest_release_info" | jq -r '.published_at' | cut -d 'T' -f1)
 # TODO: Doesn't matter which specific one is checked, since they all are updated at the same time
