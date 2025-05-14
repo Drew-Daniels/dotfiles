@@ -139,16 +139,15 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Migrate to using [sway](https://github.com/swaywm/sway) from `i3`
 - [ ] Look into installing [newsboat](https://newsboat.org/releases/2.39/docs/newsboat.html) RSS feed reader
 - [ ] Look into using [mutt](https://gitlab.com/muttmua/mutt) email client
 - [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots
-- [ ] Use `xbindkeys` to adjust volume control sensitivity
 - [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Look into just having one "install" and "upgrade" script that intalls/upgrades depending on environment state, rather than having to manage 2 different scripts as dependencies change
 - [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
       -- Alacritty does not support them, Konsole does, but there's not a way to deactivate them in Konsole, so need to use a font without ligatures support to disable across all emulators
 - [ ] Look into making `debian-upgrade.sh` script globally available
-- [ ] Create PR in `bat` repo to add `i3config` syntax support, similar to: https://github.com/sharkdp/bat/issues/3214
 - Create a post-install script that automatically:
   - Generates a new `age` encryption key to `~/.config/mise/age.txt`
   - Exports shared secrets that are used across all computers (like Home DDNS hostname) to `~/.env`
