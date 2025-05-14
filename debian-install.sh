@@ -603,20 +603,15 @@ else
   echo "Already installed imagemagick"
 fi
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                          zoxide                          │
-#          │          https://github.com/ajeetdsouza/zoxide           │
-#          ╰──────────────────────────────────────────────────────────╯
-if ! installed zoxide; then
-  echo "Installing zoxide"
-  curl -sSfLO https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
-  cat install.sh
+approve_script_execution() {
+  cat "$1"
+  printf "\n"
 
   while true; do
     read -p "Does the above script look safe?" yesno
     case $yesno in
     [Yy]*)
-      chmod +x install.sh
+      chmod +x "$1"
       break
       ;;
     [Nn]*)
@@ -625,6 +620,17 @@ if ! installed zoxide; then
     *) echo "Answer either yes or no!" ;;
     esac
   done
+}
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          zoxide                          │
+#          │          https://github.com/ajeetdsouza/zoxide           │
+#          ╰──────────────────────────────────────────────────────────╯
+if ! installed zoxide; then
+  echo "Installing zoxide"
+  curl -sSfLO https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
+
+  approve_script_execution "install.sh"
 
   ./install.sh
 
@@ -678,20 +684,7 @@ if ! installed yq; then
   # NOTE: Adding echo to put a newline after script contents, for readability
   cat extract-checksum.sh && printf '\n\n'
 
-  while true; do
-    read -p "Does the above script look safe?" yesno
-    case $yesno in
-    [Yy]*)
-      break
-      ;;
-    [Nn]*)
-      exit
-      ;;
-    *) echo "Answer either yes or no!" ;;
-    esac
-  done
-
-  chmod +x ./extract-checksum.sh
+  approve_script_execution "extract-checksum.sh"
 
   if ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status; then
     tar xzf "yq_linux_amd64.tar.gz"
