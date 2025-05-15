@@ -896,6 +896,16 @@ else
   echo "Already installed i3"
 fi
 
+# ╭───────────────────────────────────────────────────────────╮
+# │                          # sway                           │
+# │                   # https://swaywm.org/                   │
+# ╰───────────────────────────────────────────────────────────╯
+if uninstalled sway; then
+  echo "Installing sway"
+  sudo apt install -y sway
+  echo "Installed sway"
+fi
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      brightnessctl                       │
 #          │       https://github.com/Hummer12007/brightnessctl       │
