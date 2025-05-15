@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 .local/share/chezmoi/.install-directories.sh
 .local/share/chezmoi/.install-repositories.sh
