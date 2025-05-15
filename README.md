@@ -13,7 +13,8 @@ Sign into the App Store using personal Apple account - since I'll need to be aut
 #### Download and Install Dotfiles
 
 ```zsh
-/bin/zsh -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles/raw/branch/main/macos.sh)"
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
 ```
 
 #### `iterm2` Configuration

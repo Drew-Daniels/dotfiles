@@ -16,3 +16,5 @@ encryption = "age"
     pager = "delta"
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.pre-source-read.sh"
+[hooks.apply.post]
+    command = ".local/share/chezmoi/.post-apply.sh"
