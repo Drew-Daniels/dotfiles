@@ -106,7 +106,9 @@ packages:
     home:
       taps: []
       head_brews: []
-      brews: []
+      brews:
+      - 'neomutt'
+      - 'newsboat'
       no_quarantine_casks: []
       casks:
       - 'alex313031-thorium'
