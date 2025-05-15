@@ -150,7 +150,6 @@ QOL Updates:
 - [ ] [cava](https://github.com/karlstav/cava) audio-visualizer
 - [ ] Migrate to using [sway](https://github.com/swaywm/sway) from `i3`
   - [ ] Can migrate to using [bemenu](https://github.com/Cloudef/bemenu) instead of `dmenu` too, since the latter doesn't work with `wayland`
-- [ ] Look into installing [newsboat](https://newsboat.org/releases/2.39/docs/newsboat.html) RSS feed reader
 - [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots
 - [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Look into just having one "install" and "upgrade" script that intalls/upgrades depending on environment state, rather than having to manage 2 different scripts as dependencies change
