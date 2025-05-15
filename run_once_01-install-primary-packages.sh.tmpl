@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "darwin" -}}
+{{- template "macos-install.sh.tmpl" -}}
+{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
+{{- template "debian-install.sh.tmpl" -}}
+{{ end -}}

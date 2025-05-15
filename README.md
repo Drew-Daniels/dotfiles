@@ -12,6 +12,24 @@ Sign into the App Store using personal Apple account - since I'll need to be aut
 
 #### Download and Install Dotfiles
 
+##### Process Notes
+
+- Installs `chezmoi` binary
+- Clones dotfiles into `~/.local/share/chezmoi`
+- Runs `read-source-state.pre` hook, which:
+  - Creates expected directories (`~/projects` and `/usr/local/bin`)
+  - Clones local repositories (`jg`, `friendly-snippets`, ...)
+  - Installs `brew` (only on MacOS) and adds it to `PATH`
+- Runs scripts:
+  - `run_once_01-install-primary-deps.sh` - Installs the most important dependencies, that should be installed before anything else, since unnecessary deps can be installed if these are installed along with everything else (`mise`, `lua v5.1.5`, etc.)
+  - `run_once_02-install-secondary-deps.sh` - Installs the rest of the dependencies managed with `brew`/`apt` respectively
+  - `run_once_03-install-secrets.sh` - Uses `op` to export secrets to `~/.env`
+  - NOTE: The numerical values are used so that these run in an expected order. That is, `chezmoi` runs scripts in alphabetical order.
+- Reads source state, target state, and begins applying changes to target
+- After `apply` completes, runs the `apply.post` hook which removes the `chezmoi` binary installed into `/usr/local/bin` (MacOS only)
+
+##### Command
+
 ```zsh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
