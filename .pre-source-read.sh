@@ -4,3 +4,4 @@
 .local/share/chezmoi/.install-repositories.sh
 .local/share/chezmoi/.install-package-manager.sh
 .local/share/chezmoi/.install-password-manager.sh
+.local/share/chezmoi/.install-core-deps.sh

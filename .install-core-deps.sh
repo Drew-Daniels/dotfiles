@@ -1,35 +1,15 @@
-#!/bin/zsh
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                   git-credential-oauth                   │
-#          │     https://github.com/hickford/git-credential-oauth     │
-#          ╰──────────────────────────────────────────────────────────╯
-# NOTE: May need to install git-credential-oauth before trying to install dotfiles since this is how we'll authenticate with remote repo prior to cloning
-# /opt/homebrew/bin/brew git-credential-oauth
-#
-# cat << EOF > ~/.gitconfig
-# [credential]
-# 	helper = cache --timeout 21600 # 6 hours
-# 	helper = oauth
-# EOF
+#!/bin/sh
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                         chezmoi                          │
-#          │                 https://www.chezmoi.io/                  │
-#          ╰──────────────────────────────────────────────────────────╯
-if ! command -v chezmoi >/dev/null 2>&1; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
-  # initialize dotfiles
-  # chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
-  chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
-  # Remove after cloning dotfiles, since chezmoi should ideally be managed via homebrew for easier updates
-  rm /usr/local/bin/chezmoi
+# TODO: Create a similiar script for installing initial dependencies on Debian
+if [[ "$(uname)" == "Linux" ]]; then
+  exit
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          rustup                          │
 #          │                    https://rustup.rs/                    │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v rustup >/dev/null 2>&1; then
+if ! command -v rustup >/dev/null; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
@@ -37,11 +17,10 @@ fi
 #          │                           mise                           │
 #          │                  https://mise.jdx.dev/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v mise >/dev/null 2>&1; then
+if ! command -v mise >/dev/null; then
   brew install mise
+  mise install
 fi
-
-mise install
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         lua 5.1                          │
@@ -63,17 +42,15 @@ if [ "$current" != "$version" ]; then
   sudo make install
   # cleanup
   rm -rf lua-${version}*
-  cd ~
+  cd ~ || exit
   echo "Installed lua v5.1.5"
-else
-  echo "Already installed lua v5.1.5"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         luarocks                         │
 #          │                  https://luarocks.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! command -v luarocks >/dev/null 2>&1; then
+if ! command -v luarocks >/dev/null; then
   curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
   tar zxpf luarocks-3.11.1.tar.gz
   cd luarocks-3.11.1 || exit
@@ -89,10 +66,12 @@ fi
 #          │                       Postgres.app                       │
 #          │                 https://postgresapp.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
-if [[ ! -f "/etc/paths.d/postgresapp" ]]; then
-  sudo mkdir -p /etc/paths.d &&
-    echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
-fi
+if ! command -v postgres >/dev/null; then
 
-# reboot
-# shutdown -r now
+  brew install --cask postgres-unofficial
+
+  if [[ ! -f "/etc/paths.d/postgresapp" ]]; then
+    sudo mkdir -p /etc/paths.d &&
+      echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+  fi
+fi
