@@ -33,6 +33,18 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                           curl                           │
+#          │                  https://curl.se/docs/                   │
+#          ╰──────────────────────────────────────────────────────────╯
+if uninstalled curl; then
+  echo "Installing curl"
+  sudo apt install -y curl
+  echo "Installed curl"
+else
+  echo "Already installed curl"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                          cosign                          │
 #          │            https://github.com/sigstore/cosign            │
 #          ╰──────────────────────────────────────────────────────────╯
@@ -166,7 +178,6 @@ fi
 #        │https://support.1password.com/install-linux/#debian-or-ubuntu │
 #        ╰──────────────────────────────────────────────────────────────╯
 pkg='1password'
-
 if uninstalled $pkg; then
   echo "Installing $pkg"
   # Add the key for the 1Password apt repository:
