@@ -1,31 +1,4 @@
 #!/bin/zsh
-
-mkdir -p ~/projects
-mkdir -p /usr/local/bin
-
-if [ ! -d ~/projects/friendly-snippets ]; then
-  git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
-fi
-
-if [ ! -d ~/projects/work_notes ]; then
-  git clone https://github.com/Drew-Daniels/work_notes.git ~/projects/work_notes
-fi
-
-if [ ! -d ~/projects/jg ]; then
-  git clone https://codeberg.org/drewdaniels/jg.git ~/projects/jg
-fi
-
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                         homebrew                         │
-#          │                     https://brew.sh/                     │
-#          ╰──────────────────────────────────────────────────────────╯
-# NOTE: Need to use the full path here because 'brew' won't be on PATH until dotfiles are installed
-if ! command -v /opt/homebrew/bin/brew >/dev/null 2>&1; then
-  echo "Installing homebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo "Installed homebrew"
-fi
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                   git-credential-oauth                   │
 #          │     https://github.com/hickford/git-credential-oauth     │

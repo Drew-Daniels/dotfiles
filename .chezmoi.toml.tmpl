@@ -14,3 +14,5 @@ encryption = "age"
     args = ["-d", "{{ "{{" }}.Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }}.Target {{ "}}" }}"]
 [diff]
     pager = "delta"
+[hooks.read-source-state.pre]
+    command = ".local/share/chezmoi/.pre-source-read.sh"
