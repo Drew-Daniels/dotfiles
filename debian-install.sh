@@ -6,16 +6,6 @@ set -e
 
 source ./.utils.sh
 
-mkdir -p ~/projects
-
-if [ ! -d ~/projects/friendly-snippets ]; then
-  git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets
-fi
-
-if [ ! -d ~/projects/jg ]; then
-  git clone https://codeberg.org/drewdaniels/jg.git ~/projects/jg
-fi
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           sudo                           │
 #          │                   https://www.sudo.ws/                   │
