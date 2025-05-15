@@ -1331,6 +1331,15 @@ if uninstalled beet; then
   pip install beets
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         neomutt                          │
+#          │                   https://neomutt.org/                   │
+#          ╰──────────────────────────────────────────────────────────╯
+if uninstalled neomutt; then
+  # TODO: Look into alternative installation methods to get more recent versions
+  sudo apt install -y neomutt
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
