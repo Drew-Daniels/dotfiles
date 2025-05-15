@@ -1334,6 +1334,3 @@ fi
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
-
-# TODO: Only reboot if something in the system environment has changed as a result of code run in this file. Might be hard to determine/track this. Might be able to use a local variable to track when a change is made, that is worth rebooting for.
-# reboot

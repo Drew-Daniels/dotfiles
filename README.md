@@ -102,20 +102,26 @@ Edit this line:
 
 ### User Setup
 
-Add my non-root local user (drew) to sudoers file:
+During desktop setup, specify a `root` user password.
+
+After logging in, add my non-root local user (E.g., `drew`) to `/etc/sudoers` file:
 
 ```bash
 su
-sudo adduser drew sudo
+# <Enter 'root' user password>
+adduser drew sudo
 exit
-```
 
-Then, restart computer so it picks up these changes.
+# Restart computer so it picks up these changes.
+systemctl reboot
+```
 
 Download and install dotfiles, and all dev environment dependencies:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://codeberg.org/drewdaniels/dotfiles/raw/branch/main/debian-install.sh)"
+
+systemctl reboot
 ```
 
 ### Maintenance
@@ -124,7 +130,7 @@ Some packages have to be manually updated outside of package managers like, `apt
 
 ```bash
 chezmoi cd
-./debian-update.sh
+./.debian-upgrade.sh
 ```
 
 ## `NixOS` Workstation Setup Notes
