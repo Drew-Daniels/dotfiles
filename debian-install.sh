@@ -16,6 +16,12 @@ if [ ! -d ~/projects/jg ]; then
   git clone https://codeberg.org/drewdaniels/jg.git ~/projects/jg
 fi
 
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                           sudo                           │
+#          │                   https://www.sudo.ws/                   │
+#          ╰──────────────────────────────────────────────────────────╯
+# TODO: Confirm if 'sudo' package actually needs to be installed through apt (as part of mise installation step)
+
 sudo apt update -y
 sudo apt upgrade -y
 
@@ -33,6 +39,18 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
+#          │                           wget                           │
+#          │             https://gitlab.com/gnuwget/wget2             │
+#          ╰──────────────────────────────────────────────────────────╯
+if uninstalled wget; then
+  echo "Installing wget"
+  sudo apt install -y wget
+  echo "Installed wget"
+else
+  echo "Already installed wget"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
 #          │                           curl                           │
 #          │                  https://curl.se/docs/                   │
 #          ╰──────────────────────────────────────────────────────────╯
@@ -42,6 +60,18 @@ if uninstalled curl; then
   echo "Installed curl"
 else
   echo "Already installed curl"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                           gpg                            │
+#          │        https://www.gnupg.org/download/index.html         │
+#          ╰──────────────────────────────────────────────────────────╯
+if uninstalled gpg; then
+  echo "Installing gpg"
+  sudo apt install -y gpg
+  echo "Installed gpg"
+else
+  echo "Already installed gpg"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -161,7 +191,7 @@ if uninstalled $pkg; then
   # pre-reqs for building native C ruby extensions
   sudo apt install -y build-essential libz-dev libffi-dev libyaml-dev libssl-dev
   # pre-reqs for mise
-  sudo apt install -y gpg sudo wget curl
+  sudo apt install -y sudo
   # mise installation
   sudo install -dm 755 /etc/apt/keyrings
   wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1>/dev/null
