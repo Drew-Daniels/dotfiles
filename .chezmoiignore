@@ -12,6 +12,7 @@ debian-upgrade.sh
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
+*/sway
 */apt
 */rofi
 */restic
