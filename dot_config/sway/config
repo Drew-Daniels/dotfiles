@@ -216,4 +216,10 @@ bar {
     }
 }
 
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+
+gaps inner 10
+gaps outer 10
+
 include /etc/sway/config.d/*
