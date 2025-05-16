@@ -852,15 +852,15 @@ else
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                           rofi                           │
-#          │            https://github.com/davatorium/rofi            │
+#          │                           wofi                           │
+#          │            https://github.com/davatorium/wofi            │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled rofi; then
-  echo "Installing rofi"
-  sudo apt install -y rofi
-  echo "Installed rofi"
+if uninstalled wofi; then
+  echo "Installing wofi"
+  sudo apt install -y wofi
+  echo "Installed wofi"
 else
-  echo "Already installed rofi"
+  echo "Already installed wofi"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -884,18 +884,6 @@ else
   echo "Already installed uuidgen"
 fi
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                            i3                            │
-#          │                 https://github.com/i3/i3                 │
-#          ╰──────────────────────────────────────────────────────────╯
-if uninstalled i3; then
-  echo "Installing i3"
-  sudo apt install -y i3
-  echo "Installed i3"
-else
-  echo "Already installed i3"
-fi
-
 # ╭───────────────────────────────────────────────────────────╮
 # │                          # sway                           │
 # │                   # https://swaywm.org/                   │
@@ -904,6 +892,14 @@ if uninstalled sway; then
   echo "Installing sway"
   sudo apt install -y sway
   echo "Installed sway"
+fi
+
+# swaylock
+# https://github.com/swaywm/swaylock
+if uninstalled swaylock; then
+  echo "Installing swaylock"
+  sudo apt install -y swaylock
+  echo "Installed swaylock"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
