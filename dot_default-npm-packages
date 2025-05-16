@@ -5,3 +5,5 @@ gofsh
 oclif
 tree-sitter-cli
 yarn
+nx
+@nestjs/cli
