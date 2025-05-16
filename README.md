@@ -164,9 +164,6 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- [ ] Look into using `polybar` for a more configurable status bar
-      [waybar](https://github.com/Alexays/Waybar?tab=readme-ov-file)
-      [polybar](https://github.com/polybar/polybar)
 - [ ] Replace `i3status` with [i3status-rust](https://github.com/greshake/i3status-rust)
 - [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
   - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
