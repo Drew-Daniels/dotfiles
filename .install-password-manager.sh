@@ -8,7 +8,7 @@ if [ "$os" == "Linux" ]; then
   #          │                  https://curl.se/docs/                   │
   #          ╰──────────────────────────────────────────────────────────╯
   # TODO: Figure out a good way to check for new curl releases on debian repository
-  if ! command -v curl; then
+  if ! command -v curl >/dev/null; then
     sudo apt install -y curl
   fi
 
@@ -16,7 +16,7 @@ if [ "$os" == "Linux" ]; then
   #          │                           gpg                            │
   #          │         https://packages.debian.org/bookworm/gpg         │
   #          ╰──────────────────────────────────────────────────────────╯
-  if ! command -v gpg; then
+  if ! command -v gpg >/dev/null; then
     sudo apt install -y gpg
   fi
 
@@ -25,7 +25,7 @@ if [ "$os" == "Linux" ]; then
   #        │https://support.1password.com/install-linux/#debian-or-ubuntu │
   #        ╰──────────────────────────────────────────────────────────────╯
   pkg='1password'
-  if command -v "$pkg" >/dev/null; then
+  if ! command -v "$pkg" >/dev/null; then
     echo "Installing $pkg"
     # Add the key for the 1Password apt repository:
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
@@ -52,7 +52,7 @@ if [ "$os" == "Linux" ]; then
   #          ╰──────────────────────────────────────────────────────────╯
   pkg='1password-cli'
 
-  if command -v "op" >/dev/null; then
+  if ! command -v "op" >/dev/null; then
     echo "Installing $pkg"
     sudo apt update && sudo apt install -y $pkg
     # NOTE: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
