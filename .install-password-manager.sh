@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 os=$(uname)
 
-if [ "$os" == "Linux" ]; then
+if [ "$os" = "Linux" ]; then
   #          ╭──────────────────────────────────────────────────────────╮
   #          │                           curl                           │
   #          │                  https://curl.se/docs/                   │
@@ -60,7 +60,7 @@ if [ "$os" == "Linux" ]; then
   else
     echo "Already installed $pkg"
   fi
-elif [ "$os" == "Darwin" ]; then
+elif [ "$os" = "Darwin" ]; then
   if ! command -v 1password >/dev/null; then
     brew install --cask 1password@nightly
   fi

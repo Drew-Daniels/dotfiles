@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ ! -d ~/projects/friendly-snippets ]; then
   git clone https://github.com/Drew-Daniels/friendly-snippets.git ~/projects/friendly-snippets

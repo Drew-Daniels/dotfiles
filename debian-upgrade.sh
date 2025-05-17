@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # TODO: Make sure that all 'curl' requests made to github api use authentication
 
@@ -6,7 +6,7 @@
 # NOTE: Gotchyas: https://mywiki.wooledge.org/BashFAQ/105
 set -e
 
-source ./utils.sh
+. ./utils.sh
 
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq must be installed"
@@ -218,7 +218,7 @@ last_modified=$(date +%F -r ~/.local/share/fonts/JetBrainsMonoNerdFont-Regular.t
 latest_release_date_as_date=$(date -d "$latest_release_date" +%s)
 last_modified_as_date=$(date -d "$last_modified" +%s)
 
-if (("$last_modified_as_date" < "$latest_release_date_as_date")); then
+if ( ("$last_modified_as_date" <"$latest_release_date_as_date")); then
   fonts_dir="$HOME/.local/share/fonts"
   echo "Upgrading JetBrainsMonoNerdFont"
   wget -P "$fonts_dir" "https://github.com/ryanoasis/nerd-fonts/releases/download/${latest_release_tag}/JetBrainsMono.zip"
@@ -243,7 +243,7 @@ cd ~/projects/alacritty/ || exit
 git pull
 latest=$(git rev-parse --short @)
 if [ "$current" != "$latest" ]; then
-  if [ "$TERM" == "alacritty" ]; then
+  if [ "$TERM" = "alacritty" ]; then
     echo "Re-run in another terminal emulator - will not be able to upgrade alacritty while using alacritty"
     exit 1
   fi

@@ -1,7 +1,7 @@
-#!/bin/bash
-source ~/.env
+#!/bin/sh
+. ~/.env
 
-source ~/.local/share/chezmoi/utils.sh
+. ~/.local/share/chezmoi/utils.sh
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           sudo                           │
@@ -448,14 +448,18 @@ fi
 #          │                 jetbrains-mono-nerd-font                 │
 #          │            https://www.jetbrains.com/lp/mono/            │
 #          ╰──────────────────────────────────────────────────────────╯
-if ! ls ~/.local/share/fonts/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
+if [ ! -e ~/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf ]; then
   echo "Installing JetBrainsMonoNerdFont"
   latest=$(get_latest_gh_release_tag "ryanoasis" "nerd-fonts" | cut -d 'v' -f2)
   wget -P "$HOME/.local/share/fonts" "https://github.com/ryanoasis/nerd-fonts/releases/download/v${latest}/JetBrainsMono.zip"
   cd ~/.local/share/fonts || exit
-  unzip JetBrainsMono.zip
-  rm JetBrainsMono.zip
-  fc-cache -fv
+  if unzip JetBrainsMono.zip; then
+    rm JetBrainsMono.zip
+    fc-cache -fv
+  else
+    echo "Failed to unzip JetBrainsMono.zip"
+    exit 1
+  fi
   cd ~ || exit
   echo "Installed JetBrainsMonoNerdFont"
 else
@@ -757,7 +761,9 @@ fi
 #          │                      OpenSSH Server                      │
 #          │                 https://www.openssh.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
-sudo apt install -y openssh-server
+if uninstalled ssh; then
+  sudo apt install -y openssh-server
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          restic                          │
@@ -911,10 +917,10 @@ fi
 #          │                        strawberry                        │
 #          │   https://github.com/strawberrymusicplayer/strawberry    │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "strawberrymusicplayer" "strawberry" | cut -d 'v' -f2)
-os_release_codename=$(grep VERSION_CODENAME </etc/os-release | cut -d '=' -f2)
 if uninstalled strawberry; then
   echo "Installing strawberry"
+  latest=$(get_latest_gh_release_tag "strawberrymusicplayer" "strawberry" | cut -d 'v' -f2)
+  os_release_codename=$(grep VERSION_CODENAME </etc/os-release | cut -d '=' -f2)
   deb="strawberry_${latest}-${os_release_codename}_amd64.deb"
   curl -sLO "https://github.com/strawberrymusicplayer/strawberry/releases/download/${latest}/${deb}"
   sudo apt install -y "./$deb"
@@ -1045,7 +1051,7 @@ fi
 #          │                         gparted                          │
 #          │                   https://gparted.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled gparted; then
+if ! sudo which gparted >/dev/null; then
   echo "Installing gparted"
   # NOTE: for fat32
   sudo apt install -y dosfstools mtools
