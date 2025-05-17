@@ -14,12 +14,6 @@ if ! command -v jq >/dev/null 2>&1; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                           curl                           │
-#          │                  https://curl.se/docs/                   │
-#          ╰──────────────────────────────────────────────────────────╯
-# TODO: Figure out a good way to check for new curl releases on debian repository
-
-#          ╭──────────────────────────────────────────────────────────╮
 #          │                            jq                            │
 #          │               https://jqlang.org/download/               │
 #          ╰──────────────────────────────────────────────────────────╯
