@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into creating a hook that pulls in updates to cloned repositories before applying changes (such as changes made to friendly-snippets fork)
 - [ ] Create tmp dirs to download files to when upgrading, rather than in this directory, to limit blast radius of potential mistakes
 - [ ] Update `sway` config so that 1password, thorium-browser, and alacritty start on startup
 - [ ] Replace `i3status` with [i3status-rust](https://github.com/greshake/i3status-rust)
