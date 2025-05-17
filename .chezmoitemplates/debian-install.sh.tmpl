@@ -1299,6 +1299,41 @@ if uninstalled newsboat; then
   sudo apt install -y newsboat
 fi
 
+if uninstalled electrum; then
+  # TODO: Fetch the latest release
+  base_url="https://download.electrum.org/4.5.8"
+  pub_keys_url="https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys"
+  latest="4.5.8"
+
+  app="electrum-${latest}-x86_64.AppImage"
+
+  curl -sL "$pub_keys_url/ThomasV.asc" | gpg --import
+  curl -sL "$pub_keys_url/sombernight_releasekey.asc" | gpg --import
+  curl -sL "$pub_keys_url/Emzy.asc" | gpg --import
+
+  # ThomasV
+  gpg --lsign-key '6694D8DE7BE8EE5631BED9502BD5824B7F9470E6'
+
+  # sombernight_releasekey
+  gpg --lsign-key '0EEDCFD5CAFB459067349B23CA9EEEC43DF911DC'
+
+  # Emzy
+  gpg --lsign-key '9EDAFF80E080659604F4A76B2EBB056FD847F8A7'
+
+  curl -sL --remote-name-all "$base_url/$app" "$base_url/$app.asc"
+
+  if gpg --verify "$app.asc" "$app" >/dev/null 2>&1; then
+    echo "Installing electrum"
+    chmod +x "$app"
+    sudo mv "$app" /usr/local/bin/electrum
+    echo "Installed electrum"
+  else
+    echo "Invalid signature"
+  fi
+else
+  echo "Already installed electrum"
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
