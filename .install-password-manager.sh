@@ -61,7 +61,7 @@ if [ "$os" = "Linux" ]; then
     echo "Already installed $pkg"
   fi
 elif [ "$os" = "Darwin" ]; then
-  if ! command -v 1password >/dev/null; then
+  if [ ! -d "/Applications/1Password.app" ]; then
     brew install --cask 1password@nightly
   fi
 
