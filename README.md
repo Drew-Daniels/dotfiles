@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Update `sway` config so that 1password, thorium-browser, and alacritty start on startup
 - [ ] Replace `i3status` with [i3status-rust](https://github.com/greshake/i3status-rust)
 - [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
   - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
