@@ -240,6 +240,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 gaps inner 10
 gaps outer 10
 
+# default startup apps
+exec thorium-browser
+exec alacritty
+
 # TODO: set
 # font pango:monospace 8
 # font pango:''
