@@ -42,8 +42,6 @@ if [ "$os" = "Linux" ]; then
     # Install 1Password Desktop
     sudo apt update && sudo apt install -y $pkg
     echo "Installed $pkg"
-  else
-    echo "Already installed $pkg"
   fi
 
   #          ╭──────────────────────────────────────────────────────────╮
@@ -57,8 +55,6 @@ if [ "$os" = "Linux" ]; then
     sudo apt update && sudo apt install -y $pkg
     # NOTE: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
     echo "Installed $pkg"
-  else
-    echo "Already installed $pkg"
   fi
 elif [ "$os" = "Darwin" ]; then
   if [ ! -d "/Applications/1Password.app" ]; then
