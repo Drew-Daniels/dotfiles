@@ -1047,20 +1047,6 @@ else
   echo "Already installed plocate"
 fi
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                         gparted                          │
-#          │                   https://gparted.org/                   │
-#          ╰──────────────────────────────────────────────────────────╯
-if ! sudo which gparted >/dev/null; then
-  echo "Installing gparted"
-  # NOTE: for fat32
-  sudo apt install -y dosfstools mtools
-  sudo apt install -y gparted
-  echo "Installed gparted"
-else
-  echo "Already installed gparted"
-fi
-
 # NOTE: Miscellaneous notes on unmounting and shutting down USB drives
 # # unmount
 # sudo eject /dev/sdb
