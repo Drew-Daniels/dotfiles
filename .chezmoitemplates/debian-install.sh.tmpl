@@ -1384,7 +1384,7 @@ fi
 if uninstalled protonmail-bridge; then
   echo "Installing Proton Mail Bridge"
   deb="protonmail-bridge_3.20.0-1_amd64.deb"
-  curl -sLO "https://proton.me/download/bridge/$deb"
+  curl -#LO "https://proton.me/download/bridge/$deb"
   sudo apt install -y "./$deb"
   echo "Installed Proton Mail Bridge"
 fi
