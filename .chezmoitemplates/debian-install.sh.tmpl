@@ -1372,6 +1372,12 @@ if uninstalled swayidle; then
   sudo apt install -y swayidle
 fi
 
+# OBS Studio
+# https://github.com/obsproject/obs-studio
+if uninstalled obs; then
+  sudo apt install -y obs
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
