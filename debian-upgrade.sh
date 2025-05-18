@@ -219,7 +219,7 @@ last_modified=$(date +%F -r ~/.local/share/fonts/JetBrainsMonoNerdFont-Regular.t
 latest_release_date_as_date=$(date -d "$latest_release_date" +%s)
 last_modified_as_date=$(date -d "$last_modified" +%s)
 
-if ( ("$last_modified_as_date" <"$latest_release_date_as_date")); then
+if (("$last_modified_as_date" < "$latest_release_date_as_date")); then
   fonts_dir="$HOME/.local/share/fonts"
   echo "Upgrading JetBrainsMonoNerdFont"
   wget -P "$fonts_dir" "https://github.com/ryanoasis/nerd-fonts/releases/download/${latest_release_tag}/JetBrainsMono.zip"
