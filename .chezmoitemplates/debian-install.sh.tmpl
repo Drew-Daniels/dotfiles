@@ -1364,7 +1364,12 @@ if ! gpg --list-keys drew@ddevault.org >/dev/null 2>&1; then
     gpg --delete-key drew@ddevault.org
     exit 1
   fi
+fi
 
+# swayidle
+# https://github.com/swaywm/swayidle
+if uninstalled swayidle; then
+  sudo apt install -y swayidle
 fi
 
 # cleanup
