@@ -991,9 +991,9 @@ if uninstalled $pkg; then
   echo "Installing thorium"
   if [ ! -f "/etc/apt/sources.list.d/thorium.list" ]; then
     sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
-      http://dl.thorium.rocks/debian/dists/stable/thorium.list &&
+      http://dl.thorium.rocks/debian/dists/stable/thorium.list
   fi
-    sudo apt update
+  sudo apt update
   echo "Installed thorium"
 else
   echo "Already installed thorium"
@@ -1377,7 +1377,7 @@ fi
 # OBS Studio
 # https://github.com/obsproject/obs-studio
 if uninstalled obs; then
-  sudo apt install -y obs
+  sudo apt install -y obs-studio
 fi
 
 # Proton Mail Bridge
