@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
 - [ ] Look into configuring `swaylock` to automatically be called upon lid close
 - [ ] Look into creating a hook that pulls in updates to cloned repositories before applying changes (such as changes made to friendly-snippets fork)
 - [ ] Create tmp dirs to download files to when upgrading, rather than in this directory, to limit blast radius of potential mistakes
