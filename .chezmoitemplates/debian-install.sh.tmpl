@@ -985,7 +985,6 @@ fi
 #          │                         thorium                          │
 #          │          https://github.com/Alex313031/thorium           │
 #          ╰──────────────────────────────────────────────────────────╯
-# install dependencies
 pkg="thorium-browser"
 if uninstalled $pkg; then
   echo "Installing thorium"
@@ -994,6 +993,7 @@ if uninstalled $pkg; then
       http://dl.thorium.rocks/debian/dists/stable/thorium.list
   fi
   sudo apt update
+  sudo apt install -y "$pkg"
   echo "Installed thorium"
 else
   echo "Already installed thorium"
@@ -1378,6 +1378,15 @@ fi
 # https://github.com/obsproject/obs-studio
 if uninstalled obs; then
   sudo apt install -y obs-studio
+fi
+
+# Proton Mail Desktop
+# https://proton.me/mail/download
+# TODO: Verify right way to check installed
+if uninstalled proton-mail; then
+  deb="ProtonMail-desktop-beta.deb"
+  curl -LO "https://proton.me/download/mail/linux/1.8.0/$deb"
+  sudo apt install -y "./$deb"
 fi
 
 # Proton Mail Bridge
