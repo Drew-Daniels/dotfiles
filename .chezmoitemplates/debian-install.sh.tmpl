@@ -1320,6 +1320,13 @@ else
   echo "Already installed electrum"
 fi
 
+# nvme-cli
+# https://github.com/linux-nvme/nvme-cli
+
+if uninstalled nvme; then
+  sudo apt install -y nvme-cli
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
