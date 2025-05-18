@@ -1333,6 +1333,10 @@ if ! sudo which cryptsetup >/dev/null; then
   sudo apt install -y cryptsetup
 fi
 
+if uninstalled swayrbar; then
+  cargo install --locked swayrbar
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
