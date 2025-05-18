@@ -1327,6 +1327,12 @@ if uninstalled nvme; then
   sudo apt install -y nvme-cli
 fi
 
+# cryptsetup
+# https://www.man7.org/linux/man-pages/man8/cryptsetup.8.html
+if ! sudo which cryptsetup >/dev/null; then
+  sudo apt install -y cryptsetup
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
