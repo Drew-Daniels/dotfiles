@@ -164,12 +164,12 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Update `swayrbar` content to display when connected to VPN
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
 - [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
 - [ ] Look into configuring `swaylock` to automatically be called upon lid close
 - [ ] Look into creating a hook that pulls in updates to cloned repositories before applying changes (such as changes made to friendly-snippets fork)
 - [ ] Create tmp dirs to download files to when upgrading, rather than in this directory, to limit blast radius of potential mistakes
-- [ ] Update `sway` config so that 1password, thorium-browser, and alacritty start on startup
 - [ ] Replace `i3status` with [i3status-rust](https://github.com/greshake/i3status-rust)
 - [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
   - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture

@@ -32,6 +32,7 @@ return {
 			"standardrb",
 			"smithy_ls",
 			"marksman",
+			"mutt-language-server",
 			"tailwindcss",
 			"terraformls",
 			"tflint",
