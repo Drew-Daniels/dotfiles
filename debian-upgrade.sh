@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # TODO: Make sure that all 'curl' requests made to github api use authentication
 
