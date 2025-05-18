@@ -1378,6 +1378,17 @@ if uninstalled obs; then
   sudo apt install -y obs
 fi
 
+# Proton Mail Bridge
+# https://proton.me/mail/bridge
+# TODO: Figure out how to get the latest version
+if uninstalled protonmail-bridge; then
+  echo "Installing Proton Mail Bridge"
+  deb="protonmail-bridge_3.20.0-1_amd64.deb"
+  curl -sLO "https://proton.me/download/bridge/$deb"
+  sudo apt install -y "./$deb"
+  echo "Installed Proton Mail Bridge"
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y

@@ -10,6 +10,7 @@ debian-install.sh
 debian-upgrade.sh
 */mise/age.txt
 */neomutt/aliases
+*/neomutt/protonmail.gpg
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
