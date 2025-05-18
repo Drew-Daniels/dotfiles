@@ -13,6 +13,8 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
+cargo install-update --all
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                            jq                            │
 #          │               https://jqlang.org/download/               │
@@ -540,57 +542,57 @@ fi
 #          │                           dust                           │
 #          │             https://github.com/bootandy/dust             │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "bootandy" "dust" | cut -d 'v' -f2)
-current=$(dust --version | cut -d ' ' -f2)
-if [ "$current" != "$latest" ]; then
-  echo "Installing dust"
-  cargo install du-dust
-  echo "Installed dust"
-else
-  echo "dust up-to-date"
-fi
+# latest=$(get_latest_gh_release_tag "bootandy" "dust" | cut -d 'v' -f2)
+# current=$(dust --version | cut -d ' ' -f2)
+# if [ "$current" != "$latest" ]; then
+#   echo "Installing dust"
+#   cargo install --locked du-dust
+#   echo "Installed dust"
+# else
+#   echo "dust up-to-date"
+# fi
 
 #╭──────────────────────────────────────────────────────────────────────────────────╮
 #│                                     starship                                     │
 #│https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation │
 #╰──────────────────────────────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "starship" "starship" | cut -d 'v' -f2)
-current=$(starship --version | head -n1 | cut -d ' ' -f2)
-if [ "$current" != "$latest" ]; then
-  echo "Upgrading starship"
-  cargo install starship --locked
-  echo "Upgraded starship"
-else
-  echo "Starship up-to-date"
-fi
+# latest=$(get_latest_gh_release_tag "starship" "starship" | cut -d 'v' -f2)
+# current=$(starship --version | head -n1 | cut -d ' ' -f2)
+# if [ "$current" != "$latest" ]; then
+#   echo "Upgrading starship"
+#   cargo install starship --locked
+#   echo "Upgraded starship"
+# else
+#   echo "Starship up-to-date"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           yazi                           │
 #          │   https://yazi-rs.github.io/docs/installation/#crates    │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "sxyazi" "yazi" | cut -d 'v' -f2)
-current=$(yazi --version | cut -d ' ' -f2)
-if [ "$current" != "$latest" ]; then
-  echo "Upgrading yazi"
-  cargo install --locked yazi-fm yazi-cli
-  echo "Upgraded yazi"
-else
-  echo "Yazi up-to-date"
-fi
+# latest=$(get_latest_gh_release_tag "sxyazi" "yazi" | cut -d 'v' -f2)
+# current=$(yazi --version | cut -d ' ' -f2)
+# if [ "$current" != "$latest" ]; then
+#   echo "Upgrading yazi"
+#   cargo install --locked yazi-fm yazi-cli
+#   echo "Upgraded yazi"
+# else
+#   echo "Yazi up-to-date"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          jless                           │
 #          │                    https://jless.io/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(get_latest_gh_release_tag "PaulJuliusMartinez" "jless" | cut -d 'v' -f2)
-current=$(jless --version | cut -d ' ' -f2)
-if [ "$current" != "$latest" ]; then
-  echo "Upgrading jless"
-  cargo install jless
-  echo "Upgraded jless"
-else
-  echo "Jless up-to-date"
-fi
+# latest=$(get_latest_gh_release_tag "PaulJuliusMartinez" "jless" | cut -d 'v' -f2)
+# current=$(jless --version | cut -d ' ' -f2)
+# if [ "$current" != "$latest" ]; then
+#   echo "Upgrading jless"
+#   cargo install jless
+#   echo "Upgraded jless"
+# else
+#   echo "Jless up-to-date"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          zoxide                          │
@@ -629,25 +631,25 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Library used to display SVG images in yazi
 # resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
-latest=$(get_latest_gh_release_tag "linebender" "resvg" | sed 's/v//g')
-current=$(resvg --version | cut -d ' ' -f2)
-if [ "$current" != "$latest" ]; then
-  cargo install --locked resvg
-fi
+# latest=$(get_latest_gh_release_tag "linebender" "resvg" | sed 's/v//g')
+# current=$(resvg --version | cut -d ' ' -f2)
+# if [ "$current" != "$latest" ]; then
+#   cargo install --locked resvg
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
 #          │          https://mergiraf.org/installation.html          │
 #          ╰──────────────────────────────────────────────────────────╯
-latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
-current=$(mergiraf --version | cut -d ' ' -f2)
-if [ "$current" != "$latest" ]; then
-  echo "Upgrading mergiraf"
-  cargo install --locked mergiraf
-  echo "Upgraded mergiraf"
-else
-  echo "Mergiraf up-to-date"
-fi
+# latest=$(curl -sL https://codeberg.org/mergiraf/mergiraf/releases.rss | xmlstarlet sel -t -v "//channel/item[1]/title" | cut -d ' ' -f2)
+# current=$(mergiraf --version | cut -d ' ' -f2)
+# if [ "$current" != "$latest" ]; then
+#   echo "Upgrading mergiraf"
+#   cargo install --locked mergiraf
+#   echo "Upgraded mergiraf"
+# else
+#   echo "Mergiraf up-to-date"
+# fi
 
 # cleanup
 sudo apt autoremove -y
