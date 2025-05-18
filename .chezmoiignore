@@ -9,6 +9,7 @@ macos.sh
 debian-install.sh
 debian-upgrade.sh
 */mise/age.txt
+*/neomutt/aliases
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3

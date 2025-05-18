@@ -1,3 +1,4 @@
+source ./aliases
 # NOTE: Taken from: https://github.com/neomutt/neomutt-contrib
 #------------------------------------------------------------
 # Vi Key Bindings
