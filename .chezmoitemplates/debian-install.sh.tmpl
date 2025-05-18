@@ -1344,6 +1344,23 @@ fi
 # TODO: Figure out how to check if this is already installed
 cargo install cargo-update >/dev/null
 
+if ! gpg --list-keys drew@ddevault.org >/dev/null 2>&1; then
+  curl -sL "https://drewdevault.com/publickey.txt" | gpg --import
+  unverified_fingerprint=$(
+    gpg --list-keys --with-fingerprint drew@ddevault.org | head -n2 | tail -n1 | tr -d ' '
+  )
+  verified_fingerprint=$(echo "9FB5 E737 DC25 B29D 8EEC  4691 42F3 F186 2E3C C4B8" | tr -d ' ')
+
+  if [ "$unverified_fingerprint" = "$verified_fingerprint" ]; then
+    gpg --lsign-key drew@ddevault.org
+  else
+    echo "Imported public key fingerprint did not match previously verified fingerprint"
+    gpg --delete-key drew@ddevault.org
+    exit 1
+  fi
+
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
