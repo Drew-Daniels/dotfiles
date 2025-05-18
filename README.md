@@ -164,19 +164,19 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Add handling in dotfiles configuration for linux distros other than Debian (NixOS and Arch)
 - [ ] Update `swayrbar` content to display when connected to VPN
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
 - [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
 - [ ] Look into configuring `swaylock` to automatically be called upon lid close
 - [ ] Look into creating a hook that pulls in updates to cloned repositories before applying changes (such as changes made to friendly-snippets fork)
 - [ ] Create tmp dirs to download files to when upgrading, rather than in this directory, to limit blast radius of potential mistakes
-- [ ] Replace `i3status` with [i3status-rust](https://github.com/greshake/i3status-rust)
 - [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
   - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
 - [ ] [cava](https://github.com/karlstav/cava) audio-visualizer
-- [ ] Migrate to using [sway](https://github.com/swaywm/sway) from `i3`
   - [ ] Can migrate to using [bemenu](https://github.com/Cloudef/bemenu) instead of `dmenu` too, since the latter doesn't work with `wayland`
 - [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots
+  - https://gist.github.com/anpang54/ae723b0d38eb89b551854e79d4c16ed0
 - [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Look into just having one "install" and "upgrade" script that intalls/upgrades depending on environment state, rather than having to manage 2 different scripts as dependencies change
 - [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
