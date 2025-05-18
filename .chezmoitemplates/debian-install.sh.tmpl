@@ -1333,6 +1333,12 @@ if ! sudo which cryptsetup >/dev/null; then
   sudo apt install -y cryptsetup
 fi
 
+# swayr
+# https://sr.ht/~tsdh/swayr/
+if uninstalled swayr; then
+  cargo install --locked swayr
+fi
+
 # swayrbar
 # https://sr.ht/~tsdh/swayr/
 if uninstalled swayrbar; then
