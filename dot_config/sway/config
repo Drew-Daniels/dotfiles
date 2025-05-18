@@ -263,4 +263,13 @@ bindsym $mod+c           exec swayr execute-swaymsg-command
 # bindsym $mod+Shift+c     exec swayr execute-swayr-command
 bindsym $mod+Space+c     exec swayr execute-swayr-command
 
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+  timeout 300 'swaylock' \
+  timeout 600 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock'
+
 include /etc/sway/config.d/*
