@@ -66,3 +66,9 @@ name = "date"
 instance = "0"
 format = "⏰ %F %X"
 html_escape = false
+
+[[modules]]
+name = "nmcli"
+instance = "0"
+format = "{name} {signal} {bars}"
+html_escape = false
