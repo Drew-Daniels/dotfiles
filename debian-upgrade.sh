@@ -25,7 +25,7 @@ if [ "$current" != "$latest" ]; then
   bin="jq-linux-amd64"
   checksums="sha256sum.txt"
   base_url="https://github.com/jqlang/jq/releases/download/${latest}/"
-  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
+  curl -sL --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_url/${bin}" "${base_url}/${checksums}"
   verified_sha=$(grep jq-linux-amd64 <sha256sum.txt)
   download_sha=$(sha256sum "$bin")
   if [ "$download_sha" != "$verified_sha" ]; then
@@ -55,7 +55,7 @@ if [ "$current" != "$latest" ]; then
   checksum_sigs="chezmoi_${latest}_checksums.txt.sig"
   pkey="chezmoi_cosign.pub"
 
-  curl --silent --location --remote-name-all "${chezmoi_base_path}/${deb}" "${chezmoi_base_path}/${checksums}" "${chezmoi_base_path}/${checksum_sigs}" "${chezmoi_base_path}/${pkey}"
+  curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "${chezmoi_base_path}/${deb}" "${chezmoi_base_path}/${checksums}" "${chezmoi_base_path}/${checksum_sigs}" "${chezmoi_base_path}/${pkey}"
 
   # verify the signature on the checksums file is valid
   cosign verify-blob --key=$pkey --signature="$checksum_sigs" "$checksums"
@@ -96,7 +96,7 @@ if [ "$current" != "$latest" ]; then
   pkg_name="nvim-linux-x86_64.tar.gz"
   checksums_filename="shasum.txt"
 
-  curl --silent --location --remote-name-all "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
+  curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
 
   download_checksum=$(sha256sum <$pkg_name)
   verified_checksum=$(grep linux-x86_64 <$checksums_filename)
@@ -120,7 +120,7 @@ fi
 #│https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 # TODO: Figure out a way to fetch latest public key to verify before installing
-latest=$(curl -sL https://raw.githubusercontent.com/aws/aws-cli/v2/CHANGELOG.rst | sed '5!d')
+latest=$(curl -sL --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://raw.githubusercontent.com/aws/aws-cli/v2/CHANGELOG.rst" | sed '5!d')
 current=$(aws --version | cut -d '/' -f2 | cut -d ' ' -f1)
 
 if [ "$current" != "$latest" ]; then
@@ -153,7 +153,7 @@ if [ "$current" != "$latest" ]; then
   base_url="https://github.com/BurntSushi/ripgrep/releases/download/${latest}"
   deb="ripgrep_${latest}-1_amd64.deb"
   sha="ripgrep_${latest}-1_amd64.deb.sha256"
-  curl --silent --location --remote-name-all "$base_url/$deb" "$base_url/$sha"
+  curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_url/$deb" "$base_url/$sha"
   if sha256sum -c "$sha" --status; then
     sudo apt install -y "./$deb"
     rm "$deb" "$sha"
@@ -175,7 +175,8 @@ current=$(delta --version | cut -d ' ' -f2)
 
 if [ "$current" != "$latest" ]; then
   echo "Upgrading delta"
-  curl -sLO "https://github.com/dandavison/delta/releases/download/${latest}/git-delta_${latest}_amd64.deb"
+  # TODO: Create a utility function for making `curl` calls with auth token added
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/dandavison/delta/releases/download/${latest}/git-delta_${latest}_amd64.deb"
   sudo apt install -y "./git-delta_${latest}_amd64.deb"
   echo "Upgraded delta"
 else
@@ -196,7 +197,7 @@ current_SHA_abbr=$(ctags --version | head -n1 | sed 's/.*(\([a-z0-9]*\)).*/\1/')
 
 if [ "$current_SHA_abbr" != "$latest_SHA_abbr" ]; then
   echo "Upgrading universal-ctags"
-  curl -sLO "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${latest_release_date}%2B${latest_SHA_full}/uctags-${latest_release_date}-linux-x86_64.deb"
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/universal-ctags/ctags-nightly-build/releases/download/${latest_release_date}%2B${latest_SHA_full}/uctags-${latest_release_date}-linux-x86_64.deb"
   pkg_path="./uctags-${latest_release_date}-linux-x86_64.deb"
   sudo apt -qq install -y "$pkg_path"
   rm "$pkg_path"
@@ -287,7 +288,7 @@ if [ "$current" != "$latest" ]; then
   base_url="https://github.com/creativeprojects/resticprofile/releases/download/v${latest}/"
   tgz="resticprofile_${latest}_linux_amd64.tar.gz"
   checksums="checksums.txt"
-  curl -sL --remote-name-all "$base_url/$tgz" "$base_url/$checksums"
+  curl -sL --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_url/$tgz" "$base_url/$checksums"
   verified_checksum=$(grep "no_self_update_${latest}_linux_amd64.tar.gz" <"$checksums")
   download_checksum=$(sha256sum "$tgz")
   if [ "$download_checksum" != "$verified_checksum" ]; then
@@ -331,7 +332,7 @@ current=$(yq --version | cut -d ' ' -f4)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading yq"
   base_url="https://github.com/mikefarah/yq/releases/download/${latest}"
-  curl --silent --location --remote-name-all "$base_url/yq_linux_amd64.tar.gz" "$base_url/extract-checksum.sh" "$base_url/checksums_hashes_order" "$base_url/checksums"
+  curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_url/yq_linux_amd64.tar.gz" "$base_url/extract-checksum.sh" "$base_url/checksums_hashes_order" "$base_url/checksums"
   chmod +x ./extract-checksum.sh
 
   if ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status; then
@@ -356,8 +357,8 @@ current=$(magick -version | head -n1 | cut -d ' ' -f3)
 
 if [ "$current" != "$latest" ]; then
   echo "Upgrading imagemagick"
-  latest_download_url=$(curl -sL https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest | jq '.assets[0].browser_download_url' | sed 's/"//g')
-  curl -L "$latest_download_url" -o magick
+  latest_download_url=$(curl -sL --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest" | jq '.assets[0].browser_download_url' | sed 's/"//g')
+  curl -L --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$latest_download_url" -o magick
   chmod +x magick
   sudo mv magick /usr/local/bin/
   echo "Upgraded imagemagick"
@@ -377,7 +378,7 @@ if [ "$current" != "$latest" ]; then
   bin="fzf-${latest}-linux_amd64"
   tgz="$bin.tar.gz"
   checksums="fzf_${latest}_checksums.txt"
-  curl -sL --remote-name-all "$base_url/$tgz" "$base_url/$checksums"
+  curl -sL --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_url/$tgz" "$base_url/$checksums"
   verified_sha=$(grep linux_amd64.tar.gz <"$checksums")
   download_sha=$(sha256sum "$tgz")
 
@@ -404,7 +405,7 @@ current=$(fd --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading fd"
   deb="fd_${latest}_amd64.deb"
-  curl -sLO "https://github.com/sharkdp/fd/releases/download/v${latest}/${deb}"
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/sharkdp/fd/releases/download/v${latest}/${deb}"
   sudo apt install -y "./${deb}"
   rm "$deb"
   echo "Upgraded fd"
@@ -436,7 +437,7 @@ current=$(bat --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading bat"
   deb="bat_${latest}_amd64.deb"
-  curl -sLO "https://github.com/sharkdp/bat/releases/download/v${latest}/${deb}"
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/sharkdp/bat/releases/download/v${latest}/${deb}"
   sudo apt install -y "./${deb}"
   rm "$deb"
   echo "Upgraded bat"
@@ -454,7 +455,7 @@ current=$(tmux -V | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading tmux"
   tgz="tmux-${latest}.tar.gz"
-  curl -sLO "https://github.com/tmux/tmux/releases/download/${latest}/${tgz}"
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/tmux/tmux/releases/download/${latest}/${tgz}"
   tar -zxf tmux-*.tar.gz
   cd tmux-*/ || exit
   ./configure
@@ -474,7 +475,7 @@ current=$(git-credential-oauth version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading git-credential-oauth"
   tgz="git-credential-oauth_${latest}_linux_amd64.tar.gz"
-  curl -sLO "https://github.com/hickford/git-credential-oauth/releases/download/v${latest}/${tgz}"
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/hickford/git-credential-oauth/releases/download/v${latest}/${tgz}"
   # NOTE: Adding 'skip-old-files' option because the archive contains a README.md file that clobbers my own
   tar --skip-old-files -xzf "$tgz"
   chmod +x git-credential-oauth
@@ -527,7 +528,7 @@ os_release_codename=$(grep VERSION_CODENAME </etc/os-release | cut -d '=' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Installing strawberry"
   deb="strawberry_${latest}-${os_release_codename}_amd64.deb"
-  curl -sLO "https://github.com/strawberrymusicplayer/strawberry/releases/download/${latest}/${deb}"
+  curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/strawberrymusicplayer/strawberry/releases/download/${latest}/${deb}"
   sudo apt install -y "./$deb"
   rm "$deb"
   echo "Installed strawberry"
@@ -599,7 +600,7 @@ latest=$(get_latest_gh_release_tag "ajeetdsouza" "zoxide" | cut -d 'v' -f2)
 current=$(zoxide --version | cut -d ' ' -f2)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading zoxide"
-  curl -sSfLO https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
+  curl -sSfLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
 
   approve_script_execution "install.sh"
 
