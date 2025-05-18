@@ -989,7 +989,7 @@ fi
 pkg="thorium-browser"
 if uninstalled $pkg; then
   echo "Installing thorium"
-  if [ -f "/etc/apt/sources.list.d/thorium.list" ]; then
+  if [ ! -f "/etc/apt/sources.list.d/thorium.list" ]; then
     sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
       http://dl.thorium.rocks/debian/dists/stable/thorium.list &&
   fi
