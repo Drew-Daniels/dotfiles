@@ -1333,9 +1333,16 @@ if ! sudo which cryptsetup >/dev/null; then
   sudo apt install -y cryptsetup
 fi
 
+# swayrbar
+# https://sr.ht/~tsdh/swayr/
 if uninstalled swayrbar; then
   cargo install --locked swayrbar
 fi
+
+# cargo-update
+# https://github.com/nabijaczleweli/cargo-update
+# TODO: Figure out how to check if this is already installed
+cargo install cargo-update >/dev/null
 
 # cleanup
 sudo apt autoremove -y
