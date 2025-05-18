@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
 - [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
 - [ ] Look into configuring `swaylock` to automatically be called upon lid close
 - [ ] Look into creating a hook that pulls in updates to cloned repositories before applying changes (such as changes made to friendly-snippets fork)
