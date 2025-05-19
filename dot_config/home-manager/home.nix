@@ -41,6 +41,7 @@
     # bat-extras
     beets
     brightnessctl
+    cinny-desktop
     chezmoi
     cmus
     cmusfm
