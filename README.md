@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Figure out cause of internet connectivity issue when using `sway` wm in NixOS - guessing that I'm relying on something from KDE desktop to handle automatically connecting to the wifi
 - [ ] Install `thorium` browser on NixOS - otherwise my sway config will generate errors in NixOS
 - [ ] Fix background image issue when using `sway` in `NixOS` - think the default background image isn't getting installed because home manager isn't creating the default system configuration for sway
 - [ ] Update `home-manager` config such that `alacritty` is set to default terminal emulator and `librewolf` is set to default web browser
