@@ -54,10 +54,6 @@ if grep -qi debian /etc/os-release; then
     # NOTE: Manual - Turn on the 1Password CLI Integration in 1Password Desktop app: https://developer.1password.com/docs/cli/get-started/#step-2-turn-on-the-1password-desktop-app-integration
     echo "Installed $pkg"
   fi
-elif grep -qi nixos /etc/os-release; then
-  echo "Nix OS - No password manager installed"
-elif grep -qi arch /etc/os-release; then
-  echo "Arch - No password manager installed"
 elif grep -qi darwin /etc/os-release; then
   if [ ! -d "/Applications/1Password.app" ]; then
     brew install --cask 1password@nightly
