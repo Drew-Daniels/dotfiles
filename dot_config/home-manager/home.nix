@@ -61,9 +61,7 @@
     google-cloud-sdk
     gparted
     # usbimager
-    # gnome-disk-utility
     imagemagick
-    # iterm2
     openvpn
     # Create an entry for this
     # keep-presence
@@ -77,8 +75,6 @@
     luajitPackages.luarocks
     gnumake42
     mergiraf
-    # mise
-    # TODO: Figure out how to get mullvad to work - seems to be broken on NixOS
     mullvad
     neovim
     nix-index
@@ -87,7 +83,6 @@
     pavucontrol
     plocate
     python311
-    # rcmd
     restic
     resticprofile
     ripgrep
@@ -97,15 +92,13 @@
     starship
     strawberry
     speedtest-cli
-    # standardnotes
+    standardnotes
     # tidal_dl_ng
     tmux
     tmuxinator
     tree-sitter
     universal-ctags
     unzip
-    # TODO: Unfree, need to allow this
-    # veracrypt
     vim
     # screenshot functionality (or slurp)
     # grim
@@ -118,8 +111,6 @@
     zig
     zoxide
     zulu17
-    # zoom
-    # TODO: wl-clipboard, or xclip? Need to confirm if I'm using Wayland by default first.
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -135,6 +126,7 @@
     # '')
 
     # LSPs
+    # TODO: Should I not let mason handle all LSPs? Probably should remove these
     nodePackages_latest.vscode-json-languageserver
     tailwindcss-language-server
     terraform-ls

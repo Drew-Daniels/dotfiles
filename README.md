@@ -164,7 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
-- [ ] Install `standard-notes` on nixos
+- [ ] Look into creating mirrors for dotfiles
 - [ ] Desktop weather app/widget for linux
 - [ ] Install `protonvpn` cask on MacOS - getting an SSL cert issue when attempting to download
 - [ ] Figure out cause of internet connectivity issue when using `sway` wm in NixOS - guessing that I'm relying on something from KDE desktop to handle automatically connecting to the wifi

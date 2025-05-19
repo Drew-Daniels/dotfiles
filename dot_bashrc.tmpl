@@ -42,9 +42,6 @@ ALACRITTY_COMPLETIONS_FILE=/home/drew/projects/alacritty/extra/completions/alacr
 # apt, dpkg
 alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/packages'
 
-# Standard Notes
-export PATH="$PATH:/opt/standard_notes"
-
 {{ if eq .osid "linux-nixos" -}}
 alias nix-switch="sudo nixos-rebuild switch -I nixos-config=$HOME/.config/nixos/configuration.nix"
 {{ end -}}
