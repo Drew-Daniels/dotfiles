@@ -91,6 +91,7 @@ packages:
       - 'font-jetbrains-mono-nerd-font'
       - 'iterm2'
       - 'obs'
+      - 'protonvpn'
       - 'postgres-unofficial'
       - 'postman'
       - 'raindropio'
