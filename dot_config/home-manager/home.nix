@@ -69,6 +69,7 @@
     kiwix
     jq
     jless
+    gcc
     librewolf
     lsd
     lua51Packages.lua
