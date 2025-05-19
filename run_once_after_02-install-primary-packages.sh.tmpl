@@ -1,6 +1,14 @@
+# MACOS
 {{ if eq .chezmoi.os "darwin" -}}
 {{- template "macos-install.sh.tmpl" -}}
 {{ end -}}
-{{ if eq .chezmoi.os "linux" -}}
+# DEBIAN
+{{ if eq .chezmoi.osid "linux-debian" -}}
 {{- template "debian-install.sh.tmpl" -}}
+{{ end -}}
+# NIXOS
+{{ if eq .chezmoi.osid "linux-nixos" -}}
+{{ end -}}
+# ARCH
+{{ if eq .chezmoi.osid "linux-arch" -}}
 {{ end -}}
