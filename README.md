@@ -164,6 +164,9 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Modify `nvim-lspconfig` such that the `config` function adjust the configuration used so that it uses the old Neovim v0.10 format instead of the v0.11 format
+    - May also need to adjust configurations for `mason-lspconfig` and `mason-tool-installer`
+- [ ] Look into creating a `neovim` package in NixPkgs for `0.v11`
 - [ ] Add handling in dotfiles configuration for linux distros other than Debian (NixOS and Arch)
 - [ ] Update `swayrbar` content to display when connected to VPN
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
