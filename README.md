@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Install `raindrop.io` on NixOS
 - [ ] Set default browser on NixOS to `librewolf` instead of Firefox
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
 - [ ] Create desktop entry for Standard Notes on NixOS
