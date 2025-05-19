@@ -1,8 +1,6 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	opts = {
-		auto_update = true,
-		debounce_hours = 5,
 		ensure_installed = {
 			-- formatters (managed w/ mason-tool-installer)
 			"ruff",
