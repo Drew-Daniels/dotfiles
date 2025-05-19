@@ -24,7 +24,7 @@
   };
   services.gnome-keyring.enable = true;
   # desktopManager+windowManager
-  wayland.windowManager.sway.enable = true;
+  # wayland.windowManager.sway.enable = true;
 
   # PACKAGES CONFIGURATION
   # The home.packages option allows you to install Nix packages into your
