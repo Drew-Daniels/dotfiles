@@ -127,21 +127,21 @@
 
     # LSPs
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
-    nodePackages_latest.vscode-json-languageserver
-    tailwindcss-language-server
-    terraform-ls
-    typos-lsp
-    bash-language-server
-    docker-ls
-    lua51Packages.lua-lsp
-    marksman
-    yaml-language-server
-    tflint
-    emmet-language-server
-    python311Packages.python-lsp-server
-    typescript-language-server
-    vim-language-server
-    clojure-lsp
+    # nodePackages_latest.vscode-json-languageserver
+    # tailwindcss-language-server
+    # terraform-ls
+    # typos-lsp
+    # bash-language-server
+    # docker-ls
+    # lua51Packages.lua-lsp
+    # marksman
+    # yaml-language-server
+    # tflint
+    # emmet-language-server
+    # python311Packages.python-lsp-server
+    # typescript-language-server
+    # vim-language-server
+    # clojure-lsp
   ];
 
   # DOTFILES
