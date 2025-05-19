@@ -44,3 +44,7 @@ alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/p
 
 # Standard Notes
 export PATH="$PATH:/opt/standard_notes"
+
+{{ if eq .osid "linux-nixos" -}}
+export NIX_PATH="$HOME/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=$HOME/.config/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels"
+{{ end -}}
