@@ -1,4 +1,7 @@
 #!/bin/sh
 
 mkdir -p ~/projects
-sudo mkdir -p /usr/local/bin
+
+if [ ! -d "/usr/local/bin" ]; then
+  sudo mkdir -p /usr/local/bin
+fi
