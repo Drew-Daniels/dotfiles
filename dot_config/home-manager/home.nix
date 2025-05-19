@@ -78,7 +78,7 @@
     mergiraf
     # mise
     # TODO: Figure out how to get mullvad to work - seems to be broken on NixOS
-    # mullvad
+    mullvad
     neovim
     nix-index
     nodejs_22
