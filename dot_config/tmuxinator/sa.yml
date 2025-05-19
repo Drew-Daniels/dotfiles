@@ -7,4 +7,4 @@ windows:
         - cmd:
             - fish
             - cls
-            - keep-presence
+            - python3 -m stay-awake
