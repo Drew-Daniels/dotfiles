@@ -83,6 +83,8 @@
     pavucontrol
     plocate
     python311
+    # protonmail-bridge
+    protonmail-desktop
     restic
     resticprofile
     ripgrep
