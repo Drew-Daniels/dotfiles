@@ -5,6 +5,7 @@ import = [
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
+EDITOR = "nvim"
 
 [window]
 decorations = "buttonless"
