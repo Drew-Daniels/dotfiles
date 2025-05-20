@@ -111,9 +111,6 @@
 	};
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Enable sway
   programs.sway.enable = true;
 
