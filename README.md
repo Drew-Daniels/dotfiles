@@ -164,13 +164,14 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Think through how to ensure that `jg`, `friendly-snippets` fork, and other repos will get cloned to NixOS on initial setup
+- [ ] Install [protonmail-bridge](https://search.nixos.org/packages?channel=24.11&show=protonmail-bridge&from=0&size=50&sort=relevance&type=packages&query=proton) 
+    - NOTE: Getting a weird keychain error when launching the app that causes it to crash
 - [ ] Set up biometrics on NixOS:
     - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
     - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-up-fprintd-english/21901/2
 - [ ] Install `raindrop.io` on NixOS
-- [ ] Set default browser on NixOS to `librewolf` instead of Firefox
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
-- [ ] Create desktop entry for Standard Notes on NixOS
 - [ ] Look into creating mirrors for dotfiles
 - [ ] Desktop weather app/widget for linux
 - [ ] Figure out cause of internet connectivity issue when using `sway` wm in NixOS - guessing that I'm relying on something from KDE desktop to handle automatically connecting to the wifi
