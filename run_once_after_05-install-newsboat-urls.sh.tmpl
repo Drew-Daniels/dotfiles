@@ -1,0 +1,5 @@
+#!/bin/sh
+newsboat_urls=$(op item get newsboat_urls --fields=notesPlain | sed 's/"//g')
+cat <<EOF >~/.newsboat/urls
+$newsboat_urls
+EOF
