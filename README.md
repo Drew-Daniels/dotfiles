@@ -163,7 +163,7 @@ curl --silent --location --remote-name-all \
 # Roadmap
 
 QOL Updates:
-
+- [ ] Port over the rest of the newsboat urls I want to track
 - [ ] Think through how to ensure that `jg`, `friendly-snippets` fork, and other repos will get cloned to NixOS on initial setup
 - [ ] Install [protonmail-bridge](https://search.nixos.org/packages?channel=24.11&show=protonmail-bridge&from=0&size=50&sort=relevance&type=packages&query=proton) 
     - NOTE: Getting a weird keychain error when launching the app that causes it to crash
