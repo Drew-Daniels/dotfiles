@@ -164,6 +164,9 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Set up biometrics on NixOS:
+    - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
+    - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-up-fprintd-english/21901/2
 - [ ] Install `raindrop.io` on NixOS
 - [ ] Set default browser on NixOS to `librewolf` instead of Firefox
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
