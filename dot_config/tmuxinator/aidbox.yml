@@ -1,5 +1,7 @@
 name: aidbox
 root: <%= ENV["PROJECTS_DIR"] %>/aidbox
+on_project_stop:
+  - docker compose stop
 windows:
   - 1)editor:
       layout: main-horizontal
