@@ -1,0 +1,20 @@
+name: aidbox
+root: <%= ENV["PROJECTS_DIR"] %>/aidbox
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker compose up
