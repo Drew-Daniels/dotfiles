@@ -11,7 +11,11 @@ windows:
         - cmd:
             - fish
             - cls
-  - 2)stack:
+        - tsc:
+            - fish
+            - cls
+            - npm run dev
+  - 2)docker-compose:
       layout: main-horizontal
       panes:
         - stack:
