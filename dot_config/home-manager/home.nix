@@ -67,6 +67,7 @@
     google-cloud-sdk
     glab
     gparted
+    ueberzugpp
     hurl
     # usbimager
     imagemagick
