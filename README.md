@@ -164,6 +164,8 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look at migrating from `brew` as package manager on MacOS to `nix`:
+  - https://github.com/nix-darwin/nix-darwin
 - [ ] Look into configuring bluetooth on NixOS: https://nixos.wiki/wiki/Bluetooth
 - [ ] Look into managing neovim configuration using one of these plugins:
   - [nixCats](https://github.com/BirdeeHub/nixCats-nvim?tab=readme-ov-file#intro)
