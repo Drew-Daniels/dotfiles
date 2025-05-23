@@ -88,6 +88,7 @@
     librewolf
     lsd
     lua51Packages.lua
+    lua51Packages.tree-sitter-norg
     luajitPackages.luarocks
     gnumake42
     maven
