@@ -122,9 +122,10 @@ bind P pipe-pane -o "cat >> ~/#W.log" \; display "Toggled logging to ~/#W.log"
 # PLUGINS
 # set -g @plugin 'tmux-plugins/tpm'
 
-# zen-mode https://github.com/folke/zen-mode.nvim
-# https://github.com/3rd/image.nvim
+# https://yazi-rs.github.io/docs/image-preview#tmux
 set-option -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
 
 set-option -g focus-events on
 
