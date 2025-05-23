@@ -145,13 +145,26 @@
 
     # LSPs
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
-    nodePackages_latest.vscode-json-languageserver
+    # TODO: 'clangd'
+    # TODO: cssmodules_ls
+    # TODO: cucumber_language_server
+    # TODO: prismals
+    # TODO: smithy_ls
+    # TODO: sqlls
+    rubyPackages_3_4.standard
+    docker-compose-language-service
+    # HTML/CSS/JSON/ESLint lang servers
+    vscode-langservers-extracted
+    vue-language-server
+    ruff
+    nil
+    phpactor
     tailwindcss-language-server
     terraform-ls
     typos-lsp
     bash-language-server
     docker-ls
-    lua51Packages.lua-lsp
+    lua-language-server
     marksman
     yaml-language-server
     tflint
