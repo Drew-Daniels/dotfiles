@@ -103,7 +103,6 @@
     resticprofile
     ripgrep
     rustup
-    rofi
     ruby
     starship
     stylua
@@ -111,6 +110,7 @@
     speedtest-cli
     standardnotes
     signal-desktop
+    swayr
     # tidal_dl_ng
     tmux
     tmuxinator
