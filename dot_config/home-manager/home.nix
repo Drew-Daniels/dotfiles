@@ -32,6 +32,7 @@
   home.packages = with pkgs; [
     alacritty
     awscli2
+    ast-grep
     bat
     bat-extras.prettybat
     bat-extras.batman
@@ -43,12 +44,17 @@
     brightnessctl
     cinny-desktop
     chezmoi
+    comby
     cmus
     cmusfm
+    dbeaver-bin
     delta
     deno
     docker
     dust
+    # unfree
+    # drawio
+    electrum
     fd
     feh
     foliate
@@ -59,21 +65,29 @@
     git-credential-oauth
     go
     google-cloud-sdk
+    glab
     gparted
+    hurl
     # usbimager
     imagemagick
+    josm
     openvpn
     # Create an entry for this
     # keep-presence
     kiwix
+    # wait to install until a later version comes out without the security vulnerabilities that are inherent in this version
+    # jitsi-meet
     jq
     jless
     gcc
+    obs-studio
+    localstack
     librewolf
     lsd
     lua51Packages.lua
     luajitPackages.luarocks
     gnumake42
+    maven
     mergiraf
     mullvad
     neovim
@@ -92,9 +106,11 @@
     rofi
     ruby
     starship
+    stylua
     strawberry
     speedtest-cli
     standardnotes
+    signal-desktop
     # tidal_dl_ng
     tmux
     tmuxinator
@@ -113,7 +129,8 @@
     zig
     zoxide
     zulu17
-
+    zulip
+    zulip-term
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
