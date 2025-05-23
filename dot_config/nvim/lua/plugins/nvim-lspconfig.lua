@@ -132,6 +132,10 @@ return {
       capabilities = capabilities,
     })
 
+    -- vim.lsp.config("nixd", {
+    --   capabilities = capabilities,
+    -- })
+
     vim.lsp.config("phpactor", {
       capabilities = capabilities,
     })

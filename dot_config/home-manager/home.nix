@@ -108,6 +108,8 @@
     ripgrep
     rustup
     # TODO: Create package for reformat-gherkin
+    eslint_d
+    cljfmt
     ruby
     starship
     shellcheck
@@ -159,8 +161,11 @@
     # TODO: prismals
     # TODO: smithy_ls
     # TODO: sqlls
+    # TODO: Need to do more research on seeing whether or not it makes sense to just use nil_ls, nixd, or both
+    # nixd
     basedpyright
     rubyPackages_3_4.standard
+    rubyPackages_3_4.htmlbeautifier
     docker-compose-language-service
     # HTML/CSS/JSON/ESLint lang servers
     vscode-langservers-extracted

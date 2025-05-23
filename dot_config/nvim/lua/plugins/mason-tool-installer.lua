@@ -10,7 +10,8 @@ return {
 			"jsonlint",
 			"stylua",
 			"prettierd",
-      -- TODO: Align on the right Nx LSPs to have installed - nil_ls and nixd seem to be more widely used. Can't find anything on nxls.
+      -- TODO: Create package for Nx language server: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nxls
+      "nixd",
 			"nxls",
 			"shfmt",
 			"shellcheck",
