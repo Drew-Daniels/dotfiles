@@ -5,10 +5,12 @@ return {
 			-- formatters (managed w/ mason-tool-installer)
 			"ruff",
 			"basedpyright",
+      -- TODO: Install clang-format on NixOS
 			"clang-format",
 			"jsonlint",
 			"stylua",
 			"prettierd",
+      -- TODO: Align on the right Nx LSPs to have installed - nil_ls and nixd seem to be more widely used. Can't find anything on nxls.
 			"nxls",
 			"shfmt",
 			"shellcheck",

@@ -81,6 +81,7 @@
     # jitsi-meet
     jq
     jless
+    nodePackages.jsonlint
     gcc
     obs-studio
     localstack
@@ -99,14 +100,19 @@
     pavucontrol
     plocate
     python311
+    prettierd
     # protonmail-bridge
     protonmail-desktop
     restic
     resticprofile
     ripgrep
     rustup
+    # TODO: Create package for reformat-gherkin
     ruby
     starship
+    shellcheck
+    python313Packages.sqlfmt
+    shfmt
     stylua
     strawberry
     speedtest-cli
@@ -121,6 +127,7 @@
     universal-ctags
     unzip
     vim
+    yamlfmt
     # screenshot functionality (or slurp)
     # grim
     # notification system
