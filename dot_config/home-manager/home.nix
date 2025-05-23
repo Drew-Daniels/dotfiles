@@ -25,6 +25,7 @@
   services.gnome-keyring.enable = true;
   # desktopManager+windowManager
   # wayland.windowManager.sway.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   # PACKAGES CONFIGURATION
   # The home.packages option allows you to install Nix packages into your
@@ -53,8 +54,7 @@
     deno
     docker
     dust
-    # unfree
-    # drawio
+    drawio
     electrum
     fd
     feh
@@ -85,6 +85,9 @@
     gcc
     obs-studio
     localstack
+    # google-chrome
+    # vivaldi
+    # firefox
     librewolf
     lsd
     lua51Packages.lua
