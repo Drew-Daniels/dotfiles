@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Figure out how to get dark theme used on Strawberry when in `sway` (works on plasma)
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
 - [ ] Install [protonmail-bridge](https://search.nixos.org/packages?channel=24.11&show=protonmail-bridge&from=0&size=50&sort=relevance&type=packages&query=proton)
