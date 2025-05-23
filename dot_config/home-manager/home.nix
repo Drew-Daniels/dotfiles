@@ -41,6 +41,7 @@
     # them 1 by 1
     # bat-extras
     beets
+    bemenu
     brightnessctl
     cinny-desktop
     chezmoi

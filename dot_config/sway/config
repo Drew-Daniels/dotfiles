@@ -18,7 +18,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu bemenu-run -b --fn 'JetBrainsMono Nerd Font' | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 
@@ -245,9 +246,7 @@ gaps outer 10
 exec thorium-browser
 exec alacritty
 
-# TODO: set
-# font pango:monospace 8
-# font pango:''
+font pango:JetBrainsMono Nerd Font 10
 
 # swayr
 # NOTE: When debugging swayr
