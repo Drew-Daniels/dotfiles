@@ -1400,6 +1400,12 @@ if uninstalled protonmail-bridge; then
   echo "Installed Proton Mail Bridge"
 fi
 
+# bemenu
+# https://github.com/Cloudef/bemenu
+if uninstalled bemenu; then
+  sudo apt install -y bemenu
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
