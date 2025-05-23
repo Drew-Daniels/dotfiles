@@ -5,13 +5,11 @@ return {
 			-- formatters (managed w/ mason-tool-installer)
 			"ruff",
 			"basedpyright",
-      -- TODO: Install clang-format on NixOS
+			-- TODO: Install clang-format on NixOS
 			"clang-format",
 			"jsonlint",
 			"stylua",
 			"prettierd",
-      -- TODO: Create package for Nx language server: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nxls
-      "nixd",
 			"nxls",
 			"shfmt",
 			"shellcheck",
@@ -50,7 +48,6 @@ return {
 			-- "denols",
 			"vue_ls",
 			--TODO: Look into creating a PR to https://github.com/mason-org/mason-registry/ to add support for `nixd` instead
-			-- "nil_ls",
 			"clojure_lsp",
 			-- https://github.com/williamboman/mason-lspconfig.nvim/issues/451
 			-- "cljfmt",
