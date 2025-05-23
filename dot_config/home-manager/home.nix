@@ -152,6 +152,7 @@
     # TODO: prismals
     # TODO: smithy_ls
     # TODO: sqlls
+    basedpyright
     rubyPackages_3_4.standard
     docker-compose-language-service
     # HTML/CSS/JSON/ESLint lang servers
