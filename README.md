@@ -164,6 +164,10 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into managing neovim configuration using one of these plugins:
+  - [nixCats](https://github.com/BirdeeHub/nixCats-nvim?tab=readme-ov-file#intro)
+  - [nixvim](https://github.com/nix-community/nixvim)
+  - [nvf](https://github.com/NotAShelf/nvf)
 - [ ] Figure out how to get dark theme used on Strawberry when in `sway` (works on plasma)
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
