@@ -182,7 +182,7 @@ return {
       capabilities = capabilities,
     })
 
-    vim.lsp.config("volar", {
+    vim.lsp.config("vue_ls", {
       capabilities = capabilities,
     })
 
@@ -194,5 +194,40 @@ return {
     vim.lsp.config("yamlls", {
       capabilities = capabilities,
     })
+
+    vim.lsp.enable({
+    "bashls",
+    "basedpyright",
+    "clangd",
+    "clojure_lsp",
+    "cssls",
+    "cssmodules_ls",
+    "cucumber_language_server",
+    "denols",
+    "docker_compose_language_service",
+    "dockerls",
+    "emmet_language_server",
+    "eslint",
+    "html",
+    "jsonls",
+    "lua_ls",
+    "marksman",
+    "nil_ls",
+    "phpactor",
+    "prismals",
+    "ruff",
+    "smithy_ls",
+    "sqlls",
+    "standardrb",
+    "tailwindcss",
+    "terraformls",
+    "tflint",
+    "typos_lsp",
+    "vimls",
+    "vue_ls",
+    "vuels",
+    "yamlls",
+    })
+
 	end,
 }
