@@ -163,13 +163,14 @@ curl --silent --location --remote-name-all \
 # Roadmap
 
 QOL Updates:
+
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
-- [ ] Install [protonmail-bridge](https://search.nixos.org/packages?channel=24.11&show=protonmail-bridge&from=0&size=50&sort=relevance&type=packages&query=proton) 
-    - NOTE: Getting a weird keychain error when launching the app that causes it to crash
+- [ ] Install [protonmail-bridge](https://search.nixos.org/packages?channel=24.11&show=protonmail-bridge&from=0&size=50&sort=relevance&type=packages&query=proton)
+  - NOTE: Getting a weird keychain error when launching the app that causes it to crash
 - [ ] Set up biometrics on NixOS:
-    - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
-    - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-up-fprintd-english/21901/2
+  - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
+  - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-up-fprintd-english/21901/2
 - [ ] Install `raindrop.io` on NixOS
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
 - [ ] Look into creating mirrors for dotfiles
@@ -178,8 +179,9 @@ QOL Updates:
 - [ ] Install `thorium` browser on NixOS - otherwise my sway config will generate errors in NixOS
 - [ ] Fix background image issue when using `sway` in `NixOS` - think the default background image isn't getting installed because home manager isn't creating the default system configuration for sway
 - [ ] Modify `nvim-lspconfig` such that the `config` function adjust the configuration used so that it uses the old Neovim v0.10 format instead of the v0.11 format
+- [ ] Think through Mason configuration on NixOS and reconfigure so that nvim-lspconfig uses language servers installed using nix package manager instead of packages installed via mason
+- [ ] Add `vim.lsp.enable(..)` for every language server I have installed, so language servers get launched in NixOS
   - May also need to adjust configurations for `mason-lspconfig` and `mason-tool-installer`
-- [ ] Look into creating a `neovim` package in NixPkgs for `0.v11`
 - [ ] Add handling in dotfiles configuration for linux distros other than Debian (NixOS and Arch)
 - [ ] Update `swayrbar` content to display when connected to VPN
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
