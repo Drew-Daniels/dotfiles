@@ -111,6 +111,7 @@
     standardnotes
     signal-desktop
     swayr
+    swayrbar
     # tidal_dl_ng
     tmux
     tmuxinator
