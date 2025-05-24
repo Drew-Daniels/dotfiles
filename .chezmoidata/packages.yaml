@@ -87,10 +87,12 @@ packages:
       - 'jsonlint'
       - 'stylua'
       - 'prettierd'
-      - 'nxls'
+      # TODO: Create a brew formula for this?
+      # - 'nxls'
       - 'shfmt'
       - 'shellcheck'
-      - 'reformat-gherkin'
+      # TODO: Create formula for this?
+      # - 'reformat-gherkin'
       - 'yamlfmt'
       no_quarantine_casks:
       - 'wine-stable'
