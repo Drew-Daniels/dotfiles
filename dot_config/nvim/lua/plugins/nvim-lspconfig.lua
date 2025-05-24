@@ -12,6 +12,54 @@ return {
 			use_flat_config = true
 		end
 
+		-- NOTE: Commenting out because no Nixpkgs for these language servers
+		-- vim.lsp.config("clangd", {
+		-- 	capabilities = capabilities,
+		-- })
+
+		-- vim.lsp.config("cssmodules_ls", {
+		-- 	capabilities = capabilities,
+		-- })
+		--
+		-- vim.lsp.config("cucumber_language_server", {
+		-- 	capabilities = capabilities,
+		-- })
+		-- vim.lsp.config("docker_compose_language_service", {
+		-- 	capabilities = capabilities,
+		-- })
+
+		-- vim.lsp.config("emmet_language_server", {
+		-- 	capabilities = capabilities,
+		-- })
+
+		-- vim.lsp.config("phpactor", {
+		-- 	capabilities = capabilities,
+		-- })
+
+		-- vim.lsp.config("prismals", {
+		-- 	capabilities = capabilities,
+		-- })
+		-- vim.lsp.config("smithy_ls", {
+		-- 	capabilities = capabilities,
+		-- })
+		-- vim.lsp.config("standardrb", {
+		-- 	capabilities = capabilities,
+		-- 	-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
+		-- 	-- cmd = { "bundle", "exec", "standardrb", "--lsp" },
+		-- })
+		--
+		-- vim.lsp.config("mutt-language-server", {
+		--   capabilities = capabilities,
+		-- })
+
+		-- vim.lsp.config("postgrestools", {
+		-- capabilities = capabilities,
+		-- })
+
+		-- vim.lsp.config("vimls", {
+		-- 	capabilities = capabilities,
+		-- })
+
 		vim.lsp.config("bashls", {
 			capabilities = capabilities,
 			filetypes = { "bash", "sh", "zsh" },
@@ -26,10 +74,6 @@ return {
 					},
 				},
 			},
-		})
-
-		vim.lsp.config("clangd", {
-			capabilities = capabilities,
 		})
 
 		vim.lsp.config("clojure_lsp", {
@@ -60,14 +104,6 @@ return {
 			},
 		})
 
-		vim.lsp.config("cssmodules_ls", {
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("cucumber_language_server", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("denols", {
 			capabilities = capabilities,
 			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
@@ -83,15 +119,7 @@ return {
 			},
 		})
 
-		vim.lsp.config("docker_compose_language_service", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("dockerls", {
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("emmet_language_server", {
 			capabilities = capabilities,
 		})
 
@@ -128,30 +156,12 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("phpactor", {
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("prismals", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("ruff", {
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("smithy_ls", {
 			capabilities = capabilities,
 		})
 
 		vim.lsp.config("sqlls", {
 			capabilities = capabilities,
-		})
-
-		vim.lsp.config("standardrb", {
-			capabilities = capabilities,
-			-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
-			-- cmd = { "bundle", "exec", "standardrb", "--lsp" },
 		})
 
 		vim.lsp.config("tailwindcss", {
@@ -174,10 +184,6 @@ return {
 			},
 		})
 
-		vim.lsp.config("vimls", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("vue_ls", {
 			capabilities = capabilities,
 		})
@@ -192,33 +198,34 @@ return {
 		})
 
 		vim.lsp.enable({
+			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
+			-- "clangd",
+			-- "cssmodules_ls",
+			-- "docker_compose_language_service",
+			-- "emmet_language_server",
+			-- "phpactor",
+			-- "prismals",
+			-- "smithy_ls",
+			-- "vimls",
 			"bashls",
 			"basedpyright",
-			"clangd",
 			"clojure_lsp",
 			"cssls",
-			"cssmodules_ls",
 			"cucumber_language_server",
 			"denols",
-			"docker_compose_language_service",
 			"dockerls",
-			"emmet_language_server",
 			"eslint",
 			"html",
 			"jsonls",
 			"lua_ls",
 			"marksman",
-			"phpactor",
-			"prismals",
 			"ruff",
-			"smithy_ls",
 			"sqlls",
 			"standardrb",
 			"tailwindcss",
 			"terraformls",
 			"tflint",
 			"typos_lsp",
-			"vimls",
 			"vue_ls",
 			"vuels",
 			"yamlls",

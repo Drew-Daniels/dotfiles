@@ -31,6 +31,7 @@ packages:
       - 'coreutils'
       - 'ctags'
       - 'curl'
+      - 'deno'
       - 'dust'
       - 'duti'
       - 'fd'
