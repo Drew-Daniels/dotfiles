@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "drew";
@@ -18,9 +20,9 @@
   # SERVICES CONFIGURATION
   # Automatically start on boot
   services.gpg-agent = {
-	enable = true;
-	defaultCacheTtl = 1800;
-	enableSshSupport = true;
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
   };
   services.gnome-keyring.enable = true;
   # desktopManager+windowManager
@@ -32,6 +34,7 @@
   # environment.
   home.packages = with pkgs; [
     alacritty
+    alejandra
     awscli2
     ast-grep
     bat
@@ -232,7 +235,7 @@
   #
   # ENV VARS
   home.sessionVariables = {
-	  # EDITOR = "nvim";
+    # EDITOR = "nvim";
   };
 
   # PROGRAMS
@@ -240,7 +243,7 @@
   programs.home-manager.enable = true;
   # Defaults to GnuPG
   programs.gpg = {
-	enable = true;
+    enable = true;
   };
 
   programs.git-credential-oauth.enable = true;

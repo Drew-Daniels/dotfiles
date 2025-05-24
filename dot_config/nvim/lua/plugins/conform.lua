@@ -103,6 +103,7 @@ return {
 				scss = { "prettierd" },
 				zsh = { "shfmt", "shellcheck" },
 				markdown = { "prettierd" },
+        nix = { "alejandra" },
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
 				python = { "ruff" },

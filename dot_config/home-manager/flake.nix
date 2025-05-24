@@ -9,13 +9,17 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     homeConfigurations = {
       # NOTE: 'nixos' here is my user's name
       drew = home-manager.lib.homeManagerConfiguration {
         # Use the following on MacOS M1
         # system = "aarch64-darwin"
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        pkgs = import nixpkgs {system = "x86_64-linux";};
         modules = [./home.nix];
       };
     };

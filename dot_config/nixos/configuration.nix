@@ -1,10 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [];
 
   # Bootloader.
@@ -75,16 +76,16 @@
     #media-session.enable = true;
     raopOpenFirewall = true;
     extraConfig.pipewire = {
-	    "10-airplay" = {
-		"context.modules" = [
-			{
-				name = "libpipewire-module-raop-discover";
-			}
-		];
-	    };
+      "10-airplay" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-raop-discover";
+          }
+        ];
+      };
     };
   };
-  
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -92,20 +93,20 @@
   users.users.drew = {
     isNormalUser = true;
     description = "Drew Daniels";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   # Virtualisation
   virtualisation.docker = {
-	enable = true;
-	rootless = {
-		enable = true;
-		setSocketVariable = true;
-	};
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   # Enable sway
@@ -113,8 +114,8 @@
 
   programs._1password.enable = true;
   programs._1password-gui = {
-	enable = true;
-	polkitPolicyOwners = ["drew"];
+    enable = true;
+    polkitPolicyOwners = ["drew"];
   };
 
   # Allow unfree packagesA
@@ -123,8 +124,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  # wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # wget
   ];
 
   # EXPERIMENTAL SETTINGS
@@ -149,7 +150,7 @@
 
   # VPN
   # https://alberand.com/nixos-wireguard-vpn.html
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedUDPPorts = [51820];
 
   # To start:
   # sudo systemctl stop wg-quick-wg0
@@ -161,23 +162,25 @@
   # power off laptop (don't restart), and then manually power back on. After logging back in, rebuild and see if the connection reappears.
   networking.wg-quick.interfaces = {
     wg0 = {
-	address = [ "10.0.0.5/24" ];
-	listenPort = 51820;
-	privateKeyFile = "/etc/wireguard/wg0-private-key";
-	peers = [{
-		publicKey = "QiA3AA8yovuB4+vEmU7XmuX05lDZfM2B7njpfZZ4XUg=";
-		allowedIPs = [ "0.0.0.0/0" ];
-		endpoint = builtins.getEnv "HOME_DDNS_NAME";
-		persistentKeepalive = 25;
-	}];
-	autostart = false;
-	dns = [ "64.6.64.6" "10.0.0.1"];
+      address = ["10.0.0.5/24"];
+      listenPort = 51820;
+      privateKeyFile = "/etc/wireguard/wg0-private-key";
+      peers = [
+        {
+          publicKey = "QiA3AA8yovuB4+vEmU7XmuX05lDZfM2B7njpfZZ4XUg=";
+          allowedIPs = ["0.0.0.0/0"];
+          endpoint = builtins.getEnv "HOME_DDNS_NAME";
+          persistentKeepalive = 25;
+        }
+      ];
+      autostart = false;
+      dns = ["64.6.64.6" "10.0.0.1"];
     };
   };
 
   system.autoUpgrade = {
-	enable = true;
-	dates = "02:00";
+    enable = true;
+    dates = "02:00";
   };
 
   # Or disable the firewall altogether.
@@ -190,5 +193,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
