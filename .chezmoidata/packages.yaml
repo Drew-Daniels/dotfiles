@@ -130,7 +130,6 @@ packages:
       - 'tailwindcss-language-server'
       - 'terraform-ls'
       - 'tflint'
-      - 'typescript-language-server'
       - 'typos-lsp'
       # TODO: Formula
       # - 'vim-language-server'
