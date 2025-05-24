@@ -191,7 +191,6 @@
     tflint
     emmet-language-server
     python311Packages.python-lsp-server
-    typescript-language-server
     vim-language-server
     clojure-lsp
   ];

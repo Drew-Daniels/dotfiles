@@ -166,10 +166,6 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("ts_ls", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("typos_lsp", {
 			capabilities = capabilities,
 			filetypes = { "markdown", "norg" },
@@ -221,7 +217,6 @@ return {
 			"tailwindcss",
 			"terraformls",
 			"tflint",
-			"ts_ls",
 			"typos_lsp",
 			"vimls",
 			"vue_ls",
