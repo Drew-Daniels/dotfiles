@@ -167,7 +167,6 @@
     # TODO: cucumber_language_server
     # TODO: prismals
     # TODO: smithy_ls
-    # TODO: sqlls
     # TODO: Need to do more research on seeing whether or not it makes sense to just use nil_ls, nixd, or both
     # nixd
     basedpyright
@@ -184,7 +183,7 @@
     terraform-ls
     typos-lsp
     bash-language-server
-    docker-ls
+    dockerfile-language-server-nodejs
     lua-language-server
     marksman
     yaml-language-server
@@ -193,6 +192,7 @@
     python311Packages.python-lsp-server
     vim-language-server
     clojure-lsp
+    sqls
   ];
 
   # DOTFILES

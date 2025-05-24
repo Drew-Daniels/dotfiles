@@ -24,9 +24,6 @@ return {
 		-- vim.lsp.config("cucumber_language_server", {
 		-- 	capabilities = capabilities,
 		-- })
-		-- vim.lsp.config("docker_compose_language_service", {
-		-- 	capabilities = capabilities,
-		-- })
 
 		-- vim.lsp.config("emmet_language_server", {
 		-- 	capabilities = capabilities,
@@ -123,6 +120,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("docker_compose_language_service", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("eslint", {
 			capabilities = capabilities,
 			settings = {
@@ -160,7 +161,7 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("sqlls", {
+		vim.lsp.config("sqls", {
 			capabilities = capabilities,
 		})
 
@@ -207,11 +208,11 @@ return {
 			-- "prismals",
 			-- "smithy_ls",
 			-- "vimls",
+			-- "cucumber_language_server",
 			"bashls",
 			"basedpyright",
 			"clojure_lsp",
 			"cssls",
-			"cucumber_language_server",
 			"denols",
 			"dockerls",
 			"eslint",
@@ -220,7 +221,7 @@ return {
 			"lua_ls",
 			"marksman",
 			"ruff",
-			"sqlls",
+			"sqls",
 			"standardrb",
 			"tailwindcss",
 			"terraformls",
