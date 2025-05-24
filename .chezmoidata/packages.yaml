@@ -80,6 +80,18 @@ packages:
       - 'cormacrelf/tap/dark-notify'
       - 'localstack/tap/localstack-cli'
       - 'pulumi/tap/pulumi'
+      # formatters
+      - 'ruff'
+      - 'basedpyright'
+      - 'clang-format'
+      - 'jsonlint'
+      - 'stylua'
+      - 'prettierd'
+      - 'nxls'
+      - 'shfmt'
+      - 'shellcheck'
+      - 'reformat-gherkin'
+      - 'yamlfmt'
       no_quarantine_casks:
       - 'wine-stable'
       casks:
