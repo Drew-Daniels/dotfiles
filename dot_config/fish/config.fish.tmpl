@@ -42,7 +42,7 @@ if status is-interactive
 
     set -gx EDITOR nvim
     set -gx VISUAL nvim
-    set -gx PROJECTS_DIR "$home/projects"
+    set -gx PROJECTS_DIR "$HOME/projects"
 
     # fish
     # turn off greeting
@@ -56,8 +56,8 @@ if status is-interactive
     fish_add_path /opt/nvim-linux-x86_64/bin
     {{ end }}
 
-    set -gx VIMCONFIG "$home/.config/nvim"
-    set -gx VIMDATA "$home/.local/share/nvim"
+    set -gx VIMCONFIG "$HOME/.config/nvim"
+    set -gx VIMDATA "$HOME/.local/share/nvim"
 
     # pnpm
     fish_add_path $PNPM_HOME
@@ -83,11 +83,11 @@ if status is-interactive
     alias ts="mux start project"
 
     # vcpkg
-    set -gx VCPKG_ROOT "$projects_dir/vcpkg"
-    fish_add_path "$vcpkg_root"
+    set -gx VCPKG_ROOT "$PROJECTS_DIR/vcpkg"
+    fish_add_path "$VCPKG_ROOT"
 
     # solargraph
-    set -gx SOLARGRAPH_GLOBAL_CONFIG "$home/.config/solargraph/config.yml"
+    set -gx SOLARGRAPH_GLOBAL_CONFIG "$HOME/.config/solargraph/config.yml"
 
     # pip fish completion start
     function __fish_complete_pip
