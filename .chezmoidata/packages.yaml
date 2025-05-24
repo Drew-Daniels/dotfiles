@@ -80,7 +80,7 @@ packages:
       - 'cormacrelf/tap/dark-notify'
       - 'localstack/tap/localstack-cli'
       - 'pulumi/tap/pulumi'
-      # formatters
+      # FORMATTERS
       - 'ruff'
       - 'basedpyright'
       - 'clang-format'
@@ -94,6 +94,47 @@ packages:
       # TODO: Create formula for this?
       # - 'reformat-gherkin'
       - 'yamlfmt'
+      # LSPs
+      - 'bash-language-server'
+      # TODO: Figure the right formula for this
+      # - 'clangd'
+      # NOTE: HTML, CSS, ESLint, and JSON LSPs
+      - 'vscode-language-servers-extracted'
+      # - 'cssmodules-language-server'
+      # TODO: Create a formula for this
+      # - 'cucumber-language-server'
+      # TODO: Create a formula for this
+      # - 'docker-compose-language-service'
+      - 'dockerfile-language-server'
+      # TODO: Create a formula for this
+      # - 'emmet_language_server'
+      - 'lua-language-server'
+      - 'marksman'
+      # TODO: Formula
+      # - 'mutt-language-server'
+      # TODO: Formula
+      # - 'phpactor'
+      # TODO: Formula
+      # - 'postgrestools'
+      # TODO: Formula
+      # - 'prisma-language-server'
+      # TODO: Formula
+      # - 'python-lsp-server'
+      # TODO: Formula
+      # - 'smithy-language-server'
+      - 'sql-language-server'
+      # TODO: Formula
+      # - 'standardrb'
+      - 'tailwindcss-language-server'
+      - 'terraform-ls'
+      - 'tflint'
+      - 'typescript-language-server'
+      - 'typos-lsp'
+      # TODO: Formula
+      # - 'vim-language-server'
+      - 'vue-language-server'
+      - 'yaml-language-server'
+      - 'clojure-lsp'
       no_quarantine_casks:
       - 'wine-stable'
       casks:
