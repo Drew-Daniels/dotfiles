@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Figure out why NixOS is not remembering WiFi passwords when using `sway` - likely because whatever KDE's default password manager is not being launched on sway startup like it is when using Plasma
 - [ ] Look at migrating from `brew` as package manager on MacOS to `nix`:
   - https://github.com/nix-darwin/nix-darwin
   - https://juliu.is/tidying-your-home-with-nix/
