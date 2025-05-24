@@ -137,6 +137,8 @@
     unzip
     vim
     yamlfmt
+    yarn
+    pnpm
     # screenshot functionality (or slurp)
     # grim
     # notification system
