@@ -33,7 +33,7 @@ return {
 			-- "sqlls",
 			"standardrb",
 			"smithy_ls",
-			"marksman",
+			-- "marksman",
 			"mutt-language-server",
 			-- "tailwindcss",
 			-- "terraformls",
