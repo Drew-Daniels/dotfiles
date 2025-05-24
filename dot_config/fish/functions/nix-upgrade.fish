@@ -1,3 +1,3 @@
-function nix-upgrade -d "Upgrades NixOS"
-    command sudo nixos-rebuild switch --upgrade -I nixos-config=$HOME/.config/nixos/configuration.nix
+function nix-upgrade -d "Builds and switches to latest NixOS Derivation using flakes"
+    command sudo nixos-rebuild switch --flake "$HOME/.config/nixos" --upgrade
 end
