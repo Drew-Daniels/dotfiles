@@ -23,6 +23,7 @@ if status is-interactive
 
             # mise
             /opt/homebrew/bin/mise activate fish | source
+            set -gx MISE_ENV="development"
 
             # TODO: Figure out how to do this on linux
             # theme
@@ -41,6 +42,7 @@ if status is-interactive
 
     set -gx EDITOR nvim
     set -gx VISUAL nvim
+    set -gx PROJECTS_DIR "$home/projects"
 
     # fish
     # turn off greeting
@@ -49,16 +51,22 @@ if status is-interactive
     # general
     alias cls "printf '\33c\e[3J'"
 
-    {{ if eq .chezmoi.os "linux" }}
     # neovim
+    {{ if eq .chezmoi.os "linux" }}
     fish_add_path /opt/nvim-linux-x86_64/bin
     {{ end }}
 
+    set -gx VIMCONFIG "$home/.config/nvim"
+    set -gx VIMDATA "$home/.local/share/nvim"
+
     # pnpm
-    fish_add_path PNPM_HOME
+    fish_add_path $PNPM_HOME
 
     # starship
     starship init fish | source
+
+    # fzf
+    set -gx FZF_DEFAULT_COMMAND="fd --type f"
 
     # fzf.fish
     fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
@@ -70,8 +78,16 @@ if status is-interactive
     alias tk="tmux kill-session -t"
 
     # tmuxinator
+    set -gx MUX_LAYOUT="main-horizontal"
     alias mux="tmuxinator"
     alias ts="mux start project"
+
+    # vcpkg
+    set -gx VCPKG_ROOT "$projects_dir/vcpkg"
+    fish_add_path "$vcpkg_root"
+
+    # solargraph
+    set -gx SOLARGRAPH_GLOBAL_CONFIG "$home/.config/solargraph/config.yml"
 
     # pip fish completion start
     function __fish_complete_pip
