@@ -23,7 +23,7 @@ if status is-interactive
 
             # mise
             /opt/homebrew/bin/mise activate fish | source
-            set -gx MISE_ENV="development"
+            set -gx MISE_ENV development
 
             # TODO: Figure out how to do this on linux
             # theme
@@ -66,7 +66,7 @@ if status is-interactive
     starship init fish | source
 
     # fzf
-    set -gx FZF_DEFAULT_COMMAND="fd --type f"
+    set -gx FZF_DEFAULT_COMMAND "fd --type f"
 
     # fzf.fish
     fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
@@ -78,7 +78,7 @@ if status is-interactive
     alias tk="tmux kill-session -t"
 
     # tmuxinator
-    set -gx MUX_LAYOUT="main-horizontal"
+    set -gx MUX_LAYOUT main-horizontal
     alias mux="tmuxinator"
     alias ts="mux start project"
 
