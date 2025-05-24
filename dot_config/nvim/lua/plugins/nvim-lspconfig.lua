@@ -189,11 +189,6 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("vuels", {
-			capabilities = capabilities,
-			cmd = { "vue-language-server", "--stdio" },
-		})
-
 		vim.lsp.config("yamlls", {
 			capabilities = capabilities,
 		})
@@ -228,7 +223,6 @@ return {
 			"tflint",
 			"typos_lsp",
 			"vue_ls",
-			"vuels",
 			"yamlls",
 		})
 	end,
