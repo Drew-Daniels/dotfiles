@@ -87,6 +87,7 @@ packages:
       - 'jsonlint'
       - 'stylua'
       - 'prettierd'
+      - 'eslint_d'
       # TODO: Create a brew formula for this?
       # - 'nxls'
       - 'shfmt'

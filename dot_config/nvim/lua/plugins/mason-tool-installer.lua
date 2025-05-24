@@ -26,7 +26,7 @@ return {
 			"docker_compose_language_service",
 			-- "dockerls",
 			"emmet_language_server",
-			-- "eslint",
+			-- "eslint_d",
 			-- "html",
 			-- "jsonls",
 			-- "lua_ls",
