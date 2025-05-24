@@ -3,20 +3,20 @@ return {
 	opts = {
 		ensure_installed = {
 			-- formatters (managed w/ mason-tool-installer)
-			"ruff",
-			"basedpyright",
+      -- NOTE: Not installing through Mason since I'll want to install formatters through whatever primary package manager I'm using
+			-- "ruff",
+			-- "basedpyright",
 			-- TODO: Install clang-format on NixOS
-			"clang-format",
-			"jsonlint",
-      -- NOTE: Uninstalling stylua so that it can be installed using PM instead (Nix or Brew)
+			-- "clang-format",
+			-- "jsonlint",
 			-- "stylua",
-			"prettierd",
-			"nxls",
-			"shfmt",
-			"shellcheck",
-			"sqlfmt",
-			"reformat-gherkin",
-			"yamlfmt",
+			-- "prettierd",
+			-- "nxls",
+			-- "shfmt",
+			-- "shellcheck",
+			-- "sqlfmt",
+			-- "reformat-gherkin",
+			-- "yamlfmt",
 			-- LSPs (managed w/ mason-lspconfig)
 			"bashls",
 			"clangd",
