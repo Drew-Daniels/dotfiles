@@ -8,7 +8,8 @@ return {
 			-- TODO: Install clang-format on NixOS
 			"clang-format",
 			"jsonlint",
-			"stylua",
+      -- NOTE: Uninstalling stylua so that it can be installed using PM instead (Nix or Brew)
+			-- "stylua",
 			"prettierd",
 			"nxls",
 			"shfmt",
