@@ -169,6 +169,7 @@ QOL Updates:
   - https://juliu.is/tidying-your-home-with-nix/
 - [ ] Look into configuring bluetooth on NixOS: https://nixos.wiki/wiki/Bluetooth
 - [ ] Look into managing neovim configuration using one of these plugins:
+  - [nixPatch.nvim](https://github.com/NicoElbers/nixPatch-nvim)
   - [nixCats](https://github.com/BirdeeHub/nixCats-nvim?tab=readme-ov-file#intro)
   - [nixvim](https://github.com/nix-community/nixvim)
   - [nvf](https://github.com/NotAShelf/nvf)
