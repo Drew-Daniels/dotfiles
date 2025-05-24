@@ -101,7 +101,7 @@ packages:
       # TODO: Figure the right formula for this
       # - 'clangd'
       # NOTE: HTML, CSS, ESLint, and JSON LSPs
-      - 'vscode-language-servers-extracted'
+      - 'vscode-langservers-extracted'
       # - 'cssmodules-language-server'
       # TODO: Create a formula for this
       # - 'cucumber-language-server'
