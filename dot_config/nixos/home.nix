@@ -129,7 +129,9 @@
     signal-desktop
     swayr
     swayrbar
+    # TODO: Create package
     # tidal_dl_ng
+    tidal-hifi
     tmux
     tmuxinator
     tree-sitter
