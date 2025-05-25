@@ -54,7 +54,6 @@
     cmusfm
     dbeaver-bin
     delta
-    deno
     docker
     dust
     drawio
@@ -67,12 +66,12 @@
     gh
     git
     git-credential-oauth
-    go
     google-cloud-sdk
     glab
     gparted
     ueberzugpp
     hurl
+    # TODO: Create package
     # usbimager
     imagemagick
     josm
@@ -80,44 +79,34 @@
     # Create an entry for this
     # keep-presence
     kiwix
-    # wait to install until a later version comes out without the security vulnerabilities that are inherent in this version
-    # jitsi-meet
     jq
     jless
     nodePackages.jsonlint
     gcc
     obs-studio
     localstack
-    # google-chrome
-    # vivaldi
-    # firefox
     librewolf
     lsd
-    lua51Packages.lua
     lua51Packages.tree-sitter-norg
     luajitPackages.luarocks
     gnumake42
-    maven
     mergiraf
     mullvad
     neovim
     nix-index
-    nodejs_22
     nmap
     pavucontrol
     plocate
-    python311
     prettierd
+    # TODO: Figure out what was wrong with this - believe it was another electron build issue?
     # protonmail-bridge
     protonmail-desktop
     restic
     resticprofile
     ripgrep
-    rustup
     # TODO: Create package for reformat-gherkin
     eslint_d
     cljfmt
-    ruby
     starship
     shellcheck
     python313Packages.sqlfmt
@@ -126,6 +115,7 @@
     strawberry
     speedtest-cli
     standardnotes
+    # sshx
     # TODO: Create package
     # steamrip
     signal-desktop
@@ -142,8 +132,6 @@
     unzip
     vim
     yamlfmt
-    yarn
-    pnpm
     # screenshot functionality (or slurp)
     # grim
     # notification system
@@ -154,9 +142,8 @@
     wl-clipboard
     wireguard-tools
     yazi
-    zig
     zoxide
-    zulu17
+    # zulu17
     zulip
     zulip-term
     nerd-fonts.jetbrains-mono
