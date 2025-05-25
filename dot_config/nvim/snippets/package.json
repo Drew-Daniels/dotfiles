@@ -47,6 +47,10 @@
         "path": "./javascript.json"
       },
       {
+        "language": "nix",
+        "path": "./nix.json"
+      },
+      {
         "language": "html",
         "path": "./html.json"
       },
