@@ -193,6 +193,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("nil_ls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.enable({
 			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
 			-- "clangd",
@@ -224,6 +228,7 @@ return {
 			"typos_lsp",
 			"vue_ls",
 			"yamlls",
+			"nil_ls",
 		})
 	end,
 }
