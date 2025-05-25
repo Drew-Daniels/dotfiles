@@ -233,18 +233,23 @@
 
   # PROGRAMS
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+  };
   # Defaults to GnuPG
   programs.gpg = {
     enable = true;
   };
 
+  # TODO: Figure out how to source nix-direnv logic, without letting home-manager clobber my ~/.bashrc
   programs = {
     direnv = {
       enable = true;
       enableBashIntegration = true;
       nix-direnv.enable = true;
     };
+
+    # bash.enable = true;
   };
 
   programs.git-credential-oauth.enable = true;
