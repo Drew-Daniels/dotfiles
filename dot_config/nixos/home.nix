@@ -126,12 +126,15 @@
     strawberry
     speedtest-cli
     standardnotes
+    # TODO: Create package
+    # steamrip
     signal-desktop
     swayr
     swayrbar
     # TODO: Create package
     # tidal_dl_ng
-    tidal-hifi
+    # NOTE: tidal-hifi seems broken - freezes
+    # tidal-hifi
     tmux
     tmuxinator
     tree-sitter
