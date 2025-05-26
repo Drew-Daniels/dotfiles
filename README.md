@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into self-hosting GitLab instance
 - [ ] Look into updating NixOS configuration to configure WiFi autoconnect using something like this: https://tasiaiso.vulpecula.zone/posts/nixos-wifi-agenix/
 - [ ] Look into using [impermanence](https://github.com/nix-community/impermanence)
 - [ ] Figure out why NixOS is not remembering WiFi passwords when using `sway` - likely because whatever KDE's default password manager is not being launched on sway startup like it is when using Plasma
