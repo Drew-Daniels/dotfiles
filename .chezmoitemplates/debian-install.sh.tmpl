@@ -1426,12 +1426,9 @@ if uninstalled stylua; then
   cargo install stylua --locked
 fi
 
-# clangd
+# TODO: clangd - install from GitHub Releases
 # https://clangd.llvm.org/installation
-# TODO: Install latest release from GitHub instead
-if uninstalled clangd; then
-  sudo apt install -y clangd-19
-fi
+# https://github.com/clangd/clangd/releases/tag/19.1.2
 
 # microsoft-compose-language-service
 # https://github.com/microsoft/compose-language-service/releases
@@ -1484,6 +1481,87 @@ fi
 # https://github.com/astral-sh/ruff
 if uninstalled ruff; then
   pip install ruff
+fi
+
+if uninstalled tailwindcss-language-server; then
+  npm i -g @tailwindcss/language-server
+fi
+
+# TODO: terraform-ls
+# https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#linux
+
+# TODO: typos-lsp
+# https://github.com/tekumara/typos-lsp/releases
+
+# bash-language-server
+# https://github.com/bash-lsp/bash-language-server
+if uninstalled bash-language-server; then
+  npm i -g bash-language-server
+fi
+
+# dockerfile-language-server-nodejs
+if uninstalled dockerfile-language-server-nodejs; then
+  npm i -g dockerfile-language-server-nodejs
+fi
+
+# TODO: lua-language-server
+# https://github.com/LuaLS/lua-language-server/releases/tag/3.14.0
+
+# TODO: marksman
+# https://github.com/artempyanykh/marksman/releases
+
+# yaml-language-server
+# https://github.com/redhat-developer/yaml-language-server
+if uninstalled yaml-language-server; then
+  npm i -g yaml-language-server
+fi
+
+# TODO: tflint
+# https://github.com/terraform-linters/tflint/releases/tag/v0.58.0
+
+# emmet-language-server
+# https://github.com/olrtg/emmet-language-server
+if uninstalled emmet-language-server; then
+  npm i -g @olrtg/emmet-language-server
+fi
+
+# python-lsp-server
+# https://github.com/python-lsp/python-lsp-server
+if uninstalled pylsp; then
+  pip install python-lsp-server
+fi
+
+# vim-language-server
+# https://github.com/iamcco/vim-language-server
+if uninstalled vim-language-server; then
+  npm i -g vim-language-server
+fi
+
+# sql-language-server
+# https://github.com/sqls-server/sqls
+if uninstalled sqls; then
+  go install github.com/sqls-server/sqls@latest
+fi
+
+# TODO: clojure-lsp
+# https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.04.23-18.16.46
+
+# cssmodules-language-server
+# https://github.com/antonk52/cssmodules-language-server
+if uninstalled cssmodules-language-server; then
+  npm i -g cssmodules-language-server
+fi
+
+# cucumber-language-server
+# https://github.com/cucumber/language-server
+if uninstalled cucumber-language-server; then
+  npm i -g @cucumber/language-server
+fi
+
+# prisma-language-server
+# https://www.npmjs.com/package/@prisma/language-server
+if uninstalled prisma-language-server; then
+  npm i -g @prisma/language-server
 fi
 
 # cleanup
