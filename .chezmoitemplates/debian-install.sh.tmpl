@@ -1426,9 +1426,16 @@ if uninstalled stylua; then
   cargo install stylua --locked
 fi
 
-# TODO: clangd - install from GitHub Releases
+# clangd - install from GitHub Releases
 # https://clangd.llvm.org/installation
-# https://github.com/clangd/clangd/releases/tag/19.1.2
+if uninstalled clangd; then
+  latest=$(get_latest_gh_release_tag "clangd" "clangd")
+  base_url="https://github.com/clangd/clangd/releases/download/${latest}"
+  zip="clangd-linux-${latest}.zip"
+  curl -LO "$base_url/$zip"
+  unzip "$zip"
+  sudo cp "./clangd_${latest}/bin/clangd" /usr/local/bin/clangd
+fi
 
 # microsoft-compose-language-service
 # https://github.com/microsoft/compose-language-service/releases
