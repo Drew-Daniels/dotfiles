@@ -1433,6 +1433,21 @@ if uninstalled clangd; then
   sudo apt install -y clangd-19
 fi
 
+# microsoft-compose-language-service
+# https://github.com/microsoft/compose-language-service/releases
+# TODO: Create step to upgrade
+latest=$(get_latest_gh_release_tag "microsoft" "compose-language-service" | cut -d '-' -f5 | sed 's/v//g')
+if uninstalled docker-compose-langserver; then
+  base_url="https://github.com/microsoft/compose-language-service/releases/download/microsoft-compose-language-service-v${latest}/"
+  tgz="microsoft-compose-language-service-${latest}.tgz"
+  curl -sLO "$base_url/$tgz"
+  mkdir extracted
+  tar -xzf "$tgz" -C extracted
+  sudo cp ./extracted/package/bin/docker-compose-langserver /usr/local/bin/docker-compose-langserver
+  sudo chmod +x /usr/local/bin/docker-compose-langserver
+  rm -rf extracted "$tgz"
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
