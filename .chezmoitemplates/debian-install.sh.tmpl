@@ -1456,6 +1456,18 @@ if uninstalled vscode-html-language-server; then
   npm i -g vscode-langservers-extracted
 fi
 
+# vue-language-server
+# https://www.npmjs.com/package/@vue/language-server
+if uninstalled vue-language-server; then
+  npm i -g @vue/language-server
+fi
+
+# basedpyright
+# https://github.com/DetachHead/basedpyright
+if uninstalled basedpyright; then
+  pip install basedpyright
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
