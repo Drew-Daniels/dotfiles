@@ -1587,8 +1587,28 @@ if uninstalled sqls; then
   go install github.com/sqls-server/sqls@latest
 fi
 
-# TODO: clojure-lsp
+# clojure-lsp
 # https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.04.23-18.16.46
+if uninstalled clojure-lsp; then
+  latest=$(get_latest_gh_release_tag "clojure-lsp" "clojure-lsp")
+  base_url="https://github.com/clojure-lsp/clojure-lsp/releases/download/${latest}"
+  zip="clojure-lsp-native-linux-amd64.zip"
+  sha="clojure-lsp-native-linux-amd64.zip.sha256"
+
+  curl -L --remote-name-all \
+    "$base_url/$zip" \
+    "$base_url/$sha" \
+
+  download_sha=$(sha256sum "$zip" | cut -d ' ' -f1)
+  verified_sha=$(cat "$sha")
+
+  if [ "$download_sha" = "$verified_sha" ]; then
+    unzip "$zip"
+    sudo cp clojure-lsp /usr/local/bin/
+    rm "$zip" "$sha" clojure-lsp
+  fi
+
+fi
 
 # cssmodules-language-server
 # https://github.com/antonk52/cssmodules-language-server
