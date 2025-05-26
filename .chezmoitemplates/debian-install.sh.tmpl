@@ -1426,6 +1426,13 @@ if uninstalled stylua; then
   cargo install stylua --locked
 fi
 
+# clangd
+# https://clangd.llvm.org/installation
+# TODO: Install latest release from GitHub instead
+if uninstalled clangd; then
+  sudo apt install -y clangd-19
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
