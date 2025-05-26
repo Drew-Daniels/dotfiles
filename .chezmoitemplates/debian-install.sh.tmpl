@@ -1533,7 +1533,35 @@ if uninstalled yaml-language-server; then
 fi
 
 # TODO: tflint
-# https://github.com/terraform-linters/tflint/releases/tag/v0.58.0
+# https://github.com/terraform-linters/tflint
+if uninstalled tflint; then
+  latest=$(get_latest_gh_release_tag "terraform-linters" "tflint")
+  base_url="https://github.com/terraform-linters/tflint/releases/download/${latest}"
+  zip="tflint_linux_amd64.zip"
+  checksums="checksums.txt"
+  pem="checksums.txt.pem"
+  sig="checksums.txt.keyless.sig"
+
+  curl -L --remote-name-all \
+    "$base_url/$zip" \
+    "$base_url/$checksums" \
+    "$base_url/$pem" \
+    "$base_url/$sig"
+
+  if cosign verify-blob --certificate=checksums.txt.pem --signature=checksums.txt.keyless.sig --certificate-identity-regexp="^https://github.com/terraform-linters/tflint" --certificate-oidc-issuer=https://token.actions.githubusercontent.com checksums.txt; then
+   if sha256sum --ignore-missing -c checksums.txt; then
+    unzip "$zip"
+    sudo cp tflint /usr/local/bin/
+    rm "$zip" "$checksums" "$pem" "$sig" tflint
+  else
+    echo "Checksum verification failed for tflint"
+    exit 1
+   fi
+  else
+    echo "Signature verification failed for tflint"
+    exit 1
+  fi
+fi
 
 # emmet-language-server
 # https://github.com/olrtg/emmet-language-server
