@@ -1448,6 +1448,14 @@ if uninstalled docker-compose-langserver; then
   rm -rf extracted "$tgz"
 fi
 
+# vscode-langservers-extracted
+# https://github.com/hrsh7th/vscode-langservers-extracted
+# NOTE: Only installing this globally using NPM because this is not available through a binary/debian packages.
+# TODO: Add step to upgrade
+if uninstalled vscode-html-language-server; then
+  npm i -g vscode-langservers-extracted
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
