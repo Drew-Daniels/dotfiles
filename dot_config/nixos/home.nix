@@ -140,6 +140,7 @@
     # notification system
     # mako
     # TODO: Make an issue with this wofi nixpkg - crashes if 'wofi' not installed
+    weechat
     wofi
     wget
     wl-clipboard
