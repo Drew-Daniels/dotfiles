@@ -1468,6 +1468,18 @@ if uninstalled basedpyright; then
   pip install basedpyright
 fi
 
+# htmlbeautifier
+# https://github.com/threedaymonk/htmlbeautifier
+if uninstalled htmlbeautifier; then
+  gem install htmlbeautifier
+fi
+
+# standard
+# https://duckduckgo.com/?q=standard+ruby+github&ia=web
+if uninstalled standard; then
+  gem install standard
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
