@@ -82,6 +82,10 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 eval "$(op completion zsh)"
 compdef _op op
 
+# direnv
+eval "$(direnv hook zsh)"
+
+# WORK
 {{- if eq .homeOrWork "work" -}}
 # rancher desktop
 export PATH="$PATH:$HOME/.rd/bin"
@@ -100,11 +104,4 @@ export PATH="$PATH:$(composer global config bin-dir --absolute --quiet)"
 #   export JIRA_API_EMAIL="${secrets[2]}"
 #   export JIRA_API_TOKEN="${secrets[3]}"
 # fi
-
-# drawio
-alias draw.io="/Applications/draw.io.app/Contents/MacOS/draw.io"
-
-# jless
-alias jless="jless --relative"
-
 {{- end -}}

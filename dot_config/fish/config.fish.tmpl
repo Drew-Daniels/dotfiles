@@ -102,6 +102,7 @@ if status is-interactive
     # pip fish completion end
 
     # jless
+    alias jless="jless --relative"
     alias yless="jless --yaml"
 
     # zoxide
@@ -175,4 +176,7 @@ if status is-interactive
 
     # drawio
     alias draw.io "/Applications/draw.io.app/Contents/MacOS/draw.io"
+
+    # direnv
+    direnv hook fish | source
 end

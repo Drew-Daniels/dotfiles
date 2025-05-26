@@ -33,6 +33,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    age
     alacritty
     alejandra
     awscli2
@@ -107,6 +108,7 @@
     # TODO: Create package for reformat-gherkin
     eslint_d
     cljfmt
+    sops
     starship
     shellcheck
     python313Packages.sqlfmt

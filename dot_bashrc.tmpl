@@ -46,3 +46,6 @@ alias dpkg_export='dpkg -l | grep ^ii | awk '\''{print $2}'\'' > ~/.config/apt/p
 alias nix-switch="sudo nixos-rebuild switch -I nixos-config=$HOME/.config/nixos/configuration.nix"
 alias nix-upgrade="sudo nixos-rebuild switch --upgrade -I nixos-config=$HOME/.config/nixos/configuration.nix"
 {{ end -}}
+
+# direnv
+eval "$(direnv hook bash)"
