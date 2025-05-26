@@ -7,7 +7,3 @@ tree-sitter-cli
 yarn
 nx
 @nestjs/cli
-basedpyright
-vscode-langservers-extracted
-@vue/language-server
-@microsoft/compose-language-service
