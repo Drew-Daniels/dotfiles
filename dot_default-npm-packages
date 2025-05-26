@@ -7,6 +7,3 @@ tree-sitter-cli
 yarn
 nx
 @nestjs/cli
-cssmodules-language-server
-@cucumber/language-server
-@prisma/language-server
