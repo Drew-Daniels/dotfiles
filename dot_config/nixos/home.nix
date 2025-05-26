@@ -148,6 +148,7 @@
     wget
     wl-clipboard
     wireguard-tools
+    rusty-diceware
     yazi
     zoxide
     # zulu17
