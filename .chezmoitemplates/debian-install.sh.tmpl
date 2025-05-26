@@ -1420,6 +1420,12 @@ if uninstalled phpactor; then
   sudo mv phpactor.phar /usr/local/bin/phpactor
 fi
 
+# stylua
+# https://github.com/JohnnyMorganz/StyLua
+if uninstalled stylua; then
+  cargo install stylua --locked
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
