@@ -166,6 +166,7 @@ packages:
       brews:
       - 'neomutt'
       - 'newsboat'
+      - 'weechat'
       no_quarantine_casks: []
       casks:
       - 'alex313031-thorium'
