@@ -76,6 +76,7 @@
     # usbimager
     imagemagick
     josm
+    just
     openvpn
     # Create an entry for this
     # keep-presence
