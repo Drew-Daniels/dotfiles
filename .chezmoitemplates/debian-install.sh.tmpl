@@ -1517,8 +1517,14 @@ if uninstalled lua-language-server; then
   rm -rf "$tgz" extracted
 fi
 
-# TODO: marksman
+# marksman
 # https://github.com/artempyanykh/marksman/releases
+if uninstalled marksman; then
+  latest=$(get_latest_gh_release_tag "artempyanykh" "marksman")
+  curl -LO "https://github.com/artempyanykh/marksman/releases/download/${latest}/marksman-linux-x64"
+  chmod +x marksman-linux-x64
+  sudo mv marksman-linux-x64 /usr/local/bin/marksman
+fi
 
 # yaml-language-server
 # https://github.com/redhat-developer/yaml-language-server
