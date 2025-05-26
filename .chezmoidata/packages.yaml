@@ -40,7 +40,6 @@ packages:
       - 'fish'
       - 'fzf'
       - 'gh'
-      - 'tesseract'
       - 'ghostscript'
       - 'git'
       - 'git-credential-oauth'
