@@ -97,7 +97,9 @@
     maigret
     mergiraf
     mullvad
+    neomutt
     neovim
+    newsboat
     nix-index
     nmap
     pavucontrol
