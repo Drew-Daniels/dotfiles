@@ -80,6 +80,7 @@
     openvpn
     # Create an entry for this
     # keep-presence
+    keepassxc
     kiwix
     jq
     jless
@@ -92,6 +93,8 @@
     lua51Packages.tree-sitter-norg
     luajitPackages.luarocks
     gnumake42
+    sherlock
+    maigret
     mergiraf
     mullvad
     neovim
