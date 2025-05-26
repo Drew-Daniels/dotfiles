@@ -175,6 +175,7 @@
     vue-language-server
     ruff
     nil
+    nixpacks
     phpactor
     tailwindcss-language-server
     terraform-ls
