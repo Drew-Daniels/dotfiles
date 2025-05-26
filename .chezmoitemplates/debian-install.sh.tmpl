@@ -1497,8 +1497,17 @@ fi
 # TODO: terraform-ls
 # https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#linux
 
-# TODO: typos-lsp
+# typos-lsp
 # https://github.com/tekumara/typos-lsp/releases
+if uninstalled typos-lsp; then
+  latest=$(get_latest_gh_release_tag "tekumara" "typos-lsp")
+  tgz="typos-lsp-${latest}-x86_64-unknown-linux-gnu.tar.gz"
+  curl -LO "https://github.com/tekumara/typos-lsp/releases/download/${latest}/$tgz"
+  mkdir extracted
+  tar -xzf "$tgz" -C extracted
+  sudo cp extracted/typos-lsp /usr/local/bin/typos-lsp
+  rm -rf extracted "$tgz"
+fi
 
 # bash-language-server
 # https://github.com/bash-lsp/bash-language-server
