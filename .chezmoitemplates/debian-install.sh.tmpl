@@ -1504,8 +1504,18 @@ if uninstalled dockerfile-language-server-nodejs; then
   npm i -g dockerfile-language-server-nodejs
 fi
 
-# TODO: lua-language-server
+# lua-language-server
 # https://github.com/LuaLS/lua-language-server/releases/tag/3.14.0
+if uninstalled lua-language-server; then
+  latest=$(get_latest_gh_release_tag "LuaLS" "lua-language-server")
+  base_url="https://github.com/LuaLS/lua-language-server/releases/download/${latest}"
+  tgz="lua-language-server-${latest}-linux-x64.tar.gz"
+  curl -LO "$base_url/$tgz"
+  mkdir extracted
+  tar -xzf "$tgz" -C extracted
+  sudo cp ./extracted/bin/lua-language-server /usr/local/bin/
+  rm -rf "$tgz" extracted
+fi
 
 # TODO: marksman
 # https://github.com/artempyanykh/marksman/releases
