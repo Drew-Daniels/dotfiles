@@ -584,6 +584,26 @@ else
   echo "Already installed imagemagick"
 fi
 
+verify_fingerprint() {
+  cat "$1"
+  printf "\n"
+
+  while true; do
+    read -p "Does the fingerprint printed above match the one GPG prnted previously?" yesno
+    case $yesno in
+    [Yy]*)
+      # Continue...
+      break
+      ;;
+    [Nn]*)
+      echo "Exiting: Fingerprint does not match"
+      exit
+      ;;
+    *) echo "Answer either yes or no!" ;;
+    esac
+  done
+}
+
 approve_script_execution() {
   cat "$1"
   printf "\n"
@@ -1494,8 +1514,25 @@ if uninstalled tailwindcss-language-server; then
   npm i -g @tailwindcss/language-server
 fi
 
-# TODO: terraform-ls
+# terraform-ls
 # https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#linux
+if uninstalled terraform-ls; then
+  # Download signing key to a new keyring
+  wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  # Verify key fingerprint
+  # TODO: Verify fingerprint matches downloaded key fingerprint in a more programmatic way
+  gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+  verified_fingerprint="798A EC65 4E5C 1542 8C8E 42EE AA16 FCBC A621 E701"
+
+  verify_fingerprint "$verified_fingerprint"
+
+  # Add HashiCorpo repo
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+  sudo apt update
+
+  sudo apt install terraform-ls
+fi
 
 # typos-lsp
 # https://github.com/tekumara/typos-lsp/releases
