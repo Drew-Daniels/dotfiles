@@ -1406,6 +1406,12 @@ if uninstalled bemenu; then
   sudo apt install -y bemenu
 fi
 
+# direnv
+# https://direnv.net/docs/installation.html
+if uninstalled direnv; then
+  sudo apt install -y direnv
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
