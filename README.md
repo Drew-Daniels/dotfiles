@@ -164,6 +164,8 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Declarative secure boot for NixOS: https://github.com/nix-community/lanzaboote
+- [ ] NixOS Image builder: https://github.com/nix-community/nixos-generators
 - [ ] Look into self-hosting GitLab instance
 - [ ] Look into updating NixOS configuration to configure WiFi autoconnect using something like this: https://tasiaiso.vulpecula.zone/posts/nixos-wifi-agenix/
   - https://github.com/yaxitech/ragenix
