@@ -166,6 +166,7 @@ QOL Updates:
 
 - [ ] Look into self-hosting GitLab instance
 - [ ] Look into updating NixOS configuration to configure WiFi autoconnect using something like this: https://tasiaiso.vulpecula.zone/posts/nixos-wifi-agenix/
+  - https://github.com/yaxitech/ragenix
   - NOTE: Could also look into using something like this: https://github.com/Mic92/sops-nix
   - OR: https://github.com/ryantm/agenix?tab=readme-ov-file#tutorial
 - [ ] Look into using [impermanence](https://github.com/nix-community/impermanence)
