@@ -252,9 +252,6 @@ return {
 
 		require("ts_context_commentstring").setup()
 
-		-- custom file associations
-		require("vim.treesitter.language").register("http", "hurl")
-
 		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
 		-- Repeat movement with ; and ,
@@ -278,7 +275,7 @@ return {
 			ts_repeat_move.repeat_last_move({ forward = true, start = false, desc = "Repeat last move" })
 		end)
 	end,
-  -- https://mise.jdx.dev/mise-cookbook/neovim.html
+	-- https://mise.jdx.dev/mise-cookbook/neovim.html
 	init = function()
 		require("vim.treesitter.query").add_predicate("is-mise?", function(_, _, bufnr, _)
 			local filepath = vim.api.nvim_buf_get_name(tonumber(bufnr) or 0)
