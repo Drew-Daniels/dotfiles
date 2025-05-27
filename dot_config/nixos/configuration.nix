@@ -140,6 +140,9 @@
   # };
 
   # List services that you want to enable:
+  # TODO: Need to do some hackery to get this to work: https://discourse.nixos.org/t/thinkpad-x270-fingerprint-reader-support/24177
+  # Have the same sensor model as OP
+  # services.fprintd.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

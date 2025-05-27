@@ -144,6 +144,8 @@
     # grim
     # notification system
     # mako
+    usbutils
+    pciutils
     # TODO: Make an issue with this wofi nixpkg - crashes if 'wofi' not installed
     weechat
     wofi
