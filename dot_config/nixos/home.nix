@@ -55,7 +55,6 @@
     cmusfm
     dbeaver-bin
     delta
-    docker
     dust
     drawio
     electrum
