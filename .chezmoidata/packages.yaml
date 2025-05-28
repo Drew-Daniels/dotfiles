@@ -72,6 +72,7 @@ packages:
       - 'sops'
       - 'tmux'
       - 'tree'
+      - 'typescript-language-server'
       - 'wget'
       - 'xdotool'
       - 'xxhash'
