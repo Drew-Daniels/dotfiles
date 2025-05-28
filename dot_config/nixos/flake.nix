@@ -10,6 +10,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      # optional, but not necessary
+      inputs.nixpkgs.follows = "nixpkgs";
+      # to save space on linux
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs = {
@@ -18,6 +25,7 @@
     # nixpkgs-stable,
     # nixpkgs-fd40cef8d,
     home-manager,
+    agenix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -44,6 +52,11 @@
             home-manager.users.drew = import ./home.nix;
             # home-manager.backupFileExtension = "backup";
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+          }
+          agenix.nixosModules.default
+          {
+            # TODO: De-hardcode system here
+            environment.systemPackages = [agenix.packages."x86_64-linux".default];
           }
         ];
       };
