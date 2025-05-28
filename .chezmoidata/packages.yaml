@@ -190,7 +190,6 @@ packages:
     work:
       taps:
       - 'ankitpokhrel/jira-cli'
-      - 'mongodb/brew'
       head_brews: []
       brews:
       - 'php'
