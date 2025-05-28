@@ -60,6 +60,7 @@ packages:
       - 'maven'
       - 'mergiraf'
       - 'mise'
+      - 'newsboat'
       - 'neovim'
       - 'pkgconf'
       - 'pngpaste'
@@ -165,7 +166,6 @@ packages:
       head_brews: []
       brews:
       - 'neomutt'
-      - 'newsboat'
       - 'weechat'
       no_quarantine_casks: []
       casks:
