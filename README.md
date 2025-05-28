@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Figure out how to install [norg-fmt](https://github.com/nvim-neorg/norg-fmt)
 - [ ] Declarative secure boot for NixOS: https://github.com/nix-community/lanzaboote
 - [ ] NixOS Image builder: https://github.com/nix-community/nixos-generators
 - [ ] Look into self-hosting GitLab instance
