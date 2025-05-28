@@ -97,8 +97,8 @@
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
-      #  thunderbird
     ];
+    # passwordFile = config.age.secrets.secrets.path;
   };
 
   # Virtualisation

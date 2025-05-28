@@ -57,6 +57,7 @@
           {
             # TODO: De-hardcode system here
             environment.systemPackages = [agenix.packages."x86_64-linux".default];
+            # age.secrets.secrets.file = "./secrets/secrets.age";
           }
         ];
       };
