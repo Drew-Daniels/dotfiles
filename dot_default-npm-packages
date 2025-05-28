@@ -7,3 +7,4 @@ tree-sitter-cli
 yarn
 nx
 @nestjs/cli
+json-sort-cli
