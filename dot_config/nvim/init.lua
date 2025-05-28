@@ -43,6 +43,12 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.api.nvim_create_user_command("JsonSort", function()
+	local filename = vim.fn.expand("%:p")
+	vim.fn.system("jsonsort " .. filename)
+	vim.cmd("edit")
+end, {})
+
 vim.api.nvim_create_augroup("filetype_html", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = { "*.html.en" },
