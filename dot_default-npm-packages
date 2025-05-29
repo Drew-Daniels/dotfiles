@@ -9,3 +9,4 @@ nx
 @nestjs/cli
 json-sort-cli
 vim-language-server
+@olrtg/emmet-language-server
