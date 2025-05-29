@@ -24,7 +24,7 @@
     defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
-  services.gnome-keyring.enable = true;
+  # services.gnome-keyring.enable = true;
   # desktopManager+windowManager
   # wayland.windowManager.sway.enable = true;
   nixpkgs.config.allowUnfree = true;
@@ -86,6 +86,7 @@
     gcc
     obs-studio
     localstack
+    libsecret
     librewolf
     lsd
     lua51Packages.tree-sitter-norg
