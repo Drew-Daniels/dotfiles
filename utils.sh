@@ -43,3 +43,43 @@ get_latest_gh_release_tag() {
   jq '.tag_name' <data.json | sed 's/"//g'
   rm data.json
 }
+
+verify_fingerprint() {
+  cat "$1"
+  printf "\n"
+
+  while true; do
+    read -p "Does the fingerprint printed above match the one GPG prnted previously?" yesno
+    case $yesno in
+    [Yy]*)
+      # Continue...
+      break
+      ;;
+    [Nn]*)
+      echo "Exiting: Fingerprint does not match"
+      exit
+      ;;
+    *) echo "Answer either yes or no!" ;;
+    esac
+  done
+}
+
+approve_script_execution() {
+  cat "$1"
+  printf "\n"
+
+  while true; do
+    read -p "Does the above script look safe?" yesno
+    case $yesno in
+    [Yy]*)
+      chmod +x "$1"
+      break
+      ;;
+    [Nn]*)
+      exit
+      ;;
+    *) echo "Answer either yes or no!" ;;
+    esac
+  done
+}
+
