@@ -13,7 +13,9 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-cargo install-update --all
+rustup update
+
+cargo install-update --all --locked
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                            jq                            │
