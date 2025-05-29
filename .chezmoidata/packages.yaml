@@ -204,4 +204,5 @@ packages:
       - 'rancher'
       - 'lynx'
       - 'google-drive'
+      - 'vagrant'
       mas_apps: {}
