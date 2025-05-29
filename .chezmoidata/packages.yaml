@@ -191,9 +191,10 @@ packages:
     work:
       taps:
       - 'ankitpokhrel/jira-cli'
+      - 'shivammathur/php'
       head_brews: []
       brews:
-      - 'php'
+      - 'shivammathur/php/php@8.3'
       - 'composer'
       - 'httpd'
       - 'ankitpokhrel/jira-cli/jira-cli'
