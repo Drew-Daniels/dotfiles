@@ -1,0 +1,21 @@
+name: test-laminas
+root: <%= ENV["PROJECTS_DIR"] %>/test-laminas
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+            - open http://localhost:8080
+  - 2)server:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - php -S 0.0.0.0:8080 -t public public/index.php
