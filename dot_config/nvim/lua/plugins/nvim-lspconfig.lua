@@ -29,9 +29,9 @@ return {
 		-- 	capabilities = capabilities,
 		-- })
 
-		-- vim.lsp.config("phpactor", {
-		-- 	capabilities = capabilities,
-		-- })
+		vim.lsp.config("phpactor", {
+			capabilities = capabilities,
+		})
 
 		-- vim.lsp.config("prismals", {
 		-- 	capabilities = capabilities,
@@ -203,7 +203,7 @@ return {
 			-- "cssmodules_ls",
 			-- "docker_compose_language_service",
 			-- "emmet_language_server",
-			-- "phpactor",
+			"phpactor",
 			-- "prismals",
 			-- "smithy_ls",
 			-- "vimls",
