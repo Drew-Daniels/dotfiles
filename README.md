@@ -164,6 +164,9 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+- [ ] Look into migrating from 1Password to [pass](https://www.passwordstore.org/#other)
+  - https://git.zx2c4.com/password-store/tree/contrib/importers/1password2pass.rb
+
 ## `Neovim`
 
 - [ ] Figure out how to install [norg-fmt](https://github.com/nvim-neorg/norg-fmt)
