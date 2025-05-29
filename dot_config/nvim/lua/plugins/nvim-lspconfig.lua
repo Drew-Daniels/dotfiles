@@ -228,6 +228,7 @@ return {
 			"typos_lsp",
 			"vue_ls",
 			"yamlls",
+			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
 		})
 	end,
