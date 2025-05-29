@@ -205,4 +205,5 @@ packages:
       - 'lynx'
       - 'google-drive'
       - 'vagrant'
+      - 'virtualbox'
       mas_apps: {}
