@@ -289,20 +289,7 @@ latest=$(get_latest_gh_release_tag "creativeprojects" "resticprofile" | cut -d '
 current=$(resticprofile version | cut -d ' ' -f3)
 if [ "$current" != "$latest" ]; then
   echo "Upgrading resticprofile"
-  base_url="https://github.com/creativeprojects/resticprofile/releases/download/v${latest}/"
-  tgz="resticprofile_${latest}_linux_amd64.tar.gz"
-  checksums="checksums.txt"
-  curl -sL --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_url/$tgz" "$base_url/$checksums"
-  verified_checksum=$(grep "no_self_update_${latest}_linux_amd64.tar.gz" <"$checksums")
-  download_checksum=$(sha256sum "$tgz")
-  if [ "$download_checksum" != "$verified_checksum" ]; then
-    echo "Could not upgrade resticprofile - verify checksums"
-    exit 1
-  fi
-  mkdir "resticprofile_${latest}_linux_amd64"
-  tar -xzpf "resticprofile_${latest}_linux_amd64.tar.gz" -C "resticprofile_${latest}_linux_amd64"
-  sudo cp "resticprofile_${latest}_linux_amd64/resticprofile" /usr/local/bin/
-  rm -rf restic*
+  sudo resticprofile self-update --quiet
   echo "Upgraded resticprofile"
 else
   echo "resticprofile up-to-date"
