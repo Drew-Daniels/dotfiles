@@ -25,9 +25,9 @@ return {
 		-- 	capabilities = capabilities,
 		-- })
 
-		-- vim.lsp.config("emmet_language_server", {
-		-- 	capabilities = capabilities,
-		-- })
+		vim.lsp.config("emmet_language_server", {
+			capabilities = capabilities,
+		})
 
 		vim.lsp.config("phpactor", {
 			capabilities = capabilities,
@@ -39,11 +39,11 @@ return {
 		-- vim.lsp.config("smithy_ls", {
 		-- 	capabilities = capabilities,
 		-- })
-		-- vim.lsp.config("standardrb", {
-		-- 	capabilities = capabilities,
-		-- 	-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
-		-- 	-- cmd = { "bundle", "exec", "standardrb", "--lsp" },
-		-- })
+		vim.lsp.config("standardrb", {
+			capabilities = capabilities,
+			-- TODO: Figure out at what version of standardrb the --lsp flag was added, so I can start using bundler installed version
+			-- cmd = { "bundle", "exec", "standardrb", "--lsp" },
+		})
 		--
 		-- vim.lsp.config("mutt-language-server", {
 		--   capabilities = capabilities,
@@ -53,9 +53,9 @@ return {
 		-- capabilities = capabilities,
 		-- })
 
-		-- vim.lsp.config("vimls", {
-		-- 	capabilities = capabilities,
-		-- })
+		vim.lsp.config("vimls", {
+			capabilities = capabilities,
+		})
 
 		vim.lsp.config("bashls", {
 			capabilities = capabilities,
@@ -201,12 +201,12 @@ return {
 			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
 			-- "clangd",
 			-- "cssmodules_ls",
-			-- "docker_compose_language_service",
-			-- "emmet_language_server",
+			"docker_compose_language_service",
+			"emmet_language_server",
 			"phpactor",
 			-- "prismals",
 			-- "smithy_ls",
-			-- "vimls",
+			"vimls",
 			-- "cucumber_language_server",
 			"bashls",
 			"basedpyright",
