@@ -164,7 +164,17 @@ curl --silent --location --remote-name-all \
 
 QOL Updates:
 
+## `Neovim`
+
 - [ ] Figure out how to install [norg-fmt](https://github.com/nvim-neorg/norg-fmt)
+- [ ] Look into managing neovim configuration using one of these plugins:
+  - [nixPatch.nvim](https://github.com/NicoElbers/nixPatch-nvim)
+  - [nixCats](https://github.com/BirdeeHub/nixCats-nvim?tab=readme-ov-file#intro)
+  - [nixvim](https://github.com/nix-community/nixvim)
+  - [nvf](https://github.com/NotAShelf/nvf)
+
+## `nix` and `NixOS`
+
 - [ ] Declarative secure boot for NixOS: https://github.com/nix-community/lanzaboote
 - [ ] NixOS Image builder: https://github.com/nix-community/nixos-generators
 - [ ] Look into self-hosting GitLab instance
@@ -178,11 +188,9 @@ QOL Updates:
   - https://github.com/nix-darwin/nix-darwin
   - https://juliu.is/tidying-your-home-with-nix/
 - [ ] Look into configuring bluetooth on NixOS: https://nixos.wiki/wiki/Bluetooth
-- [ ] Look into managing neovim configuration using one of these plugins:
-  - [nixPatch.nvim](https://github.com/NicoElbers/nixPatch-nvim)
-  - [nixCats](https://github.com/BirdeeHub/nixCats-nvim?tab=readme-ov-file#intro)
-  - [nixvim](https://github.com/nix-community/nixvim)
-  - [nvf](https://github.com/NotAShelf/nvf)
+
+## Other
+
 - [ ] Figure out how to get dark theme used on Strawberry when in `sway` (works on plasma)
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
