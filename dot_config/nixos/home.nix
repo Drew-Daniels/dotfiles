@@ -153,6 +153,7 @@
     wofi
     swaybg
     waypaper
+    swww
     wget
     wl-clipboard
     wireguard-tools

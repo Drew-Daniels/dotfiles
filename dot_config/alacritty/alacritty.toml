@@ -9,6 +9,7 @@ EDITOR = "nvim"
 
 [window]
 decorations = "buttonless"
+opacity = 0.8
 
 [font]
 size = 10
