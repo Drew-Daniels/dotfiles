@@ -47,6 +47,7 @@
     beets
     bemenu
     brightnessctl
+    cheese
     cinny-desktop
     chezmoi
     comby
@@ -140,8 +141,9 @@
     unzip
     vim
     yamlfmt
-    # screenshot functionality (or slurp)
-    # grim
+    # TODO: Screenshot tool - flameshot and watershot both seem to be broken
+    # NOTE: Screenshot annotation tool - can remove if I can get flameshot/watershot to work
+    satty
     # notification system
     # mako
     usbutils
