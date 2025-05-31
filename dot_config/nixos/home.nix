@@ -151,6 +151,8 @@
     # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
     rofi
     wofi
+    swaybg
+    waypaper
     wget
     wl-clipboard
     wireguard-tools
