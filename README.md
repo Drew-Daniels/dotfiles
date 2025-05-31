@@ -169,6 +169,7 @@ QOL Updates:
 
 ## `Neovim`
 
+- [ ] Set up default `eslint` and `prettierd` configs to be used when formatting one-off `.js` files that do not belong to a project with `eslint` installed, and an `eslint.config.mjs` in an adjacent directory
 - [ ] Figure out how to install [norg-fmt](https://github.com/nvim-neorg/norg-fmt)
 - [ ] Look into managing neovim configuration using one of these plugins:
   - [nixPatch.nvim](https://github.com/NicoElbers/nixPatch-nvim)
