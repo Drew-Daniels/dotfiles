@@ -223,9 +223,16 @@ bar {
     status_command swayrbar
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        # Default settings
+        # statusline #ffffff
+        # background #323232
+        # inactive_workspace #32323200 #32323200 #5c5c5c
+
+        # Custom settings
+        statusline #ebdbb2
+        background #3c3836
+        inactive_workspace #282828 #282828 #928374
+        focused_workspace #83a598 #458588 #eddbb2
     }
 }
 
