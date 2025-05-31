@@ -201,6 +201,7 @@ QOL Updates:
 
 - [ ] Look into using [amfora](https://github.com/makew0rld/amfora?tab=readme-ov-file), a Gemini protocol client
   - Also [bombadillo](http://bombadillo.colorfield.space/)
+  - https://geminiquickst.art/
 - [ ] Look into using [mpd](https://www.musicpd.org/clients/) and `mpd` client(s)
 - [ ] Look into self-hosting GitLab instance
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
