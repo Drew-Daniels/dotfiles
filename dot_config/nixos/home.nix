@@ -148,6 +148,8 @@
     pciutils
     # TODO: Make an issue with this wofi nixpkg - crashes if 'wofi' not installed
     weechat
+    # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
+    rofi
     wofi
     wget
     wl-clipboard

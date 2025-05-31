@@ -63,61 +63,44 @@ JS
 }
 
 URL=$(echo "$QUTE_URL" | awk -F/ '{print $3}' | sed 's/www.//g')
-TOKEN_TMPDIR="${TMPDIR:-/tmp}"
-TOKEN_CACHE="$TOKEN_TMPDIR/1pass.token"
 
 echo "message-info 'Looking for password for $URL...'" >>"$QUTE_FIFO"
 
-if [ -f "$TOKEN_CACHE" ]; then
-  TOKEN=$(cat "$TOKEN_CACHE")
-  if ! op signin --session="$TOKEN" --output=raw >/dev/null; then
-    TOKEN=$(wofi -dmenu -password -p "1password: " | op signin --output=raw) || TOKEN=""
-    echo "$TOKEN" >"$TOKEN_CACHE"
+UUID=$(op item list --format=json | jq --arg url "$URL" -r '[.[] | {uuid, url: [.URLs[]?.u, .url][]?} | select(.uuid != null) | select(.url != null) | select(.url|test(".*\($url).*"))][.0].uuid') || UUID=""
+
+if [ -z "$UUID" ] || [ "$UUID" == "null" ]; then
+  echo "message-error 'No entry found for $URL'" >>"$QUTE_FIFO"
+  TITLE=$(op item list --format=json | jq -r '.[].title' | rofi -dmenu -i) || TITLE=""
+  if [ -n "$TITLE" ]; then
+    UUID=$(op item list --format=json | jq --arg title "$TITLE" -r '[.[] | {uuid, title:.title}|select(.title|test("\($title)"))][.0].uuid') || UUID=""
+  else
+    UUID=""
   fi
-else
-  TOKEN=$(wofi -dmenu -password -p "1password: " | op signin --output=raw) || TOKEN=""
-  install -m 600 /dev/null "$TOKEN_CACHE"
-  echo "$TOKEN" >"$TOKEN_CACHE"
 fi
 
-if [ -n "$TOKEN" ]; then
-  UUID=$(op list items --cache --session="$TOKEN" | jq --arg url "$URL" -r '[.[] | {uuid, url: [.overview.URLs[]?.u, .overview.url][]?} | select(.uuid != null) | select(.url != null) | select(.url|test(".*\($url).*"))][.0].uuid') || UUID=""
+if [ -n "$UUID" ]; then
+  ITEM=$(op item get "$UUID")
 
-  if [ -z "$UUID" ] || [ "$UUID" == "null" ]; then
-    echo "message-error 'No entry found for $URL'" >>"$QUTE_FIFO"
-    TITLE=$(op list items --cache --session="$TOKEN" | jq -r '.[].overview.title' | wofi -dmenu -i) || TITLE=""
-    if [ -n "$TITLE" ]; then
-      UUID=$(op list items --cache --session="$TOKEN" | jq --arg title "$TITLE" -r '[.[] | {uuid, title:.overview.title}|select(.title|test("\($title)"))][.0].uuid') || UUID=""
-    else
-      UUID=""
-    fi
-  fi
+  PASSWORD=$(echo "$ITEM" | jq -r '.details.fields | .[] | select(.designation=="password") | .value')
 
-  if [ -n "$UUID" ]; then
-    ITEM=$(op get item --cache --session="$TOKEN" "$UUID")
+  if [ -n "$PASSWORD" ]; then
+    TITLE=$(echo "$ITEM" | jq -r '.title')
+    USERNAME=$(echo "$ITEM" | jq -r '.details.fields | .[] | select(.designation=="username") | .value')
 
-    PASSWORD=$(echo "$ITEM" | jq -r '.details.fields | .[] | select(.designation=="password") | .value')
+    printjs() {
+      js | sed 's,//.*$,,' | tr '\n' ' '
+    }
+    echo "jseval -q $(printjs)" >>"$QUTE_FIFO"
 
-    if [ -n "$PASSWORD" ]; then
-      TITLE=$(echo "$ITEM" | jq -r '.overview.title')
-      USERNAME=$(echo "$ITEM" | jq -r '.details.fields | .[] | select(.designation=="username") | .value')
-
-      printjs() {
-        js | sed 's,//.*$,,' | tr '\n' ' '
-      }
-      echo "jseval -q $(printjs)" >>"$QUTE_FIFO"
-
-      TOTP=$(echo "$ITEM" | op get totp --cache --session="$TOKEN" "$UUID") || TOTP=""
-      if [ -n "$TOTP" ]; then
-        echo "$TOTP" | xclip -in -selection clipboard
-        echo "message-info 'Pasted one time password for $TITLE to clipboard'" >>"$QUTE_FIFO"
-      fi
-    else
-      echo "message-error 'No password found for $URL'" >>"$QUTE_FIFO"
+    otp=$(echo "$ITEM" | op item get --otp "$UUID") || otp=""
+    if [ -n "$otp" ]; then
+      # TODO: Refactor to use wl-copy instead
+      echo "$otp" | xclip -in -selection clipboard
+      echo "message-info 'Pasted one time password for $TITLE to clipboard'" >>"$QUTE_FIFO"
     fi
   else
-    echo "message-error 'Entry not found for $UUID'" >>"$QUTE_FIFO"
+    echo "message-error 'No password found for $URL'" >>"$QUTE_FIFO"
   fi
 else
-  echo "message-error 'Wrong master password'" >>"$QUTE_FIFO"
+  echo "message-error 'Entry not found for $UUID'" >>"$QUTE_FIFO"
 fi
