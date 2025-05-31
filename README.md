@@ -180,7 +180,6 @@ QOL Updates:
 
 - [ ] Declarative secure boot for NixOS: https://github.com/nix-community/lanzaboote
 - [ ] NixOS Image builder: https://github.com/nix-community/nixos-generators
-- [ ] Look into self-hosting GitLab instance
 - [ ] Look into updating NixOS configuration to configure WiFi autoconnect using something like this: https://tasiaiso.vulpecula.zone/posts/nixos-wifi-agenix/
   - https://github.com/yaxitech/ragenix
   - NOTE: Could also look into using something like this: https://github.com/Mic92/sops-nix
@@ -190,17 +189,18 @@ QOL Updates:
   - https://github.com/nix-darwin/nix-darwin
   - https://juliu.is/tidying-your-home-with-nix/
 - [ ] Look into configuring bluetooth on NixOS: https://nixos.wiki/wiki/Bluetooth
+- [ ] Set up biometrics on NixOS:
+  - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
+  - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-
 
 ## Other
 
-- [ ] Figure out how to get dark theme used on Strawberry when in `sway` (works on plasma)
+- [ ] Look into self-hosting GitLab instance
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
 - [ ] Install [protonmail-bridge](https://search.nixos.org/packages?channel=24.11&show=protonmail-bridge&from=0&size=50&sort=relevance&type=packages&query=proton)
   - NOTE: Getting a weird keychain error when launching the app that causes it to crash
-- [ ] Set up biometrics on NixOS:
-  - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
-  - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-up-fprintd-english/21901/2
+    up-fprintd-english/21901/2
 - [ ] Install `raindrop.io` on NixOS
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
 - [ ] Look into creating mirrors for dotfiles
