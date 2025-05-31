@@ -186,7 +186,6 @@ QOL Updates:
   - NOTE: Could also look into using something like this: https://github.com/Mic92/sops-nix
   - OR: https://github.com/ryantm/agenix?tab=readme-ov-file#tutorial
 - [ ] Look into using [impermanence](https://github.com/nix-community/impermanence)
-- [ ] Figure out why NixOS is not remembering WiFi passwords when using `sway` - likely because whatever KDE's default password manager is not being launched on sway startup like it is when using Plasma
 - [ ] Look at migrating from `brew` as package manager on MacOS to `nix`:
   - https://github.com/nix-darwin/nix-darwin
   - https://juliu.is/tidying-your-home-with-nix/

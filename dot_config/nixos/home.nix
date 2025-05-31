@@ -151,6 +151,7 @@
     wget
     wl-clipboard
     wireguard-tools
+    qt6ct
     rusty-diceware
     yazi
     zoxide
