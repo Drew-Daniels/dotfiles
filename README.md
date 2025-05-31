@@ -205,7 +205,6 @@ QOL Updates:
 - [ ] Install `raindrop.io` on NixOS
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
 - [ ] Look into creating mirrors for dotfiles
-- [ ] Desktop weather app/widget for linux
 - [ ] Figure out cause of internet connectivity issue when using `sway` wm in NixOS - guessing that I'm relying on something from KDE desktop to handle automatically connecting to the wifi
 - [ ] Install `thorium` browser on NixOS - otherwise my sway config will generate errors in NixOS
 - [ ] Fix background image issue when using `sway` in `NixOS` - think the default background image isn't getting installed because home manager isn't creating the default system configuration for sway
