@@ -88,6 +88,7 @@
     localstack
     libsecret
     librewolf
+    qutebrowser
     lsd
     lua51Packages.tree-sitter-norg
     luajitPackages.luarocks
