@@ -196,6 +196,7 @@ QOL Updates:
 
 ## Other
 
+- [ ] Look into using [mpd](https://www.musicpd.org/clients/) and `mpd` client(s)
 - [ ] Look into self-hosting GitLab instance
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
