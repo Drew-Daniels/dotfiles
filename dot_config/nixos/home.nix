@@ -145,8 +145,10 @@
     unzip
     vim
     yamlfmt
-    # TODO: Screenshot tool - flameshot and watershot both seem to be broken
-    # NOTE: Screenshot annotation tool - can remove if I can get flameshot/watershot to work
+    grim
+    slurp
+    # Ex.)
+    # grim -g "$(slurp)" - | swappy -f - -o test.png
     satty
     # notification system
     # mako

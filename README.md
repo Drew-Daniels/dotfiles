@@ -224,8 +224,6 @@ QOL Updates:
 - [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
   - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
 - [ ] [cava](https://github.com/karlstav/cava) audio-visualizer
-- [ ] Find a good screenshot tool for Debian: https://wiki.debian.org/ScreenShots
-  - https://gist.github.com/anpang54/ae723b0d38eb89b551854e79d4c16ed0
 - [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Look into just having one "install" and "upgrade" script that intalls/upgrades depending on environment state, rather than having to manage 2 different scripts as dependencies change
 - [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
