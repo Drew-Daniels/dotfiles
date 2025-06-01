@@ -134,6 +134,7 @@
     signal-desktop
     swayr
     swayrbar
+    waybar
     # TODO: Create package
     # tidal_dl_ng
     # NOTE: tidal-hifi seems broken - freezes
