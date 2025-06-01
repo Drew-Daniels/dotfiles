@@ -195,6 +195,7 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Use [swaylock-effects](https://github.com/mortie/swaylock-effects) instead of default `swaylock`
 - [ ] Finish refactoring `~/.local/share/qutebrowser/userscripts/1pass.sh` script to work with current version of `op` and `wofi` instead of `rofi`
 - [ ] Look into using [swayfx](https://github.com/WillPower3309/swayfx) as sway alternative
 - [ ] Look into using a clipboard manager: https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/
