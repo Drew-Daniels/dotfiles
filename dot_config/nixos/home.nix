@@ -214,6 +214,7 @@
     vim-language-server
     clojure-lsp
     sqls
+    hyprls
   ];
 
   # DOTFILES

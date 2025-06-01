@@ -138,6 +138,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("hyprls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("jsonls", {
 			capabilities = capabilities,
 		})
@@ -216,6 +220,7 @@ return {
 			"dockerls",
 			"eslint",
 			"html",
+			"hyprls",
 			"jsonls",
 			"lua_ls",
 			"marksman",

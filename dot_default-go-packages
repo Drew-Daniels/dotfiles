@@ -1,1 +1,2 @@
-go install github.com/sqls-server/sqls@latest
+github.com/sqls-server/sqls@latest
+github.com/hyprland-community/hyprls/cmd/hyprls@latest
