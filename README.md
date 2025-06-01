@@ -199,6 +199,8 @@ QOL Updates:
 
 ## Other
 
+- [ ] Look into using a clipboard manager: https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/
+- [ ] Migrate from `swaybar` to [waybar](https://github.com/Alexays/Waybar) (recommended for hyprland, and more customizable)
 - [ ] Find a `gemini` client for Android
 - [ ] Look into creating a `treesitter` parser for `.gmi` (AKA, `gemini`) files
 - [ ] Look into using [mumble](https://github.com/mumble-voip/mumble)
@@ -218,6 +220,7 @@ QOL Updates:
 - [ ] Install `thorium` browser on NixOS - otherwise my sway config will generate errors in NixOS
 - [ ] Update `swayrbar` content to display when connected to VPN
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
+  - [ ] Or alternatively [astal](https://aylur.github.io/astal/guide/getting-started/introduction) and [AGS](https://aylur.github.io/ags/) for creating custom widgets
 - [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
 - [ ] Look into configuring `swaylock` to automatically be called upon lid close
 - [ ] Create tmp dirs to download files to when upgrading, rather than in this directory, to limit blast radius of potential mistakes
