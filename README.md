@@ -199,6 +199,7 @@ QOL Updates:
 
 ## Other
 
+- [ ] Find a `gemini` client for Android
 - [ ] Look into using [mumble](https://github.com/mumble-voip/mumble)
 - [ ] Look into using [amfora](https://github.com/makew0rld/amfora?tab=readme-ov-file), a Gemini protocol client
   - Also [bombadillo](http://bombadillo.colorfield.space/)
