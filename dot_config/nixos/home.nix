@@ -102,6 +102,7 @@
     mergiraf
     mullvad
     mumble
+    mpd
     neomutt
     neovim
     newsboat
