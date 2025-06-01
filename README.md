@@ -194,6 +194,7 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Finish refactoring `~/.local/share/qutebrowser/userscripts/1pass.sh` script to work with current version of `op` and `wofi` instead of `rofi`
 - [ ] Look into using [swayfx](https://github.com/WillPower3309/swayfx) as sway alternative
 - [ ] Look into using a clipboard manager: https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/
 - [ ] Find a `gemini` client for Android
