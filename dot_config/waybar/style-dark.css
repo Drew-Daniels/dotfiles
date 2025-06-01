@@ -10,7 +10,7 @@
 }
 
 window#waybar {
-  background-color: rgba(43, 48, 59, 0.5);
+  background-color: rgba(40, 40, 40, 0.5);
   border-bottom: 3px solid rgba(100, 114, 125, 0.5);
   color: #ffffff;
   transition-property: background-color;
@@ -31,11 +31,11 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-  background-color: #3f3f3f;
+  background-color: transparent;
 }
 
 window#waybar.chromium {
-  background-color: #000000;
+  background-color: transparent;
   border: none;
 }
 
@@ -55,7 +55,7 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-  background-color: #a37800;
+  background-color: transparent;
 }
 
 #workspaces button {
@@ -69,7 +69,7 @@ button:hover {
 }
 
 #workspaces button.focused {
-  background-color: #64727d;
+  background-color: #83a598;
   box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -119,18 +119,18 @@ button:hover {
 }
 
 #clock {
-  background-color: #64727d;
+  background-color: transparent;
 }
 
 #battery {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #battery.charging,
 #battery.plugged {
   color: #ffffff;
-  background-color: #26a65b;
+  background-color: transparent;
 }
 
 @keyframes blink {
@@ -156,66 +156,66 @@ button:hover {
 }
 
 #power-profiles-daemon.performance {
-  background-color: #f53c3c;
+  background-color: transparent;
   color: #ffffff;
 }
 
 #power-profiles-daemon.balanced {
-  background-color: #2980b9;
+  background-color: transparent;
   color: #ffffff;
 }
 
 #power-profiles-daemon.power-saver {
-  background-color: #2ecc71;
-  color: #000000;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 label:focus {
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 #cpu {
-  background-color: #2ecc71;
-  color: #000000;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #memory {
-  background-color: #9b59b6;
+  background-color: transparent;
 }
 
 #disk {
-  background-color: #964b00;
+  background-color: transparent;
 }
 
 #backlight {
-  background-color: #90b1b1;
+  background-color: transparent;
 }
 
 #network {
-  background-color: #2980b9;
+  background-color: transparent;
 }
 
 #network.disconnected {
-  background-color: #f53c3c;
+  background-color: transparent;
 }
 
 #pulseaudio {
-  background-color: #f1c40f;
-  color: #000000;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #pulseaudio.muted {
-  background-color: #90b1b1;
+  background-color: transparent;
   color: #2a5c45;
 }
 
 #wireplumber {
-  background-color: #fff0f5;
-  color: #000000;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #wireplumber.muted {
-  background-color: #f53c3c;
+  background-color: transparent;
 }
 
 #custom-media {
@@ -233,7 +233,7 @@ label:focus {
 }
 
 #temperature {
-  background-color: #f0932b;
+  background-color: transparent;
 }
 
 #temperature.critical {
@@ -254,7 +254,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-  background-color: #2d3436;
+  background-color: transparent;
 }
 
 #idle_inhibitor.activated {
@@ -263,25 +263,25 @@ label:focus {
 }
 
 #mpd {
-  background-color: #66cc99;
+  background-color: transparent;
   color: #2a5c45;
 }
 
 #mpd.disconnected {
-  background-color: #f53c3c;
+  background-color: transparent;
 }
 
 #mpd.stopped {
-  background-color: #90b1b1;
+  background-color: transparent;
 }
 
 #mpd.paused {
-  background-color: #51a37a;
+  background-color: transparent;
 }
 
 #language {
-  background: #00b093;
-  color: #740864;
+  background: transparent;
+  color: #ffffff;
   padding: 0 5px;
   margin: 0 5px;
   min-width: 16px;
@@ -289,7 +289,7 @@ label:focus {
 
 #keyboard-state {
   background: #97e1ad;
-  color: #000000;
+  color: #ffffff;
   padding: 0 0px;
   margin: 0 5px;
   min-width: 16px;
@@ -321,13 +321,13 @@ label:focus {
 }
 
 #privacy-item.screenshare {
-  background-color: #cf5700;
+  background-color: transparent;
 }
 
 #privacy-item.audio-in {
-  background-color: #1ca000;
+  background-color: transparent;
 }
 
 #privacy-item.audio-out {
-  background-color: #0069d4;
+  background-color: transparent;
 }
