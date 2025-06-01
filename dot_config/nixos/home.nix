@@ -34,6 +34,7 @@
   # environment.
   home.packages = with pkgs; [
     amfora
+    lagrange
     alacritty
     alejandra
     awscli2
