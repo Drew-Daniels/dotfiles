@@ -199,6 +199,7 @@ QOL Updates:
 
 ## Other
 
+- [ ] Look into using [swayfx](https://github.com/WillPower3309/swayfx) as sway alternative
 - [ ] Look into using a clipboard manager: https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/
 - [ ] Migrate from `swaybar` to [waybar](https://github.com/Alexays/Waybar) (recommended for hyprland, and more customizable)
 - [ ] Find a `gemini` client for Android
