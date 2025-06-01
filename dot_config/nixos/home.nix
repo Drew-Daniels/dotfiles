@@ -33,6 +33,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    amfora
     alacritty
     alejandra
     awscli2
@@ -98,6 +99,7 @@
     maigret
     mergiraf
     mullvad
+    mumble
     neomutt
     neovim
     newsboat
