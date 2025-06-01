@@ -162,11 +162,6 @@ curl --silent --location --remote-name-all \
 
 # Roadmap
 
-QOL Updates:
-
-- [ ] Look into migrating from 1Password to [pass](https://www.passwordstore.org/#other)
-  - https://git.zx2c4.com/password-store/tree/contrib/importers/1password2pass.rb
-
 ## `Neovim`
 
 - [ ] Set up default `eslint` and `prettierd` configs to be used when formatting one-off `.js` files that do not belong to a project with `eslint` installed, and an `eslint.config.mjs` in an adjacent directory
@@ -201,14 +196,11 @@ QOL Updates:
 
 - [ ] Look into using [swayfx](https://github.com/WillPower3309/swayfx) as sway alternative
 - [ ] Look into using a clipboard manager: https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/
-- [ ] Migrate from `swaybar` to [waybar](https://github.com/Alexays/Waybar) (recommended for hyprland, and more customizable)
 - [ ] Find a `gemini` client for Android
-- [ ] Look into creating a `treesitter` parser for `.gmi` (AKA, `gemini`) files
 - [ ] Look into using [mumble](https://github.com/mumble-voip/mumble)
 - [ ] Look into using [amfora](https://github.com/makew0rld/amfora?tab=readme-ov-file), a Gemini protocol client
   - Also [bombadillo](http://bombadillo.colorfield.space/)
   - https://geminiquickst.art/
-- [ ] Look into using [mpd](https://www.musicpd.org/clients/) and `mpd` client(s)
 - [ ] Look into self-hosting GitLab instance
 - [ ] Update MacOS configurations to install [zulip-terminal](https://github.com/zulip/zulip-terminal) through pip (no existing homebrew package)
 - [ ] Port over the rest of the newsboat urls I want to track
@@ -223,21 +215,9 @@ QOL Updates:
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
   - [ ] Or alternatively [astal](https://aylur.github.io/astal/guide/getting-started/introduction) and [AGS](https://aylur.github.io/ags/) for creating custom widgets
 - [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
-- [ ] Look into configuring `swaylock` to automatically be called upon lid close
 - [ ] Create tmp dirs to download files to when upgrading, rather than in this directory, to limit blast radius of potential mistakes
-- [ ] Look into configuring some kind of volume equalizer - lack of this mostly apparent when using `cmus`:
-  - https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
 - [ ] [cava](https://github.com/karlstav/cava) audio-visualizer
-- [ ] Create base template setup script for creating common directories used on both MacOS and linux
 - [ ] Look into just having one "install" and "upgrade" script that intalls/upgrades depending on environment state, rather than having to manage 2 different scripts as dependencies change
-- [ ] Switch to using "no ligatures" nerd font: https://github.com/JetBrains/JetBrainsMono/releases/tag/v1.0.4
       -- Alacritty does not support them, Konsole does, but there's not a way to deactivate them in Konsole, so need to use a font without ligatures support to disable across all emulators
-- [ ] Look into making `debian-upgrade.sh` script globally available
-- Create a post-install script that automatically:
-  - Exports shared secrets that are used across all computers (like Home DDNS hostname) to `~/.env`
-  - Look into using an `run_after*` script so that it runs after all dependencies are installed
 - Figure out how to _uninstall_ brew packages after they have been _removed_ from `./.chezmoidata/packages.yaml`
-- Look into using something like this to handle initial dotfiles setup instead of requiring `./macos.sh` to be run:
-  - https://www.chezmoi.io/user-guide/advanced/install-your-password-manager-on-init/
-  - https://www.chezmoi.io/reference/configuration-file/hooks/
 - Look into using [etckeeper](https://etckeeper.branchable.com/README/) to manage `/etc` files, since `chezmoi` cannot manage files outside of `~`
