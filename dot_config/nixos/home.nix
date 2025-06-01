@@ -103,6 +103,7 @@
     mullvad
     mumble
     mpd
+    ncmpcpp
     neomutt
     neovim
     newsboat
