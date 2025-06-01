@@ -85,6 +85,7 @@
     jq
     jless
     nodePackages.jsonlint
+    nodePackages.live-server
     gcc
     obs-studio
     localstack

@@ -11,3 +11,4 @@ json-sort-cli
 vim-language-server
 @olrtg/emmet-language-server
 @microsoft/compose-language-service
+live-server
