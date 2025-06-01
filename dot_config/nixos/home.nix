@@ -192,6 +192,7 @@
     # TODO: Need to do more research on seeing whether or not it makes sense to just use nil_ls, nixd, or both
     # nixd
     basedpyright
+    deno
     rubyPackages_3_4.standard
     rubyPackages_3_4.htmlbeautifier
     docker-compose-language-service
