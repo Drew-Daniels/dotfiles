@@ -174,6 +174,7 @@ curl --silent --location --remote-name-all \
 
 ## `nix` and `NixOS`
 
+- [ ] Create an issue in `nixpkgs` repo for `vscode-langservers-extracted`'s `vscode-css-language-server` crashing when opening `.css` files
 - [ ] Migrate to [hyprland](https://wiki.hyprland.org/Nix/)
 - [ ] Look into setting up a light/dark mode switcher configuration
   - Ex.) https://github.com/sahib/dotfiles/blob/master/bin/executable_toggle-dark-light.sh
