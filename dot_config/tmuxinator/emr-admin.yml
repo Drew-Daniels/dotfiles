@@ -1,0 +1,13 @@
+name: emr-admin
+root: <%= ENV["PROJECTS_DIR"] %>/emr-admin
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
