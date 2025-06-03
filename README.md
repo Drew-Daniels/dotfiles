@@ -213,7 +213,7 @@ curl --silent --location --remote-name-all \
 - [ ] Fix `standardnotes` installation on NixOS by doing something similar to: https://github.com/NixOS/nixpkgs/issues/278191#issuecomment-1910865477
 - [ ] Look into creating mirrors for dotfiles
 - [ ] Install `thorium` browser on NixOS - otherwise my sway config will generate errors in NixOS
-- [ ] Update `swayrbar` content to display when connected to VPN
+- [ ] Update `waybar` content to display when connected to VPN
 - [ ] Look into using [eww](https://github.com/elkowar/eww) for custom widgets
   - [ ] Or alternatively [astal](https://aylur.github.io/astal/guide/getting-started/introduction) and [AGS](https://aylur.github.io/ags/) for creating custom widgets
 - [ ] Look into using [wikiman](https://github.com/filiparag/wikiman) for terminal viewing of arch docs
