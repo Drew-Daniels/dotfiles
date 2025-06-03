@@ -111,6 +111,7 @@
     nix-index
     nmap
     pavucontrol
+    pwgen
     plocate
     prettierd
     # TODO: Figure out what was wrong with this - believe it was another electron build issue?
