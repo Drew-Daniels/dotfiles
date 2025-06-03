@@ -195,6 +195,8 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Figure out why `fish` completion for `tmuxinator` is broken
+    - Noticed when running commands like `mux <TAB>`
 - [ ] Use [swaylock-effects](https://github.com/mortie/swaylock-effects) instead of default `swaylock`
 - [ ] Finish refactoring `~/.local/share/qutebrowser/userscripts/1pass.sh` script to work with current version of `op` and `wofi` instead of `rofi`
 - [ ] Look into using [swayfx](https://github.com/WillPower3309/swayfx) as sway alternative
