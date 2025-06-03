@@ -276,4 +276,7 @@ bindsym $mod+Space+c     exec swayr execute-swayr-command
 
 exec swaybg --image ~/background-image
 
+exec wl-paste --watch cliphist store
+bindsym Mod1+p exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
+
 include /etc/sway/config.d/*

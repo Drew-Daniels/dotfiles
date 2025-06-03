@@ -55,6 +55,7 @@
     comby
     cmus
     cmusfm
+    cliphist
     dbeaver-bin
     delta
     dust
