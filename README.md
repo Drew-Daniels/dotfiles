@@ -164,6 +164,7 @@ curl --silent --location --remote-name-all \
 
 ## `Neovim`
 
+- [ ] Create a fork of [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) that does not require a `build` script to be run, but uses a published NPM package of the content (because the build step constantly fails and requires `yarn` be installed)
 - [ ] Set up default `eslint` and `prettierd` configs to be used when formatting one-off `.js` files that do not belong to a project with `eslint` installed, and an `eslint.config.mjs` in an adjacent directory
 - [ ] Figure out how to install [norg-fmt](https://github.com/nvim-neorg/norg-fmt)
 - [ ] Look into managing neovim configuration using one of these plugins:
@@ -196,7 +197,7 @@ curl --silent --location --remote-name-all \
 ## Other
 
 - [ ] Figure out why `fish` completion for `tmuxinator` is broken
-    - Noticed when running commands like `mux <TAB>`
+  - Noticed when running commands like `mux <TAB>`
 - [ ] Use [swaylock-effects](https://github.com/mortie/swaylock-effects) instead of default `swaylock`
 - [ ] Finish refactoring `~/.local/share/qutebrowser/userscripts/1pass.sh` script to work with current version of `op` and `wofi` instead of `rofi`
 - [ ] Look into using [swayfx](https://github.com/WillPower3309/swayfx) as sway alternative
