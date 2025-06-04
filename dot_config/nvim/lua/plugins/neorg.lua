@@ -5,9 +5,9 @@ return {
   version = "*",
   opts = {
     load = {
-      ["core.defaults"] = {}, -- Loads default behaviour
-      ["core.concealer"] = {}, -- Adds pretty icons to your documents
-      ["core.dirman"] = { -- Manages Neorg workspaces
+      ["core.defaults"] = {},
+      ["core.concealer"] = {},
+      ["core.dirman"] = {
         config = {
           workspaces = {
             su = "~/projects/work_notes/su/2024",
@@ -17,11 +17,12 @@ return {
       },
       ["core.keybinds"] = {},
       ["core.export"] = {},
-      ["core.presenter"] = {
-        config = {
-          zen_mode = "zen-mode",
-        },
-      },
+      -- NOTE: API likely to be changed soon: https://github.com/nvim-neorg/neorg/wiki/Core-Presenter#overview
+      -- ["core.presenter"] = {
+      --   config = {
+      --     zen_mode = "zen-mode",
+      --   },
+      -- },
       ["core.summary"] = {},
       ["core.text-objects"] = {},
     },
