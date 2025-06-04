@@ -1,4 +1,4 @@
-name: papi
+name: emr-papi
 root: <%= ENV["PROJECTS_DIR"] %>/emr-persistence-api
 on_project_stop:
   - docker compose stop
