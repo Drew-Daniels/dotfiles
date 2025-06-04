@@ -7,7 +7,7 @@ return {
     load = {
       ["core.defaults"] = {}, -- Loads default behaviour
       ["core.concealer"] = {}, -- Adds pretty icons to your documents
-      ["core.dirman"] = {  -- Manages Neorg workspaces
+      ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
           workspaces = {
             su = "~/projects/work_notes/su/2024",
@@ -15,7 +15,15 @@ return {
           },
         },
       },
-      ["core.keybinds"] = { config = { default_keybinds = {} } },
+      ["core.keybinds"] = {},
+      ["core.export"] = {},
+      ["core.presenter"] = {
+        config = {
+          zen_mode = "zen-mode",
+        },
+      },
+      ["core.summary"] = {},
+      ["core.text-objects"] = {},
     },
   },
 }
