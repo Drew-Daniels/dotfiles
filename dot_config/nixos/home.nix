@@ -66,6 +66,7 @@
     foliate
     fish
     fzf
+    fh
     gh
     git
     git-credential-oauth
