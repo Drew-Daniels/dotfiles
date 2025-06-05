@@ -21,6 +21,7 @@ return {
 			"fish",
 			"html",
 			"http",
+			"php",
 			"javascript",
 			"jq",
 			"json",
