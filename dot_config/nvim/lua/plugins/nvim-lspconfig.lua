@@ -101,20 +101,21 @@ return {
 			},
 		})
 
-		vim.lsp.config("denols", {
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-			init_options = {
-				lint = true,
-				suggest = {
-					imports = {
-						hosts = {
-							["https://deno.land"] = true,
-						},
-					},
-				},
-			},
-		})
+		-- TODO: Figure out how to get denols to only attach when root_marker file found. Keeps attaching even when not the case
+		-- vim.lsp.config("denols", {
+		-- 	capabilities = capabilities,
+		-- 	root_markers = { "deno.json", "deno.jsonc" },
+		-- 	init_options = {
+		-- 		lint = true,
+		-- 		suggest = {
+		-- 			imports = {
+		-- 				hosts = {
+		-- 					["https://deno.land"] = true,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 
 		-- https://docs.deno.com/runtime/getting_started/setup_your_environment/#neovim-0.6%2B-using-the-built-in-language-server
 		vim.lsp.config("ts_ls", {
@@ -128,12 +129,7 @@ return {
 					},
 				},
 			},
-			filetypes = {
-				"javascript",
-				"typescript",
-				"vue",
-			},
-			root_dir = lspconfig.util.root_pattern("package.json"),
+			root_markers = { "package.json" },
 			single_file_support = false,
 		})
 
@@ -145,23 +141,23 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("eslint", {
-			capabilities = capabilities,
-			settings = {
-				workingDirectories = { mode = "auto" },
-				-- experimental = {
-				-- 	useFlatConfig = use_flat_config,
-				-- },
-			},
-		})
+		-- vim.lsp.config("eslint", {
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		workingDirectories = { mode = "auto" },
+		-- 		experimental = {
+		-- 			useFlatConfig = use_flat_config,
+		-- 		},
+		-- 	},
+		-- })
 
 		vim.lsp.config("html", {
 			capabilities = capabilities,
 		})
 
-		-- vim.lsp.config("hyprls", {
-		-- 	capabilities = capabilities,
-		-- })
+		vim.lsp.config("hyprls", {
+			capabilities = capabilities,
+		})
 
 		vim.lsp.config("jsonls", {
 			capabilities = capabilities,
@@ -218,9 +214,9 @@ return {
 			capabilities = capabilities,
 		})
 
-		-- vim.lsp.config("nil_ls", {
-		-- 	capabilities = capabilities,
-		-- })
+		vim.lsp.config("nil_ls", {
+			capabilities = capabilities,
+		})
 
 		vim.lsp.enable({
 			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
@@ -238,11 +234,11 @@ return {
 			"clojure_lsp",
 			"cssls",
 			"ts_ls",
-			"denols",
+			-- "denols",
 			"dockerls",
-			"eslint",
+			-- "eslint",
 			"html",
-			-- "hyprls",
+			"hyprls",
 			"jsonls",
 			"lua_ls",
 			"marksman",
@@ -256,7 +252,7 @@ return {
 			"vue_ls",
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
-			-- "nil_ls",
+			"nil_ls",
 		})
 	end,
 }
