@@ -73,6 +73,7 @@ packages:
       - 'sops'
       - 'tmux'
       - 'tree'
+      - 'typescript'
       - 'typescript-language-server'
       - 'wget'
       - 'xdotool'
