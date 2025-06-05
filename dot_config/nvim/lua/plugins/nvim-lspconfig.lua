@@ -103,7 +103,7 @@ return {
 
 		vim.lsp.config("denols", {
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
+			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 			init_options = {
 				lint = true,
 				suggest = {
@@ -114,6 +114,27 @@ return {
 					},
 				},
 			},
+		})
+
+		-- https://docs.deno.com/runtime/getting_started/setup_your_environment/#neovim-0.6%2B-using-the-built-in-language-server
+		vim.lsp.config("ts_ls", {
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+						-- TODO: Look at adding javascriptreact and typescriptreact as additional filestypes
+						languages = { "javascript", "typescript", "vue" },
+					},
+				},
+			},
+			filetypes = {
+				"javascript",
+				"typescript",
+				"vue",
+			},
+			root_dir = lspconfig.util.root_pattern("package.json"),
+			single_file_support = false,
 		})
 
 		vim.lsp.config("dockerls", {
@@ -128,9 +149,9 @@ return {
 			capabilities = capabilities,
 			settings = {
 				workingDirectories = { mode = "auto" },
-				experimental = {
-					useFlatConfig = use_flat_config,
-				},
+				-- experimental = {
+				-- 	useFlatConfig = use_flat_config,
+				-- },
 			},
 		})
 
@@ -138,9 +159,9 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("hyprls", {
-			capabilities = capabilities,
-		})
+		-- vim.lsp.config("hyprls", {
+		-- 	capabilities = capabilities,
+		-- })
 
 		vim.lsp.config("jsonls", {
 			capabilities = capabilities,
@@ -197,9 +218,9 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("nil_ls", {
-			capabilities = capabilities,
-		})
+		-- vim.lsp.config("nil_ls", {
+		-- 	capabilities = capabilities,
+		-- })
 
 		vim.lsp.enable({
 			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
@@ -216,11 +237,12 @@ return {
 			"basedpyright",
 			"clojure_lsp",
 			"cssls",
+			"ts_ls",
 			"denols",
 			"dockerls",
 			"eslint",
 			"html",
-			"hyprls",
+			-- "hyprls",
 			"jsonls",
 			"lua_ls",
 			"marksman",
@@ -234,7 +256,7 @@ return {
 			"vue_ls",
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
-			"nil_ls",
+			-- "nil_ls",
 		})
 	end,
 }
