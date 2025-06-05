@@ -22,6 +22,7 @@ return {
 			"html",
 			"http",
 			"php",
+			"phpdoc",
 			"javascript",
 			"jq",
 			"json",
