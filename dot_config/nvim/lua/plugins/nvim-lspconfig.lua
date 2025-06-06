@@ -141,15 +141,15 @@ return {
 			capabilities = capabilities,
 		})
 
-		-- vim.lsp.config("eslint", {
-		-- 	capabilities = capabilities,
-		-- 	settings = {
-		-- 		workingDirectories = { mode = "auto" },
-		-- 		experimental = {
-		-- 			useFlatConfig = use_flat_config,
-		-- 		},
-		-- 	},
-		-- })
+		vim.lsp.config("eslint", {
+			capabilities = capabilities,
+			settings = {
+				workingDirectories = { mode = "auto" },
+				experimental = {
+					useFlatConfig = use_flat_config,
+				},
+			},
+		})
 
 		vim.lsp.config("html", {
 			capabilities = capabilities,
@@ -236,7 +236,7 @@ return {
 			"ts_ls",
 			-- "denols",
 			"dockerls",
-			-- "eslint",
+			"eslint",
 			"html",
 			"hyprls",
 			"jsonls",
