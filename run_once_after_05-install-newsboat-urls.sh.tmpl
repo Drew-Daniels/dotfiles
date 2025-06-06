@@ -1,13 +1,13 @@
 #!/bin/sh
-mkdir -p ~/.newsboat
-mkdir -p ~/.newsraft
+mkdir -p "$HOME/.newsboat"
+mkdir -p "$HOME/.config/newsraft"
 
 newsboat_urls=$(op item get newsboat_urls --fields=notesPlain | sed 's/"//g')
-cat <<EOF >~/.newsboat/urls
+cat <<EOF >"$HOME"/.newsboat/urls
 $newsboat_urls
 EOF
 
 newsraft_urls=$(op item get newsraft_urls --fields=notesPlain | sed 's/"//g')
-cat <<EOF >~/.newsraft/feeds
+cat <<EOF >"$HOME"/.config/newsraft/feeds
 $newsraft_urls
 EOF
