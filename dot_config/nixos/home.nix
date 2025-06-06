@@ -110,6 +110,7 @@
     neomutt
     neovim
     newsboat
+    newsraft
     nix-index
     nmap
     pavucontrol
