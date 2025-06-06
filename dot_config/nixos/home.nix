@@ -105,6 +105,7 @@
     mullvad
     mumble
     mpd
+    mpv
     ncmpcpp
     neomutt
     neovim
