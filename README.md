@@ -194,6 +194,10 @@ curl --silent --location --remote-name-all \
   - https://discourse.nixos.org/t/plasma-6-on-nixos-is-missing-etc-pam-d-kde-fingerprint/42684
   - https://discourse.nixos.org/t/how-to-use-fingerprint-unlocking-how-to-set-
 
+## `neomutt`
+
+- [ ] Look into using: https://github.com/sheoak/neomutt-powerline-nerdfonts?tab=readme-ov-file
+
 ## Other
 
 - [ ] Figure out why `fish` completion for `tmuxinator` is broken
