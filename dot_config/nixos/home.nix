@@ -83,6 +83,7 @@
     openvpn
     # Create an entry for this
     # keep-presence
+    pass
     keepassxc
     kiwix
     jq
@@ -109,7 +110,6 @@
     ncmpcpp
     neomutt
     neovim
-    newsboat
     newsraft
     nix-index
     nmap
