@@ -1,4 +1,20 @@
 source ./aliases
+source ./secrets.neomuttrc
+# Inspo: https://seniormars.com/posts/neomutt/
+# My mailboxes
+set folder = "imaps://imap.gmail.com:993/[Gmail]"
+set spoolfile = "+All Mail"
+set postponed = "+Drafts"
+set record = "+Sent Mail"
+set trash = "+Trash"
+
+mailboxes =Important =Starred =Drafts ="Sent Mail" =Spam =Trash
+
+# Where to put the stuff
+set header_cache = "$XDG_CACHE_HOME/mutt/headers"
+set message_cachedir = "$XDG_CACHE_HOME/mutt/bodies"
+set certificate_file = "$XDG_CACHE_HOME/mutt/certificates"
+unset record
 # NOTE: Taken from: https://github.com/neomutt/neomutt-contrib
 #------------------------------------------------------------
 # Vi Key Bindings
