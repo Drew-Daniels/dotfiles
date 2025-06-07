@@ -10,8 +10,6 @@ set spool_file = "+[Gmail].All Mail"
 set postponed = "+Drafts"
 set record = "+Sent Messages"
 set trash = "+Deleted Messages"
-# mailboxes ="All Mail" ="Important" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
-# NOTE: Removing Important mailbox for now until I can re-sync. Ran into gmail quota limits
 mailboxes ="[Gmail].All Mail" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
 
 # Where to put the stuff
