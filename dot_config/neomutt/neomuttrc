@@ -10,11 +10,12 @@ set spool_file = "+[Gmail].All Mail"
 set postponed = "+[Gmail].Drafts"
 set record = "+[Gmail].Sent Mail"
 set trash = "+[Gmail].Trash"
-mailboxes ="[Gmail].All Mail" ="[Gmail].Starred" ="[Gmail].Important" ="[Gmail].Drafts" ="[Gmail].Sent Mail" ="[Gmail].Trash" ="[Gmail].Spam" =INBOX
+mailboxes ="[Gmail].All Mail" ="[Gmail].Important" ="[Gmail].Important" ="[Gmail].Drafts" ="[Gmail].Sent Mail" ="[Gmail].Trash" ="[Gmail].Spam" =INBOX
 
 # Where to put the stuff
 set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
-set message_cachedir = "$XDG_CACHE_HOME/neomutt/bodies"
+# TODO: Figure out why this setting doesn't work
+# set message_cachedir = "$XDG_CACHE_HOME/neomutt/bodies"
 set certificate_file = "$XDG_CACHE_HOME/neomutt/certificates"
 unset record
 
