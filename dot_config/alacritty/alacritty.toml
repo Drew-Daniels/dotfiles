@@ -1,8 +1,5 @@
 [general]
-# https://github.com/alacritty/alacritty/issues/5999
 import = [
-  # "themes/themes/gruvbox_light.toml"
-  # "themes/themes/gruvbox_dark.toml"
   "theme.toml"
 ]
 
