@@ -175,6 +175,7 @@ curl --silent --location --remote-name-all \
 
 ## `nix` and `NixOS`
 
+- [ ] Look into configuring [fail2ban](https://nixos.wiki/wiki/Fail2ban)
 - [ ] Create an issue in `nixpkgs` repo for `vscode-langservers-extracted`'s `vscode-css-language-server` crashing when opening `.css` files
 - [ ] Migrate to [hyprland](https://wiki.hyprland.org/Nix/)
 - [ ] Look into setting up a light/dark mode switcher configuration
