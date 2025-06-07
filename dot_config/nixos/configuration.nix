@@ -143,10 +143,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
   # TODO: Need to do some hackery to get this to work: https://discourse.nixos.org/t/thinkpad-x270-fingerprint-reader-support/24177
