@@ -156,3 +156,6 @@ color sidebar_spool_file color207 default
 # Color to give mailboxes containing no unread mail
 color sidebar_unread color136 default
 # --------------------------------------------------------------------------
+set sort_re
+set sort = reverse-threads
+set sort_aux = last-date-received
