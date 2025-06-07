@@ -102,7 +102,7 @@ if [ "$current" != "$latest" ]; then
 
   curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
 
-  download_checksum=$(sha256sum <$pkg_name)
+  download_checksum=$(sha256sum $pkg_name)
   verified_checksum=$(grep "$pkg_name" <$checksums_filename)
 
   if [ "$download_checksum" != "$verified_checksum" ]; then
