@@ -1,0 +1,11 @@
+# Export format
+set address_style=us
+
+# Custom fields
+field birthday = Birthday, date
+
+# Custom views
+view CONTACT = name, email
+view ADDRESS = address, address2, city, state, zip, country
+view PHONE = phone, workphone, mobile, fax
+view OTHER = url, birthday
