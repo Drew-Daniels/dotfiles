@@ -1,5 +1,32 @@
 source ./aliases
-source ./secrets.neomuttrc
+
+set pgp_default_key = "1563 5927 B66A 15BC C2A8  5D2D EDBF AFD9 B56B 3EAE"
+
+# Use GPGME
+set crypt_use_gpgme = yes
+
+# Automatically sign all out-going email
+set crypt_autosign = yes
+
+# Sign replies to signed emails
+set crypt_replysign = yes
+
+# Encrypt replies to encrypted emails
+set crypt_replyencrypt = yes
+
+# Encrypt and sign replies to encrypted and signed email
+set crypt_replysignencrypted = yes
+
+# Attempt to verify signatures automatically
+set crypt_verify_sig = yes
+
+# Attempt to encrypt automatically, if possible
+set crypt_opportunistic_encrypt = no
+
+# So you can view encrypted emails automatically
+auto_view application/pgp-encrypted
+
+source "gpg -dq $XDG_CONFIG_HOME/neomutt/secrets.gpg |"
 # Inspo: https://seniormars.com/posts/neomutt/
 # NOTE: https://neomutt.org/feature/notmuch#3-%C2%A0using-notmuch
 set realname = "Drew Daniels"
