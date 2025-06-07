@@ -45,7 +45,7 @@ bind index                      zA  collapse-all # Missing :folddisable/foldenab
 # VARIABLES – shown with their default values
 # --------------------------------------------------------------------------
 # Should the Sidebar be shown?
-set sidebar_visible = no
+set sidebar_visible = yes
 # How wide should the Sidebar be in screen columns?
 
 # Note: Some characters, e.g. Chinese, take up two columns each.
