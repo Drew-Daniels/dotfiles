@@ -196,6 +196,7 @@ curl --silent --location --remote-name-all \
 
 ## `neomutt`
 
+- [ ] Configure protonmail
 - [ ] Look into using: https://github.com/sheoak/neomutt-powerline-nerdfonts?tab=readme-ov-file
 
 ## Other
