@@ -112,6 +112,8 @@
     urlscan
     neomutt
     notmuch
+    muchsync
+    lieer
     lynx
     isync
     msmtp
