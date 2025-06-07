@@ -67,6 +67,8 @@
     fish
     fzf
     fh
+    hunspell
+    libreoffice-qt6-fresh
     gh
     git
     git-credential-oauth
