@@ -7,10 +7,12 @@ source ./secrets.neomuttrc
 set mbox_type = Maildir
 set folder = "~/.local/share/email/gmail"
 set spool_file = "+[Gmail].All Mail"
-set postponed = "+[Gmail].Drafts"
-set record = "+[Gmail].Sent Mail"
-set trash = "+[Gmail].Trash"
-mailboxes ="[Gmail].All Mail" ="[Gmail].Important" ="[Gmail].Important" ="[Gmail].Drafts" ="[Gmail].Sent Mail" ="[Gmail].Trash" ="[Gmail].Spam" =INBOX
+set postponed = "+Drafts"
+set record = "+Sent Messages"
+set trash = "+Deleted Messages"
+# mailboxes ="All Mail" ="Important" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
+# NOTE: Removing Important mailbox for now until I can re-sync. Ran into gmail quota limits
+mailboxes ="[Gmail].All Mail" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
 
 # Where to put the stuff
 set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
