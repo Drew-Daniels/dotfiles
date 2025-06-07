@@ -2,6 +2,13 @@ source ./aliases
 source ./secrets.neomuttrc
 # Inspo: https://seniormars.com/posts/neomutt/
 # NOTE: https://neomutt.org/feature/notmuch#3-%C2%A0using-notmuch
+set realname = "Drew Daniels"
+set smtp_authenticators = 'gssapi:login'
+
+# Ensure TLS is enforced
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
 set nm_default_url = "notmuch:///home/drew/.local/share/notmuch/default"
 virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
 set mbox_type = Maildir
