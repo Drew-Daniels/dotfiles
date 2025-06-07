@@ -108,7 +108,13 @@
     mpd
     mpv
     ncmpcpp
+    abook
+    urlscan
     neomutt
+    notmuch
+    lynx
+    isync
+    msmtp
     neovim
     newsraft
     nix-index

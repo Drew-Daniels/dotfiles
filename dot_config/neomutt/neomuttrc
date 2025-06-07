@@ -2,19 +2,35 @@ source ./aliases
 source ./secrets.neomuttrc
 # Inspo: https://seniormars.com/posts/neomutt/
 # My mailboxes
-set folder = "imaps://imap.gmail.com:993/[Gmail]"
-set spoolfile = "+All Mail"
-set postponed = "+Drafts"
-set record = "+Sent Mail"
-set trash = "+Trash"
-
-mailboxes =Important =Starred =Drafts ="Sent Mail" =Spam =Trash
+# NOTE: If not using isync (a.k.a., mbsync)
+# set folder = "imaps://imap.gmail.com:993/[Gmail]"
+set mbox_type = Maildir
+set folder = "~/.local/share/email/gmail"
+set spoolfile = "+[Gmail].All Mail"
+set postponed = "+[Gmail].Drafts"
+set record = "+[Gmail].Sent Mail"
+set trash = "+[Gmail].Trash"
+mailboxes ="[Gmail].All Mail" ="[Gmail].Starred" ="[Gmail].Important" ="[Gmail].Drafts" ="[Gmail].Sent Mail" ="[Gmail].Trash" ="[Gmail].Spam" =INBOX
 
 # Where to put the stuff
+# TODO: Change these folders from 'mutt' to 'neomutt' for consistency
 set header_cache = "$XDG_CACHE_HOME/mutt/headers"
 set message_cachedir = "$XDG_CACHE_HOME/mutt/bodies"
 set certificate_file = "$XDG_CACHE_HOME/mutt/certificates"
 unset record
+
+# link to mailcap file
+set mailcap_path = "$XDG_CONFIG_HOME/neomutt/mailcap"
+# open attachments with mailcap with <return>
+bind attach <return> view-mailcap             
+# save attachments to a folder
+macro attach s '<save-entry> <bol>~/Documents/attachments/<eol>' 'save attachment'
+auto_view text/html   # automatically show html (mailcap uses lynx)
+
+# NOTMUCH
+macro index S "<shell-escape>mbsync -V gmail<enter><shell-escape>notmuch new<enter>" "sync email"
+macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
+
 # NOTE: Taken from: https://github.com/neomutt/neomutt-contrib
 #------------------------------------------------------------
 # Vi Key Bindings
