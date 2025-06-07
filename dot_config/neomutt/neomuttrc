@@ -29,6 +29,9 @@ bind attach <return> view-mailcap
 macro attach s '<save-entry> <bol>~/Documents/attachments/<eol>' 'save attachment'
 auto_view text/html   # automatically show html (mailcap uses lynx)
 
+# Setting 0 for wrap since this apparently causes email to display poorly on phones
+set editor = "nvim +':set textwidth=0'"
+
 # NOTMUCH
 macro index S "<shell-escape>mbsync -V gmail<enter><shell-escape>notmuch new<enter>" "sync email"
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
