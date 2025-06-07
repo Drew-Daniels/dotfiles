@@ -1,4 +1,20 @@
-text/html; $BROWSER %s; test=test -n "$display"; needsterminal;
+# MS Word documents
+# TODO: Figure out how to display these types of documents
+# application/msword; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+# application/vnd.ms-excel; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+# application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+# application/vnd.oasis.opendocument.text; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+#
+# HTML
 text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump -width=1024 %s; nametemplate=%s.html; copiousoutput;
-text/plain; cat %s; copiousoutput
-application/pdf; $BROWSER %s; test=test -n "$display"; needsterminal;
+
+# Text
+# text/plain; cat %s; copiousoutput
+text/plain; nvim %s; 
+
+# PDF
+application/pdf; zathura %s
+
+# Images
+image/png; feh %s
+image/jpeg; feh %s

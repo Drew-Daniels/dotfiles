@@ -69,6 +69,7 @@
     fh
     hunspell
     libreoffice-qt6-fresh
+    zathura
     gh
     git
     git-credential-oauth
