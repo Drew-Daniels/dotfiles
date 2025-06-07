@@ -1,17 +1,18 @@
 source ./aliases
 source ./secrets.neomuttrc
 # Inspo: https://seniormars.com/posts/neomutt/
-# My mailboxes
-# NOTE: If not using isync (a.k.a., mbsync)
-# set folder = "imaps://imap.gmail.com:993/[Gmail]"
+# NOTE: https://neomutt.org/feature/notmuch#3-%C2%A0using-notmuch
+set nm_default_url = "notmuch:///home/drew/.local/share/notmuch/default"
+virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
 set mbox_type = Maildir
-set folder = "~/.local/share/email/gmail"
-set spool_file = "+[Gmail].All Mail"
-set postponed = "+Drafts"
-set record = "+Sent Messages"
-set trash = "+Deleted Messages"
-mailboxes ="[Gmail].All Mail" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
-
+# Sets the root folder to search for emails 
+# set folder = "~/.local/share/email/gmail"
+set virtual_spool_file = yes
+# set postponed = "+Drafts"
+# set record = "+Sent Messages"
+# set trash = "+Deleted Messages"
+# mailboxes ="[Gmail].All Mail" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
+#
 # Where to put the stuff
 set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
 # TODO: Figure out why this setting doesn't work
