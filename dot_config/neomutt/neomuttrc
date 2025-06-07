@@ -6,17 +6,16 @@ source ./secrets.neomuttrc
 # set folder = "imaps://imap.gmail.com:993/[Gmail]"
 set mbox_type = Maildir
 set folder = "~/.local/share/email/gmail"
-set spoolfile = "+[Gmail].All Mail"
+set spool_file = "+[Gmail].All Mail"
 set postponed = "+[Gmail].Drafts"
 set record = "+[Gmail].Sent Mail"
 set trash = "+[Gmail].Trash"
 mailboxes ="[Gmail].All Mail" ="[Gmail].Starred" ="[Gmail].Important" ="[Gmail].Drafts" ="[Gmail].Sent Mail" ="[Gmail].Trash" ="[Gmail].Spam" =INBOX
 
 # Where to put the stuff
-# TODO: Change these folders from 'mutt' to 'neomutt' for consistency
-set header_cache = "$XDG_CACHE_HOME/mutt/headers"
-set message_cachedir = "$XDG_CACHE_HOME/mutt/bodies"
-set certificate_file = "$XDG_CACHE_HOME/mutt/certificates"
+set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
+set message_cachedir = "$XDG_CACHE_HOME/neomutt/bodies"
+set certificate_file = "$XDG_CACHE_HOME/neomutt/certificates"
 unset record
 
 # link to mailcap file
