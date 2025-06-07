@@ -205,6 +205,8 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Add a chezmoi script to write a starter `~/.config/alacritty/theme.toml` to disk
+    - I expect to frequently update this to change terminal theme, so don't want to track this. Otherwise I'll need to create some kind of script to handle updating the theme upon request. Something like the ideas mentioned here: https://github.com/alacritty/alacritty/issues/5999
 - [ ] Figure out why `fish` completion for `tmuxinator` is broken
   - Noticed when running commands like `mux <TAB>`
 - [ ] Use [swaylock-effects](https://github.com/mortie/swaylock-effects) instead of default `swaylock`
