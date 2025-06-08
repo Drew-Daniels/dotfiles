@@ -199,7 +199,6 @@ curl --silent --location --remote-name-all \
 
 - [ ] Configure this to work with protonmail
 - [ ] Look into [imapnotify](https://wiki.archlinux.org/title/Isync#With_imapnotify)
-- [ ] Create a template file for `isync` config, or track (without including secrets)
 - [ ] Configure protonmail
 - [ ] Look into using: https://github.com/sheoak/neomutt-powerline-nerdfonts?tab=readme-ov-file
 
@@ -216,7 +215,6 @@ curl --silent --location --remote-name-all \
   - Also [passff](https://codeberg.org/PassFF/passff)
 - [ ] Add a chezmoi script to write a starter `~/.config/alacritty/theme.toml` to disk
   - I expect to frequently update this to change terminal theme, so don't want to track this. Otherwise I'll need to create some kind of script to handle updating the theme upon request. Something like the ideas mentioned here: https://github.com/alacritty/alacritty/issues/5999
-- [ ] Figure out why `fish` completion for `tmuxinator` is broken
   - Noticed when running commands like `mux <TAB>`
 - [ ] Use [swaylock-effects](https://github.com/mortie/swaylock-effects) instead of default `swaylock`
 - [ ] Finish refactoring `~/.local/share/qutebrowser/userscripts/1pass.sh` script to work with current version of `op` and `wofi` instead of `rofi`
