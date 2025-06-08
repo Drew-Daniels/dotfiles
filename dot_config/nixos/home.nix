@@ -61,6 +61,7 @@
     dust
     drawio
     electrum
+    trezor-suite
     fd
     feh
     foliate
