@@ -149,6 +149,7 @@
     strawberry
     speedtest-cli
     standardnotes
+    nb
     # sshx
     # TODO: Create package
     # steamrip
