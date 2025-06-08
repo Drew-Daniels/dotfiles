@@ -86,7 +86,7 @@
     openvpn
     # Create an entry for this
     # keep-presence
-    pass
+    passage
     keepassxc
     kiwix
     jq
