@@ -204,6 +204,8 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Look into [floccus](https://github.com/floccusaddon/floccus)
+  - Also [nexcloud bookmarks](https://github.com/nextcloud/bookmarks)
 - [ ] Look into [zotero](https://github.com/zotero/zotero)
 - [ ] Look into [linkding](https://github.com/sissbruecker/linkding?tab=readme-ov-file)
 - [ ] Set up [yubikeys](https://support.yubico.com/hc/en-us/articles/360021919459-How-to-register-your-spare-key)
