@@ -205,6 +205,10 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Look into [minisign](https://github.com/jedisct1/minisign)
+  - Or, [signify](https://github.com/aperezdc/signify)
+  - [ ] Look into [libsodium](https://github.com/jedisct1/libsodium)
+- [ ] Look into [tarsnap](https://www.tarsnap.com/index.html)
 - [ ] Look into using [passage](https://github.com/FiloSottile/passage)
   - Also [age-plugin-yubikey](https://github.com/str4d/age-plugin-yubikey)
 - [ ] Add a chezmoi script to write a starter `~/.config/alacritty/theme.toml` to disk
