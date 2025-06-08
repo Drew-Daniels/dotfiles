@@ -62,6 +62,7 @@
     drawio
     electrum
     trezor-suite
+    yubioath-flutter
     fd
     feh
     foliate
