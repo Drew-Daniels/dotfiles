@@ -197,10 +197,8 @@ curl --silent --location --remote-name-all \
 
 ## `neomutt`
 
-- [ ] Look into using [oama](https://github.com/pdobsan/oama)
 - [ ] Configure this to work with protonmail
 - [ ] Look into [imapnotify](https://wiki.archlinux.org/title/Isync#With_imapnotify)
-- [ ] Look into [lieer](https://lieer.gaute.vetsj.com/)
 - [ ] Create a template file for `isync` config, or track (without including secrets)
 - [ ] Configure protonmail
 - [ ] Look into using: https://github.com/sheoak/neomutt-powerline-nerdfonts?tab=readme-ov-file
