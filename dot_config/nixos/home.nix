@@ -119,6 +119,7 @@
     lieer
     lynx
     isync
+    magic-wormhole
     msmtp
     neovim
     newsraft
