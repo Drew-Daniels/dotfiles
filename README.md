@@ -204,6 +204,7 @@ curl --silent --location --remote-name-all \
 
 ## Other
 
+- [ ] Set up [yubikeys](https://support.yubico.com/hc/en-us/articles/360021919459-How-to-register-your-spare-key)
 - [ ] Look into [minisign](https://github.com/jedisct1/minisign)
   - Or, [signify](https://github.com/aperezdc/signify)
   - [ ] Look into [libsodium](https://github.com/jedisct1/libsodium)
