@@ -152,6 +152,7 @@
     nb
     openssl
     file
+    pandoc
     # sshx
     # TODO: Create package
     # steamrip
