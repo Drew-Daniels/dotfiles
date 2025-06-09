@@ -150,6 +150,8 @@
     speedtest-cli
     standardnotes
     nb
+    openssl
+    file
     # sshx
     # TODO: Create package
     # steamrip
