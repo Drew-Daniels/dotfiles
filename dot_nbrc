@@ -13,7 +13,8 @@
 # https://github.com/xwmx/nb
 ###############################################################################
 
-
 export NB_DEFAULT_EXTENSION="${NB_DEFAULT_EXTENSION:-norg}" # Set by `nb` • Sun Jun  8 08:24:10 PM CDT 2025
 
 export NB_ENCRYPTION_TOOL="${NB_ENCRYPTION_TOOL:-gpg}" # Set by `nb` • Sun Jun  8 09:05:26 PM CDT 2025
+
+export NB_IMAGE_TOOL=magick
