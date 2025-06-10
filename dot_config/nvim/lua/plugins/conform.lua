@@ -80,6 +80,7 @@ return {
 				c = { "clang-format" },
 				cucumber = { "reformat-gherkin" },
 				lua = { "stylua" },
+				hurl = { "hurlfmt" },
 				html = { "htmlbeautifier" },
 				-- TODO: Add another variation of project_standardrb that only runs in hm
 				-- See comment below for 'project_standardrb' - for some reason running `bundle exec standardrb --fix ...` also corrects Rubcop offsenses when run via conform.nvim, but doesn't when run manually
