@@ -13,7 +13,7 @@ return {
 			schemes = {
 				-- light = "zenbones",
 				-- dark = "zenbones",
-				light = "zenbones",
+				light = "gruvbox",
 				dark = "gruvbox",
 			},
 		})
