@@ -183,6 +183,7 @@
     pciutils
     # TODO: Make an issue with this wofi nixpkg - crashes if 'wofi' not installed
     weechat
+    weechatScripts.autosort
     znc
     # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
     wofi
