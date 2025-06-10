@@ -1,12 +1,11 @@
 # MS Word documents
-# TODO: Figure out how to display these types of documents
-# application/msword; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
-# application/vnd.ms-excel; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
-# application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
-# application/vnd.oasis.opendocument.text; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
-#
+application/msword; libreoffice %s
+application/vnd.ms-excel; libreoffice %s
+application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice %s
+application/vnd.oasis.opendocument.text; libreoffice %s
+
 # HTML
-text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump -width=1024 %s; nametemplate=%s.html; copiousoutput;
+text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump  %s; nametemplate=%s.html; copiousoutput;
 
 # Text
 # text/plain; cat %s; copiousoutput

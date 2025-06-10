@@ -1,0 +1,4 @@
+# vim: ft=neomuttrc
+set sort_re
+set sort = reverse-threads
+set sort_aux = last-date-received

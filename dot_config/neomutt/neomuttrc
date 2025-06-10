@@ -1,62 +1,27 @@
-set pgp_default_key = "1563 5927 B66A 15BC C2A8  5D2D EDBF AFD9 B56B 3EAE"
+source "./crypto"
 
-# Use GPGME
-set crypt_use_gpgme = yes
-
-# Automatically sign all out-going email
-set crypt_autosign = yes
-
-# Sign replies to signed emails
-set crypt_replysign = yes
-
-# Encrypt replies to encrypted emails
-set crypt_replyencrypt = yes
-
-# Encrypt and sign replies to encrypted and signed email
-set crypt_replysignencrypted = yes
-
-# Attempt to verify signatures automatically
-set crypt_verify_sig = yes
-
-# Attempt to encrypt automatically, if possible
-set crypt_opportunistic_encrypt = no
-
-# So you can view encrypted emails automatically
-auto_view application/pgp-encrypted
-
-source "gpg -dq $XDG_CONFIG_HOME/neomutt/secrets.gpg |"
 # Inspo: https://seniormars.com/posts/neomutt/
 # NOTE: https://neomutt.org/feature/notmuch#3-%C2%A0using-notmuch
-set realname = "Drew Daniels"
+set real_name = "Drew Daniels"
 set smtp_authenticators = 'gssapi:login'
 
 # Ensure TLS is enforced
 set ssl_starttls = yes
 set ssl_force_tls = yes
 
-set nm_default_url = "notmuch:///home/drew/.local/share/notmuch/default"
-virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
+set spool_file = "Inbox"
+virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox" "Unread" "notmuch://?query=tag:unread"
+set nm_default_url = "notmuch://$XDG_DATA_HOME/notmuch/default"
 set mbox_type = Maildir
-set virtual_spool_file = yes
-# set postponed = "+Drafts"
-# set record = "+Sent Messages"
-# set trash = "+Deleted Messages"
-# mailboxes ="[Gmail].All Mail" ="Drafts" ="Sent Messages" ="Deleted Messages" =INBOX
-#
-# Where to put the stuff
 set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
-# TODO: Figure out why this setting doesn't work
-# set message_cachedir = "$XDG_CACHE_HOME/neomutt/bodies"
 set certificate_file = "$XDG_CACHE_HOME/neomutt/certificates"
 unset record
 
 # link to mailcap file
 set mailcap_path = "$XDG_CONFIG_HOME/neomutt/mailcap"
-# open attachments with mailcap with <return>
 bind attach <return> view-mailcap             
-# save attachments to a folder
 macro attach s '<save-entry> <bol>~/Documents/attachments/<eol>' 'save attachment'
-auto_view text/html   # automatically show html (mailcap uses lynx)
+auto_view text/html
 
 # Setting 0 for wrap since this apparently causes email to display poorly on phones
 set editor = "nvim +':set textwidth=0'"
@@ -65,155 +30,8 @@ set editor = "nvim +':set textwidth=0'"
 macro index S "<shell-escape>mbsync -V gmail<enter><shell-escape>notmuch new<enter>" "sync email"
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
 
-# ABOOK
-# When looking for contacts, use this command
-set query_command= "abook --mutt-query '%s'"
-# Add current sender to address book
-macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
-# Auto-complete email addresses by pushing tab
-bind editor <Tab> complete-query
-
-# NOTE: Taken from: https://github.com/neomutt/neomutt-contrib
-#------------------------------------------------------------
-# Vi Key Bindings
-#------------------------------------------------------------
-
-# Moving around
-bind attach,browser,index       g   noop
-bind attach,browser,index       gg  first-entry
-bind attach,browser,index       G   last-entry
-bind pager                      g  noop
-bind pager                      gg  top
-bind pager                      G   bottom
-bind pager                      k   previous-line
-bind pager                      j   next-line
-
-# Scrolling
-bind attach,browser,pager,index \CF next-page
-bind attach,browser,pager,index \CB previous-page
-bind attach,browser,pager,index \Cu half-up
-bind attach,browser,pager,index \Cd half-down
-bind browser,pager              \Ce next-line
-bind browser,pager              \Cy previous-line
-bind index                      \Ce next-line
-bind index                      \Cy previous-line
-
-bind pager,index                d   noop
-bind pager,index                dd  delete-message
-
-# Mail & Reply
-bind index                      \Cm list-reply # Doesn't work currently
-
-# Threads
-bind browser,pager,index        N   search-opposite
-bind pager,index                dT  delete-thread
-bind pager,index                dt  delete-subthread
-bind pager,index                gt  next-thread
-bind pager,index                gT  previous-thread
-bind index                      za  collapse-thread
-bind index                      zA  collapse-all # Missing :folddisable/foldenable
-
-# NOTE: Taken from https://neomutt.org/feature/sidebar#8-%C2%A0neomuttrc
-# Example NeoMutt config file for the sidebar feature.
-# --------------------------------------------------------------------------
-# VARIABLES – shown with their default values
-# --------------------------------------------------------------------------
-# Should the Sidebar be shown?
-set sidebar_visible = yes
-# How wide should the Sidebar be in screen columns?
-
-# Note: Some characters, e.g. Chinese, take up two columns each.
-set sidebar_width = 20
-# Should the mailbox paths be abbreviated?
-set sidebar_short_path = no
-# Number of top-level mailbox path subdirectories to truncate for display
-set sidebar_component_depth = 0
-# When abbreviating mailbox path names, use any of these characters as path
-# separators. Only the part after the last separators will be shown.
-# For file folders '/' is good. For IMAP folders, often '.' is useful.
-set sidebar_delim_chars = '/.'
-# If the mailbox path is abbreviated, should it be indented?
-set sidebar_folder_indent = no
-# Indent mailbox paths with this string.
-set sidebar_indent_string = '  '
-# Make the Sidebar only display mailboxes that contain new, or flagged,
-# mail.
-set sidebar_new_mail_only = no
-# Any mailboxes that are pinned will always be visible, even if the
-# sidebar_new_mail_only option is enabled.
-set sidebar_non_empty_mailbox_only = no
-# Only show mailboxes that contain some mail
-sidebar_pin '/home/user/mailbox1'
-sidebar_pin '/home/user/mailbox2'
-# When searching for mailboxes containing new mail, should the search wrap
-# around when it reaches the end of the list?
-set sidebar_next_new_wrap = no
-# Show the Sidebar on the right-hand side of the screen
-set sidebar_on_right = no
-# The character to use as the divider between the Sidebar and the other NeoMutt
-# panels.
-set sidebar_divider_char = '|'
-# Enable extended mailbox mode to calculate total, new, and flagged
-# message counts for each mailbox.
-set mail_check_stats
-# Display the Sidebar mailboxes using this format string.
-set sidebar_format = '%B%<F? [%F]>%* %<N?%N/>%S'
-# Sort the mailboxes in the Sidebar using this method:
-#       count    – total number of messages
-#       flagged  – number of flagged messages
-#       unread   – number of unread messages
-#       path     – mailbox path
-#       unsorted – do not sort the mailboxes
-set sidebar_sort = 'unsorted'
-# --------------------------------------------------------------------------
-# FUNCTIONS – shown with an example mapping
-# --------------------------------------------------------------------------
-# Move the highlight to the previous mailbox
-bind index,pager \Cp sidebar-prev
-# Move the highlight to the next mailbox
-bind index,pager \Cn sidebar-next
-# Open the highlighted mailbox
-bind index,pager \Co sidebar-open
-# Move the highlight to the previous page
-# This is useful if you have a LOT of mailboxes.
-bind index,pager <F3> sidebar-page-up
-# Move the highlight to the next page
-# This is useful if you have a LOT of mailboxes.
-bind index,pager <F4> sidebar-page-down
-# Move the highlight to the previous mailbox containing new, or flagged,
-# mail.
-bind index,pager <F5> sidebar-prev-new
-# Move the highlight to the next mailbox containing new, or flagged, mail.
-bind index,pager <F6> sidebar-next-new
-# Toggle the visibility of the Sidebar.
-bind index,pager B sidebar-toggle-visible
-# --------------------------------------------------------------------------
-# COLORS – some unpleasant examples are given
-# --------------------------------------------------------------------------
-# Note: All color operations are of the form:
-#       color OBJECT FOREGROUND BACKGROUND
-# Color of the current, open, mailbox
-# Note: This is a general NeoMutt option which colors all selected items.
-color indicator cyan black
-# Sidebar-specific color of the selected item
-color sidebar_indicator cyan black
-# Color of the highlighted, but not open, mailbox.
-color sidebar_highlight black color8
-# Color of the entire Sidebar panel
-color sidebar_background default black
-# Color of the divider separating the Sidebar from NeoMutt panels
-color sidebar_divider color8 black
-# Color to give mailboxes containing flagged mail
-color sidebar_flagged red black
-# Color to give mailboxes containing new mail
-color sidebar_new green black
-# Color to give mailboxes containing no new/flagged mail, etc.
-color sidebar_ordinary color245 default
-# Color to give the spool_file mailbox
-color sidebar_spool_file color207 default
-# Color to give mailboxes containing no unread mail
-color sidebar_unread color136 default
-# --------------------------------------------------------------------------
-set sort_re
-set sort = reverse-threads
-set sort_aux = last-date-received
+source "./abook"
+source "./bindings"
+source "./sidebar"
+source "./sorting"
+source "./colors"
