@@ -1,7 +1,10 @@
 return {
 	"saghen/blink.cmp",
 	lazy = false,
-	dependencies = "rafamadriz/friendly-snippets",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"Exafunction/codeium.vim",
+	},
 	-- dev = true,
 	version = "v1.*",
 	-- version = "v0.*",
@@ -34,8 +37,9 @@ return {
 			per_filetype = {
 				codecompanion = { "codecompanion" },
 			},
-			default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+			default = { "lsp", "path", "snippets", "buffer", "lazydev", "codeium" },
 			providers = {
+				codeium = { name = "Codeium", module = "codeium.blink", async = true },
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
 				snippets = {
 					name = "Snippets",
