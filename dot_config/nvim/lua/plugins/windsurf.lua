@@ -36,5 +36,4 @@ return {
 			return vim.fn["codeium#Clear"]()
 		end, { expr = true, silent = true, desc = "Codeium Clear" })
 	end,
-	opts = {},
 }
