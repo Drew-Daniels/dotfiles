@@ -4,7 +4,10 @@ return {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
 	},
-	-- cond = false,
+	-- Only run on macos
+	cond = function()
+		return vim.fn.has("macunix") == 1
+	end,
 	-- init = function()
 	-- 	-- TODO: Should these go in 'config' function instead? Since these should only be set whenever
 	-- 	-- the plugin is used
@@ -20,9 +23,18 @@ return {
 	--    ]])
 	-- end,
 	opts = {
-		enable_chat = false,
+		enable_chat = true,
 		virtual_text = {
 			enabled = true,
+			-- If I want to be in control of when completions are displayed
+			-- manual = true,
+			filetypes = {
+				-- explicitly specify which filetypes I want to enable/disable virtual text for
+				norg = false,
+				text = false,
+			},
+			-- default to enabling for the rest
+			default_filetype_enabled = true,
 			key_bindings = {
 				accept = "<C-g>",
 				clear = "<C-x>",
