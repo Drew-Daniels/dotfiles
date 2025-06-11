@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"Exafunction/codeium.vim",
+		-- "Exafunction/codeium.vim",
 	},
 	-- dev = true,
 	version = "v1.*",
@@ -37,9 +37,10 @@ return {
 			per_filetype = {
 				codecompanion = { "codecompanion" },
 			},
-			default = { "lsp", "path", "snippets", "buffer", "lazydev", "codeium" },
+			-- default = { "lsp", "path", "snippets", "buffer", "lazydev", "codeium" },
+			default = { "lsp", "path", "snippets", "buffer", "lazydev" },
 			providers = {
-				codeium = { name = "Codeium", module = "codeium.blink", async = true },
+				-- codeium = { name = "Codeium", module = "codeium.blink", async = true },
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
 				snippets = {
 					name = "Snippets",

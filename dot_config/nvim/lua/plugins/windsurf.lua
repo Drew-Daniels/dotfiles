@@ -4,10 +4,11 @@ return {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
 	},
+	cond = false,
+	-- cond = function()
 	-- Only run on macos
-	cond = function()
-		return vim.fn.has("macunix") == 1
-	end,
+	-- 	return vim.fn.has("macunix") == 1
+	-- end,
 	config = function()
 		require("codeium").setup({
 			enable_chat = true,
