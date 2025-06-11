@@ -164,6 +164,9 @@
     # tidal_dl_ng
     # NOTE: tidal-hifi seems broken - freezes
     # tidal-hifi
+    tor
+    torsocks
+    shadowsocks-rust
     tor-browser
     tmux
     tmuxinator
