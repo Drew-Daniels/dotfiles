@@ -165,6 +165,8 @@
     # NOTE: tidal-hifi seems broken - freezes
     # tidal-hifi
     tor
+    nyx
+    nyxt
     torsocks
     shadowsocks-rust
     tor-browser
