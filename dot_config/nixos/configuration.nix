@@ -173,19 +173,14 @@
   # Debugging Note: If I notice that the wg0 connection no longer exists for some reason,
   # power off laptop (don't restart), and then manually power back on. After logging back in, rebuild and see if the connection reappears.
   # Debugging Note 2: May just need to ensure that ~/.env and ~/.env.fish have necessary HOME_DDNS_NAME secret. If 1Password Desktop isn't started when the run_once_before_01-install-secrets.sh.tmpl script runs, the `op` commands will silently fail. And this step will need to be re-run manually
+  # Debugging Note 3: If the wireguard config needs to get re-generated, because of an unset value (like Endpoint), change the persistentKeepalive value to something different so it gets rebuilt with the right value
   networking.wg-quick.interfaces = {
     wg0 = {
       address = ["10.0.0.5/24"];
       listenPort = 51820;
       privateKeyFile = "/etc/wireguard/wg0-private-key";
-      peers = [
-        {
-          publicKey = "QiA3AA8yovuB4+vEmU7XmuX05lDZfM2B7njpfZZ4XUg=";
-          allowedIPs = ["0.0.0.0/0"];
-          endpoint = builtins.getEnv "HOME_DDNS_NAME";
-          persistentKeepalive = 25;
-        }
-      ];
+      # See ./wg-peers.nix
+      # peers = [];
       autostart = false;
       dns = ["64.6.64.6" "10.0.0.1"];
     };

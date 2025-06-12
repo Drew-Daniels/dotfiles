@@ -42,6 +42,7 @@
         };
         modules = [
           ./configuration.nix
+          ./wg-peers.nix
           ./hardware-configuration.nix
           home-manager.nixosModules.home-manager
           {
