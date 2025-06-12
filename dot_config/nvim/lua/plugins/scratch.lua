@@ -3,6 +3,6 @@ return {
 	event = "VeryLazy",
 	opts = {
 		file_picker = "fzflua",
-		filetypes = { "js", "json", "sql", "sh", "ruby", "norg", "txt" },
+		filetypes = { "js", "ts", "json", "sql", "sh", "ruby", "norg", "txt" },
 	},
 }
