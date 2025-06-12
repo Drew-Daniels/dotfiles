@@ -64,6 +64,7 @@ packages:
       - 'neovim'
       - 'pkgconf'
       - 'pngpaste'
+      - 'pwgen'
       - 'reattach-to-user-namespace'
       - 'ripgrep'
       - 'speedtest-cli'
@@ -205,6 +206,5 @@ packages:
       - 'rancher'
       - 'lynx'
       - 'google-drive'
-      - 'vagrant'
-      - 'virtualbox'
+      - 'mysqlworkbench'
       mas_apps: {}
