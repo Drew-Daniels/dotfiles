@@ -275,9 +275,15 @@ gaps inner 10
 gaps outer 10
 
 # default startup apps
-exec thorium-browser
+exec librewolf
 exec alacritty
+
 exec 1password
+
+# NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
+assign [app_id="librewolf"] workspace 1
+assign [app_id="alacritty"] workspace 1
+assign [class="1Password"] workspace 2
 
 font pango:JetBrainsMono Nerd Font 10
 
