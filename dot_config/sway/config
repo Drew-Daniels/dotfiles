@@ -277,6 +277,7 @@ gaps outer 10
 # default startup apps
 exec thorium-browser
 exec alacritty
+exec 1password
 
 font pango:JetBrainsMono Nerd Font 10
 
