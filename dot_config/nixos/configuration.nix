@@ -172,6 +172,7 @@
 
   # Debugging Note: If I notice that the wg0 connection no longer exists for some reason,
   # power off laptop (don't restart), and then manually power back on. After logging back in, rebuild and see if the connection reappears.
+  # Debugging Note 2: May just need to ensure that ~/.env and ~/.env.fish have necessary HOME_DDNS_NAME secret. If 1Password Desktop isn't started when the run_once_before_01-install-secrets.sh.tmpl script runs, the `op` commands will silently fail. And this step will need to be re-run manually
   networking.wg-quick.interfaces = {
     wg0 = {
       address = ["10.0.0.5/24"];
