@@ -1,0 +1,34 @@
+name: debezium-tutorial
+root: <%= ENV["PROJECTS_DIR"] %>/debezium-tutorial
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+  - 2)zookeeper:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker run -it --rm --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 quay.io/debezium/zookeeper:3.0
+  - 3)kafka:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker run -it --rm --name kafka -p 9092:9092 --link zookeeper:zookeeper quay.io/debezium/kafka:3.0
+  - 4)mysql:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker run -it --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw quay.io/debezium/example-mysql:3.0
