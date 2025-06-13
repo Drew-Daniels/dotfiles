@@ -203,6 +203,7 @@ packages:
       - 'glab'
       no_quarantine_casks: []
       casks:
+      - 'confluent-cli'
       - 'cursor'
       - 'rancher'
       - 'lynx'
