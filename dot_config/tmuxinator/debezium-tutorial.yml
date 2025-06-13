@@ -1,5 +1,10 @@
 name: debezium-tutorial
 root: <%= ENV["PROJECTS_DIR"] %>/debezium-tutorial
+on_project_stop:
+  - docker stop kafka
+  - docker stop zookeeper
+  - docker stop mysqlterm
+  - docker stop mysql
 windows:
   - 1)editor:
       layout: main-horizontal
