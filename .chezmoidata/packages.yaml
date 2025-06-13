@@ -127,6 +127,7 @@ packages:
       # TODO: Formula
       # - 'smithy-language-server'
       - 'sql-language-server'
+      - 'sqlfmt'
       # TODO: Formula
       # - 'standardrb'
       - 'tailwindcss-language-server'
