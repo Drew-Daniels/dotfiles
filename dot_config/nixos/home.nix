@@ -98,6 +98,7 @@
     obs-studio
     localstack
     libsecret
+    google-chrome
     librewolf
     qutebrowser
     lsd
