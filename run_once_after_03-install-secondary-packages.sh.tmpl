@@ -64,7 +64,9 @@ mas {{ $key | quote }}, id: {{ $value }}
 {{ end -}}
 {{ end -}}
 EOF
+{{ if eq .homeOrWork "work" -}}
 # TODO: Make this part of packages.yml as a separate key (E.g., 'after')
 # Re-establish symlink to php installation
 brew link --overwrite --force shivammathur/php/php@8.3
+{{ end -}}
 {{ end -}}
