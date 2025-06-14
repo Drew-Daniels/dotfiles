@@ -80,8 +80,7 @@
     gparted
     ueberzugpp
     hurl
-    # TODO: Create package
-    # usbimager
+    usbimager
     imagemagick
     josm
     just
