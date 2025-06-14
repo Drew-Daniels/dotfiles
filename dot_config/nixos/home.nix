@@ -119,6 +119,7 @@
     notmuch
     muchsync
     lieer
+    lsof
     lynx
     isync
     magic-wormhole

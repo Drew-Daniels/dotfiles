@@ -87,10 +87,8 @@
     };
   };
 
-  # https://discourse.nixos.org/t/how-to-create-files-in-the-etc-udev-rules-d-directory/11929/13
-  services.udev.packages = with pkgs; [
-    trezor-udev-rules
-  ];
+  # https://nixos.org/manual/nixos/stable/#trezor
+  services.trezord.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
