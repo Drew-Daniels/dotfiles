@@ -280,6 +280,8 @@ exec alacritty
 
 exec 1password
 
+exec sway-audio-idle-inhibit
+
 # NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
 assign [app_id="librewolf"] workspace 1
 assign [app_id="alacritty"] workspace 1

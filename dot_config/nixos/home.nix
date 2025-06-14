@@ -159,6 +159,7 @@
     signal-desktop
     swayr
     swayrbar
+    sway-audio-idle-inhibit
     waybar
     # TODO: Create package
     # tidal_dl_ng
