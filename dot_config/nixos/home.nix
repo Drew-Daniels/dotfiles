@@ -98,8 +98,8 @@
     obs-studio
     localstack
     libsecret
-    google-chrome
     librewolf
+    cromite
     qutebrowser
     lsd
     lua51Packages.tree-sitter-norg
