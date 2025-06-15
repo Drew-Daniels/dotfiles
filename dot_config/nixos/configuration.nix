@@ -45,6 +45,9 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  # https://nixos.wiki/wiki/Yubikey
+  services.pcscd.enable = true;
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
@@ -147,6 +150,7 @@
   # EXPERIMENTAL SETTINGS
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  services.udev.packages = [pkgs.yubikey-personalization];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
