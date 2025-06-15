@@ -24,6 +24,8 @@
     defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
+
+  services.mpris-proxy.enable = true;
   # services.gnome-keyring.enable = true;
   # desktopManager+windowManager
   # wayland.windowManager.sway.enable = true;
