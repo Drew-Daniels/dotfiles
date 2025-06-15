@@ -17,6 +17,8 @@
       # to save space on linux
       inputs.darwin.follows = "";
     };
+    programsdb.url = "github:wamserma/flake-programs-sqlite";
+    programsdb.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

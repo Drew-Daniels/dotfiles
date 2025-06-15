@@ -140,6 +140,11 @@
     # inputs.helix.packages."${pkgs.system}".helix
   ];
 
+  # https://blog.nobbz.dev/blog/2023-02-27-nixos-flakes-command-not-found
+  # Adjust the value for the nixexpr.tar.xz if necessary
+  environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
+  programs.command-not-found.dbPath = "/etc/programs.sqlite";
+
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";

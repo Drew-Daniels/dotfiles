@@ -317,4 +317,10 @@
   };
 
   programs.git-credential-oauth.enable = true;
+
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
 }
