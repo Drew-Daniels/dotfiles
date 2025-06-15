@@ -266,6 +266,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 
 # VOLUME
+# TODO: Would be nice to figure out a way to increase/decrease volume of the currently used sink here, rather than the default sink. Otherwise I'll need to use pactl to change volume like:
+# pactl list sinks
+# pactl set-sink-volume bluez_output.F4_D4_88_CB_92_D0.1 -5%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
