@@ -134,8 +134,7 @@
     pwgen
     plocate
     prettierd
-    # TODO: Figure out what was wrong with this - believe it was another electron build issue?
-    # protonmail-bridge
+    protonmail-bridge
     protonmail-desktop
     restic
     resticprofile
