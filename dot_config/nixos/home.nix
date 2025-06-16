@@ -35,130 +35,188 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # TODO: May want to move nix-index into configuration.nix instead - won't be necessary outside of NixOS
+    # NixOS
+    nix-index
+    # Prompts
+    starship
+    # Shells
+    fish
+    # Gemini Protocol
     amfora
     lagrange
+    # Web
+    librewolf
+    cromite
+    lynx
+    tor-browser
+    nyxt
+    shadowsocks-rust
+    qutebrowser
+    # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
+    wofi
+    # Terminal Emulators
     alacritty
-    alejandra
+    # Cloud
     awscli2
+    fh
+    gh
+    glab
+    google-cloud-sdk
+    localstack
+    pulumi
+    # grep
     ast-grep
+    comby
+    # Launchers
+    bemenu
+    # Camera
+    cheese
+    # Screenshots: Ex.) grim -g "$(slurp)" - | swappy -f - -o test.png
+    grim
+    slurp
+    satty
+    # Matrix
+    cinny-desktop
+    # Chat
+    signal-desktop
+    zulip
+    zulip-term
+    # IRC
+    weechat
+    weechatScripts.autosort
+    znc
+    # WIKI
+    kiwix
+    # Music
+    cmus
+    cmusfm
+    strawberry
+    beets
+    pavucontrol
+    mpd
+    ncmpcpp
+    qt6ct
+    # TODO: Create package
+    # steamrip
+    # TODO: Create package
+    # tidal-dl-ng
+    # video
+    mpv
+    obs-studio
+    # clipboard
+    cliphist
+    wl-clipboard
+    dbeaver-bin
+    # git
+    chezmoi
+    delta
+    git
+    git-credential-oauth
+    mergiraf
+    # filesystem
     bat
     bat-extras.prettybat
     bat-extras.batman
     bat-extras.batgrep
-    # TODO: Not sure if I can install all bat-extras binaries like below, or if I have to specify
-    # them 1 by 1
-    # bat-extras
-    beets
-    bemenu
-    brightnessctl
-    cheese
-    cinny-desktop
-    chezmoi
-    comby
-    cmus
-    cmusfm
-    cliphist
-    dbeaver-bin
-    delta
     dust
+    fd
+    fzf
+    ripgrep
+    plocate
+    file
+    lsof
+    yazi
+    zoxide
+    usbutils
+    usbimager
+    gparted
+    lsd
+    pandoc
+    unzip
+    # diagrams
     drawio
+    # btc
     electrum
     trezor-suite
+    # security
     yubioath-flutter
-    fd
-    feh
-    foliate
-    fish
-    fzf
-    fh
-    hunspell
-    libreoffice-qt6-fresh
-    zathura
-    gh
-    git
-    git-credential-oauth
-    google-cloud-sdk
-    glab
-    gparted
-    ueberzugpp
-    hurl
-    usbimager
-    imagemagick
-    josm
-    just
-    openvpn
-    # Create an entry for this
-    # keep-presence
+    openssl
+    sherlock
+    maigret
+    magic-wormhole
+    sops
     passage
     keepassxc
-    kiwix
+    pwgen
+    libsecret
+    rusty-diceware
+    # books
+    foliate
+    hunspell
+    # http
+    hurl
+    wget
+    # images
+    imagemagick
+    ueberzugpp
+    feh
+    swaybg
+    waypaper
+    swww
+    # Office
+    zathura
+    libreoffice-qt6-fresh
+    # Geo
+    josm
+    just
+    # VPN
+    openvpn
+    wireguard-tools
+    mullvad
+    # JSON
     jq
     jless
     nodePackages.jsonlint
-    nodePackages.live-server
     gcc
-    obs-studio
-    localstack
-    libsecret
-    librewolf
-    cromite
-    qutebrowser
-    lsd
     lua51Packages.tree-sitter-norg
     luajitPackages.luarocks
     gnumake42
-    sherlock
-    maigret
-    mergiraf
-    mullvad
+    # VOIP
     mumble
-    mpd
-    mpv
-    ncmpcpp
-    abook
-    urlscan
-    neomutt
-    notmuch
-    muchsync
-    lieer
-    lsof
-    lynx
-    isync
-    magic-wormhole
-    msmtp
-    neovim
-    newsraft
-    nix-index
-    nmap
-    pavucontrol
-    pwgen
-    plocate
-    prettierd
+    # Email
     protonmail-bridge
     protonmail-desktop
+    neomutt
+    isync
+    notmuch
+    muchsync
+    urlscan
+    msmtp
+    lieer
+    # Contacts
+    abook
+    # Editors
+    neovim
+    vim
+    universal-ctags
+    nodePackages.live-server
+    tree-sitter
+    # RSS
+    newsraft
+    # Networking
+    nmap
+    tor
+    torsocks
+    nyx
+    speedtest-cli
+    # Backups
     restic
     resticprofile
-    ripgrep
-    # TODO: Create package for reformat-gherkin
-    eslint_d
-    cljfmt
-    sops
-    starship
-    shellcheck
-    python313Packages.sqlfmt
-    shfmt
-    stylua
-    strawberry
-    speedtest-cli
+    # Notes
     standardnotes
     nb
-    openssl
-    file
-    pandoc
     # sshx
-    # TODO: Create package
-    # steamrip
-    signal-desktop
     swayr
     swayrbar
     sway-audio-idle-inhibit
@@ -167,56 +225,15 @@
     # tidal_dl_ng
     # NOTE: tidal-hifi seems broken - freezes
     # tidal-hifi
-    tor
-    nyx
-    nyxt
-    torsocks
-    shadowsocks-rust
-    tor-browser
+    # multiplexers
     tmux
     tmuxinator
-    tree-sitter
-    universal-ctags
-    unzip
-    vim
-    yamlfmt
-    grim
-    slurp
-    # Ex.)
-    # grim -g "$(slurp)" - | swappy -f - -o test.png
-    satty
-    # notification system
-    # mako
-    usbutils
-    pciutils
     # TODO: Make an issue with this wofi nixpkg - crashes if 'wofi' not installed
-    weechat
-    weechatScripts.autosort
-    znc
-    # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
-    wofi
-    swaybg
-    waypaper
-    swww
-    wget
-    wl-clipboard
-    wireguard-tools
-    qt6ct
-    rusty-diceware
-    yazi
-    zoxide
     # zulu17
-    zulip
-    zulip-term
-    nerd-fonts.jetbrains-mono
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
 
-    # LSPs
+    # Fonts
+    nerd-fonts.jetbrains-mono
+    # Formatters & LSPs
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
     # TODO: 'clangd'
     # TODO: cssmodules_ls
@@ -225,6 +242,16 @@
     # TODO: smithy_ls
     # TODO: Need to do more research on seeing whether or not it makes sense to just use nil_ls, nixd, or both
     # nixd
+    # TODO: Create package for reformat-gherkin
+    yamlfmt
+    prettierd
+    alejandra
+    eslint_d
+    cljfmt
+    python313Packages.sqlfmt
+    shfmt
+    stylua
+    shellcheck
     basedpyright
     deno
     rubyPackages_3_4.standard
@@ -252,6 +279,9 @@
     clojure-lsp
     sqls
     hyprls
+    # Utils
+    brightnessctl
+    pciutils
   ];
 
   # DOTFILES
