@@ -1,0 +1,26 @@
+name: fhir
+root: <%= ENV["PROJECTS_DIR"] %>/fhir
+on_project_stop:
+  - docker compose stop
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - tsc:
+            - fish
+            - cls
+            - npm run dev
+  - 2)docker-compose:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker compose up
