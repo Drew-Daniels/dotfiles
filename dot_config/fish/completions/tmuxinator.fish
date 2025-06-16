@@ -13,3 +13,4 @@ complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_co
 complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command open' --argument "(tmuxinator completions open)"
 complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command copy' --argument "(tmuxinator completions copy)"
 complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command delete' --argument "(tmuxinator completions delete)"
+complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command debug' --argument "(tmuxinator completions start)"
