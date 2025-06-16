@@ -6,7 +6,7 @@ return {
 	},
 	cond = false,
 	-- cond = function()
-	-- Only run on macos
+	-- 	-- Only run on macos
 	-- 	return vim.fn.has("macunix") == 1
 	-- end,
 	config = function()
@@ -29,12 +29,5 @@ return {
 				},
 			},
 		})
-		vim.keymap.set("i", "<C-g>", function()
-			return vim.fn["codeium#Accept"]()
-		end, { expr = true, silent = true, desc = "Codeium Accept" })
-
-		vim.keymap.set("i", "<C-x>", function()
-			return vim.fn["codeium#Clear"]()
-		end, { expr = true, silent = true, desc = "Codeium Clear" })
 	end,
 }
