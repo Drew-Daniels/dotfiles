@@ -218,6 +218,10 @@ return {
 			capabilities = capabilities,
 		})
 
+    vim.lsp.config("nickel_ls", {
+      capabilities = capabilities,
+    })
+
 		vim.lsp.enable({
 			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
 			-- "clangd",
@@ -253,6 +257,7 @@ return {
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
+      "nickel_ls"
 		})
 	end,
 }

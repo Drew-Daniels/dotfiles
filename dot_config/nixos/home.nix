@@ -38,6 +38,8 @@
     # TODO: May want to move nix-index into configuration.nix instead - won't be necessary outside of NixOS
     # NixOS
     nix-index
+    nickel
+    nls
     # Prompts
     starship
     # Shells
