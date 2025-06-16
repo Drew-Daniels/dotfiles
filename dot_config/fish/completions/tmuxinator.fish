@@ -8,8 +8,8 @@ function __fish_tmuxinator_using_command
     return 1
 end
 
-complete -f -c tmuxinator -n __fish_use_subcommand -x -a "(tmuxinator commands)"
-complete -f -c tmuxinator -n '__fish_tmuxinator_using_command start' -a "(tmuxinator completions start)"
-complete -f -c tmuxinator -n '__fish_tmuxinator_using_command open' -a "(tmuxinator completions open)"
-complete -f -c tmuxinator -n '__fish_tmuxinator_using_command copy' -a "(tmuxinator completions copy)"
-complete -f -c tmuxinator -n '__fish_tmuxinator_using_command delete' -a "(tmuxinator completions delete)"
+complete --no-files --command tmuxinator --condition __fish_use_subcommand --exclusive --argument "(tmuxinator commands)"
+complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command start' --argument "(tmuxinator completions start)"
+complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command open' --argument "(tmuxinator completions open)"
+complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command copy' --argument "(tmuxinator completions copy)"
+complete --no-files --command tmuxinator --condition '__fish_tmuxinator_using_command delete' --argument "(tmuxinator completions delete)"
