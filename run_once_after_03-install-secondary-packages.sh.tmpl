@@ -64,6 +64,8 @@ mas {{ $key | quote }}, id: {{ $value }}
 {{ end -}}
 {{ end -}}
 EOF
+# https://github.com/Homebrew/homebrew-core/pull/218854
+rm -f "$(brew --prefix)/etc/gitconfig"
 {{ if eq .homeOrWork "work" -}}
 # TODO: Make this part of packages.yml as a separate key (E.g., 'after')
 # Re-establish symlink to php installation
