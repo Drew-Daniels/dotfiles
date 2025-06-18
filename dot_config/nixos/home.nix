@@ -140,6 +140,7 @@
     drawio
     # btc
     electrum
+    electrum-ltc
     trezor-suite
     # security
     yubioath-flutter
