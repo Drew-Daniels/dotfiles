@@ -15,3 +15,10 @@ windows:
             - fish
             - cls
             - pnpm run dev
+  - 2)docker-compose:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker compose up
