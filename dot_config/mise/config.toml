@@ -9,3 +9,6 @@ deno = "1.45.2"
 java = "17.0.2"
 usage = "0.3.0"
 ruby = "3.3.4"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
