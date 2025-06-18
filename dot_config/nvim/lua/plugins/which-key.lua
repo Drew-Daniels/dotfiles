@@ -57,6 +57,7 @@ return {
 			{ "<leader>fc", "<cmd>FzfLua changes<cr>", desc = "Changes" },
 			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "File(s)" },
 			{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
+			{ "<leader>fp", "<cmd>MarkdownPreview<cr>", desc = "File Preview (Markdown)" },
 			-- { "<leader>fs", "<cmd>FzfLua live_grep_native<cr>", desc = "Live Search" },
 			{ "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Git-tracked File(s)" },
 			{ "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
