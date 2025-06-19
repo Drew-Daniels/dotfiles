@@ -48,6 +48,7 @@
     amfora
     lagrange
     # Web
+    firefox
     librewolf
     cromite
     lynx
@@ -160,6 +161,8 @@
     # http
     hurl
     wget
+    # notifications
+    mako
     # images
     imagemagick
     ueberzugpp

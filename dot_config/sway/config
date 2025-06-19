@@ -312,4 +312,7 @@ exec swaybg --image ~/background-image
 exec wl-paste --watch cliphist store
 bindsym Mod1+p exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
 
+# notifications
+exec mako
+
 include /etc/sway/config.d/*
