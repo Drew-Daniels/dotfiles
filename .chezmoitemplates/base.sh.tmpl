@@ -119,6 +119,8 @@ export BROWSER=librewolf
 
 # Bluetooth
 export BEATS_PRO_MAC_ADDR="{{ onepasswordRead "op://Personal/beats-pro-mac-addr/password" }}"
+alias btconnect=$(bluetoothctl connect "$BEATS_PRO_MAC_ADDR")
+alias btdisconnect=$(bluetoothctl disconnect "$BEATS_PRO_MAC_ADDR")
 
 # GitHub
 export GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN="{{ onepasswordRead "op://Personal/7cxogiqeiaehpkdi4djb3yvn24/password" }}"
