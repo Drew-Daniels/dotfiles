@@ -163,6 +163,8 @@
     wget
     # notifications
     mako
+    # for testing notifications, with 'notify-send "Test" "this is a test"'
+    libnotify
     # images
     imagemagick
     ueberzugpp
