@@ -222,6 +222,7 @@
     restic
     resticprofile
     # Notes
+    obsidian
     standardnotes
     nb
     # sshx
