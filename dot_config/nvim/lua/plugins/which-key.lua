@@ -97,6 +97,11 @@ return {
 			{ "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
 			{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
 			{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
+      -- Obsidian
+      { "<leader>o", group = "Obsidian" },
+      { "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
+      { "<leader>oc", "<cmd>ObsidianToday<cr>", desc = "Obsidian Current Daily (Today)" },
+      { "<leader>on", "<cmd>ObsidianTomorrow<cr>", desc = "Obsidian Next Daily (Tomorrow)" },
 			-- Neogen
 			{ "<leader>N", group = "Neogen" },
 			{
