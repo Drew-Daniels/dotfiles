@@ -190,4 +190,7 @@ if status is-interactive
 
     # browser
     set -gx BROWSER librewolf
+
+    # bluetooth
+    set -gx BEATS_PRO_MAC_ADDR  "{{ onepasswordRead "op://Personal/beats-pro-mac-addr/password" }}"
 end
