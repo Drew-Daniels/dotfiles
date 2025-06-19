@@ -120,5 +120,16 @@ export BROWSER=librewolf
 # Bluetooth
 export BEATS_PRO_MAC_ADDR="{{ onepasswordRead "op://Personal/beats-pro-mac-addr/password" }}"
 
-# secrets
-. "$HOME/.env"
+# GitHub
+export GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN="{{ onepasswordRead "op://Personal/7cxogiqeiaehpkdi4djb3yvn24/password" }}"
+
+# VPN
+export HOME_DDNS_NAME="{{ onepasswordRead "op://Personal/hfg6pheaifln27gpjqfygrgmsu/ddns_hostname" }}"
+
+# WORK start
+# TODO: Figure out why including these using the same chezmoi data homeOrWork variable isn't working
+# jira_data=$(op item get jira_webpt --fields=hostname,email,api_token --reveal)
+#
+# export JIRA_API_HOSTNAME=$(echo "$jira_data" | cut -d ',' -f1)
+# export JIRA_API_EMAIL=$(echo "$jira_data" | cut -d ',' -f2)
+# export JIRA_API_TOKEN=$(echo "$jira_data" | cut -d ',' -f3)
