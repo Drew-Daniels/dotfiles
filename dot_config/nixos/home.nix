@@ -82,6 +82,7 @@
     # Matrix
     cinny-desktop
     # Chat
+    discord
     signal-desktop
     zulip
     zulip-term
