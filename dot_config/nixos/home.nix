@@ -75,7 +75,7 @@
     bemenu
     # Camera
     cheese
-    # Screenshots: Ex.) grim -g "$(slurp)" - | swappy -f - -o test.png
+    # Screenshots: Ex.) grim -g "$(slurp)" - | satty -f - -o ~/Pictures/Screenshots/screenshot.png
     grim
     slurp
     satty
