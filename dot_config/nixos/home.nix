@@ -60,6 +60,7 @@
     wofi
     # Terminal Emulators
     alacritty
+    foot
     # Cloud
     awscli2
     fh
@@ -82,7 +83,8 @@
     # Matrix
     cinny-desktop
     # Chat
-    discord
+    # TODO: Figure out how to stop this from always being on when installed
+    # discord
     signal-desktop
     zulip
     zulip-term
