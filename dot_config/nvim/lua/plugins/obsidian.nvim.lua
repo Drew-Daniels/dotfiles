@@ -32,6 +32,16 @@ return {
 				path = "~/vaults/work",
 			},
 		},
+		templates = {
+			folder = "~/vaults/work/templates",
+		},
+		daily_notes = {
+			workdays_only = true,
+      -- which folders dailies should be placed in
+			folder = "dailies",
+      -- name of the template to use. Should be a file located in the 'templates' folder
+			template = "daily",
+		},
 		picker = {
 			name = "fzf-lua",
 			note_mappings = {
