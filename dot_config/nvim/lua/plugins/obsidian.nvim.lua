@@ -37,9 +37,9 @@ return {
 		},
 		daily_notes = {
 			workdays_only = true,
-      -- which folders dailies should be placed in
+			-- which folders dailies should be placed in
 			folder = "dailies",
-      -- name of the template to use. Should be a file located in the 'templates' folder
+			-- name of the template to use. Should be a file located in the 'templates' folder
 			template = "daily",
 		},
 		picker = {
@@ -61,6 +61,15 @@ return {
 			nvim_cmp = false,
 			blink = true,
 			min_chars = 2,
+		},
+		mappings = {
+			-- TODO: Figure out why this isn't working
+			["<localleader>td"] = {
+				action = function()
+					return require("obsidian").util.toggle_checkbox()
+				end,
+				opts = { buffer = true },
+			},
 		},
 	},
 	init = function()

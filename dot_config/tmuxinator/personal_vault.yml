@@ -1,0 +1,13 @@
+name: personal_vault
+root: ~/vaults/personal
+windows:
+  - personal_vault:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - personal_notes:
+            - fish
+            - cls
+            - nvim index.md
+        - cmd:
+            - fish
+            - cls
