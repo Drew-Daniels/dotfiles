@@ -10,6 +10,7 @@ debian-install.sh
 debian-upgrade.sh
 */mise/age.txt
 .config/nixos/wg-peers.nix
+**/.obsidian/workspace*.json
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
