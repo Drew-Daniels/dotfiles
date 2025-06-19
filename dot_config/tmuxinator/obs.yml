@@ -1,4 +1,4 @@
-name: obsidian.nvim
+name: obs
 root: <%= ENV["PROJECTS_DIR"] %>/obsidian.nvim
 windows:
   - root:
