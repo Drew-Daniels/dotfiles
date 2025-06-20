@@ -188,21 +188,18 @@ if status is-interactive
     # browser
     set -gx BROWSER librewolf
 
-    # bluetooth
-    set -gx BEATS_PRO_MAC_ADDR "{{ onepasswordRead "op://Personal/beats-pro-mac-addr/password" }}"
+    # secrets
+    if test -f ~/.env.fish
+        source ~/.env.fish
+    else
+        echo "No ~/.env.fish found. Run ~/scripts/export_secrets.sh"
+    end
 
-    # GitHub
-    set -gx GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN "{{ onepasswordRead "op://Personal/7cxogiqeiaehpkdi4djb3yvn24/password" }}"
-
-    # VPN
-    set -gx HOME_DDNS_NAME "{{ onepasswordRead "op://Personal/hfg6pheaifln27gpjqfygrgmsu/ddns_hostname" }}"
-
-    {{ if eq .homeOrWork "work" -}}
-    set jira_data (op item get jira_webpt --fields=hostname,email,api_token --reveal)
-
-    set -gx JIR_API_HOSTNAME (echo "$jira_data" | cut -d ',' -f1)
-    set -gx JIRA_API_EMAIL (echo "$jira_data" | cut -d ',' -f2)
-    set -gx JIRA_API_TOKEN (echo "$jira_data" | cut -d ',' -f3)
-    {{ end -}}
+    # TODO: Create a separate script to export these, similar to how is done in ~/scripts/export_secrets.sh
+    # set jira_data (op item get jira_webpt --fields=hostname,email,api_token --reveal)
+    #
+    # set -gx JIR_API_HOSTNAME (echo "$jira_data" | cut -d ',' -f1)
+    # set -gx JIRA_API_EMAIL (echo "$jira_data" | cut -d ',' -f2)
+    # set -gx JIRA_API_TOKEN (echo "$jira_data" | cut -d ',' -f3)
 
 end
