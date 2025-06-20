@@ -152,6 +152,7 @@ packages:
       - 'google-chrome'
       - 'iterm2'
       - 'obs'
+      - 'obsidian'
       - 'protonvpn'
       - 'postgres-unofficial'
       - 'postman'
