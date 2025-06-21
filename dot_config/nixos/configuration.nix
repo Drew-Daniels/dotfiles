@@ -25,7 +25,9 @@
 
   # Set your time zone.
   # time.timeZone = "America/Chicago";
+  # For automatic timezone adjustment: https://discourse.nixos.org/t/timezones-how-to-setup-on-a-laptop/33853/7
   services.automatic-timezoned.enable = true;
+  services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
