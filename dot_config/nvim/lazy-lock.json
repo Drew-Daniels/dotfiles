@@ -229,7 +229,7 @@
   },
   "render-markdown.nvim": {
     "branch": "main",
-    "commit": "0944ba04ea7fc9e9087c1dedc76562d6e0d110cf"
+    "commit": "24aacee83544ca113055564ed22be7852067c342"
   },
   "scratch.nvim": {
     "branch": "main",
