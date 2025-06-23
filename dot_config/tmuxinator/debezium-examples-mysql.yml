@@ -1,0 +1,27 @@
+name: debezium-examples-mysql
+root: <%= ENV["PROJECTS_DIR"] %>/debezium-examples-mysql
+pre_window: export DEBEZIUM_VERSION=2.1 && tmux setenv DEBEZIUM_VERSION $DEBEZIUM_VERSION
+on_project_stop:
+  - docker-compose -f docker-compose-mysql.yaml stop
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+          - fish
+          - cls
+          - nvim
+        - git:
+            - fish
+            - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker-compose -f docker-compose-mysql.yaml up
