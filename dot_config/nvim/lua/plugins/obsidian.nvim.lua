@@ -15,8 +15,9 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+  -- TODO: Figure out why type hints aren't working here: https://github.com/obsidian-nvim/obsidian.nvim/pull/233
 	---@module 'obsidian'
-	---@type obsidian.config.ClientOpts
+	---@type obsidian.config
 	opts = {
 		workspaces = {
 			{
