@@ -148,6 +148,17 @@
   environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
   programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "librewolf.desktop";
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
+      "x-scheme-handler/about" = "librewolf.desktop";
+      "x-scheme-handler/unknown" = "librewolf.desktop";
+    };
+  };
+
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
