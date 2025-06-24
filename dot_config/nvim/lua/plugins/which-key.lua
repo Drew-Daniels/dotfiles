@@ -55,13 +55,15 @@ return {
 			{ "<leader>fa", "<cmd>FzfLua autocommands<cr>", desc = "Autocommands" },
 			{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
 			{ "<leader>fc", "<cmd>FzfLua changes<cr>", desc = "Changes" },
+			{ "<leader>fc", "<cmd>FzfLua zoxide<cr>", desc = "Directories (Recent)" },
 			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "File(s)" },
 			-- NOTE: Using blines instead of lines since I think I'll only really want to search the current buffer
 			-- { "<leader>fl", "<cmd>FzfLua lines<cr>", desc = "File Lines" },
 			{ "<leader>fl", "<cmd>FzfLua blines<cr>", desc = "File (Buffer) Lines" },
-			{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
+			-- NOTE: Not as performant as live_grep_native, but might be more dependable.
+			-- { "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
+			{ "<leader>fs", "<cmd>FzfLua live_grep_native<cr>", desc = "Live Search (Native)" },
 			{ "<leader>fp", "<cmd>MarkdownPreview<cr>", desc = "File Preview (Markdown)" },
-			-- { "<leader>fs", "<cmd>FzfLua live_grep_native<cr>", desc = "Live Search" },
 			{ "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Git-tracked File(s)" },
 			{ "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
 			{ "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent File(s)" },
