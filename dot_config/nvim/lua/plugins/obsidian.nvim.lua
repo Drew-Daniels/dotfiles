@@ -16,7 +16,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	---@module 'obsidian'
-	---@type obsidian.config.ClientOpts
+	---@type obsidian.config
 	opts = {
 		workspaces = {
 			{
