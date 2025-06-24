@@ -3,7 +3,7 @@ return {
 	-- optional for icon support
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
-		{ "max-perf", "ivy" },
+		{ "max-perf", "ivy", "hide" },
 		lsp = {
 			async_or_timeout = 10000,
 		},
