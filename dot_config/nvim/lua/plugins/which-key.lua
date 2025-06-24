@@ -56,6 +56,9 @@ return {
 			{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
 			{ "<leader>fc", "<cmd>FzfLua changes<cr>", desc = "Changes" },
 			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "File(s)" },
+			-- NOTE: Using blines instead of lines since I think I'll only really want to search the current buffer
+			-- { "<leader>fl", "<cmd>FzfLua lines<cr>", desc = "File Lines" },
+			{ "<leader>fl", "<cmd>FzfLua blines<cr>", desc = "File (Buffer) Lines" },
 			{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
 			{ "<leader>fp", "<cmd>MarkdownPreview<cr>", desc = "File Preview (Markdown)" },
 			-- { "<leader>fs", "<cmd>FzfLua live_grep_native<cr>", desc = "Live Search" },
@@ -97,11 +100,11 @@ return {
 			{ "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
 			{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
 			{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
-      -- Obsidian
-      { "<leader>o", group = "Obsidian" },
-      { "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
-      { "<leader>oc", "<cmd>ObsidianToday<cr>", desc = "Obsidian Current Daily (Today)" },
-      { "<leader>on", "<cmd>ObsidianTomorrow<cr>", desc = "Obsidian Next Daily (Tomorrow)" },
+			-- Obsidian
+			{ "<leader>o", group = "Obsidian" },
+			{ "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
+			{ "<leader>oc", "<cmd>ObsidianToday<cr>", desc = "Obsidian Current Daily (Today)" },
+			{ "<leader>on", "<cmd>ObsidianTomorrow<cr>", desc = "Obsidian Next Daily (Tomorrow)" },
 			-- Neogen
 			{ "<leader>N", group = "Neogen" },
 			{
