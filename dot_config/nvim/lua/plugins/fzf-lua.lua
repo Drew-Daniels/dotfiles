@@ -8,7 +8,7 @@ return {
 			async_or_timeout = 10000,
 		},
 		grep = {
-			rg_opts = "--column --line-number --no-heading --color=always --smart-case",
+			-- rg_opts = "--column --line-number --no-heading --color=always --smart-case",
 			RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
 		},
 	},
