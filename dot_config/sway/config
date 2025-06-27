@@ -281,6 +281,8 @@ exec $term
 
 exec 1password
 
+exec obsidian
+
 exec signal-desktop
 
 exec sway-audio-idle-inhibit
@@ -289,7 +291,8 @@ exec sway-audio-idle-inhibit
 assign [app_id="librewolf"] workspace 1
 assign [app_id="alacritty"] workspace 1
 assign [class="1Password"] workspace 2
-assign [class="Signal"] workspace 3
+assign [class="obsidian"] workspace 3
+assign [class="Signal"] workspace 4
 
 font pango:JetBrainsMono Nerd Font 10
 
