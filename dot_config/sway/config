@@ -281,12 +281,15 @@ exec $term
 
 exec 1password
 
+exec signal-desktop
+
 exec sway-audio-idle-inhibit
 
 # NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
 assign [app_id="librewolf"] workspace 1
 assign [app_id="alacritty"] workspace 1
 assign [class="1Password"] workspace 2
+assign [class="Signal"] workspace 3
 
 font pango:JetBrainsMono Nerd Font 10
 
