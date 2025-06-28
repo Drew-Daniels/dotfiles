@@ -1,5 +1,11 @@
-# TODO: See if I can use expansion instead of absolute path
-/home/drew/.cache
-/home/drew/.cargo
-# Don't include this unless I start using Docker more often
-**/Docker.raw
+$HOME/*
+!$HOME/Desktop/
+!$HOME/Documents
+!$HOME/Downloads/
+!$HOME/Library/
+!$HOME/Music/
+!$HOME/nixos/
+!$HOME/Pictures/
+!$HOME/projects
+!$HOME/Passwords.kdbx
+node_modules

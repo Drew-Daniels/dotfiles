@@ -5,9 +5,9 @@
     "backup": {
       "verbose": true,
       "source": [
-        "/home/$USER"
+        "/home/drew"
       ],
-      "exclude-file": "~/.config/restic/exclude.txt",
+      "exclude-file": "/home/drew/.config/restic/exclude.txt",
       "exclude-caches": true,
       "one-file-system": true,
       "skip-if-unchanged": true,
