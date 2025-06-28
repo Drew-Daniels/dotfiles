@@ -6,13 +6,11 @@
     "backup": {
       "verbose": true,
       "source": [
-        "/home/drew"
+        "/home/$USER"
       ],
       "exclude-file": "~/.config/restic/exclude.txt",
       "exclude-caches": true,
       "one-file-system": true,
-      "schedule": "daily",
-      "schedule-after-network-online": true,
       "skip-if-unchanged": true,
       "password-command": "op read op://Personal/restic-nixos-backup-password/password"
     }
