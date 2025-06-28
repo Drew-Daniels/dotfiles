@@ -10,17 +10,7 @@
       "exclude-file": "/home/drew/.config/restic/exclude.txt",
       "exclude-caches": true,
       "one-file-system": true,
-      "skip-if-unchanged": true,
-      "schedule": "*:00,30",
-      "schedule-permission": "user",
-      "schedule-priority": "background",
-      "schedule-log": "profile-backup.log",
-      "schedule-lock-mode": "default",
-      "schedule-lock-wait": "15m30s"
-    },
-    "status-file": "/home/drew/backups/status.json",
-    "forget": {
-      "schedule": "daily"
+      "skip-if-unchanged": true
     }
   }
 }
