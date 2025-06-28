@@ -19,6 +19,7 @@ return {
 			"embedded_template",
 			"fsh",
 			"fish",
+			"hcl",
 			"html",
 			"http",
 			"php",
