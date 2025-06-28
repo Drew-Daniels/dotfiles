@@ -2,7 +2,6 @@
   "$schema": "https://creativeprojects.github.io/resticprofile/jsonschema/config.json",
   "version": "1",
   "default": {
-    "repository": "local:~/backups",
     "backup": {
       "verbose": true,
       "source": [
@@ -12,7 +11,16 @@
       "exclude-caches": true,
       "one-file-system": true,
       "skip-if-unchanged": true,
-      "password-command": "op read op://Personal/restic-nixos-backup-password/password"
+      "schedule": "*:00,30",
+      "schedule-permission": "user",
+      "schedule-priority": "background",
+      "schedule-log": "profile-backup.log",
+      "schedule-lock-mode": "default",
+      "schedule-lock-wait": "15m30s"
+    },
+    "status-file": "/home/drew/backups/status.json",
+    "forget": {
+      "schedule": "daily"
     }
   }
 }
