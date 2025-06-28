@@ -311,7 +311,7 @@ bindsym $mod+c           exec swayr execute-swaymsg-command
 # bindsym $mod+Shift+c     exec swayr execute-swayr-command
 bindsym $mod+Space+c     exec swayr execute-swayr-command
 
-exec swaybg --image ~/background-image
+exec swaybg --image ~/.config/sway/background-image
 
 exec wl-paste --watch cliphist store
 bindsym Mod1+p exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy

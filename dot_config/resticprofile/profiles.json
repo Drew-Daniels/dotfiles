@@ -1,0 +1,20 @@
+{
+  "$schema": "https://creativeprojects.github.io/resticprofile/jsonschema/config.json",
+  "version": "1",
+  "default": {
+    "repository": "local:~/backups",
+    "backup": {
+      "verbose": true,
+      "source": [
+        "/home/drew"
+      ],
+      "exclude-file": "~/.config/restic/exclude.txt",
+      "exclude-caches": true,
+      "one-file-system": true,
+      "schedule": "daily",
+      "schedule-after-network-online": true,
+      "skip-if-unchanged": true,
+      "password-command": "op read op://Personal/restic-nixos-backup-password/password"
+    }
+  }
+}
