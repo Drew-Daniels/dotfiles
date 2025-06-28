@@ -66,14 +66,24 @@
   # };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Configure manually at http://localhost:631
+  # TODO: Figure out why I am not able to print PDFs. The output is just jumbled text. Likely a driver problem?
+  services.printing = {
+    enable = true;
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   security.rtkit.enable = true;
-  services.avahi.enable = true;
+  services.avahi = {
+    enable = true;
+    # Enables finding local network devices
+    # https://wiki.nixos.org/wiki/Printing
+    # https://wiki.archlinux.org/title/CUPS/Troubleshooting
+    nssmdns4 = true;
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
