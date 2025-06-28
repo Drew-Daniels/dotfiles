@@ -195,6 +195,9 @@
     gnumake42
     # VOIP
     mumble
+    # Calculator
+    qalculate-qt
+    libqalculate
     # Email
     protonmail-bridge
     protonmail-desktop
