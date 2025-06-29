@@ -92,6 +92,7 @@
     zulip-term
     jami
     # IRC
+    halloy
     weechat
     weechatScripts.autosort
     znc

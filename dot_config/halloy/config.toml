@@ -1,0 +1,112 @@
+# https://themes.halloy.chat/
+# NOTE: This must be before any other configuration
+theme = "gruvbox"
+# Halloy config.
+#
+# For a complete list of available options,
+# please visit https://halloy.squidowl.org/configuration/index.html
+
+# TODO: Set up soju/znc/glowing bear bouncer
+
+# THEME
+# https://github.com/squidowl/halloy/tree/2025.2/book/src/configuration/themes
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         SERVERS                          │
+#          ╰──────────────────────────────────────────────────────────╯
+# In order of popularity...
+# https://netsplit.de/networks/top100.php
+
+[servers.liberachat]
+server = "irc.libera.chat"
+channels = ["#halloy", "#gemini"]
+nickname = "halloy4859"
+alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+# nick_password_command = ""
+# username = ""
+# realname = ""
+
+# [servers.liberachat.sasl.plain]
+# username = ""
+# password_command = ""
+
+
+[servers.oftc]
+server = "irc.oftc.net"
+channels = ["#oftc"]
+nickname = "halloy4859"
+alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+# nick_password_command = ""
+# username = ""
+# realname = ""
+
+# [servers.oftc.sasl.plain]
+# username = ""
+# password_command = ""
+
+[servers.hackint]
+server = "irc.hackint.org"
+channels = ["#hackint", "#nixos"]
+nickname = "halloy4859"
+alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+# nick_password_command = ""
+# username = ""
+# realname = ""
+
+# [servers.hackint.sasl.plain]
+# username = ""
+# password_command = ""
+
+[servers.rizon]
+server = "irc.rizon.net"
+channels = ["#chat"]
+nickname = "halloy4859"
+alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+# nick_password_command = ""
+# username = ""
+# realname = ""
+
+# [servers.rizon.sasl.plain]
+# username = ""
+# password_command = ""
+
+[servers.tildechat]
+server = "irc.tilde.chat"
+channels = ["#gemini"]
+# https://tilde.chat/stats/
+nickname = "halloy4859"
+alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+# nick_password_command = ""
+# username = ""
+# realname = ""
+
+# [servers.tildechat.sasl.plain]
+# username = ""
+# password_command = ""
+
+# ACTIONS
+# https://github.com/squidowl/halloy/blob/2025.2/book/src/configuration/sidebar.md
+[sidebar]
+buffer_action = "replace-pane"
+buffer_focused_action = "close-pane"
+
+# https://github.com/squidowl/halloy/blob/2025.2/book/src/configuration/buffer.md
+[buffer]
+default_action = "replace-pane"
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         KEYBOARD                         │
+#          ╰──────────────────────────────────────────────────────────╯
+# https://github.com/squidowl/halloy/blob/2025.2/book/src/configuration/keyboard.md
+# TODO: Figure out why alt key seems to be getting hijacked
+[keyboard]
+move_up = "alt+k"
+move_down = "alt+j"
+move_left = "alt+h"
+move_right = "alt+l"
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                           FONT                           │
+#          ╰──────────────────────────────────────────────────────────╯
+[font]
+family = "JetBrainsMono Nerd Font"
