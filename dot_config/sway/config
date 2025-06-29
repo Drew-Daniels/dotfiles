@@ -285,6 +285,8 @@ exec obsidian
 
 exec signal-desktop
 
+exec halloy
+
 exec sway-audio-idle-inhibit
 
 # NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
@@ -293,6 +295,8 @@ assign [app_id="alacritty"] workspace 1
 assign [class="1Password"] workspace 2
 assign [class="obsidian"] workspace 3
 assign [class="Signal"] workspace 4
+assign [class="Signal"] workspace 4
+assign [app_id="org.squidowl.halloy"] workspace 5
 
 font pango:JetBrainsMono Nerd Font 10
 
