@@ -103,8 +103,7 @@
     mpd
     ncmpcpp
     qt6ct
-    # TODO: Create package
-    # steamrip
+    streamrip
     # TODO: Create package
     # tidal-dl-ng
     # video
