@@ -158,10 +158,12 @@
   environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
   programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
+  # https://wiki.nixos.org/w/index.php?title=Default_applications&oldid=19888
   xdg.mime = {
     enable = true;
     defaultApplications = {
       "text/html" = "librewolf.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
       "x-scheme-handler/http" = "librewolf.desktop";
       "x-scheme-handler/https" = "librewolf.desktop";
       "x-scheme-handler/about" = "librewolf.desktop";
@@ -205,6 +207,9 @@
   # VPN
   # https://alberand.com/nixos-wireguard-vpn.html
   networking.firewall.allowedUDPPorts = [51820];
+  # https://github.com/simplex-chat/simplex-chat/issues/3425#issuecomment-2336520556
+  # NOTE: When connecting to mobile, use this port
+  networking.firewall.allowedTCPPorts = [40257];
 
   # To start:
   # sudo systemctl stop wg-quick-wg0

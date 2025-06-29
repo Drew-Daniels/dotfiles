@@ -86,11 +86,11 @@
     element-desktop
     cinny-desktop
     # Chat
-    # TODO: Figure out how to stop this from always being on when installed
-    # discord
+    simplex-chat-desktop
     signal-desktop
     zulip
     zulip-term
+    jami
     # IRC
     weechat
     weechatScripts.autosort
