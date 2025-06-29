@@ -20,11 +20,12 @@ theme = "gruvbox"
 [servers.liberachat]
 server = "irc.libera.chat"
 channels = ["#halloy", "#gemini"]
-nickname = "halloy4859"
-alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+nickname = "drew"
+alt_nicks = ["drew0", "drew1", "drew2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
+# on_connect = ["/msg NickServ SET CLOAK ON"]
 
 # [servers.liberachat.sasl.plain]
 # username = ""
@@ -34,11 +35,14 @@ alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
 [servers.oftc]
 server = "irc.oftc.net"
 channels = ["#oftc"]
-nickname = "halloy4859"
-alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+nickname = "drew"
+alt_nicks = ["drew0", "drew1", "drew2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
+# TODO: Must run /msg NickServ REVERIFY initially to request a cloak
+# https://www.oftc.net/UserCloaks/
+# on_connect = ["/msg NickServ SET CLOAK ON"]
 
 # [servers.oftc.sasl.plain]
 # username = ""
@@ -47,11 +51,12 @@ alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
 [servers.hackint]
 server = "irc.hackint.org"
 channels = ["#hackint", "#nixos"]
-nickname = "halloy4859"
-alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+nickname = "drew"
+alt_nicks = ["drew0", "drew1", "drew2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
+# on_connect = ["/msg NickServ SET CLOAK ON"]
 
 # [servers.hackint.sasl.plain]
 # username = ""
@@ -60,11 +65,12 @@ alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
 [servers.rizon]
 server = "irc.rizon.net"
 channels = ["#chat"]
-nickname = "halloy4859"
-alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+nickname = "drew"
+alt_nicks = ["drew0", "drew1", "drew2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
+# on_connect = ["/msg NickServ SET CLOAK ON"]
 
 # [servers.rizon.sasl.plain]
 # username = ""
@@ -72,13 +78,14 @@ alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
 
 [servers.tildechat]
 server = "irc.tilde.chat"
-channels = ["#gemini"]
 # https://tilde.chat/stats/
-nickname = "halloy4859"
-alt_nicks = ["halloy4860", "halloy4861", "halloy4862"]
+channels = ["#gemini"]
+nickname = "drew"
+alt_nicks = ["drew0", "drew1", "drew2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
+# on_connect = ["/msg NickServ SET CLOAK ON"]
 
 # [servers.tildechat.sasl.plain]
 # username = ""
