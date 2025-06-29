@@ -35,6 +35,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # Android
+    apksigner
     # TODO: May want to move nix-index into configuration.nix instead - won't be necessary outside of NixOS
     # NixOS
     nix-index
@@ -81,6 +83,7 @@
     slurp
     satty
     # Matrix
+    element-desktop
     cinny-desktop
     # Chat
     # TODO: Figure out how to stop this from always being on when installed
