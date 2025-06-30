@@ -1,5 +1,12 @@
 {{- template "base.sh.tmpl" }}
 
+# qt6ct
+# https://www.opencode.net/trialuser/qt6ct
+export QT_QPA_PLATFORMTHEME=qt6ct
+
+# Browser
+export BROWSER=librewolf
+
 # TODO: See about moving this either into base.sh.tmpl or another template file - since this needs to be called after compinit
 # aws cli
 complete -C '/usr/local/bin/aws_completer' aws

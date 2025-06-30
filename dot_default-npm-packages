@@ -12,3 +12,4 @@ vim-language-server
 @olrtg/emmet-language-server
 @microsoft/compose-language-service
 live-server
+@mermaid-js/mermaid-cli
