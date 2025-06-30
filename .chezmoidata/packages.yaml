@@ -15,6 +15,7 @@ packages:
       brews:
       - 'ariga/tap/atlas'
       - 'git'
+      - 'gitleaks'
       - 'age'
       - 'ast-grep'
       - 'automake'
@@ -156,14 +157,12 @@ packages:
       - 'protonvpn'
       - 'postgres-unofficial'
       - 'postman'
-      - 'raindropio'
       - 'rectangle'
       - 'tidal'
       - 'zulip'
       - 'zoom'
       mas_apps:
         "rcmd": 1596283165
-        "Save to Raindrop.io": 1549370672
         "Snippety": 1530751461
         "Xcode": 497799835
     home:
