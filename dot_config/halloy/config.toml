@@ -68,6 +68,8 @@ alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # [servers.hackint.sasl.plain]
 # username = ""
 # password_command = ""
+[servers.hackint.sasl.external]
+cert = "/home/drew/certs/nick.pem"
 
 [servers.rizon]
 server = "irc.rizon.net"
