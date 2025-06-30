@@ -35,6 +35,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    hexyl
     # Android
     apksigner
     # TODO: May want to move nix-index into configuration.nix instead - won't be necessary outside of NixOS
@@ -91,6 +92,8 @@
     zulip
     zulip-term
     jami
+    # Chart
+    d2
     # IRC
     halloy
     weechat
@@ -120,9 +123,9 @@
     # git
     chezmoi
     delta
-    git
+    gitFull
     git-credential-oauth
-    git-secrets
+    gitleaks
     mergiraf
     # filesystem
     bat
@@ -180,6 +183,8 @@
     waypaper
     swww
     # Office
+    resvg
+    poppler
     zathura
     libreoffice-qt6-fresh
     # Geo
