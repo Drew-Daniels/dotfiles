@@ -23,3 +23,6 @@ encryption = "age"
     command = ".local/share/chezmoi/.pre-source-read.sh"
 [hooks.apply.post]
     command = ".local/share/chezmoi/.post-apply.sh"
+[add]
+  # default is "warning"
+  secrets = "error"
