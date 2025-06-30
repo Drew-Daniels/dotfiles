@@ -63,14 +63,12 @@ server = "irc.rizon.net"
 channels = ["#chat"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
-# nick_password_command = ""
 # username = ""
 # realname = ""
 # on_connect = ["/msg NickServ SET CLOAK ON"]
 
-# [servers.rizon.sasl.plain]
-# username = ""
-# password_command = ""
+[servers.rizon.sasl.external]
+cert = "/home/drew/certs/nick.pem"
 
 [servers.tildechat]
 server = "irc.tilde.chat"
@@ -78,14 +76,12 @@ server = "irc.tilde.chat"
 channels = ["#gemini"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
-# nick_password_command = ""
 # username = ""
 # realname = ""
 # on_connect = ["/msg NickServ SET CLOAK ON"]
 
-# [servers.tildechat.sasl.plain]
-# username = ""
-# password_command = ""
+[servers.tildechat.sasl.external]
+cert = "/home/drew/certs/nick.pem"
 
 # ACTIONS
 # https://github.com/squidowl/halloy/blob/2025.2/book/src/configuration/sidebar.md
