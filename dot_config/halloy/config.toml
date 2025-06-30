@@ -20,8 +20,8 @@ theme = "gruvbox"
 [servers.liberachat]
 server = "irc.libera.chat"
 channels = ["#halloy", "#gemini"]
-nickname = "drew"
-alt_nicks = ["drew0", "drew1", "drew2"]
+nickname = "zxcv"
+alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
@@ -35,8 +35,8 @@ alt_nicks = ["drew0", "drew1", "drew2"]
 [servers.oftc]
 server = "irc.oftc.net"
 channels = ["#oftc"]
-nickname = "drew"
-alt_nicks = ["drew0", "drew1", "drew2"]
+nickname = "zxcv"
+alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
@@ -51,8 +51,8 @@ alt_nicks = ["drew0", "drew1", "drew2"]
 [servers.hackint]
 server = "irc.hackint.org"
 channels = ["#hackint", "#nixos"]
-nickname = "drew"
-alt_nicks = ["drew0", "drew1", "drew2"]
+nickname = "zxcv"
+alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
@@ -65,8 +65,8 @@ alt_nicks = ["drew0", "drew1", "drew2"]
 [servers.rizon]
 server = "irc.rizon.net"
 channels = ["#chat"]
-nickname = "drew"
-alt_nicks = ["drew0", "drew1", "drew2"]
+nickname = "zxcv"
+alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
@@ -80,8 +80,8 @@ alt_nicks = ["drew0", "drew1", "drew2"]
 server = "irc.tilde.chat"
 # https://tilde.chat/stats/
 channels = ["#gemini"]
-nickname = "drew"
-alt_nicks = ["drew0", "drew1", "drew2"]
+nickname = "zxcv"
+alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
