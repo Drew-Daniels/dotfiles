@@ -58,6 +58,7 @@ on_connect = ["/msg NickServ SET CLOAK ON"]
 [servers.hackint.sasl.external]
 cert = "/home/drew/certs/nick.pem"
 
+# TODO: Set vhost: https://wiki.rizon.net/index.php?title=VHost
 [servers.rizon]
 server = "irc.rizon.net"
 channels = ["#chat"]
@@ -70,15 +71,16 @@ alt_nicks = ["swmm0", "swmm1", "swmm2"]
 [servers.rizon.sasl.external]
 cert = "/home/drew/certs/nick.pem"
 
+# TODO: Figure out how to set a cloak
 [servers.tildechat]
 server = "irc.tilde.chat"
 # https://tilde.chat/stats/
-channels = ["#gemini"]
+channels = ["#meta", "#helpdesk", "#gemini"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
 # realname = ""
-# on_connect = ["/msg NickServ SET CLOAK ON"]
+# on_connect = ["/msg NickServ SET HIDE USERMASK ON"]
 
 [servers.tildechat.sasl.external]
 cert = "/home/drew/certs/nick.pem"
