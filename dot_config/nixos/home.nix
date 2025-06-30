@@ -122,6 +122,7 @@
     delta
     git
     git-credential-oauth
+    git-secrets
     mergiraf
     # filesystem
     bat
