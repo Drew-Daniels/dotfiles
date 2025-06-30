@@ -31,9 +31,12 @@ alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
 # realname = ""
 
-[servers.liberachat.sasl.plain]
-username = "swmm"
-password_command = "op read op://Personal/irc.libera.chat/password -n"
+# [servers.liberachat.sasl.plain]
+# username = "swmm"
+# password_command = "op read op://Personal/irc.libera.chat/password -n"
+
+[servers.liberachat.sasl.external]
+cert = "/home/drew/certs/nick.pem"
 
 # NOTE: Initial setup:
 # /msg NickServ REGISTER password email
