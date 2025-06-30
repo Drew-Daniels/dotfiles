@@ -17,42 +17,46 @@ theme = "gruvbox"
 # In order of popularity...
 # https://netsplit.de/networks/top100.php
 
+# NOTE: Initial setup
+# /msg NickServ REGISTER YourPassword youremail@example.com
+# Verify email
+# Accounts registered after March 2024 and have verified email address automatically have cloak assigned
+# https://libera.chat/guides/cloaks#generic-user-cloaks
 [servers.liberachat]
 server = "irc.libera.chat"
 channels = ["#halloy", "#gemini"]
-nickname = "zxcv"
-alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
+nickname = "swmm"
+alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
-# on_connect = ["/msg NickServ SET CLOAK ON"]
 
-# [servers.liberachat.sasl.plain]
-# username = ""
-# password_command = ""
+[servers.liberachat.sasl.plain]
+username = "swmm"
+password_command = "op read op://Personal/irc.libera.chat/password -n"
 
-
+# NOTE: Initial setup:
+# /msg NickServ REGISTER password email
+# https://www.oftc.net/Services/#register-your-account
 [servers.oftc]
 server = "irc.oftc.net"
 channels = ["#oftc"]
-nickname = "zxcv"
-alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
+nickname = "swmm"
+alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
-# TODO: Must run /msg NickServ REVERIFY initially to request a cloak
-# https://www.oftc.net/UserCloaks/
-# on_connect = ["/msg NickServ SET CLOAK ON"]
+on_connect = ["/msg NickServ SET CLOAK ON"]
 
-# [servers.oftc.sasl.plain]
-# username = ""
-# password_command = ""
+# https://www.oftc.net/NickServ/CertFP/#automatically-identifying-using-ssl--certfp
+[servers.oftc.sasl.external]
+cert = "/home/drew/certs/nick.pem"
 
 [servers.hackint]
 server = "irc.hackint.org"
 channels = ["#hackint", "#nixos"]
-nickname = "zxcv"
-alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
+nickname = "swmm"
+alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
@@ -65,8 +69,8 @@ alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 [servers.rizon]
 server = "irc.rizon.net"
 channels = ["#chat"]
-nickname = "zxcv"
-alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
+nickname = "swmm"
+alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
@@ -80,8 +84,8 @@ alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
 server = "irc.tilde.chat"
 # https://tilde.chat/stats/
 channels = ["#gemini"]
-nickname = "zxcv"
-alt_nicks = ["!zxcv", "@zxcv", "#zxcv"]
+nickname = "swmm"
+alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # nick_password_command = ""
 # username = ""
 # realname = ""
