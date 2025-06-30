@@ -71,6 +71,7 @@ packages:
       - 'pngpaste'
       - 'pwgen'
       - 'reattach-to-user-namespace'
+      - 'resvg'
       - 'ripgrep'
       - 'speedtest-cli'
       - 'starship'
@@ -87,6 +88,7 @@ packages:
       - 'zoxide'
       - 'cormacrelf/tap/dark-notify'
       - 'localstack/tap/localstack-cli'
+      - 'poppler'
       - 'pulumi/tap/pulumi'
       # FORMATTERS
       - 'ruff'
