@@ -206,6 +206,10 @@ return {
 			},
 		})
 
+		vim.lsp.config("taplo", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("vue_ls", {
 			capabilities = capabilities,
 		})
@@ -218,9 +222,9 @@ return {
 			capabilities = capabilities,
 		})
 
-    vim.lsp.config("nickel_ls", {
-      capabilities = capabilities,
-    })
+		vim.lsp.config("nickel_ls", {
+			capabilities = capabilities,
+		})
 
 		vim.lsp.enable({
 			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
@@ -237,6 +241,7 @@ return {
 			"basedpyright",
 			"clojure_lsp",
 			"cssls",
+			"taplo",
 			"ts_ls",
 			-- "denols",
 			"dockerls",
@@ -257,7 +262,7 @@ return {
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
-      "nickel_ls"
+			"nickel_ls",
 		})
 	end,
 }

@@ -96,6 +96,7 @@ return {
 				-- javascript = { "project_eslint", "fallback_eslint", "prettierd" },
 				javascript = { "eslint_d", "prettierd" },
 				javascriptreact = { "prettierd" },
+				toml = { "taplo" },
 				typescript = { "eslint_d", "prettierd" },
 				typescriptreact = { "prettierd" },
 				vue = { "eslint_d" },

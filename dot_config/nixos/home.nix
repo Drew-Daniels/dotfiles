@@ -290,6 +290,7 @@
     lua-language-server
     marksman
     yaml-language-server
+    taplo
     tflint
     emmet-language-server
     python311Packages.python-lsp-server
