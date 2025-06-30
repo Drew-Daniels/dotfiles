@@ -17,23 +17,15 @@ theme = "gruvbox"
 # In order of popularity...
 # https://netsplit.de/networks/top100.php
 
-# NOTE: Initial setup
-# /msg NickServ REGISTER YourPassword youremail@example.com
-# Verify email
-# Accounts registered after March 2024 and have verified email address automatically have cloak assigned
+# NOTE: Accounts registered after March 2024 and have verified email address automatically have cloak assigned
 # https://libera.chat/guides/cloaks#generic-user-cloaks
 [servers.liberachat]
 server = "irc.libera.chat"
 channels = ["#halloy", "#gemini"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
-# nick_password_command = ""
 # username = ""
 # realname = ""
-
-# [servers.liberachat.sasl.plain]
-# username = "swmm"
-# password_command = "op read op://Personal/irc.libera.chat/password -n"
 
 [servers.liberachat.sasl.external]
 cert = "/home/drew/certs/nick.pem"
@@ -46,7 +38,6 @@ server = "irc.oftc.net"
 channels = ["#oftc"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
-# nick_password_command = ""
 # username = ""
 # realname = ""
 on_connect = ["/msg NickServ SET CLOAK ON"]
@@ -60,14 +51,10 @@ server = "irc.hackint.org"
 channels = ["#hackint", "#nixos"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
-# nick_password_command = ""
 # username = ""
 # realname = ""
-# on_connect = ["/msg NickServ SET CLOAK ON"]
+on_connect = ["/msg NickServ SET CLOAK ON"]
 
-# [servers.hackint.sasl.plain]
-# username = ""
-# password_command = ""
 [servers.hackint.sasl.external]
 cert = "/home/drew/certs/nick.pem"
 
