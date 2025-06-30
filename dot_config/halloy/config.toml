@@ -71,7 +71,7 @@ alt_nicks = ["swmm0", "swmm1", "swmm2"]
 [servers.rizon.sasl.external]
 cert = "/home/drew/certs/nick.pem"
 
-# TODO: Figure out how to set a cloak
+# NOTE: Requesting vhost/cloak: https://tilde.wiki/Tilde.chat/HostServ
 [servers.tildechat]
 server = "irc.tilde.chat"
 # https://tilde.chat/stats/
