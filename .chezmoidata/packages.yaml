@@ -25,6 +25,7 @@ packages:
       - 'bat-extras'
       - 'cairo'
       - 'harfbuzz'
+      - 'hexyl'
       - 'chafa'
       - 'chezmoi'
       - 'cmake'
