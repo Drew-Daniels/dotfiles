@@ -54,5 +54,10 @@ alias nix-switch="sudo nixos-rebuild switch -I nixos-config=$HOME/.config/nixos/
 alias nix-upgrade="sudo nixos-rebuild switch --upgrade -I nixos-config=$HOME/.config/nixos/configuration.nix"
 {{ end -}}
 
+# wireguard
+alias start-wg="sudo systemctl start wg-quick-wg0.service"
+
+alias stop-wg="sudo systemctl stop wg-quick-wg0"
+
 # direnv
 eval "$(direnv hook bash)"
