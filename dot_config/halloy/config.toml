@@ -21,7 +21,72 @@ theme = "gruvbox"
 # https://libera.chat/guides/cloaks#generic-user-cloaks
 [servers.liberachat]
 server = "irc.libera.chat"
-channels = ["#halloy", "#gemini"]
+# Channels: https://netsplit.de/channels/?net=Libera.Chat
+channels = [
+  # "#linux",
+  # "#archlinux",
+  # "#archlinux-security",
+  "#libera",
+  # "#security",
+  # "#debian",
+  # "#c",
+  # "#git",
+  # "#postgresql",
+  # "#go-nuts",
+  # "#freebsd",
+  # "#freebsd-social",
+  # "#openbsd",
+  # "#weechat",
+  # "#vim",
+  # "#wireguard",
+  # "#znc",
+  # "#docker",
+  # "#halloy",
+  # "#neovim",
+  # "#raspberrypi",
+  # "#systemd",
+  # "#sway",
+  # "#nginx",
+  # "#bitcoin",
+  # "#monero",
+  # "#nextcloud",
+  # "#javascript",
+  # "#crypto",
+  # "#tmux",
+  # "#node.js",
+  # "#kubernetes",
+  # "#gemini",
+  # "##politics",
+  # "#mediawiki",
+  # "#gitlab",
+  # "#lua",
+  # "#mastodon",
+  # "#musicbrainz",
+  # "##github",
+  # "#typescript",
+  # "#neomutt",
+  # "#jellyfin",
+  # "#restic",
+  # "#css",
+  # "#music",
+  # "##music",
+  # "#beets",
+  # "#jq",
+  # "#grapheneos",
+  # "#rubyonrails",
+  # "#nyxt",
+  # "#pihole",
+  # "##books",
+  # "#mpd",
+  # "#coffee",
+  # "#html",
+  # "#tor",
+  # "#cybersecurity",
+  # "#glowing-bear",
+  # "#electrum",
+  # "#tox",
+  # "#wireshark"
+]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
@@ -35,7 +100,17 @@ cert = "/home/drew/certs/nick.pem"
 # https://www.oftc.net/Services/#register-your-account
 [servers.oftc]
 server = "irc.oftc.net"
-channels = ["#oftc"]
+channels = [
+  "#oftc",
+  # "#tor-project",
+  # "#tor",
+  # "#debian-mentors",
+  # "#freedesktop",
+  # "#tor-relays",
+  # "#vbox",
+  "#help",
+  # "#i2p"
+]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
@@ -48,7 +123,17 @@ cert = "/home/drew/certs/nick.pem"
 
 [servers.hackint]
 server = "irc.hackint.org"
-channels = ["#hackint", "#nixos"]
+channels = [
+  "#hackint",
+  "#nixos",
+  # "#dn42",
+  # "#webroasting",
+  # "#codearchiver",
+  # "#hackernews",
+  # "#infosec",
+  # "#oss-security",
+  # "#music",
+]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
