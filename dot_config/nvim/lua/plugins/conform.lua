@@ -79,6 +79,7 @@ return {
 			formatters_by_ft = {
 				c = { "clang-format" },
 				cucumber = { "reformat-gherkin" },
+				d2 = { "d2" },
 				lua = { "stylua" },
 				hurl = { "hurlfmt" },
 				html = { "htmlbeautifier" },
