@@ -95,6 +95,21 @@ alt_nicks = ["swmm0", "swmm1", "swmm2"]
 [servers.liberachat.sasl.external]
 cert = "/home/drew/certs/nick.pem"
 
+[servers.undernet]
+server = "irc.undernet.org"
+channels = ["#undernet", "#help", "#bookz"]
+nickname = "swmm"
+alt_nicks = ["swmm0", "swmm1", "swmm2"]
+# username = ""
+# realname = ""
+
+# undernet does not support ssl - why?
+port = 6667
+use_tls = false
+
+[servers.undernet.sasl.external]
+cert = "/home/drew/certs/nick.pem"
+
 # NOTE: Initial setup:
 # /msg NickServ REGISTER password email
 # https://www.oftc.net/Services/#register-your-account
@@ -121,6 +136,7 @@ on_connect = ["/msg NickServ SET CLOAK ON"]
 [servers.oftc.sasl.external]
 cert = "/home/drew/certs/nick.pem"
 
+# NOTE: Services: https://hackint.org/services
 [servers.hackint]
 server = "irc.hackint.org"
 channels = [
@@ -138,7 +154,6 @@ nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
 # realname = ""
-on_connect = ["/msg NickServ SET CLOAK ON"]
 
 [servers.hackint.sasl.external]
 cert = "/home/drew/certs/nick.pem"
