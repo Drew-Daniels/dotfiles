@@ -11,6 +11,25 @@ debian-upgrade.sh
 */mise/age.txt
 .config/nixos/wg-peers.nix
 **/.obsidian/workspace*.json
+.config/weechat/*
+!.config/weechat/buflist.conf
+!.config/weechat/charset.conf
+!.config/weechat/exec.conf
+!.config/weechat/fifo.conf
+!.config/weechat/fset.conf
+!.config/weechat/guile.conf
+!.config/weechat/javascript.conf
+!.config/weechat/logger.conf
+!.config/weechat/lua.conf
+!.config/weechat/perl.conf
+!.config/weechat/php.conf
+!.config/weechat/python.conf
+!.config/weechat/ruby.conf
+!.config/weechat/script.conf
+!.config/weechat/tcl.conf
+!.config/weechat/spell.conf
+!.config/weechat/typing.conf
+!.config/weechat/xfer.conf
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
