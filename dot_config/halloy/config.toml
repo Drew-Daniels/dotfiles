@@ -97,7 +97,21 @@ cert = "/home/drew/certs/nick.pem"
 
 [servers.undernet]
 server = "irc.undernet.org"
-channels = ["#undernet", "#help", "#bookz"]
+channels = [
+  "#undernet",
+  "#help",
+  # "#bookz",
+  # "#usa",
+  # "#btc",
+  # "#politics",
+  # "#Dallas",
+  # "#Monero",
+  # "#linux",
+  # "#exploit",
+  # "#americapolitics",
+  # "#House",
+  # "#debian",
+]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
@@ -161,7 +175,7 @@ cert = "/home/drew/certs/nick.pem"
 # TODO: Set vhost: https://wiki.rizon.net/index.php?title=VHost
 [servers.rizon]
 server = "irc.rizon.net"
-channels = ["#chat"]
+channels = ["#chat", "#randommusic"]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
@@ -175,7 +189,15 @@ cert = "/home/drew/certs/nick.pem"
 [servers.tildechat]
 server = "irc.tilde.chat"
 # https://tilde.chat/stats/
-channels = ["#meta", "#helpdesk", "#gemini"]
+channels = [
+  "#meta",
+  "#helpdesk",
+  "#gemini",
+  # "#selfhosting",
+  # "#linux",
+  # "#offthegrid",
+  # "#books",
+]
 nickname = "swmm"
 alt_nicks = ["swmm0", "swmm1", "swmm2"]
 # username = ""
