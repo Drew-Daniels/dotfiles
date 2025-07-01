@@ -1,5 +1,5 @@
-name: fhir
-root: <%= ENV["PROJECTS_DIR"] %>/fhir
+name: fhir-services-demos
+root: <%= ENV["PROJECTS_DIR"] %>/fhir-services-demos
 on_project_stop:
   - docker compose stop
 windows:
