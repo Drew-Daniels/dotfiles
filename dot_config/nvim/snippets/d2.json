@@ -1,0 +1,10 @@
+{
+  "TODO": {
+    "body": "# TODO: ${0}",
+    "prefix": "td"
+  },
+  "NOTE": {
+    "body": "# NOTE: ${0}",
+    "prefix": "nt"
+  }
+}

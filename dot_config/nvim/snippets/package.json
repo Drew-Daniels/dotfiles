@@ -7,6 +7,10 @@
         "path": "./all.json"
       },
       {
+        "language": "d2",
+        "path": "./d2.json"
+      },
+      {
         "language": "lua",
         "path": "./lua.json"
       },
