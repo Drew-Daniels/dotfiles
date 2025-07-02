@@ -7,6 +7,10 @@ return {
 	opts = {
 		ensure_installed = {
 			"c",
+      -- TODO: Create an issue for this. Would be nice if this parser could be installed just by using nvim-treesitter, rather than having to install a separate plugin:
+      -- https://github.com/nvim-treesitter/nvim-treesitter/issues
+      -- https://github.com/ravsii/tree-sitter-d2
+			-- "d2",
 			"lua",
 			"luadoc",
 			"vim",
