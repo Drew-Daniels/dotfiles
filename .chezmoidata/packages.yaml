@@ -55,6 +55,7 @@ packages:
       - 'libyaml'
       - 'hurl'
       - 'shared-mime-info'
+      - 'structurizr-cli'
       - 'libheif'
       - 'jless'
       - 'jq'
