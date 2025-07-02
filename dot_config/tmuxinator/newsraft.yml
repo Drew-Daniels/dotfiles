@@ -1,0 +1,9 @@
+name: newsraft
+root: "~"
+windows:
+  - newsraft:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - newsraft:
+            - fish
+            - newsraft
