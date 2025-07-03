@@ -151,6 +151,10 @@ return {
 			},
 		})
 
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("html", {
 			capabilities = capabilities,
 		})
@@ -246,6 +250,7 @@ return {
 			-- "denols",
 			"dockerls",
 			"eslint",
+			"gopls",
 			"html",
 			"hyprls",
 			"jsonls",

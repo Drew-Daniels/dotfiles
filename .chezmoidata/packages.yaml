@@ -115,6 +115,7 @@ packages:
       # TODO: Create a formula for this
       # - 'docker-compose-language-service'
       - 'dockerfile-language-server'
+      - 'gopls'
       # TODO: Create a formula for this
       # - 'emmet_language_server'
       - 'lua-language-server'
