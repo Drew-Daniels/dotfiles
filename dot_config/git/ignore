@@ -61,3 +61,6 @@ drkonqirc
 .direnv
 .phpactor.json
 qemu_*
+.project
+.settings
+.classpath
