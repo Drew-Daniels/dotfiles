@@ -149,7 +149,6 @@ packages:
       casks:
       - '1password-cli'
       - '1password@nightly'
-      - 'alfred'
       - 'dbeaver-community'
       - 'drawio'
       - 'font-jetbrains-mono-nerd-font'
