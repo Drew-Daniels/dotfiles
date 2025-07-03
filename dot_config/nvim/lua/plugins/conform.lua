@@ -91,6 +91,7 @@ return {
 				ruby = { "project_rubocop", "fallback_rubocop", "standardrb", stop_after_first = true },
 				eruby = { "htmlbeautifier" },
 				fish = { "fish_indent" },
+				go = { "gofmt" },
 				json = { "custom_jq" },
 				sh = { "shfmt", "shellcheck" },
 				sql = { "sqlfmt" },
