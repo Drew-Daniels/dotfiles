@@ -55,6 +55,7 @@ packages:
       - 'hurl'
       - 'shared-mime-info'
       - 'libheif'
+      - 'jdtls'
       - 'jless'
       - 'jq'
       - 'less'
