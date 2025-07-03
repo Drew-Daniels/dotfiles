@@ -1328,6 +1328,47 @@ if uninstalled swayrbar; then
   cargo install --locked swayrbar
 fi
 
+# waybar
+# https://github.com/Alexays/Waybar
+if uninstalled waybar; then
+	# install dependencies
+	sudo apt install \
+		clang-tidy \
+		gobject-introspection \
+		libdbusmenu-gtk3-dev \
+		libevdev-dev \
+		libfmt-dev \
+		libgirepository1.0-dev \
+		libgtk-3-dev \
+		libgtkmm-3.0-dev \
+		libinput-dev \
+		libjsoncpp-dev \
+		libmpdclient-dev \
+		libnl-3-dev \
+		libnl-genl-3-dev \
+		libpulse-dev \
+		libsigc++-2.0-dev \
+		libspdlog-dev \
+		libwayland-dev \
+		scdoc \
+		upower \
+		libxkbregistry-dev
+
+	if [ ! -d "$HOME/projects/Waybar" ]; then
+		# clone
+		git clone https://github.com/Alexays/Waybar
+	fi
+
+  cd ~/projects/Waybar	
+  # build
+  meson setup build
+  ninja -C build
+  ./build/waybar
+  # install
+  ninja -C build install
+	
+fi
+
 # cargo-update
 # https://github.com/nabijaczleweli/cargo-update
 # TODO: Figure out how to check if this is already installed
