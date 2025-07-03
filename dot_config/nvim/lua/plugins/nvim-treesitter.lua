@@ -53,6 +53,7 @@ return {
 			"gitattributes",
 			"gitcommit",
 			"gitignore",
+			"go",
 			"gomod",
 			"gowork",
 			"gosum",
