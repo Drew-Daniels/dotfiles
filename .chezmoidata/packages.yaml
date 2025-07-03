@@ -144,8 +144,7 @@ packages:
       - 'vue-language-server'
       - 'yaml-language-server'
       - 'clojure-lsp'
-      # no_quarantine_casks:
-      # - 'wine-stable'
+      no_quarantine_casks: []
       casks:
       - '1password-cli'
       - '1password@nightly'
