@@ -184,7 +184,6 @@ packages:
       - 'josm'
       - 'raspberry-pi-imager'
       - 'signal'
-      - 'spotify'
       - 'standard-notes'
       - 'whatsapp'
       - 'wireshark'
