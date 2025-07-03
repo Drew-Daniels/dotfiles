@@ -67,7 +67,6 @@ packages:
       - 'newsraft'
       - 'neovim'
       - 'pkgconf'
-      - 'plantuml'
       - 'pngpaste'
       - 'pwgen'
       - 'reattach-to-user-namespace'
