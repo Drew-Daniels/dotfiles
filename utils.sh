@@ -39,6 +39,7 @@ get_latest_gh_release_tag() {
   fi
 
   # TODO: Create a temp file instead
+  # TODO: Add error handling. If the curl request returns an error response this silently fails
   get_latest_gh_release_data "$1" "$2" >data.json
   jq '.tag_name' <data.json | sed 's/"//g'
   rm data.json
