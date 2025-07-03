@@ -4,7 +4,7 @@ _.file = "~/.env"
 [tools]
 python = "3.12.10"
 node = "22.14.0"
-golang = "1.21.1"
+golang = "1.24.4"
 deno = "1.45.2"
 java = "17.0.2"
 usage = "0.3.0"
