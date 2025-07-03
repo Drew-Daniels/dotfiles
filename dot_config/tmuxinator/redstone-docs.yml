@@ -1,0 +1,16 @@
+name: redstone-docs
+root: <%= ENV["PROJECTS_DIR"] %>/redstone-docs
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
