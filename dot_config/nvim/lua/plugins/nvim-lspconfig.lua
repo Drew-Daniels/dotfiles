@@ -155,6 +155,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("golangci_lint_ls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("html", {
 			capabilities = capabilities,
 		})
@@ -251,6 +255,7 @@ return {
 			"dockerls",
 			"eslint",
 			"gopls",
+			"golangci_lint_ls",
 			"html",
 			"hyprls",
 			"jsonls",
