@@ -8,7 +8,6 @@ packages:
       - 'localstack/tap'
       - 'pulumi/tap'
       - 'teamookla/speedtest'
-      - 'smithy-lang/tap'
       head_brews:
       - 'imagemagick'
       - 'utf8proc'
@@ -55,7 +54,6 @@ packages:
       - 'libyaml'
       - 'hurl'
       - 'shared-mime-info'
-      - 'structurizr-cli'
       - 'libheif'
       - 'jless'
       - 'jq'
@@ -78,7 +76,6 @@ packages:
       - 'speedtest-cli'
       - 'starship'
       - 'stylua'
-      - 'smithy-cli'
       - 'sops'
       - 'tmux'
       - 'tree'
@@ -182,7 +179,6 @@ packages:
       casks:
       - 'alex313031-thorium'
       - 'docker'
-      - 'discord'
       - 'electrum'
       - 'element'
       - 'firefox'
