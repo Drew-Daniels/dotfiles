@@ -181,7 +181,10 @@
   };
 
   # EXPERIMENTAL SETTINGS
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    download-buffer-size = 524288000;
+  };
 
   services.udev.packages = [pkgs.yubikey-personalization];
   # Some programs need SUID wrappers, can be configured further or are

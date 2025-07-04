@@ -53,7 +53,6 @@
     # Web
     firefox
     librewolf
-    cromite
     lynx
     tor-browser
     nyxt
@@ -89,8 +88,9 @@
     # Chat
     simplex-chat-desktop
     signal-desktop
-    zulip
-    zulip-term
+    # TODO: Re-enable this at some point and figure out why build fails
+    # zulip
+    # zulip-term
     jami
     # Chart
     d2
@@ -157,7 +157,9 @@
     yubioath-flutter
     openssl
     sherlock
-    maigret
+    # TODO: Create an issue in nixpkgs about this package being broken.
+    # This package was mentioned in this issue, but for a different architecture: https://github.com/NixOS/nixpkgs/issues/185049#issuecomment-1334457220
+    # maigret
     magic-wormhole
     sops
     passage
@@ -278,7 +280,6 @@
     alejandra
     eslint_d
     cljfmt
-    python313Packages.sqlfmt
     shfmt
     stylua
     shellcheck
@@ -305,7 +306,10 @@
     taplo
     tflint
     emmet-language-server
-    python311Packages.python-lsp-server
+    # TODO: Figure out which one of these Python packages has a dependency issue causing a similar error to this:
+    # https://github.com/NixOS/nixpkgs/issues/417098
+    # python313Packages.sqlfmt
+    # python311Packages.python-lsp-server
     vim-language-server
     clojure-lsp
     sqls
