@@ -273,7 +273,7 @@
     # TODO: Figure out why I have hyprls 0.6.0 installed, but the latest available on nixos-unstable is 0.7.0
     # 0.7.0 should fix the below issue
     # https://github.com/hyprland-community/hyprls/issues/19
-    # golines
+    golines
     jdt-language-server
     yamlfmt
     prettierd
@@ -313,7 +313,7 @@
     vim-language-server
     clojure-lsp
     sqls
-    hyprls
+    # hyprls
     # Utils
     brightnessctl
     pciutils
