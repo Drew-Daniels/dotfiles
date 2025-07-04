@@ -89,6 +89,7 @@ return {
 				-- ruby = { "project_rubocop", "fallback_rubocop" },
 				-- TODO: Not autofixing standardrb offenses until hm feature branch merged
 				ruby = { "project_rubocop", "fallback_rubocop", "standardrb", stop_after_first = true },
+				rust = { "rustfmt" },
 				eruby = { "htmlbeautifier" },
 				fish = { "fish_indent" },
 				go = { "gofmt" },
