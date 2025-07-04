@@ -13,6 +13,7 @@ packages:
       - 'utf8proc'
       brews:
       - 'ariga/tap/atlas'
+      - 'graphviz'
       - 'git'
       - 'gitleaks'
       - 'golines'

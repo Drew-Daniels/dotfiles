@@ -35,6 +35,7 @@ return {
 			"markdown",
 			"markdown_inline",
 			"ruby",
+			"rust",
 			"scheme",
 			"scss",
 			"sql",
