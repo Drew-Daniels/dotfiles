@@ -118,6 +118,7 @@ packages:
       # - 'docker-compose-language-service'
       - 'dockerfile-language-server'
       - 'gopls'
+      - 'rust-analyzer'
       # TODO: Create a formula for this
       # - 'emmet_language_server'
       - 'lua-language-server'

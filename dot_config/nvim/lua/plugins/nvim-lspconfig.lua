@@ -190,6 +190,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("rust_analyzer", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("sqls", {
 			capabilities = capabilities,
 		})
@@ -262,6 +266,7 @@ return {
 			"lua_ls",
 			"marksman",
 			"ruff",
+			"rust_analyzer",
 			"sqls",
 			"standardrb",
 			"tailwindcss",
