@@ -287,6 +287,7 @@
     deno
     rubyPackages_3_4.standard
     rubyPackages_3_4.htmlbeautifier
+    rust-analyzer
     docker-compose-language-service
     # HTML/CSS/JSON/ESLint lang servers
     vscode-langservers-extracted
