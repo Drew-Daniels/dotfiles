@@ -187,7 +187,11 @@
     # Office
     resvg
     poppler
-    zathura
+    # If wanting to use the poppler backend
+    # zathura
+    # If wanting to use muPDF backend
+    # https://discourse.nixos.org/t/how-to-customize-zathura-here/64188/3
+    (pkgs.zathura.override {plugins = with pkgs.zathuraPkgs; [zathura_pdf_mupdf];})
     libreoffice-qt6-fresh
     # Geo
     josm
