@@ -115,8 +115,6 @@
     ncmpcpp
     qt6ct
     streamrip
-    # TODO: Create package
-    # tidal-dl-ng
     # video
     mpv
     obs-studio
@@ -255,16 +253,12 @@
     swayrbar
     sway-audio-idle-inhibit
     waybar
-    # TODO: Create package
-    # tidal_dl_ng
     # NOTE: tidal-hifi seems broken - freezes
     # tidal-hifi
     # multiplexers
     tmux
     tmuxinator
-    # TODO: Make an issue with this wofi nixpkg - crashes if 'wofi' not installed
     # zulu17
-
     # Fonts
     nerd-fonts.jetbrains-mono
     # Formatters & LSPs
