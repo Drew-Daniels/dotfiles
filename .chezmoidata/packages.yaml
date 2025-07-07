@@ -41,6 +41,7 @@ packages:
       - 'duti'
       - 'fd'
       - 'file-formula'
+      - 'ninja'
       - 'ncurses'
       - 'fish'
       - 'fzf'
