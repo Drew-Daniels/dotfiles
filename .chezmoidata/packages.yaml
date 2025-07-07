@@ -30,6 +30,7 @@ packages:
       - 'chezmoi'
       - 'cmake'
       - 'cmake-docs'
+      - 'gettext'
       - 'comby'
       - 'coreutils'
       - 'ctags'
