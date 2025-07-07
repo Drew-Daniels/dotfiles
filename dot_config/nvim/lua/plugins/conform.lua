@@ -107,6 +107,7 @@ return {
 				css = { "prettierd" },
 				less = { "prettierd" },
 				scss = { "prettierd" },
+				zig = { "zigfmt" },
 				zsh = { "shfmt", "shellcheck" },
 				markdown = { "prettierd" },
 				nix = { "alejandra" },
