@@ -12,6 +12,10 @@ return {
 			use_flat_config = true
 		end
 
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+		})
+
 		-- NOTE: Commenting out because no Nixpkgs for these language servers
 		-- vim.lsp.config("clangd", {
 		-- 	capabilities = capabilities,
@@ -190,7 +194,7 @@ return {
 			capabilities = capabilities,
 		})
 
-    -- NOTE: Commenting out because rustaceanvim handles configuration
+		-- NOTE: Commenting out because rustaceanvim handles configuration
 		-- vim.lsp.config("rust_analyzer", {
 		-- 	capabilities = capabilities,
 		-- })
@@ -240,8 +244,9 @@ return {
 		})
 
 		vim.lsp.enable({
-			-- NOTE: Not using because there are not currently any NixOS packages for these language servers
-			-- "clangd",
+			-- TODO: Install clang-tools package on NixOS: https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=clang-tools
+			-- https://weblog.zamazal.org/sw-problem-lsp-c-nixos/
+			"clangd",
 			-- "cssmodules_ls",
 			"docker_compose_language_service",
 			"emmet_language_server",
@@ -267,7 +272,7 @@ return {
 			"lua_ls",
 			"marksman",
 			"ruff",
-      -- NOTE: Commenting out bc rustaceanvim handles enabling this
+			-- NOTE: Commenting out bc rustaceanvim handles enabling this
 			-- "rust_analyzer",
 			"sqls",
 			"standardrb",
