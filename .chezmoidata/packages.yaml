@@ -31,6 +31,8 @@ packages:
       - 'cmake'
       - 'cmake-docs'
       - 'gettext'
+      # cccache installed for neovim dev, but not necessary. Uninstall if this breaks things.
+      - 'ccache'
       - 'comby'
       - 'coreutils'
       - 'ctags'
