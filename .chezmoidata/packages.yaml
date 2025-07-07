@@ -8,6 +8,7 @@ packages:
       - 'localstack/tap'
       - 'pulumi/tap'
       - 'teamookla/speedtest'
+      - 'homebrew-zathura/zathura'
       head_brews:
       - 'imagemagick'
       - 'utf8proc'
@@ -97,6 +98,9 @@ packages:
       - 'localstack/tap/localstack-cli'
       - 'poppler'
       - 'pulumi/tap/pulumi'
+      - 'zathura'
+      # NOTE: https://github.com/homebrew-zathura/homebrew-zathura?tab=readme-ov-file#install-plugins
+      - 'zathura-pdf-mupdf'
       # FORMATTERS
       - 'ruff'
       - 'basedpyright'
