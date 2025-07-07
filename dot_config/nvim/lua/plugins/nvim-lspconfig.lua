@@ -12,9 +12,9 @@ return {
 			use_flat_config = true
 		end
 
-    vim.lsp.config("clangd", {
-      capabilities = capabilities,
-    })
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+		})
 
 		-- NOTE: Commenting out because no Nixpkgs for these language servers
 		-- vim.lsp.config("clangd", {
@@ -194,7 +194,7 @@ return {
 			capabilities = capabilities,
 		})
 
-    -- NOTE: Commenting out because rustaceanvim handles configuration
+		-- NOTE: Commenting out because rustaceanvim handles configuration
 		-- vim.lsp.config("rust_analyzer", {
 		-- 	capabilities = capabilities,
 		-- })
@@ -243,9 +243,13 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("zls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.enable({
 			-- TODO: Install clang-tools package on NixOS: https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=clang-tools
-      -- https://weblog.zamazal.org/sw-problem-lsp-c-nixos/
+			-- https://weblog.zamazal.org/sw-problem-lsp-c-nixos/
 			"clangd",
 			-- "cssmodules_ls",
 			"docker_compose_language_service",
@@ -272,7 +276,7 @@ return {
 			"lua_ls",
 			"marksman",
 			"ruff",
-      -- NOTE: Commenting out bc rustaceanvim handles enabling this
+			-- NOTE: Commenting out bc rustaceanvim handles enabling this
 			-- "rust_analyzer",
 			"sqls",
 			"standardrb",
@@ -285,6 +289,7 @@ return {
 			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
 			"nickel_ls",
+			"zls",
 		})
 	end,
 }
