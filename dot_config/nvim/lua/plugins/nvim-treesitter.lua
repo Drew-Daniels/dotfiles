@@ -7,6 +7,12 @@ return {
 	opts = {
 		ensure_installed = {
 			"c",
+			"cmake",
+			"cpp",
+			"css",
+			"csv",
+			"tsv",
+			"desktop",
 			-- TODO: Create an issue for this. Would be nice if this parser could be installed just by using nvim-treesitter, rather than having to install a separate plugin:
 			-- https://github.com/nvim-treesitter/nvim-treesitter/issues
 			-- https://github.com/ravsii/tree-sitter-d2
@@ -17,7 +23,6 @@ return {
 			"vimdoc",
 			"query",
 			"bash",
-			"css",
 			"clojure",
 			"dockerfile",
 			"embedded_template",
@@ -26,12 +31,15 @@ return {
 			"hcl",
 			"html",
 			"http",
+			"ini",
 			"php",
 			"phpdoc",
 			"javascript",
+			"jsdoc",
 			"jq",
 			"json",
 			"jsonc",
+			"kotlin",
 			"markdown",
 			"markdown_inline",
 			"ruby",
@@ -47,6 +55,7 @@ return {
 			"prisma",
 			"vue",
 			"nix",
+			-- "nickel",
 			"ssh_config",
 			"editorconfig",
 			"git_config",
@@ -68,6 +77,8 @@ return {
 			"svelte",
 			"swift",
 			"tmux",
+			"xml",
+			"zathurarc",
 		},
 		-- required by 'nvim-ts-autotag'
 		autotag = {
