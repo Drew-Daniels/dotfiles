@@ -7,6 +7,7 @@ return {
 	opts = {
 		ensure_installed = {
 			"c",
+			"make",
 			"cmake",
 			"cpp",
 			"css",
@@ -79,7 +80,7 @@ return {
 			"tmux",
 			"xml",
 			"zathurarc",
-      "zig"
+			"zig",
 		},
 		-- required by 'nvim-ts-autotag'
 		autotag = {
