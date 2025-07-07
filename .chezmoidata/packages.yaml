@@ -88,6 +88,8 @@ packages:
       - 'xxhash'
       - 'yazi'
       - 'zoxide'
+      - 'zig'
+      - 'zls'
       - 'cormacrelf/tap/dark-notify'
       - 'localstack/tap/localstack-cli'
       - 'poppler'
