@@ -64,3 +64,4 @@ qemu_*
 .project
 .settings
 .classpath
+.zig-cache
