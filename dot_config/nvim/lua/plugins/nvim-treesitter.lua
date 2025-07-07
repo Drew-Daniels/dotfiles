@@ -79,6 +79,7 @@ return {
 			"tmux",
 			"xml",
 			"zathurarc",
+      "zig"
 		},
 		-- required by 'nvim-ts-autotag'
 		autotag = {
