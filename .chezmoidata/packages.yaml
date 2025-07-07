@@ -53,6 +53,7 @@ packages:
       - 'gnupg'
       - 'gping'
       - 'libyaml'
+      - 'llvm'
       - 'hurl'
       - 'shared-mime-info'
       - 'libheif'
