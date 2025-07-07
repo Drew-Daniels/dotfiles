@@ -7,7 +7,8 @@ return {
 	opts = {
 		ensure_installed = {
 			"c",
-			"make",
+			-- NOTE: Seems like this is broken
+			-- "make",
 			"cmake",
 			"cpp",
 			"css",
