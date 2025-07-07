@@ -68,6 +68,7 @@ packages:
       - 'less'
       - 'libgit2@1.7'
       - 'lsd'
+      - 'ls-lint'
       - 'mas'
       - 'maven'
       - 'mergiraf'
