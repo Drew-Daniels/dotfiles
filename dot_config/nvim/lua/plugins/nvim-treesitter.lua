@@ -22,6 +22,7 @@ return {
 			-- "d2",
 			"lua",
 			"luadoc",
+			"luap", -- lua_patterns
 			"vim",
 			"vimdoc",
 			"query",
@@ -44,6 +45,7 @@ return {
 			"jq",
 			"json",
 			"jsonc",
+			"just",
 			"kotlin",
 			"markdown",
 			"markdown_inline",
@@ -61,6 +63,9 @@ return {
 			"typescript",
 			"yaml",
 			"prisma",
+			"python",
+			"requirements", -- python_requirements
+			"robots", -- robots.txt
 			"vue",
 			"nix",
 			-- "nickel",
