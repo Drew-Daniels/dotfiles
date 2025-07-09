@@ -83,7 +83,6 @@ return {
 			"passwd",
 			"smithy",
 			"svelte",
-			"sway",
 			"swift",
 			"tmux",
 			"xml",
