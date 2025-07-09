@@ -9,6 +9,7 @@ return {
 			"c",
 			-- NOTE: Seems like this is broken
 			-- "make",
+			"comment",
 			"cmake",
 			"cpp",
 			"css",
