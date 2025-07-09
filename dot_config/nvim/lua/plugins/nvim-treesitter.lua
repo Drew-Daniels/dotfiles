@@ -44,6 +44,8 @@ return {
 			"kotlin",
 			"markdown",
 			"markdown_inline",
+			"meson",
+			"ninja",
 			"ruby",
 			"rust",
 			"scheme",
