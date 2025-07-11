@@ -201,6 +201,7 @@
     # VPN
     openvpn
     wireguard-tools
+    # TODO: Figure out how to configure mullvad such that lockdown mode is always disabled. Seems like this somewhat randomly gets re-enabled sometimes
     mullvad
     # JSON
     jq
