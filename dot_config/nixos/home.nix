@@ -264,7 +264,6 @@
     nerd-fonts.jetbrains-mono
     # Formatters & LSPs
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
-    # TODO: 'clangd'
     # TODO: cssmodules_ls
     # TODO: cucumber_language_server
     # TODO: prismals
