@@ -36,3 +36,5 @@ matches:
         type: shell
         params:
           cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
+  - trigger: ":sig"
+    replace: "Best,\nDrew Daniels"
