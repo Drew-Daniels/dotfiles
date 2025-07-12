@@ -49,39 +49,40 @@
     # TODO: May want to move nix-index into configuration.nix instead - won't be necessary outside of NixOS
     # NixOS
     nix-index
-    nickel
-    nls
-    # Prompts
+    # Nickel programming language
+    # nickel
+    # nls
+    # Prompt
     starship
     # Shells
     fish
     # Gemini Protocol
-    amfora
-    lagrange
+    # amfora
+    # lagrange
     # Web
     firefox
     librewolf
     lynx
     tor-browser
     nyxt
-    shadowsocks-rust
+    # shadowsocks-rust
     qutebrowser
     # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
     wofi
     # Terminal Emulators
     alacritty
-    foot
+    # foot
     # Cloud
     awscli2
     fh
     gh
     glab
-    google-cloud-sdk
-    localstack
-    pulumi
+    # google-cloud-sdk
+    # localstack
+    # pulumi
     # grep
-    ast-grep
-    comby
+    # ast-grep
+    # comby
     # Launchers
     bemenu
     # Camera
@@ -91,7 +92,7 @@
     slurp
     satty
     # Matrix
-    element-desktop
+    # element-desktop
     cinny-desktop
     # Chat
     simplex-chat-desktop
@@ -99,7 +100,7 @@
     # TODO: Re-enable this at some point and figure out why build fails
     # zulip
     # zulip-term
-    jami
+    # jami
     # Chart
     d2
     # IRC
@@ -125,6 +126,7 @@
     # clipboard
     cliphist
     wl-clipboard
+    # database clients
     dbeaver-bin
     # git
     chezmoi
@@ -190,7 +192,7 @@
     swaybg
     waypaper
     swww
-    # Office
+    # PDF
     resvg
     poppler
     # If wanting to use the poppler backend
@@ -211,6 +213,7 @@
     jq
     jless
     nodePackages.jsonlint
+    # NOTE: Not sure if 'gcc' needs to be installed at a user-level
     gcc
     lua51Packages.tree-sitter-norg
     luajitPackages.luarocks
@@ -251,8 +254,8 @@
     resticprofile
     # Notes
     obsidian
-    standardnotes
-    nb
+    # standardnotes
+    # nb
     # sshx
     swayr
     swayrbar
