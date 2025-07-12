@@ -3,3 +3,21 @@ matches:
     replace: "https://www.linkedin.com/in/drew-daniels"
   - trigger: ":github"
     replace: "https://github.com/Drew-Daniels"
+  - trigger: ":tomorrow"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%x"
+          offset: 86400
+          locale: "en-US"
+  - trigger: ":yesterday"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%x"
+          offset: -86400
+          locale: "en-US"
