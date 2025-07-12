@@ -197,6 +197,7 @@ packages:
       - 'element'
       - 'firefox'
       - 'josm'
+      - 'librewolf'
       - 'raspberry-pi-imager'
       - 'signal'
       - 'whatsapp'
