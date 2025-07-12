@@ -21,3 +21,18 @@ matches:
           format: "%x"
           offset: -86400
           locale: "en-US"
+  - trigger: ":publicip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+          # TODO: Refactor so that this works on both MacOS and Linux, not just Linux. MacOS does not have 'ip' command but can be installed using [iproute2mac](https://formulae.brew.sh/formula/iproute2mac)
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
