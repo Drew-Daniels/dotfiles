@@ -35,6 +35,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # TODO: Re-enable once either of these are merged:
+    # https://github.com/NixOS/nixpkgs/pull/328890
+    # https://github.com/NixOS/nixpkgs/pull/423931
+    # espanso-wayland
     # Nix utils
     # For nix-prefetch-git and others
     nix-prefetch-scripts
