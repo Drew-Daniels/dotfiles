@@ -166,6 +166,7 @@ packages:
       - '1password@nightly'
       - 'dbeaver-community'
       - 'drawio'
+      - 'espanso'
       - 'font-jetbrains-mono-nerd-font'
       - 'google-chrome'
       - 'iterm2'
