@@ -1,0 +1,5 @@
+matches:
+  - trigger: ":linkedin"
+    replace: "https://www.linkedin.com/in/drew-daniels"
+  - trigger: ":github"
+    replace: "https://github.com/Drew-Daniels"

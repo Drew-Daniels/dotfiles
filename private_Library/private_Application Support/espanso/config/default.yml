@@ -38,3 +38,7 @@
 # clipboard_threshold: 100
 
 # For a list of all the available options, visit the official docs at: https://espanso.org/docs/
+# Have to use absolute/relative paths to reference other configuration files. Tilde & env var expansion is not allowed.
+# https://github.com/espanso/espanso/issues/2382#issuecomment-3065654871
+extra_includes:
+- '../../../../.config/espanso-custom/match/base.yml'

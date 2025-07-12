@@ -11,10 +11,6 @@ matches:
   # Simple text replacement
   - trigger: ":espanso"
     replace: "Hi there!"
-  - trigger: ":linkedin"
-    replace: "https://www.linkedin.com/in/drew-daniels"
-  - trigger: ":github"
-    replace: "https://github.com/Drew-Daniels"
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
