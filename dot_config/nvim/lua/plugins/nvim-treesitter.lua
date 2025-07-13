@@ -10,6 +10,9 @@ return {
 			-- NOTE: Seems like this is broken
 			-- "make",
 			"comment",
+			-- TODO: Figure out how to get rainbow parens for lisp files for better readability
+			-- TODO: Figure out how to automatically use this parser for .lisp files in ~/.config/nyxt
+			"commonlisp",
 			"cmake",
 			"cpp",
 			"css",
