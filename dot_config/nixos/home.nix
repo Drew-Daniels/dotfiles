@@ -211,6 +211,7 @@
     mullvad
     # JSON
     jq
+    jqp
     jless
     nodePackages.jsonlint
     # NOTE: Not sure if 'gcc' needs to be installed at a user-level
