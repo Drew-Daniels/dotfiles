@@ -98,7 +98,7 @@ if [ -n "$UUID" ]; then
     printjs() {
       js | sed 's,//.*$,,' | tr '\n' ' '
     }
-    echo "jseval -q $(printjs)" >>"$QUTE_FIFO"
+    echo "jseval --quiet $(printjs)" >>"$QUTE_FIFO"
 
     otp=$(op item get --otp "$UUID") || otp=""
     if [ -n "$otp" ]; then
