@@ -78,6 +78,8 @@ return {
 			end,
 			formatters_by_ft = {
 				c = { "clang-format" },
+				cpp = { "astyle" },
+				-- cpp = { "uncrustify" },
 				cucumber = { "reformat-gherkin" },
 				d2 = { "d2" },
 				lua = { "stylua" },
@@ -96,6 +98,7 @@ return {
 				json = { "custom_jq" },
 				sh = { "shfmt", "shellcheck" },
 				sql = { "sqlfmt" },
+				java = { "astyle" },
 				-- javascript = { "project_eslint", "fallback_eslint", "prettierd" },
 				javascript = { "eslint_d", "prettierd" },
 				javascriptreact = { "prettierd" },
