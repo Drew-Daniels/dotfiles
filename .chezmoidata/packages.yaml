@@ -74,6 +74,7 @@ packages:
       - 'ls-lint'
       - 'mas'
       - 'maven'
+      - 'gradle'
       - 'mergiraf'
       - 'mise'
       - 'newsraft'
