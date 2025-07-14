@@ -31,6 +31,7 @@ packages:
       - 'chezmoi'
       - 'cmake'
       - 'cmake-docs'
+      - 'defaultbrowser'
       - 'gettext'
       # cccache installed for neovim dev, but not necessary. Uninstall if this breaks things.
       - 'ccache'
