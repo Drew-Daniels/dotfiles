@@ -43,6 +43,9 @@ c.editor.command = [
 #          ╰──────────────────────────────────────────────────────────╯
 config.bind("<Ctrl-Shift-c>", "devtools")
 config.bind("<Ctrl-Shift-u>", "spawn --userscript 1pass.sh")
+# config.bind("o", "spawn --userscript dmenu_qutebrowser.sh")
+# Quickly navigate to quickmarks, bookmarks
+config.bind("<Shift-q>", "spawn --userscript dmenu_qutebrowser.sh")
 
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
 # Scheme name: Default Dark
