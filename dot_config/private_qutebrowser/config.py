@@ -41,11 +41,24 @@ c.editor.command = [
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         KEYBINDS                         │
 #          ╰──────────────────────────────────────────────────────────╯
+config.bind("<Ctrl-Shift-s>", "config-source")
+
 config.bind("<Ctrl-Shift-c>", "devtools")
+
 config.bind("<Ctrl-Shift-u>", "spawn --userscript 1pass.sh")
 # config.bind("o", "spawn --userscript dmenu_qutebrowser.sh")
 # Quickly navigate to quickmarks, bookmarks
+# TODO: Figure out a good way to launch quickmarks in a new tab, not only in current window
 config.bind("<Shift-q>", "spawn --userscript dmenu_qutebrowser.sh")
+
+# TODO: Determine a better keybind here (and one that actually works)
+config.bind("tt", "spawn --userscript translate.py")
+
+config.bind("<Ctrl-l>", "spawn --userscript localhost.sh")
+
+# NOTE: For every snippet I expect to use, I'll need a separate keybind. Likely could refactor this script to present a list of options using wofi and pick from one to insert instead, and just have 1 keybind.
+config.bind("<Ctrl-Alt-1>", "spawn --userscript snippets.py --set 1", mode="insert")
+config.bind("<Ctrl-1>", "spawn --userscript snippets.py --get 1", mode="insert")
 
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
 # Scheme name: Default Dark
