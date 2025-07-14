@@ -168,11 +168,11 @@
       # "x-scheme-handler/https" = "librewolf.desktop";
       # "x-scheme-handler/about" = "librewolf.desktop";
       # "x-scheme-handler/unknown" = "librewolf.desktop";
-      "text/html" = "org.qutebrowser.desktop";
-      "x-scheme-handler/http" = "org.qutebrowser.desktop";
-      "x-scheme-handler/https" = "org.qutebrowser.desktop";
-      "x-scheme-handler/about" = "org.qutebrowser.desktop";
-      "x-scheme-handler/unknown" = "org.qutebrowser.desktop";
+      "text/html" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
     };
   };
 
