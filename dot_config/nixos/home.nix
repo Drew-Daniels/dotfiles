@@ -269,6 +269,8 @@
     # multiplexers
     tmux
     tmuxinator
+    # qr
+    qrencode
     # zulu17
     # Fonts
     nerd-fonts.jetbrains-mono

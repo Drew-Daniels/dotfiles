@@ -38,12 +38,20 @@ c.editor.command = [
     "norm {line}G{column0}l"
 ]
 
+c.hints.selectors["code"] = [
+	# Selects all code tags whose direct parent is not a pre tag
+	":not(pre) > code",
+	"pre"
+]
+
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         KEYBINDS                         │
 #          ╰──────────────────────────────────────────────────────────╯
 config.bind("<Ctrl-Shift-s>", "config-source")
 
 config.bind("<Ctrl-Shift-c>", "devtools")
+
+config.bind("<Ctrl-#>", "hint code userscript code_select.py")
 
 config.bind("<Ctrl-Shift-u>", "spawn --userscript 1pass.sh")
 # config.bind("o", "spawn --userscript dmenu_qutebrowser.sh")
