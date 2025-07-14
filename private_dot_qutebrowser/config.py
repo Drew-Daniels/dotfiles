@@ -54,7 +54,7 @@ config.bind("<Ctrl-Shift-c>", "devtools")
 
 config.bind("<Ctrl-#>", "hint code userscript code_select.py")
 
-config.bind("<Ctrl-Shift-u>", "spawn --userscript 1pass.sh")
+config.bind("<Ctrl-Shift-u>", "spawn --userscript 1password-mac.sh")
 # config.bind("o", "spawn --userscript dmenu_qutebrowser.sh")
 # Quickly navigate to quickmarks, bookmarks
 # TODO: Figure out a good way to launch quickmarks in a new tab, not only in current window
