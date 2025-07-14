@@ -188,7 +188,8 @@ if status is-interactive
 
     # browser
     {{ if eq .chezmoi.os "linux" }}
-    set -gx BROWSER librewolf
+    # set -gx BROWSER librewolf
+    set -gx BROWSER qutebrowser
     {{ end }}
 
     # secrets

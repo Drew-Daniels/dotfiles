@@ -9,6 +9,7 @@ set +e
 # TODO: Add handling for tidal login flow, where first page shows username input, next page password
 # TODO: Create a keybinding for running :spawn --userscript 1pass.sh
 # TODO: Figure out why this script doesn't work for ProtonMail login. Text appears to get entered but then gets cleared out.
+# TODO: Figure out why this doesn't work for linkedin.com
 # NOTE: Not using 1password session token flow because enabling 1Password CLI integration diables this functionality
 # https://www.reddit.com/r/1Password/comments/15ec88z/comment/ju7fgbs/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 

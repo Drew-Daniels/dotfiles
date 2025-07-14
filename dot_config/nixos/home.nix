@@ -123,6 +123,8 @@
     # video
     mpv
     obs-studio
+    # TODO: Create an issue in nixpkgs - this package doesn't appear to work (maybe just a wayland issue)
+    # kooha
     # clipboard
     cliphist
     wl-clipboard

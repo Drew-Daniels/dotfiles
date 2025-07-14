@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $browser librewolf
+set $browser qutebrowser
 set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -272,8 +272,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-gaps inner 10
-gaps outer 10
+gaps inner 2
+gaps outer 2
 
 # default startup apps
 exec $browser
@@ -288,7 +288,9 @@ exec signal-desktop
 exec sway-audio-idle-inhibit
 
 # NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
-assign [app_id="librewolf"] workspace 1
+# TODO: See if I can use this instead:
+# assign [app_id="$browser"] workspace 1
+assign [app_id="qutebrowser"] workspace 1
 assign [app_id="alacritty"] workspace 1
 assign [class="1Password"] workspace 2
 assign [class="obsidian"] workspace 3

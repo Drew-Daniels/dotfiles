@@ -162,12 +162,17 @@
   xdg.mime = {
     enable = true;
     defaultApplications = {
-      "text/html" = "librewolf.desktop";
       "application/pdf" = "org.pwmt.zathura.desktop";
-      "x-scheme-handler/http" = "librewolf.desktop";
-      "x-scheme-handler/https" = "librewolf.desktop";
-      "x-scheme-handler/about" = "librewolf.desktop";
-      "x-scheme-handler/unknown" = "librewolf.desktop";
+      # "text/html" = "librewolf.desktop";
+      # "x-scheme-handler/http" = "librewolf.desktop";
+      # "x-scheme-handler/https" = "librewolf.desktop";
+      # "x-scheme-handler/about" = "librewolf.desktop";
+      # "x-scheme-handler/unknown" = "librewolf.desktop";
+      "text/html" = "org.qutebrowser.desktop";
+      "x-scheme-handler/http" = "org.qutebrowser.desktop";
+      "x-scheme-handler/https" = "org.qutebrowser.desktop";
+      "x-scheme-handler/about" = "org.qutebrowser.desktop";
+      "x-scheme-handler/unknown" = "org.qutebrowser.desktop";
     };
   };
 
@@ -213,6 +218,12 @@
   # https://github.com/simplex-chat/simplex-chat/issues/3425#issuecomment-2336520556
   # NOTE: When connecting to mobile, use this port
   networking.firewall.allowedTCPPorts = [40257];
+
+  # Tor
+  # TODO: Figure out why client isn't starting with this setting enabled
+  # Starts Privoxy HTTP Proxy that listens on port 8118
+  # https://nixos.wiki/wiki/Tor
+  # services.tor.client.enable = true;
 
   # To start:
   # sudo systemctl stop wg-quick-wg0

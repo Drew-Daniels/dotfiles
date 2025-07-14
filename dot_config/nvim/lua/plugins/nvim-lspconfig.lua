@@ -260,7 +260,8 @@ return {
 			"vimls",
 			-- "cucumber_language_server",
 			"bashls",
-			"basedpyright",
+      -- Disabling for now since I hardly use Python, and when I do, this gets noisy
+			-- "basedpyright",
 			"clojure_lsp",
 			"cssls",
 			"taplo",
