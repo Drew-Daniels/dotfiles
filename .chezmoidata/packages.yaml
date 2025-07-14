@@ -99,7 +99,6 @@ packages:
       - 'localstack/tap/localstack-cli'
       - 'poppler'
       - 'pulumi/tap/pulumi'
-      - 'qutebrowser'
       - 'zathura'
       # NOTE: https://github.com/homebrew-zathura/homebrew-zathura?tab=readme-ov-file#install-plugins
       - 'zathura-pdf-mupdf'
@@ -178,6 +177,7 @@ packages:
       - 'postman'
       - 'rectangle'
       - 'tidal'
+      - 'qutebrowser'
       - 'zulip'
       - 'zoom'
       mas_apps:
