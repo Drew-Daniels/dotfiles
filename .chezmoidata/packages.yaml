@@ -60,6 +60,7 @@ packages:
       - 'gping'
       - 'libyaml'
       - 'llvm'
+      - 'lnav'
       - 'hurl'
       - 'shared-mime-info'
       - 'libheif'
