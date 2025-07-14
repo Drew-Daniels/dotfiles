@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Figure out why this script always exits with an error(1) status, even when successful
+
 set -e
 
 # TODO: Consolidate w/ 1pass.sh
