@@ -1,3 +1,4 @@
+# TODO: Make this file into a template that can be written to ~/.config/qutebrowser/config.py on Linux and ~/.qutebrowser/config.py on MacOS
 # TODO: Silence basedpyright for this file
 
 # NOTE: Disable ruff
