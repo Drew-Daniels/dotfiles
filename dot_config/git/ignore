@@ -65,3 +65,4 @@ qemu_*
 .settings
 .classpath
 .zig-cache
+*.dSYM
