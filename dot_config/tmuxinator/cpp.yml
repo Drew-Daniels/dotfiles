@@ -1,0 +1,16 @@
+name: cpp
+root: <%= ENV["PROJECTS_DIR"] %>/cpp
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
