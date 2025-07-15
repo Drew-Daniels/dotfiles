@@ -79,7 +79,12 @@ return {
 			{ "<leader>gt", "<cmd>FzfLua git_tags<cr>", desc = "Tags" },
 			{ "<leader>gS", "<cmd>FzfLua git_stash<cr>", desc = "stash" },
 			-- Hunks
-			{ "<leader>h", group = "Hunks", desc = "Hunks" },
+			{ "<leader>h", group = "Hunks" },
+			-- Joining & Unjoining
+			{ "<leader>J", group = "Joining" },
+			{ "<leader>Jt","<cmd>TSJToggle<cr>" , desc = "Toggle" },
+			{ "<leader>Js","<cmd>TSJSplit<cr>" , desc = "Split" },
+			{ "<leader>Jj","<cmd>TSJJoin<cr>" , desc = "Join" },
 			-- Keymaps
 			{ "<leader>k", group = "Keymaps" },
 			{ "<leader>kl", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
