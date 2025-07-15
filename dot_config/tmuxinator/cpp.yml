@@ -11,6 +11,3 @@ windows:
         - cmd:
             - fish
             - cls
-        - dev:
-            - fish
-            - cls
