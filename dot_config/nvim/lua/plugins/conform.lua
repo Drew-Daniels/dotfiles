@@ -78,7 +78,7 @@ return {
 			end,
 			formatters_by_ft = {
 				c = { "clang-format" },
-				cpp = { "astyle" },
+				cpp = { "clang-format" },
 				-- cpp = { "uncrustify" },
 				cucumber = { "reformat-gherkin" },
 				d2 = { "d2" },
