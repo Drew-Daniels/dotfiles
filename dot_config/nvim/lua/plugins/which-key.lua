@@ -82,6 +82,8 @@ return {
 			{ "<leader>h", group = "Hunks" },
 			-- Joining & Unjoining
 			{ "<leader>J", group = "Joining" },
+      -- TODO: Look into setting up fallbacks to mini-splitjoin when treesj cannot be used
+      -- https://github.com/Wansmer/treesj/issues/143
 			{ "<leader>Jt","<cmd>TSJToggle<cr>" , desc = "Toggle" },
 			{ "<leader>Js","<cmd>TSJSplit<cr>" , desc = "Split" },
 			{ "<leader>Jj","<cmd>TSJJoin<cr>" , desc = "Join" },
