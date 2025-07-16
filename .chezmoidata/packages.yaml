@@ -74,6 +74,7 @@ packages:
       - 'ls-lint'
       - 'mas'
       - 'maven'
+      - 'mpv'
       - 'gradle'
       - 'mergiraf'
       - 'mise'
@@ -194,6 +195,7 @@ packages:
       head_brews: []
       brews:
       - 'neomutt'
+      - 'yt-dlp'
       - 'weechat'
       no_quarantine_casks: []
       casks:
