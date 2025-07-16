@@ -13,6 +13,7 @@ packages:
       - 'imagemagick'
       - 'utf8proc'
       brews:
+      - 'asciinema'
       - 'ariga/tap/atlas'
       - 'astyle'
       - 'graphviz'
