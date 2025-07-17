@@ -50,6 +50,7 @@ return {
 			{ "<leader>D", group = "Debug" },
 			{ "<leader>Db", "<cmd>DapToggleBreakpoint<cr>", desc = "Breakpoint" },
 			{ "<leader>Dc", "<cmd>DapContinue<cr>", desc = "Continue" },
+			{ "<leader>DC", "<cmd>lua require('dap').run_to_cursor()<cr>", desc = "Run to Cursor" },
 			{ "<leader>Dp", "<cmd>DapPause<cr>", desc = "Pause" },
 			{ "<leader>De", "<cmd>DapTerminate<cr>", desc = "End" },
 			{ "<leader>Dx", "<cmd>DapClearBreakpoint<cr>", desc = "X Breakpoints" },
