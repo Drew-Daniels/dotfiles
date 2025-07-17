@@ -93,6 +93,11 @@ vim.keymap.set("n", "<leader>Yn", yank_buffer_file_name, {
 })
 
 vim.keymap.set("i", "<C-o>", "<CR><ESC>I")
+
+-- Allows for exiting the integrated neovim terminal using a more memorable key sequence
+-- https://vi.stackexchange.com/a/4922/48860
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+
 -- do not open folds when searching for text
 vim.cmd([[set foldopen-=search]])
 -- do not open folds when moving cursor
