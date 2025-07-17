@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# TODO: Figure out how codelldb should be installed on NixOS
+{{ if eq .osid "darwin" -}}
+
+# Where codelldb files should be stored after initial download
+SOURCE_FOLDER="$HOME/Downloads/codelldb-download"
+
+# Where codelldb files should be placed for cold storage
+TARGET_FOLDER="$HOME/.config/codelldb"
+
+if [ ! -f "$TARGET_FOLDER" ]; then
+  # Jump
+  cd "$HOME/Downloads" || exit
+
+  # Download latest codelldb release zip
+  curl -LO "https://github.com/vadimcn/codelldb/releases/latest/download/codelldb-darwin-arm64.vsix"
+
+  # Create source dir
+  mkdir "$SOURCE_FOLDER"
+
+  # Unzip
+  unzip "codelldb-darwin-arm64.vsix" -d "$SOURCE_FOLDER"
+
+  mkdir -p "$TARGET_FOLDER"
+
+  # Copy entire 'extension' folder into ~/.config/codelldb
+  cp -R "$SOURCE_FOLDER/extension" "$TARGET_FOLDER/"
+
+  # Clean up
+  rm -rf "$SOURCE_FOLDER"
+  rm codelldb-darwin-arm64.vsix
+
+  # Reset
+  cd "$HOME" || exit
+fi
+
+{{ end -}}
