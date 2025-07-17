@@ -46,7 +46,7 @@ set.virtualedit = "block"
 set.inccommand = "split"
 
 -- disable mouse
-set.mouse = ""
+-- set.mouse = ""
 -- ╓
 -- ║ https://stackoverflow.com/questions/4642822/how-to-make-bashrc-aliases-available-within-a-vim-shell-command
 -- ╙
@@ -56,8 +56,8 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-  install = {
-    -- try to load one of these colorschemes when starting an installation during startup
-    colorscheme = { "gruvbox" }
-  }
+	install = {
+		-- try to load one of these colorschemes when starting an installation during startup
+		colorscheme = { "gruvbox" },
+	},
 })
