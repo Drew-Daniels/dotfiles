@@ -46,6 +46,13 @@ return {
 			{ "<leader>dm", "<cmd>DiffviewOpen main..@<cr>", desc = "Main to Current" },
 			{ "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Quit" },
 			{ "<leader>dx", "<cmd>DiffviewFileHistory<cr>", desc = "Selected" },
+			-- Debug
+			{ "<leader>D", group = "Debug" },
+			{ "<leader>Db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
+			{ "<leader>Dn", "<cmd>DapNew<cr>" },
+			{ "<leader>Do", "<cmd>lua require('dapui').open()<cr>", desc = "Open DAP-UI" },
+			{ "<leader>Dc", "<cmd>lua require('dapui').close()<cr>", desc = "Close DAP-UI" },
+			{ "<leader>Dt", "<cmd>lua require('dapui').toggle()<cr>", desc = "Toggle DAP-UI" },
 			-- Ex commands
 			{ "<leader>e", group = "Ex Commands" },
 			{ "<leader>el", "<cmd>FzfLua commands<cr>", desc = "List" },
@@ -82,11 +89,11 @@ return {
 			{ "<leader>h", group = "Hunks" },
 			-- Joining & Unjoining
 			{ "<leader>J", group = "Joining" },
-      -- TODO: Look into setting up fallbacks to mini-splitjoin when treesj cannot be used
-      -- https://github.com/Wansmer/treesj/issues/143
-			{ "<leader>Jt","<cmd>TSJToggle<cr>" , desc = "Toggle" },
-			{ "<leader>Js","<cmd>TSJSplit<cr>" , desc = "Split" },
-			{ "<leader>Jj","<cmd>TSJJoin<cr>" , desc = "Join" },
+			-- TODO: Look into setting up fallbacks to mini-splitjoin when treesj cannot be used
+			-- https://github.com/Wansmer/treesj/issues/143
+			{ "<leader>Jt", "<cmd>TSJToggle<cr>", desc = "Toggle" },
+			{ "<leader>Js", "<cmd>TSJSplit<cr>", desc = "Split" },
+			{ "<leader>Jj", "<cmd>TSJJoin<cr>", desc = "Join" },
 			-- Keymaps
 			{ "<leader>k", group = "Keymaps" },
 			{ "<leader>kl", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
