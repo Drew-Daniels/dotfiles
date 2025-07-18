@@ -82,6 +82,7 @@ packages:
       - 'mise'
       - 'newsraft'
       - 'neovim'
+      - 'pandoc'
       - 'pkgconf'
       - 'pngpaste'
       - 'pwgen'

@@ -117,3 +117,9 @@ vim.filetype.add({
 		["Brewfile"] = "brewfile",
 	},
 })
+
+vim.filetype.add({
+	extension = {
+		jira = "jira",
+	},
+})
