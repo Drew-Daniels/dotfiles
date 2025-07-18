@@ -186,7 +186,6 @@ packages:
       - 'postman'
       - 'rectangle'
       - 'tidal'
-      - 'qutebrowser'
       - 'zulip'
       - 'zoom'
       mas_apps:
@@ -214,6 +213,7 @@ packages:
       - 'whatsapp'
       - 'wireshark'
       - 'vitalsource-bookshelf'
+      - 'qutebrowser'
       mas_apps:
         "Kiwix": 997079563
         "Paprika Recipe Manager 3": 1303222628
