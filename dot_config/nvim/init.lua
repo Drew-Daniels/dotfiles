@@ -50,10 +50,19 @@ vim.api.nvim_create_user_command("JsonSort", function()
 end, {})
 
 vim.api.nvim_create_augroup("filetype_html", { clear = true })
+
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = { "*.html.en" },
 	command = "set filetype=html",
 	group = "filetype_html",
+})
+
+vim.api.nvim_create_augroup("filetype_map", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.js.map" },
+	command = "set filetype=json",
+	group = "filetype_map",
 })
 
 -- ── GENERAL ─────────────────────────────────────────────────────────
