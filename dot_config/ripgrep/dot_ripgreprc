@@ -4,7 +4,6 @@
 --glob=!.yarn
 --glob=!sql
 --glob=!doc
---glob=!spec
 --glob=!*.md
 --glob=!vendor
 --glob=!package-lock.json
