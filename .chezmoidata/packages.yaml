@@ -200,7 +200,8 @@ packages:
       - 'neomutt'
       - 'yt-dlp'
       - 'weechat'
-      no_quarantine_casks: []
+      no_quarantine_casks:
+      - 'librewolf'
       casks:
       - 'alex313031-thorium'
       - 'docker'
@@ -208,7 +209,6 @@ packages:
       - 'element'
       - 'firefox'
       - 'josm'
-      - 'librewolf'
       - 'raspberry-pi-imager'
       - 'signal'
       - 'whatsapp'
