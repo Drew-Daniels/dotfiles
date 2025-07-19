@@ -10,6 +10,8 @@ return {
 	-- version = "v0.*",
 	-- NOTE: Need to run this build manually
 	-- build = "cargo build --release",
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
 	opts = {
 		keymap = {
 			["<C-u>"] = { "scroll_documentation_up" },
