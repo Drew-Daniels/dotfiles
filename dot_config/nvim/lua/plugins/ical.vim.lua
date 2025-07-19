@@ -1,0 +1,3 @@
+return {
+	"axvr/ical.vim",
+}
