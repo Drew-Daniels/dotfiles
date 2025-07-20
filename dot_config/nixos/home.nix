@@ -95,7 +95,8 @@
     # element-desktop
     cinny-desktop
     # Chat
-    simplex-chat-desktop
+    # TODO: Reinstall once package hash fixed: https://github.com/NixOS/nixpkgs/issues/426923
+    # simplex-chat-desktop
     signal-desktop
     # TODO: Re-enable this at some point and figure out why build fails
     # zulip
