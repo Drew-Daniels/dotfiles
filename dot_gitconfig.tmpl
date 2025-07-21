@@ -61,3 +61,7 @@
 [submodule "tmux/plugins/vim-tmux-navigator"]
 	url = https://github.com/christoomey/vim-tmux-navigator
 	active = true
+{{ if eq .homeOrWork "work" -}}
+[credential "https://gitlab.webpt.com"]
+  oauthClientId = {{ onepasswordRead "op://Personal/git-credential-oauth-webpt-gitlab-application-credentials/application-id" }}
+{{- end -}}
