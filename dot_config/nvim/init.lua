@@ -123,3 +123,9 @@ vim.filetype.add({
 		jira = "jira",
 	},
 })
+
+vim.filetype.add({
+	extension = {
+		snapshot = "javascript",
+	},
+})
