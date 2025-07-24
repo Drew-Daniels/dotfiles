@@ -210,6 +210,7 @@ packages:
       - 'element'
       - 'firefox'
       - 'josm'
+      - 'trezor-suite'
       - 'raspberry-pi-imager'
       - 'signal'
       - 'whatsapp'
