@@ -20,6 +20,11 @@ return {
 				args = { os.getenv("HOME") .. "/.config/vscode-js-debug/src/dapDebugServer.js", "${port}" },
 			},
 		}
+		dap.adapters.chrome = {
+			type = "executable",
+			command = "node",
+			args = { os.getenv("HOME") .. "/projects/vscode-chrome-debug/out/src/chromeDebug.js" },
+		}
 		-- CONFIGURATIONS
 		dap.configurations.cpp = {
 			{
