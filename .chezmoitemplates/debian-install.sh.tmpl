@@ -1614,8 +1614,10 @@ if uninstalled clojure-lsp; then
     unzip "$zip"
     sudo cp clojure-lsp /usr/local/bin/
     rm "$zip" "$sha" clojure-lsp
+  else
+    echo "Could not verify clojure-lsp download SHA"
+    exit 1
   fi
-
 fi
 
 # cssmodules-language-server
@@ -1624,6 +1626,7 @@ if uninstalled cssmodules-language-server; then
   npm i -g cssmodules-language-server
 fi
 
+# TODO: Add update step
 if uninstalled obsidian; then
   pkg="obsidian_1.8.10_amd64.deb"
   echo "Installing Obsidian"
@@ -1633,6 +1636,32 @@ if uninstalled obsidian; then
   sudo apt install -y "./$pkg"
   rm "$pkg"
   echo "Installed Obsidian"
+fi
+
+# TODO: Add update step
+if uninstalled gitleaks; then
+  echo "Installing gitleaks"
+  latest=$(get_latest_gh_release_tag "gitleaks" "gitleaks" | cut -d 'v' -f2)
+  base_url="https://github.com/gitleaks/gitleaks/releases/download/v$latest"
+  checksums="gitleaks_${latest}_checksums.txt"
+  tgz="gitleaks_${latest}_linux_x64.tar.gz"
+  bin="gitleaks"
+
+  curl -L --remote-name-all "$base_url/$checksums" "$base_url/$tgz"
+
+  verified_sha=$(grep <"$checksums" linux_x64.tar.gz)
+  download_sha=$(sha256sum "$tgz")
+
+  if [ "$download_sha" != "$verified_sha" ]; then
+    echo "Could not install gitleaks - verify checksums"
+    exit 1
+  fi
+
+  tar xzf "$tgz"
+  sudo mv "$bin" "/usr/local/bin/$bin"
+
+  rm "$tgz" "$checksums"
+  echo "Installed gitleaks"
 fi
 
 # cleanup
