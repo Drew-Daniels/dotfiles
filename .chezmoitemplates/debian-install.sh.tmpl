@@ -1628,6 +1628,7 @@ if uninstalled obsidian; then
   pkg="obsidian_1.8.10_amd64.deb"
   echo "Installing Obsidian"
   # TODO: Download latest release
+  # NOTE: When initially syncing vaults, may need to rm -rf ~/vaults/<vault-name> so Obsidian can create a new <vault-name> folder in ~/vaults
   curl -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.10/$pkg"
   sudo apt install -y "./$pkg"
   rm "$pkg"
