@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# TODO: Figure out how vscode-js-debug should be installed on NixOS
+{{ if eq .osid "darwin" -}}
+
+# Where vscode-js-debug files should be placed for cold storage
+TARGET_FOLDER="$HOME/.config/vscode-js-debug"
+
+if [ ! -f "$TARGET_FOLDER/src/dapDebugServer.js" ]; then
+  # Jump
+  cd "$HOME/Downloads" || exit
+
+  # Determine the latest version of the debug adapter available
+  version=$(curl -sL https://api.github.com/repos/microsoft/vscode-js-debug/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+
+  # specify name and path of tar.gz
+  ZIP_NAME="js-debug-dap-v${version}.tar.gz"
+  ZIP_PATH="$HOME/Downloads/$ZIP_NAME"
+
+  # Download
+  curl -LO "https://github.com/microsoft/vscode-js-debug/releases/download/v${version}/js-debug-dap-v${version}.tar.gz"
+
+  # Extract
+  tar xzvf "$ZIP_PATH"
+
+  # Where files should be stored after extraction
+  EXTRACTED_PATH="$HOME/Downloads/js-debug"
+
+  mkdir -p "$TARGET_FOLDER"
+
+  cp -R "$EXTRACTED_PATH/" "$TARGET_FOLDER"
+
+  # Clean up
+  rm -rf "$ZIP_PATH" "$EXTRACTED_PATH"
+
+  # Reset
+  cd "$HOME" || exit
+fi
+
+{{ end -}}
