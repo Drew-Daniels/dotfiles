@@ -4,6 +4,8 @@ return {
 		-- https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(via--codelldb)#ccrust-via-codelldb
 		-- https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 		local dap = require("dap")
+		-- NOTE: Default "INFO" - :h dap.set_log_level()
+		-- dap.set_log_level("DEBUG")
 		-- ADAPTERS
 		dap.adapters.codelldb = {
 			type = "executable",
@@ -48,15 +50,8 @@ return {
 				type = "pwa-node",
 				request = "launch",
 				name = "Launch file",
-				runtimeExecutable = "deno",
-				runtimeArgs = {
-					"run",
-					"--inspect-wait",
-					"--allow-all",
-				},
 				program = "${file}",
 				cwd = "${workspaceFolder}",
-				attachSimplePort = 9229,
 			},
 		}
 	end,
