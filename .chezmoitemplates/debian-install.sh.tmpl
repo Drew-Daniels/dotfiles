@@ -1356,7 +1356,7 @@ if uninstalled waybar; then
 
 	if [ ! -d "$HOME/projects/Waybar" ]; then
 		# clone
-		git clone https://github.com/Alexays/Waybar
+		git clone https://github.com/Alexays/Waybar ~/projects/Waybar
 	fi
 
   cd ~/projects/Waybar	
@@ -1365,7 +1365,7 @@ if uninstalled waybar; then
   ninja -C build
   ./build/waybar
   # install
-  ninja -C build install
+  sudo ninja -C build install
 	
 fi
 
@@ -1474,20 +1474,6 @@ if uninstalled docker-compose-langserver; then
   rm -rf extracted "$tgz"
 fi
 
-# vscode-langservers-extracted
-# https://github.com/hrsh7th/vscode-langservers-extracted
-# NOTE: Only installing this globally using NPM because this is not available through a binary/debian packages.
-# TODO: Add step to upgrade
-if uninstalled vscode-html-language-server; then
-  npm i -g vscode-langservers-extracted
-fi
-
-# vue-language-server
-# https://www.npmjs.com/package/@vue/language-server
-if uninstalled vue-language-server; then
-  npm i -g @vue/language-server
-fi
-
 # basedpyright
 # https://github.com/DetachHead/basedpyright
 if uninstalled basedpyright; then
@@ -1510,10 +1496,6 @@ fi
 # https://github.com/astral-sh/ruff
 if uninstalled ruff; then
   pip install ruff
-fi
-
-if uninstalled tailwindcss-language-server; then
-  npm i -g @tailwindcss/language-server
 fi
 
 # terraform-ls
@@ -1548,17 +1530,6 @@ if uninstalled typos-lsp; then
   rm -rf extracted "$tgz"
 fi
 
-# bash-language-server
-# https://github.com/bash-lsp/bash-language-server
-if uninstalled bash-language-server; then
-  npm i -g bash-language-server
-fi
-
-# dockerfile-language-server-nodejs
-if uninstalled dockerfile-language-server-nodejs; then
-  npm i -g dockerfile-language-server-nodejs
-fi
-
 # lua-language-server
 # https://github.com/LuaLS/lua-language-server/releases/tag/3.14.0
 if uninstalled lua-language-server; then
@@ -1579,12 +1550,6 @@ if uninstalled marksman; then
   curl -LO "https://github.com/artempyanykh/marksman/releases/download/${latest}/marksman-linux-x64"
   chmod +x marksman-linux-x64
   sudo mv marksman-linux-x64 /usr/local/bin/marksman
-fi
-
-# yaml-language-server
-# https://github.com/redhat-developer/yaml-language-server
-if uninstalled yaml-language-server; then
-  npm i -g yaml-language-server
 fi
 
 # tflint
@@ -1618,22 +1583,10 @@ if uninstalled tflint; then
   fi
 fi
 
-# emmet-language-server
-# https://github.com/olrtg/emmet-language-server
-if uninstalled emmet-language-server; then
-  npm i -g @olrtg/emmet-language-server
-fi
-
 # python-lsp-server
 # https://github.com/python-lsp/python-lsp-server
 if uninstalled pylsp; then
   pip install python-lsp-server
-fi
-
-# vim-language-server
-# https://github.com/iamcco/vim-language-server
-if uninstalled vim-language-server; then
-  npm i -g vim-language-server
 fi
 
 # sql-language-server
@@ -1669,18 +1622,6 @@ fi
 # https://github.com/antonk52/cssmodules-language-server
 if uninstalled cssmodules-language-server; then
   npm i -g cssmodules-language-server
-fi
-
-# cucumber-language-server
-# https://github.com/cucumber/language-server
-if uninstalled cucumber-language-server; then
-  npm i -g @cucumber/language-server
-fi
-
-# prisma-language-server
-# https://www.npmjs.com/package/@prisma/language-server
-if uninstalled prisma-language-server; then
-  npm i -g @prisma/language-server
 fi
 
 # cleanup
