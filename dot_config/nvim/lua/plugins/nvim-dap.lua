@@ -59,5 +59,31 @@ return {
 				cwd = "${workspaceFolder}",
 			},
 		}
+		dap.configurations.javascriptreact = {
+			{
+				type = "chrome",
+				request = "attach",
+				name = "Launch File",
+				program = "${file}",
+				cwd = vim.fn.getcwd(),
+				sourceMaps = true,
+				protocol = "inspector",
+				port = 9222,
+				webRoot = "${workspaceFolder}",
+			},
+		}
+		dap.configurations.typescriptreact = {
+			{
+				type = "chrome",
+				request = "attach",
+				name = "Launch File",
+				program = "${file}",
+				cwd = vim.fn.getcwd(),
+				sourceMaps = true,
+				protocol = "inspector",
+				port = 9222,
+				webRoot = "${workspaceFolder}",
+			},
+		}
 	end,
 }
