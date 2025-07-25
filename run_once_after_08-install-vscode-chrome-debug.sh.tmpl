@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# TODO: Figure out how vscode-js-debug should be installed on NixOS
+{{ if eq .osid "darwin" -}}
+
+# Where vscode-js-debug files should be placed for cold storage
+TARGET_FOLDER="$HOME/projects/vscode-chrome-debug"
+
+if [ ! -d "$TARGET_FOLDER" ]; then
+
+  cd ~/projects || exit
+
+  git clone "https://github.com/Microsoft/vscode-chrome-debug"
+
+  cd vscode-chrome-debug
+
+  npm install
+
+  npm run build
+
+  # Reset
+  cd "$HOME" || exit
+fi
+
+{{ end -}}
