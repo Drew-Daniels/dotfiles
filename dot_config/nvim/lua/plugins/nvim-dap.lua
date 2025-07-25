@@ -20,6 +20,7 @@ return {
 				args = { os.getenv("HOME") .. "/.config/vscode-js-debug/src/dapDebugServer.js", "${port}" },
 			},
 		}
+		-- NOTE: chrome has to be started with a remote debugging port google-chrome-stable --remote-debugging-port=9222
 		dap.adapters.chrome = {
 			type = "executable",
 			command = "node",
@@ -59,31 +60,31 @@ return {
 				cwd = "${workspaceFolder}",
 			},
 		}
-		dap.configurations.javascriptreact = {
-			{
-				type = "chrome",
-				request = "attach",
-				name = "Launch File",
-				program = "${file}",
-				cwd = vim.fn.getcwd(),
-				sourceMaps = true,
-				protocol = "inspector",
-				port = 9222,
-				webRoot = "${workspaceFolder}",
-			},
-		}
-		dap.configurations.typescriptreact = {
-			{
-				type = "chrome",
-				request = "attach",
-				name = "Launch File",
-				program = "${file}",
-				cwd = vim.fn.getcwd(),
-				sourceMaps = true,
-				protocol = "inspector",
-				port = 9222,
-				webRoot = "${workspaceFolder}",
-			},
-		}
+		-- dap.configurations.javascript = {
+		-- 	{
+		-- 		type = "chrome",
+		-- 		request = "attach",
+		-- 		name = "Launch File",
+		-- 		program = "${file}",
+		-- 		cwd = vim.fn.getcwd(),
+		-- 		sourceMaps = true,
+		-- 		protocol = "inspector",
+		-- 		port = 9222,
+		-- 		webRoot = "${workspaceFolder}",
+		-- 	},
+		-- }
+		-- dap.configurations.typescript = {
+		-- 	{
+		-- 		type = "chrome",
+		-- 		request = "attach",
+		-- 		name = "Launch File",
+		-- 		program = "${file}",
+		-- 		cwd = vim.fn.getcwd(),
+		-- 		sourceMaps = true,
+		-- 		protocol = "inspector",
+		-- 		port = 9222,
+		-- 		webRoot = "${workspaceFolder}",
+		-- 	},
+		-- }
 	end,
 }
