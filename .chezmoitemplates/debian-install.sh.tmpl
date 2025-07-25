@@ -1624,6 +1624,16 @@ if uninstalled cssmodules-language-server; then
   npm i -g cssmodules-language-server
 fi
 
+if uninstalled obsidian; then
+  pkg="obsidian_1.8.10_amd64.deb"
+  echo "Installing Obsidian"
+  # TODO: Download latest release
+  curl -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.10/$pkg"
+  sudo apt install -y "./$pkg"
+  rm "$pkg"
+  echo "Installed Obsidian"
+fi
+
 # cleanup
 sudo apt autoremove -y
 sudo apt autoclean -y
