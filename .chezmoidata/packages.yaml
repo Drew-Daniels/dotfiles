@@ -222,6 +222,7 @@ packages:
         "Kiwix": 997079563
         "Paprika Recipe Manager 3": 1303222628
         "Kindle": 302584613
+        "Wireguard": 1451685025
     work:
       taps:
       - 'ankitpokhrel/jira-cli'
