@@ -1,0 +1,13 @@
+name: ostep
+root: <%= ENV["PROJECTS_DIR"] %>/ostep-code
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
