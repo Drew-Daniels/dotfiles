@@ -62,15 +62,16 @@ return {
 			blink = true,
 			min_chars = 2,
 		},
-		mappings = {
-			-- TODO: Figure out why this isn't working
-			["<localleader>td"] = {
-				action = function()
-					return require("obsidian").util.toggle_checkbox()
-				end,
-				opts = { buffer = true },
-			},
-		},
+		-- TODO: This appears to be deprecated now
+		-- mappings = {
+		-- 	-- TODO: Figure out why this isn't working
+		-- 	["<localleader>td"] = {
+		-- 		action = function()
+		-- 			return require("obsidian").util.toggle_checkbox()
+		-- 		end,
+		-- 		opts = { buffer = true },
+		-- 	},
+		-- },
 	},
 	init = function()
 		vim.api.nvim_create_augroup("filetype_markdown", { clear = true })
