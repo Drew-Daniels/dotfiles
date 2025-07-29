@@ -211,6 +211,7 @@ packages:
       - 'element'
       - 'firefox'
       - 'josm'
+      - 'libreoffice'
       - 'trezor-suite'
       - 'raspberry-pi-imager'
       - 'signal'
