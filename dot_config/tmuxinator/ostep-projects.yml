@@ -1,0 +1,13 @@
+name: ostep-projects
+root: <%= ENV["PROJECTS_DIR"] %>/ostep-projects
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
