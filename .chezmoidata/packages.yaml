@@ -212,6 +212,7 @@ packages:
       - 'firefox'
       - 'josm'
       - 'libreoffice'
+      - 'lmms'
       - 'trezor-suite'
       - 'raspberry-pi-imager'
       - 'signal'
