@@ -4,6 +4,11 @@
     "prefix": "td",
     "description": "Create a TODO"
   },
+  "NOTE": {
+    "body": "# NOTE: ${0}",
+    "prefix": "nt",
+    "description": "Create a Note"
+  },
   "Shebang": {
     "body": "#!/usr/bin/env ${0}",
     "prefix": "sh"
