@@ -32,8 +32,14 @@ Sign into the App Store using personal Apple account - since I'll need to be aut
 
 ```zsh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
-chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+# chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+chezmoi init https://github.com/Drew-Daniels/dotfiles --apply
 ```
+
+NOTE: I stopped using Codeberg to host my dotfiles because of this issue, where lockfiles can get stuck in a broken state, and there isn't a way to remove these in an automated way. The only way to fix them is to contact Codeberg admin to clear the lock on the remote.
+
+https://codeberg.org/Codeberg/Community/issues/1474
+https://codeberg.org/forgejo/forgejo/issues/1946
 
 #### `iterm2` Configuration
 
