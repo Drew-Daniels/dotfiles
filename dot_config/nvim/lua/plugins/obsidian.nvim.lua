@@ -1,17 +1,25 @@
 return {
 	"obsidian-nvim/obsidian.nvim",
 	-- dev = true,
-	-- cond = false,
+	-- NOTE: Disabling this plugin for now becuase their is an issue wh
+	cond = false,
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
 	ft = "markdown",
 	-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+	-- NOTE: Create a bug report for obsidian.nvim being loaded even when outside of a vault? Also when working on non-markdown files.
 	-- event = {
-	--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-	--   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-	--   -- refer to `:h file-pattern` for more examples
-	--   "BufReadPre path/to/my-vault/*.md",
-	--   "BufNewFile path/to/my-vault/*.md",
+	-- 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+	-- 	-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+	-- 	-- refer to `:h file-pattern` for more examples
+	-- 	"BufReadPre "
+	-- 		.. vim.fn.expand("~")
+	-- 		.. "/vaults/personal/*.md",
+	-- 	"BufReadPre " .. vim.fn.expand("~") .. "/vaults/work/*.md",
+	-- 	"BufReadPre " .. vim.fn.expand("~") .. "/vaults/xxx/*.md",
+	-- 	"BufNewFile " .. vim.fn.expand("~") .. "/vaults/personal/*.md",
+	-- 	"BufNewFile " .. vim.fn.expand("~") .. "/vaults/work/*.md",
+	-- 	"BufNewFile " .. vim.fn.expand("~") .. "/vaults/xxx/*.md",
 	-- },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -39,23 +47,17 @@ return {
 		},
 		daily_notes = {
 			workdays_only = true,
-			-- which folders dailies should be placed in
 			folder = "dailies",
-			-- name of the template to use. Should be a file located in the 'templates' folder
 			template = "daily",
 		},
 		picker = {
 			name = "fzf-lua",
 			note_mappings = {
-				-- Create a new note from your query.
 				new = "<C-x>",
-				-- Insert a link to the selected note.
 				insert_link = "<C-l>",
 			},
 			tag_mappings = {
-				-- Add tag(s) to current note.
 				tag_note = "<C-x>",
-				-- Insert a tag at the current location.
 				insert_tag = "<C-l>",
 			},
 		},
@@ -64,15 +66,5 @@ return {
 			blink = true,
 			min_chars = 2,
 		},
-		-- TODO: This appears to be deprecated now
-		-- mappings = {
-		-- 	-- TODO: Figure out why this isn't working
-		-- 	["<localleader>td"] = {
-		-- 		action = function()
-		-- 			return require("obsidian").util.toggle_checkbox()
-		-- 		end,
-		-- 		opts = { buffer = true },
-		-- 	},
-		-- },
 	},
 }
