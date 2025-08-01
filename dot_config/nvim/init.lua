@@ -129,3 +129,10 @@ vim.filetype.add({
 		snapshot = "javascript",
 	},
 })
+
+-- obsidian.nvim
+vim.api.nvim_create_augroup("filetype_markdown", { clear = true })
+vim.api.nvim_create_autocmd(
+	{ "BufNewFile", "BufRead" },
+	{ pattern = { "*.md" }, command = "set conceallevel=2", group = "filetype_markdown" }
+)
