@@ -14,3 +14,11 @@ windows:
         - tsc:
             - fish
             - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - npm run build
+            - npm run start
