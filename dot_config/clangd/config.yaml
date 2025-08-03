@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: [-pedantic, -Wall, -Weffc++, -Wextra, -Wconversion, -Wsign-conversion, -Werror, -ggdb, -std=c++23]
