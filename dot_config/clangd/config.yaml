@@ -1,2 +1,19 @@
+# Common to C and C++
 CompileFlags:
-  Add: [-pedantic, -Wall, -Weffc++, -Wextra, -Wconversion, -Wsign-conversion, -ggdb, -std=c++23]
+  Add:
+    - -pedantic
+    - -Wall
+    - -Weffc++
+    - -Wextra
+    - -Wconversion 
+    - -Wsign-conversion
+    - -ggdb
+---
+# Specific to C++
+If:
+  PathExclude:
+    - .*\.c
+    - .*\.h
+CompileFlags:
+  Add:
+      - -std=c++23
