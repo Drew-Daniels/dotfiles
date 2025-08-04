@@ -1,0 +1,13 @@
+name: dotwiki
+root: ~/projects/dotfiles.wiki
+windows:
+  - dotwiki:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
