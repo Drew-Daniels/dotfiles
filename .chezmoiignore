@@ -4,7 +4,6 @@ tags.*
 Brewfile_*
 */iterm2/sockets
 */iterm2/symlink_AppSupport
-README.md
 macos.sh
 debian-install.sh
 debian-upgrade.sh
