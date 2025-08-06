@@ -14,3 +14,4 @@ windows:
         - tsc:
             - fish
             - cls
+            - npm run dev
