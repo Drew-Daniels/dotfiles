@@ -100,6 +100,12 @@ return {
 				name = "Launch file",
 				program = "${file}",
 				cwd = "${workspaceFolder}",
+				-- NOTE: These args are required to debug TS tests that import TS types from source files, that are not present in transpiled JS, such as redstone-common
+				-- Can remove otherwise
+				runtimeArgs = {
+					"--import",
+					"tsx",
+				},
 			},
 		}
 		-- dap.configurations.javascript = {
