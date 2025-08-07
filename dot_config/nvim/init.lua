@@ -130,6 +130,12 @@ vim.filetype.add({
 	},
 })
 
+vim.filetype.add({
+	extension = {
+		tsbuildinfo = "json",
+	},
+})
+
 -- obsidian.nvim
 vim.api.nvim_create_augroup("filetype_markdown", { clear = true })
 vim.api.nvim_create_autocmd(
