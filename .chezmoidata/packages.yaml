@@ -104,6 +104,7 @@ packages:
       - 'xdotool'
       - 'xxhash'
       - 'yazi'
+      - 'yq'
       - 'zoxide'
       - 'zig'
       - 'zls'
