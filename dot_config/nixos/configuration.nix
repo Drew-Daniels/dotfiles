@@ -191,6 +191,13 @@
     download-buffer-size = 524288000;
   };
 
+  # NOTE: For automatic garbage collection
+  # nix.gc.automatic = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   options = "--delete-older-than 30d";
+  # };
+
   services.udev.packages = [pkgs.yubikey-personalization];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

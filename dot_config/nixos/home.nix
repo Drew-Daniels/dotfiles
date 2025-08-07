@@ -93,7 +93,8 @@
     satty
     # Matrix
     # element-desktop
-    cinny-desktop
+    # NOTE: There are vulnerabilities with this as of 8/07/2025
+    # cinny-desktop
     # Chat
     # TODO: Reinstall once package hash fixed: https://github.com/NixOS/nixpkgs/issues/426923
     # simplex-chat-desktop
