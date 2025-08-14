@@ -107,6 +107,12 @@ return {
 					"tsx",
 				},
 			},
+			{
+				type = "pwa-node",
+				request = "attach",
+				name = "Attach to Process",
+				port = 9229,
+			},
 		}
 		-- dap.configurations.javascript = {
 		-- 	{
