@@ -1,5 +1,5 @@
-name: berg
-root: <%= ENV["PROJECTS_DIR"] %>/berg
+name: cberg
+root: <%= ENV["PROJECTS_DIR"] %>/cberg
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>
