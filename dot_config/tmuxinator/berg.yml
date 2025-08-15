@@ -1,5 +1,5 @@
-name: jg
-root: <%= ENV["PROJECTS_DIR"] %>/jg
+name: berg
+root: <%= ENV["PROJECTS_DIR"] %>/berg
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>
@@ -14,3 +14,4 @@ windows:
         - dev:
             - fish
             - cls
+            - npm run dev
