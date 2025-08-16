@@ -165,6 +165,7 @@
     electrum
     electrum-ltc
     trezor-suite
+    monero-gui
     # security
     yubioath-flutter
     openssl
