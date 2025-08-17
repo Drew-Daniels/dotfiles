@@ -8,10 +8,9 @@ windows:
             - fish
             - cls
             - nvim
-        - cmd:
-            - fish
-            - cls
         - dev:
             - fish
             - cls
-            - pnpm run dev
+        - cmd:
+            - fish
+            - cls

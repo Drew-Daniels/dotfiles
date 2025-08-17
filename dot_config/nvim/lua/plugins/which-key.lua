@@ -42,7 +42,7 @@ return {
 			{ "<leader>df", "<cmd>DiffviewFocusFiles<cr>", desc = "Focus Files" },
 			{ "<leader>dr", "<cmd>DiffviewRefresh<cr>", desc = "Refresh" },
 			{ "<leader>dt", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle Files" },
-			{ "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Open" },
+			{ "<leader>ds", "<cmd>DiffviewOpen<cr>", desc = "Open" },
 			{ "<leader>dm", "<cmd>DiffviewOpen main..@<cr>", desc = "Main to Current" },
 			{ "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Quit" },
 			{ "<leader>dx", "<cmd>DiffviewFileHistory<cr>", desc = "Selected" },

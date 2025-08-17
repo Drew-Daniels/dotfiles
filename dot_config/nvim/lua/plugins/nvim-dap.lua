@@ -7,13 +7,6 @@ return {
 		-- NOTE: Default "INFO" - :h dap.set_log_level()
 		-- dap.set_log_level("DEBUG")
 		-- ADAPTERS
-		dap.adapters.gdb = {
-			type = "executable",
-			command = "gdb",
-			args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
-		}
-		-- NOTE: Cannot use codelldb on NixOS (currently)
-		-- https://github.com/vadimcn/codelldb/issues/310
 		dap.adapters.codelldb = {
 			type = "executable",
 			command = "codelldb",
@@ -37,50 +30,15 @@ return {
 		dap.configurations.cpp = {
 			{
 				name = "Launch file",
-				type = "gdb",
+				type = "codelldb",
 				request = "launch",
 				program = function()
 					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
-				stopAtBeginningOfMainSubprogram = false,
-			},
-			{
-				name = "Select and attach to process",
-				type = "gdb",
-				request = "attach",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				pid = function()
-					local name = vim.fn.input("Executable name (filter): ")
-					return require("dap.utils").pick_process({ filter = name })
-				end,
-				cwd = "${workspaceFolder}",
-			},
-			{
-				name = "Attach to gdbserver :1234",
-				type = "gdb",
-				request = "attach",
-				target = "localhost:1234",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
 			},
 		}
-		-- dap.configurations.cpp = {
-		-- 	{
-		-- 		name = "Launch file",
-		-- 		type = "codelldb",
-		-- 		request = "launch",
-		-- 		program = function()
-		-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-		-- 		end,
-		-- 		cwd = "${workspaceFolder}",
-		-- 		stopOnEntry = false,
-		-- 	},
-		-- }
 		-- Reuse
 		dap.configurations.c = dap.configurations.cpp
 		dap.configurations.rust = dap.configurations.cpp
@@ -100,18 +58,6 @@ return {
 				name = "Launch file",
 				program = "${file}",
 				cwd = "${workspaceFolder}",
-				-- NOTE: These args are required to debug TS tests that import TS types from source files, that are not present in transpiled JS, such as redstone-common
-				-- Can remove otherwise
-				-- runtimeArgs = {
-				-- 	"--import",
-				-- 	"tsx",
-				-- },
-			},
-			{
-				type = "pwa-node",
-				request = "attach",
-				name = "Attach to Process",
-				port = 9229,
 			},
 		}
 		-- dap.configurations.javascript = {

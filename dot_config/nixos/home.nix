@@ -93,8 +93,7 @@
     satty
     # Matrix
     # element-desktop
-    # NOTE: There are vulnerabilities with this as of 8/07/2025
-    # cinny-desktop
+    cinny-desktop
     # Chat
     # TODO: Reinstall once package hash fixed: https://github.com/NixOS/nixpkgs/issues/426923
     # simplex-chat-desktop
@@ -165,7 +164,6 @@
     electrum
     electrum-ltc
     trezor-suite
-    monero-gui
     # security
     yubioath-flutter
     openssl
@@ -324,7 +322,6 @@
     taplo
     tflint
     emmet-language-server
-    xmlstarlet
     # TODO: Figure out which one of these Python packages has a dependency issue causing a similar error to this:
     # https://github.com/NixOS/nixpkgs/issues/417098
     # python313Packages.sqlfmt
