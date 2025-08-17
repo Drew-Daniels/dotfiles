@@ -324,7 +324,7 @@ if uninstalled bat; then
   latest=$(get_latest_gh_release_tag "sharkdp" "bat" | sed 's/v//g')
   deb="bat_${latest}_amd64.deb"
   curl -sLO "https://github.com/sharkdp/bat/releases/download/v${latest}/${deb}"
-  sudo apt install -y "./${deb}"
+  sudo dpkg -i "./${deb}"
   rm "$deb"
   echo "Installed bat"
 else

@@ -419,7 +419,7 @@ if [ "$current" != "$latest" ]; then
   echo "Upgrading bat"
   deb="bat_${latest}_amd64.deb"
   curl -sLO --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "https://github.com/sharkdp/bat/releases/download/v${latest}/${deb}"
-  sudo apt install -y "./${deb}"
+  sudo dpkg -i "./${deb}"
   rm "$deb"
   echo "Upgraded bat"
 else
