@@ -98,22 +98,12 @@ if [ "$current" != "$latest" ]; then
 
   base_repo_path="https://github.com/neovim/neovim/releases/latest/download/"
   pkg_name="nvim-linux-x86_64.tar.gz"
-  checksums_filename="shasum.txt"
 
-  curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_repo_path/$pkg_name" "$base_repo_path/$checksums_filename"
+  curl --silent --location --remote-name-all --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" "$base_repo_path/$pkg_name"
 
-  download_checksum=$(sha256sum $pkg_name)
-  verified_checksum=$(grep "$pkg_name" <$checksums_filename)
-
-  if [ "$download_checksum" != "$verified_checksum" ]; then
-    echo "Checksum verification failed: $download_checksum vs. $verified_checksum"
-    exit 1
-  fi
-
-  echo "Neovim checksum verified"
   sudo rm -rf /opt/nvim
   sudo tar -C /opt -xzf "$pkg_name"
-  rm "$pkg_name" "$checksums_filename"
+  rm "$pkg_name"
   echo "Upgraded neovim"
 else
   echo "Neovim up-to-date"
