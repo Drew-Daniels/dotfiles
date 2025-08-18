@@ -100,7 +100,7 @@ return {
 				sql = { "sqlfmt" },
 				java = { "astyle" },
 				-- javascript = { "project_eslint", "fallback_eslint", "prettierd" },
-				javascript = { "eslint_d", "prettierd" },
+				-- javascript = { "eslint_d", "prettierd" },
 				javascriptreact = { "prettierd" },
 				toml = { "taplo" },
 				-- typescript = { "eslint_d", "prettierd" },
