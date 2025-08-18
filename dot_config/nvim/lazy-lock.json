@@ -18,7 +18,7 @@
   "grapple.nvim": { "branch": "main", "commit": "b41ddfc1c39f87f3d1799b99c2f0f1daa524c5f7" },
   "gruvbox.nvim": { "branch": "main", "commit": "58a2cda2e953a99e2f87c12b7fb4602da4e0709c" },
   "ical.vim": { "branch": "master", "commit": "fc04e718533af6c7f920a7a908016f83addb53c8" },
-  "image.nvim": { "branch": "master", "commit": "cf63c99ec7ef53efc66a8843b0f5ad222bce40a9" },
+  "image.nvim": { "branch": "master", "commit": "6cfc59f8b8ad3bc3613b851f356f07cc57b7ce48" },
   "img-clip.nvim": { "branch": "main", "commit": "d8b6b030672f9f551a0e3526347699985a779d93" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
