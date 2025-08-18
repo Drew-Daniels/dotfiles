@@ -1174,7 +1174,7 @@ fi
 if uninstalled usbimager; then
   echo "Installing usbimager"
   curl -sLO https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.10-amd64.deb
-  apt install -y ./usbimager_1.0.10-amd64.deb
+  sudo dpkg -i usbimager_1.0.10-amd64.deb
   rm usbimager_1.0.10-amd64.deb
   echo "Installed usbimager"
 else

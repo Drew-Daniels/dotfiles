@@ -297,7 +297,7 @@ if [ "$current" != "$latest" ]; then
   echo "Updating usbimager"
   deb="usbimager_${latest}-amd64.deb"
   curl -sLO "https://gitlab.com/bztsrc/usbimager/-/raw/binaries/$deb"
-  apt install -y "./$deb"
+  sudo dpkg -i usbimager_1.0.10-amd64.deb
   rm "$deb"
   echo "usbimager updated"
 else
