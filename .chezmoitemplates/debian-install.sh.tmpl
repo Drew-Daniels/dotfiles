@@ -232,13 +232,7 @@ fi
 #│                                     starship                                     │
 #│https://github.com/starship/starship?tab=readme-ov-file#%F0%9F%9A%80-installation │
 #╰──────────────────────────────────────────────────────────────────────────────────╯
-if uninstalled starship; then
-  echo "Installing starship"
-  cargo install starship --locked
-  echo "Installed starship"
-else
-  echo "Already installed starship"
-fi
+install_crate "starship"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           fish                           │
@@ -372,13 +366,7 @@ fi
 #          │         https://github.com/bugaevc/wl-clipboard          │
 #          ╰──────────────────────────────────────────────────────────╯
 # allows neovim to access clipboard via wayland
-if uninstalled wl-copy; then
-  echo "Installing wl-clipboard"
-  sudo apt install -y wl-clipboard
-  echo "Installed wl-clipboard"
-else
-  echo "Already installed wl-clipboard"
-fi
+install_apt_package "wl-copy" "wl-clipboard"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         lua 5.1                          │
@@ -896,7 +884,6 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 install_apt_package "wg" "wireguard"
 
-
 # Notes on creating and using client configurations
 # # Create and download client configuration file from Wireguard server
 # # move into wireguard configuration folder
@@ -1116,15 +1103,6 @@ install_pip_package "beets"
 #          ╰──────────────────────────────────────────────────────────╯
 install_apt_package "neomutt"
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                         newsboat                         │
-#          │                  https://newsboat.org/                   │
-#          ╰──────────────────────────────────────────────────────────╯
-if uninstalled newsboat; then
-  # TODO: Look into alternative installation methods to get more recent versions
-  sudo apt install -y newsboat
-fi
-
 if uninstalled electrum; then
   # TODO: Fetch the latest release
   base_url="https://download.electrum.org/4.5.8"
@@ -1255,6 +1233,7 @@ if uninstalled proton-mail; then
   deb="ProtonMail-desktop-beta.deb"
   curl -LO "https://proton.me/download/mail/linux/1.8.0/$deb"
   sudo apt install -y "./$deb"
+  rm "$deb"
 fi
 
 # Proton Mail Bridge
@@ -1266,6 +1245,7 @@ if uninstalled protonmail-bridge; then
   curl -#LO "https://proton.me/download/bridge/$deb"
   sudo apt install -y "./$deb"
   echo "Installed Proton Mail Bridge"
+  rm "$deb"
 fi
 
 # bemenu
