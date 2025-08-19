@@ -1,0 +1,13 @@
+name: csapp
+root: <%= ENV["PROJECTS_DIR"] %>/csapp
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
