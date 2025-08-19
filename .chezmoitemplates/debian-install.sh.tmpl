@@ -796,19 +796,11 @@ install_apt_package "uuidgen" "uuid-runtime"
 # │                          # sway                           │
 # │                   # https://swaywm.org/                   │
 # ╰───────────────────────────────────────────────────────────╯
-if uninstalled sway; then
-  echo "Installing sway"
-  sudo apt install -y sway
-  echo "Installed sway"
-fi
+install_apt_package "sway"
 
 # swaylock
 # https://github.com/swaywm/swaylock
-if uninstalled swaylock; then
-  echo "Installing swaylock"
-  sudo apt install -y swaylock
-  echo "Installed swaylock"
-fi
+install_apt_package "swaylock"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      brightnessctl                       │
@@ -845,25 +837,13 @@ fi
 #          │               https://github.com/derf/feh                │
 #          ╰──────────────────────────────────────────────────────────╯
 # TODO: Look into building feh from source: https://feh.finalrewind.org/
-if uninstalled feh; then
-  echo "Installing feh"
-  sudo apt install -y feh
-  echo "Installed feh"
-else
-  echo "Already installed feh"
-fi
+install_apt_package "feh"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        xmlstarlet                        │
 #          │       https://xmlstar.sourceforge.net/download.php       │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled xmlstarlet; then
-  echo "Installing xmlstarlet"
-  sudo apt install xmlstarlet
-  echo "Installed xmlstarlet"
-else
-  echo "Already installed xmlstarlet"
-fi
+install_apt_package "xmlstarlet"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         mergiraf                         │
@@ -871,25 +851,13 @@ fi
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Installing via crates.io because of glibc compatibility issue with Debian bookworm
 # mergiraf: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.39' not found (required by mergiraf)
-if uninstalled mergiraf; then
-  echo "Installing mergiraf"
-  cargo install --locked mergiraf
-  echo "Installed mergiraf"
-else
-  echo "Already installed mergiraf"
-fi
+install_crate "mergiraf"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           nmap                           │
 #          │                https://svn.nmap.org/nmap/                │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled nmap; then
-  echo "Installing nmap"
-  sudo apt install -y nmap
-  echo "Installed nmap"
-else
-  echo "Already installed nmap"
-fi
+install_apt_package "nmap"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         thorium                          │
@@ -926,13 +894,9 @@ fi
 #          │                        wireguard                         │
 #          │            https://www.wireguard.com/install/            │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled wg; then
-  echo "Installing wireguard"
-  sudo apt install -y wireguard
-  echo "Installed wireguard"
-else
-  echo "Already installed wireguard"
-fi
+install_apt_package "wg" "wireguard"
+
+
 # Notes on creating and using client configurations
 # # Create and download client configuration file from Wireguard server
 # # move into wireguard configuration folder
@@ -951,13 +915,7 @@ fi
 #          │                https://plocate.sesse.net/                │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Provides `updatedb` and `locate` commands - alternative to `locate`
-if uninstalled plocate; then
-  echo "Installing plocate"
-  sudo apt install -y plocate
-  echo "Installed plocate"
-else
-  echo "Already installed plocate"
-fi
+install_apt_package "plocate"
 
 # NOTE: Miscellaneous notes on unmounting and shutting down USB drives
 # # unmount
@@ -1011,13 +969,7 @@ fi
 #          │                           cmus                           │
 #          │               https://github.com/cmus/cmus               │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled cmus; then
-  echo "Installing cmus"
-  sudo apt install -y cmus
-  echo "Installed cmus"
-else
-  echo "Already installed cmus"
-fi
+install_apt_package "cmus"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          cmusfm                          │
@@ -1084,26 +1036,14 @@ fi
 #          │                         foliate                          │
 #          │         https://johnfactotum.github.io/foliate/          │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled foliate; then
-  echo "Installing foliate"
-  sudo apt install -y foliate
-  echo "Installed foliate"
-else
-  echo "Already installed foliate"
-fi
+install_apt_package "foliate"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                pulse audio volume control                │
 #          │ https://freedesktop.org/software/pulseaudio/pavucontrol/ │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: Tried downloading latest version, building, and installing manually but some of the build time dependencies are incompatible with my current Debian version
-if uninstalled pavucontrol; then
-  echo "Installing pavucontrol"
-  sudo apt install -y pavucontrol
-  echo "Installed pavucontrol"
-else
-  echo "Already installed pavucontrol"
-fi
+install_apt_package "pavucontrol"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        usbimager                         │
@@ -1123,13 +1063,7 @@ fi
 #          │                    gnome-disk-utility                    │
 #          │    https://gitlab.gnome.org/GNOME/gnome-disk-utility     │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled gnome-disks; then
-  echo "Installing gnome-disk-utility"
-  sudo apt install gnome-disk-utility
-  echo "Installed gnome-disk-utility"
-else
-  echo "Already installed gnome-disk-utility"
-fi
+install_apt_package "gnome-disks" "gnome-disk-utility"
 
 # TODO: Look into using LUKS instead
 
@@ -1174,19 +1108,13 @@ fi
 #          │                          beets                           │
 #          │             https://github.com/beetbox/beets             │
 #          ╰──────────────────────────────────────────────────────────╯
-
-if uninstalled beet; then
-  pip install beets
-fi
+install_pip_package "beets"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         neomutt                          │
 #          │                   https://neomutt.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled neomutt; then
-  # TODO: Look into alternative installation methods to get more recent versions
-  sudo apt install -y neomutt
-fi
+install_apt_package "neomutt"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         newsboat                         │
@@ -1234,10 +1162,7 @@ fi
 
 # nvme-cli
 # https://github.com/linux-nvme/nvme-cli
-
-if uninstalled nvme; then
-  sudo apt install -y nvme-cli
-fi
+install_apt_package "nvme" "nvme-cli"
 
 # cryptsetup
 # https://www.man7.org/linux/man-pages/man8/cryptsetup.8.html
@@ -1247,15 +1172,11 @@ fi
 
 # swayr
 # https://sr.ht/~tsdh/swayr/
-if uninstalled swayr; then
-  cargo install --locked swayr
-fi
+install_crate "swayr"
 
 # swayrbar
 # https://sr.ht/~tsdh/swayr/
-if uninstalled swayrbar; then
-  cargo install --locked swayrbar
-fi
+install_crate "swayrbar"
 
 # waybar
 # https://github.com/Alexays/Waybar
@@ -1321,15 +1242,11 @@ fi
 
 # swayidle
 # https://github.com/swaywm/swayidle
-if uninstalled swayidle; then
-  sudo apt install -y swayidle
-fi
+install_apt_package "swayidle"
 
 # OBS Studio
 # https://github.com/obsproject/obs-studio
-if uninstalled obs; then
-  sudo apt install -y obs-studio
-fi
+install_apt_package "obs-studio"
 
 # Proton Mail Desktop
 # https://proton.me/mail/download
@@ -1353,15 +1270,11 @@ fi
 
 # bemenu
 # https://github.com/Cloudef/bemenu
-if uninstalled bemenu; then
-  sudo apt install -y bemenu
-fi
+install_apt_package "bemenu"
 
 # direnv
 # https://direnv.net/docs/installation.html
-if uninstalled direnv; then
-  sudo apt install -y direnv
-fi
+install_apt_package "direnv"
 
 # phpactor
 # https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
@@ -1373,9 +1286,7 @@ fi
 
 # stylua
 # https://github.com/JohnnyMorganz/StyLua
-if uninstalled stylua; then
-  cargo install stylua --locked
-fi
+install_crate "stylua"
 
 # clangd - install from GitHub Releases
 # https://clangd.llvm.org/installation
@@ -1405,27 +1316,19 @@ fi
 
 # basedpyright
 # https://github.com/DetachHead/basedpyright
-if uninstalled basedpyright; then
-  pip install basedpyright
-fi
+install_pip_package "basedpyright"
 
 # htmlbeautifier
 # https://github.com/threedaymonk/htmlbeautifier
-if uninstalled htmlbeautifier; then
-  gem install htmlbeautifier
-fi
+install_gem "htmlbeautifier"
 
 # standard
 # https://duckduckgo.com/?q=standard+ruby+github&ia=web
-if uninstalled standard; then
-  gem install standard
-fi
+install_gem "standard"
 
 # ruff
 # https://github.com/astral-sh/ruff
-if uninstalled ruff; then
-  pip install ruff
-fi
+install_pip_package "ruff"
 
 # terraform-ls
 # https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#linux
@@ -1514,15 +1417,11 @@ fi
 
 # python-lsp-server
 # https://github.com/python-lsp/python-lsp-server
-if uninstalled pylsp; then
-  pip install python-lsp-server
-fi
+install_pip_package "pylsp" "python-lsp-server"
 
 # sql-language-server
 # https://github.com/sqls-server/sqls
-if uninstalled sqls; then
-  go install github.com/sqls-server/sqls@latest
-fi
+install_go_package "sqls" "github.com/sqls-server/sqls@latest"
 
 # clojure-lsp
 # https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.04.23-18.16.46
@@ -1551,9 +1450,7 @@ fi
 
 # cssmodules-language-server
 # https://github.com/antonk52/cssmodules-language-server
-if uninstalled cssmodules-language-server; then
-  npm i -g cssmodules-language-server
-fi
+install_npm_package "cssmodules-language-server"
 
 # TODO: Add update step
 if uninstalled obsidian; then
