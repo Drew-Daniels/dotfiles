@@ -8,6 +8,30 @@ uninstalled() {
   ! installed "$1"
 }
 
+install_dnf_package() {
+  package_name=$1
+
+  if uninstalled "$package_name"; then
+    echo "Installing $package_name"
+    sudo dnf install -y "$package_name"
+    echo "Installed $package_name"
+  else
+    echo "Already installed $package_name"
+  fi
+}
+
+install_apt_package() {
+  package_name=$1
+
+  if uninstalled "$package_name"; then
+    echo "Installing $package_name"
+    sudo apt install -y "$package_name"
+    echo "Installed $package_name"
+  else
+    echo "Already installed $package_name"
+  fi
+}
+
 get_latest_gh_release_data() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "GitHub User and Repo are required"
@@ -83,4 +107,3 @@ approve_script_execution() {
     esac
   done
 }
-
