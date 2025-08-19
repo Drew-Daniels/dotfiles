@@ -29,37 +29,20 @@ fi
 #          │                           wget                           │
 #          │             https://gitlab.com/gnuwget/wget2             │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled wget; then
-  echo "Installing wget"
-  sudo apt install -y wget
-  echo "Installed wget"
-else
-  echo "Already installed wget"
-fi
+install_apt_package "wget"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           curl                           │
 #          │                  https://curl.se/docs/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled curl; then
-  echo "Installing curl"
-  sudo apt install -y curl
-  echo "Installed curl"
-else
-  echo "Already installed curl"
-fi
+install_apt_package "curl"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           gpg                            │
 #          │        https://www.gnupg.org/download/index.html         │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled gpg; then
-  echo "Installing gpg"
-  sudo apt install -y gpg
-  echo "Installed gpg"
-else
-  echo "Already installed gpg"
-fi
+# NOTE: Should be using gpg2
+install_apt_package "gpg"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          cosign                          │
@@ -518,14 +501,7 @@ fi
 #     │                             tmuxinator                              │
 #     │https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#rubygems │
 #     ╰─────────────────────────────────────────────────────────────────────╯
-
-if uninstalled tmuxinator; then
-  echo "Installing tmuxinator"
-  gem install tmuxinator
-  echo "Installed tmuxinator"
-else
-  echo "Already installed tmuxinator"
-fi
+install_gem "tmuxinator"
 
 #        ╭──────────────────────────────────────────────────────────────╮
 #        │                          alacritty                           │
@@ -601,11 +577,7 @@ fi
 # NOTE: Library used to display SVG images in yazi
 # NOTE: Installing via crates.io because downloading the plain binary requires an incompatible glibc version than version required by Debian Bookworm
 # resvg: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.38' not found (required by resvg
-if uninstalled resvg; then
-  echo "Installing resvg"
-  cargo install --locked resvg
-  echo "Installed resvg"
-fi
+install_crate "resvg"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           yazi                           │
@@ -629,13 +601,7 @@ fi
 #          │                          jless                           │
 #          │                    https://jless.io/                     │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled jless; then
-  echo "Installing jless"
-  cargo install jless
-  echo "Installed jless"
-else
-  echo "Already installed jless"
-fi
+install_crate "jless"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                            yq                            │
@@ -733,9 +699,7 @@ fi
 #          │                      OpenSSH Server                      │
 #          │                 https://www.openssh.com/                 │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled ssh; then
-  sudo apt install -y openssh-server
-fi
+install_apt_package "ssh" "openssh-server"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          restic                          │
@@ -800,59 +764,33 @@ fi
 #          │                           dust                           │
 #          │             https://github.com/bootandy/dust             │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled dust; then
-  echo "Installing dust"
-  cargo install du-dust
-  echo "Installed dust"
-else
-  echo "Already installed dust"
-fi
+install_apt_package "dust" "du-dust"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          kiwix                           │
 #          │       https://tracker.debian.org/teams/kiwix-team/       │
 #          ╰──────────────────────────────────────────────────────────╯
 # TODO: Look into building from source to get latest release: https://github.com/kiwix/kiwix-desktop?tab=readme-ov-file#dependencies
-if uninstalled kiwix-desktop; then
-  echo "Installing kiwix-desktop"
-  sudo apt install -y kiwix
-  echo "Installed kiwix-desktop"
-else
-  echo "Already installed kiwix-desktop"
-fi
+install_apt_package "kiwix-desktop" "kiwix"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           wofi                           │
 #          │            https://github.com/davatorium/wofi            │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled wofi; then
-  echo "Installing wofi"
-  sudo apt install -y wofi
-  echo "Installed wofi"
-else
-  echo "Already installed wofi"
-fi
+install_apt_package "wofi"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      speedtest-cli                       │
 #          │          https://github.com/sivel/speedtest-cli          │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled speedtest-cli; then
-  sudo apt install -y speedtest-cli
-fi
+install_apt_package "speedtest-cli"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                       uuid-runtime                       │
 #          │       https://packages.debian.org/sid/uuid-runtime       │
 #          ╰──────────────────────────────────────────────────────────╯
 # NOTE: For creating unique identifiers (like when working with S3)
-if uninstalled uuidgen; then
-  echo "Installing uuidgen"
-  sudo apt install -y uuid-runtime
-  echo "Installed uuidgen"
-else
-  echo "Already installed uuidgen"
-fi
+install_apt_package "uuidgen" "uuid-runtime"
 
 # ╭───────────────────────────────────────────────────────────╮
 # │                          # sway                           │
@@ -1322,42 +1260,42 @@ fi
 # waybar
 # https://github.com/Alexays/Waybar
 if uninstalled waybar; then
-	# install dependencies
-	sudo apt install \
-		clang-tidy \
-		gobject-introspection \
-		libdbusmenu-gtk3-dev \
-		libevdev-dev \
-		libfmt-dev \
-		libgirepository1.0-dev \
-		libgtk-3-dev \
-		libgtkmm-3.0-dev \
-		libinput-dev \
-		libjsoncpp-dev \
-		libmpdclient-dev \
-		libnl-3-dev \
-		libnl-genl-3-dev \
-		libpulse-dev \
-		libsigc++-2.0-dev \
-		libspdlog-dev \
-		libwayland-dev \
-		scdoc \
-		upower \
-		libxkbregistry-dev
+  # install dependencies
+  sudo apt install \
+    clang-tidy \
+    gobject-introspection \
+    libdbusmenu-gtk3-dev \
+    libevdev-dev \
+    libfmt-dev \
+    libgirepository1.0-dev \
+    libgtk-3-dev \
+    libgtkmm-3.0-dev \
+    libinput-dev \
+    libjsoncpp-dev \
+    libmpdclient-dev \
+    libnl-3-dev \
+    libnl-genl-3-dev \
+    libpulse-dev \
+    libsigc++-2.0-dev \
+    libspdlog-dev \
+    libwayland-dev \
+    scdoc \
+    upower \
+    libxkbregistry-dev
 
-	if [ ! -d "$HOME/projects/Waybar" ]; then
-		# clone
-		git clone https://github.com/Alexays/Waybar ~/projects/Waybar
-	fi
+  if [ ! -d "$HOME/projects/Waybar" ]; then
+    # clone
+    git clone https://github.com/Alexays/Waybar ~/projects/Waybar
+  fi
 
-  cd ~/projects/Waybar	
+  cd ~/projects/Waybar || exit
   # build
   meson setup build
   ninja -C build
   ./build/waybar
   # install
   sudo ninja -C build install
-	
+
 fi
 
 # cargo-update
@@ -1560,14 +1498,14 @@ if uninstalled tflint; then
     "$base_url/$sig"
 
   if cosign verify-blob --certificate=checksums.txt.pem --signature=checksums.txt.keyless.sig --certificate-identity-regexp="^https://github.com/terraform-linters/tflint" --certificate-oidc-issuer=https://token.actions.githubusercontent.com checksums.txt; then
-   if sha256sum --ignore-missing -c checksums.txt; then
-    unzip "$zip"
-    sudo cp tflint /usr/local/bin/
-    rm "$zip" "$checksums" "$pem" "$sig" tflint
-  else
-    echo "Checksum verification failed for tflint"
-    exit 1
-   fi
+    if sha256sum --ignore-missing -c checksums.txt; then
+      unzip "$zip"
+      sudo cp tflint /usr/local/bin/
+      rm "$zip" "$checksums" "$pem" "$sig" tflint
+    else
+      echo "Checksum verification failed for tflint"
+      exit 1
+    fi
   else
     echo "Signature verification failed for tflint"
     exit 1
@@ -1596,7 +1534,7 @@ if uninstalled clojure-lsp; then
 
   curl -L --remote-name-all \
     "$base_url/$zip" \
-    "$base_url/$sha" \
+    "$base_url/$sha"
 
   download_sha=$(sha256sum "$zip" | cut -d ' ' -f1)
   verified_sha=$(cat "$sha")

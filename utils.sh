@@ -9,9 +9,10 @@ uninstalled() {
 }
 
 install_dnf_package() {
-  package_name=$1
+  command_name=${1}     # The command to check for installation
+  package_name=${2:-$1} # The package name to install, defaults to the command name if only one argument is provided
 
-  if uninstalled "$package_name"; then
+  if uninstalled "$command_name"; then
     echo "Installing $package_name"
     sudo dnf install -y "$package_name"
     echo "Installed $package_name"
@@ -21,11 +22,36 @@ install_dnf_package() {
 }
 
 install_apt_package() {
+  command_name=${1}     # The command to check for installation
+  package_name=${2:-$1} # The package name to install, defaults to the command name if only one argument is provided
+
+  if uninstalled "$command_name"; then
+    echo "Installing $package_name"
+    sudo apt install -y "$package_name"
+    echo "Installed $package_name"
+  else
+    echo "Already installed $package_name"
+  fi
+}
+
+install_gem() {
   package_name=$1
 
   if uninstalled "$package_name"; then
     echo "Installing $package_name"
-    sudo apt install -y "$package_name"
+    gem install tmuxinator
+    echo "Installed $package_name"
+  else
+    echo "Already installed $package_name"
+  fi
+}
+
+install_crate() {
+  package_name=$1
+
+  if uninstalled "$package_name"; then
+    echo "Installing $package_name"
+    cargo install --locked "$package_name"
     echo "Installed $package_name"
   else
     echo "Already installed $package_name"
