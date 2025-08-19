@@ -4,6 +4,10 @@
 
 . ~/.local/share/chezmoi/utils.sh
 
+# NOTE: 'update' is alias for 'upgrade'
+# dnf automatically updates cache periodically so need to manually do this
+sudo dnf upgrade
+
 install_dnf_package "strawberry"
 install_dnf_package "jq"
 install_dnf_package "rustup"
