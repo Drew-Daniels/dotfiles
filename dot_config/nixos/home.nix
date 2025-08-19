@@ -134,6 +134,7 @@
     # git
     chezmoi
     delta
+    difftastic
     gitFull
     git-credential-oauth
     gitleaks
