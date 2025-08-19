@@ -28,6 +28,15 @@
   features = navigation
 [diff]
   colorMoved = default
+  ; If I want to use difftastic as default external diff tool
+  ; external = difft
+[alias]
+  # `git log` with patches shown with difftastic.
+  dl = -c diff.external=difft log -p --ext-diff
+  # Show the most recent commit with difftastic.
+  ds = -c diff.external=difft show --ext-diff
+  # `git diff` with difftastic.
+  dft = -c diff.external=difft diff
 [merge]
   conflictstyle = zdiff3
 [filter "lfs"]

@@ -45,6 +45,7 @@ packages:
       - 'd2'
       - 'deno'
       - 'direnv'
+      - 'difftastic'
       - 'dust'
       - 'duti'
       - 'fd'
