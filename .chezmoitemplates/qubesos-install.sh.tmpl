@@ -82,22 +82,34 @@ sudo dnf install -y dnf-plugins-core
 install_dnf_copr_package "jdxcode/mise" "mise"
 install_dnf_copr_package "lihaohong/yazi" "yazi"
 
-# Docker
-# https://docs.docker.com/engine/install/fedora
-install_dnf_package "gnome-terminal"
-sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo systemctl enable --now docker
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                            jq                            │
+#          │               https://jqlang.org/download/               │
+#          ╰──────────────────────────────────────────────────────────╯
+#
+if uninstalled jq; then
+  bin="jq-linux-amd64"
+  checksums="sha256sum.txt"
 
-# Install into clone of fedora-41-xfce TemplateVM with Network access
-# dbeaver
-# https://dbeaver.io/download/2/
-if uninstalled dbeaver; then
-  echo "Installing dbeaver"
-  curl -LO 'https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm'
-  dnf install -y './dbeaver-ce-latest-stable.x86_64.rpm'
-  rm 'dbeaver-ce-latest-stable.x86_64.rpm'
-  echo "Installed dbeaver"
+  # TODO: Figure out a way to get and parse latest version without jq installed
+  base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
+
+  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
+
+  verified_sha=$(grep "$bin" <"$checksums" | awk '{print $1}')
+  download_sha=$(sha256sum "$bin" | awk '{print $1}')
+
+  if [ "$download_sha" != "$verified_sha" ]; then
+    echo "Could not install jq - verify checksums"
+    exit 1
+  fi
+
+  chmod +x "$bin"
+  sudo mv "$bin" /usr/local/bin/jq
+  rm "$checksums"
+  echo "Installed jq"
+else
+  echo "Already installed jq"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -128,36 +140,6 @@ if uninstalled cosign; then
   echo "Installed cosign"
 else
   echo "Already installed cosign"
-fi
-
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                            jq                            │
-#          │               https://jqlang.org/download/               │
-#          ╰──────────────────────────────────────────────────────────╯
-#
-if uninstalled jq; then
-  bin="jq-linux-amd64"
-  checksums="sha256sum.txt"
-
-  # TODO: Figure out a way to get and parse latest version without jq installed
-  base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
-
-  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
-
-  verified_sha=$(grep "$bin" <"$checksums" | awk '{print $1}')
-  download_sha=$(sha256sum "$bin" | awk '{print $1}')
-
-  if [ "$download_sha" != "$verified_sha" ]; then
-    echo "Could not install jq - verify checksums"
-    exit 1
-  fi
-
-  chmod +x "$bin"
-  sudo mv "$bin" /usr/local/bin/jq
-  rm "$checksums"
-  echo "Installed jq"
-else
-  echo "Already installed jq"
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
@@ -204,6 +186,24 @@ install_create "mergiraf"
 # cssmodules-language-server
 # https://github.com/antonk52/cssmodules-language-server
 install_npm_package "cssmodules-language-server"
+
+# Docker
+# https://docs.docker.com/engine/install/fedora
+install_dnf_package "gnome-terminal"
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+
+# Install into clone of fedora-41-xfce TemplateVM with Network access
+# dbeaver
+# https://dbeaver.io/download/2/
+if uninstalled dbeaver; then
+  echo "Installing dbeaver"
+  curl -LO 'https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm'
+  dnf install -y './dbeaver-ce-latest-stable.x86_64.rpm'
+  rm 'dbeaver-ce-latest-stable.x86_64.rpm'
+  echo "Installed dbeaver"
+fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        bat-extras                        │
