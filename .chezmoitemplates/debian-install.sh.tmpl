@@ -1276,17 +1276,18 @@ fi
 # microsoft-compose-language-service
 # https://github.com/microsoft/compose-language-service/releases
 # TODO: Create step to upgrade
-latest=$(get_latest_gh_release_tag "microsoft" "compose-language-service" | cut -d '-' -f5 | sed 's/v//g')
-if uninstalled docker-compose-langserver; then
-  base_url="https://github.com/microsoft/compose-language-service/releases/download/microsoft-compose-language-service-v${latest}/"
-  tgz="microsoft-compose-language-service-${latest}.tgz"
-  curl -sLO "$base_url/$tgz"
-  mkdir extracted
-  tar -xzf "$tgz" -C extracted
-  sudo cp ./extracted/package/bin/docker-compose-langserver /usr/local/bin/docker-compose-langserver
-  sudo chmod +x /usr/local/bin/docker-compose-langserver
-  rm -rf extracted "$tgz"
-fi
+# NOTE: Now installed via mise default npm packages
+# latest=$(get_latest_gh_release_tag "microsoft" "compose-language-service" | cut -d '-' -f5 | sed 's/v//g')
+# if uninstalled docker-compose-langserver; then
+#   base_url="https://github.com/microsoft/compose-language-service/releases/download/microsoft-compose-language-service-v${latest}/"
+#   tgz="microsoft-compose-language-service-${latest}.tgz"
+#   curl -sLO "$base_url/$tgz"
+#   mkdir extracted
+#   tar -xzf "$tgz" -C extracted
+#   sudo cp ./extracted/package/bin/docker-compose-langserver /usr/local/bin/docker-compose-langserver
+#   sudo chmod +x /usr/local/bin/docker-compose-langserver
+#   rm -rf extracted "$tgz"
+# fi
 
 # terraform-ls
 # https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#linux
@@ -1402,18 +1403,23 @@ fi
 # https://github.com/antonk52/cssmodules-language-server
 install_npm_package "cssmodules-language-server"
 
+# obsidian
+# https://obsidian.md/download
 # TODO: Add update step
 if uninstalled obsidian; then
-  pkg="obsidian_1.8.10_amd64.deb"
   echo "Installing Obsidian"
+  version="1.9.10"
+  pkg="obsidian_${version}_amd64.deb"
   # TODO: Download latest release
   # NOTE: When initially syncing vaults, may need to rm -rf ~/vaults/<vault-name> so Obsidian can create a new <vault-name> folder in ~/vaults
-  curl -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.10/$pkg"
+  curl -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/${version}/$pkg"
   sudo apt install -y "./$pkg"
   rm "$pkg"
   echo "Installed Obsidian"
 fi
 
+# gitleaks
+# https://github.com/gitleaks/gitleaks
 # TODO: Add update step
 if uninstalled gitleaks; then
   echo "Installing gitleaks"

@@ -74,6 +74,7 @@ install_dnf_package "abook"
 install_dnf_package "tree-sitter"
 # Includes clangd and clang-format
 install_dnf_package "clang-tools-extra"
+install_dnf_package "difftastic"
 
 # Install COPR plugins
 sudo dnf install -y dnf-plugins-core
@@ -197,6 +198,12 @@ fi
 install_crate "starship"
 install_crate "jless"
 install_crate "cargo_update"
+install_create "mergiraf"
+
+# Install NPM packages
+# cssmodules-language-server
+# https://github.com/antonk52/cssmodules-language-server
+install_npm_package "cssmodules-language-server"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        bat-extras                        │
@@ -331,4 +338,127 @@ if uninstalled protonmail-bridge; then
   pkg="protonmail-bridge-${version}.x86_64.rpm"
   curl -sLO "https://proton.me/download/bridge/$pkg"
   sudo dnf install -y "./$pkg"
+fi
+
+# Language Servers
+# terraform-ls
+#
+if uninstalled terraform-ls; then
+  version="0.36.5"
+  pkg="terraform-ls_${version}_linux_amd64.zip"
+  shasums="terraform-ls_${version}_SHA256SUMS"
+  sig="terraform-ls_${version}_SHA256SUMS.sig"
+  base_url="https://releases.hashicorp.com/terraform-ls/${version}"
+
+  curl -sL --remote-name-all \
+    "${base_url}/${pkg}" \
+    "${base_url}/${shasums}" \
+    "${base_url}/${sig}"
+
+  # TODO: validate
+  valid=1
+  if valid; then
+    unzip "$pkg"
+    sudo mv /usr/local/bin/terraform-ls
+  fi
+
+fi
+
+# typos-lsp
+# https://github.com/tekumara/typos-lsp/releases
+if uninstalled typos-lsp; then
+  echo "Installing typos-lsp"
+  cargo binstall --git https://github.com/tekumara/typos-lsp typos-lsp
+  echo "Installed typos-lsp"
+fi
+
+# marksman
+# https://github.com/artempyanykh/marksman/releases
+if uninstalled marksman; then
+  latest=$(get_latest_gh_release_tag "artempyanykh" "marksman")
+  curl -LO "https://github.com/artempyanykh/marksman/releases/download/${latest}/marksman-linux-x64"
+  chmod +x marksman-linux-x64
+  sudo mv marksman-linux-x64 /usr/local/bin/marksman
+fi
+# lua-language-server
+# https://github.com/LuaLS/lua-language-server/releases/tag/3.14.0
+if uninstalled lua-language-server; then
+  latest=$(get_latest_gh_release_tag "LuaLS" "lua-language-server")
+  base_url="https://github.com/LuaLS/lua-language-server/releases/download/${latest}"
+  tgz="lua-language-server-${latest}-linux-x64.tar.gz"
+  curl -LO "$base_url/$tgz"
+  mkdir extracted
+  tar -xzf "$tgz" -C extracted
+  sudo cp ./extracted/bin/lua-language-server /usr/local/bin/
+  rm -rf "$tgz" extracted
+fi
+
+# tflint
+# https://github.com/terraform-linters/tflint
+if uninstalled tflint; then
+  latest=$(get_latest_gh_release_tag "terraform-linters" "tflint")
+  base_url="https://github.com/terraform-linters/tflint/releases/download/${latest}"
+  zip="tflint_linux_amd64.zip"
+  checksums="checksums.txt"
+  pem="checksums.txt.pem"
+  sig="checksums.txt.keyless.sig"
+
+  curl -L --remote-name-all \
+    "$base_url/$zip" \
+    "$base_url/$checksums" \
+    "$base_url/$pem" \
+    "$base_url/$sig"
+
+  if cosign verify-blob --certificate=checksums.txt.pem --signature=checksums.txt.keyless.sig --certificate-identity-regexp="^https://github.com/terraform-linters/tflint" --certificate-oidc-issuer=https://token.actions.githubusercontent.com checksums.txt; then
+    if sha256sum --ignore-missing -c checksums.txt; then
+      unzip "$zip"
+      sudo cp tflint /usr/local/bin/
+      rm "$zip" "$checksums" "$pem" "$sig" tflint
+    else
+      echo "Checksum verification failed for tflint"
+      exit 1
+    fi
+  else
+    echo "Signature verification failed for tflint"
+    exit 1
+  fi
+fi
+
+# clojure-lsp
+# https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.04.23-18.16.46
+if uninstalled clojure-lsp; then
+  latest=$(get_latest_gh_release_tag "clojure-lsp" "clojure-lsp")
+  base_url="https://github.com/clojure-lsp/clojure-lsp/releases/download/${latest}"
+  zip="clojure-lsp-native-linux-amd64.zip"
+  sha="clojure-lsp-native-linux-amd64.zip.sha256"
+
+  curl -L --remote-name-all \
+    "$base_url/$zip" \
+    "$base_url/$sha"
+
+  download_sha=$(sha256sum "$zip" | cut -d ' ' -f1)
+  verified_sha=$(cat "$sha")
+
+  if [ "$download_sha" = "$verified_sha" ]; then
+    unzip "$zip"
+    sudo cp clojure-lsp /usr/local/bin/
+    rm "$zip" "$sha" clojure-lsp
+  else
+    echo "Could not verify clojure-lsp download SHA"
+    exit 1
+  fi
+fi
+
+# obsidian
+#
+if uninstalled obsidian; then
+  echo "Installing Obsidian"
+  version="1.9.10"
+  pkg="obsidian_${version}_amd64.AppImage"
+  # TODO: Download latest release
+  # NOTE: When initially syncing vaults, may need to rm -rf ~/vaults/<vault-name> so Obsidian can create a new <vault-name> folder in ~/vaults
+  curl -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/${version}/$pkg"
+  chmod +x "./$pkg"
+  sudo mv /usr/local/bin/obsidian
+  echo "Installed Obsidian"
 fi
