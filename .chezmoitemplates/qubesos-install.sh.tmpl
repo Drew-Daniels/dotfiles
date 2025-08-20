@@ -75,6 +75,7 @@ install_dnf_package "tree-sitter"
 
 # Install into clone of fedora-41-xfce TemplateVM with Network access
 # dbeaver
+# https://dbeaver.io/download/2/
 if uninstalled dbeaver; then
   echo "Installing dbeaver"
   curl -LO 'https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm'
@@ -83,7 +84,10 @@ if uninstalled dbeaver; then
   echo "Installed dbeaver"
 fi
 
-# cosign
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          cosign                          │
+#          │            https://github.com/sigstore/cosign            │
+#          ╰──────────────────────────────────────────────────────────╯
 if uninstalled cosign; then
   echo "Installing cosign"
   # TODO: Ensure latest is installed rather than a static version
@@ -110,18 +114,66 @@ else
   echo "Already installed cosign"
 fi
 
-# chezmoi
-if uninstalled chezmoi; then
-  echo "Installing chezmoi"
-  # TODO: get latest version
-  version="2.64.0"
-  pkg_name="chezmoi-${version}-x86_64.rpm"
-  curl -LO "https://github.com/twpayne/chezmoi/releases/download/v${version}/${pkg_name}"
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                            jq                            │
+#          │               https://jqlang.org/download/               │
+#          ╰──────────────────────────────────────────────────────────╯
+#
+if uninstalled jq; then
+  bin="jq-linux-amd64"
+  checksums="sha256sum.txt"
 
-  valid=1
-  if valid; then
-    sudo dnf install -y "./${pkg_name}"
+  # TODO: Figure out a way to get and parse latest version without jq installed
+  base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
+
+  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
+
+  verified_sha=$(grep "$bin" <"$checksums" | awk '{print $1}')
+  download_sha=$(sha256sum "$bin" | awk '{print $1}')
+
+  if [ "$download_sha" != "$verified_sha" ]; then
+    echo "Could not install jq - verify checksums"
+    exit 1
   fi
 
-  echo "Installed chezmoi"
+  chmod +x "$bin"
+  sudo mv "$bin" /usr/local/bin/jq
+  rm "$checksums"
+  echo "Installed jq"
+else
+  echo "Already installed jq"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         chezmoi                          │
+#          │                 https://www.chezmoi.io/                  │
+#          ╰──────────────────────────────────────────────────────────╯
+if uninstalled chezmoi; then
+  echo "Installing chezmoi"
+  version=$(curl -sL https://api.github.com/repos/twpayne/chezmoi/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+  # Download .rpm pkg, the checksum file, checksum file signature, and public signing key:
+  curl --silent --location --remote-name-all \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_linux_x86_64.rpm" \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_checksums.txt" \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_${version}_checksums.txt.sig" \
+    "https://github.com/twpayne/chezmoi/releases/download/v$version/chezmoi_cosign.pub"
+
+  # verify the signature on the checksums file is valid
+  cosign_verification_status=$(cosign verify-blob --key=chezmoi_cosign.pub --signature="chezmoi_${version}_checksums.txt.sig" "chezmoi_${version}_checksums.txt")
+
+  if [ "$cosign_verification_status" -eq 1 ]; then
+    echo "Signatures on Chemzoi checksums file is invalid"
+    exit 1
+  fi
+
+  # verify the checksum matches
+  if sha256sum --check "chezmoi_${version}_checksums.txt" --ignore-missing --status; then
+    sudo apt install -y "./chezmoi_${version}_linux_x86_64.rpm"
+    echo "Installed chezmoi"
+  else
+    echo "Encountered an error "
+    exit 1
+  fi
+else
+  echo "chezmoi already installed"
 fi
