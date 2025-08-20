@@ -21,20 +21,6 @@ install_dnf_package() {
   fi
 }
 
-install_dnf_copr_package() {
-  repository=${1}
-  package_name=${2}
-
-  if uninstalled "$command_name"; then
-    echo "Installing $package_name"
-    sudo dnf copr enable "$repository"
-    sudo dnf install -y "$package_name"
-    echo "Installed $package_name"
-  else
-    echo "Already installed $package_name"
-  fi
-}
-
 install_apt_package() {
   command_name=${1}     # The command to check for installation
   package_name=${2:-$1} # The package name to install, defaults to the command name if only one argument is provided
