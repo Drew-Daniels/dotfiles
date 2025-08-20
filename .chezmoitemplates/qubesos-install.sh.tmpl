@@ -109,3 +109,19 @@ if uninstalled cosign; then
 else
   echo "Already installed cosign"
 fi
+
+# chezmoi
+if uninstalled chezmoi; then
+  echo "Installing chezmoi"
+  # TODO: get latest version
+  version="2.64.0"
+  pkg_name="chezmoi-${version}-x86_64.rpm"
+  curl -LO "https://github.com/twpayne/chezmoi/releases/download/v${version}/${pkg_name}"
+
+  valid=1
+  if valid; then
+    sudo dnf install -y "./${pkg_name}"
+  fi
+
+  echo "Installed chezmoi"
+fi
