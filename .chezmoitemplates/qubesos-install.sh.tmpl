@@ -72,6 +72,8 @@ install_dnf_package "urlscan"
 install_dnf_package "msmtp"
 install_dnf_package "abook"
 install_dnf_package "tree-sitter"
+# Includes clangd and clang-format
+install_dnf_package "clang-tools-extra"
 
 # Install COPR plugins
 sudo dnf install -y dnf-plugins-core
@@ -194,6 +196,7 @@ fi
 # Install crates
 install_crate "starship"
 install_crate "jless"
+install_crate "cargo_update"
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                        bat-extras                        │
@@ -314,4 +317,18 @@ if uninstalled electrum-ltc; then
   fi
 
   echo "Installed electrum-ltc"
+fi
+
+if uninstalled protonmail; then
+  version="1.9.0"
+  pkg="ProtonMail-desktop-beta.rpm"
+  curl -sLO "https://proton.me/download/mail/linux/${version}/${pkg}"
+  sudo dnf install -y "./$pkg"
+fi
+
+if uninstalled protonmail-bridge; then
+  version="3.21.2-1"
+  pkg="protonmail-bridge-${version}.x86_64.rpm"
+  curl -sLO "https://proton.me/download/bridge/$pkg"
+  sudo dnf install -y "./$pkg"
 fi

@@ -2,3 +2,7 @@ visidata
 xlrd
 openpyxl
 PyYAML
+python-language-server
+beets
+basedpyright
+ruff

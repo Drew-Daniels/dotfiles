@@ -485,12 +485,6 @@ else
   echo "Already installed tmux"
 fi
 
-#     ╭─────────────────────────────────────────────────────────────────────╮
-#     │                             tmuxinator                              │
-#     │https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#rubygems │
-#     ╰─────────────────────────────────────────────────────────────────────╯
-install_gem "tmuxinator"
-
 #        ╭──────────────────────────────────────────────────────────────╮
 #        │                          alacritty                           │
 #        │https://github.com/alacritty/alacritty/blob/master/INSTALL.md │
@@ -1095,17 +1089,13 @@ if uninstalled signal-desktop; then
 fi
 
 #          ╭──────────────────────────────────────────────────────────╮
-#          │                          beets                           │
-#          │             https://github.com/beetbox/beets             │
-#          ╰──────────────────────────────────────────────────────────╯
-install_pip_package "beets"
-
-#          ╭──────────────────────────────────────────────────────────╮
 #          │                         neomutt                          │
 #          │                   https://neomutt.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
 install_apt_package "neomutt"
 
+# electrum
+# https://electrum.org/#download
 if uninstalled electrum; then
   # TODO: Fetch the latest release
   base_url="https://download.electrum.org/4.5.8"
@@ -1205,6 +1195,7 @@ fi
 # TODO: Figure out how to check if this is already installed
 cargo install cargo-update >/dev/null
 
+# TODO: Why is this needed?
 if ! gpg --list-keys drew@ddevault.org >/dev/null 2>&1; then
   curl -sL "https://drewdevault.com/publickey.txt" | gpg --import
   unverified_fingerprint=$(
@@ -1262,7 +1253,7 @@ install_apt_package "direnv"
 # phpactor
 # https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
 if uninstalled phpactor; then
-  curl -Lo phpactor.phar https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar
+  curl -LO "https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar"
   chmod a+x phpactor.phar
   sudo mv phpactor.phar /usr/local/bin/phpactor
 fi
@@ -1296,22 +1287,6 @@ if uninstalled docker-compose-langserver; then
   sudo chmod +x /usr/local/bin/docker-compose-langserver
   rm -rf extracted "$tgz"
 fi
-
-# basedpyright
-# https://github.com/DetachHead/basedpyright
-install_pip_package "basedpyright"
-
-# htmlbeautifier
-# https://github.com/threedaymonk/htmlbeautifier
-install_gem "htmlbeautifier"
-
-# standard
-# https://duckduckgo.com/?q=standard+ruby+github&ia=web
-install_gem "standard"
-
-# ruff
-# https://github.com/astral-sh/ruff
-install_pip_package "ruff"
 
 # terraform-ls
 # https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#linux
@@ -1397,14 +1372,6 @@ if uninstalled tflint; then
     exit 1
   fi
 fi
-
-# python-lsp-server
-# https://github.com/python-lsp/python-lsp-server
-install_pip_package "pylsp" "python-lsp-server"
-
-# sql-language-server
-# https://github.com/sqls-server/sqls
-install_go_package "sqls" "github.com/sqls-server/sqls@latest"
 
 # clojure-lsp
 # https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.04.23-18.16.46
