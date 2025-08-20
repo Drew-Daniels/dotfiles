@@ -176,6 +176,22 @@ else
   echo "chezmoi already installed"
 fi
 
+# Initialize dotfiles
+if [ ! -d ~/.local/share/chezmoi ]; then
+  echo "Initializing dotfiles"
+  # initialize dotfiles
+  # github
+  chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
+  # codeberg
+  # chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+  echo "Initialized dotfiles"
+else
+  echo "Already initialized dotfiles"
+fi
+
+# Install runtimes and default packages
+mise install
+
 # Install crates
 install_crate "starship"
 install_crate "jless"
@@ -293,13 +309,13 @@ fi
 
 # Zulip
 # https://desktop-download.zulip.com/v5.12.0/Zulip-5.12.0-x86_64.AppImage
-if uninstalled zulip; then
-  version="5.12.0"
-  pkg="Zulip-${version}-x86_64.AppImage"
-  curl -LO "https://desktop-download.zulip.com/v${version}/${pkg}"
-  chmod a+x "$pkg"
-  sudo mv "$pkg" /usr/local/bin/zulip
-fi
+# if uninstalled zulip; then
+#   version="5.12.0"
+#   pkg="Zulip-${version}-x86_64.AppImage"
+#   curl -LO "https://desktop-download.zulip.com/v${version}/${pkg}"
+#   chmod a+x "$pkg"
+#   sudo mv "$pkg" /usr/local/bin/zulip
+# fi
 
 # signal
 if uninstalled signal-desktop; then

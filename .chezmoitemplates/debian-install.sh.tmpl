@@ -126,9 +126,9 @@ if [ ! -d ~/.local/share/chezmoi ]; then
   echo "Initializing dotfiles"
   # initialize dotfiles
   # github
-  # chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
+  chezmoi init https://github.com/Drew-Daniels/dotfiles.git --apply
   # codeberg
-  chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
+  # chezmoi init https://codeberg.org/drewdaniels/dotfiles.git --apply
   echo "Initialized dotfiles"
 else
   echo "Already initialized dotfiles"
@@ -169,6 +169,9 @@ if uninstalled $pkg; then
 else
   echo "Already installed $pkg"
 fi
+
+# Install runtimes and default packages
+mise install
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                   git-credential-oauth                   │
