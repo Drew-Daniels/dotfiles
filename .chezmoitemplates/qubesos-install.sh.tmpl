@@ -495,3 +495,41 @@ if uninstalled phpactor; then
   chmod a+x phpactor.phar
   sudo mv phpactor.phar /usr/local/bin/phpactor
 fi
+
+# Monero GUI
+if uninstalled monero; then
+  echo "Installing Monero GUI"
+  version="0.18.4.1"
+
+  # Import lead maintainer PGP key
+  curl https://raw.githubusercontent.com/monero-project/monero/master/utils/gpg_keys/binaryfate.asc | gpg --import
+
+  # Edit trust level
+  gpg --edit-key '81AC591FE9C4B65C5806AFC3F0AF4D462A0BDF92'
+  # trust
+  # 4
+
+  # Download zip
+  curl -sLO "https://downloads.getmonero.org/gui/monero-gui-linux-x64-v${version}.tar.bz2"
+
+  # Calculate hash of downloaded zip
+  file_name="monero-gui-linux-x64-v${version}tar.bz2"
+  file_hash=$(sha256sum $file_name | cut -c 1-64)
+
+  # Download hash file
+  curl "https://www.getmonero.org/downloads/hashes.txt" >/tmp/reference-hashes.txt
+
+  # verify the signature on the hash file
+  gpg --verify /tmp/reference-hashes.txt
+
+  # Search for our hash in the list of valid hashes (now that signature on hash file is verified)
+  grep "$file_hash" /tmp/reference-hashes.txt
+
+  # If it matches, extract
+  tar -xf "$file_name"
+
+  # TODO: Is this the best place for this?
+  sudo mv "monero-x86_64-linux-gnu-v${version}" /opt/
+
+  echo "Installed Monero GUI"
+fi
