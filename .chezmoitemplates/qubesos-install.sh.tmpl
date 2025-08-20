@@ -295,9 +295,10 @@ fi
 # https://desktop-download.zulip.com/v5.12.0/Zulip-5.12.0-x86_64.AppImage
 if uninstalled zulip; then
   version="5.12.0"
-  curl -LO "https://desktop-download.zulip.com/v${version}/Zulip-${version}-x86_64.AppImage"
-  chmod a+x "Zulip-${version}-x86_64.AppImage "
-  sudo mv /usr/local/bin/zulip
+  pkg="Zulip-${version}-x86_64.AppImage"
+  curl -LO "https://desktop-download.zulip.com/v${version}/${pkg}"
+  chmod a+x "$pkg"
+  sudo mv "$pkg" /usr/local/bin/zulip
 fi
 
 # signal
@@ -319,7 +320,7 @@ if uninstalled electrum-ltc; then
   valid=1
   if valid; then
     chmod +x "./$pkg"
-    sudo mv /usr/local/bin/electrum-ltc
+    sudo mv "${pkg}" /usr/local/bin/electrum-ltc
     rm "$pkg" "$sig"
   fi
 
@@ -359,7 +360,7 @@ if uninstalled terraform-ls; then
   valid=1
   if valid; then
     unzip "$pkg"
-    sudo mv /usr/local/bin/terraform-ls
+    sudo mv "$pkg" /usr/local/bin/terraform-ls
   fi
 
 fi
@@ -459,6 +460,22 @@ if uninstalled obsidian; then
   # NOTE: When initially syncing vaults, may need to rm -rf ~/vaults/<vault-name> so Obsidian can create a new <vault-name> folder in ~/vaults
   curl -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/${version}/$pkg"
   chmod +x "./$pkg"
-  sudo mv /usr/local/bin/obsidian
+  sudo mv "$pkg" /usr/local/bin/obsidian
   echo "Installed Obsidian"
+fi
+
+if uninstalled stylua; then
+  version="2.1.0"
+  pkg="stylua-linux-x86_64.zip"
+  curl -sLO "https://github.com/JohnnyMorganz/StyLua/releases/download/v${version}/${pkg}"
+  unzip "$pkg"
+  sudo mv stylua /usr/local/bin/stylua
+fi
+
+# phpactor
+# https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
+if uninstalled phpactor; then
+  curl -LO "https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar"
+  chmod a+x phpactor.phar
+  sudo mv phpactor.phar /usr/local/bin/phpactor
 fi
