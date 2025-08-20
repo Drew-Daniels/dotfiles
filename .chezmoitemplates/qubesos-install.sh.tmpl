@@ -73,6 +73,12 @@ install_dnf_package "msmtp"
 install_dnf_package "abook"
 install_dnf_package "tree-sitter"
 
+# Install COPR plugins
+sudo dnf install -y dnf-plugins-core
+
+install_dnf_copr_package "jdxcode/mise" "mise"
+install_dnf_copr_package "lihaohong/yazi" "yazi"
+
 # Install into clone of fedora-41-xfce TemplateVM with Network access
 # dbeaver
 # https://dbeaver.io/download/2/
