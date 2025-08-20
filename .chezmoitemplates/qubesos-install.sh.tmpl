@@ -8,6 +8,7 @@
 # dnf automatically updates cache periodically so need to manually do this
 sudo dnf upgrade
 
+# Install through the updates proxy in TemplateVM - fedora-41-xfce
 install_dnf_package "strawberry"
 install_dnf_package "jq"
 install_dnf_package "rustup"
@@ -71,3 +72,5 @@ install_dnf_package "urlscan"
 install_dnf_package "msmtp"
 install_dnf_package "abook"
 install_dnf_package "tree-sitter"
+
+# Install into clone of fedora-41-xfce TemplateVM with Network access
