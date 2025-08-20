@@ -231,3 +231,87 @@ if uninstalled luarocks; then
 else
   echo "Already installed luarocks"
 fi
+
+# cmus
+# https://cmus.github.io/#download
+if uninstalled cmus; then
+  git clone https://github.com/cmus/cmus.git ~/projects/cmus
+  cd ~/projects/cmus || exit
+  ./configure prefix="$HOME"/cmus
+  make install
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                          cmusfm                          │
+#          │              https://github.com/Arkq/cmusfm              │
+#          ╰──────────────────────────────────────────────────────────╯
+if uninstalled cmusfm; then
+  echo "Installing cmusfm"
+  # Clone
+  git clone https://github.com/arkq/cmusfm.git ~/projects/cmusfm
+  cd ~/projects/cmusfm || exit
+  # install dependencies
+  sudo apt install -y libcurl4-openssl-dev libnotify-dev
+  # configure
+  autoreconf --install
+  mkdir build && cd build || exit
+  ../configure --enable-libnotify
+  # build & install
+  make && make install
+  cd ~ || exit
+  echo "Installed cmusfm"
+else
+  echo "Already installed cmusfm"
+fi
+
+# Mullvad
+# https://mullvad.net/en/download/vpn/linux
+if uninstalled mullvad; then
+  # Add the Mullvad repository server to dnf
+  sudo dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
+
+  # Fedora 40 and earlier
+  # Add the Mullvad repository server to dnf
+  sudo dnf config-manager --add-repo https://repository.mullvad.net/rpm/stable/mullvad.repo
+
+  # Install the package
+  sudo dnf install mullvad-vpn
+fi
+
+# TODO: usbimager
+# https://gitlab.com/bztsrc/usbimager
+
+# Zulip
+# https://desktop-download.zulip.com/v5.12.0/Zulip-5.12.0-x86_64.AppImage
+if uninstalled zulip; then
+  version="5.12.0"
+  curl -LO "https://desktop-download.zulip.com/v${version}/Zulip-${version}-x86_64.AppImage"
+  chmod a+x "Zulip-${version}-x86_64.AppImage "
+  sudo mv /usr/local/bin/zulip
+fi
+
+# signal
+if uninstalled signal-desktop; then
+  dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/network:im:signal/Fedora_41/network:im:signal.repo
+  dnf install signal-desktop
+fi
+
+# electrum-ltc
+if uninstalled electrum-ltc; then
+  echo "Installing electrum-ltc"
+
+  version="4.2.2.1"
+  pkg="electrum-ltc-${version}-x86_64.AppImage"
+  sig="${pkg}.asc"
+
+  curl -sL --remote-name-all "$pkg" "$sig"
+
+  valid=1
+  if valid; then
+    chmod +x "./$pkg"
+    sudo mv /usr/local/bin/electrum-ltc
+    rm "$pkg" "$sig"
+  fi
+
+  echo "Installed electrum-ltc"
+fi

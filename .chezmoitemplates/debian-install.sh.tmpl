@@ -851,19 +851,19 @@ install_apt_package "nmap"
 #          │                         thorium                          │
 #          │          https://github.com/Alex313031/thorium           │
 #          ╰──────────────────────────────────────────────────────────╯
-pkg="thorium-browser"
-if uninstalled $pkg; then
-  echo "Installing thorium"
-  if [ ! -f "/etc/apt/sources.list.d/thorium.list" ]; then
-    sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
-      http://dl.thorium.rocks/debian/dists/stable/thorium.list
-  fi
-  sudo apt update
-  sudo apt install -y "$pkg"
-  echo "Installed thorium"
-else
-  echo "Already installed thorium"
-fi
+# pkg="thorium-browser"
+# if uninstalled $pkg; then
+#   echo "Installing thorium"
+#   if [ ! -f "/etc/apt/sources.list.d/thorium.list" ]; then
+#     sudo wget --no-hsts -P /etc/apt/sources.list.d/ \
+#       http://dl.thorium.rocks/debian/dists/stable/thorium.list
+#   fi
+#   sudo apt update
+#   sudo apt install -y "$pkg"
+#   echo "Installed thorium"
+# else
+#   echo "Already installed thorium"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         openvpn                          │
@@ -944,13 +944,13 @@ fi
 #          │                       tidal-dl-ng                        │
 #          │          https://github.com/exislow/tidal-dl-ng          │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled tidal-dl-ng; then
-  echo "Installing tidal-dl-ng"
-  pip install --upgrade tidal-dl-ng[gui]
-  echo "Installed tidal-dl-ng"
-else
-  echo "Already installed tidal-dl-ng"
-fi
+# if uninstalled tidal-dl-ng; then
+#   echo "Installing tidal-dl-ng"
+#   pip install --upgrade tidal-dl-ng[gui]
+#   echo "Installed tidal-dl-ng"
+# else
+#   echo "Already installed tidal-dl-ng"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                           cmus                           │
@@ -964,6 +964,9 @@ install_apt_package "cmus"
 #          ╰──────────────────────────────────────────────────────────╯
 if uninstalled cmusfm; then
   echo "Installing cmusfm"
+  # Clone
+  git clone https://github.com/arkq/cmusfm.git ~/projects/cmusfm
+  cd ~/projects/cmusfm || exit
   # install dependencies
   sudo apt install -y libcurl4-openssl-dev libnotify-dev
   # configure
