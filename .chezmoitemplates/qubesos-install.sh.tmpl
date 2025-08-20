@@ -79,6 +79,13 @@ sudo dnf install -y dnf-plugins-core
 install_dnf_copr_package "jdxcode/mise" "mise"
 install_dnf_copr_package "lihaohong/yazi" "yazi"
 
+# Docker
+# https://docs.docker.com/engine/install/fedora
+install_dnf_package "gnome-terminal"
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+
 # Install into clone of fedora-41-xfce TemplateVM with Network access
 # dbeaver
 # https://dbeaver.io/download/2/
@@ -182,4 +189,45 @@ if uninstalled chezmoi; then
   fi
 else
   echo "chezmoi already installed"
+fi
+
+# Install crates
+install_crate "starship"
+install_crate "jless"
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                        bat-extras                        │
+#          │     https://github.com/eth-p/bat-extras/tree/master      │
+#          ╰──────────────────────────────────────────────────────────╯
+pkg="bat-extras"
+if uninstalled batgrep; then
+  echo "Installing $pkg"
+  cd ~/projects || exit
+  git clone https://github.com/eth-p/$pkg.git ~/projects/bat-extras
+  cd $pkg || exit
+  ./build.sh --install
+  cd ~ || exit
+  echo "Installed $pkg"
+else
+  echo "Installed $pkg"
+fi
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                         luarocks                         │
+#          │                  https://luarocks.org/                   │
+#          ╰──────────────────────────────────────────────────────────╯
+version="3.11.1"
+if uninstalled luarocks; then
+  echo "Installing luarocks"
+  wget https://luarocks.org/releases/luarocks-${version}.tar.gz
+  tar zxpf luarocks-${version}.tar.gz
+  cd "luarocks-${version}" || exit
+  ./configure
+  make
+  sudo make install
+  sudo luarocks install luasocket
+  cd ~ || exit
+  echo "Installed luarocks"
+else
+  echo "Already installed luarocks"
 fi

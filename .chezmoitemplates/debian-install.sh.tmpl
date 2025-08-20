@@ -623,25 +623,25 @@ fi
 #          │                      standard notes                      │
 #          │         https://standardnotes.com/download/linux         │
 #          ╰──────────────────────────────────────────────────────────╯
-if uninstalled standard-notes; then
-  echo "Installing standard notes"
-  latest=$(get_latest_gh_release_tag "standardnotes" "app" | cut -d '@' -f3)
-  # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
-  base_url="https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13"
-  deb="standard-notes-${latest}-linux-amd64.deb"
-  curl -L --remote-name-all "$base_url/$deb" "$base_url/SHA256SUMS"
-  verified_checksum=$(rg "linux-amd64.deb" <SHA256SUMS)
-  download_checksum=$(sha256sum "$deb")
-  if [ "$download_checksum" == "$verified_checksum" ]; then
-    sudo apt install -y "./$deb"
-    rm "$deb" "SHA256SUMS"
-    echo "Installed standard notes"
-  else
-    echo "Could not install Standard Notes - verify checksums"
-  fi
-else
-  echo "Already installed standard notes"
-fi
+# if uninstalled standard-notes; then
+#   echo "Installing standard notes"
+#   latest=$(get_latest_gh_release_tag "standardnotes" "app" | cut -d '@' -f3)
+#   # TODO: Not sure what the 403.195.13 refers to, or if it will change between releases
+#   base_url="https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.195.13"
+#   deb="standard-notes-${latest}-linux-amd64.deb"
+#   curl -L --remote-name-all "$base_url/$deb" "$base_url/SHA256SUMS"
+#   verified_checksum=$(rg "linux-amd64.deb" <SHA256SUMS)
+#   download_checksum=$(sha256sum "$deb")
+#   if [ "$download_checksum" == "$verified_checksum" ]; then
+#     sudo apt install -y "./$deb"
+#     rm "$deb" "SHA256SUMS"
+#     echo "Installed standard notes"
+#   else
+#     echo "Could not install Standard Notes - verify checksums"
+#   fi
+# else
+#   echo "Already installed standard notes"
+# fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                      docker desktop                      │
