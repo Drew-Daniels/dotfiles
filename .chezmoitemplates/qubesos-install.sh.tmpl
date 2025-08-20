@@ -225,9 +225,9 @@ fi
 #          │                        bat-extras                        │
 #          │     https://github.com/eth-p/bat-extras/tree/master      │
 #          ╰──────────────────────────────────────────────────────────╯
-pkg="bat-extras"
 if uninstalled batgrep; then
   echo "Installing $pkg"
+  pkg="bat-extras"
   cd ~/projects || exit
   git clone https://github.com/eth-p/$pkg.git ~/projects/bat-extras
   cd $pkg || exit
@@ -242,9 +242,9 @@ fi
 #          │                         luarocks                         │
 #          │                  https://luarocks.org/                   │
 #          ╰──────────────────────────────────────────────────────────╯
-version="3.11.1"
 if uninstalled luarocks; then
   echo "Installing luarocks"
+  version="3.11.1"
   wget https://luarocks.org/releases/luarocks-${version}.tar.gz
   tar zxpf luarocks-${version}.tar.gz
   cd "luarocks-${version}" || exit
