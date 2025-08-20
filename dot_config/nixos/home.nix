@@ -93,7 +93,8 @@
     satty
     # Matrix
     # element-desktop
-    cinny-desktop
+    # NOTE: many libsoup 2 vulnerabilities - this package needs to be updated to use libsoup 3
+    # cinny-desktop
     # Chat
     # TODO: Reinstall once package hash fixed: https://github.com/NixOS/nixpkgs/issues/426923
     # simplex-chat-desktop
