@@ -9,6 +9,7 @@
 sudo dnf upgrade
 
 # Install through the updates proxy in 'fedora-42-xfce-clone-1' TemplateVM
+install_dnf_package "automake"
 install_dnf_package "wget"
 install_dnf_package "strawberry"
 # Pre-installed?
@@ -308,7 +309,7 @@ fi
 
 if uninstalled protonmail; then
   version="1.9.0"
-  pkg="ProtonMail-desktop-beta.rpm"
+  pkg="protonmail-desktop-beta.rpm"
   curl -sLO "https://proton.me/download/mail/linux/${version}/${pkg}"
   sudo dnf install -y "./$pkg"
 fi
