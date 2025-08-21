@@ -156,7 +156,11 @@ pkg='mise'
 if uninstalled $pkg; then
   echo "Installing $pkg"
   # pre-reqs for building native C ruby extensions
-  sudo apt install -y build-essential libz-dev libffi-dev libyaml-dev libssl-dev
+  # https://github.com/rbenv/ruby-build/wiki#ubuntudebianmint
+  # NOTE: Below is what is recommended
+  sudo apt install -y build-essential autoconf libssl-dev libyaml-dev zlib1g-dev libffi-dev libgmp-dev rustc
+  # NOTE: This is what I had previously installed
+  # sudo apt install -y build-essential libz-dev libffi-dev libyaml-dev libssl-dev
   # pre-reqs for mise
   sudo apt install -y sudo
   # mise installation

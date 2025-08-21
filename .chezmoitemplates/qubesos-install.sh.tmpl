@@ -77,6 +77,12 @@ install_dnf_package "clang-tools-extra"
 install_dnf_package "difftastic"
 install_dnf_package "libreoffice"
 
+# Required for building ruby via mise on Fedora
+# https://github.com/rbenv/ruby-build/wiki#fedora
+dnf install -y autoconf gcc rust patch make bzip2 openssl-devel libyaml-devel libffi-devel readline-devel gdbm-devel ncurses-devel perl-FindBin
+
+dnf install -y zlib-ng-compat-devel
+
 # Install COPR plugins
 # Already pre-installed?
 sudo dnf install -y dnf-plugins-core
@@ -84,6 +90,7 @@ sudo dnf install -y dnf-plugins-core
 install_dnf_copr_package "jdxcode/mise" "mise"
 install_dnf_copr_package "lihaohong/yazi" "yazi"
 
+# NOTE: Grant 'sys-firewall' network access at this point
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          cosign                          │
 #          │            https://github.com/sigstore/cosign            │
@@ -488,3 +495,5 @@ if uninstalled monero; then
 
   echo "Installed Monero GUI"
 fi
+
+# NOTE: Disable 'sys-firewall' network access here
