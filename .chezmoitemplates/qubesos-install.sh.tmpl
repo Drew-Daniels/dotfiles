@@ -9,6 +9,8 @@
 sudo dnf upgrade
 
 # Install through the updates proxy in 'fedora-42-xfce-clone-1' TemplateVM
+# NOTE: 'fuse-libs' required to run .AppImage(s)
+install_dnf_package "fuse-libs"
 install_dnf_package "automake"
 install_dnf_package "wget"
 install_dnf_package "strawberry"
