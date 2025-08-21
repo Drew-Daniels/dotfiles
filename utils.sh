@@ -103,16 +103,18 @@ get_latest_gh_release_data() {
     exit 1
   fi
 
-  if [ -z "$GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN" ]; then
-    echo "WARNING: GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN is not available - set this env var to increase rate limit"
-  fi
-
   gh_user="$1"
   gh_repo="$2"
 
-  # TODO: Add an option to just return the tag number, without the 'v' prefix: sed 's/"//g'
+  if [ -z "${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}" ]; then
+    echo "WARNING: GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN is not available - set this env var to increase rate limit"
 
-  curl -sL "https://api.github.com/repos/${gh_user}/${gh_repo}/releases/latest" --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}"
+    curl -sL "https://api.github.com/repos/${gh_user}/${gh_repo}/releases/latest"
+  else
+    curl -sL "https://api.github.com/repos/${gh_user}/${gh_repo}/releases/latest" --header "Authorization: Bearer ${GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN}"
+  fi
+
+  # TODO: Add an option to just return the tag number, without the 'v' prefix: sed 's/"//g'
 }
 
 #######################################
