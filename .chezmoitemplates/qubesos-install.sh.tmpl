@@ -10,7 +10,8 @@ sudo dnf upgrade
 
 # Install through the updates proxy in 'fedora-42-xfce-clone-1' TemplateVM
 install_dnf_package "strawberry"
-install_dnf_package "jq"
+# Pre-installed?
+# install_dnf_package "jq"
 install_dnf_package "rustup"
 install_dnf_package "git-credential-oauth"
 install_dnf_package "ripgrep"
@@ -61,7 +62,6 @@ install_dnf_package "mpv"
 install_dnf_package "usbutils"
 install_dnf_package "lsd"
 install_dnf_package "pandoc"
-install_dnf_package "usbutils"
 install_dnf_package "zathura-pdf-mupdf"
 install_dnf_package "mumble"
 install_dnf_package "qalculate-qt"
@@ -75,42 +75,14 @@ install_dnf_package "tree-sitter"
 # Includes clangd and clang-format
 install_dnf_package "clang-tools-extra"
 install_dnf_package "difftastic"
+install_dnf_package "libreoffice"
 
 # Install COPR plugins
+# Already pre-installed?
 sudo dnf install -y dnf-plugins-core
 
 install_dnf_copr_package "jdxcode/mise" "mise"
 install_dnf_copr_package "lihaohong/yazi" "yazi"
-
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                            jq                            │
-#          │               https://jqlang.org/download/               │
-#          ╰──────────────────────────────────────────────────────────╯
-#
-if uninstalled jq; then
-  bin="jq-linux-amd64"
-  checksums="sha256sum.txt"
-
-  # TODO: Figure out a way to get and parse latest version without jq installed
-  base_url="https://github.com/jqlang/jq/releases/download/jq-1.7.1/"
-
-  curl -sL --remote-name-all "$base_url/${bin}" "${base_url}/${checksums}"
-
-  verified_sha=$(grep "$bin" <"$checksums" | awk '{print $1}')
-  download_sha=$(sha256sum "$bin" | awk '{print $1}')
-
-  if [ "$download_sha" != "$verified_sha" ]; then
-    echo "Could not install jq - verify checksums"
-    exit 1
-  fi
-
-  chmod +x "$bin"
-  sudo mv "$bin" /usr/local/bin/jq
-  rm "$checksums"
-  echo "Installed jq"
-else
-  echo "Already installed jq"
-fi
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                          cosign                          │
