@@ -8,7 +8,7 @@
 # dnf automatically updates cache periodically so need to manually do this
 sudo dnf upgrade
 
-# Install through the updates proxy in TemplateVM - fedora-41-xfce
+# Install through the updates proxy in 'fedora-42-xfce-clone-1' TemplateVM
 install_dnf_package "strawberry"
 install_dnf_package "jq"
 install_dnf_package "rustup"
@@ -210,7 +210,6 @@ sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/do
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable --now docker
 
-# Install into clone of fedora-41-xfce TemplateVM with Network access
 # dbeaver
 # https://dbeaver.io/download/2/
 if uninstalled dbeaver; then
@@ -319,7 +318,7 @@ fi
 
 # signal
 if uninstalled signal-desktop; then
-  dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/network:im:signal/Fedora_41/network:im:signal.repo
+  dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/network:im:signal/Fedora_42/network:im:signal.repo
   dnf install signal-desktop
 fi
 
