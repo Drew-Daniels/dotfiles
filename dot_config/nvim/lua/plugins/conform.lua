@@ -112,7 +112,7 @@ return {
 				scss = { "prettierd" },
 				zig = { "zigfmt" },
 				zsh = { "shfmt", "shellcheck" },
-				markdown = { "prettierd" },
+				markdown = { "prettierd", "injected" },
 				nix = { "alejandra" },
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
