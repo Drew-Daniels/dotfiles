@@ -6,7 +6,7 @@
   "chezmoi.vim": { "branch": "main", "commit": "abf37336437867cbd99ce2f8849b717415391cc3" },
   "clipboard-image.nvim": { "branch": "main", "commit": "5ccecdf27a02b1bf0a2602cf143bcf69f1ca4465" },
   "comment-box.nvim": { "branch": "main", "commit": "06bb771690bc9df0763d14769b779062d8f12bc5" },
-  "conform.nvim": { "branch": "master", "commit": "9ddab4e14c44196d393a72b958b4da6dab99ecef" },
+  "conform.nvim": { "branch": "master", "commit": "3543d000dafbc41cc7761d860cfdb24e82154f75" },
   "d2-vim": { "branch": "master", "commit": "cb3eb7fcb1a2d45c4304bf2e91077d787b724a39" },
   "dark-notify": { "branch": "master", "commit": "0d8501ca027b4355ed958b937ed51b37632c60cf" },
   "diagram.nvim": { "branch": "master", "commit": "1a30e794beaa4dd19f0dcea8721cb74b0c8681d0" },
