@@ -193,10 +193,6 @@ return {
 			{ "<leader>Sn", "<cmd>ScratchWithName<cr>", desc = "Scratch Named" },
 			{ "<leader>So", "<cmd>ScratchOpen<cr>", desc = "Scratch Open" },
 			{ "<leader>Ss", "<cmd>ScratchOpenFzf<cr>", desc = "Scratch Search" },
-			-- Word
-			{ "<leader>w", group = "Word" },
-			{ "<leader>wd", "<cmd>FzfLua thesaurus lookup<cr>", desc = "Definition" },
-			{ "<leader>ws", "<cmd>FzfLua thesaurus query<cr>", desc = "Search" },
 		})
 	end,
 }
