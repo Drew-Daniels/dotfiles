@@ -714,6 +714,9 @@ if uninstalled restic; then
     echo "Could not install restic - verify checksums"
     exit 1
   fi
+
+  # TODO: Add a step to actually install restic here (?)
+
   sudo restic generate --bash-completion /usr/share/bash-completion/completions/restic
   echo "Installed restic"
 else
