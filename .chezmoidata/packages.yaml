@@ -166,6 +166,7 @@ packages:
       # TODO: Formula
       # - 'standardrb'
       - 'tailwindcss-language-server'
+      - 'taplo'
       - 'terraform-ls'
       - 'tflint'
       - 'typos-lsp'
