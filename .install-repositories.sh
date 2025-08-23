@@ -11,3 +11,7 @@ fi
 if [ ! -d ~/projects/jg ]; then
   git clone https://codeberg.org/drewdaniels/jg.git ~/projects/jg
 fi
+
+if [ ! -d ~/projects/dotfiles.wiki ]; then
+  git clone https://codeberg.org/drewdaniels/dotfiles.wiki.git ~/projects/dotfiles.wiki
+fi
