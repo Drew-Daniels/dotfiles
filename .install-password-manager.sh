@@ -64,7 +64,8 @@ if [ "$os" = "Linux" ]; then
     # no-op
     :
   else
-    echo "Unrecognized Linux distro"
+    # no-op
+    :
   fi
 elif [ "$os" = "Darwin" ]; then
   if [ ! -d "/Applications/1Password.app" ]; then
