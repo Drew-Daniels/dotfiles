@@ -13,7 +13,7 @@ vim-language-server
 @microsoft/compose-language-service
 live-server
 eslint_d
-prettierd
+@fsouza/prettierd
 vscode-langservers-extracted
 vue-language-server
 tailwindcss-language-server
