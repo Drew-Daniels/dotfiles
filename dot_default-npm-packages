@@ -12,3 +12,12 @@ vim-language-server
 @olrtg/emmet-language-server
 @microsoft/compose-language-service
 live-server
+eslint_d
+prettierd
+vscode-langservers-extracted
+vue-language-server
+tailwindcss-language-server
+bash-language-server
+dockerfile-language-server-nodejs
+yaml-language-server
+emmet-language-server
