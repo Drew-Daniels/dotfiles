@@ -4,7 +4,7 @@ openpyxl
 PyYAML
 python-language-server
 stay-awake
-{{ if eq .chezmoi.os "linux"  -}}
+{{ if ne .chezmoi.os "freebsd"  -}}
 beets
 basedpyright
 ruff
