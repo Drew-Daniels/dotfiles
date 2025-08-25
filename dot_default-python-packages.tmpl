@@ -3,7 +3,9 @@ xlrd
 openpyxl
 PyYAML
 python-language-server
+stay-awake
+{{ if eq .chezmoi.os "linux"  -}}
 beets
 basedpyright
 ruff
-stay-awake
+{{- end -}}
