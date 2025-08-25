@@ -6,6 +6,13 @@ if status is-interactive
             end
             # TODO: make specific to macos
             set computerName (hostname)
+            # TODO: Refactor
+        case FreeBSD
+            if command -q mise
+                mise activate fish | source
+            end
+            # TODO: make specific to macos
+            set computerName (hostname)
         case '*'
             # helpers
             set computerName (scutil --get ComputerName)
