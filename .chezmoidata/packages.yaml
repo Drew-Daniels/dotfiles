@@ -131,6 +131,7 @@ packages:
       # TODO: Create formula for this?
       # - 'reformat-gherkin'
       - 'yamlfmt'
+      - 'xmlstarlet'
       # LSPs
       - 'bash-language-server'
       # TODO: Figure the right formula for this
@@ -235,6 +236,7 @@ packages:
       - 'shivammathur/php'
       head_brews: []
       brews:
+      - 'jetty'
       - 'shivammathur/php/php@8.3'
       - 'composer'
       - 'httpd'
