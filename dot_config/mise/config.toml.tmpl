@@ -6,7 +6,7 @@ python = "3.12.10"
 golang = "1.24.4"
 usage = "0.3.0"
 ruby = "3.3.4"
-{{- if or (eq .chezmoi.os "linux" ) (eq .chezmoi.os "darwin") -}}
+{{ if or (eq .chezmoi.os "linux" ) (eq .chezmoi.os "darwin") -}}
 java = "21"
 deno = "2.4.5"
 node = "22.17.1"
