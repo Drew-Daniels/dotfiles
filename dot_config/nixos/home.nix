@@ -337,6 +337,8 @@
     # Utils
     brightnessctl
     pciutils
+    # Music
+    mixxx
   ];
 
   # DOTFILES
