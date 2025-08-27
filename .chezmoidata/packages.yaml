@@ -225,6 +225,7 @@ packages:
       - 'wireshark'
       - 'vitalsource-bookshelf'
       - 'qutebrowser'
+      - 'mixxx'
       mas_apps:
         "Kiwix": 997079563
         "Paprika Recipe Manager 3": 1303222628
