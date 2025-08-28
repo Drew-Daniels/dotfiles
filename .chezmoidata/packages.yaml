@@ -17,6 +17,7 @@ packages:
       - 'asciinema'
       - 'ariga/tap/atlas'
       - 'astyle'
+      - 'dos2unix'
       - 'graphviz'
       - 'git'
       - 'gitleaks'
