@@ -5,7 +5,7 @@ if status is-interactive
                 mise activate fish | source
             end
             # TODO: make specific to macos
-            set computerName (hostname)
+            set computerName (hostnamectl hostname)
             # TODO: Refactor
         case FreeBSD
             if command -q mise
