@@ -2,7 +2,7 @@
 
 os=$(uname)
 
-if [ "$os" = "Linux" ]; then
+if [ "$os" = "Linux" ] || [ "$os" = "FreeBSD" ]; then
   if grep -qi debian /etc/os-release; then
     #          ╭──────────────────────────────────────────────────────────╮
     #          │                           curl                           │
@@ -76,5 +76,5 @@ elif [ "$os" = "Darwin" ]; then
     brew install --cask 1password-cli
   fi
 else
-  echo "Unrecognized OS: $os"
+  echo "Unrecognized OS - check .install-password-manager script: $os"
 fi
