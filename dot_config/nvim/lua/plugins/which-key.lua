@@ -90,6 +90,7 @@ return {
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Branches" },
 			{ "<leader>gB", "<cmd>FzfLua git_blame<cr>", desc = "Blame" },
+			-- TODO: Think through how to not have these mappings conflict with defaults from comment.nvim: https://github.com/numToStr/Comment.nvim?tab=readme-ov-file#extra-mappings
 			{ "<leader>gc", "<cmd>FzfLua git_bcommits<cr>", desc = "Commits (Buffer)" },
 			{ "<leader>gC", "<cmd>FzfLua git_commits<cr>", desc = "Commits (Project)" },
 			{ "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Status" },
