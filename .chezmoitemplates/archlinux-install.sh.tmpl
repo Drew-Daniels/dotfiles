@@ -49,7 +49,9 @@ install_arch_package "bat"
 install_arch_package "batman" "bat-extras"
 install_arch_package "ctags"
 install_arch_package "aws" "aws-cli"
+install_arch_package "lua51"
 install_arch_package "neovim"
+install_arch_package "imagemagick"
 install_arch_package "tmux"
 install_arch_package "alacritty"
 install_arch_package "zoxide"
@@ -64,6 +66,7 @@ install_arch_package "nmap"
 install_arch_package "openvpn"
 install_arch_package "wg" "wireguard-tools"
 # install_arch_package "plocate"
+install_arch_package "plocate"
 install_arch_package "foliate"
 install_arch_package "neomutt"
 install_arch_package "electrum"
@@ -93,6 +96,7 @@ install_arch_package "urlscan"
 install_arch_package "msmtp"
 install_arch_package "tree-sitter"
 install_arch_package "difftastic"
+install_arch_package "mergiraf"
 install_arch_package "libreoffice" "libreoffice-fresh"
 install_arch_package "jless"
 install_arch_package "yazi"
@@ -108,6 +112,9 @@ install_arch_package "obsidian"
 install_arch_package "stylua"
 install_arch_package "starship"
 install_arch_package "ueberzugpp"
+install_arch_package "strawberry"
+install_arch_package "beets"
+install_arch_package "rustup"
 
 # AUR Packages
 install_arch_package "swayrbar"
@@ -119,13 +126,17 @@ install_arch_package "abook"
 install_arch_package "terraform-ls"
 install_arch_package "clojure-lsp"
 
+# MANUAL Installs
+# install_arch_package "git-credential-oauth"
+
 # TODO: 1Password desktop and CLI installation steps
 # TODO: Docker Desktop installation
 
 # Install required dependencies for building ruby
 # https://github.com/rbenv/ruby-build/wiki#arch-linux
 install_arch_package "base-devel"
-install_arch_package "rust"
+# NOTE: Not installing 'rust' because 'rustup' will handle this
+# install_arch_package "rust"
 install_arch_package "libffi"
 install_arch_package "libyaml"
 install_arch_package "openssl"
