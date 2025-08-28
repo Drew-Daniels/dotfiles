@@ -1,0 +1,19 @@
+#!/bin/bash
+
+. ~/.env
+
+. ~/.local/share/chezmoi/utils.sh
+
+install_arch_package "man-db"
+
+# Create mandb
+sudo mandb
+
+install_arch_package "wget"
+install_arch_package "git"
+install_arch_package "mise"
+install_arch_package "chezmoi"
+install_arch_package "automake"
+install_arch_package "jq"
+install_arch_package "ripgrep"
+install_arch_package "shfmt"
