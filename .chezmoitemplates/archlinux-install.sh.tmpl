@@ -10,12 +10,19 @@ install_arch_package "man-db"
 # TODO: Make idempotent
 sudo mandb
 
+# Install font
+install_arch_package "fontconfig" # for fc-cache function
+install_arch_package "ttf-input-nerd"
+install_arch_package "ttf-jetbrains-mono-nerd"
+
 # Install dependencies for desktop environment
 install_arch_package "sway"
 install_arch_package "swaylock"
 install_arch_package "swayidle"
 install_arch_package "swaybg"
-install_arch_package "swayr"
+# install_arch_package "swayr"
+
+# TODO: Install from AUR since there is no official package for this
 install_arch_package "swayrbar"
 
 # TODO: Add my user to the 'seat' group
@@ -38,17 +45,17 @@ install_arch_package "shfmt"
 install_arch_package "delta" "git-delta"
 install_arch_package "fish"
 install_arch_package "fzf"
-install_arch_package "fd" "fd-find"
+install_arch_package "fd"
 install_arch_package "bat"
 install_arch_package "batman" "bat-extras"
 install_arch_package "ctags"
-install_arch_package "aws" "awscli"
+install_arch_package "aws" "aws-cli"
 install_arch_package "neovim"
 install_arch_package "tmux"
 install_arch_package "alacritty"
 install_arch_package "zoxide"
 install_arch_package "yq"
-install_arch_package "dust" "du-dust"
+install_arch_package "dust"
 install_arch_package "kiwix-desktop"
 install_arch_package "rofi"
 install_arch_package "speedtest" "speedtest-cli"
@@ -61,16 +68,20 @@ install_arch_package "wg" "wireguard-tools"
 install_arch_package "foliate"
 install_arch_package "neomutt"
 install_arch_package "electrum"
+
+# TODO: Download and build from AUR
 install_arch_package "electrum-ltc"
+
 # install_arch_package "nvme-cli"
-install_arch_package "obs" "obs-studio"
-install_arch_package "bemenu"
+install_arch_package "obs" "obs-studio" # choose 'jack2' when prompted
+install_arch_package "bemenu"           # choose 'bemenu-wayland' when prompted
 install_arch_package "direnv"
 install_arch_package "gitleaks"
 install_arch_package "weechat"
 install_arch_package "hexyl"
 install_arch_package "qutebrowser"
-install_arch_package "gh"
+install_arch_package "gh" "github-cli"
+install_arch_package "glab"
 install_arch_package "ncmpcpp"
 install_arch_package "libmpd"
 install_arch_package "qt6ct"
@@ -78,19 +89,22 @@ install_arch_package "mpv"
 install_arch_package "lsusb" "usbutils"
 install_arch_package "lsd"
 install_arch_package "pandoc"
-install_arch_package "zathura" "zathura-pdf-mupdf"
+install_arch_package "zathura" "zathura-pdf-mupdf" # choose 'tesseract-data-eng' when prompted
 install_arch_package "mumble"
 install_arch_package "qalc" "qalculate-qt"
 install_arch_package "isync"
 install_arch_package "urlscan"
 install_arch_package "msmtp"
+# TODO: Figure out if this can be installed through AUR - not an official package
 install_arch_package "abook"
 install_arch_package "tree-sitter"
 install_arch_package "difftastic"
-install_arch_package "libreoffice"
+install_arch_package "libreoffice" "libreoffice-fresh"
 install_arch_package "jless"
 install_arch_package "yazi"
+# TODO: Install from AUR
 install_arch_package "jdtls"
+
 install_arch_package "jless"
 install_arch_package "cmus"
 install_arch_package "cmusfm"
