@@ -4,6 +4,6 @@
 {{ if eq .osid "linux-debian" -}}
 {{- template "debian-install.sh.tmpl" -}}
 {{ end -}}
-{{ if eq .osid "linux-archlinux" -}}
+{{ if eq .osid "linux-arch" -}}
 {{- template "archlinux-install.sh.tmpl" -}}
 {{ end -}}
