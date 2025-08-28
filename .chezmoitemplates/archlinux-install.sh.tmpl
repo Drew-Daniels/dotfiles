@@ -7,17 +7,48 @@
 install_arch_package "man-db"
 
 # Create mandb
-# TODO: Make idempotent
-sudo mandb
+# TODO: Make idempotent - de-activating for now
+# sudo mandb
 
 # NOTE: Required for building AUR packages
 install_arch_package "base-devel"
 
-# TODO: Add git-credential-oauth installation steps here (AUR)
+mkdir -p ~/builds
+
+# TODO: Determine how to get latest version available programatically
 # git-credential-oauth
-# TODO: Add swayr installation steps here (AUR)
-# TODO: Add swayrbar installation steps here (AUR)
-# TODO: Install sway bg image to ~/.config/sway/background-image
+pkg="git-credential-oauth"
+version="0.15.0-1"
+if [ ! -d ~/builds/git-credential-oauth ]; then
+  cd builds || exit
+  git clone https://aur.archlinux.org/git-credential-oauth.git
+  cd git-credential-oauth || exit
+  makepkg --clean
+  sudo pacman -U "git-credential-oauth-${version}-any.pkg.tar.zst"
+  cd ~ || exit
+fi
+
+pkg="swayr"
+version="0.28.1-1"
+if [ ! -d "${HOME}/builds/${pkg}" ]; then
+  cd builds || exit
+  git clone "https://aur.archlinux.org/${pkg}.git"
+  cd ${pkg} || exit
+  makepkg --clean
+  sudo pacman -U "${pkg}-${version}-x86_64.pkg.tar.zst"
+  cd ~ || exit
+fi
+
+pkg="swayrbar"
+version="0.4.2-1"
+if [ ! -d "${HOME}/builds/${pkg}" ]; then
+  cd builds || exit
+  git clone "https://aur.archlinux.org/${swayrbar}.git"
+  cd ${pkg} || exit
+  makepkg --clean
+  sudo pacman -U "${pkg}-${version}-x86_64.pkg.tar.zst"
+  cd ~ || exit
+fi
 
 # Install fonts
 install_arch_package "fontconfig" # for fc-cache function
