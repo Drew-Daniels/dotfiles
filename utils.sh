@@ -34,6 +34,19 @@ install_apt_package() {
   fi
 }
 
+install_arch_package() {
+  command_name=${1}     # The command to check for installation
+  package_name=${2:-$1} # The package name to install, defaults to the command name if only one argument is provided
+
+  if uninstalled "$command_name"; then
+    echo "Installing $package_name"
+    sudo pacman -S "$package_name"
+    echo "Installed $package_name"
+  else
+    echo "Already installed $package_name"
+  fi
+}
+
 install_gem() {
   package_name=$1
 
