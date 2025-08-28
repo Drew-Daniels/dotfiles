@@ -163,7 +163,7 @@
     pandoc
     unzip
     # diagrams
-    drawio
+    # drawio
     # btc
     electrum
     electrum-ltc
