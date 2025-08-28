@@ -10,6 +10,12 @@ install_arch_package "man-db"
 # TODO: Make idempotent
 sudo mandb
 
+# NOTE: Required for building AUR packages
+install_arch_package "base-devel"
+
+# TODO: Add git-credential-oauth installation steps here (AUR)
+# git-credential-oauth
+
 # Install fonts
 install_arch_package "fontconfig" # for fc-cache function
 install_arch_package "ttf-input-nerd"
@@ -30,7 +36,7 @@ install_arch_package "libnotify"
 # TODO: Install from AUR since there is no official package for this
 
 # TODO: Add my user to the 'seat' group
-sudo usermod -a -G seat $(whoami)
+sudo usermod -aG seat $(whoami)
 
 # Enable the seatd service
 sudo systemctl start seatd.service
@@ -164,8 +170,6 @@ install_arch_package "rustup"
 rustup default stable
 
 # AUR Packages
-# NOTE: Required for building AUR packages
-install_arch_package "base-devel"
 
 # install_arch_package "1password"
 # install_arch_package "1password-cli"
