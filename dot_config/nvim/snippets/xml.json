@@ -1,0 +1,12 @@
+{
+  "TODO": {
+    "body": "<!-- TODO: ${0} -->",
+    "prefix": "td",
+    "description": "Create a TODO"
+  },
+  "mvn:dependency": {
+    "body": "<dependency><groupId>${1}<groupId><artifactId>${2}<artifactId><version>${0}<version><dependency>",
+    "prefix": "md",
+    "description": "Insert a maven dependency"
+  }
+}
