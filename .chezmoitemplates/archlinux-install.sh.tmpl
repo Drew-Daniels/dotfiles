@@ -23,7 +23,6 @@ install_arch_package "swaybg"
 # install_arch_package "swayr"
 
 # TODO: Install from AUR since there is no official package for this
-install_arch_package "swayrbar"
 
 # TODO: Add my user to the 'seat' group
 sudo usermod -a -G seat $(whoami)
@@ -69,9 +68,6 @@ install_arch_package "foliate"
 install_arch_package "neomutt"
 install_arch_package "electrum"
 
-# TODO: Download and build from AUR
-install_arch_package "electrum-ltc"
-
 # install_arch_package "nvme-cli"
 install_arch_package "obs" "obs-studio" # choose 'jack2' when prompted
 install_arch_package "bemenu"           # choose 'bemenu-wayland' when prompted
@@ -95,32 +91,33 @@ install_arch_package "qalc" "qalculate-qt"
 install_arch_package "isync"
 install_arch_package "urlscan"
 install_arch_package "msmtp"
-# TODO: Figure out if this can be installed through AUR - not an official package
-install_arch_package "abook"
 install_arch_package "tree-sitter"
 install_arch_package "difftastic"
 install_arch_package "libreoffice" "libreoffice-fresh"
 install_arch_package "jless"
 install_arch_package "yazi"
-# TODO: Install from AUR
-install_arch_package "jdtls"
-
-install_arch_package "jless"
 install_arch_package "cmus"
-install_arch_package "cmusfm"
-install_arch_package "mullvad"
 install_arch_package "signal-desktop"
-install_arch_package "protonmail"
+# TODO: Will need to manually install this
+# install_arch_package "protonmail"
 install_arch_package "protonmail-bridge"
-install_arch_package "terraform-ls"
 install_arch_package "marksman"
 install_arch_package "lua-language-server"
 install_arch_package "tflint"
-install_arch_package "clojure-lsp"
 install_arch_package "obsidian"
 install_arch_package "stylua"
 install_arch_package "starship"
 install_arch_package "ueberzugpp"
+
+# AUR Packages
+install_arch_package "swayrbar"
+install_arch_package "cmusfm"
+install_arch_package "electrum-ltc"
+install_arch_package "jdtls"
+install_arch_package "mullvad"
+install_arch_package "abook"
+install_arch_package "terraform-ls"
+install_arch_package "clojure-lsp"
 
 # TODO: 1Password desktop and CLI installation steps
 # TODO: Docker Desktop installation
