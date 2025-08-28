@@ -58,7 +58,9 @@ install_arch_package "zoxide"
 install_arch_package "yq"
 install_arch_package "dust"
 install_arch_package "kiwix-desktop"
+# TODO: Are both 'rofi' and 'wofi' req?
 install_arch_package "rofi"
+install_arch_package "wofi"
 install_arch_package "speedtest" "speedtest-cli"
 install_arch_package "feh"
 install_arch_package "xml" "xmlstarlet"
@@ -105,16 +107,41 @@ install_arch_package "signal-desktop"
 # TODO: Will need to manually install this
 # install_arch_package "protonmail"
 install_arch_package "protonmail-bridge"
-install_arch_package "marksman"
-install_arch_package "lua-language-server"
-install_arch_package "tflint"
 install_arch_package "obsidian"
 install_arch_package "stylua"
 install_arch_package "starship"
 install_arch_package "ueberzugpp"
 install_arch_package "strawberry"
+install_arch_package "starship"
+install_arch_package "firefox"
+install_arch_package "lynx"
 install_arch_package "beets"
+install_arch_package "cheese"
+# Screenshots: Ex.) grim -g "$(slurp)" - | satty -f - -o ~/Pictures/Screenshots/screenshot.png
+install_arch_package "grim"
+install_arch_package "slurp"
+install_arch_package "satty"
+install_arch_package "d2"
+install_arch_package "pavucontrol"
+install_arch_package "qrencode"
+install_arch_package "restic"
+
+# LSP Servers
+install_arch_package "gopls"
+install_arch_package "rust-analyzer"
+install_arch_package "typos-lsp"
+install_arch_package "lua-language-server"
+install_arch_package "marksman"
+
+# Formatters
+install_arch_package "yamlfmt"
+install_arch_package "stylua"
+install_arch_package "shellcheck"
+install_arch_package "tflint"
+
+# Rust
 install_arch_package "rustup"
+rustup default stable
 
 # AUR Packages
 install_arch_package "swayrbar"
@@ -125,9 +152,17 @@ install_arch_package "mullvad"
 install_arch_package "abook"
 install_arch_package "terraform-ls"
 install_arch_package "clojure-lsp"
+install_arch_package "librefox"
+install_arch_package "resticprofile"
+install_arch_package "terraform-ls"
+install_arch_package "phpactor"
+install_arch_package "cljfmt"
+install_arch_package "golines"
+install_arch_package "sway-audio-idle-inhibit"
 
 # MANUAL Installs
 # install_arch_package "git-credential-oauth"
+# install_arch_package "apksigner"
 
 # TODO: 1Password desktop and CLI installation steps
 # TODO: Docker Desktop installation
