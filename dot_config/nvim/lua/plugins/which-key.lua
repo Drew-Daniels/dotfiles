@@ -37,8 +37,8 @@ return {
 			-- { "<leader>Cc", "<cmd>Codeium Chat<cr>", desc = "Codeium Chat" },
 			-- Diffview
 			{ "<leader>d", group = "Diffview" },
-			{ "<leader>da", "<cmd>DiffviewFileHistory<cr>", desc = "All Files" },
-			{ "<leader>dc", "<cmd>DiffviewFileHistory %<cr>", desc = "Current File" },
+			{ "<leader>dH", "<cmd>DiffviewFileHistory<cr>", desc = "History - All Files" },
+			{ "<leader>dh", "<cmd>DiffviewFileHistory %<cr>", desc = "History - Current File" },
 			{ "<leader>df", "<cmd>DiffviewFocusFiles<cr>", desc = "Focus Files" },
 			{ "<leader>dr", "<cmd>DiffviewRefresh<cr>", desc = "Refresh" },
 			{ "<leader>dt", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle Files" },
