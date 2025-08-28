@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$(uname)" = "Linux" ]; then
+if [ "$(uname)" = "Linux" ] || [ "$(uname)" = "FreeBSD" ]; then
   exit
 fi
 
@@ -22,7 +22,6 @@ Darwin)
   eval "$(/opt/homebrew/bin/brew shellenv)"
   ;;
 *)
-  echo "unsupported OS"
   exit 1
   ;;
 esac
