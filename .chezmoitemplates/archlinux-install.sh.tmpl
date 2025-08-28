@@ -10,6 +10,23 @@ install_arch_package "man-db"
 # TODO: Make idempotent
 sudo mandb
 
+# Install dependencies for desktop environment
+install_arch_package "sway"
+install_arch_package "swaylock"
+install_arch_package "swayidle"
+install_arch_package "swaybg"
+install_arch_package "swayr"
+install_arch_package "swayrbar"
+
+# TODO: Add my user to the 'seat' group
+sudo usermod -a -G seat $(whoami)
+
+# Enable the seatd service
+sudo systemctl start seatd.service
+
+# Log out
+# Log back in
+
 install_arch_package "wget"
 install_arch_package "git"
 install_arch_package "mise"
