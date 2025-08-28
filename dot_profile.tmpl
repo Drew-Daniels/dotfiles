@@ -1,5 +1,7 @@
-{{ if eq .osid "linux-archlinux" }}
+{{ if eq .osid "linux-arch" }}
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec sway
 fi
+
+export ELECTRON_OZONE_PLATFORM_HINT=auto
 {{ end }}

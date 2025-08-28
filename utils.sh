@@ -40,7 +40,7 @@ install_arch_package() {
 
   if uninstalled "$command_name"; then
     echo "Installing $package_name"
-    sudo pacman -S "$package_name"
+    sudo pacman -S --needed "$package_name"
     echo "Installed $package_name"
   else
     echo "Already installed $package_name"
