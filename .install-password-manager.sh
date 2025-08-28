@@ -61,7 +61,23 @@ if [ "$os" = "Linux" ] || [ "$os" = "FreeBSD" ]; then
     # no-op
     :
   elif grep -qi arch /etc/os-release; then
-    # no-op
+    # TODO: Implement
+    # Import public key
+    # curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
+    # # Create builds directory
+    # mkdir ~/builds
+    #
+    # cd ~/builds || exit
+    #
+    # git clone https://aur.archlinux.org/1password.git
+    #
+    # cd 1password || exit
+    #
+    # # Build the package
+    # makepkg
+    #
+    # # Install the package
+    # sudo pacman -U
     :
   else
     # no-op
