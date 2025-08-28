@@ -52,7 +52,7 @@ install_gem() {
 
   if uninstalled "$package_name"; then
     echo "Installing $package_name"
-    gem install tmuxinator
+    gem install "$package_name"
     echo "Installed $package_name"
   else
     echo "Already installed $package_name"
