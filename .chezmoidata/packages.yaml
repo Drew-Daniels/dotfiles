@@ -204,10 +204,8 @@ packages:
       taps: []
       head_brews: []
       brews:
-      - 'neomutt'
       - 'streamrip'
       - 'yt-dlp'
-      - 'weechat'
       no_quarantine_casks:
       - 'librewolf'
       casks:
