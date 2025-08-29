@@ -84,9 +84,7 @@
     # ast-grep
     # comby
     # Launchers
-    # TODO: Remove bemenu eventually
     bemenu
-    wmenu
     # Camera
     cheese
     # Screenshots: Ex.) grim -g "$(slurp)" - | satty -f - -o ~/Pictures/Screenshots/screenshot.png
