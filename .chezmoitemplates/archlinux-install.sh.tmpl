@@ -13,42 +13,33 @@ install_arch_package "man-db"
 # NOTE: Required for building AUR packages
 install_arch_package "base-devel"
 
+# AUR helper
+# https://github.com/Jguer/yay
+install_arch_package "yay"
+yay -Y --gendb
+yay -Syu --devel
+# NOTE: If I want to make development package updates permanently enabled (i.e., yay and yay -Syu will always check dev packages for updates)
+# yay -Y --devel --save
+
 mkdir -p ~/builds
 
-# TODO: Determine how to get latest version available programatically
-# git-credential-oauth
-pkg="git-credential-oauth"
-version="0.15.0-1"
-if [ ! -d ~/builds/git-credential-oauth ]; then
-  cd builds || exit
-  git clone https://aur.archlinux.org/git-credential-oauth.git
-  cd git-credential-oauth || exit
-  makepkg --clean
-  sudo pacman -U "git-credential-oauth-${version}-any.pkg.tar.zst"
-  cd ~ || exit
-fi
-
-pkg="swayr"
-version="0.28.1-1"
-if [ ! -d "${HOME}/builds/${pkg}" ]; then
-  cd builds || exit
-  git clone "https://aur.archlinux.org/${pkg}.git"
-  cd ${pkg} || exit
-  makepkg --clean
-  sudo pacman -U "${pkg}-${version}-x86_64.pkg.tar.zst"
-  cd ~ || exit
-fi
-
-pkg="swayrbar"
-version="0.4.2-1"
-if [ ! -d "${HOME}/builds/${pkg}" ]; then
-  cd builds || exit
-  git clone "https://aur.archlinux.org/${swayrbar}.git"
-  cd ${pkg} || exit
-  makepkg --clean
-  sudo pacman -U "${pkg}-${version}-x86_64.pkg.tar.zst"
-  cd ~ || exit
-fi
+yay "1password"
+yay "1password-cli"
+yay "git-credential-oauth"
+yay "swayr"
+yay "swayrbar"
+yay "mullvad-vpn-bin"
+yay "terraform-ls"
+yay "clojure-lsp-bin"
+yay "resticprofile"
+yay "cljfmt"
+yay "golines"
+yay "sway-audio-idle-inhibit"
+yay "docker-desktop" # choose 'qemu-full' when prompted
+yay "trezor-suite-appimage"
+yay "newsraft"
+yay "jdtls"
+# yay "electrum-ltc-appimage"
 
 # Install fonts
 install_arch_package "fontconfig" # for fc-cache function
@@ -85,6 +76,7 @@ install_arch_package "git"
 install_arch_package "mise"
 install_arch_package "chezmoi"
 install_arch_package "automake"
+install_arch_package "meson"
 install_arch_package "jq"
 install_arch_package "rg" "ripgrep"
 install_arch_package "shfmt"
@@ -129,6 +121,7 @@ install_arch_package "magic-wormhole"
 install_arch_package "keepassxc"
 install_arch_package "pwgen"
 # install_arch_package "libsecret"
+install_arch_package "ijq"
 
 # install_arch_package "nvme-cli"
 install_arch_package "obs" "obs-studio" # choose 'jack2' when prompted
@@ -172,6 +165,9 @@ install_arch_package "stylua"
 install_arch_package "starship"
 install_arch_package "ueberzugpp"
 install_arch_package "strawberry"
+install_arch_package "mixxx"
+install_arch_package "brightnessctl"
+install_arch_package "pciutils"
 install_arch_package "starship"
 install_arch_package "firefox"
 install_arch_package "lynx"
@@ -207,38 +203,18 @@ rustup default stable
 
 # AUR Packages
 
-# install_arch_package "1password"
-# install_arch_package "1password-cli"
-# install_arch_package "swayrbar"
 # install_arch_package "cmusfm"
-# install_arch_package "electrum-ltc"
-# install_arch_package "jdtls"
-# install_arch_package "mullvad"
 # install_arch_package "abook"
-# install_arch_package "terraform-ls"
-# install_arch_package "clojure-lsp"
 # install_arch_package "librefox"
-# install_arch_package "resticprofile"
-# install_arch_package "terraform-ls"
 # install_arch_package "phpactor"
-# install_arch_package "cljfmt"
-# install_arch_package "golines"
-# install_arch_package "sway-audio-idle-inhibit"
-# install_arch_package "mixxx"
-# install_arch_package "brightnessctl"
-# install_arch_package "pciutils"
-# install_arch_package "streamrip"
-# install_arch_package "trezor-suite-appimage"
-# install_arch_package "jqp"
-# install_arch_package "newsraft"
 
-# MANUAL Installs
-# install_arch_package "git-credential-oauth"
+# MANUAL Installs - no AUR package or the one that exists is not ideal for some reason
 # install_arch_package "apksigner"
+# TODO: Create an Arch package for this
+# https://github.com/Yubico/yubioath-flutter/releases
 # install_arch_package "yubiath-flutter"
 
 # TODO: 1Password desktop and CLI installation steps
-# TODO: Docker Desktop installation
 
 # Install required dependencies for building ruby
 # https://github.com/rbenv/ruby-build/wiki#arch-linux
@@ -248,3 +224,12 @@ install_arch_package "libffi"
 install_arch_package "libyaml"
 install_arch_package "openssl"
 install_arch_package "zlib"
+
+# Install mise-managed runtimes
+mise install
+
+npm update -g npm
+
+pip install --upgrade pip
+
+install_pip_package "rip" "streamrip"
