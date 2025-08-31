@@ -142,6 +142,7 @@ install_arch_package "qrencode"
 install_arch_package "restic"
 install_arch_package "dbeaver" # when prompted, choose jdk21-openjdk
 install_arch_package "unzip"
+install_arch_package "rsync"
 
 # LSP Servers
 install_arch_package "gopls"
@@ -179,10 +180,10 @@ install_arch_package "openssl"
 install_arch_package "zlib"
 
 # Install mise-managed runtimes
-mise install
-
-npm update -g npm
-
-pip install --upgrade pip
+# mise install
+#
+# npm update -g npm
+#
+# pip install --upgrade pip
 
 install_pip_package "rip" "streamrip"
