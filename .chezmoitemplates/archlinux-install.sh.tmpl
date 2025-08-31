@@ -7,50 +7,13 @@
 # TODO: Refactor this script to import lists of packages to install through Arch Package Repository, yay (AUR), and manually, so that it only runs when those lists are updated, but not other content directly in this file.
 # Similar to .chezmoitemplates/macos-install.sh
 
-install_arch_package "man-db"
-
-# Create mandb
-# TODO: Make idempotent - de-activating for now
-# sudo mandb
-
 # NOTE: Required for building AUR packages
 install_arch_package "base-devel"
-
-# AUR helper
-# https://github.com/Jguer/yay
-install_arch_package "yay"
-yay -Y --gendb
-yay -Syu --devel
-# NOTE: If I want to make development package updates permanently enabled (i.e., yay and yay -Syu will always check dev packages for updates)
-# yay -Y --devel --save
-
-mkdir -p ~/builds
-
-yay "1password"
-yay "1password-cli"
-yay "git-credential-oauth"
-yay "swayr"
-yay "swayrbar"
-yay "mullvad-vpn-bin"
-yay "terraform-ls"
-yay "clojure-lsp-bin"
-yay "resticprofile"
-yay "cljfmt"
-yay "golines"
-yay "sway-audio-idle-inhibit"
-yay "docker-desktop" # choose 'qemu-full' when prompted
-yay "trezor-suite-appimage"
-yay "newsraft"
-yay "jdtls"
-yay "tidal-hifi-bin"
-yay "codelldb-bin"
-yay "electrum-ltc-appimage"
 
 # Install fonts
 install_arch_package "fontconfig" # for fc-cache function
 install_arch_package "ttf-input-nerd"
 install_arch_package "ttf-jetbrains-mono-nerd"
-
 # Install dependencies for desktop environment
 install_arch_package "xorg-xwayland"
 install_arch_package "sway"
@@ -62,19 +25,6 @@ install_arch_package "swww"
 install_arch_package "waybar"
 install_arch_package "mako"
 install_arch_package "libnotify"
-# install_arch_package "swayr"
-
-# TODO: Install from AUR since there is no official package for this
-
-# TODO: Add my user to the 'seat' group
-sudo usermod -aG seat $(whoami)
-
-# Enable the seatd service
-sudo systemctl start seatd.service
-
-# Log out
-# Log back in
-
 install_arch_package "viu"
 install_arch_package "chafa"
 install_arch_package "ueberzugpp"
@@ -209,13 +159,6 @@ install_arch_package "tflint"
 # Rust
 install_arch_package "rustup"
 rustup default stable
-
-# AUR Packages
-
-# install_arch_package "cmusfm"
-# install_arch_package "abook"
-# install_arch_package "librefox"
-# install_arch_package "phpactor"
 
 # MANUAL Installs - no AUR package or the one that exists is not ideal for some reason
 # install_arch_package "apksigner"
