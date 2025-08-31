@@ -219,6 +219,7 @@ packages:
       - 'lmms'
       - 'trezor-suite'
       - 'raspberry-pi-imager'
+      - 'rekordbox'
       - 'signal'
       - 'whatsapp'
       - 'wireshark'
