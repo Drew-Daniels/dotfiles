@@ -1,3 +1,6 @@
 [".config/alacritty/themes"]
-  type = "git-repo"
-  url = "https://github.com/alacritty/alacritty-theme"
+type = "git-repo"
+url = "https://github.com/alacritty/alacritty-theme"
+["projects/archives"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/archives.git"
