@@ -4,3 +4,15 @@ url = "https://github.com/alacritty/alacritty-theme"
 ["projects/archives"]
 type = "git-repo"
 url = "https://github.com/Drew-Daniels/archives.git"
+["projects/friendly-snippets"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/friendly-snippets.git"
+["projects/work_notes"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/work_notes.git"
+["projects/jg"]
+type = "git-repo"
+url = "https://codeberg.org/drewdaniels/jg.git"
+["projects/dotfiles.wiki"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/dotfiles.wiki.git"
