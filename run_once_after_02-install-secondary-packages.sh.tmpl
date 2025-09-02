@@ -4,7 +4,9 @@
 # NOTE: Ensures that this script is run whenever packages.yaml is changed
 # archpackages.jsonc SHA: {{ joinPath .chezmoi.sourceDir ".chezmoidata" "archpackages.jsonc" | sha256sum }}
 
-sudo pacman -S --needed {{ range .archpackages -}}{{ printf "%s " . }}{{ end -}}
+# TODO: Add logic to also install AUR packages
+
+sudo pacman -S --needed {{ range .archPackageRepositoryPackages -}}{{ printf "%s " . }}{{ end -}}
 
 {{ end }}
 {{ if eq .osid "darwin" -}}
