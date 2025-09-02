@@ -4,6 +4,9 @@ url = "https://github.com/alacritty/alacritty-theme"
 ["projects/archives"]
 type = "git-repo"
 url = "https://github.com/Drew-Daniels/archives.git"
+["projects/books"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/books.git"
 ["projects/friendly-snippets"]
 type = "git-repo"
 url = "https://github.com/Drew-Daniels/friendly-snippets.git"
