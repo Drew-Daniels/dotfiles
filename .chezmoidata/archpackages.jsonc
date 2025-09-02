@@ -1,5 +1,5 @@
 {
-  "packages": [
+  "archpackages": [
     "1password",
     "1password-cli",
     "alacritty",
