@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-arch" -}}
+{{- if eq .osid "linux-arch" -}}
 #!/bin/bash
 
 # NOTE: Ensures that this script is run whenever packages.yaml is changed
@@ -8,8 +8,8 @@
 
 sudo pacman -S --needed {{ range .archPackageRepositoryPackages -}}{{ printf "%s " . }}{{ end -}}
 
-{{ end }}
-{{ if eq .osid "darwin" -}}
+{{ end -}}
+{{- if eq .osid "darwin" -}}
 #!/bin/zsh
 
 # NOTE: Ensures that this script is run whenever packages.yaml is changed
