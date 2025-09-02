@@ -187,12 +187,6 @@ if status is-interactive
     # direnv
     direnv hook fish | source
 
-    # qt6ct
-    # https://www.opencode.net/trialuser/qt6ct
-    {{ if eq .chezmoi.os "linux" }}
-    set -gx QT_QPA_PLATFORMTHEME qt6ct
-    {{ end }}
-
     # browser
     {{ if eq .chezmoi.os "linux" }}
     # set -gx BROWSER librewolf
