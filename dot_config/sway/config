@@ -287,6 +287,8 @@ exec signal-desktop
 
 exec sway-audio-idle-inhibit
 
+exec kiwix-desktop
+
 # NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
 # TODO: See if I can use this instead:
 # assign [app_id="$browser"] workspace 1
@@ -297,6 +299,7 @@ assign [class="obsidian"] workspace 3
 assign [app_id="obsidian"] workspace 3
 assign [class="Signal"] workspace 4
 assign [class="Signal"] workspace 4
+assign [class="Kiwix"] workspace 5
 
 font pango:JetBrainsMono Nerd Font 10
 
