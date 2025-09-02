@@ -6,8 +6,7 @@
 
 # NOTE: Ensures that this script is run whenever packages.yaml is changed
 # NOTE: Update this file as needed with `pacman -Qqe > ~/.local/share/chezmoi/.chezmoidata/archpackages.txt`
-# packages.yaml SHA: {{ joinPath .chezmoi.sourceDir ".chezmoidata" "archpackages.txt" | sha256sum }}
-sudo pacman -S - joinPath .chezmoi.sourceDir ".chezmoidata" "archpackages.txt" }} <{{
+# sudo pacman -S - <"${packages}"
 
 # MANUAL Installs
 
