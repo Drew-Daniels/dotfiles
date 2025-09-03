@@ -118,14 +118,3 @@ fi
 
 # codelldb
 export PATH="$PATH:$HOME/.config/codelldb/extension/adapter"
-
-# WORK start
-# TODO: Figure out why including these using the same chezmoi data homeOrWork variable isn't working
-# jira_data=$(op item get jira_webpt --fields=hostname,email,api_token --reveal)
-#
-# export JIRA_API_HOSTNAME=$(echo "$jira_data" | cut -d ',' -f1)
-# export JIRA_API_EMAIL=$(echo "$jira_data" | cut -d ',' -f2)
-# export JIRA_API_TOKEN=$(echo "$jira_data" | cut -d ',' -f3)
-
-# restic
-export RESTIC_PASSWORD_COMMAND=$(op read op://Personal/restic-key/password --no-newline)
