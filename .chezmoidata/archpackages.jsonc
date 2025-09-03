@@ -142,6 +142,7 @@
     "1password-cli",
     "cljfmt-bin",
     "codelldb-bin",
+    "cryptomator-bin",
     "docker-desktop",
     "git-credential-oauth",
     "jdtls",
