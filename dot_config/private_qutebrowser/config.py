@@ -25,7 +25,10 @@ c.content.cookies.accept = "no-unknown-3rdparty"
 # c.content.javascript.clipboard = "access-paste"
 
 # Dark mode
-# c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = True
+
+# Toggle dark mode
+config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false')
 
 # Display PDF Files via PDF.js without showing download prompt
 c.content.pdfjs = True
