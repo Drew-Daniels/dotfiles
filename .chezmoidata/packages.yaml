@@ -90,6 +90,7 @@ packages:
       - 'pkgconf'
       - 'pngpaste'
       - 'pwgen'
+      - 'rclone'
       - 'reattach-to-user-namespace'
       - 'resvg'
       - 'ripgrep'
