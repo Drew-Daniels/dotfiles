@@ -1,5 +1,6 @@
 {
   "archPackageRepositoryPackages": [
+    "7zip",
     "alacritty",
     "aws-cli",
     "base",
