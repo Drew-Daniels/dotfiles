@@ -22,3 +22,4 @@ yaml-language-server
 typescript-language-server
 @mistweaverco/kulala-fmt
 @mistweaverco/kulala-ls
+@biomejs/biome
