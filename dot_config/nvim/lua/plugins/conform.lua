@@ -121,6 +121,7 @@ return {
 				markdown = { "prettierd", "injected" },
 				makefile = { "bake" },
 				nix = { "alejandra" },
+				nginx = { "nginxfmt" },
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
 				python = { "ruff" },
