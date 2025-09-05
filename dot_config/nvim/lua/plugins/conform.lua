@@ -127,10 +127,8 @@ return {
 				clojure = { "cljfmt" },
 				python = { "ruff" },
 				terraform = { "terraform_fmt" },
-				-- need to figure out why this formatter is borking config/database.yml files
-				-- yaml = { "yamlfmt" },
-				-- NOTE: Disabling xml formatting for now
-				-- xml = { "xmlstarlet" },
+				yaml = { "yamlfmt" },
+				xml = { "xmlstarlet" },
 			},
 			formatters = {
 				custom_jq = {
