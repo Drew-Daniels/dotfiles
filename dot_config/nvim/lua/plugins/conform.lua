@@ -100,6 +100,7 @@ return {
 				eruby = { "htmlbeautifier" },
 				fish = { "fish_indent" },
 				go = { "gci", "golines", "gofmt" },
+				templ = { "templ" },
 				json = { "custom_jq" },
 				scheme = { "format-queries" },
 				sh = { "shfmt", "shellcheck" },
