@@ -77,6 +77,7 @@ return {
 				end
 			end,
 			formatters_by_ft = {
+				bzl = { "buildifier" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				-- cpp = { "uncrustify" },
@@ -114,6 +115,7 @@ return {
 				zig = { "zigfmt" },
 				zsh = { "shfmt", "shellcheck" },
 				markdown = { "prettierd", "injected" },
+				makefile = { "bake" },
 				nix = { "alejandra" },
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
