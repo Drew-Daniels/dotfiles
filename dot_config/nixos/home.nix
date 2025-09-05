@@ -294,7 +294,7 @@
     jdt-language-server
     yamlfmt
     prettierd
-    alejandra
+    nixfmt-rfc-style
     eslint_d
     cljfmt
     shfmt

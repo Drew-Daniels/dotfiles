@@ -244,6 +244,13 @@ return {
 
 		vim.lsp.config("nil_ls", {
 			capabilities = capabilities,
+			settings = {
+				["nil"] = {
+					formatting = {
+						command = { "nixfmt" },
+					},
+				},
+			},
 		})
 
 		vim.lsp.config("nickel_ls", {

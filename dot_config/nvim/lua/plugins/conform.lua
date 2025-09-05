@@ -120,7 +120,7 @@ return {
 				zsh = { "shfmt", "shellcheck" },
 				markdown = { "prettierd", "injected" },
 				makefile = { "bake" },
-				nix = { "alejandra" },
+				nix = { "nixfmt" },
 				nginx = { "nginxfmt" },
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
