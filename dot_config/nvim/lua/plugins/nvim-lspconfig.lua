@@ -1,7 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
 	config = function(_, _)
-		local lspconfig = require("lspconfig")
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		-- TODO: Modularize configuration so that 'capabilities = capabilities' setting is used for every lsp
 		--TODO: Deactivate eslint lsp when in an "ignored" directory so things are less noisy
@@ -13,6 +12,10 @@ return {
 		end
 
 		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("kotlin_lsp", {
 			capabilities = capabilities,
 		})
 
@@ -260,7 +263,7 @@ return {
 			"vimls",
 			-- "cucumber_language_server",
 			"bashls",
-      -- Disabling for now since I hardly use Python, and when I do, this gets noisy
+			-- Disabling for now since I hardly use Python, and when I do, this gets noisy
 			-- "basedpyright",
 			"clojure_lsp",
 			"cssls",
@@ -274,6 +277,7 @@ return {
 			"html",
 			"hyprls",
 			"jsonls",
+			"kotlin_lsp",
 			"lua_ls",
 			"marksman",
 			"ruff",
