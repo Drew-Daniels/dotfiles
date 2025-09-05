@@ -98,6 +98,7 @@ return {
 				fish = { "fish_indent" },
 				go = { "gofmt" },
 				json = { "custom_jq" },
+				scheme = { "format-queries" },
 				sh = { "shfmt", "shellcheck" },
 				sql = { "sqlfmt" },
 				java = { "astyle" },
