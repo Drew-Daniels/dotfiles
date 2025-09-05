@@ -20,3 +20,5 @@ bash-language-server
 dockerfile-language-server-nodejs
 yaml-language-server
 typescript-language-server
+@mistweaverco/kulala-fmt
+@mistweaverco/kulala-ls

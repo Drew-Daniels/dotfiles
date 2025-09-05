@@ -85,6 +85,7 @@ return {
 				lua = { "stylua" },
 				hurl = { "hurlfmt" },
 				html = { "htmlbeautifier" },
+				http = { "kulala-fmt" },
 				-- TODO: Add another variation of project_standardrb that only runs in hm
 				-- See comment below for 'project_standardrb' - for some reason running `bundle exec standardrb --fix ...` also corrects Rubcop offsenses when run via conform.nvim, but doesn't when run manually
 				-- ruby = { "project_rubocop", "fallback_rubocop", "project_standardrb" },

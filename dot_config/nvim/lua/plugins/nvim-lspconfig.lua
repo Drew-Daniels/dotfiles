@@ -170,6 +170,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("kulala_ls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("hyprls", {
 			capabilities = capabilities,
 		})
@@ -278,6 +282,7 @@ return {
 			"hyprls",
 			"jsonls",
 			"kotlin_lsp",
+			"kulala_ls",
 			"lua_ls",
 			"marksman",
 			"ruff",

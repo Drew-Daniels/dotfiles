@@ -29,6 +29,7 @@ packages:
       - 'bat'
       - 'bat-extras'
       - 'cairo'
+      - 'cljfmt'
       - 'harfbuzz'
       - 'hexyl'
       - 'chafa'
