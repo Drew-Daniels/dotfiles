@@ -83,8 +83,8 @@ return {
 				cpp = { "clang-format" },
 				-- cpp = { "uncrustify" },
 				-- TODO: Create bug report in conform.nvim for ghokin not working
-				-- cucumber = { "ghokin" },
-				cucumber = { "reformat-gherkin" },
+				cucumber = { "ghokin" },
+				-- cucumber = { "reformat-gherkin" },
 				d2 = { "d2" },
 				lua = { "stylua" },
 				hurl = { "hurlfmt" },
