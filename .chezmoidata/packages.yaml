@@ -9,6 +9,7 @@ packages:
       - 'pulumi/tap'
       - 'teamookla/speedtest'
       - 'homebrew-zathura/zathura'
+      - 'hashicorp/tap'
       - 'achannarasappa/tap'
       head_brews:
       - 'imagemagick'
@@ -101,6 +102,7 @@ packages:
       - 'stylua'
       - 'sops'
       - 'achannarasappa/tap/ticker'
+      - 'hashicorp/tap/terraform'
       - 'tmux'
       - 'tree'
       - 'typescript-language-server'
