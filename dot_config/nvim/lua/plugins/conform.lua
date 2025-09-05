@@ -79,6 +79,7 @@ return {
 			formatters_by_ft = {
 				bzl = { "buildifier" },
 				c = { "clang-format" },
+				cmake = { "gersemi" },
 				cpp = { "clang-format" },
 				-- cpp = { "uncrustify" },
 				cucumber = { "reformat-gherkin" },
@@ -96,7 +97,7 @@ return {
 				rust = { "rustfmt" },
 				eruby = { "htmlbeautifier" },
 				fish = { "fish_indent" },
-				go = { "gofmt" },
+				go = { "gci", "golines", "gofmt" },
 				json = { "custom_jq" },
 				scheme = { "format-queries" },
 				sh = { "shfmt", "shellcheck" },
