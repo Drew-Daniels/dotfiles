@@ -92,6 +92,10 @@ return {
 			},
 		})
 
+		vim.lsp.config("cmake", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("clojure_lsp", {
 			capabilities = capabilities,
 		})
