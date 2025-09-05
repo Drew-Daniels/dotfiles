@@ -11,6 +11,10 @@ return {
 			use_flat_config = true
 		end
 
+		vim.lsp.config("ast_grep", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 		})
@@ -262,6 +266,7 @@ return {
 		})
 
 		vim.lsp.enable({
+			"ast_grep",
 			-- TODO: Install clang-tools package on NixOS: https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=clang-tools
 			-- https://weblog.zamazal.org/sw-problem-lsp-c-nixos/
 			"clangd",
