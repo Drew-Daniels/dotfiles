@@ -108,7 +108,7 @@ return {
 				java = { "astyle" },
 				-- javascript = { "project_eslint", "fallback_eslint", "prettierd" },
 				javascript = { "eslint_d", "prettierd" },
-				typescript = { "eslint_d", "prettierd" },
+				-- typescript = { "eslint_d", "prettierd" },
 				javascriptreact = { "prettierd" },
 				typescriptreact = { "prettierd" },
 				-- javascript = { "biome", "biome-check" },
