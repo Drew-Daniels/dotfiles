@@ -1,11 +1,4 @@
-$HOME/*
-!$HOME/Desktop/
-!$HOME/Documents
-!$HOME/Downloads/
-!$HOME/Library/
-!$HOME/Music/
-!$HOME/nixos/
-!$HOME/Pictures/
-!$HOME/projects
-!$HOME/Passwords.kdbx
-node_modules
+/home/drew/.docker
+/home/drew/.config/tidal-hifi
+**/.cache
+**/.local
