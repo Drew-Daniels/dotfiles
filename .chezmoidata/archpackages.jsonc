@@ -126,6 +126,8 @@
     "weechat",
     "wget",
     "wireguard-tools",
+    // NOTE: Required by wg-quick
+    "systemd-resolvconf",
     "wl-clipboard",
     "wofi",
     "xdg-desktop-portal",
