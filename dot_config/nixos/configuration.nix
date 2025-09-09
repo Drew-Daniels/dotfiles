@@ -6,9 +6,8 @@
   pkgs,
   inputs,
   ...
-}:
-{
-  imports = [ ];
+}: {
+  imports = [];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -118,10 +117,7 @@
   users.users.drew = {
     isNormalUser = true;
     description = "Drew Daniels";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -145,7 +141,7 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "drew" ];
+    polkitPolicyOwners = ["drew"];
   };
 
   # Allow unfree packagesA
@@ -159,8 +155,7 @@
 
   # https://blog.nobbz.dev/blog/2023-02-27-nixos-flakes-command-not-found
   # Adjust the value for the nixexpr.tar.xz if necessary
-  environment.etc."programs.sqlite".source =
-    inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
+  environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
   programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
   # https://wiki.nixos.org/w/index.php?title=Default_applications&oldid=19888
@@ -190,14 +185,11 @@
 
   # EXPERIMENTAL SETTINGS
   nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = ["nix-command" "flakes"];
     download-buffer-size = 524288000;
   };
 
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [pkgs.yubikey-personalization];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -220,10 +212,10 @@
 
   # VPN
   # https://alberand.com/nixos-wireguard-vpn.html
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedUDPPorts = [51820];
   # https://github.com/simplex-chat/simplex-chat/issues/3425#issuecomment-2336520556
   # NOTE: When connecting to mobile, use this port
-  networking.firewall.allowedTCPPorts = [ 40257 ];
+  networking.firewall.allowedTCPPorts = [40257];
 
   # Tor
   # TODO: Figure out why client isn't starting with this setting enabled
@@ -243,16 +235,13 @@
   # Debugging Note 3: If the wireguard config needs to get re-generated, because of an unset value (like Endpoint), change the persistentKeepalive value to something different so it gets rebuilt with the right value
   networking.wg-quick.interfaces = {
     wg0 = {
-      address = [ "10.0.0.5/24" ];
+      address = ["10.0.0.5/24"];
       listenPort = 51820;
       privateKeyFile = "/etc/wireguard/wg0-private-key";
       # See ./wg-peers.nix
       # peers = [];
       autostart = false;
-      dns = [
-        "64.6.64.6"
-        "10.0.0.1"
-      ];
+      dns = ["64.6.64.6" "10.0.0.1"];
     };
   };
 
