@@ -299,6 +299,7 @@ assign [class="obsidian"] workspace 3
 assign [app_id="obsidian"] workspace 3
 assign [class="Signal"] workspace 4
 assign [class="Signal"] workspace 4
+assign [app_id="kiwix"] workspace 5
 assign [class="Kiwix"] workspace 5
 
 font pango:JetBrainsMono Nerd Font 10
