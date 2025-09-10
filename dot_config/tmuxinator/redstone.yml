@@ -16,7 +16,6 @@ windows:
         - tsc:
             - fish
             - cls
-            - npm run dev
 # - 2)docker-compose:
 #     layout: main-horizontal
 #     panes:
