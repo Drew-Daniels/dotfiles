@@ -1,0 +1,9 @@
+function stop-wg -d "Stops Wireguard Service"
+    # TODO: Ensure wireguard interface names are the same on all devices
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl stop wg-quick-wg0
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl stop wg-quick@wg0
+    {{ end }}
+end

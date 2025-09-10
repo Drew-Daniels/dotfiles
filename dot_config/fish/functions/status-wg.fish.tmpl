@@ -1,0 +1,9 @@
+function status-wg -d "Wireguard Status"
+    # TODO: Ensure wireguard interface names are the same on all devices
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl status wg-quick-wg0.service
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl status wg-quick@wg0.service
+    {{ end }}
+end
