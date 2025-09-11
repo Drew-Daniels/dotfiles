@@ -6,12 +6,10 @@ function screenshot -d "Takes a screenshot"
     set -l dir "$HOME/Pictures/Screenshots"
 
     if test -z "$argv[1]"
-        set -l filename $argv[1]
         echo "Must specify filename (with extension)"
-        exit 1
+    else
+        set -l filename "$argv[1]"
+        grim -g "$(slurp)" - | satty -f - -o "$dir/$filename"
     end
 
-    set -l filename "$argv[1]"
-
-    grim -g "$(slurp)" - | satty -f - -o "$dir/$filename"
 end
