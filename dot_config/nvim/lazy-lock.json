@@ -70,7 +70,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "3115ff748d6885fe1af349feb6b73de03eda8e12" },
   "rustaceanvim": { "branch": "master", "commit": "12504405821c05874d2d1f6b5ec919f9808e2c99" },
   "scratch.nvim": { "branch": "main", "commit": "1e78854fd3140411b231d5b6f9b3559b1ba5de77" },
-  "smart-splits.nvim": { "branch": "master", "commit": "51e400b0bb6cbfd48e56d1baca250f34028cf1d3" },
+  "smart-splits.nvim": { "branch": "master", "commit": "e4f0c09277ca18d035ebb5da39fb14df0e2743f8" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "transparent.nvim": { "branch": "main", "commit": "8ac59883de84e9cd1850ea25cf087031c5ba7d54" },
   "tree-sitter-d2": { "branch": "main", "commit": "519f92699691d101d1aa91f69956383de7b28ae6" },
