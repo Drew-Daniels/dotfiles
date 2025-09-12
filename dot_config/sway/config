@@ -41,8 +41,8 @@ include /etc/sway/config-vars.d/*
 # Example configuration:
 # 'playerctl pause' pauses any playing media before locking
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 600 'swaylock -f -c 000000' \
+         timeout 1200 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'playerctl pause; swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
