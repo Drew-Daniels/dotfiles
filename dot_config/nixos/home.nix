@@ -308,6 +308,7 @@
     rust-analyzer
     docker-compose-language-service
     # HTML/CSS/JSON/ESLint lang servers
+    vacuum-go
     vscode-langservers-extracted
     vue-language-server
     ruff

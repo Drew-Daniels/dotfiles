@@ -129,3 +129,11 @@ vim.filetype.add({
 		snapshot = "javascript",
 	},
 })
+
+-- vacuum
+vim.filetype.add({
+	pattern = {
+		["openapi.*%.ya?ml"] = "yaml.openapi",
+		["openapi.*%.json"] = "json.openapi",
+	},
+})

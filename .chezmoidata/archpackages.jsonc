@@ -121,6 +121,8 @@
     "ueberzugpp",
     "urlscan",
     "usbutils",
+    // TODO: Create an AUR package for `vale-ls`: https://github.com/errata-ai/vale-ls/releases
+    "vale",
     "vim",
     "viu",
     "waybar",

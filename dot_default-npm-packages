@@ -23,3 +23,5 @@ typescript-language-server
 @mistweaverco/kulala-fmt
 @mistweaverco/kulala-ls
 @biomejs/biome
+turbo-language-server
+@quobix/vacuum

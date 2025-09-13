@@ -72,6 +72,10 @@ return {
 		-- capabilities = capabilities,
 		-- })
 
+		vim.lsp.config("vacuum", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("vimls", {
 			capabilities = capabilities,
 		})
@@ -154,6 +158,10 @@ return {
 			},
 			root_markers = { "package.json" },
 			single_file_support = false,
+		})
+
+		vim.lsp.config("turbo_ls", {
+			capabilities = capabilities,
 		})
 
 		vim.lsp.config("dockerls", {
@@ -319,7 +327,9 @@ return {
 			"tailwindcss",
 			"terraformls",
 			"tflint",
+			"turbo_ls",
 			"typos_lsp",
+			"vacuum",
 			"vue_ls",
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
