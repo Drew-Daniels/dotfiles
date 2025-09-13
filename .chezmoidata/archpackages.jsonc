@@ -90,6 +90,8 @@
     "pwgen",
     "qalculate-qt",
     "qrencode",
+    "qt5ct",
+    "qt5-wayland",
     "qt6ct",
     "qutebrowser",
     "rclone",

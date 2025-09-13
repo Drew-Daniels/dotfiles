@@ -3,3 +3,10 @@ if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; the
   exec sway
 fi
 {{ end }}
+
+# Ensure ~/.bashrc is always sourced by login shell
+# Only the login shell sources ~/.bash_profile
+# http://mywiki.wooledge.org/DotFiles
+if [ -n "$BASH" ] && [ -r "~/.bashrc" ]; then
+  . ~/.bashrc
+fi
