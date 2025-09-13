@@ -3,9 +3,3 @@ if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; the
   exec sway
 fi
 {{ end }}
-# To force QT applications to use the same theme as GTK - currently using Adwaita-dark
-# https://wiki.archlinux.org/title/Dark_mode_switching
-# export QT_QPA_PLATFORMTHEME=gtk3
-# export QT_QPA_PLATFORMTHEME=qt6ct
-# https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
-export QT_WAYLAND_DECORATION=adwaita
