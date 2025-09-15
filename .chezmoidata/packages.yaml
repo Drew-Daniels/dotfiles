@@ -11,6 +11,7 @@ packages:
         - 'homebrew-zathura/zathura'
         - 'hashicorp/tap'
         - 'achannarasappa/tap'
+        - 'daveshanley/vacuum'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
