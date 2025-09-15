@@ -28,7 +28,7 @@ set linehoverbgcolor #ffff80
 set linehoverfgcolor black
 set linehoveroutlinecolor black
 set linkfgcolor blue
-set mainfont {{JetBrainsMono Nerd Font} 9}
+set mainfont {{JetBrainsMono Nerd Font} 7}
 set mainheadcirclecolor yellow
 set markbgcolor #e0e0ff
 set maxgraphpct 50
@@ -47,11 +47,11 @@ set tabstop 8
 set tagbgcolor yellow
 set tagfgcolor black
 set tagoutlinecolor black
-set textfont {{JetBrainsMono Nerd Font} 9}
+set textfont {{JetBrainsMono Nerd Font} 7}
 set uicolor grey85
 set uifgcolor black
 set uifgdisabledcolor #999
-set uifont {{JetBrainsMono Nerd Font} 9 bold}
+set uifont {{JetBrainsMono Nerd Font} 8 bold}
 set visiblerefs {"master"}
 set web_browser open
 set workingfilescirclecolor red
