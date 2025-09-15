@@ -1,9 +1,0 @@
-# To force QT applications to use the same theme as GTK - currently using Adwaita-dark
-# https://wiki.archlinux.org/title/Dark_mode_switching
-# export QT_QPA_PLATFORMTHEME=gtk3
-# export QT_QPA_PLATFORMTHEME=qt6ct
-# https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
-# https://github.com/trialuser02/qt6ct
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt6ct
-export QT_WAYLAND_DECORATION=Adwaita-dark
