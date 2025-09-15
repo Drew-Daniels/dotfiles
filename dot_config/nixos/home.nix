@@ -123,6 +123,7 @@
     ncmpcpp
     qt6ct
     streamrip
+    rclone
     # video
     mpv
     obs-studio
