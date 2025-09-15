@@ -289,6 +289,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("gh_actions_ls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.enable({
 			"ast_grep",
 			"biome",
@@ -341,6 +345,7 @@ return {
 			"nickel_ls",
 			"zls",
 			"gitlab_ci_ls",
+			"gh_actions_ls",
 		})
 	end,
 }

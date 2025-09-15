@@ -25,3 +25,4 @@ typescript-language-server
 @biomejs/biome
 turbo-language-server
 @quobix/vacuum
+gh-actions-language-server
