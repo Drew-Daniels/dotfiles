@@ -26,3 +26,5 @@ typescript-language-server
 turbo-language-server
 @quobix/vacuum
 gh-actions-language-server
+@commitlint/cli
+@commitlint/config-conventional
