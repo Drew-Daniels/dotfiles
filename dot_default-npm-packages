@@ -28,3 +28,5 @@ turbo-language-server
 gh-actions-language-server
 @commitlint/cli
 @commitlint/config-conventional
+@commitlint/prompt-cli
+@commitlint/format
