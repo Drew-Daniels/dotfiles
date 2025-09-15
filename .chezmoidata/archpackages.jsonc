@@ -36,6 +36,7 @@
     "git-delta",
     "github-cli",
     "gitleaks",
+    "gitlab-ci-ls",
     "glab",
     "gopls",
     "grim",

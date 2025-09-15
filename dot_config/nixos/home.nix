@@ -78,6 +78,7 @@
     fh
     gh
     glab
+    gitlab-ci-ls
     # google-cloud-sdk
     # localstack
     # pulumi

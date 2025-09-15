@@ -12,6 +12,7 @@ packages:
         - 'hashicorp/tap'
         - 'achannarasappa/tap'
         - 'daveshanley/vacuum'
+        - 'alesbrelih/gitlab-ci-ls'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
@@ -42,6 +43,7 @@ packages:
         - 'cmake-docs'
         - 'defaultbrowser'
         - 'gettext'
+        - 'alesbrelih/gitlab-ci-ls/gitlab-ci-ls'
         # cccache installed for neovim dev, but not necessary. Uninstall if this breaks things.
         - 'ccache'
         - 'comby'

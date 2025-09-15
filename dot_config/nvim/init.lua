@@ -137,3 +137,10 @@ vim.filetype.add({
 		["openapi.*%.json"] = "json.openapi",
 	},
 })
+
+-- gitlab-ci-ls
+vim.filetype.add({
+	pattern = {
+		["%.gitlab%-ci%.ya?ml"] = "yaml.gitlab",
+	},
+})
