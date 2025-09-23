@@ -261,7 +261,6 @@ packages:
         - 'confluent-cli'
         - 'cursor'
         - 'rancher'
-        - 'lynx'
         - 'google-drive'
         - 'mysqlworkbench'
       mas_apps: {}
