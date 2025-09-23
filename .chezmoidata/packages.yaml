@@ -13,6 +13,7 @@ packages:
         - 'achannarasappa/tap'
         - 'daveshanley/vacuum'
         - 'alesbrelih/gitlab-ci-ls'
+        - 'JetBrains/utils'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
