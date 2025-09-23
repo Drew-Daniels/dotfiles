@@ -76,6 +76,7 @@ packages:
         - 'libyaml'
         - 'llvm'
         - 'lnav'
+        - 'lynx'
         - 'hurl'
         - 'sevenzip'
         - 'shared-mime-info'
