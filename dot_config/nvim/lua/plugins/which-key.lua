@@ -173,6 +173,20 @@ return {
 			{ "<leader>u", group = "URLs" },
 			{ "<leader>ua", "<cmd>UrlView<cr>", desc = "All URLs" },
 			{ "<leader>up", "<cmd>UrlView lazy<cr>", desc = "Plugin URLs" },
+			-- paste mode
+			-- TODO: Come up with a more mnemonically memorable keybind prefix
+			-- TODO: Look into if there is a supported way for logging that the paste mode has been changed, such as with vim.notify(':set paste')
+			{ "<leader>X", group = "Paste Mode" },
+			{
+				"<leader>Xp",
+				"<cmd>set paste<cr>",
+				desc = ":set paste",
+			},
+			{
+				"<leader>Xn",
+				"<cmd>set nopaste<cr>",
+				desc = ":set nopaste",
+			},
 			-- Search
 			{ "<leader>s", group = "Search" },
 			{ "<leader>sb", "<cmd>FzfLua builtin<cr>", desc = "Builtins" },
