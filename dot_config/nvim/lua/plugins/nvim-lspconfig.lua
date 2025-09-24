@@ -27,6 +27,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("dartls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("kotlin_lsp", {
 			capabilities = capabilities,
 		})
@@ -315,6 +319,7 @@ return {
 			"cssls",
 			"taplo",
 			"ts_ls",
+			"dartls",
 			-- "denols",
 			"dockerls",
 			"eslint",

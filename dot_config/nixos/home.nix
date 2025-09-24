@@ -183,6 +183,8 @@
     pwgen
     libsecret
     rusty-diceware
+    bitwarden-desktop
+    bitwarden-cli
     # books
     foliate
     hunspell
@@ -291,6 +293,7 @@
     # TODO: Need to do more research on seeing whether or not it makes sense to just use nil_ls, nixd, or both
     # nixd
     # TODO: Create package for reformat-gherkin
+    flutter
     gopls
     # TODO: Figure out why I have hyprls 0.6.0 installed, but the latest available on nixos-unstable is 0.7.0
     # 0.7.0 should fix the below issue
