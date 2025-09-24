@@ -102,7 +102,7 @@ return {
 				go = { "gci", "golines", "gofmt" },
 				templ = { "templ" },
 				json = { "custom_jq" },
-				scheme = { "format-queries" },
+				query = { "format-queries" },
 				sh = { "shfmt", "shellcheck" },
 				sql = { "sqlfmt" },
 				java = { "astyle" },
