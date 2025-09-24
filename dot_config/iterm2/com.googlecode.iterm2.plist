@@ -2463,6 +2463,8 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>6B2F5724-62A8-4931-B7F8-DA91B6AC47B0</string>
+	<key>Default Browser Profile Guid</key>
+	<string>3BD7DFB9-9151-43FC-A942-FB237C774C3E</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DisableFullscreenTransparency</key>
