@@ -263,6 +263,8 @@
     resticprofile
     # Notes
     obsidian
+    joplin-desktop
+    joplin
     # standardnotes
     # nb
     # sshx
@@ -321,7 +323,7 @@
     terraform-ls
     typos-lsp
     bash-language-server
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     lua-language-server
     marksman
     yaml-language-server
