@@ -59,6 +59,7 @@ packages:
         - 'duti'
         - 'fd'
         - 'file-formula'
+        - 'flutter'
         - 'ninja'
         - 'ncurses'
         - 'fish'
