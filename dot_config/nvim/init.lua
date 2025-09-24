@@ -144,3 +144,15 @@ vim.filetype.add({
 		["%.gitlab%-ci%.ya?ml"] = "yaml.gitlab",
 	},
 })
+
+-- tree-sitter-go-template
+vim.filetype.add({
+	extension = {
+		gotmpl = "gotmpl",
+	},
+	-- pattern = {
+	-- 	["*.yaml.gotmpl"] = "yaml",
+	-- 	-- [".*/templates/.*%.ya?ml"] = "helm",
+	-- 	-- ["helmfile.*%.ya?ml"] = "helm",
+	-- },
+})
