@@ -18,6 +18,7 @@ return {
 			"css",
 			"csv",
 			"tsv",
+			"dart",
 			"desktop",
 			"diff",
 			-- TODO: Create an issue for this. Would be nice if this parser could be installed just by using nvim-treesitter, rather than having to install a separate plugin:
