@@ -222,6 +222,7 @@ packages:
       taps: []
       head_brews: []
       brews:
+        - 'joplin-cli'
         - 'streamrip'
         - 'yt-dlp'
       no_quarantine_casks:
@@ -233,7 +234,6 @@ packages:
         - 'element'
         - 'firefox'
         - 'joplin'
-        - 'joplin-cli'
         - 'josm'
         - 'libreoffice'
         - 'lmms'
@@ -242,7 +242,7 @@ packages:
         - 'rekordbox'
         - 'signal'
         - 'whatsapp'
-        - 'wireshark'
+        - 'wireshark-app'
         - 'vitalsource-bookshelf'
         - 'qutebrowser'
         - 'mixxx'
