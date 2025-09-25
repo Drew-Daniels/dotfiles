@@ -38,7 +38,8 @@
     "git-delta",
     "github-cli",
     "gitleaks",
-    "gitlab-ci-ls",
+    // NOTE: Not installing for now bc I keep getting 404 error when trying to install
+    // "gitlab-ci-ls",
     "glab",
     "gopls",
     "grim",
