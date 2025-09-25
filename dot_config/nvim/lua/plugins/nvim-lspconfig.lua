@@ -275,6 +275,8 @@ return {
 						["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
 							"/ops-tools/**/*.yaml",
 							"/ops-tools/**/*.yml",
+							".gitlab-ci.yaml",
+							".gitlab-ci.yml",
 						},
 					},
 					-- TODO: Not sure if this is required
