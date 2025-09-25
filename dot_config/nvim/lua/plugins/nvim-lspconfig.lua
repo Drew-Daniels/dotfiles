@@ -278,9 +278,9 @@ return {
 						},
 					},
 					-- TODO: Not sure if this is required
-					-- customTags = {
-					-- 	"!reference sequence",
-					-- },
+					customTags = {
+						"!reference sequence",
+					},
 				},
 			},
 		})
