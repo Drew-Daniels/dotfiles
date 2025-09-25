@@ -230,6 +230,8 @@ packages:
         - 'electrum'
         - 'element'
         - 'firefox'
+        - 'joplin'
+        - 'joplin-cli'
         - 'josm'
         - 'libreoffice'
         - 'lmms'
