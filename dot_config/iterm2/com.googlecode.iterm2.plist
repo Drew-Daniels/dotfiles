@@ -4167,6 +4167,8 @@
 	<true/>
 	<key>UseBorder</key>
 	<false/>
+	<key>UseRecommendedAIModel</key>
+	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>
