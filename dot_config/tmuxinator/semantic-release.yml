@@ -1,0 +1,16 @@
+name: semantic-release
+root: <%= ENV["PROJECTS_DIR"] %>/semantic-release
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - tsc:
+            - fish
+            - cls
