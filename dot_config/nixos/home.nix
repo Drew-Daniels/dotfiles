@@ -237,6 +237,7 @@
     # Email
     protonmail-bridge
     protonmail-desktop
+    thunderbird
     neomutt
     isync
     notmuch
