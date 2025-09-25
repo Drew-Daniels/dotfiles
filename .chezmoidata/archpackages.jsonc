@@ -9,6 +9,8 @@
     "bat",
     "bat-extras",
     "bemenu",
+    "bitwarden",
+    "bitwarden-cli",
     "bluez",
     "bluez-utils",
     "brightnessctl",
