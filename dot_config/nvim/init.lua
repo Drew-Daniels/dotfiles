@@ -142,6 +142,7 @@ vim.filetype.add({
 vim.filetype.add({
 	pattern = {
 		["%.gitlab%-ci%.ya?ml"] = "yaml.gitlab",
+		["ops%-tools/**/*%.ya?ml"] = "yaml.gitlab",
 	},
 })
 
