@@ -183,8 +183,6 @@
     pwgen
     libsecret
     rusty-diceware
-    bitwarden-desktop
-    bitwarden-cli
     # books
     foliate
     hunspell
