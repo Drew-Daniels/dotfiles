@@ -266,8 +266,6 @@
     resticprofile
     # Notes
     obsidian
-    joplin-desktop
-    joplin
     # standardnotes
     # nb
     # sshx
