@@ -87,6 +87,7 @@ return {
 			"gosum",
 			"gotmpl",
 			"graphql",
+			"groovy",
 			"gpg",
 			"hurl",
 			"nginx",

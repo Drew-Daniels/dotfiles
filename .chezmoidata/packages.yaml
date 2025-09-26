@@ -27,6 +27,7 @@ packages:
         - 'git'
         - 'gitleaks'
         - 'golines'
+        - 'groovy'
         - 'age'
         - 'ast-grep'
         - 'automake'

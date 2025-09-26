@@ -194,6 +194,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("graphql", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("html", {
 			capabilities = capabilities,
 		})
@@ -367,6 +371,7 @@ return {
 			"nickel_ls",
 			"zls",
 			"gitlab_ci_ls",
+			"graphql",
 			"gh_actions_ls",
 		})
 	end,
