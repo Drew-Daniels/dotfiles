@@ -220,7 +220,6 @@ packages:
       taps: []
       head_brews: []
       brews:
-        - 'joplin-cli'
         - 'streamrip'
         - 'yt-dlp'
       no_quarantine_casks:
@@ -231,7 +230,6 @@ packages:
         - 'electrum'
         - 'element'
         - 'firefox'
-        - 'joplin'
         - 'josm'
         - 'libreoffice'
         - 'lmms'
