@@ -164,8 +164,9 @@
     "flutter",
     "git-credential-oauth",
     "jdtls",
-    "joplin",
-    "joplin-desktop",
+    // NOTE: Getting error message of: "Error: an unknown flag --ozone-platform-hint=auto"
+    // "joplin",
+    // "joplin-desktop",
     "mullvad-vpn-bin",
     "newsraft",
     "resticprofile",
