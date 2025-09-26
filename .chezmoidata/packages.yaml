@@ -33,7 +33,6 @@ packages:
         - 'awscli'
         - 'bat'
         - 'bat-extras'
-        - 'bitwarden-cli'
         - 'bazel'
         - 'cairo'
         - 'cljfmt'
@@ -194,7 +193,6 @@ packages:
       casks:
         - '1password-cli'
         - '1password@nightly'
-        - 'bitwarden'
         - 'dbeaver-community'
         - 'drawio'
         - 'espanso'
