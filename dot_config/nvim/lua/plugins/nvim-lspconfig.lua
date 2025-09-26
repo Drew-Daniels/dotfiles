@@ -194,6 +194,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("groovyls", {
+			capabilities = capabilities,
+			cmd = { "java", "-jar", "~/projects/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+		})
+
 		vim.lsp.config("graphql", {
 			capabilities = capabilities,
 		})
@@ -346,6 +351,7 @@ return {
 			"eslint",
 			"gopls",
 			"golangci_lint_ls",
+			"groovyls",
 			"html",
 			"hyprls",
 			"jsonls",
