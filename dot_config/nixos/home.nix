@@ -149,6 +149,7 @@
     bat-extras.batman
     bat-extras.batgrep
     dust
+    exfatprogs
     fd
     fzf
     ripgrep
