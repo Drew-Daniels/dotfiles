@@ -82,7 +82,6 @@ return {
 				cmake = { "gersemi" },
 				cpp = { "clang-format" },
 				-- cpp = { "uncrustify" },
-				-- TODO: Create bug report in conform.nvim for ghokin not working
 				cucumber = { "ghokin" },
 				-- cucumber = { "reformat-gherkin" },
 				d2 = { "d2" },
