@@ -6,6 +6,7 @@ return {
 	},
 	opts = {
 		ensure_installed = {
+			"angular",
 			"c",
 			-- NOTE: Seems like this is broken
 			-- "make",
@@ -25,6 +26,7 @@ return {
 			-- https://github.com/nvim-treesitter/nvim-treesitter/issues
 			-- https://github.com/ravsii/tree-sitter-d2
 			-- "d2",
+			"editorconfig",
 			"lua",
 			"luadoc",
 			"luap", -- lua_patterns
@@ -55,6 +57,7 @@ return {
 			"markdown",
 			"markdown_inline",
 			"meson",
+			"muttrc",
 			"ninja",
 			"regex",
 			"ruby",
