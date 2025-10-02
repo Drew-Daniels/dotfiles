@@ -22,189 +22,157 @@ if status is-interactive
 
             # rancher desktop
             fish_add_path $HOME/.rd/bin
+            { { if eq .homeOrWork work } fish_add_path (composer global config bin-dir --absolute --quiet)
+                    { { end } /opt/homebrew/bin/mise activate fish | source
+set -gx MISE_ENV development
 
-            # composer
-            {{ if eq .homeOrWork "work" }}
-            fish_add_path (composer global config bin-dir --absolute --quiet)
-            {{ end }}
+# TODO: Figure out how to do this on linux
+# theme
+defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
+set -l os_theme_query_status $status
+if test $os_theme_query_status -eq 1
+    # this setting is only set when using dark mode
+    set -gx OS_THEME_DARK 0
+    fish_config theme choose "Solarized Light"
+else
+    set -gx OS_THEME_DARK 1
+    fish_config theme choose "Base16 Default Dark"
+end
 
-            # mise
-            /opt/homebrew/bin/mise activate fish | source
-            set -gx MISE_ENV development
+end
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx PROJECTS_DIR "$HOME/projects"
 
-            # TODO: Figure out how to do this on linux
-            # theme
-            defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
-            set -l os_theme_query_status $status
-            if test $os_theme_query_status -eq 1
-                # this setting is only set when using dark mode
-                set -gx OS_THEME_DARK 0
-                fish_config theme choose "Solarized Light"
-            else
-                set -gx OS_THEME_DARK 1
-                fish_config theme choose "Base16 Default Dark"
-            end
+# fish
+# turn off greeting
+set -g fish_greeting
 
-    end
+# general
+alias cls "printf '\33c\e[3J'"
+{ { if eq .chezmoi.os linux } fish_add_path /opt/nvim-linux-x86_64/bin
+        { { end } set -gx VIMCONFIG "$HOME/.config/nvim"
+set -gx VIMDATA "$HOME/.local/share/nvim"
 
-    set -gx EDITOR nvim
-    set -gx VISUAL nvim
-    set -gx PROJECTS_DIR "$HOME/projects"
+# pnpm
+fish_add_path $PNPM_HOME
 
-    # fish
-    # turn off greeting
-    set -g fish_greeting
+# starship
+starship init fish | source
 
-    # general
-    alias cls "printf '\33c\e[3J'"
+# fzf
+set -gx FZF_DEFAULT_COMMAND "fd --type f"
 
-    # neovim
-    {{ if eq .chezmoi.os "linux" }}
-    fish_add_path /opt/nvim-linux-x86_64/bin
-    {{ end }}
+# fzf.fish
+fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
 
-    set -gx VIMCONFIG "$HOME/.config/nvim"
-    set -gx VIMDATA "$HOME/.local/share/nvim"
+# tmux
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tl="tmux ls"
+alias tk="tmux kill-session -t"
 
-    # pnpm
-    fish_add_path $PNPM_HOME
+# tmuxinator
+set -gx MUX_LAYOUT main-horizontal
+alias mux="tmuxinator"
+alias ts="mux start project"
 
-    # starship
-    starship init fish | source
+# vcpkg
+set -gx VCPKG_ROOT "$PROJECTS_DIR/vcpkg"
+fish_add_path "$VCPKG_ROOT"
 
-    # fzf
-    set -gx FZF_DEFAULT_COMMAND "fd --type f"
+# solargraph
+set -gx SOLARGRAPH_GLOBAL_CONFIG "$HOME/.config/solargraph/config.yml"
 
-    # fzf.fish
-    fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
-
-    # tmux
-    alias tn="tmux new -s"
-    alias ta="tmux attach -t"
-    alias tl="tmux ls"
-    alias tk="tmux kill-session -t"
-
-    # tmuxinator
-    set -gx MUX_LAYOUT main-horizontal
-    alias mux="tmuxinator"
-    alias ts="mux start project"
-
-    # vcpkg
-    set -gx VCPKG_ROOT "$PROJECTS_DIR/vcpkg"
-    fish_add_path "$VCPKG_ROOT"
-
-    # solargraph
-    set -gx SOLARGRAPH_GLOBAL_CONFIG "$HOME/.config/solargraph/config.yml"
-
-    # pip fish completion start
-    function __fish_complete_pip
-        set -lx COMP_WORDS (commandline -o) ""
-        set -lx COMP_CWORD ( \
+# pip fish completion start
+function __fish_complete_pip
+    set -lx COMP_WORDS (commandline -o) ""
+    set -lx COMP_CWORD ( \
             math (contains -i -- (commandline -t) $COMP_WORDS)-1 \
         )
-        set -lx PIP_AUTO_COMPLETE 1
-        string split \  -- (eval $COMP_WORDS[1])
+    set -lx PIP_AUTO_COMPLETE 1
+    string split \  -- (eval $COMP_WORDS[1])
+end
+complete -fa "(__fish_complete_pip)" -c pip
+# pip fish completion end
+
+# jless
+alias jless="jless --relative-line-numbers"
+alias yless="jless --yaml"
+
+# zoxide
+zoxide init --cmd j fish | source
+
+# bat
+alias man="batman"
+alias pb="prettybat"
+
+# lsd
+alias ls="lsd"
+
+# tabtab source for packages
+# uninstall by removing these lines
+
+alias pn="pnpm"
+
+# yazi
+function ya
+    set tmp (mktemp -t "yazi-cwd.XXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        cd -- "$cwd"
     end
-    complete -fa "(__fish_complete_pip)" -c pip
-    # pip fish completion end
+    rm -f -- "$tmp"
+end
 
-    # jless
-    alias jless="jless --relative-line-numbers"
-    alias yless="jless --yaml"
+# java
+fish_add_path "/opt/apache-maven-3.8.5/bin"
 
-    # zoxide
-    zoxide init --cmd j fish | source
+# playwright
+alias psr "npx playwright show-report"
 
-    # bat
-    alias man="batman"
-    alias pb="prettybat"
+# htmlbeautifier
+alias hb htmlbeautifier
 
-    # lsd
-    alias ls="lsd"
+# spotify_player
+alias sp spotify_player
 
-    # tabtab source for packages
-    # uninstall by removing these lines
+# Run rubocop only on ruby files that have changed
+alias rcdiff "git diff --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
+# Run rspec only on ruby files that have changed
+alias rsdiff "git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
 
-    alias pn="pnpm"
+# bundler
+alias be "bundle exec"
+# alias ber "bundle exec rspec"
+alias ber "bundle exec rake"
 
-    # yazi
-    function ya
-        set tmp (mktemp -t "yazi-cwd.XXXXX")
-        yazi $argv --cwd-file="$tmp"
-        if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            cd -- "$cwd"
-        end
-        rm -f -- "$tmp"
-    end
+# 1password
+op completion fish | source
+{ { if eq .homeOrWork work } jira completion fish | source
+        { { { { if (and (eq .chezmoi.os "darwin") (eq .homeOrWork "home")) } docker completion fish | source
+                        { { end } alias kxc keepassxc-cli
 
-    # java
-    fish_add_path "/opt/apache-maven-3.8.5/bin"
+# ollama
+alias ol ollama
 
-    # playwright
-    alias psr "npx playwright show-report"
+# drawio
+alias draw.io "/Applications/draw.io.app/Contents/MacOS/draw.io"
 
-    # htmlbeautifier
-    alias hb htmlbeautifier
+# direnv
+direnv hook fish | source
+{ { if eq .chezmoi.os linux } set -gx BROWSER qutebrowser
+        { { end } if test -f ~/.env.fish
+    source ~/.env.fish
+else
+    echo "No ~/.env.fish found. Run ~/scripts/export_secrets.sh"
+end
 
-    # spotify_player
-    alias sp spotify_player
-
-    # Run rubocop only on ruby files that have changed
-    alias rcdiff "git diff --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
-    # Run rspec only on ruby files that have changed
-    alias rsdiff "git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
-
-    # bundler
-    alias be "bundle exec"
-    # alias ber "bundle exec rspec"
-    alias ber "bundle exec rake"
-
-    # 1password
-    op completion fish | source
-
-    {{ if eq .homeOrWork "work" }}
-    # jira
-    jira completion fish | source
-    {{ end }}
-
-    # TODO: Deactivate for now, until I'm able to install Docker Desktop on Debian
-    # TODO: Figure out if this can also be enabled when using Rancher instead of Docker Desktop
-    # I.e., not sure if completions are included
-    {{ if (and (eq .chezmoi.os "darwin") (eq .homeOrWork "home")) }}
-    # docker
-    docker completion fish | source
-    {{ end }}
-
-    # keepassxc
-    alias kxc keepassxc-cli
-
-    # ollama
-    alias ol ollama
-
-    # drawio
-    alias draw.io "/Applications/draw.io.app/Contents/MacOS/draw.io"
-
-    # direnv
-    direnv hook fish | source
-
-    # browser
-    {{ if eq .chezmoi.os "linux" }}
-    # set -gx BROWSER librewolf
-    set -gx BROWSER qutebrowser
-    {{ end }}
-
-    # secrets
-    if test -f ~/.env.fish
-        source ~/.env.fish
-    else
-        echo "No ~/.env.fish found. Run ~/scripts/export_secrets.sh"
-    end
-
-    # TODO: Create a separate script to export these, similar to how is done in ~/scripts/export_secrets.sh
-    # set jira_data (op item get jira_webpt --fields=hostname,email,api_token --reveal)
-    #
-    # set -gx JIR_API_HOSTNAME (echo "$jira_data" | cut -d ',' -f1)
-    # set -gx JIRA_API_EMAIL (echo "$jira_data" | cut -d ',' -f2)
-    # set -gx JIRA_API_TOKEN (echo "$jira_data" | cut -d ',' -f3)
+# TODO: Create a separate script to export these, similar to how is done in ~/scripts/export_secrets.sh
+# set jira_data (op item get jira_webpt --fields=hostname,email,api_token --reveal)
+#
+# set -gx JIR_API_HOSTNAME (echo "$jira_data" | cut -d ',' -f1)
+# set -gx JIRA_API_EMAIL (echo "$jira_data" | cut -d ',' -f2)
+# set -gx JIRA_API_TOKEN (echo "$jira_data" | cut -d ',' -f3)
 
 end

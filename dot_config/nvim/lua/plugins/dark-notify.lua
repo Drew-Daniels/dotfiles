@@ -16,7 +16,8 @@ return {
 			schemes = {
 				-- light = "zenbones",
 				-- dark = "zenbones",
-				light = "gruvbox",
+				-- light = "gruvbox",
+				light = "catppuccin",
 				dark = "gruvbox",
 			},
 		})
