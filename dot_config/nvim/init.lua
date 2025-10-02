@@ -1,6 +1,7 @@
 require("config.lazy")
 
 if vim.loop.os_uname().sysname == "Linux" then
+	-- TODO: Figure out a way to change between light and dark themes on linux
 	-- can't rely on dark-notify to work on linux
 	vim.cmd("colorscheme gruvbox")
 end

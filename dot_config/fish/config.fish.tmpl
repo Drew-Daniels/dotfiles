@@ -33,7 +33,7 @@ set -l os_theme_query_status $status
 if test $os_theme_query_status -eq 1
     # this setting is only set when using dark mode
     set -gx OS_THEME_DARK 0
-    fish_config theme choose "Solarized Light"
+    fish_config theme choose "ayu Light"
 else
     set -gx OS_THEME_DARK 1
     fish_config theme choose "Base16 Default Dark"
