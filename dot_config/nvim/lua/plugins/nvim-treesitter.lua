@@ -99,6 +99,7 @@ return {
 			"svelte",
 			"swift",
 			"tmux",
+      "xcompose",
 			"xml",
 			"zathurarc",
 			"zig",
