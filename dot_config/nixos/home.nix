@@ -41,7 +41,8 @@
     # https://github.com/NixOS/nixpkgs/pull/423931
     # Power management
     # https://nixos.wiki/wiki/Laptop
-    auto-cpufreq
+    # TODO: Figure out how to share configuration across all linux laptops, rather than configuring this in confiugration.nix just on NixOS
+    # auto-cpufreq
     # espanso-wayland
     # Nix utils
     # For nix-prefetch-git and others

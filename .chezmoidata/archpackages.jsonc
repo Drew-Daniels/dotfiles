@@ -155,6 +155,7 @@
   "aurPackages": [
     "1password",
     "1password-cli",
+    "auto-cpufreq",
     "cljfmt-bin",
     "codelldb-bin",
     "cryptomator-bin",

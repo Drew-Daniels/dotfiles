@@ -24,6 +24,21 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Power Management
+  services.power-profiles-daemon.enable = false;
+  # https://nixos.wiki/wiki/Laptop
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
+
   # Set your time zone.
   # time.timeZone = "America/Chicago";
   # For automatic timezone adjustment: https://discourse.nixos.org/t/timezones-how-to-setup-on-a-laptop/33853/7
