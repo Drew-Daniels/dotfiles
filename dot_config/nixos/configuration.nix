@@ -25,6 +25,13 @@
   networking.networkmanager.enable = true;
 
   # Power Management
+  services.logind.settings.Login = {
+    HandleLidSwitch = "poweroff";
+    HandleLidSwitchExternalPower = "poweroff";
+    HandleLidSwitchDocked = "ignore";
+  };
+  # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
+
   services.power-profiles-daemon.enable = false;
   # https://nixos.wiki/wiki/Laptop
   services.auto-cpufreq.enable = true;
