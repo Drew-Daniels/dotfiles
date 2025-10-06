@@ -297,6 +297,7 @@ assign [app_id="alacritty"] workspace 1
 assign [class="1Password"] workspace 2
 assign [class="obsidian"] workspace 3
 assign [app_id="obsidian"] workspace 3
+assign [app_id="signal"] workspace 4
 assign [class="Signal"] workspace 4
 assign [class="Signal"] workspace 4
 assign [app_id="kiwix"] workspace 5
