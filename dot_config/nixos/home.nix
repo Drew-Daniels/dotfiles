@@ -39,6 +39,9 @@
     # TODO: Re-enable once either of these are merged:
     # https://github.com/NixOS/nixpkgs/pull/328890
     # https://github.com/NixOS/nixpkgs/pull/423931
+    # Power management
+    # https://nixos.wiki/wiki/Laptop
+    auto-cpufreq
     # espanso-wayland
     # Nix utils
     # For nix-prefetch-git and others
