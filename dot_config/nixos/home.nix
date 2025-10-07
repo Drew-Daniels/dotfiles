@@ -169,6 +169,7 @@
     lsd
     pandoc
     unzip
+    nvme-cli
     # diagrams
     # drawio
     # btc
