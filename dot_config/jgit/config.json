@@ -1,0 +1,13 @@
+{
+  "issueTypes": {
+    "Story": "feat",
+    "Bug": "fix",
+    "Task": "feat",
+    "Subtask": "feat"
+  },
+  "accessors": {
+    "commitType": "fields.issuetype.name",
+    "commitScope": "key",
+    "commitDescription": "fields.summary"
+  }
+}
