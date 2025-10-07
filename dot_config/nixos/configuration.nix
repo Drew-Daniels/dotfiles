@@ -25,11 +25,12 @@
   networking.networkmanager.enable = true;
 
   # Power Management
-  services.logind.settings.Login = {
-    HandleLidSwitch = "poweroff";
-    HandleLidSwitchExternalPower = "poweroff";
-    HandleLidSwitchDocked = "ignore";
-  };
+  # NOTE: If I wanted to shut off power everytime lid is closed
+  # services.logind.settings.Login = {
+  #   HandleLidSwitch = "poweroff";
+  #   HandleLidSwitchExternalPower = "poweroff";
+  #   HandleLidSwitchDocked = "ignore";
+  # };
   # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
 
   services.power-profiles-daemon.enable = false;
