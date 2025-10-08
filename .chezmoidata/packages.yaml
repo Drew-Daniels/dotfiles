@@ -193,7 +193,7 @@ packages:
       no_quarantine_casks: []
       casks:
         - '1password-cli'
-        - '1password@nightly'
+        - '1password'
         - 'dbeaver-community'
         - 'drawio'
         - 'espanso'
