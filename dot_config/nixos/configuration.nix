@@ -230,8 +230,11 @@
   };
 
   # List services that you want to enable:
-  # TODO: Need to do some hackery to get this to work: https://discourse.nixos.org/t/thinkpad-x270-fingerprint-reader-support/24177
-  # Have the same sensor model as OP
+  # https://wiki.archlinux.org/title/Fprint
+  # https://fprint.freedesktop.org/supported-devices.html
+  # NOTE: My touchpad is not supported by fprintd - so I can't use this to authenticate
+  # At least on my current NixOS laptop
+  # https://gitlab.freedesktop.org/libfprint/wiki/-/wikis/Unsupported-Devices
   # services.fprintd.enable = true;
 
   # Enable the OpenSSH daemon.
