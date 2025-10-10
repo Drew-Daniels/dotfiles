@@ -82,6 +82,7 @@ packages:
         - 'sevenzip'
         - 'shared-mime-info'
         - 'libheif'
+        - 'jc'
         - 'jdtls'
         - 'jless'
         - 'jq'

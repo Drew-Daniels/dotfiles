@@ -156,6 +156,7 @@
     exfatprogs
     fd
     fzf
+    jc
     hdparm
     ripgrep
     plocate
