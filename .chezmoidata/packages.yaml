@@ -113,6 +113,10 @@ packages:
         - 'sops'
         - 'achannarasappa/tap/ticker'
         - 'hashicorp/tap/terraform'
+        - 'tectonic'
+        - 'tex-fmt'
+        # NOTE: texlive may be unnecessary with tectonic installed, since this handles compilation, which is what I installed texlive for originally
+        - 'texlive'
         - 'tmux'
         - 'tree'
         - 'typescript-language-server'
