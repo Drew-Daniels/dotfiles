@@ -255,6 +255,8 @@
     # Contacts
     abook
     # Editors
+    # NOTE: Need to install nodejs to compile latex parser
+    nodejs_22
     neovim
     vim
     universal-ctags
