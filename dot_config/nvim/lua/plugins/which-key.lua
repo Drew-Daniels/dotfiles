@@ -22,9 +22,9 @@ return {
 				{ "<leader>cq", "<cmd>CBllbox13<cr>", desc = "[q]uoted" },
 				{ "<leader>cr", "<cmd>CBd<cr>", desc = "[r]emove box" },
 			},
-			-- CodeCompanion
-			{ "<leadder>c", group = "CodeCompanion" },
-			{ "<leader>ca", "<cmd>CodeCompanionActions<cr>", desc = "Actions" },
+			-- conform.nvim
+			{ "<leadder>c", group = "conform.nvim" },
+			{ "<leader>ci", "<cmd>ConformInfo<cr>", desc = "info" },
 			-- Chezmoi
 			{ "<leadder>C", group = "Chezmoi" },
 			{ "<leader>Ce", "<cmd>ChezmoiFzf<cr>", desc = "Edit" },
