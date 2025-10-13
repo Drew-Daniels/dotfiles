@@ -289,6 +289,8 @@ exec sway-audio-idle-inhibit
 
 exec kiwix-desktop
 
+exec strawberry
+
 # NOTE: Run swaymsg -t get_tree to see what selectors are available for applications
 # TODO: See if I can use this instead:
 # assign [app_id="$browser"] workspace 1
@@ -302,6 +304,7 @@ assign [class="Signal"] workspace 4
 assign [class="Signal"] workspace 4
 assign [app_id="kiwix"] workspace 5
 assign [class="Kiwix"] workspace 5
+assign [app_id="org.strawberrymusicplayer.strawberry"] workspace 6
 
 font pango:JetBrainsMono Nerd Font 10
 
