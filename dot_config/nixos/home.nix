@@ -264,6 +264,7 @@
     tree-sitter
     texlab
     texliveFull
+    tectonic
     # RSS
     newsraft
     # Networking
