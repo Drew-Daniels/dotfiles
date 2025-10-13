@@ -263,6 +263,7 @@
     nodePackages.live-server
     tree-sitter
     texlab
+    texliveFull
     # RSS
     newsraft
     # Networking
