@@ -136,6 +136,12 @@ return {
 				end,
 				desc = "ToC",
 			},
+			{
+				"<leader>Lc",
+				-- When using 'latexmk' as compiler backend for vimtex, this will automatically recompile upon changes
+				"<cmd>VimtexCompile<cr>",
+				desc = "Continuously Compile",
+			},
 			-- Obsidian
 			{ "<leader>o", group = "Obsidian" },
 			{ "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
