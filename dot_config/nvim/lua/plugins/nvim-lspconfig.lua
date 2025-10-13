@@ -168,6 +168,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("texlab", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("dockerls", {
 			capabilities = capabilities,
 		})
@@ -368,6 +372,7 @@ return {
 			"terraformls",
 			"tflint",
 			"turbo_ls",
+			"texlab",
 			"typos_lsp",
 			"vacuum",
 			"vue_ls",

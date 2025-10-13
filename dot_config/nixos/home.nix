@@ -262,6 +262,7 @@
     universal-ctags
     nodePackages.live-server
     tree-sitter
+    texlab
     # RSS
     newsraft
     # Networking
