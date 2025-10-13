@@ -142,6 +142,12 @@ return {
 				"<cmd>VimtexCompile<cr>",
 				desc = "Continuously Compile",
 			},
+			{ "<leader>Li", "<cmd>VimtexInfo<cr>", desc = "VimtexInfo" },
+			{ "<leader>Ls", "<cmd>VimtexStatus<cr>", desc = "VimtexStatus" },
+			{ "<leader>Lx", "<cmd>VimtexStop<cr>", desc = "VimtexStop" },
+			{ "<leader>Ll", "<cmd>VimtexLog<cr>", desc = "VimtexLog" },
+			{ "<leader>Lr", "<cmd>VimtexReload<cr>", desc = "VimtexReload" },
+			{ "<leader>Lv", "<cmd>VimtexView<cr>", desc = "VimtexView" },
 			-- Obsidian
 			{ "<leader>o", group = "Obsidian" },
 			{ "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
