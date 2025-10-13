@@ -27,6 +27,7 @@ return {
 			-- https://github.com/ravsii/tree-sitter-d2
 			-- "d2",
 			"editorconfig",
+			"latex",
 			"lua",
 			"luadoc",
 			"luap", -- lua_patterns
