@@ -160,7 +160,7 @@
     };
   };
 
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
 
   # Enable sway
   programs.sway.enable = true;
