@@ -372,7 +372,7 @@ return {
 			"terraformls",
 			"tflint",
 			"turbo_ls",
-			"texlab",
+      "texlab",
 			"typos_lsp",
 			"vacuum",
 			"vue_ls",

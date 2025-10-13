@@ -127,6 +127,15 @@ return {
 			{ "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
 			{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
 			{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
+			-- LaTex
+			{ "<leader>L", group = "LaTeX" },
+			{
+				"<leader>Lt",
+				function()
+					return require("vimtex.fzf-lua").run()
+				end,
+				desc = "ToC",
+			},
 			-- Obsidian
 			{ "<leader>o", group = "Obsidian" },
 			{ "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
