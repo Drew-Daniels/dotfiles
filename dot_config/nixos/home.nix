@@ -78,7 +78,8 @@
     alacritty
     # foot
     # Cloud
-    awscli2
+    # TODO: Figure out why this package won't build
+    # awscli2
     fh
     gh
     glab
