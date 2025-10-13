@@ -135,6 +135,7 @@ packages:
         - 'pulumi/tap/pulumi'
         - 'zathura'
         # NOTE: https://github.com/homebrew-zathura/homebrew-zathura?tab=readme-ov-file#install-plugins
+        # NOTE: If I have issues using zathura at some point, follow these uninstall steps and redo the installation steps again to fix: https://github.com/homebrew-zathura/homebrew-zathura?tab=readme-ov-file#uninstall
         - 'zathura-pdf-mupdf'
         # FORMATTERS
         - 'ruff'
