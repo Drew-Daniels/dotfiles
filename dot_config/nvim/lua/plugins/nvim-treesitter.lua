@@ -19,7 +19,7 @@ return {
 			"css",
 			"csv",
 			"tsv",
-			"typst",
+      "typst",
 			"dart",
 			"desktop",
 			"diff",

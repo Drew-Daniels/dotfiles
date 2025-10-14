@@ -180,14 +180,18 @@ return {
 			{ "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
 			{ "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview" },
 			{ "<leader>Rr", "<Plug>RestNvimLast", desc = "Repeat Last" },
+      -- Tinymist
+			{ "<leader>t", group = "Tinymist (Typst LSP)" },
+			-- { "<leader>tp", "<cmd><cr>", desc = "Buffer" },
+			-- { "<leader>tu", "<cmd>FzfLua btags<cr>", desc = "Buffer" },
 			-- Tags
-			{ "<leader>t", group = "Tags" },
-			{ "<leader>tb", "<cmd>FzfLua btags<cr>", desc = "Buffer" },
-			{ "<leader>tv", "<cmd>FzfLua tags_grep_visual<cr>", desc = "Visual selection" },
-			{ "<leader>tw", "<cmd>FzfLua tags_grep_cword<cr>", desc = "'word' under cursor" },
-			{ "<leader>tW", "<cmd>FzfLua tags_grep_cWORD<cr>", desc = "'WORD' under cursor" },
-			{ "<leader>tp", "<cmd>FzfLua tags<cr>", desc = "Project" },
-			{ "<leader>ts", "<cmd>FzfLua tags_live_grep<cr>", desc = "Search" },
+			-- { "<leader>t", group = "Tags" },
+			-- { "<leader>tb", "<cmd>FzfLua btags<cr>", desc = "Buffer" },
+			-- { "<leader>tv", "<cmd>FzfLua tags_grep_visual<cr>", desc = "Visual selection" },
+			-- { "<leader>tw", "<cmd>FzfLua tags_grep_cword<cr>", desc = "'word' under cursor" },
+			-- { "<leader>tW", "<cmd>FzfLua tags_grep_cWORD<cr>", desc = "'WORD' under cursor" },
+			-- { "<leader>tp", "<cmd>FzfLua tags<cr>", desc = "Project" },
+			-- { "<leader>ts", "<cmd>FzfLua tags_live_grep<cr>", desc = "Search" },
 			-- Tabs
 			{ "<leader>T", "<cmd>FzfLua tabs<cr>", desc = "Tabs" },
 			-- URLs

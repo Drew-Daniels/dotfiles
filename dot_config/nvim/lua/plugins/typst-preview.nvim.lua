@@ -10,6 +10,6 @@ return {
 			["websocat"] = vim.fn.exepath("websocat"),
 		},
 		-- NOTE: If using `zathura`
-		open_cmd = "zathura %s",
+		-- open_cmd = "zathura %s",
 	}, -- lazy.nvim will implicitly calls `setup {}`
 }

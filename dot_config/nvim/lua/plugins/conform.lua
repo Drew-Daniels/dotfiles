@@ -133,7 +133,7 @@ return {
 				clojure = { "cljfmt" },
 				python = { "ruff" },
 				terraform = { "terraform_fmt" },
-				-- NOTE: Should be handled through tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#configuration
+        -- NOTE: Should be handled through tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#configuration
 				-- typst = { "typstyle" },
 				yaml = { "yamlfmt" },
 				xml = { "xmlstarlet" },

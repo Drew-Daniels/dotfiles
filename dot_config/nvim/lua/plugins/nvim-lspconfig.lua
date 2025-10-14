@@ -176,6 +176,7 @@ return {
 			capabilities = capabilities,
 			settings = {
 				formatterMode = "typstyle",
+				-- NOTE: Alternative is "onSave"
 				exportPdf = "onType",
 				semanticTokens = "disable",
 			},

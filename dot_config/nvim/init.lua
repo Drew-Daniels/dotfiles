@@ -66,6 +66,30 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	group = "filetype_map",
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("tinymist", {}),
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+		local bufnr = assert(args.buf)
+
+		vim.keymap.set("n", "<leader>tp", function()
+			client:exec_cmd({
+				title = "pin",
+				command = "tinymist.pinMain",
+				arguments = { vim.api.nvim_buf_get_name(0) },
+			}, { bufnr = bufnr })
+		end, { desc = "[T]inymist [P]in", noremap = true })
+
+		vim.keymap.set("n", "<leader>tu", function()
+			client:exec_cmd({
+				title = "unpin",
+				command = "tinymist.pinMain",
+				arguments = { vim.v.null },
+			}, { bufnr = bufnr })
+		end, { desc = "[T]inymist [U]npin", noremap = true })
+	end,
+})
+
 -- ── GENERAL ─────────────────────────────────────────────────────────
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on
