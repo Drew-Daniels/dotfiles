@@ -128,26 +128,26 @@ return {
 			{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
 			{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
 			-- LaTex
-			{ "<leader>L", group = "LaTeX" },
+			{ "<leader>V", group = "LaTeX" },
 			{
-				"<leader>Lt",
+				"<leader>Vt",
 				function()
 					return require("vimtex.fzf-lua").run()
 				end,
 				desc = "ToC",
 			},
 			{
-				"<leader>Lc",
+				"<leader>Vc",
 				-- When using 'latexmk' as compiler backend for vimtex, this will automatically recompile upon changes
 				"<cmd>VimtexCompile<cr>",
-				desc = "Continuously Compile",
+				desc = "VimtexCompile",
 			},
-			{ "<leader>Li", "<cmd>VimtexInfo<cr>", desc = "VimtexInfo" },
-			{ "<leader>Ls", "<cmd>VimtexStatus<cr>", desc = "VimtexStatus" },
-			{ "<leader>Lx", "<cmd>VimtexStop<cr>", desc = "VimtexStop" },
-			{ "<leader>Ll", "<cmd>VimtexLog<cr>", desc = "VimtexLog" },
-			{ "<leader>Lr", "<cmd>VimtexReload<cr>", desc = "VimtexReload" },
-			{ "<leader>Lv", "<cmd>VimtexView<cr>", desc = "VimtexView" },
+			{ "<leader>Vi", "<cmd>VimtexInfo<cr>", desc = "VimtexInfo" },
+			{ "<leader>Vs", "<cmd>VimtexStatus<cr>", desc = "VimtexStatus" },
+			{ "<leader>Vx", "<cmd>VimtexStop<cr>", desc = "VimtexStop" },
+			{ "<leader>Vl", "<cmd>VimtexLog<cr>", desc = "VimtexLog" },
+			{ "<leader>Vr", "<cmd>VimtexReload<cr>", desc = "VimtexReload" },
+			{ "<leader>Vv", "<cmd>VimtexView<cr>", desc = "VimtexView" },
 			-- Obsidian
 			{ "<leader>o", group = "Obsidian" },
 			{ "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
@@ -180,7 +180,7 @@ return {
 			{ "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
 			{ "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview" },
 			{ "<leader>Rr", "<Plug>RestNvimLast", desc = "Repeat Last" },
-      -- Tinymist
+			-- Tinymist
 			{ "<leader>t", group = "Tinymist (Typst LSP)" },
 			-- { "<leader>tp", "<cmd><cr>", desc = "Buffer" },
 			-- { "<leader>tu", "<cmd>FzfLua btags<cr>", desc = "Buffer" },
