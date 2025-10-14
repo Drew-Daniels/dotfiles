@@ -149,6 +149,7 @@
     gitleaks
     mergiraf
     # filesystem
+    lnav
     bat
     bat-extras.prettybat
     bat-extras.batman
@@ -268,6 +269,8 @@
     # NOTE: Included with tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#formatting
     # typstyle
     tinymist
+    # NOTE: Required dependency for chomosuke/typst-preview.nvim
+    websocat
     # RSS
     newsraft
     # Networking
