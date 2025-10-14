@@ -19,7 +19,7 @@ return {
 			"css",
 			"csv",
 			"tsv",
-      "typst",
+			"typst",
 			"dart",
 			"desktop",
 			"diff",
@@ -29,6 +29,7 @@ return {
 			-- "d2",
 			"editorconfig",
 			"latex",
+			"bibtex",
 			"lua",
 			"luadoc",
 			"luap", -- lua_patterns
