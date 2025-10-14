@@ -264,6 +264,10 @@
     tree-sitter
     texlab
     texliveFull
+    typst
+    # NOTE: Included with tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#formatting
+    # typstyle
+    tinymist
     # RSS
     newsraft
     # Networking

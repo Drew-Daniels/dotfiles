@@ -172,6 +172,15 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("tinymist", {
+			capabilities = capabilities,
+			settings = {
+				formatterMode = "typstyle",
+				exportPdf = "onType",
+				semanticTokens = "disable",
+			},
+		})
+
 		vim.lsp.config("dockerls", {
 			capabilities = capabilities,
 		})
@@ -372,7 +381,8 @@ return {
 			"terraformls",
 			"tflint",
 			"turbo_ls",
-      "texlab",
+			"texlab",
+			"tinymist",
 			"typos_lsp",
 			"vacuum",
 			"vue_ls",

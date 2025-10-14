@@ -116,7 +116,7 @@ return {
 				-- typescript = { "biome", "biome-check" },
 				-- javascriptreact = { "biome", "biome-check" },
 				-- typescriptreact = { "biome", "biome-check" },
-        tex = { "tex-fmt" },
+				tex = { "tex-fmt" },
 				toml = { "taplo" },
 				vue = { "eslint_d" },
 				-- vue = { "project_eslint", "fallback_eslint" },
@@ -133,6 +133,8 @@ return {
 				clojure = { "cljfmt" },
 				python = { "ruff" },
 				terraform = { "terraform_fmt" },
+				-- NOTE: Should be handled through tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#configuration
+				-- typst = { "typstyle" },
 				yaml = { "yamlfmt" },
 				xml = { "xmlstarlet" },
 			},
