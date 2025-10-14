@@ -271,6 +271,7 @@
     tinymist
     # NOTE: No jsonresume-theme-* packages are uploaded to nixpkgs, so can't really use this, since it doesn't come with any default theme
     # resumed
+    rendercv
     # NOTE: Required dependency for chomosuke/typst-preview.nvim
     websocat
     # RSS
