@@ -1,5 +1,5 @@
-name: shared-semantic-release
-root: <%= ENV["PROJECTS_DIR"] %>/shared-semantic-release
+name: semantic-release
+root: <%= ENV["PROJECTS_DIR"] %>/semantic-release
 windows:
   - 1)editor:
       layout: main-horizontal
