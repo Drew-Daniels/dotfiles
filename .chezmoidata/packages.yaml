@@ -197,6 +197,8 @@ packages:
         - 'vue-language-server'
         - 'yaml-language-server'
         - 'clojure-lsp'
+        # Required dependencies of yamlresume
+        - 'font-linux-libertine'
       no_quarantine_casks: []
       casks:
         - '1password-cli'
