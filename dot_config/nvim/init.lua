@@ -66,6 +66,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	group = "filetype_map",
 })
 
+-- NOTE: References logic shown here: https://neovim.io/doc/user/lsp.html#lsp-attach
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("tinymist", {}),
 	callback = function(args)
