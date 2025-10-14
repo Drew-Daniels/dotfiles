@@ -197,8 +197,6 @@ packages:
         - 'vue-language-server'
         - 'yaml-language-server'
         - 'clojure-lsp'
-        # Required dependencies of yamlresume
-        - 'font-linux-libertine'
       no_quarantine_casks: []
       casks:
         - '1password-cli'
@@ -208,6 +206,8 @@ packages:
         - 'espanso'
         - 'flutter'
         - 'font-jetbrains-mono-nerd-font'
+        # Required dependency of yamlresume
+        - 'font-linux-libertine'
         - 'google-chrome'
         - 'iterm2'
         - 'itermbrowserplugin'
