@@ -211,6 +211,7 @@ packages:
         - 'google-chrome'
         - 'iterm2'
         - 'itermbrowserplugin'
+        - 'sioyek'
         - 'obs'
         - 'obsidian'
         - 'protonvpn'

@@ -183,6 +183,7 @@
     "tidal-hifi-bin",
     "trezor-suite-appimage",
     "yay",
-    "yay-debug"
+    "yay-debug",
+    "sioyek-git"
   ]
 }
