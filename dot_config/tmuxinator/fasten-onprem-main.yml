@@ -1,0 +1,25 @@
+name: fasten-onprem-main
+root: <%= ENV["PROJECTS_DIR"] %>/fasten-onprem-main
+on_project_stop:
+  - docker compose stop
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - git:
+            - fish
+            - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker compose up

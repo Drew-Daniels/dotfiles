@@ -1,0 +1,9 @@
+name: weechat
+root: "~"
+windows:
+  - weechat:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - weechat:
+            - fish
+            - weechat
