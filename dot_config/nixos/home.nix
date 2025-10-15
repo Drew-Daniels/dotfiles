@@ -65,6 +65,7 @@
     # amfora
     # lagrange
     # Web
+    google-chrome
     firefox
     librewolf
     lynx
