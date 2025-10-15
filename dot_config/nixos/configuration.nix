@@ -32,6 +32,8 @@
   #   HandleLidSwitchDocked = "ignore";
   # };
   # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
+  # Enables NixOS to correctly map shebang lines like `#!/bin/bash` to correct executables
+  services.envfs.enable = true;
 
   services.power-profiles-daemon.enable = false;
   # https://nixos.wiki/wiki/Laptop
