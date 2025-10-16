@@ -88,6 +88,7 @@
     "openvpn",
     "otf-font-awesome",
     "pandoc-cli",
+    "pacman-contrib",
     "pdfjs",
     "plocate",
     "protonmail-bridge",
