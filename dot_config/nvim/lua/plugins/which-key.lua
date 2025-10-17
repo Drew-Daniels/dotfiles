@@ -15,16 +15,19 @@ return {
 			-- nesting so I don't have to repeat the mode
 			{
 				mode = { "n", "v" },
-				{ "<leader>cb", "<cmd>CBccbox<cr>", desc = "[b]ox" },
-				{ "<leader>ct", "<cmd>CBllline<cr>", desc = "[t]itled Line" },
-				{ "<leader>cl", "<cmd>CBline<cr>", desc = "[l]ine" },
-				{ "<leader>cm", "<cmd>CBllbox14<cr>", desc = "[m]arked" },
-				{ "<leader>cq", "<cmd>CBllbox13<cr>", desc = "[q]uoted" },
-				{ "<leader>cr", "<cmd>CBd<cr>", desc = "[r]emove box" },
+				{ "<leader>c", group = "Comment" },
+				{ "<leader>cb", "<cmd>CBccbox<cr>", desc = "Box" },
+				{ "<leader>ct", "<cmd>CBllline<cr>", desc = "Titled Line" },
+				{ "<leader>cl", "<cmd>CBline<cr>", desc = "Line" },
+				{ "<leader>cm", "<cmd>CBllbox14<cr>", desc = "Marked" },
+				{ "<leader>cq", "<cmd>CBllbox13<cr>", desc = "Quoted" },
+				{ "<leader>cr", "<cmd>CBd<cr>", desc = "Remove box" },
 			},
 			-- conform.nvim
-			{ "<leadder>c", group = "conform.nvim" },
-			{ "<leader>ci", "<cmd>ConformInfo<cr>", desc = "info" },
+			{ "<leadder>F", group = "Formatters" },
+			{ "<leader>Fi", "<cmd>ConformInfo<cr>", desc = "Info" },
+			{ "<leader>Fd", "<cmd>FormatDisable<cr>", desc = "Disable" },
+			{ "<leader>Fe", "<cmd>FormatEnable<cr>", desc = "Enable" },
 			-- Chezmoi
 			{ "<leadder>C", group = "Chezmoi" },
 			{ "<leader>Ce", "<cmd>ChezmoiFzf<cr>", desc = "Edit" },
