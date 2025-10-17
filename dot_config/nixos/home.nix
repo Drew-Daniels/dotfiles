@@ -84,6 +84,8 @@
     fh
     gh
     glab
+    forgejo
+    forgejo-cli
     gitlab-ci-ls
     # google-cloud-sdk
     # localstack
