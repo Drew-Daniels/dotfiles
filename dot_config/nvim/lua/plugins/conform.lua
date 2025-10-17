@@ -33,6 +33,34 @@ return {
 		end, {
 			desc = "Re-enable autoformat-on-save",
 		})
+		vim.api.nvim_create_user_command("DiffFormat", function()
+			local lines = vim.fn.system("git diff --unified=0"):gmatch("[^\n\r]+")
+			local ranges = {}
+			for line in lines do
+				if line:find("^@@") then
+					local line_nums = line:match("%+.- ")
+					if line_nums:find(",") then
+						local _, _, first, second = line_nums:find("(%d+),(%d+)")
+						table.insert(ranges, {
+							start = { tonumber(first), 0 },
+							["end"] = { tonumber(first) + tonumber(second), 0 },
+						})
+					else
+						local first = tonumber(line_nums:match("%d+"))
+						table.insert(ranges, {
+							start = { first, 0 },
+							["end"] = { first + 1, 0 },
+						})
+					end
+				end
+			end
+			local format = require("conform").format
+			for _, range in pairs(ranges) do
+				format({
+					range = range,
+				})
+			end
+		end, { desc = "Format changed lines" })
 	end,
 	config = function()
 		---@module "conform"
@@ -40,15 +68,15 @@ return {
 		local opts = {
 			format_after_save = function(bufnr)
 				local ignore_filetypes = { "norg" }
-        -- Do not autoformat on ignored filetypes
+				-- Do not autoformat on ignored filetypes
 				if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
 					return
 				end
-        -- Do not autoformat when autoformatting is disabled globally on on this buffer
+				-- Do not autoformat when autoformatting is disabled globally on on this buffer
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-        -- Do not autoformat when buffer name matches pattern
+				-- Do not autoformat when buffer name matches pattern
 				local bufname = vim.api.nvim_buf_get_name(bufnr)
 				if bufname:match("/pom%.xml$/") then
 					return
