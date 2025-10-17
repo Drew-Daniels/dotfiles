@@ -18,7 +18,7 @@ return {
 		-- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
 		vim.api.nvim_create_user_command("FormatDisable", function(args)
 			if args.bang then
-				-- FormatDisable! will disable formatting just for this buffer
+				-- FormatDisable will disable formatting just for this buffer
 				vim.b.disable_autoformat = true
 			else
 				vim.g.disable_autoformat = true
@@ -40,11 +40,17 @@ return {
 		local opts = {
 			format_after_save = function(bufnr)
 				local ignore_filetypes = { "norg" }
+        -- Do not autoformat on ignored filetypes
 				if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
 					return
 				end
-				-- Disable with a global or buffer-local variable
+        -- Do not autoformat when autoformatting is disabled globally on on this buffer
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return
+				end
+        -- Do not autoformat when buffer name matches pattern
+				local bufname = vim.api.nvim_buf_get_name(bufnr)
+				if bufname:match("/pom%.xml$/") then
 					return
 				end
 			end,
