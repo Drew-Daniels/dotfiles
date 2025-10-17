@@ -147,6 +147,8 @@
     "weechat",
     "wget",
     "wireguard-tools",
+    "syft",
+    "grype-bin",
     // NOTE: Required by wg-quick
     "systemd-resolvconf",
     "wl-clipboard",

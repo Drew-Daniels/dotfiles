@@ -87,6 +87,8 @@ packages:
         - 'hurl'
         - 'sevenzip'
         - 'shared-mime-info'
+        - 'syft'
+        - 'grype'
         - 'libheif'
         - 'jc'
         - 'jdtls'
