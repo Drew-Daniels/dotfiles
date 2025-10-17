@@ -24,7 +24,9 @@ return {
 				{ "<leader>cr", "<cmd>CBd<cr>", desc = "Remove box" },
 			},
 			-- conform.nvim
+      -- TODO: Look into consolidating these keybinds with `<leader>p` since they all handle formatting related things
 			{ "<leadder>F", group = "Formatters" },
+			{ "<leader>Fc", "<cmd>DiffFormat<cr>", desc = "Changed" },
 			{ "<leader>Fi", "<cmd>ConformInfo<cr>", desc = "Info" },
 			{ "<leader>Fd", "<cmd>FormatDisable<cr>", desc = "Disable" },
 			{ "<leader>Fe", "<cmd>FormatEnable<cr>", desc = "Enable" },
