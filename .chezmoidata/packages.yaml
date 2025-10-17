@@ -60,6 +60,8 @@ packages:
         - 'duti'
         - 'fd'
         - 'file-formula'
+        - 'forgejo'
+        # TODO: Eventually install forgejo-cli once available through brew
         - 'ninja'
         - 'ncurses'
         - 'fish'
