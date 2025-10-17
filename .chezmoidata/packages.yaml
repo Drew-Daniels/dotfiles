@@ -18,6 +18,10 @@ packages:
         - 'imagemagick'
         - 'utf8proc'
       brews:
+        # - 'podman'
+        # - 'podman-compose'
+        # - 'podman-tui'
+        - 'dive'
         - 'asciinema'
         - 'ariga/tap/atlas'
         - 'astyle'
@@ -238,9 +242,6 @@ packages:
       casks:
         - 'alex313031-thorium'
         - 'docker-desktop'
-        # - 'podman'
-        # - 'podman-compose'
-        # - 'podman-tui'
         - 'electrum'
         - 'element'
         - 'firefox'
