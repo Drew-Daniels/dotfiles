@@ -238,6 +238,9 @@ packages:
       casks:
         - 'alex313031-thorium'
         - 'docker-desktop'
+        # - 'podman'
+        # - 'podman-compose'
+        # - 'podman-tui'
         - 'electrum'
         - 'element'
         - 'firefox'

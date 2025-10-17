@@ -339,6 +339,11 @@
     rubyPackages_3_4.htmlbeautifier
     rust-analyzer
     docker-compose-language-service
+    # virtualization
+    dive
+    podman-tui
+    # docker-compose
+    podman-compose
     # HTML/CSS/JSON/ESLint lang servers
     vacuum-go
     vscode-langservers-extracted
