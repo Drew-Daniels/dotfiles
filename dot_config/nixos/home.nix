@@ -358,6 +358,7 @@
     bash-language-server
     dockerfile-language-server
     lua-language-server
+    lemminx
     marksman
     yaml-language-server
     taplo

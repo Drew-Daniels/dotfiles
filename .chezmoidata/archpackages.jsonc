@@ -176,6 +176,7 @@
     // "podman-tui",
     "flutter",
     "git-credential-oauth",
+    "lemminx",
     "jdtls",
     // NOTE: Getting error message of: "Error: an unknown flag --ozone-platform-hint=auto"
     // "joplin",

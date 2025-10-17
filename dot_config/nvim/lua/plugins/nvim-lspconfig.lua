@@ -233,6 +233,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("lemminx", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			settings = {
@@ -371,6 +375,7 @@ return {
 			"jsonls",
 			"kotlin_lsp",
 			"kulala_ls",
+      "lemminx",
 			"lua_ls",
 			"marksman",
 			"ruff",

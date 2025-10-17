@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# TODO: Figure out how vscode-xml should be installed on NixOS
+{{ if eq .osid "darwin" -}}
+
+# Where vscode-xml files should be placed for cold storage
+TARGET_FOLDER="$HOME/.config/vscode-xml"
+TARGET_BIN_PATH="$TARGET_FOLDER/lemminx"
+
+if [ ! -f "$TARGET_BIN_PATH" ]; then
+  # Jump
+  cd "$HOME/Downloads" || exit
+
+  # Determine the latest version of the debug adapter available
+  VERSION=$(curl -sL https://api.github.com/repos/redhat-developer/vscode-xml/releases/latest | jq '.tag_name' | sed 's/"//g' | cut -d 'v' -f2)
+
+  # specify name and path of tar.gz
+  ZIP_NAME="lemminx-osx-x86_64.zip"
+  ZIP_PATH="$HOME/Downloads/$ZIP_NAME"
+
+  # Download
+  curl -LO "https://github.com/redhat-developer/vscode-xml/releases/download/${VERSION}/${ZIP_NAME}"
+
+  # Extract
+  unzip "$ZIP_PATH"
+
+  # Where files should be stored after extraction
+  EXTRACTED_PATH="$HOME/Downloads/lemminx-osx-x86_64"
+
+  mkdir -p "$TARGET_FOLDER"
+
+  cp "$EXTRACTED_PATH" "$TARGET_BIN_PATH"
+
+  # Clean up
+  rm -rf "$ZIP_PATH" "$EXTRACTED_PATH"
+
+  # Reset
+  cd "$HOME" || exit
+fi
+
+{{ end -}}

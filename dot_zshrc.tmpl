@@ -85,6 +85,9 @@ compdef _op op
 # direnv
 eval "$(direnv hook zsh)"
 
+# vscode-xml lemminx
+export PATH="$PATH:$HOME/.config/vscode-xml"
+
 # WORK
 {{- if eq .homeOrWork "work" -}}
 # rancher desktop
