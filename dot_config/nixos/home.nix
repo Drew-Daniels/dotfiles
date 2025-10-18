@@ -298,8 +298,7 @@
     swayrbar
     sway-audio-idle-inhibit
     waybar
-    # NOTE: tidal-hifi seems broken - freezes
-    tidal-hifi
+    # tidal-hifi
     # multiplexers
     tmux
     tmuxinator

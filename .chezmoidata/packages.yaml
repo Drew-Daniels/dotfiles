@@ -226,7 +226,7 @@ packages:
         - 'postgres-unofficial'
         - 'postman'
         - 'rectangle'
-        - 'tidal'
+        # - 'tidal'
         - 'zulip'
         - 'zoom'
       mas_apps:

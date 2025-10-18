@@ -189,7 +189,7 @@
     "swayrbar",
     "terraform-ls",
     "tex-fmt",
-    "tidal-hifi-bin",
+    // "tidal-hifi-bin",
     "trezor-suite-appimage",
     "yay",
     "yay-debug",
