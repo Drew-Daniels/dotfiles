@@ -21,6 +21,7 @@ packages:
         # - 'podman'
         # - 'podman-compose'
         # - 'podman-tui'
+        - 'pdfgrep'
         - 'dive'
         - 'asciinema'
         - 'ariga/tap/atlas'

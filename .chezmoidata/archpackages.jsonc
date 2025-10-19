@@ -93,6 +93,7 @@
     "pacman-contrib",
     // "podman",
     // "podman-compose",
+    "pdfgrep",
     "pdfjs",
     "plocate",
     "protonmail-bridge",

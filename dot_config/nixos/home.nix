@@ -152,6 +152,7 @@
     gitleaks
     mergiraf
     # filesystem
+    pdfgrep
     lnav
     bat
     bat-extras.prettybat
