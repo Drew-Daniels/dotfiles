@@ -73,6 +73,10 @@
       {
         "language": "xml",
         "path": "./xml.json"
+      },
+      {
+        "language": "tex",
+        "path": "./tex.json"
       }
     ]
   }
