@@ -125,6 +125,7 @@ packages:
         - 'tex-fmt'
         # NOTE: texlive may be unnecessary with tectonic installed, since this handles compilation, which is what I installed texlive for originally
         - 'texlive'
+        - 'texlab'
         - 'tmux'
         - 'tree'
         - 'typescript-language-server'
