@@ -6,9 +6,6 @@ return {
 		-- vim.g.vimtex_view_method = "zathura"
 		-- NOTE: Using sioyek instead of zathura because it's a more cross-platform friendly alternative
 		vim.g.vimtex_view_method = "sioyek"
-    -- TODO: Figure out why syntex does not appear to work with sioyek, at least on NixOS
-    -- https://gist.github.com/kha-dinh/c8540052854f3c6954b047abd506b799?permalink_comment_id=5004717#gistcomment-5004717
-		-- vim.g.vimtex_callback_progpath = vim.fn.exepath("nvim")
 		-- silence warning that tree-sitter is being used for syntax highlighting
 		vim.g.vimtex_syntax_enabled = 0
 		-- NOTE: 'latexmk' is included with texlive by default, and supports automatic re-compilation upon changes
