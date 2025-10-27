@@ -221,7 +221,7 @@ return {
 			{ "<leader>s", group = "Search" },
 			{ "<leader>sb", "<cmd>FzfLua builtin<cr>", desc = "Builtins" },
 			{ "<leader>sc", "<cmd>FzfLua colorschemes<cr>", desc = "Colorschemes" },
-			{ "<leader>sl", "<cmd>FzfLua grep_last<cr>", desc = "Last" },
+			{ "<leader>sl", "<cmd>FzfLua grep resume=true<cr>", desc = "Last" },
 			{ "<leader>sL", "<cmd>FzfLua grep_loclist<cr>", desc = "Location List" },
 			{ "<leader>sv", "<cmd>FzfLua grep_visual<cr>", desc = "Visual selection" },
 			{ "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "'word' under cursor" },
