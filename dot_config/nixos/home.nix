@@ -180,8 +180,9 @@
     # diagrams
     # drawio
     # btc
-    electrum
-    electrum-ltc
+    # NOTE: CVEs related to Python3 version required in these electrum packages
+    # electrum
+    # electrum-ltc
     trezor-suite
     # security
     yubioath-flutter
