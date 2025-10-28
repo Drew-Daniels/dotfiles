@@ -301,6 +301,7 @@
     sway-audio-idle-inhibit
     waybar
     # tidal-hifi
+    ostui
     # multiplexers
     tmux
     tmuxinator
