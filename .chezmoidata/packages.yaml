@@ -102,6 +102,7 @@ packages:
         - 'ls-lint'
         - 'mas'
         - 'maven'
+        - 'pkg-config'
         - 'mpv'
         - 'gradle'
         - 'mergiraf'
