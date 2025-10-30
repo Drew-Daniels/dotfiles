@@ -240,6 +240,7 @@ packages:
       taps: []
       head_brews: []
       brews:
+        - 'b2-tools'
         - 'streamrip'
         - 'yt-dlp'
       no_quarantine_casks:

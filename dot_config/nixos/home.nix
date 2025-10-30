@@ -81,6 +81,7 @@
     # Cloud
     # TODO: Figure out why this package won't build
     # awscli2
+    backblaze-b2
     fh
     gh
     glab
