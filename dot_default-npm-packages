@@ -31,3 +31,4 @@ gh-actions-language-server
 @commitlint/prompt-cli
 @commitlint/format
 graphql-language-service-cli
+@cucumber/language-server
