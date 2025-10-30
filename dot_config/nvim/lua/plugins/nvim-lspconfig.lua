@@ -43,10 +43,39 @@ return {
 		-- vim.lsp.config("cssmodules_ls", {
 		-- 	capabilities = capabilities,
 		-- })
-		--
-		-- vim.lsp.config("cucumber_language_server", {
-		-- 	capabilities = capabilities,
-		-- })
+
+		vim.lsp.config("cucumber_language_server", {
+			capabilities = capabilities,
+			-- settings = {
+			-- 	['cucumber_language_server'] = {
+			-- 		glue = {
+			-- 			-- Cucumber-JVM
+			-- 			"src/test/**/*.java",
+			-- 			-- Cucumber-Js
+			-- 			"features/**/*.ts",
+			-- 			"test/features/**/*.ts",
+			-- 			"features/**/*.tsx",
+			-- 			"features/**/*.js",
+			-- 			"features/**/*.jsx",
+			-- 			-- Behat
+			-- 			"features/**/*.php",
+			-- 			-- Behave
+			-- 			"features/**/*.py",
+			-- 			-- Pytest-BDD
+			-- 			"tests/**/*.py",
+			-- 			-- Cucumber Rust
+			-- 			"tests/**/*.rs",
+			-- 			"features/**/*.rs",
+			-- 			-- Cucumber-Ruby
+			-- 			"features/**/*.rb",
+			-- 			-- SpecFlow
+			-- 			"*specs*/**/*.cs",
+			-- 			-- Godog
+			-- 			"features/**/*_test.go",
+			-- 		},
+			-- 	},
+			-- },
+		})
 
 		vim.lsp.config("emmet_language_server", {
 			capabilities = capabilities,
@@ -355,7 +384,7 @@ return {
 			-- "prismals",
 			-- "smithy_ls",
 			"vimls",
-			-- "cucumber_language_server",
+			"cucumber_language_server",
 			"bashls",
 			-- Disabling for now since I hardly use Python, and when I do, this gets noisy
 			-- "basedpyright",
@@ -375,7 +404,7 @@ return {
 			"jsonls",
 			"kotlin_lsp",
 			"kulala_ls",
-      "lemminx",
+			"lemminx",
 			"lua_ls",
 			"marksman",
 			"ruff",
