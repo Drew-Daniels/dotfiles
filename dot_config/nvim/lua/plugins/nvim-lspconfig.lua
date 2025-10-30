@@ -46,35 +46,36 @@ return {
 
 		vim.lsp.config("cucumber_language_server", {
 			capabilities = capabilities,
-			-- settings = {
-			-- 	['cucumber_language_server'] = {
-			-- 		glue = {
-			-- 			-- Cucumber-JVM
-			-- 			"src/test/**/*.java",
-			-- 			-- Cucumber-Js
-			-- 			"features/**/*.ts",
-			-- 			"test/features/**/*.ts",
-			-- 			"features/**/*.tsx",
-			-- 			"features/**/*.js",
-			-- 			"features/**/*.jsx",
-			-- 			-- Behat
-			-- 			"features/**/*.php",
-			-- 			-- Behave
-			-- 			"features/**/*.py",
-			-- 			-- Pytest-BDD
-			-- 			"tests/**/*.py",
-			-- 			-- Cucumber Rust
-			-- 			"tests/**/*.rs",
-			-- 			"features/**/*.rs",
-			-- 			-- Cucumber-Ruby
-			-- 			"features/**/*.rb",
-			-- 			-- SpecFlow
-			-- 			"*specs*/**/*.cs",
-			-- 			-- Godog
-			-- 			"features/**/*_test.go",
-			-- 		},
-			-- 	},
-			-- },
+			settings = {
+				cucumber = {
+					glue = {
+						-- Cucumber-JVM
+						"src/test/**/*.java",
+						-- Cucumber-Js
+						"features/**/*.ts",
+						"features/**/*.tsx",
+						"features/**/*.js",
+						"features/**/*.jsx",
+						"step-definitions/**/*.ts",
+						"test/features/**/*.ts",
+						-- Behat
+						"features/**/*.php",
+						-- Behave
+						"features/**/*.py",
+						-- Pytest-BDD
+						"tests/**/*.py",
+						-- Cucumber Rust
+						"tests/**/*.rs",
+						"features/**/*.rs",
+						-- Cucumber-Ruby
+						"features/**/*.rb",
+						-- SpecFlow
+						"*specs*/**/*.cs",
+						-- Godog
+						"features/**/*_test.go",
+					},
+				},
+			},
 		})
 
 		vim.lsp.config("emmet_language_server", {
