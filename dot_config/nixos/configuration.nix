@@ -309,10 +309,14 @@
   services.postgresql = {
     package = pkgs.postgresql_18_jit;
     enable = true;
-    # enableJIT = true;
     ensureUsers = [
       { name = "drew"; }
     ];
+    # enableJIT = true;
+    # Default settings
+    # settings = {
+    #   port = 5432;
+    # };
   };
 
   # This value determines the NixOS release from which the default
