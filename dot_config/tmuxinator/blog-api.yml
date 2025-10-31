@@ -14,4 +14,4 @@ windows:
         - dev:
             - fish
             - cls
-            - node ace serve --hmr
+            - npm run dev
