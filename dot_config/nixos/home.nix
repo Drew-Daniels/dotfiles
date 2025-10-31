@@ -92,7 +92,7 @@
     # localstack
     # pulumi
     # grep
-    # ast-grep
+    ast-grep
     # comby
     # Launchers
     bemenu
