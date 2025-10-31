@@ -1,0 +1,17 @@
+name: blog-api
+root: <%= ENV["PROJECTS_DIR"] %>/blog-api
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
+            - node ace serve
