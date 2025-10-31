@@ -373,6 +373,7 @@
     # https://github.com/NixOS/nixpkgs/issues/417098
     # python313Packages.sqlfmt
     # python311Packages.python-lsp-server
+    python313Packages.pgcli
     vim-language-server
     clojure-lsp
     sqls

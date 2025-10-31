@@ -227,6 +227,7 @@ packages:
         - 'obsidian'
         - 'protonvpn'
         - 'postgres-unofficial'
+        - 'pgcli'
         - 'postman'
         - 'rectangle'
         # - 'tidal'
