@@ -142,6 +142,8 @@
     # clipboard
     cliphist
     wl-clipboard
+    # databases
+    postgrest
     # database clients
     dbeaver-bin
     # git

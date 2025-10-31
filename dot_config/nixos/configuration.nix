@@ -304,6 +304,17 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # https://nixos.wiki/wiki/PostgreSQL
+  # https://wiki.archlinux.org/title/PostgreSQL
+  services.postgresql = {
+    package = pkgs.postgresql_18_jit;
+    enable = true;
+    # enableJIT = true;
+    ensureUsers = [
+      { name = "drew"; }
+    ];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
