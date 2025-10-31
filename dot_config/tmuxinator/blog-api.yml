@@ -14,4 +14,4 @@ windows:
         - dev:
             - fish
             - cls
-            - node ace serve
+            - node ace serve --hmr
