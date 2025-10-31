@@ -129,7 +129,6 @@ packages:
         - 'texlab'
         - 'tmux'
         - 'tree'
-        - 'typescript-language-server'
         - 'typst'
         - 'tinymist'
         - 'uncrustify'
@@ -166,21 +165,11 @@ packages:
         - 'yamlfmt'
         - 'xmlstarlet'
         # LSPs
-        - 'bash-language-server'
         # TODO: Figure the right formula for this
         # - 'clangd'
-        # NOTE: HTML, CSS, ESLint, and JSON LSPs
-        - 'vscode-langservers-extracted'
-        # - 'cssmodules-language-server'
-        # TODO: Create a formula for this
-        # - 'cucumber-language-server'
-        # TODO: Create a formula for this
-        # - 'docker-compose-language-service'
-        - 'dockerfile-language-server'
         - 'gopls'
         - 'rust-analyzer'
         # TODO: Create a formula for this
-        # - 'emmet_language_server'
         - 'lua-language-server'
         - 'marksman'
         # TODO: Formula
