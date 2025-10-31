@@ -146,6 +146,12 @@ vim.filetype.add({
 
 vim.filetype.add({
 	extension = {
+		mdc = "markdown",
+	},
+})
+
+vim.filetype.add({
+	extension = {
 		jira = "jira",
 	},
 })
