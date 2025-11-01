@@ -3,6 +3,10 @@
     "body": "-- TODO: ${0}",
     "prefix": "td"
   },
+  "NOTE": {
+    "body": "-- NOTE: ${0}",
+    "prefix": "nt"
+  },
   "Vim Notify": {
     "body": "vim.notify(\"${0}\", vim.log.levels.INFO)",
     "prefix": "vn"

@@ -126,6 +126,9 @@ return {
 				-- typst = { "typstyle" },
 				yaml = { "yamlfmt" },
 				xml = { "xmlstarlet" },
+        -- NOTE: If I want to use below formatters on every ft
+				-- ["*"] = { "trim_whitespace" },
+        -- NOTE: If I only want to use below formatters on buffer fts that do not have a formatter configured
 				["_"] = { "trim_whitespace" },
 			},
 			formatters = {},
