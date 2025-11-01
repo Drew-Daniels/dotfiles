@@ -14,7 +14,9 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $browser qutebrowser
+# set $browser qutebrowser
+set $browser firefox
+
 set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -323,7 +325,13 @@ bindsym $mod+c           exec swayr execute-swaymsg-command
 # bindsym $mod+Shift+c     exec swayr execute-swayr-command
 bindsym $mod+Space+c     exec swayr execute-swayr-command
 
+{{ if eq .osid "linux-nixos" }}
+exec swaybg --image ~/.config/sway/nixos-bg.png
+{{ else if eq .osid "linux-arch" }}
+exec swaybg --image ~/.config/sway/arch-bg.png
+{{ else }}
 exec swaybg --image ~/.config/sway/background-image
+{{ end }}
 
 exec wl-paste --watch cliphist store
 bindsym Mod1+p exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
