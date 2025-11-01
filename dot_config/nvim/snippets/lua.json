@@ -6,5 +6,9 @@
   "Vim Notify": {
     "body": "vim.notify(\"${0}\", vim.log.levels.INFO)",
     "prefix": "vn"
+  },
+  "Table": {
+    "body": "{ ${0} }",
+    "prefix": "tb"
   }
 }

@@ -132,6 +132,13 @@ return {
 			{ "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
 			{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
 			{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
+      -- nvim-colorizer
+      -- TODO: Come up with a better prefix
+      { "<leader>w", group = "Colorizer" },
+      { "<leader>wa", "<cmd>ColorizerAttachToBuffer<cr>" , desc = "ColorizerAttachToBuffer" },
+      { "<leader>wd", "<cmd>ColorizerDetachToBuffer<cr>" , desc = "ColorizerDetachToBuffer" },
+      { "<leader>wr", "<cmd>ColorizerReloadAllBuffers<cr>" , desc = "ColorizerReloadAllBuffers" },
+      { "<leader>wt", "<cmd>ColorizerToggle<cr>" , desc = "ColorizerToggle" },
 			-- LaTex
 			{ "<leader>V", group = "LaTeX" },
 			{
