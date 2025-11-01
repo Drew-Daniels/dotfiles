@@ -54,7 +54,7 @@ return {
 		---@module "conform"
 		---@type conform.setupOpts
 		local opts = {
-      -- log_level = vim.log.levels.TRACE,
+			-- log_level = vim.log.levels.TRACE,
 			format_after_save = function(bufnr)
 				local ignore_filetypes = { "norg" }
 				-- Do not autoformat on ignored filetypes
@@ -77,7 +77,7 @@ return {
 				cmake = { "gersemi" },
 				cpp = { "clang-format" },
 				-- cpp = { "uncrustify" },
-        -- TODO: Re-enable once this is fixed: https://github.com/antham/ghokin/issues/76#issuecomment-3474465409
+				-- TODO: Re-enable once this is fixed: https://github.com/antham/ghokin/issues/76#issuecomment-3474465409
 				-- cucumber = { "ghokin" },
 				cucumber = { "reformat-gherkin" },
 				d2 = { "d2" },
@@ -126,6 +126,7 @@ return {
 				-- typst = { "typstyle" },
 				yaml = { "yamlfmt" },
 				xml = { "xmlstarlet" },
+				["_"] = { "trim_whitespace" },
 			},
 			formatters = {},
 		}
