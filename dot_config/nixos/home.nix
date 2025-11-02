@@ -355,7 +355,6 @@
     vscode-langservers-extracted
     typescript-language-server
     vue-language-server
-    vtsls
     ruff
     nil
     nixpacks

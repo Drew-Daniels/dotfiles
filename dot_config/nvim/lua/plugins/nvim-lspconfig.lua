@@ -11,6 +11,8 @@ return {
 			use_flat_config = true
 		end
 
+    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vue_ls
+    -- https://github.com/vuejs/language-tools/wiki/Neovim#configuration
 		local vue_language_server_path = vim.fn.exepath("vue-language-server")
 		local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 
@@ -20,20 +22,6 @@ return {
 			languages = { "vue" },
 			configNamespace = "typescript",
 		}
-
-		-- local vtsls_config = {
-		-- 	settings = {
-		-- 		vtsls = {
-		-- 			tsserver = {
-		-- 				globalPlugins = {
-		-- 					vue_plugin,
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	},
-		-- 	filetypes = tsserver_filetypes,
-		-- 	capabilities = capabilities,
-		-- }
 
 		local ts_ls_config = {
 			init_options = {
@@ -48,7 +36,6 @@ return {
 		-- If you are on most recent `nvim-lspconfig`
 		local vue_ls_config = {}
 
-		-- vim.lsp.config('vtsls', vtsls_config)
 		vim.lsp.config("vue_ls", vue_ls_config)
 		vim.lsp.config("ts_ls", ts_ls_config)
 
@@ -450,7 +437,6 @@ return {
 			"graphql",
 			"gh_actions_ls",
 			"ts_ls",
-			-- "vtsls",
 			"vue_ls",
 		})
 	end,
