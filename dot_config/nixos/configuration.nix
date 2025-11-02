@@ -205,16 +205,24 @@
     enable = true;
     defaultApplications = {
       "application/pdf" = "org.pwmt.zathura.desktop";
+      # FIREFOX
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+      # LIBREWOLF
       # "text/html" = "librewolf.desktop";
       # "x-scheme-handler/http" = "librewolf.desktop";
       # "x-scheme-handler/https" = "librewolf.desktop";
       # "x-scheme-handler/about" = "librewolf.desktop";
       # "x-scheme-handler/unknown" = "librewolf.desktop";
-      "text/html" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+      # QUTEBROWSER
+      # "text/html" = "org.qutebrowser.qutebrowser.desktop";
+      # "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+      # "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+      # "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+      # "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
     };
   };
 
