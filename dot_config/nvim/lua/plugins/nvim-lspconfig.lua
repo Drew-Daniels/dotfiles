@@ -11,6 +11,47 @@ return {
 			use_flat_config = true
 		end
 
+		local vue_language_server_path = vim.fn.exepath("vue-language-server")
+		local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+
+		local vue_plugin = {
+			name = "@vue/typescript-plugin",
+			location = vue_language_server_path,
+			languages = { "vue" },
+			configNamespace = "typescript",
+		}
+
+		-- local vtsls_config = {
+		-- 	settings = {
+		-- 		vtsls = {
+		-- 			tsserver = {
+		-- 				globalPlugins = {
+		-- 					vue_plugin,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	filetypes = tsserver_filetypes,
+		-- 	capabilities = capabilities,
+		-- }
+
+		local ts_ls_config = {
+			init_options = {
+				plugins = {
+					vue_plugin,
+				},
+			},
+			filetypes = tsserver_filetypes,
+			capabilities = capabilities,
+		}
+
+		-- If you are on most recent `nvim-lspconfig`
+		local vue_ls_config = {}
+
+		-- vim.lsp.config('vtsls', vtsls_config)
+		vim.lsp.config("vue_ls", vue_ls_config)
+		vim.lsp.config("ts_ls", ts_ls_config)
+
 		vim.lsp.config("ast_grep", {
 			capabilities = capabilities,
 		})
@@ -178,22 +219,6 @@ return {
 		-- 	},
 		-- })
 
-		-- https://docs.deno.com/runtime/getting_started/setup_your_environment/#neovim-0.6%2B-using-the-built-in-language-server
-		vim.lsp.config("ts_ls", {
-			init_options = {
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-						-- TODO: Look at adding javascriptreact and typescriptreact as additional filestypes
-						languages = { "javascript", "typescript", "vue" },
-					},
-				},
-			},
-			root_markers = { "package.json" },
-			single_file_support = false,
-		})
-
 		vim.lsp.config("turbo_ls", {
 			capabilities = capabilities,
 		})
@@ -319,10 +344,6 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("vue_ls", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("yamlls", {
 			capabilities = capabilities,
 			settings = {
@@ -392,7 +413,6 @@ return {
 			"clojure_lsp",
 			"cssls",
 			"taplo",
-			"ts_ls",
 			"dartls",
 			-- "denols",
 			"dockerls",
@@ -421,7 +441,6 @@ return {
 			"tinymist",
 			"typos_lsp",
 			"vacuum",
-			"vue_ls",
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
@@ -430,6 +449,9 @@ return {
 			"gitlab_ci_ls",
 			"graphql",
 			"gh_actions_ls",
+			"ts_ls",
+			-- "vtsls",
+			"vue_ls",
 		})
 	end,
 }
