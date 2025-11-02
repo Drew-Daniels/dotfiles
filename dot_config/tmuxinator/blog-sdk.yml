@@ -1,0 +1,17 @@
+name: blog-sdk
+root: <%= ENV["PROJECTS_DIR"] %>/blog-sdk
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
+            - npm run dev

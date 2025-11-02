@@ -1,5 +1,5 @@
-name: blog-client
-root: <%= ENV["PROJECTS_DIR"] %>/blog-client
+name: blog-site
+root: <%= ENV["PROJECTS_DIR"] %>/blog-site
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>
