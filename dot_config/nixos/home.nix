@@ -244,6 +244,7 @@
     # NOTE: Not sure if 'gcc' needs to be installed at a user-level
     gcc
     # lua51Packages.tree-sitter-norg
+    lua5_1
     luajitPackages.luarocks
     gnumake42
     # VOIP
