@@ -369,6 +369,7 @@
     taplo
     tflint
     emmet-language-server
+    vue-language-server
     # TODO: Figure out which one of these Python packages has a dependency issue causing a similar error to this:
     # https://github.com/NixOS/nixpkgs/issues/417098
     # python313Packages.sqlfmt

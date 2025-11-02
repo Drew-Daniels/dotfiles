@@ -11,6 +11,10 @@ return {
 			use_flat_config = true
 		end
 
+    vim.lsp.config("vue_ls", {
+      capabilities = capabilities,
+    })
+
 		vim.lsp.config("ast_grep", {
 			capabilities = capabilities,
 		})
@@ -408,6 +412,7 @@ return {
 			"gitlab_ci_ls",
 			"graphql",
 			"gh_actions_ls",
+      "vue_ls"
 		})
 	end,
 }
