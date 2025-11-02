@@ -109,6 +109,7 @@ return {
 				tex = { "tex-fmt" },
 				toml = { "taplo" },
 				vue = { "eslint_d" },
+				svelte = { "eslint_d", "prettierd" },
 				css = { "prettierd" },
 				less = { "prettierd" },
 				scss = { "prettierd" },
@@ -126,9 +127,9 @@ return {
 				-- typst = { "typstyle" },
 				yaml = { "yamlfmt" },
 				xml = { "xmlstarlet" },
-        -- NOTE: If I want to use below formatters on every ft
+				-- NOTE: If I want to use below formatters on every ft
 				-- ["*"] = { "trim_whitespace" },
-        -- NOTE: If I only want to use below formatters on buffer fts that do not have a formatter configured
+				-- NOTE: If I only want to use below formatters on buffer fts that do not have a formatter configured
 				["_"] = { "trim_whitespace" },
 			},
 			formatters = {},
