@@ -52,6 +52,10 @@ return {
 		vim.lsp.config("vue_ls", vue_ls_config)
 		vim.lsp.config("ts_ls", ts_ls_config)
 
+		vim.lsp.config("svelte", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("ast_grep", {
 			capabilities = capabilities,
 		})
@@ -451,6 +455,8 @@ return {
 			"gh_actions_ls",
 			"ts_ls",
 			"vue_ls",
+			-- TODO: Ensure svelte-language-server can be installed on NixOS
+			-- "svelte",
 		})
 	end,
 }
