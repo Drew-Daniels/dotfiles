@@ -14,7 +14,7 @@ live-server
 eslint_d
 @fsouza/prettierd
 vscode-langservers-extracted
-vue-language-server
+@vue/language-server
 tailwindcss-language-server
 bash-language-server
 dockerfile-language-server-nodejs
