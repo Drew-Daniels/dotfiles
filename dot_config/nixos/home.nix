@@ -369,6 +369,9 @@
     taplo
     tflint
     emmet-language-server
+    # Library that wraps tsserver such that it supports the LSP protocol - alternatives are vtsls or typescript-tools.nvim
+    # typescript-tools.nvim does not currently support vue integration however, so ts_ls or vtsls are the only available options at the moment
+    typescript-language-server
     vue-language-server
     # TODO: Figure out which one of these Python packages has a dependency issue causing a similar error to this:
     # https://github.com/NixOS/nixpkgs/issues/417098
