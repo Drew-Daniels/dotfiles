@@ -353,8 +353,6 @@
     # HTML/CSS/JSON/ESLint lang servers
     vacuum-go
     vscode-langservers-extracted
-    typescript-language-server
-    vue-language-server
     ruff
     nil
     nixpacks
