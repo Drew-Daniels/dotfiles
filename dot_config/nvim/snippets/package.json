@@ -19,6 +19,10 @@
         "path": "./sh.json"
       },
       {
+        "language": "cucumber",
+        "path": "./cucumber.json"
+      },
+      {
         "language": "yaml",
         "path": "./yaml.json"
       },
