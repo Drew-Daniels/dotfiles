@@ -11,7 +11,6 @@ return {
 			use_flat_config = true
 		end
 
-		-- NOTE: Does this path matter?
 		local vue_language_server_path = vim.fn.exepath("vue-language-server")
 		local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 		local vue_plugin = {
