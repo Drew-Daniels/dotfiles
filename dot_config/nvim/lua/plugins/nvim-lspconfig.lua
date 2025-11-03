@@ -454,8 +454,7 @@ return {
 			"gh_actions_ls",
 			"ts_ls",
 			"vue_ls",
-			-- TODO: Ensure svelte-language-server can be installed on NixOS
-			-- "svelte",
+			"svelte",
 		})
 	end,
 }
