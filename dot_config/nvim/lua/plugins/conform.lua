@@ -70,6 +70,7 @@ return {
 				if bufname:match("/pom%.xml$/") then
 					return
 				end
+				return { timeout_ms = 500, lsp_format = "fallback" }
 			end,
 			formatters_by_ft = {
 				bzl = { "buildifier" },
