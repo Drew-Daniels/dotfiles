@@ -1,0 +1,16 @@
+name: medplum
+root: <%= ENV["PROJECTS_DIR"] %>/medplum
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
