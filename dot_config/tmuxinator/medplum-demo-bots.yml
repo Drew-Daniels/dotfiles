@@ -14,4 +14,3 @@ windows:
         - dev:
             - fish
             - cls
-            - npm run dev
