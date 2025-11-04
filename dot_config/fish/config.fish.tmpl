@@ -19,7 +19,7 @@ if status is-interactive
             # homebrew
             fish_add_path /opt/homebrew/bin
             fish_add_path /usr/local/sbin
-            
+
             # vscode-xml lemminx
             fish_add_path "$HOME/.config/vscode-xml"
 
@@ -121,6 +121,10 @@ if status is-interactive
     # bat
     alias man="batman"
     alias pb="prettybat"
+
+    {{ if eq .chezmoi.os "darwin" }}
+    alias bat "bat --theme auto:system --theme-dark 'gruvbox-dark' --theme-light 'Catppuccin Latte'"
+    {{ end }}
 
     # lsd
     alias ls="lsd"
