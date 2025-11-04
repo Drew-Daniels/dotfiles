@@ -56,6 +56,7 @@ return {
 			"jq",
 			"json",
 			"jsonc",
+			"json5",
 			"just",
 			"kotlin",
 			"markdown",
