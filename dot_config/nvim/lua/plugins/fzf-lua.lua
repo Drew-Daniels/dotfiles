@@ -11,5 +11,13 @@ return {
 			-- rg_opts = "--column --line-number --no-heading --color=always --smart-case",
 			RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
 		},
+		-- https://github.com/ibhagwan/fzf-lua/wiki#how-do-i-send-all-grep-results-to-quickfix-list
+		keymap = {
+			fzf = {
+				true,
+				-- Use <c-q> to select all items and add them to the quickfix list
+				["ctrl-q"] = "select-all+accept",
+			},
+		},
 	},
 }
