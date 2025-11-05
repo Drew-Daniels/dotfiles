@@ -1,0 +1,17 @@
+name: medplum-eligibility-demo
+root: <%= ENV["PROJECTS_DIR"] %>/medplum-eligibility-demo
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
+            - npm run dev

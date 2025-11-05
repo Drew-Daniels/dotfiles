@@ -1,0 +1,17 @@
+name: medplum-smart-on-fhir-demo
+root: <%= ENV["PROJECTS_DIR"] %>/medplum-smart-on-fhir-demo
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
+            - npm run dev
