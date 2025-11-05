@@ -1,0 +1,17 @@
+name: medplum-provider-repro
+root: <%= ENV["PROJECTS_DIR"] %>/medplum-provider-repro
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls
+            - npm run dev
