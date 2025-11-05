@@ -204,6 +204,7 @@
     pwgen
     libsecret
     rusty-diceware
+    trufflehog
     # books
     foliate
     hunspell

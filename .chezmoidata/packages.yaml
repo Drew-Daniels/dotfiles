@@ -129,6 +129,7 @@ packages:
         - 'texlab'
         - 'tmux'
         - 'tree'
+        - 'trufflehog'
         - 'typst'
         - 'tinymist'
         - 'uncrustify'
