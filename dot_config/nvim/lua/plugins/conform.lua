@@ -89,12 +89,13 @@ return {
 				ruby = { "standardrb" },
 				rust = { "rustfmt" },
 				eruby = { "htmlbeautifier" },
-        -- NOTE: Disabling until I can figure out why conform.nvim is using fish_ident as formatter for .fish.tmpl files
-        -- Causes fish.config.tmpl to become incorrectly formatted because fish_indent doesnt' understand template interpolation syntax
+				-- NOTE: Disabling until I can figure out why conform.nvim is using fish_ident as formatter for .fish.tmpl files
+				-- Causes fish.config.tmpl to become incorrectly formatted because fish_indent doesnt' understand template interpolation syntax
 				-- fish = { "fish_indent" },
 				go = { "gci", "golines", "gofmt" },
 				templ = { "templ" },
 				json = { "jq" },
+				json5 = { "fixjson" },
 				query = { "format-queries" },
 				sh = { "shfmt", "shellcheck" },
 				sql = { "sqlfmt" },

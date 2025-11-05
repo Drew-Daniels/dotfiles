@@ -317,6 +317,7 @@
     # Fonts
     nerd-fonts.jetbrains-mono
     # Formatters & LSPs
+    fixjson
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
     # TODO: cssmodules_ls
     # TODO: cucumber_language_server
