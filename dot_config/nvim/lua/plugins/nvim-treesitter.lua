@@ -7,6 +7,7 @@ return {
 	opts = {
 		ensure_installed = {
 			"angular",
+			"bp",
 			"c",
 			-- NOTE: Seems like this is broken
 			-- "make",
