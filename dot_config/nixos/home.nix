@@ -50,6 +50,7 @@
     # For nix-prefetch-git and others
     nix-prefetch-scripts
     # CLI
+    hexo-cli
     hexyl
     # Android
     apksigner
