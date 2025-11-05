@@ -1,5 +1,5 @@
-name: medplum-proxy-api-demo
-root: <%= ENV["PROJECTS_DIR"] %>/medplum-proxy-api-demo
+name: medplum-full-stack
+root: <%= ENV["PROJECTS_DIR"] %>/medplum-full-stack
 windows:
   - 1)editor:
       layout: <%= ENV["MUX_LAYOUT"] %>
@@ -14,7 +14,6 @@ windows:
         - dev:
             - fish
             - cls
-            - npm run dev
   - 2)stack:
       layout: main-horizontal
       panes:
