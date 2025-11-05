@@ -21,7 +21,7 @@ vim.api.nvim_create_user_command("SU", function(opts)
 		print("Invalid date")
 		return
 	end
-	vim.cmd("e ~/projects/work_notes/su/2024/" .. date .. ".norg")
+	vim.cmd("e ~/projects/work_notes/su/2025/" .. date .. ".norg")
 end, { range = false, nargs = 1 })
 
 vim.api.nvim_create_user_command("Project", function(opts)
