@@ -279,6 +279,7 @@
     texliveFull
     typst
     # NOTE: Included with tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#formatting
+    nginx-config-formatter
     # typstyle
     tinymist
     # NOTE: No jsonresume-theme-* packages are uploaded to nixpkgs, so can't really use this, since it doesn't come with any default theme
