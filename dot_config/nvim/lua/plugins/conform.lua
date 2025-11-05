@@ -95,6 +95,7 @@ return {
 				go = { "gci", "golines", "gofmt" },
 				templ = { "templ" },
 				json = { "jq" },
+				jsonc = { "jq" },
 				json5 = { "fixjson" },
 				query = { "format-queries" },
 				sh = { "shfmt", "shellcheck" },
