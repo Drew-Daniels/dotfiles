@@ -14,3 +14,5 @@ windows:
         - dev:
             - fish
             - cls
+            - hexo server
+            # - hexo server --open
