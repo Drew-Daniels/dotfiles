@@ -52,6 +52,7 @@ return {
 			"php",
 			"phpdoc",
 			"printf",
+			"properties",
 			"javascript",
 			"jsdoc",
 			"jq",
