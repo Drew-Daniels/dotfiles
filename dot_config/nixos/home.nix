@@ -320,6 +320,7 @@
     # Fonts
     nerd-fonts.jetbrains-mono
     # Formatters & LSPs
+    biome
     fixjson
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
     # TODO: cssmodules_ls
