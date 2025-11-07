@@ -4,8 +4,12 @@
     "prefix": "td",
     "description": "Create a TODO"
   },
-  "Insert Mux Projects Dir": {
+  "Insert Mux Projects Dir ERB": {
     "prefix": "projectsdir",
     "body": "<%= ENV[\"PROJECTS_DIR\"] %>/${0}"
+  },
+  "Insert Mux Layout ERB": {
+    "prefix": "muxlayout",
+    "body": "<%= ENV[\"MUX_LAYOUT\"] %>${0}"
   }
 }
