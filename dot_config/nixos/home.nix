@@ -353,8 +353,10 @@
     rust-analyzer
     docker-compose-language-service
     # virtualization
+    # https://github.com/containers/podman/blob/905721cae54adb755605a545fb2c6a5dd6404b1a/docs/tutorials/rootless_tutorial.md
     criu
     passt
+    shadow
     dive
     podman-tui
     # docker-compose

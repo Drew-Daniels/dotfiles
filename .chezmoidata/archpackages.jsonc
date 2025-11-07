@@ -103,6 +103,7 @@
     // "podman-compose",
     "criu",
     "passt",
+    "shadow",
     "pdfgrep",
     "pdfjs",
     "plocate",
