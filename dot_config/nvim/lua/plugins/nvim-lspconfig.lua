@@ -383,6 +383,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("nushell", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("zls", {
 			capabilities = capabilities,
 		})
@@ -448,6 +452,7 @@ return {
 			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
 			"nickel_ls",
+			"nushell",
 			"zls",
 			"gitlab_ci_ls",
 			"graphql",

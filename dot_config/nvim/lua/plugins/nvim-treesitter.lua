@@ -66,6 +66,7 @@ return {
 			"meson",
 			"muttrc",
 			"ninja",
+			"nu",
 			"regex",
 			"ruby",
 			"rust",
