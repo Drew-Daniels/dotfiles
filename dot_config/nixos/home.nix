@@ -64,6 +64,7 @@
     starship
     # Shells
     fish
+    nushell
     # Gemini Protocol
     # amfora
     # lagrange

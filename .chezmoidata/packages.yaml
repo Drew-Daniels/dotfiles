@@ -67,6 +67,7 @@ packages:
         - 'ninja'
         - 'ncurses'
         - 'fish'
+        - 'nushell'
         - 'fzf'
         - 'gdb'
         - 'gh'
