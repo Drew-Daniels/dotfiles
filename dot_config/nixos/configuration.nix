@@ -317,9 +317,6 @@
   services.postgresql = {
     package = pkgs.postgresql_18_jit;
     enable = true;
-    ensureUsers = [
-      { name = "drew"; }
-    ];
     # enableJIT = true;
     # Default settings
     # settings = {
