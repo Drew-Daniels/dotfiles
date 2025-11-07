@@ -20,4 +20,3 @@ windows:
         - stack:
             - fish
             - cls
-            # - npm run start

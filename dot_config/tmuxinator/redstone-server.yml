@@ -22,4 +22,3 @@ windows:
         - stack:
             - fish
             - cls
-            - docker compose up
