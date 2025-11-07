@@ -1,6 +1,10 @@
 {
   "TODO": {
-    "body": "- [ ] ${0}",
-    "prefix": "td"
+    "prefix": "td",
+    "body": "- [ ] ${0}"
+  },
+  "Before vs. After Table": {
+    "prefix": "bfa",
+    "body": "| Before | After |\n| --- | --- |\n|  |  |"
   }
 }
