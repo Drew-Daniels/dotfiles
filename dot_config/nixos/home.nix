@@ -353,6 +353,8 @@
     rust-analyzer
     docker-compose-language-service
     # virtualization
+    criu
+    passt
     dive
     podman-tui
     # docker-compose

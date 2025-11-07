@@ -101,6 +101,8 @@
     "pacman-contrib",
     // "podman",
     // "podman-compose",
+    "criu",
+    "passt",
     "pdfgrep",
     "pdfjs",
     "plocate",
