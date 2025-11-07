@@ -18,10 +18,6 @@ packages:
         - 'imagemagick'
         - 'utf8proc'
       brews:
-        # - 'podman'
-        # - 'podman-compose'
-        # - 'podman-tui'
-        - 'passt'
         - 'pdfgrep'
         - 'dive'
         - 'asciinema'
@@ -233,6 +229,9 @@ packages:
       head_brews: []
       brews:
         - 'b2-tools'
+        - 'podman'
+        - 'podman-compose'
+        - 'podman-tui'
         - 'streamrip'
         - 'yt-dlp'
       no_quarantine_casks:
