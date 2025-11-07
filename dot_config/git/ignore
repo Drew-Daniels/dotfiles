@@ -6,8 +6,8 @@ node_modules
 .clj-kondo
 .lsp
 .conform.*
-.mise.local.toml
-.mise.*.local.toml
+mise.local.toml
+mise.*.local.toml
 1Password
 KDE
 Trolltech.conf
