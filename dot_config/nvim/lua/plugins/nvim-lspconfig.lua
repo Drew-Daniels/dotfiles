@@ -387,6 +387,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		-- TODO: Figure out how to install on NixOS
+		-- vim.lsp.config("nxls", {
+		-- 	capabilities = capabilities,
+		-- })
+
 		vim.lsp.config("zls", {
 			capabilities = capabilities,
 		})
@@ -453,6 +458,7 @@ return {
 			"nil_ls",
 			"nickel_ls",
 			"nushell",
+			-- "nxls",
 			"zls",
 			"gitlab_ci_ls",
 			"graphql",

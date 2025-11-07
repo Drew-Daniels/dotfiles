@@ -321,6 +321,9 @@
     # Fonts
     nerd-fonts.jetbrains-mono
     # Formatters & LSPs
+    # TODO: Create NixOS package for this
+    # https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nxls
+    # nxls
     biome
     fixjson
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
