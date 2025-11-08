@@ -282,7 +282,8 @@
     texliveFull
     typst
     # NOTE: Included with tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#formatting
-    nufmt
+    # NOTE: 'nufmt' still in alpha state: https://github.com/nushell/nufmt/issues/62
+    # nufmt
     nginx-config-formatter
     # typstyle
     tinymist

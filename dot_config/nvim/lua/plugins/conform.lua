@@ -125,6 +125,8 @@ return {
 				makefile = { "bake" },
 				nix = { "nixfmt" },
 				nginx = { "nginxfmt" },
+				-- NOTE: 'nufmt' is still in alpha state: https://github.com/nushell/nufmt/issues/62
+				-- nu = { "nufmt" },
 				norg = { "typos-lsp" },
 				clojure = { "cljfmt" },
 				python = { "ruff" },
