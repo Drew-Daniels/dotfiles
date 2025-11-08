@@ -43,6 +43,10 @@
         "path": "./json.json"
       },
       {
+        "language": "jsonc",
+        "path": "./jsonc.json"
+      },
+      {
         "language": "fish",
         "path": "./fish.json"
       },

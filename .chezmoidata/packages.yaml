@@ -68,6 +68,8 @@ packages:
         - 'ncurses'
         - 'fish'
         - 'nushell'
+        # TODO: Create homebrew formula
+        # - 'nufmt'
         - 'fzf'
         - 'gdb'
         - 'gh'

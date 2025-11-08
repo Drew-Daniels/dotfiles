@@ -1,0 +1,11 @@
+{
+  "Property": {
+    "body": "\"${0}\": ${1}",
+    "prefix": "pr",
+    "description": "A JSON Object Property"
+  },
+  "TODO": {
+    "body": "// TODO: ${0}",
+    "prefix": "td"
+  }
+}
