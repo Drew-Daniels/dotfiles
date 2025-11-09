@@ -98,17 +98,34 @@
     enable = true;
   };
 
+  # https://nixos.wiki/wiki/Printing
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "EPSON_ET-2800_Series";
+        location = "Dallas";
+        # NOTE: Find deviceUri by running 'lpstat -v'
+        # EXAMPLES: https://mynixos.com/nixpkgs/option/hardware.printers.ensurePrinters.*.deviceUri
+        deviceUri = "ipp://EPSON16176C.local:631/ipp/print";
+        model = "drv:///cupsfilters.drv/pwgrast.ppd";
+      }
+    ];
+    ensureDefaultPrinter = "EPSON_ET-2800_Series";
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   security.rtkit.enable = true;
   services.avahi = {
-    enable = true;
     # Enables finding local network devices
     # https://wiki.nixos.org/wiki/Printing
     # https://wiki.archlinux.org/title/CUPS/Troubleshooting
+    enable = true;
     nssmdns4 = true;
+    # TODO: Need to look into implications of below
+    # openFirewall = true;
   };
   services.pipewire = {
     enable = true;
