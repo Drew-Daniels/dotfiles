@@ -1,19 +1,32 @@
-name: <%= @args[0] %>
-# usage: 
-# cd foo
-# tmuxinator start project foo
+# Generic tmuxinator config for creating throwaway tmux sessions using a pre-configured layout
+# https://github.com/tmuxinator/tmuxinator?tab=readme-ov-file#erb
 
+# Start usage: 
+# mux project -n ublock d=uBlock
+
+# Stop usage:
+# tmux kill-session -t ublock
+
+# NOTE: Assuming ~/projects/uBlock exists
+name: project
+root: ~/projects/<%= @settings["d"] %>
 windows:
-  - root:
-      layout: <%= ENV["MUX_LAYOUT"] %>
+  - 1)editor:
+      layout: main-horizontal
       panes:
         - editor:
             - fish
             - cls
             - nvim
-        - dev:
+        - cmd1:
             - fish
             - cls
-        - cmd:
+        - cmd2:
+            - fish
+            - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
             - fish
             - cls

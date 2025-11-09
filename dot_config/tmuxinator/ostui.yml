@@ -1,9 +1,0 @@
-name: ostui
-root: "~"
-windows:
-  - ostui:
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - ostui:
-            - fish
-            - ostui
