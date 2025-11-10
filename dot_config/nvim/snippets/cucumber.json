@@ -15,7 +15,7 @@
   },
   "Background": {
     "prefix": "background",
-    "body": "Background:\n"
+    "body": "Background:\n\t"
   },
   "Rule": {
     "prefix": "rule",
