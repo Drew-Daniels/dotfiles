@@ -323,6 +323,7 @@
     # Fonts
     nerd-fonts.jetbrains-mono
     # Formatters & LSPs
+    codebook
     # TODO: Create NixOS package for this
     # https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nxls
     # nxls

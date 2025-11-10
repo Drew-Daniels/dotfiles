@@ -39,6 +39,7 @@ packages:
         - 'bazel'
         - 'cairo'
         - 'cljfmt'
+        - 'codebook-lsp'
         - 'harfbuzz'
         - 'hexyl'
         - 'chafa'
