@@ -238,6 +238,8 @@ packages:
         - 'podman-tui'
         - 'streamrip'
         - 'yt-dlp'
+        # DICOM Viewer: https://weasis.org/en/index.html
+        - 'weasis'
       no_quarantine_casks:
         - 'librewolf'
       casks:

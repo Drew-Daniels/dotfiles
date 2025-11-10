@@ -210,6 +210,7 @@
     "trufflehog",
     "yay",
     "yay-debug",
-    "sioyek-git"
+    "sioyek-git",
+    "weasis-bin"
   ]
 }

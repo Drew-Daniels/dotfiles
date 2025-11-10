@@ -406,6 +406,9 @@
     pciutils
     # Music
     mixxx
+    # Medical
+    # DICOM Viewer: https://weasis.org/en/index.html
+    weasis
   ];
 
   # DOTFILES
