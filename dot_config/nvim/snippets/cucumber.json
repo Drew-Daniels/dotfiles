@@ -8,5 +8,37 @@
     "body": "# NOTE: ${0}",
     "prefix": "nt",
     "description": "Create a Note"
+  },
+  "Feature": {
+    "prefix": "feature",
+    "body": "Feature: ${0}"
+  },
+  "Background": {
+    "prefix": "background",
+    "body": "Background:\n"
+  },
+  "Rule": {
+    "prefix": "rule",
+    "body": "Rule:\n"
+  },
+  "Given": {
+    "prefix": "given",
+    "body": "Given ${0}"
+  },
+  "When": {
+    "prefix": "when",
+    "body": "When ${0}"
+  },
+  "Then": {
+    "prefix": "then",
+    "body": "Then ${0}"
+  },
+  "And": {
+    "prefix": "and",
+    "body": "And ${0}"
+  },
+  "Scenario": {
+    "prefix": "scenario",
+    "body": "Scenario: ${0}"
   }
 }
