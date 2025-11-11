@@ -22,8 +22,11 @@ words = [
   "fhir",
   "fhirpath",
   "supertest",
+  "superagent",
   "revinclude",
   "npx",
+  "webpt",
+  "bdd",
 ]
 
 # Words that should always be flagged as incorrect
