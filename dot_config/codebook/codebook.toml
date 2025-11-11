@@ -27,6 +27,8 @@ words = [
   "npx",
   "webpt",
   "bdd",
+  "hapi",
+  "emr",
 ]
 
 # Words that should always be flagged as incorrect
