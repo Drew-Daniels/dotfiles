@@ -29,6 +29,9 @@ words = [
   "bdd",
   "hapi",
   "emr",
+  "papi",
+  "wid",
+  "axios"
 ]
 
 # Words that should always be flagged as incorrect
