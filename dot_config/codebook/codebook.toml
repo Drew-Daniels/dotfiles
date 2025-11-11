@@ -16,7 +16,15 @@ dictionaries = ["en_us"]
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 # Default: []
-words = ["codebook", "rustc", "fhir", "fhirpath", "supertest"]
+words = [
+  "codebook",
+  "rustc",
+  "fhir",
+  "fhirpath",
+  "supertest",
+  "revinclude",
+  "npx",
+]
 
 # Words that should always be flagged as incorrect
 # Default: []

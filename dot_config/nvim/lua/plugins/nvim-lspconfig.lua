@@ -97,6 +97,7 @@ return {
 			settings = {
 				cucumber = {
 					glue = {
+						-- DEFAULTS
 						-- Cucumber-JVM
 						"src/test/**/*.java",
 						-- Cucumber-Js
@@ -121,6 +122,9 @@ return {
 						"*specs*/**/*.cs",
 						-- Godog
 						"features/**/*_test.go",
+						-- MY SETTINGS
+						-- TODO: Refactor directory structure of redstone-sidecar so tests aren't placed here, but in test/ instead
+						"modules/**/*steps.ts",
 					},
 				},
 			},
