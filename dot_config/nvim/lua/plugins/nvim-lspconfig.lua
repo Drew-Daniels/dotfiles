@@ -59,6 +59,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("fish_lsp", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("bzl", {
 			capabilities = capabilities,
 		})
@@ -436,6 +440,7 @@ return {
 			"taplo",
 			"dartls",
 			-- "denols",
+			"fish_lsp",
 			"dockerls",
 			"eslint",
 			"gopls",
