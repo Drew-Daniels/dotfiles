@@ -36,6 +36,9 @@ words = [
   "bundler",
   "nginx",
   "jira",
+  "pnpm",
+  "twilio",
+  "codeberg",
 ]
 
 # Words that should always be flagged as incorrect
