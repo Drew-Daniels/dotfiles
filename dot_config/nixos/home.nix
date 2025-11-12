@@ -328,6 +328,7 @@
     # https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nxls
     # nxls
     biome
+    fish-lsp
     fixjson
     # TODO: Should I not let mason handle all LSPs? Probably should remove these
     # TODO: cssmodules_ls

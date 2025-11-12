@@ -190,6 +190,7 @@
     "cryptomator-bin",
     "docker-desktop",
     // "podman-tui",
+    "fish-lsp",
     "flutter",
     "git-credential-oauth",
     "lemminx",

@@ -200,6 +200,7 @@ packages:
         - 'vue-language-server'
         - 'yaml-language-server'
         - 'clojure-lsp'
+        - 'fish-lsp'
       no_quarantine_casks: []
       casks:
         - '1password-cli'
