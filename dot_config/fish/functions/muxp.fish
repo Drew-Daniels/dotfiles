@@ -6,10 +6,10 @@ function muxp -d "Starts a new tmux session using the default 'project' tmuxinat
         return 1
     end
 
-    set regex '^(commands|completions|copy|debug|delete|doctor|edit|implode|list|local|new|open|start|stop|version)$'
+    set builtin_regex '^(commands|completions|copy|debug|delete|doctor|edit|implode|list|local|new|open|start|stop|version)$'
 
     # pass through if builtin command used
-    if string match -q -r "$regex" "$project_name"
+    if string match -q -r "$builtin_regex" "$project_name"
         mux $project_name
         return 0
     end
