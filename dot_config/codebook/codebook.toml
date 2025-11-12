@@ -26,12 +26,16 @@ words = [
   "revinclude",
   "npx",
   "webpt",
+  "wpt",
   "bdd",
   "hapi",
   "emr",
   "papi",
   "wid",
-  "axios"
+  "axios",
+  "bundler",
+  "nginx",
+  "jira",
 ]
 
 # Words that should always be flagged as incorrect
