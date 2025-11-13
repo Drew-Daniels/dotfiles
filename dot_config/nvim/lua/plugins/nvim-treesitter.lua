@@ -97,6 +97,7 @@ return {
 			"gowork",
 			"gosum",
 			"gotmpl",
+			"helm",
 			"graphql",
 			"groovy",
 			"gpg",

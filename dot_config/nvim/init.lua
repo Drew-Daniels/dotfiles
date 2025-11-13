@@ -183,9 +183,9 @@ vim.filetype.add({
 	extension = {
 		gotmpl = "gotmpl",
 	},
-	-- pattern = {
-	-- 	["*.yaml.gotmpl"] = "yaml",
-	-- 	-- [".*/templates/.*%.ya?ml"] = "helm",
-	-- 	-- ["helmfile.*%.ya?ml"] = "helm",
-	-- },
+	pattern = {
+		["*.yaml.gotmpl"] = "yaml",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+	},
 })
