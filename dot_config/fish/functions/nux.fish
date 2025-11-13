@@ -13,8 +13,8 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
     # if there is a corresponding tmuxinator config, run `mux stop <project>`
     # otherwise, run `tmux kill-session -t <project>`
     if string match -q -r "$stop_regex" "$first_arg"
-        if test -e "~/.config/tmuxinator/$argv[2].yml"
-            tmuxinator stop $argv
+        if test -e ~/.config/tmuxinator/$argv[2].yml
+            tmuxinator $argv
         else
             tmux kill-session -t $argv[2]
         end
