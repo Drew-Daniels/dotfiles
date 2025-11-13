@@ -279,8 +279,8 @@
     universal-ctags
     nodePackages.live-server
     tree-sitter
-    texlab
-    texliveFull
+    # texlab
+    # texliveFull
     typst
     # NOTE: Included with tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#formatting
     # NOTE: 'nufmt' still in alpha state: https://github.com/nushell/nufmt/issues/62
@@ -339,7 +339,7 @@
     # TODO: Need to do more research on seeing whether or not it makes sense to just use nil_ls, nixd, or both
     # nixd
     # TODO: Create package for reformat-gherkin
-    tex-fmt
+    # tex-fmt
     flutter
     gopls
     # TODO: Figure out why I have hyprls 0.6.0 installed, but the latest available on nixos-unstable is 0.7.0

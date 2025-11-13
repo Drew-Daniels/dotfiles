@@ -112,7 +112,7 @@ return {
 				-- typescript = { "biome", "biome-check" },
 				-- javascriptreact = { "biome", "biome-check" },
 				-- typescriptreact = { "biome", "biome-check" },
-				tex = { "tex-fmt" },
+				-- tex = { "tex-fmt" },
 				toml = { "taplo" },
 				vue = { "eslint_d" },
 				svelte = { "eslint_d", "prettierd" },
