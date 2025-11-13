@@ -32,7 +32,8 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
 
     # otherwise create a new tmux session using a specific project template with a name matching the first argument provided, or use default tmuxinator project template
     # attaches to project_name tmux session if one already exists
-    if test -e "~/.config/tmuxinator/$project_name.yml"
+    echo "~/.config/tmuxinator/$project_name.yml"
+    if test -e ~/.config/tmuxinator/$project_name.yml
         tmuxinator $project_name
     else
         tmuxinator project -n $project_name d=$project_name
