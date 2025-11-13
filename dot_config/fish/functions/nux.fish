@@ -1,4 +1,4 @@
-function muxp -d "Starts a new tmux session using the default 'project' tmuxinator template, and inside the directory in default project directory matching the name provided"
+function nux -d "Starts a new tmux session using the default 'project' tmuxinator template, and inside the directory in default project directory matching the name provided"
     set -l first_arg $argv[1]
     set -l stop_regex '^(stop)$'
     set -l builtin_regex '^(commands|completions|copy|debug|delete|doctor|edit|implode|list|local|new|open|start|version)$'
