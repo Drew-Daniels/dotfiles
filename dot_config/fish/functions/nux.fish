@@ -2,6 +2,7 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
     set -l first_arg $argv[1]
     set -l stop_regex '^(stop)$'
     set -l builtin_regex '^(commands|completions|copy|debug|delete|doctor|edit|implode|list|local|new|open|start|version)$'
+    # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 
     # @fish-lsp-disable-next-line 3001
     if test -z $first_arg
