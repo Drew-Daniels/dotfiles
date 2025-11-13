@@ -114,6 +114,7 @@
     # TODO: Reinstall once package hash fixed: https://github.com/NixOS/nixpkgs/issues/426923
     # simplex-chat-desktop
     signal-desktop
+    signal-cli
     # TODO: Re-enable this at some point and figure out why build fails
     # zulip
     # zulip-term
