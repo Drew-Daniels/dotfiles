@@ -51,6 +51,7 @@
     nix-prefetch-scripts
     # CLI
     hexo-cli
+    helm-ls
     hexyl
     # Android
     apksigner

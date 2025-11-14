@@ -363,6 +363,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("helm_ls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("yamlls", {
 			capabilities = capabilities,
 			settings = {
@@ -472,6 +476,7 @@ return {
 			"tinymist",
 			"typos_lsp",
 			"vacuum",
+			"helm_ls",
 			"yamlls",
 			-- TODO: Only enable nil_ls when on nixos
 			"nil_ls",
