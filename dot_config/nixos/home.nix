@@ -51,6 +51,7 @@
     nix-prefetch-scripts
     # CLI
     hexo-cli
+    helmfile
     helm-ls
     hexyl
     # Android
