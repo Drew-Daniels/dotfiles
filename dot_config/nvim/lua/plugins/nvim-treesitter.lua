@@ -98,7 +98,7 @@ return {
 			"gosum",
 			"gotmpl",
 			"helm",
-			-- TODO: Create issue in nvim-treesitter to add this to available TS parser list
+      -- TODO: Create issue in nvim-treesitter to add this to available TS parser list
 			-- "smarty",
 			"graphql",
 			"groovy",
