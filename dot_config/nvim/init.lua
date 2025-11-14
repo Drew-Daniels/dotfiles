@@ -186,6 +186,7 @@ vim.filetype.add({
 	pattern = {
 		["*.yaml.gotmpl"] = "yaml",
 		[".*/templates/.*%.ya?ml"] = "helm",
+		[".*/templates/NOTES.txt"] = "helm",
 		["helmfile.*%.ya?ml"] = "helm",
 	},
 })
