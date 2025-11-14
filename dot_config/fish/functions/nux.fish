@@ -6,7 +6,8 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
 
     # @fish-lsp-disable-next-line 3001
     if test -z $first_arg
-        echo "Project Name is Required"
+        set -l dir (path basename (pwd))
+        tmuxinator project -n $dir d=$dir
         return 1
     end
 
