@@ -177,7 +177,6 @@ packages:
         # TODO: Create a formula for this
         - 'lua-language-server'
         - 'marksman'
-        - 'markdown-oxide'
         # TODO: Formula
         # - 'mutt-language-server'
         # TODO: Formula

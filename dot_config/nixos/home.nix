@@ -387,7 +387,6 @@
     lua-language-server
     lemminx
     marksman
-    markdown-oxide
     yaml-language-server
     taplo
     tflint

@@ -322,10 +322,6 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("markdown_oxide", {
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("ruff", {
 			capabilities = capabilities,
 		})
@@ -463,7 +459,6 @@ return {
 			"lemminx",
 			"lua_ls",
 			"marksman",
-			"markdown_oxide",
 			"ruff",
 			-- NOTE: Commenting out bc rustaceanvim handles enabling this
 			-- "rust_analyzer",
