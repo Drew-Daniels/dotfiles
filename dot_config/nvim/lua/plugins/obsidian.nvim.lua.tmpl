@@ -20,21 +20,22 @@ return {
 	---@type obsidian.config
 	opts = {
 		workspaces = {
-			{
-				name = "personal",
-				path = "~/vaults/personal",
-			},
-			{
-				name = "xxx",
-				path = "~/vaults/xxx",
-			},
+      {{ if eq .homeOrWork "home" -}}
+            {
+              name = "personal",
+              path = "~/vaults/personal",
+            },
+            {
+              name = "xxx",
+              path = "~/vaults/xxx",
+            },
+      {{ end -}}
 			{
 				name = "work",
 				path = "~/vaults/work",
 			},
 		},
 		templates = {
-			-- folder = "~/vaults/work/templates",
 			folder = "templates",
 		},
 		daily_notes = {
