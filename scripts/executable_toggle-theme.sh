@@ -45,8 +45,7 @@ function mako_light() {
 }
 
 function sway_apply() {
-  # swaymsg reload
-  :
+  swaymsg reload
 }
 
 function sway_dark() {
@@ -57,6 +56,14 @@ function sway_dark() {
 function sway_light() {
   # ln --symbolic --force "$XDG_CONFIG_DIR/sway/colors-catpuccin-latte" "$XDG_CONFIG_DIR/sway/colors"
   :
+}
+
+function alacritty_dark() {
+  ln --symbolic --force "$XDG_CONFIG_DIR/alacritty/alacritty.dark.toml" "$XDG_CONFIG_DIR/alacritty/alacritty.toml"
+}
+
+function alacritty_light() {
+  ln --symbolic --force "$XDG_CONFIG_DIR/alacritty/alacritty.light.toml" "$XDG_CONFIG_DIR/alacritty/alacritty.toml"
 }
 
 function wofi_dark() {
