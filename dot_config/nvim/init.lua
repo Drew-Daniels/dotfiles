@@ -21,17 +21,11 @@ local function parse_json_using_jq(file_path, jq_filter)
 end
 
 if vim.loop.os_uname().sysname == "Linux" then
-	-- TODO: Figure out a way to change between light and dark themes on linux
-	-- can't rely on dark-notify to work on linux
-	-- Read current theme from ~/.local/state/theme-toggle/state.json
-	-- If "theme" == "light" then set colorscheme to "catppuccin"
-	-- Otherwise, set to "gruvbox"
 	local json_file_path = "$XDG_STATE_HOME/theme-toggle/state.json"
 	local expanded_json_file_path = vim.fn.expand(json_file_path)
 	local jq_filter = ".theme"
-
-	-- Read and parse the JSON
 	local json_content = read_json_file(expanded_json_file_path)
+
 	if json_content then
 		local parsed_content = parse_json_using_jq(expanded_json_file_path, jq_filter)
 		local fmt_content = string.gsub(parsed_content, '"', ""):match("^%s*(.-)%s*$")
