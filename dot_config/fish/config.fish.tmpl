@@ -6,7 +6,15 @@ if status is-interactive
             end
             # TODO: make specific to macos
             set computerName (hostnamectl hostname)
-            # TODO: Refactor
+            # TODO: Check theme state file to get current theme
+            # if test $os_theme_query_status -eq 1
+            #     # this setting is only set when using dark mode
+            #     set -gx OS_THEME_DARK 0
+            #     fish_config theme choose "Solarized Light"
+            # else
+            #     set -gx OS_THEME_DARK 1
+            #     fish_config theme choose "Base16 Default Dark"
+            # end
         case FreeBSD
             if command -q mise
                 mise activate fish | source
