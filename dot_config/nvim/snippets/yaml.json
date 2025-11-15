@@ -4,6 +4,18 @@
     "prefix": "td",
     "description": "Create a TODO"
   },
+  "env": {
+    "prefix": "env",
+    "body": "<%= ENV[\"${0}\"] %>/"
+  },
+  "arguments": {
+    "prefix": "args",
+    "body": "<%= @args[${0}] %>/"
+  },
+  "settings": {
+    "prefix": "set",
+    "body": "<%= @settings[\"${0}\"] %>/"
+  },
   "Insert Mux Projects Dir ERB": {
     "prefix": "projectsdir",
     "body": "<%= ENV[\"PROJECTS_DIR\"] %>/${0}"
