@@ -36,6 +36,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    mkcert
     yarn2nix
     node2nix
     # TODO: Re-enable once either of these are merged:
