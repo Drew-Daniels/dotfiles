@@ -24,7 +24,7 @@ return {
 				{ "<leader>cr", "<cmd>CBd<cr>", desc = "Remove box" },
 			},
 			-- conform.nvim
-      -- TODO: Look into consolidating these keybinds with `<leader>p` since they all handle formatting related things
+			-- TODO: Look into consolidating these keybinds with `<leader>p` since they all handle formatting related things
 			{ "<leadder>F", group = "Formatters" },
 			{ "<leader>Fc", "<cmd>DiffFormat<cr>", desc = "Changed" },
 			{ "<leader>Fi", "<cmd>ConformInfo<cr>", desc = "Info" },
@@ -132,13 +132,13 @@ return {
 			{ "<leader>lr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
 			{ "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
 			{ "<leader>lQ", "<cmd>LspStop<cr>", desc = "Quit" },
-      -- nvim-colorizer
-      -- TODO: Come up with a better prefix
-      { "<leader>w", group = "Colorizer" },
-      { "<leader>wa", "<cmd>ColorizerAttachToBuffer<cr>" , desc = "ColorizerAttachToBuffer" },
-      { "<leader>wd", "<cmd>ColorizerDetachToBuffer<cr>" , desc = "ColorizerDetachToBuffer" },
-      { "<leader>wr", "<cmd>ColorizerReloadAllBuffers<cr>" , desc = "ColorizerReloadAllBuffers" },
-      { "<leader>wt", "<cmd>ColorizerToggle<cr>" , desc = "ColorizerToggle" },
+			-- nvim-colorizer
+			-- TODO: Come up with a better prefix
+			{ "<leader>w", group = "Colorizer" },
+			{ "<leader>wa", "<cmd>ColorizerAttachToBuffer<cr>", desc = "ColorizerAttachToBuffer" },
+			{ "<leader>wd", "<cmd>ColorizerDetachToBuffer<cr>", desc = "ColorizerDetachToBuffer" },
+			{ "<leader>wr", "<cmd>ColorizerReloadAllBuffers<cr>", desc = "ColorizerReloadAllBuffers" },
+			{ "<leader>wt", "<cmd>ColorizerToggle<cr>", desc = "ColorizerToggle" },
 			-- LaTex
 			{ "<leader>V", group = "LaTeX" },
 			{
@@ -166,7 +166,7 @@ return {
 			{ "<leader>oc", "<cmd>ObsidianToday<cr>", desc = "Obsidian Current Daily (Today)" },
 			{ "<leader>on", "<cmd>ObsidianTomorrow<cr>", desc = "Obsidian Next Daily (Tomorrow)" },
 			-- Neogen
-			{ "<leader>N", group = "Neogen" },
+			{ "<leader>n", group = "Neogen" },
 			{
 				"<leader>nf",
 				"<cmd>lua require('neogen').generate({ type = 'func' })<cr>",
