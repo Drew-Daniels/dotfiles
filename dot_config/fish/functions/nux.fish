@@ -14,13 +14,15 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
     # if stop command passed, special handling is required
     # if there is a corresponding tmuxinator config, run `mux stop <project>`
     # otherwise, run `tmux kill-session -t <project>`
-    # TODO: Add functionality so multiple tmux sessions can be stopped at once: `nux stop <session1> <session2> ...`
     # TODO: Add functionality so ALL tmux sessions can be stopped: `nux stop-all`
     if string match -q -r "$stop_regex" "$first_arg"
-        if test -e ~/.config/tmuxinator/$argv[2].yml
-            tmuxinator $argv
-        else
-            tmux kill-session -t $argv[2]
+        set -l projects $argv[2..-1]
+        for proj in $projects;
+          if test -e ~/.config/tmuxinator/$proj.yml
+              tmuxinator stop $proj
+          else
+              tmux kill-session -t $proj
+          end
         end
         return 0
     end
