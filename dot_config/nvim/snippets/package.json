@@ -43,6 +43,10 @@
         "path": "./json.json"
       },
       {
+        "language": "gitconfig",
+        "path": "./gitconfig.json"
+      },
+      {
         "language": "jsonc",
         "path": "./jsonc.json"
       },
