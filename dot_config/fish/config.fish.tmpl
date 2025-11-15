@@ -1,3 +1,6 @@
+set -l fish_light_theme "Solarized Light"
+set -l fish_dark_theme "Base16 Default Dark"
+
 if status is-interactive
     switch (uname)
         case Linux
@@ -12,10 +15,10 @@ if status is-interactive
             # echo "theme: $theme"
             if test $theme = "light"
                 set -gx OS_THEME_DARK 0
-                # fish_config theme choose "Solarized Light"
+                fish_config theme choose "$fish_light_theme"
             else
                 set -gx OS_THEME_DARK 1
-                # fish_config theme choose "Base16 Default Dark"
+                fish_config theme choose "$fish_dark_theme"
             end
         case FreeBSD
             if command -q mise
@@ -52,10 +55,10 @@ if status is-interactive
             if test $os_theme_query_status -eq 1
                 # this setting is only set when using dark mode
                 set -gx OS_THEME_DARK 0
-                fish_config theme choose "Solarized Light"
+                fish_config theme choose "$fish_light_theme"
             else
                 set -gx OS_THEME_DARK 1
-                fish_config theme choose "Base16 Default Dark"
+                fish_config theme choose "$fish_dark_theme"
             end
 
     end
