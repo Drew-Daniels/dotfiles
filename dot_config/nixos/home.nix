@@ -76,8 +76,7 @@
     librewolf
     lynx
     tor-browser
-    nyxt
-    # shadowsocks-rust
+    # nyxt
     qutebrowser
     # TODO: Only installing this to test this qutebrowser userscript: https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/qute-1pass
     wofi
@@ -87,7 +86,7 @@
     # Cloud
     # TODO: Figure out why this package won't build
     # awscli2
-    backblaze-b2
+    # backblaze-b2
     fh
     gh
     glab
@@ -98,7 +97,7 @@
     # localstack
     # pulumi
     # grep
-    ast-grep
+    # ast-grep
     # comby
     # Launchers
     bemenu
@@ -124,17 +123,17 @@
     # Chart
     d2
     # IRC
-    halloy
+    # halloy
     weechat
     weechatScripts.autosort
     znc
     # WIKI
     kiwix
     # Music
-    cmus
-    cmusfm
+    # cmus
+    # cmusfm
     strawberry
-    beets
+    # beets
     pavucontrol
     mpd
     ncmpcpp
@@ -150,7 +149,7 @@
     cliphist
     wl-clipboard
     # databases
-    postgrest
+    # postgrest
     # database clients
     dbeaver-bin
     # git
@@ -172,7 +171,7 @@
     exfatprogs
     fd
     fzf
-    jc
+    # jc
     hdparm
     ripgrep
     plocate
@@ -197,14 +196,14 @@
     # security
     yubioath-flutter
     openssl
-    sherlock
+    # sherlock
     # TODO: Create an issue in nixpkgs about this package being broken.
     # This package was mentioned in this issue, but for a different architecture: https://github.com/NixOS/nixpkgs/issues/185049#issuecomment-1334457220
     # maigret
-    magic-wormhole
-    sops
-    passage
-    keepassxc
+    # magic-wormhole
+    # sops
+    # passage
+    # keepassxc
     pwgen
     libsecret
     rusty-diceware
@@ -248,7 +247,6 @@
     jq
     jqp
     jless
-    nodePackages.jsonlint
     # NOTE: Not sure if 'gcc' needs to be installed at a user-level
     gcc
     # lua51Packages.tree-sitter-norg
@@ -256,7 +254,7 @@
     luajitPackages.luarocks
     gnumake42
     # VOIP
-    mumble
+    # mumble
     # Calculator
     qalculate-qt
     libqalculate
@@ -283,13 +281,13 @@
     tree-sitter
     # texlab
     # texliveFull
-    typst
+    # typst
     # NOTE: Included with tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#formatting
     # NOTE: 'nufmt' still in alpha state: https://github.com/nushell/nufmt/issues/62
     # nufmt
     nginx-config-formatter
     # typstyle
-    tinymist
+    # tinymist
     # NOTE: No jsonresume-theme-* packages are uploaded to nixpkgs, so can't really use this, since it doesn't come with any default theme
     # resumed
     rendercv
@@ -300,7 +298,7 @@
     # Networking
     nmap
     tor
-    torsocks
+    # torsocks
     nyx
     speedtest-cli
     # Backups
