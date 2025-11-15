@@ -428,7 +428,8 @@ return {
 			"ast_grep",
 			"biome",
 			"bzl",
-			"codebook",
+			-- NOTE: De-activating for now because this can be pretty noisy
+			-- "codebook",
 			-- TODO: Install clang-tools package on NixOS: https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=clang-tools
 			-- https://weblog.zamazal.org/sw-problem-lsp-c-nixos/
 			"clangd",
