@@ -102,7 +102,13 @@ vim.keymap.set("n", "n", "nzz", { silent = true, desc = "Search Next" })
 vim.keymap.set("n", "N", "Nzz", { silent = true, desc = "Search Prev" })
 vim.keymap.set("i", "<C-b>", "<CR><ESC>kA<CR>", { silent = true, desc = "Insert blank line" })
 
-local function yank_buffer_file_path()
+local function yank_buffer_abs_file_path()
+	local full_path = vim.api.nvim_buf_get_name(0)
+	vim.fn.setreg("+", full_path)
+	vim.notify("Copied Buffer File Path to Clipboard: " .. vim.fn.getreg("+"), vim.log.levels.INFO)
+end
+
+local function yank_buffer_rel_file_path()
 	local full_path = vim.api.nvim_buf_get_name(0)
 	local relative_path = vim.fn.fnamemodify(full_path, ":.")
 	vim.fn.setreg("+", relative_path)
@@ -117,12 +123,17 @@ local function yank_buffer_file_name()
 	vim.notify("Copied Buffer File Name to Clipboard: " .. vim.fn.getreg("+"), vim.log.levels.INFO)
 end
 
-vim.keymap.set("n", "<leader>Yp", yank_buffer_file_path, {
+vim.keymap.set("n", "<leader>Ya", yank_buffer_abs_file_path, {
 	silent = true,
-	desc = "Yank Buffer File Path to Clipboard",
+	desc = "Yank Absolute Buffer File Path to Clipboard",
 })
 
-vim.keymap.set("n", "<leader>Yn", yank_buffer_file_name, {
+vim.keymap.set("n", "<leader>Yr", yank_buffer_rel_file_path, {
+	silent = true,
+	desc = "Yank Relative Buffer File Path to Clipboard",
+})
+
+vim.keymap.set("n", "<leader>Yf", yank_buffer_file_name, {
 	silent = true,
 	desc = "Yank Buffer File Name to Clipboard",
 })
