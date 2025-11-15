@@ -11,6 +11,20 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
         return 1
     end
 
+    # TODO: De-dedupe
+    # TODO: Rename `proj` references to `session` for consistency
+    if string match -q -r '^(stop-all)$' "$first_arg"
+      set -l sessions (tmux ls | awk '{print $1}' | sed 's/:$//')
+      for session in $sessions;
+        if test -e ~/.config/tmuxinator/$session.yml
+            tmuxinator stop $session
+        else
+            tmux kill-session -t $session
+        end
+      end
+      return 0
+    end
+
     # if stop command passed, special handling is required
     # if there is a corresponding tmuxinator config, run `mux stop <project>`
     # otherwise, run `tmux kill-session -t <project>`
