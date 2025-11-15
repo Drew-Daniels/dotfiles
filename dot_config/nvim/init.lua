@@ -37,8 +37,10 @@ if vim.loop.os_uname().sysname == "Linux" then
 		local fmt_content = string.gsub(parsed_content, '"', ""):match("^%s*(.-)%s*$")
 		if fmt_content == "light" then
 			vim.cmd("colorscheme catppuccin")
+			vim.cmd("set bg=light")
 		else
 			vim.cmd("colorscheme gruvbox")
+			vim.cmd("set bg=dark")
 		end
 	else
 		vim.cmd("colorscheme gruvbox")
