@@ -160,11 +160,6 @@ return {
 			{ "<leader>Vl", "<cmd>VimtexLog<cr>", desc = "VimtexLog" },
 			{ "<leader>Vr", "<cmd>VimtexReload<cr>", desc = "VimtexReload" },
 			{ "<leader>Vv", "<cmd>VimtexView<cr>", desc = "VimtexView" },
-			-- Obsidian
-			{ "<leader>o", group = "Obsidian" },
-			{ "<leader>op", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Previous Daily (Yesterday)" },
-			{ "<leader>oc", "<cmd>ObsidianToday<cr>", desc = "Obsidian Current Daily (Today)" },
-			{ "<leader>on", "<cmd>ObsidianTomorrow<cr>", desc = "Obsidian Next Daily (Tomorrow)" },
 			-- Notes
 			{ "<leader>n", group = "Notes (Obsidian.nvim)" },
 			{ "<leader>nb", "<cmd>Obsidian backlinks<cr>", desc = "backlinks" },
@@ -183,7 +178,9 @@ return {
 			{ "<leader>nT", "<cmd>Obsidian template<cr>", desc = "template" },
 			{ "<leader>nto", "<cmd>Obsidian toc<cr>", desc = "toc" },
 			{ "<leader>nw", "<cmd>Obsidian workspace<cr>", desc = "workspace" },
-			{ "<leader>ny", "<cmd>Obsidian yesterday<cr>", desc = "yesterday" },
+			{ "<leader>np", "<cmd>Obsidian yesterday<cr>", desc = "Previous Daily" },
+			{ "<leader>nc", "<cmd>Obsidian today<cr>", desc = "Current Daily" },
+			{ "<leader>nn", "<cmd>Obsidian tomorrow<cr>", desc = "Next Daily" },
 			-- Neogen
 			{ "<leader>N", group = "Neogen" },
 			{
