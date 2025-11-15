@@ -34,7 +34,8 @@ return {
 			},
 		},
 		templates = {
-			folder = "~/vaults/work/templates",
+			-- folder = "~/vaults/work/templates",
+			folder = "templates",
 		},
 		daily_notes = {
 			workdays_only = true,

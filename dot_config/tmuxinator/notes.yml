@@ -1,0 +1,10 @@
+name: notes
+root: ~/vaults/work
+windows:
+  - notes:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - notes:
+            - fish
+            - cls
+            - nvim index.md
