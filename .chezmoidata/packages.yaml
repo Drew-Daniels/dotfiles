@@ -105,6 +105,7 @@ packages:
         - 'ls-lint'
         - 'mas'
         - 'maven'
+        - 'mkcert'
         - 'pkg-config'
         - 'mpv'
         - 'gradle'
