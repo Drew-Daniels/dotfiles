@@ -26,6 +26,7 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
                 tmuxinator project -n $project d=$project
             end
         end
+        tmux attach -t $argv[-1]
     end
 
     # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
@@ -34,6 +35,7 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
     if test -z $first_arg
         set -l dir (path basename (pwd))
         tmuxinator project -n $dir d=$dir
+        tmux attach -t $dir
         return 1
     end
 
