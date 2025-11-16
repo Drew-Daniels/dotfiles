@@ -1,5 +1,6 @@
 name: work_notes
 root: <%= ENV["PROJECTS_DIR"] %>/work_notes
+attach: false
 windows:
   - 1)work_notes:
       layout: <%= ENV["MUX_LAYOUT"] %>
@@ -12,6 +13,6 @@ windows:
       layout: <%= ENV["MUX_LAYOUT"] %>
       panes:
         - retro:
-          - fish
-          - cls
-          - nvim
+            - fish
+            - cls
+            - nvim

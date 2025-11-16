@@ -1,5 +1,6 @@
 name: redstone
 root: <%= ENV["PROJECTS_DIR"] %>/redstone
+attach: false
 windows:
   - 1)editor:
       layout: main-horizontal

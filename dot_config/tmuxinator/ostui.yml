@@ -1,4 +1,5 @@
 name: ostui
+attach: false
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>

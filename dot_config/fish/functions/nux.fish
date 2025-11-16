@@ -16,6 +16,18 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
         return 0
     end
 
+    function start_sessions
+        for project in $argv
+            # otherwise create a new tmux session using a specific project template with a name matching the first argument provided, or use default tmuxinator project template
+            # attaches to project tmux session if one already exists
+            if test -e ~/.config/tmuxinator/$project.yml
+                tmuxinator $project
+            else
+                tmuxinator project -n $project d=$project
+            end
+        end
+    end
+
     # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 
     # @fish-lsp-disable-next-line 3001
@@ -25,7 +37,6 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
         return 1
     end
 
-    # TODO: De-dedupe
     # TODO: Rename `proj` references to `session` for consistency
     if string match -q -r '^(stop-all)$' "$first_arg"
         set -l sessions (tmux ls | awk '{print $1}' | sed 's/:$//')
@@ -49,14 +60,8 @@ function nux -d "Starts a new tmux session using the default 'project' tmuxinato
         return 0
     end
 
-    # After verifying first (and potentially, only) argument is not a built-in command, we can assume it is a project name and create a new variable with a name that better indicates what it is
-    set -l project_name $first_arg
+    # After verifying first (and potentially, only) argument is not a built-in command, we can assume arguments provided are a list of one or more projects
+    set -l projects $argv
 
-    # otherwise create a new tmux session using a specific project template with a name matching the first argument provided, or use default tmuxinator project template
-    # attaches to project_name tmux session if one already exists
-    if test -e ~/.config/tmuxinator/$project_name.yml
-        tmuxinator $project_name
-    else
-        tmuxinator project -n $project_name d=$project_name
-    end
+    start_sessions $projects
 end

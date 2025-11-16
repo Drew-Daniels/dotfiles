@@ -1,5 +1,6 @@
 name: newsraft
 root: "~"
+attach: false
 windows:
   - newsraft:
       layout: <%= ENV["MUX_LAYOUT"] %>

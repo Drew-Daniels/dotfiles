@@ -4,12 +4,16 @@
 # Start usage: 
 # mux project -n ublock d=uBlock
 
+# Attach usage:
+# tmux attach -t uBlock
+
 # Stop usage:
-# tmux kill-session -t ublock
+# tmux kill-session -t uBlock
 
 # NOTE: Assuming ~/projects/uBlock exists
 name: project
 root: ~/projects/<%= @settings["d"] %>
+attach: false
 windows:
   - 1)editor:
       layout: main-horizontal

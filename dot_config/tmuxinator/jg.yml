@@ -1,5 +1,6 @@
 name: jg
 root: <%= ENV["PROJECTS_DIR"] %>/jg
+attach: false
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>

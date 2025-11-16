@@ -1,5 +1,6 @@
 name: weechat
 root: "~"
+attach: false
 windows:
   - weechat:
       layout: <%= ENV["MUX_LAYOUT"] %>

@@ -2,6 +2,7 @@ name: redstone-server
 root: <%= ENV["PROJECTS_DIR"] %>/redstone-server
 on_project_stop:
   - docker compose stop
+attach: false
 windows:
   - 1)editor:
       layout: main-horizontal
