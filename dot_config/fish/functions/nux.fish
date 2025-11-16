@@ -17,8 +17,6 @@
   # Unified `start`/`stop` interface for all tmux sessions, regardless of whether or not they have a corresponding tmuxinator project configuration created for them
   # Enhancement to allow users to start (or attach to) a tmux session with a name matching the current directory, if no arguments are provided
     # Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
-# NOTE: To use the "wrapped" start functionality, you'll need to have your tmuxinator project configurations use the `attach: false` option, so `nux` can start multiple
-# tmux sessions consecutively without getting attached to one. If you don't do this, you'll get attached to one session, and the next one won't be started until you detach.
 
 # TODO: Enable users to specify alternative `projects` directory
 # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
@@ -32,9 +30,9 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
     function start_sessions
         for project in $argv
             if test -e ~/.config/tmuxinator/$project.yml
-                tmuxinator $project
+                tmuxinator $project --no-attach
             else
-                tmuxinator project -n $project d=$project
+                tmuxinator project -n $project d=$project --no-attach
             end
         end
         tmux attach -t $argv[-1]
