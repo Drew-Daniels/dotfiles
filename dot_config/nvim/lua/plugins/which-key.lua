@@ -160,6 +160,10 @@ return {
 			{ "<leader>Vl", "<cmd>VimtexLog<cr>", desc = "VimtexLog" },
 			{ "<leader>Vr", "<cmd>VimtexReload<cr>", desc = "VimtexReload" },
 			{ "<leader>Vv", "<cmd>VimtexView<cr>", desc = "VimtexView" },
+			-- Monorepo (Nx)
+			-- NOTE: nx.nvim doesn't seem maintained anymore
+			-- { "<leader>m", group = "Monorepo (Nx)" },
+			-- { "<leader>ma", desc = "<cmd>Telescope nx actions<cr>" },
 			-- Notes
 			{ "<leader>n", group = "Notes (Obsidian.nvim)" },
 			{ "<leader>nb", "<cmd>Obsidian backlinks<cr>", desc = "backlinks" },
