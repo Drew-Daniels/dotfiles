@@ -216,6 +216,7 @@ packages:
         # Required dependency of yamlresume
         - 'font-linux-libertine'
         - 'google-chrome'
+        - 'keycastr'
         - 'iterm2'
         - 'itermbrowserplugin'
         - 'sioyek'
