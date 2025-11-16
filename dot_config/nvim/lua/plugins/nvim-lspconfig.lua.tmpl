@@ -346,9 +346,9 @@ return {
 
 		vim.lsp.config("typos_lsp", {
 			capabilities = capabilities,
-			filetypes = { "markdown", "norg" },
+			-- filetypes = { "markdown", "norg" },
 			init_options = {
-				config = "~/projects/dotfiles/typos/typos.toml",
+        config = vim.fn.expand "~" .. "/.config/typos/typos.toml",
 			},
 		})
 

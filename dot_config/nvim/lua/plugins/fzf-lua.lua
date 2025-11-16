@@ -4,18 +4,14 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		-- NOTE: Can use `max-perf` once this is addressed, otherwise hard to preview files in light mode: https://github.com/ibhagwan/fzf-lua/issues/2430
-		-- { "max-perf", "ivy", "hide" },
-		{ "ivy", "hide" },
-		-- previewers = {
-		-- 	bat = {
-		-- 		-- NOTE: Can set the theme that should be used for bat file previews, when using fzf-native, but only one theme can be specified
-		-- 		-- Alternative to this is NOT using fzf-native
-		-- 		-- dark
-		-- 		theme = "gruvbox-dark",
-		-- 		-- light
-		-- 		-- theme = "Catppuccin Latte",
-		-- 	},
-		-- },
+		{ "max-perf", "ivy", "hide" },
+		previewers = {
+			bat = {
+				theme = function()
+					return vim.o.bg == "light" and "Catppuccin Latte" or "gruvbox-dark"
+				end,
+			},
+		},
 		lsp = {
 			async_or_timeout = 10000,
 		},
