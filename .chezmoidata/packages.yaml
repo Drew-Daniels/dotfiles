@@ -17,7 +17,7 @@ packages:
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
-        - 'neovim'
+        # - 'neovim'
       brews:
         - 'pdfgrep'
         - 'dive'
@@ -68,6 +68,7 @@ packages:
         - 'file-formula'
         - 'forgejo'
         # TODO: Eventually install forgejo-cli once available through brew
+        - 'neovim'
         - 'ninja'
         - 'ncurses'
         - 'fish'

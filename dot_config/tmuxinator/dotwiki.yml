@@ -1,6 +1,5 @@
 name: dotwiki
 root: ~/projects/dotfiles.wiki
-attach: false
 windows:
   - dotwiki:
       layout: <%= ENV["MUX_LAYOUT"] %>

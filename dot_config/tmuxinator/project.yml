@@ -13,7 +13,6 @@
 # NOTE: Assuming ~/projects/uBlock exists
 name: project
 root: ~/projects/<%= @settings["d"] %>
-attach: false
 windows:
   - 1)editor:
       layout: main-horizontal

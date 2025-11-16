@@ -1,6 +1,5 @@
 name: sa
 root: <%= ENV["PROJECTS_DIR"] %>
-attach: false
 windows:
   - root:
       layout: <%= ENV["MUX_LAYOUT"] %>

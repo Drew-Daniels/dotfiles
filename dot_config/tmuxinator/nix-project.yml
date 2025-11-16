@@ -1,6 +1,5 @@
 name: nix-project
 root: ~/projects/<%= @settings["d"] %>/<%= @settings["d"] %>/
-attach: false
 windows:
   - 1)editor:
       layout: main-horizontal

@@ -1,6 +1,5 @@
 name: work_notes
 root: <%= ENV["PROJECTS_DIR"] %>/work_notes
-attach: false
 windows:
   - 1)work_notes:
       layout: <%= ENV["MUX_LAYOUT"] %>

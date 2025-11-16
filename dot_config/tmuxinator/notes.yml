@@ -1,6 +1,5 @@
 name: notes
 root: ~/vaults/work
-attach: false
 windows:
   - notes:
       layout: <%= ENV["MUX_LAYOUT"] %>
