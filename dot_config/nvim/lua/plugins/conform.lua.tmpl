@@ -124,7 +124,9 @@ return {
 				zsh = { "shfmt", "shellcheck" },
 				markdown = { "prettierd", "injected" },
 				makefile = { "bake" },
+        {{- if eq .osid "linux-nixos" }}
 				nix = { "nixfmt" },
+        {{ end }}
 				nginx = { "nginxfmt" },
 				-- NOTE: 'nufmt' is still in alpha state: https://github.com/nushell/nufmt/issues/62
 				-- nu = { "nufmt" },
