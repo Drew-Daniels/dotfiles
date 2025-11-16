@@ -58,7 +58,7 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
         set -l dir (path basename (pwd))
         tmuxinator project -n $dir d=$dir
         tmux attach -t $dir
-        return 1
+        return 0
     end
 
     if string match -q -r '^(stop-all)$' "$first_arg"
