@@ -474,8 +474,9 @@ return {
 			"vacuum",
 			"helm_ls",
 			"yamlls",
-			-- TODO: Only enable nil_ls when on nixos
+      {{ if eq .osid "linux-nixos" }}
 			"nil_ls",
+      {{ end }}
 			"nickel_ls",
 			"nushell",
 			-- "nxls",
