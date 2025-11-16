@@ -204,6 +204,12 @@ vim.filetype.add({
 
 vim.filetype.add({
 	extension = {
+		["swcrc"] = "json",
+	},
+})
+
+vim.filetype.add({
+	extension = {
 		snapshot = "javascript",
 	},
 })

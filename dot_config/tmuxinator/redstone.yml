@@ -1,0 +1,23 @@
+name: redstone
+root: <%= ENV["PROJECTS_DIR"] %>/redstone
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd1:
+            - fish
+            - cls
+        - cmd2:
+            - fish
+            - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            # - npx nx serve sidecar
