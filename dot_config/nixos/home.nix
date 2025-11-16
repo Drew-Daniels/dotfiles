@@ -275,6 +275,7 @@
     # Editors
     # NOTE: Need to install nodejs to compile latex parser - but can uninstall after compilation
     # nodejs_22
+    # TODO: Look into using this overlay to get neovim nightly: https://github.com/nix-community/neovim-nightly-overlay
     neovim
     neovim-remote
     vim
