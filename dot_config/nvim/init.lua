@@ -129,9 +129,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- ── GENERAL ─────────────────────────────────────────────────────────
 
 -- Deactivate LSP logging except only when necessary, since this file can become huge overtime when permanently left on
--- vim.lsp.set_log_level("debug")
-vim.lsp.set_log_level("error")
--- vim.lsp.set_log_level("off")
+-- vim.lsp.log.set_level("debug")
+vim.lsp.log.set_level("error")
+-- vim.lsp.log.set_level("off")
 
 vim.keymap.set("n", "n", "nzz", { silent = true, desc = "Search Next" })
 vim.keymap.set("n", "N", "Nzz", { silent = true, desc = "Search Prev" })

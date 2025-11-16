@@ -17,6 +17,7 @@ packages:
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
+        - 'neovim'
       brews:
         - 'pdfgrep'
         - 'dive'
@@ -112,7 +113,6 @@ packages:
         - 'mergiraf'
         - 'mise'
         - 'newsraft'
-        - 'neovim'
         - 'pandoc'
         - 'pkgconf'
         - 'pngpaste'
