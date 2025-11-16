@@ -7,9 +7,9 @@ return {
 		{ "max-perf", "ivy", "hide" },
 		previewers = {
 			bat = {
-				theme = function()
-					return vim.o.bg == "light" and "Catppuccin Latte" or "gruvbox-dark"
-				end,
+        theme = function ()
+          return vim.o.bg == "light" and "Catppuccin Latte" or "gruvbox-dark"
+        end
 			},
 		},
 		lsp = {

@@ -12,7 +12,7 @@
   "dark-notify": { "branch": "master", "commit": "46879bc7783e65ab6ed9607ef05fd9c1424786b6" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "fugitive-gitlab.vim": { "branch": "master", "commit": "3584cf7e607ba7822f991d407a8d780e05aae287" },
-  "fzf-lua": { "branch": "main", "commit": "abad16fa530926b34413f7763cb2c202bcf5b392" },
+  "fzf-lua": { "branch": "main", "commit": "24d77b04c754c1c9ed5bb417984162be4dc5a603" },
   "gitsigns.nvim": { "branch": "main", "commit": "cdafc320f03f2572c40ab93a4eecb733d4016d07" },
   "grapple.nvim": { "branch": "main", "commit": "b41ddfc1c39f87f3d1799b99c2f0f1daa524c5f7" },
   "gruvbox.nvim": { "branch": "main", "commit": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437" },

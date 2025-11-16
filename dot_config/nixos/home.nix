@@ -382,6 +382,7 @@
     phpactor
     tailwindcss-language-server
     terraform-ls
+    typos
     typos-lsp
     bash-language-server
     dockerfile-language-server
