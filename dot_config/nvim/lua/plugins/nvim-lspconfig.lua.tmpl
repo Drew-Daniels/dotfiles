@@ -481,6 +481,8 @@ return {
 			"gitlab_ci_ls",
 			"graphql",
 			"gh_actions_ls",
+      -- TODO: Figure out why, when having ts_ls enabled, and opening a .js file in a git repository without a tsconfig.json, a stacktrace message is displayed on opening the file
+      -- Doesn't seem to occur when first opening neovim by itself, and then later opening a buffer to edit that .js file. It only errors when initially opening neovim on that file.
 			"ts_ls",
 			"vue_ls",
 			"svelte",
