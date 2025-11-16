@@ -198,7 +198,7 @@ packages:
         - 'taplo'
         - 'terraform-ls'
         - 'tflint'
-        - 'typos'
+        - 'typos-cli'
         - 'typos-lsp'
         # TODO: Formula
         # - 'vim-language-server'
