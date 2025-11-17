@@ -1,42 +1,40 @@
 return {
 	"obsidian-nvim/obsidian.nvim",
 	-- dev = true,
-  -- dir = "~/projects/obsidian-nvim",
+	-- dir = "~/projects/obsidian-nvim",
 	-- cond = false,
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
-  -- NOTE: Ensure obsidian.nvim commands are only available when viewing notes inside vault(s) below
+	-- NOTE: Ensure obsidian.nvim commands are only available when viewing notes inside vault(s) below
 	event = {
-	  "BufReadPre " .. vim.fn.expand "~" .. "/vaults/work/*.md",
-	  "BufNewFile " .. vim.fn.expand "~" .. "/vaults/work/*.md",
-	  "BufReadPre " .. vim.fn.expand "~" .. "/vaults/personal/*.md",
-	  "BufNewFile " .. vim.fn.expand "~" .. "/vaults/personal/*.md",
-	  "BufReadPre " .. vim.fn.expand "~" .. "/vaults/XXX/*.md",
-	  "BufNewFile " .. vim.fn.expand "~" .. "/vaults/XXX/*.md",
+		"BufReadPre " .. vim.fn.expand("~") .. "/vaults/work/*.md",
+		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/work/*.md",
+		"BufReadPre " .. vim.fn.expand("~") .. "/vaults/personal/*.md",
+		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/personal/*.md",
+		"BufReadPre " .. vim.fn.expand("~") .. "/vaults/XXX/*.md",
+		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/XXX/*.md",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
 	---@module 'obsidian'
-  ---@type obsidian.config.Internal
+	---@type obsidian.config
 	opts = {
-    checkbox = {
-      -- default
-      -- order = { " ", "~", "!", ">", "x" },
-      order = { " ", "x" },
-    },
-    legacy_commands = false,
+		checkbox = {
+			-- default
+			-- order = { " ", "~", "!", ">", "x" },
+			order = { " ", "x" },
+		},
+		legacy_commands = false,
 		workspaces = {
-      {{ if eq .homeOrWork "home" -}}
-      {
-        name = "personal",
-        path = "~/vaults/personal",
-      },
-      {
-        name = "xxx",
-        path = "~/vaults/xxx",
-      },
-      {{ end -}}
+			{
+				name = "personal",
+				path = "~/vaults/personal",
+			},
+			{
+				name = "xxx",
+				path = "~/vaults/xxx",
+			},
 			{
 				name = "work",
 				path = "~/vaults/work",
@@ -44,16 +42,16 @@ return {
 		},
 		templates = {
 			folder = "templates",
-      substitutions = {
-           -- TODO: Add handling so weekend days are skipped
-           -- This way, on Fridays, I can start working on my next Daily for Monday
-           yesterday = function()
-                return os.date("%Y-%m-%d", os.time() - 86400)
-           end,
-           tomorrow = function()
-                return os.date("%Y-%m-%d", os.time() + 86400)
-           end,
-        },
+			substitutions = {
+				-- TODO: Add handling so weekend days are skipped
+				-- This way, on Fridays, I can start working on my next Daily for Monday
+				yesterday = function()
+					return os.date("%Y-%m-%d", os.time() - 86400)
+				end,
+				tomorrow = function()
+					return os.date("%Y-%m-%d", os.time() + 86400)
+				end,
+			},
 		},
 		daily_notes = {
 			workdays_only = true,
