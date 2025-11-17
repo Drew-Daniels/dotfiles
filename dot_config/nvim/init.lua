@@ -123,6 +123,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				arguments = { vim.v.null },
 			}, { bufnr = bufnr })
 		end, { desc = "[T]inymist [U]npin", noremap = true })
+
+		-- Disable Tree-sitter highlighting for tenant.yaml, since '@' characters are considered reserved characters, and break the syntax highlighting logic
+		-- Also disable yaml-language-server since it doesn't understand this character
+		-- See: https://github.com/auth0/auth0-deploy-cli/issues/732#issue-1573140744
+		vim.cmd("LspStop yamlls")
 	end,
 })
 
@@ -241,4 +246,14 @@ vim.filetype.add({
 		[".*/templates/NOTES.txt"] = "helm",
 		["helmfile.*%.ya?ml"] = "helm",
 	},
+})
+
+-- Disable Tree-sitter highlighting for tenant.yaml, since '@' characters are considered reserved characters, and break the syntax highlighting logic
+-- Also disable yaml-language-server since it doesn't understand this character
+-- See: https://github.com/auth0/auth0-deploy-cli/issues/732#issue-1573140744
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "tenant.yaml",
+	callback = function()
+		vim.cmd("TSBufDisable highlight")
+	end,
 })
