@@ -123,12 +123,10 @@ return {
 				zig = { "zigfmt" },
 				zsh = { "shfmt", "shellcheck" },
 				markdown = { "prettierd" },
-        -- TODO: I think the 'injected' formatter is causing some issues when editing `.md` files within Obsidian vault directories. Should investigate
+				-- TODO: I think the 'injected' formatter is causing some issues when editing `.md` files within Obsidian vault directories. Should investigate
 				-- markdown = { "prettierd", "injected" },
 				makefile = { "bake" },
-        {{- if eq .osid "linux-nixos" }}
 				nix = { "nixfmt" },
-        {{ end }}
 				nginx = { "nginxfmt" },
 				-- NOTE: 'nufmt' is still in alpha state: https://github.com/nushell/nufmt/issues/62
 				-- nu = { "nufmt" },
