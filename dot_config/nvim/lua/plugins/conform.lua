@@ -122,9 +122,16 @@ return {
 				scss = { "prettierd" },
 				zig = { "zigfmt" },
 				zsh = { "shfmt", "shellcheck" },
-				markdown = { "prettierd" },
 				-- TODO: I think the 'injected' formatter is causing some issues when editing `.md` files within Obsidian vault directories. Should investigate
-				-- markdown = { "prettierd", "injected" },
+				markdown = function()
+					local obsidian_vaults_path = vim.fn.expand("~") .. "/vaults"
+					local current_bfr_path = vim.api.nvim_buf_get_name(0)
+					if string.match(current_bfr_path, "^" .. obsidian_vaults_path) ~= nil then
+						return { "prettierd" }
+					else
+						return { "prettierd", "injected" }
+					end
+				end,
 				makefile = { "bake" },
 				nix = { "nixfmt" },
 				nginx = { "nginxfmt" },
