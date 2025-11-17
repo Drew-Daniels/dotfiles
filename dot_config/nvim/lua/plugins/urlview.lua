@@ -1,11 +1,7 @@
 return {
-  "axieax/urlview.nvim",
-  dependencies = {
-    -- NOTE: Not a hard-requirement, but only alternatives are vim.ui.select or Telescope.nvim
-    -- TODO: Create integration with fzf-lua so I can use this as a picker instead
-
-  },
-  opts = {
-    default_picker = "snacks",
-  },
+	"axieax/urlview.nvim",
+	opts = {
+		-- TODO: Create pick integration with fzf-lua/snacks, so I don't have to use vim.ui.select or Telescope.nvim
+		default_picker = "snacks",
+	},
 }
