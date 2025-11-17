@@ -372,6 +372,9 @@ return {
 							".gitlab-ci.yaml",
 							".gitlab-ci.yml",
 						},
+            -- TODO: Would be nice for there to be a JSON schema created for auth0-deploy-cli tenant.yaml config, so yamlls would understand @ characters are not reserved in these files
+            -- https://github.com/auth0/auth0-deploy-cli/issues/732
+            -- ["http://json.schemastore.org/yaml-schema.json"] = "tenant.yaml"
 					},
 					-- TODO: Not sure if this is required
 					customTags = {
