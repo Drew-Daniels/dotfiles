@@ -18,8 +18,13 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	---@module 'obsidian'
-	---@type obsidian.config
+  ---@type obsidian.config.Internal
 	opts = {
+    checkbox = {
+      -- default
+      -- order = { " ", "~", "!", ">", "x" },
+      order = { " ", "x" },
+    },
     legacy_commands = false,
 		workspaces = {
       {{ if eq .homeOrWork "home" -}}
