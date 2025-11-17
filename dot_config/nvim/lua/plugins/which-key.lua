@@ -165,7 +165,7 @@ return {
 			-- { "<leader>m", group = "Monorepo (Nx)" },
 			-- { "<leader>ma", desc = "<cmd>Telescope nx actions<cr>" },
 			-- Notes
-			{ "<leader>n", group = "Notes (Obsidian.nvim)" },
+			{ "<leader>n", group = "Notes (Obsidian.nvim)", mode = { "n", "v" } },
 			{ "<leader>nb", "<cmd>Obsidian backlinks<cr>", desc = "backlinks" },
 			{ "<leader>nc", "<cmd>Obsidian check<cr>", desc = "check" },
 			{ "<leader>nt", "<cmd>Obsidian today<cr>", desc = "Today's Daily" },
@@ -178,13 +178,17 @@ return {
 			{ "<leader>nN", "<cmd>Obsidian new_from_template<cr>", desc = "new_from_template" },
 			{ "<leader>no", "<cmd>Obsidian open<cr>", desc = "open" },
 			{ "<leader>np", "<cmd>Obsidian paste_img<cr>", desc = "paste_img" },
-			{ "<leader>nq", "<cmd>Obsidian quick_search<cr>", desc = "quick_search" },
+			{ "<leader>nq", "<cmd>Obsidian quick_switch<cr>", desc = "quick_switch" },
 			{ "<leader>nr", "<cmd>Obsidian rename<cr>", desc = "rename" },
 			{ "<leader>ns", "<cmd>Obsidian search<cr>", desc = "search" },
 			{ "<leader>ng", "<cmd>Obsidian tags<cr>", desc = "tags" },
 			-- { "<leader>nT", "<cmd>Obsidian template<cr>", desc = "template" },
 			{ "<leader>nC", "<cmd>Obsidian toc<cr>", desc = "toc" },
 			{ "<leader>nw", "<cmd>Obsidian workspace<cr>", desc = "workspace" },
+			-- TODO: Figure out why this is failing
+			{ "<leader>ne", "<cmd>Obsidian extract_note<cr>", desc = "extract_note", mode = "v" },
+			{ "<leader>nl", "<cmd>Obsidian extract_note<cr>", desc = "extract_note", mode = "v" },
+			{ "<leader>nL", "<cmd>Obsidian extract_note<cr>", desc = "extract_note", mode = "v" },
 			-- Neogen
 			{ "<leader>N", group = "Neogen" },
 			{
