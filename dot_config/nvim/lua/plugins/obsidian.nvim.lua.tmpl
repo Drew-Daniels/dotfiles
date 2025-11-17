@@ -1,6 +1,7 @@
 return {
 	"obsidian-nvim/obsidian.nvim",
 	-- dev = true,
+  -- dir = "~/projects/obsidian-nvim",
 	-- cond = false,
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
@@ -38,6 +39,16 @@ return {
 		},
 		templates = {
 			folder = "templates",
+      substitutions = {
+           -- TODO: Add handling so weekend days are skipped
+           -- This way, on Fridays, I can start working on my next Daily for Monday
+           yesterday = function()
+                return os.date("%Y-%m-%d", os.time() - 86400)
+           end,
+           tomorrow = function()
+                return os.date("%Y-%m-%d", os.time() + 86400)
+           end,
+        },
 		},
 		daily_notes = {
 			workdays_only = true,

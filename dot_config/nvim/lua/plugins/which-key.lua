@@ -182,6 +182,7 @@ return {
 			{ "<leader>nr", "<cmd>Obsidian rename<cr>", desc = "rename" },
 			{ "<leader>ns", "<cmd>Obsidian search<cr>", desc = "search" },
 			{ "<leader>ng", "<cmd>Obsidian tags<cr>", desc = "tags" },
+			{ "<localleader>td", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle Checkbox" },
 			-- { "<leader>nT", "<cmd>Obsidian template<cr>", desc = "template" },
 			{ "<leader>nC", "<cmd>Obsidian toc<cr>", desc = "toc" },
 			{ "<leader>nw", "<cmd>Obsidian workspace<cr>", desc = "workspace" },
