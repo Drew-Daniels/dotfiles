@@ -42,6 +42,18 @@ return {
 		},
 		templates = {
 			folder = "templates",
+			customizations = {
+				ticket = {
+					-- TODO: Create an issue in obsidian-nvim about either:
+					-- Updating documentation https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template#customizations to indicate that both of these properties are required OR
+					-- Update the logic so that if only one is provided, the settings are merged with the defaults
+					-- Current state, there is a runtime error that occurs when only setting `notes_subdir` but not setting `note_id_func`
+					note_id_func = function()
+						return require("obsidian.builtin").zettel_id()
+					end,
+					notes_subdir = "tickets",
+				},
+			},
 			substitutions = {
 				-- TODO: Add handling so weekend days are skipped
 				-- This way, on Fridays, I can start working on my next Daily for Monday
