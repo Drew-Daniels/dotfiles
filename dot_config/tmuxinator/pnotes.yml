@@ -1,0 +1,10 @@
+name: pnotes
+root: ~/vaults/personal
+windows:
+  - pnotes:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - notes:
+            - fish
+            - cls
+            - nvim index.md
