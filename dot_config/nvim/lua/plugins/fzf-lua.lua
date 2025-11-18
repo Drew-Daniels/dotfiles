@@ -8,7 +8,10 @@ return {
 		previewers = {
 			bat = {
         theme = function ()
-          return vim.o.bg == "light" and "Catppuccin Latte" or "gruvbox-dark"
+          -- return vim.o.bg == "light" and "Catppuccin Latte" or "gruvbox-dark"
+          -- TODO: Create a Sublime theme for Zenbones that can be used by `bat`
+          -- https://github.com/sharkdp/bat?tab=readme-ov-file#adding-new-themes
+          return vim.o.bg == "light" and "base16-256" or "gruvbox-dark"
         end
 			},
 		},
