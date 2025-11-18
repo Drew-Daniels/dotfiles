@@ -17,7 +17,8 @@ return {
 				-- light = "zenbones",
 				-- dark = "zenbones",
 				-- light = "gruvbox",
-				light = "catppuccin",
+				-- light = "catppuccin",
+				light = "onenord-light",
 				dark = "gruvbox",
 			},
 		})

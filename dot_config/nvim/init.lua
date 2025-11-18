@@ -30,7 +30,8 @@ if vim.loop.os_uname().sysname == "Linux" then
 		local parsed_content = parse_json_using_jq(expanded_json_file_path, jq_filter)
 		local fmt_content = string.gsub(parsed_content, '"', ""):match("^%s*(.-)%s*$")
 		if fmt_content == "light" then
-			vim.cmd("colorscheme catppuccin")
+			-- vim.cmd("colorscheme catppuccin")
+			vim.cmd("colorscheme onenord-light")
 			vim.cmd("set bg=light")
 		else
 			vim.cmd("colorscheme gruvbox")
