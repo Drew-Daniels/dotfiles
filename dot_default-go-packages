@@ -6,3 +6,4 @@ github.com/bazelbuild/buildtools/buildifier@latest
 github.com/daixiang0/gci@latest
 github.com/antham/ghokin@latest
 github.com/a-h/templ/cmd/templ@latest
+github.com/boyter/scc/v3@latest
