@@ -51,6 +51,7 @@
     # For nix-prefetch-git and others
     nix-prefetch-scripts
     # CLI
+    scc
     hexo-cli
     helmfile
     helm-ls
