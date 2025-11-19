@@ -1,5 +1,15 @@
+-- TODO: Move somewhere where I can easily reuse
 local isMac = function()
 	return vim.fn.has("macunix") == 1
+end
+
+local isNixOS = function()
+	local exit_status = os.execute("command -v nixos-version > /dev/null 2>&1")
+	return exit_status == 0
+end
+
+local isNotNixOS = function()
+	return not isNixOS()
 end
 
 return {
@@ -11,9 +21,9 @@ return {
 		"stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
 		"nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
 	},
-	cond = isMac,
+	cond = isNotNixOS(),
 	build = function()
-		if isMac() then
+		if isNotNixOS() then
 			-- Builds the Go binary
 			require("gitlab.server").build(true)
 		end
