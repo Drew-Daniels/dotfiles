@@ -186,6 +186,7 @@
     "zram-generator"
   ],
   "aurPackages": [
+    "android-studio",
     "1password",
     "1password-cli",
     "auto-cpufreq",

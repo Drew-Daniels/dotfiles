@@ -208,7 +208,7 @@ packages:
         - 'fish-lsp'
       no_quarantine_casks: []
       casks:
-        # - 'android-studio'
+        - 'android-studio'
         - '1password-cli'
         - '1password'
         - 'dbeaver-community'

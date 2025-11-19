@@ -36,6 +36,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    android-studio
     mkcert
     yarn2nix
     node2nix
@@ -44,7 +45,7 @@
     # https://github.com/NixOS/nixpkgs/pull/423931
     # Power management
     # https://nixos.wiki/wiki/Laptop
-    # TODO: Figure out how to share configuration across all linux laptops, rather than configuring this in confiugration.nix just on NixOS
+    # TODO: Figure out how to share configuration across all linux laptops, rather than configuring this in configuration.nix just on NixOS
     # auto-cpufreq
     # espanso-wayland
     # Nix utils
