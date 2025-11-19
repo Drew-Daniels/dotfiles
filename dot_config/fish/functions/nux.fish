@@ -79,6 +79,8 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
                 set glob_str (string replace "+" "*" $session)
                 set -l matching_sessions (tmux ls | awk '{print $1}' | sed 's/:$//' | grep "$glob_str")
                 set matched $matched $matching_sessions
+            else
+                set matched $matched $session
             end
         end
         stop_sessions $matched
@@ -94,6 +96,20 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
 
     # After verifying first (and potentially, only) argument is not a built-in command, it's assumed the arguments provided are a list of one or more projects
     # `nux <project1> <project2> ...`
+    # `nux project+` => `nux project-one project-two project-three`
     set -l projects $argv
-    start_sessions $projects
+    # for each project, check to see if it has a glob character within it
+    # if it does, get a list of all projects in the projects directory that match the glob pattern
+    set -l matched
+    for project in $projects
+        if string match -q -r '\+' "$project"
+            # get a list of all projects in the projects directory that match the glob pattern
+            set glob_str (string replace "+" "*" $project)
+            set -l matching_projects (ls ~/projects | grep "$glob_str")
+            set matched $matched $matching_projects
+        else
+            set matched $matched $project
+        end
+    end
+    start_sessions $matched
 end
