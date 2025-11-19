@@ -1,8 +1,13 @@
-# command=/opt/homebrew/bin/fish
+{{ if eq .chezmoi.os "darwin" -}}
+command=/opt/homebrew/bin/fish
+{{- else }}
 command=fish
+{{- end }}
 font-size=11
 macos-icon=xray
 scrollback-limit=10000
+shell-integration-features=no-cursor
+cursor-style=block
 
 config-file=?macos-theme
 config-file=?linux-theme
