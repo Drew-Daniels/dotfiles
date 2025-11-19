@@ -95,7 +95,6 @@ return {
 				-- fish = { "fish_indent" },
 				fish = function()
 					local current_bfr_path = vim.api.nvim_buf_get_name(0)
-					vim.notify(current_bfr_path)
 					if string.match(current_bfr_path, "tmpl$") ~= nil then
 						return { "trim_whitespace" }
 					else
