@@ -1,0 +1,3 @@
+{{ template "ghostty.config.base.tmpl" }}
+
+theme=Gruvbox Material Dark
