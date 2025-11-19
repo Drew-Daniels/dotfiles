@@ -1,3 +1,7 @@
+local isMac = function()
+	return vim.fn.has("macunix") == 1
+end
+
 return {
 	"harrisoncramer/gitlab.nvim",
 	dependencies = {
@@ -7,9 +11,13 @@ return {
 		"stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
 		"nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
 	},
+	cond = isMac,
 	build = function()
-		require("gitlab.server").build(true)
-	end, -- Builds the Go binary
+		if isMac() then
+			-- Builds the Go binary
+			require("gitlab.server").build(true)
+		end
+	end,
 	-- TODO: Use `opts` instead of manually calling `setup`
 	config = function()
 		require("gitlab").setup({
