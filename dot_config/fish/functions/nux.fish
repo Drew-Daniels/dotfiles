@@ -6,18 +6,19 @@
 # |__/  |__/ \______/ |__/  \__/
 
 # Features:
-  # Enhanced `start` functionality
-    # Wrapper of `tmuxinator start` subcommand that allows you to start multiple tmux sessions at once by specifying the directory names for all the projects you want to start tmux sessions for
-    # For every directory name listed, if there is a tmuxinator config with the same name, tmuxinator will start a tmux session using that config
-    # Otherwise, tmuxinator will start a tmux session using the default tmuxinator project template, and start the session in that directory
-  # Enhanced `stop` functionality
-    # Wrapper of `tmuxinator stop` subcommand that allows you to stop multiple tmux sessions at once by name
-    # For every session name, if there is a corresponding tmuxinator config with the same name, the tmux session will be stopped with `tmux stop` to ensure that on_project_stop hooks are called
-    # Otherwise, tmux will just kill the session of that name as normal
-  # Unified `start`/`stop` interface for all tmux sessions, regardless of whether or not they have a corresponding tmuxinator project configuration created for them
-  # Enhancement to allow users to start (or attach to) a tmux session with a name matching the current directory, if no arguments are provided
-    # Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
+# Enhanced `start` functionality
+# Wrapper of `tmuxinator start` subcommand that allows you to start multiple tmux sessions at once by specifying the directory names for all the projects you want to start tmux sessions for
+# For every directory name listed, if there is a tmuxinator config with the same name, tmuxinator will start a tmux session using that config
+# Otherwise, tmuxinator will start a tmux session using the default tmuxinator project template, and start the session in that directory
+# Enhanced `stop` functionality
+# Wrapper of `tmuxinator stop` subcommand that allows you to stop multiple tmux sessions at once by name
+# For every session name, if there is a corresponding tmuxinator config with the same name, the tmux session will be stopped with `tmux stop` to ensure that on_project_stop hooks are called
+# Otherwise, tmux will just kill the session of that name as normal
+# Unified `start`/`stop` interface for all tmux sessions, regardless of whether or not they have a corresponding tmuxinator project configuration created for them
+# Enhancement to allow users to start (or attach to) a tmux session with a name matching the current directory, if no arguments are provided
+# Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
 
+# TODO: Add wildcard matching for project stop (e.g., `nux stop project*` => stops project-one and project-two)
 # TODO: Enable users to specify alternative `projects` directory
 # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 # TODO: Figure out if there is a way to prevent nested tmux sessions
