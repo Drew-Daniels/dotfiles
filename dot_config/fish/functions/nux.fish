@@ -18,6 +18,8 @@
 # Enhancement to allow users to start (or attach to) a tmux session with a name matching the current directory, if no arguments are provided
 # Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
 
+# TODO: Wrap `ls` command such that it outputs other metadata on project directories, such as
+# time of creation - so I can see which project folders that are old and can probably be removed, such as ones I'd only see when starting tmux sessions using glob patterns
 # TODO: Enable users to specify alternative `projects` directory
 # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 # TODO: Figure out if there is a way to prevent nested tmux sessions
