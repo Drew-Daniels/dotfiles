@@ -10,8 +10,8 @@ return {
 			enable_chat = true,
 			virtual_text = {
 				enabled = true,
-				-- If I want to be in control of when completions are displayed
-				-- manual = true,
+				-- Require windsurf to be manually enabled for virtual text
+				manual = true,
 				-- enable virtualtext for all filetypes by default
 				default_filetype_enabled = true,
 				-- explicitly disable virtual text for some filetypes
