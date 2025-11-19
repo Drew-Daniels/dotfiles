@@ -244,29 +244,3 @@ vim.filetype.add({
 		["helmfile.*%.ya?ml"] = "helm",
 	},
 })
-
--- TODO: Do not completely stop yaml-language-server and bash-language-server when neovim encounters these files - but either:
--- Do not have these LSPs attach to these buffers OR
--- Disable diagnostics from these LSPs while viewing these buffers
--- Disable Tree-sitter highlighting for tenant.yaml, since '@' characters are considered reserved characters, and break the syntax highlighting logic
--- Also disable yaml-language-server since it doesn't understand this character
--- See: https://github.com/auth0/auth0-deploy-cli/issues/732#issue-1573140744
-vim.api.nvim_create_autocmd("LspAttach", {
-	pattern = "tenant.yaml",
-	callback = function()
-		vim.cmd("TSBufDisable highlight")
-		-- Disable Tree-sitter highlighting for tenant.yaml, since '@' characters are considered reserved characters, and break the syntax highlighting logic
-		-- Also disable yaml-language-server since it doesn't understand this character
-		-- See: https://github.com/auth0/auth0-deploy-cli/issues/732#issue-1573140744
-		vim.cmd("LspStop yamlls")
-	end,
-})
-
--- Disable bash-language-server when editing .env files because it can be noisey when it comes across unused env vars
--- It is also inconvenient needing to add directives to every .env I don't want to see diagnostics for,  and it also means that team mates have to see this in their .env files as well
-vim.api.nvim_create_autocmd("LspAttach", {
-	pattern = ".env*",
-	callback = function()
-		vim.cmd("LspStop bashls")
-	end,
-})
