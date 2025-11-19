@@ -89,10 +89,19 @@ return {
 				ruby = { "standardrb" },
 				rust = { "rustfmt" },
 				eruby = { "htmlbeautifier" },
-				-- NOTE: Disabling until I can figure out why conform.nvim is using fish_ident as formatter for .fish.tmpl files
-				-- Causes fish.config.tmpl to become incorrectly formatted because fish_indent doesnt' understand template interpolation syntax
-				-- TODO: De-activate fish_indent as formatter specifically when editing fish config template, but allow it for other files (that are not chezmoi templates)
-				fish = { "fish_indent" },
+				-- TODO: Figure out why .fish.tmpl files are still being interpreted by conform as `fish` files. Likely because of one of my chezmoi neovim plugins setting the filetype to `fish`.
+				-- Might make sense to have `conform` have more intelligent checks for filetypes, but may just need to have workarounds when using templates
+				-- TODO: Use similar logic for all files, not just fish template files, since likely any formatter isn't going to work when they're actually working with go templates
+				-- fish = { "fish_indent" },
+				fish = function()
+					local current_bfr_path = vim.api.nvim_buf_get_name(0)
+					vim.notify(current_bfr_path)
+					if string.match(current_bfr_path, "tmpl$") ~= nil then
+						return { "trim_whitespace" }
+					else
+						return { "fish_indent" }
+					end
+				end,
 				go = { "gci", "golines", "gofmt" },
 				templ = { "templ" },
 				json = { "jq" },
