@@ -19,6 +19,8 @@
 # Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
 
 # TODO: Add wildcard matching for project stop (e.g., `nux stop project*` => stops project-one and project-two)
+# TODO: Add wildcard matching for project start (e.g., `nux start project*` => starts project-one and project-two)
+# Would start a tmux session for every project in the projects directory that matches the glob pattern. Using project-specific tmuxinator templates if they exist, otherwise using the default project template
 # TODO: Enable users to specify alternative `projects` directory
 # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 # TODO: Figure out if there is a way to prevent nested tmux sessions
