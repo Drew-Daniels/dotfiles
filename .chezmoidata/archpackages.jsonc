@@ -1,6 +1,7 @@
 {
   "archPackageRepositoryPackages": [
     "7zip",
+    "ghostty",
     "alacritty",
     "alsa-utils",
     "ast-grep",

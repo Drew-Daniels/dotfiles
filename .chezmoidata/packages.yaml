@@ -219,6 +219,7 @@ packages:
         - 'font-linux-libertine'
         - 'google-chrome'
         - 'keycastr'
+        - 'ghostty'
         - 'iterm2'
         - 'itermbrowserplugin'
         - 'sioyek'
