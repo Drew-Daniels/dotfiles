@@ -66,6 +66,14 @@ function alacritty_light() {
   ln --symbolic --force "$XDG_CONFIG_DIR/alacritty/alacritty.light.toml" "$XDG_CONFIG_DIR/alacritty/alacritty.toml"
 }
 
+function ghostty_dark() {
+  ln --symbolic --force "$XDG_CONFIG_DIR/ghostty/config.dark" "$XDG_CONFIG_DIR/ghostty/config"
+}
+
+function ghostty_light() {
+  ln --symbolic --force "$XDG_CONFIG_DIR/ghostty/config.light" "$XDG_CONFIG_DIR/ghostty/config"
+}
+
 function wofi_dark() {
   # ln --symbolic --force "$XDG_CONFIG_DIR/wofi/config-catpuccin-mocha" "$XDG_CONFIG_DIR/wofi/style.css"
   :
