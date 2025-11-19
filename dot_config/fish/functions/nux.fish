@@ -18,9 +18,6 @@
 # Enhancement to allow users to start (or attach to) a tmux session with a name matching the current directory, if no arguments are provided
 # Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
 
-# TODO: Add wildcard matching for project stop (e.g., `nux stop project*` => stops project-one and project-two)
-# TODO: Add wildcard matching for project start (e.g., `nux start project*` => starts project-one and project-two)
-# Would start a tmux session for every project in the projects directory that matches the glob pattern. Using project-specific tmuxinator templates if they exist, otherwise using the default project template
 # TODO: Enable users to specify alternative `projects` directory
 # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 # TODO: Figure out if there is a way to prevent nested tmux sessions
@@ -69,9 +66,22 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
     end
 
     # `nux stop <project1> <project2> ...`
+    # `nux stop project+` => `nux stop project-one project-two project-three`
     if string match -q -r "$stop_regex" "$first_arg"
         set -l sessions $argv[2..-1]
-        stop_sessions $sessions
+        # for each session, check to see if it has a glob character within it
+        # if it does, get a list of all running tmux sessions that match the glob pattern
+        # e.g., `nux stop project*` => `nux stop project-one project-two project-three`
+        set -l matched
+        for session in $sessions
+            if string match -q -r '\+' "$session"
+                # get a list of all running tmux sessions that match the glob pattern
+                set glob_str (string replace "+" "*" $session)
+                set -l matching_sessions (tmux ls | awk '{print $1}' | sed 's/:$//' | grep "$glob_str")
+                set matched $matched $matching_sessions
+            end
+        end
+        stop_sessions $matched
         return 0
     end
 
