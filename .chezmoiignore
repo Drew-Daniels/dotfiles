@@ -44,3 +44,6 @@ debian-upgrade.sh
 Brewfile*
 Library/Application Support/Cursor/User/settings.json
 {{ end }}
+{{- if ne .chezmoi.os "darwin" }}
+.config/ghostty/macos-theme
+{{- end }}

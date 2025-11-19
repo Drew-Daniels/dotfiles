@@ -1,2 +1,5 @@
 command=fish
 font-size=10
+
+config-file=?macos-theme
+config-file=?linux-theme

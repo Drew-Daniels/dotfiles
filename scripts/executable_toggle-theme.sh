@@ -67,11 +67,11 @@ function alacritty_light() {
 }
 
 function ghostty_dark() {
-  ln --symbolic --force "$XDG_CONFIG_DIR/ghostty/config.dark" "$XDG_CONFIG_DIR/ghostty/config"
+  ln --symbolic --force "$XDG_CONFIG_DIR/ghostty/linux-theme.dark" "$XDG_CONFIG_DIR/ghostty/linux-theme"
 }
 
 function ghostty_light() {
-  ln --symbolic --force "$XDG_CONFIG_DIR/ghostty/config.light" "$XDG_CONFIG_DIR/ghostty/config"
+  ln --symbolic --force "$XDG_CONFIG_DIR/ghostty/linux-theme.light" "$XDG_CONFIG_DIR/ghostty/linux-theme"
 }
 
 function wofi_dark() {
