@@ -1,10 +1,21 @@
+-- TODO: Figure out why windsurf fails on NixOS
+-- TODO: De-dupe with gitlab.nvim.lua
+local isNixOS = function()
+	local exit_status = os.execute("command -v nixos-version > /dev/null 2>&1")
+	return exit_status == 0
+end
+
+local isNotNixOS = function()
+	return not isNixOS()
+end
+
 return {
 	"Exafunction/windsurf.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
 	},
-	-- cond = false,
+	cond = isNotNixOS(),
 	config = function()
 		require("codeium").setup({
 			enable_chat = true,
