@@ -24,6 +24,8 @@ return {
 			-- default
 			-- order = { " ", "~", "!", ">", "x" },
 			order = { " ", "x" },
+			-- Do not create a checkbox when smart_action mapping is triggered on a list item: https://github.com/obsidian-nvim/obsidian.nvim/issues/523#issuecomment-3553774146
+			create_new = false,
 		},
 		legacy_commands = false,
 		workspaces = {
