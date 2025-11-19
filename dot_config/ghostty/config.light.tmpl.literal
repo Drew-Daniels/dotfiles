@@ -1,3 +1,0 @@
-{{ template "ghostty.config.base.tmpl" }}
-
-theme=Zenbones
