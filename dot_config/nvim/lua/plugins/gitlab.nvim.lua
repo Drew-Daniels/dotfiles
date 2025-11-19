@@ -10,7 +10,14 @@ return {
 	build = function()
 		require("gitlab.server").build(true)
 	end, -- Builds the Go binary
+	-- TODO: Use `opts` instead of manually calling `setup`
 	config = function()
-		require("gitlab").setup()
+		require("gitlab").setup({
+			create_mr = {
+				target = "main",
+				template_file = "Default.md",
+				squash = true,
+			},
+		})
 	end,
 }
