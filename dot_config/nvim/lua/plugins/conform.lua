@@ -82,7 +82,15 @@ return {
 				-- cucumber = { "ghokin" },
 				cucumber = { "reformat-gherkin" },
 				d2 = { "d2" },
-				lua = { "stylua" },
+				-- lua = { "stylua" },
+				lua = function()
+					local current_bfr_path = vim.api.nvim_buf_get_name(0)
+					if string.match(current_bfr_path, "tmpl$") ~= nil then
+						return { "trim_whitespace" }
+					else
+						return { "stylua" }
+					end
+				end,
 				hurl = { "hurlfmt" },
 				html = { "htmlbeautifier" },
 				http = { "kulala-fmt" },
@@ -91,7 +99,7 @@ return {
 				eruby = { "htmlbeautifier" },
 				-- TODO: Figure out why .fish.tmpl files are still being interpreted by conform as `fish` files. Likely because of one of my chezmoi neovim plugins setting the filetype to `fish`.
 				-- Might make sense to have `conform` have more intelligent checks for filetypes, but may just need to have workarounds when using templates
-				-- TODO: Use similar logic for all files, not just fish template files, since likely any formatter isn't going to work when they're actually working with go templates
+				-- TODO: Find a more DRY way of deactivating file-specific formatters when editing .tmpl files.
 				-- fish = { "fish_indent" },
 				fish = function()
 					local current_bfr_path = vim.api.nvim_buf_get_name(0)
@@ -107,7 +115,15 @@ return {
 				jsonc = { "jq" },
 				json5 = { "fixjson" },
 				query = { "format-queries" },
-				sh = { "shfmt", "shellcheck" },
+				-- sh = { "shfmt", "shellcheck" },
+				sh = function()
+					local current_bfr_path = vim.api.nvim_buf_get_name(0)
+					if string.match(current_bfr_path, "tmpl$") ~= nil then
+						return { "trim_whitespace" }
+					else
+						return { "shfmt", "shellcheck" }
+					end
+				end,
 				sql = { "sqlfmt" },
 				java = { "astyle" },
 				-- javascript = { "eslint_d", "prettierd" },
@@ -122,14 +138,30 @@ return {
 				-- javascriptreact = { "biome", "biome-check" },
 				-- typescriptreact = { "biome", "biome-check" },
 				-- tex = { "tex-fmt" },
-				toml = { "taplo" },
+				-- toml = { "taplo" },
+				toml = function()
+					local current_bfr_path = vim.api.nvim_buf_get_name(0)
+					if string.match(current_bfr_path, "tmpl$") ~= nil then
+						return { "trim_whitespace" }
+					else
+						return { "taplo" }
+					end
+				end,
 				vue = { "eslint_d" },
 				svelte = { "eslint_d", "prettierd" },
 				css = { "prettierd" },
 				less = { "prettierd" },
 				scss = { "prettierd" },
 				zig = { "zigfmt" },
-				zsh = { "shfmt", "shellcheck" },
+				-- zsh = { "shfmt", "shellcheck" },
+				zsh = function()
+					local current_bfr_path = vim.api.nvim_buf_get_name(0)
+					if string.match(current_bfr_path, "tmpl$") ~= nil then
+						return { "trim_whitespace" }
+					else
+						return { "shfmt", "shellcheck" }
+					end
+				end,
 				-- TODO: I think the 'injected' formatter is causing some issues when editing `.md` files within Obsidian vault directories. Should investigate
 				markdown = function()
 					local obsidian_vaults_path = vim.fn.expand("~") .. "/vaults"
