@@ -282,7 +282,7 @@
     neovim-remote
     vim
     universal-ctags
-    nodePackages.live-server
+    # nodePackages.live-server
     tree-sitter
     # texlab
     # texliveFull
