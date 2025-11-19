@@ -4,11 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
 	},
-	cond = false,
-	-- cond = function()
-	-- 	-- Only run on macos
-	-- 	return vim.fn.has("macunix") == 1
-	-- end,
+	-- cond = false,
 	config = function()
 		require("codeium").setup({
 			enable_chat = true,
@@ -16,13 +12,14 @@ return {
 				enabled = true,
 				-- If I want to be in control of when completions are displayed
 				-- manual = true,
+				-- enable virtualtext for all filetypes by default
+				default_filetype_enabled = true,
+				-- explicitly disable virtual text for some filetypes
 				filetypes = {
-					-- explicitly specify which filetypes I want to enable/disable virtual text for
 					norg = false,
 					text = false,
+					markdown = false,
 				},
-				-- default to enabling for the rest
-				default_filetype_enabled = true,
 				key_bindings = {
 					accept = "<C-g>",
 					clear = "<C-x>",
