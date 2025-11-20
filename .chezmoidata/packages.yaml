@@ -209,6 +209,9 @@ packages:
       no_quarantine_casks: []
       casks:
         - 'android-studio'
+        # NOTE: Not sure why installing command line tools here doesn't place it in a place that can be found by sdkmanager, but need to manually install this toolchain using the Android Studio app
+        # - 'android-commandlinetools'
+        - 'flutter'
         - '1password-cli'
         - '1password'
         - 'dbeaver-community'
