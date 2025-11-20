@@ -5,12 +5,6 @@ return {
 		-- TODO: Modularize configuration so that 'capabilities = capabilities' setting is used for every lsp
 		--TODO: Deactivate eslint lsp when in an "ignored" directory so things are less noisy
 		-- https://github.com/neovim/nvim-lspconfig/issues/2508
-		local root_dir = vim.fs.root(0, ".git")
-		local use_flat_config = false
-		if root_dir ~= nil and vim.fn.filereadable(root_dir .. "/eslint.config.js") == 1 then
-			use_flat_config = true
-		end
-
 		local vue_language_server_path = vim.fn.exepath("vue-language-server")
 		local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 		local vue_plugin = {
@@ -277,7 +271,11 @@ return {
 
 		vim.lsp.config("groovyls", {
 			capabilities = capabilities,
-			cmd = { "java", "-jar", vim.fn.expand("~") .. "/projects/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+			cmd = {
+				"java",
+				"-jar",
+				vim.fn.expand("~") .. "/projects/groovy-language-server/build/libs/groovy-language-server-all.jar",
+			},
 		})
 
 		vim.lsp.config("graphql", {
@@ -348,7 +346,7 @@ return {
 			capabilities = capabilities,
 			-- filetypes = { "markdown", "norg" },
 			init_options = {
-        config = vim.fn.expand "~" .. "/.config/typos/typos.toml",
+				config = vim.fn.expand("~") .. "/.config/typos/typos.toml",
 			},
 		})
 
@@ -372,9 +370,9 @@ return {
 							".gitlab-ci.yaml",
 							".gitlab-ci.yml",
 						},
-            -- TODO: Would be nice for there to be a JSON schema created for auth0-deploy-cli tenant.yaml config, so yamlls would understand @ characters are not reserved in these files
-            -- https://github.com/auth0/auth0-deploy-cli/issues/732
-            -- ["http://json.schemastore.org/yaml-schema.json"] = "tenant.yaml"
+						-- TODO: Would be nice for there to be a JSON schema created for auth0-deploy-cli tenant.yaml config, so yamlls would understand @ characters are not reserved in these files
+						-- https://github.com/auth0/auth0-deploy-cli/issues/732
+						-- ["http://json.schemastore.org/yaml-schema.json"] = "tenant.yaml"
 					},
 					-- TODO: Not sure if this is required
 					customTags = {
@@ -474,9 +472,7 @@ return {
 			"vacuum",
 			"helm_ls",
 			"yamlls",
-      {{ if eq .osid "linux-nixos" }}
 			"nil_ls",
-      {{ end }}
 			"nickel_ls",
 			"nushell",
 			-- "nxls",
@@ -484,8 +480,8 @@ return {
 			"gitlab_ci_ls",
 			"graphql",
 			"gh_actions_ls",
-      -- TODO: Figure out why, when having ts_ls enabled, and opening a .js file in a git repository without a tsconfig.json, a stacktrace message is displayed on opening the file
-      -- Doesn't seem to occur when first opening neovim by itself, and then later opening a buffer to edit that .js file. It only errors when initially opening neovim on that file.
+			-- TODO: Figure out why, when having ts_ls enabled, and opening a .js file in a git repository without a tsconfig.json, a stacktrace message is displayed on opening the file
+			-- Doesn't seem to occur when first opening neovim by itself, and then later opening a buffer to edit that .js file. It only errors when initially opening neovim on that file.
 			"ts_ls",
 			"vue_ls",
 			"svelte",
