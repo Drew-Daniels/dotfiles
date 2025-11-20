@@ -20,6 +20,7 @@ if status is-interactive
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
             end
+            # TODO: Add env vars req for NativeScript here: https://docs.nativescript.org/setup/linux
         case FreeBSD
             if command -q mise
                 mise activate fish | source
@@ -47,6 +48,10 @@ if status is-interactive
             # mise
             /opt/homebrew/bin/mise activate fish | source
             set -gx MISE_ENV development
+
+            # android studio
+            set -gx ANDROID_HOME $HOME/Library/Android/sdk
+            fish_add_path $ANDROID_HOME/platform-tools
 
             # TODO: Figure out how to do this on linux
             # theme

@@ -91,8 +91,12 @@ export PATH="$PATH:$HOME/.config/vscode-xml"
 # bat
 alias bat="bat --theme 'auto:system' --theme-dark 'gruvbox-dark' --theme-light 'Catppuccin Latte'"
 
-# WORK
+# Android Studio
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 {{- if eq .homeOrWork "work" -}}
+# WORK
 # rancher desktop
 export PATH="$PATH:$HOME/.rd/bin"
 
