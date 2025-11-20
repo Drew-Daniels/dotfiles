@@ -277,7 +277,7 @@ return {
 
 		vim.lsp.config("groovyls", {
 			capabilities = capabilities,
-			cmd = { "java", "-jar", "~/projects/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+			cmd = { "java", "-jar", vim.fn.expand("~") .. "/projects/groovy-language-server/build/libs/groovy-language-server-all.jar" },
 		})
 
 		vim.lsp.config("graphql", {
