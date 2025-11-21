@@ -1,3 +1,4 @@
+-- TODO: Move this somewhere else it can be more readily found
 local function open_in_browser(filepath)
 	local command
 	if vim.fn.has("mac") == 1 then
@@ -277,13 +278,17 @@ return {
 			{ "<leader>ql", "<cmd>FzfLua quickfix<cr>", desc = "List" },
 			{ "<leader>qs", "<cmd>FzfLua quickfix_stack<cr>", desc = "Stack" },
 			{ "<leader>qh", "<cmd>FzfLua quickfix_history<cr>", desc = "History" },
+			-- Reports
+			-- TODO: Consolidate these and the `java` keybinds, since they're all used to view reports & documentation
+			{ "<leader>r", group = "Reports" },
+			{ "<leader>rc", "<cmd>OpenInBrowser tmp/reports/cucumber.html<cr>", desc = "Open Cucumber-JS Report" },
 			-- Requests
 			{ "<leader>R", group = "Request" },
 			{ "<leader>Rs", "<Plug>RestNvim", desc = "Send" },
 			{ "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview" },
 			{ "<leader>Rr", "<Plug>RestNvimLast", desc = "Repeat Last" },
 			-- Tinymist
-			{ "<leader>t", group = "Tinymist (Typst LSP)" },
+			-- { "<leader>t", group = "Tinymist (Typst LSP)" },
 			-- { "<leader>tp", "<cmd><cr>", desc = "Buffer" },
 			-- { "<leader>tu", "<cmd>FzfLua btags<cr>", desc = "Buffer" },
 			-- Tags
