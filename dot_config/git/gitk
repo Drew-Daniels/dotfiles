@@ -48,6 +48,8 @@ set tagbgcolor yellow
 set tagfgcolor black
 set tagoutlinecolor black
 set textfont {{JetBrainsMono Nerd Font} 7}
+set theme aqua
+set themeloader {}
 set uicolor grey85
 set uifgcolor black
 set uifgdisabledcolor #999
@@ -57,9 +59,9 @@ set web_browser open
 set workingfilescirclecolor red
 set wrapcomment none
 set wrapdefault none
-set geometry(main) 1412x890+58+38
+set geometry(main) 1409x890+61+34
 set geometry(state) zoomed
-set geometry(topwidth) 1412
+set geometry(topwidth) 1409
 set geometry(topheight) 165
 set geometry(pwsash0) "731 1"
 set geometry(pwsash1) "1097 1"
