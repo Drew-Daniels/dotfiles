@@ -1,3 +1,24 @@
+local function open_in_browser(filepath)
+	local command
+	if vim.fn.has("mac") == 1 then
+		command = "open"
+	elseif vim.fn.has("unix") == 1 then
+		command = "xdg-open"
+	elseif vim.fn.has("win32") == 1 then
+		command = "start"
+	else
+		print("Unsupported OS")
+		return
+	end
+
+	-- Open the file in the default browser
+	os.execute(command .. " " .. filepath)
+end
+
+vim.api.nvim_create_user_command("OpenInBrowser", function(opts)
+	open_in_browser(opts.args)
+end, { nargs = 1 })
+
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
@@ -147,6 +168,11 @@ return {
 			{ "<leader>Jt", "<cmd>TSJToggle<cr>", desc = "Toggle" },
 			{ "<leader>Js", "<cmd>TSJSplit<cr>", desc = "Split" },
 			{ "<leader>Jj", "<cmd>TSJJoin<cr>", desc = "Join" },
+			-- java
+			-- TODO: Only make these keybinds available when in a java project
+			{ "<leader>j", group = "Java" },
+			{ "<leader>jd", "<cmd>OpenInBrowser target/reports/apidocs/index.html<cr>", desc = "JavaDoc" },
+			{ "<leader>jc", "<cmd>OpenInBrowser target/site/jacoco/index.html<cr>", desc = "JaCoCo" },
 			-- Keymaps
 			{ "<leader>k", group = "Keymaps" },
 			{ "<leader>kl", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
