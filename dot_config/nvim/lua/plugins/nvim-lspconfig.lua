@@ -104,6 +104,8 @@ return {
 						"features/**/*.js",
 						"features/**/*.jsx",
 						"step-definitions/**/*.ts",
+						-- TODO: Modify regex pattern to match `feature(s)`
+						"test/feature/**/*.ts",
 						"test/features/**/*.ts",
 						-- Behat
 						"features/**/*.php",
