@@ -1,3 +1,12 @@
+local function get_js_formatters()
+	local current_bfr_path = vim.api.nvim_buf_get_name(0)
+	if string.match(current_bfr_path, "redstone") ~= nil then
+		return { "eslint_d" }
+	else
+		return { "eslint_d", "prettierd" }
+	end
+end
+
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
@@ -126,11 +135,8 @@ return {
 				end,
 				sql = { "sqlfmt" },
 				java = { "astyle" },
-				-- javascript = { "eslint_d", "prettierd" },
-				javascript = { "eslint_d" },
-				-- typescript = { "eslint_d", "prettierd" },
-				typescript = { "eslint_d" },
-				-- typescript = { "eslint_d" },
+				javascript = get_js_formatters,
+				typescript = get_js_formatters,
 				javascriptreact = { "prettierd" },
 				typescriptreact = { "prettierd" },
 				-- javascript = { "biome", "biome-check" },
