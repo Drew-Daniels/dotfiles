@@ -1,3 +1,5 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # TODO: Figure out how to change starship configuration depending on OS theme
 format = """
 $username\
