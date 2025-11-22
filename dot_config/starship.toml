@@ -98,3 +98,11 @@ style = 'bold green'
 
 [cmd_duration]
 disabled = true
+
+[time]
+use_12hr = true
+disabled = false
+# MT
+# utc_time_offset = '-7'
+# CT
+utc_time_offset = '-6'
