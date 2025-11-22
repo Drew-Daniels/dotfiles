@@ -100,8 +100,9 @@ style = 'bold green'
 disabled = true
 
 [time]
-use_12hr = true
 disabled = false
+format = '[$time]($style) '
+use_12hr = true
 # MT
 # utc_time_offset = '-7'
 # CT
