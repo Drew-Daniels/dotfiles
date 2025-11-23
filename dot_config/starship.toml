@@ -100,7 +100,7 @@ style = 'bold green'
 disabled = true
 
 [time]
-disabled = false
+# disabled = false
 format = '[$time]($style) '
 use_12hr = true
 # MT
