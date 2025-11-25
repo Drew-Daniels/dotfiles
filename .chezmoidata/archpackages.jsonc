@@ -202,6 +202,7 @@
     "git-credential-oauth",
     "lemminx",
     "jdtls",
+    "jqp-bin",
     // NOTE: Getting error message of: "Error: an unknown flag --ozone-platform-hint=auto"
     // "joplin",
     // "joplin-desktop",
