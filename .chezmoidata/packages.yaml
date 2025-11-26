@@ -14,11 +14,13 @@ packages:
         - 'daveshanley/vacuum'
         - 'alesbrelih/gitlab-ci-ls'
         - 'JetBrains/utils'
+        - 'mobile-dev-inc/tap'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
         # - 'neovim'
       brews:
+        - 'maestro'
         - 'pdfgrep'
         - 'dive'
         - 'asciinema'
