@@ -255,8 +255,6 @@ packages:
         - 'podman-tui'
         - 'streamrip'
         - 'yt-dlp'
-        # DICOM Viewer: https://weasis.org/en/index.html
-        - 'weasis'
       no_quarantine_casks:
         - 'librewolf'
       casks:
@@ -277,6 +275,8 @@ packages:
         - 'vitalsource-bookshelf'
         - 'qutebrowser'
         - 'mixxx'
+        # DICOM Viewer: https://weasis.org/en/index.html
+        - 'weasis'
       mas_apps:
         "Kiwix": 997079563
         "Paprika Recipe Manager 3": 1303222628
