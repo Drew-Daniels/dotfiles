@@ -1,5 +1,4 @@
 github.com/sqls-server/sqls@latest
-github.com/hyprland-community/hyprls/cmd/hyprls@latest
 github.com/nametake/golangci-lint-langserver@latest
 github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 github.com/bazelbuild/buildtools/buildifier@latest
@@ -7,3 +6,4 @@ github.com/daixiang0/gci@latest
 github.com/antham/ghokin@latest
 github.com/a-h/templ/cmd/templ@latest
 github.com/boyter/scc/v3@latest
+github.com/nao1215/gup@latest
