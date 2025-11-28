@@ -15,7 +15,7 @@ if status is-interactive
             if test $theme = "light"
                 set -gx OS_THEME_DARK 0
                 fish_config theme choose "$fish_light_theme"
-                # alias jqp="jqp --theme='algol'"
+                alias jqp="jqp --theme='algol'"
             else
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
@@ -62,7 +62,7 @@ if status is-interactive
                 # this setting is only set when using dark mode
                 set -gx OS_THEME_DARK 0
                 fish_config theme choose "$fish_light_theme"
-                # alias jqp="jqp --theme='algol'"
+                alias jqp="jqp --theme='algol'"
             else
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
@@ -144,7 +144,7 @@ if status is-interactive
     alias pb="prettybat"
 
     {{ if eq .chezmoi.os "darwin" }}
-    alias bat "bat --theme 'auto:system' --theme-dark 'gruvbox-dark' --theme-light 'Catppuccin Latte'"
+    alias bat "bat --theme 'auto:system' --theme-dark 'gruvbox-dark' --theme-light 'zenbones'"
     {{ end }}
 
     # lsd
