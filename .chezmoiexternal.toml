@@ -1,6 +1,9 @@
 [".config/alacritty/themes"]
 type = "git-repo"
 url = "https://github.com/alacritty/alacritty-theme.git"
+[".config/bat/themes/sublime-zenbones"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/sublime-zenbones.git"
 ["projects/groovy-language-server"]
 type = "git-repo"
 url = "https://github.com/GroovyLanguageServer/groovy-language-server.git"
