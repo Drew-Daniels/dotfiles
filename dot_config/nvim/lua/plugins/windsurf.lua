@@ -15,7 +15,8 @@ return {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
 	},
-	cond = isNotNixOS(),
+	-- cond = isNotNixOS(),
+  cond = false,
 	config = function()
 		require("codeium").setup({
 			enable_chat = true,
