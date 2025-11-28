@@ -35,10 +35,13 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
             if test -e ~/.config/tmuxinator/$project.yml
                 tmuxinator $project --no-attach
             else
-                tmuxinator project -n $project d=$project --no-attach
+                # TODO: De-dupe this '.' replacement logic
+                set -l session_name (string replace . _ $project)
+                tmuxinator project -n $session_name d=$project --no-attach
             end
         end
-        tmux attach -t $argv[-1]
+        set -l session_name (string replace . _ $argv[-1])
+        tmux attach -t $session_name
     end
 
     function stop_sessions
