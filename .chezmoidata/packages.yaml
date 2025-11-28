@@ -221,7 +221,7 @@ packages:
         - '1password'
         - 'dbeaver-community'
         - 'drawio'
-        - 'espanso'
+        # - 'espanso'
         - 'flutter'
         - 'font-jetbrains-mono-nerd-font'
         # Required dependency of yamlresume
