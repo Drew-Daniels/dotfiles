@@ -12,13 +12,14 @@ if status is-interactive
             # TODO: Add handling for when this file doesn't exist - like on a new computer
             # TODO: Check theme state file to get current theme
             set theme (jq --raw-output '.theme' ~/.local/state/theme-toggle/state.json)
-            # echo "theme: $theme"
             if test $theme = "light"
                 set -gx OS_THEME_DARK 0
                 fish_config theme choose "$fish_light_theme"
+                # alias jqp="jqp --theme='algol'"
             else
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
+                alias jqp="jqp --theme='gruvbox'"
             end
             # TODO: Add env vars req for NativeScript here: https://docs.nativescript.org/setup/linux
         case FreeBSD
@@ -61,9 +62,11 @@ if status is-interactive
                 # this setting is only set when using dark mode
                 set -gx OS_THEME_DARK 0
                 fish_config theme choose "$fish_light_theme"
+                # alias jqp="jqp --theme='algol'"
             else
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
+                alias jqp="jqp --theme='gruvbox'"
             end
 
     end
