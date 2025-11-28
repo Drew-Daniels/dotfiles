@@ -258,7 +258,6 @@ packages:
       no_quarantine_casks:
         - 'librewolf'
       casks:
-        - 'alex313031-thorium'
         - 'docker-desktop'
         - 'electrum'
         - 'element'
