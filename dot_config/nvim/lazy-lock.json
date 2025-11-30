@@ -58,7 +58,7 @@
   "obsidian.nvim": { "branch": "main", "commit": "4065c233f618cdbfbf084d87e97317f8d019ef59" },
   "oil-git-status.nvim": { "branch": "main", "commit": "4b5cf53842c17a09420919e655a6a559da3112d7" },
   "oil-lsp-diagnostics.nvim": { "branch": "master", "commit": "e04e3c387262b958fee75382f8ff66eae9d037f4" },
-  "oil.nvim": { "branch": "master", "commit": "e5a1398790de2aa9eb7f795f592b8ee91a03eccc" },
+  "oil.nvim": { "branch": "master", "commit": "cbcb3f997f6f261c577b943ec94e4ef55108dd95" },
   "onenord.nvim": { "branch": "main", "commit": "77ca72a9ef771239eb43bf4b745285396e909bf6" },
   "otter.nvim": { "branch": "main", "commit": "fc0aa35b1985077d11a20ddf4006bf40f2cd7397" },
   "pathlib.nvim": { "branch": "main", "commit": "57e5598af6fe253761c1b48e0b59b7cd6699e2c1" },
