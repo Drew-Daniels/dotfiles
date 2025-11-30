@@ -73,6 +73,7 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
 
     # `nux stop <project1> <project2> ...`
     # `nux stop project+` => `nux stop project-one project-two project-three`
+    # `nux stop +project+ => `nux stop 1project project2`
     if string match -q -r "$stop_regex" "$first_arg"
         set -l sessions $argv[2..-1]
         # for each session, check to see if it has a glob character within it
@@ -82,8 +83,8 @@ function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to ha
         for session in $sessions
             if string match -q -r '\+' "$session"
                 # get a list of all running tmux sessions that match the glob pattern
-                set glob_str (string replace "+" "*" $session)
-                set -l matching_sessions (tmux ls | awk '{print $1}' | sed 's/:$//' | grep "$glob_str")
+                set glob_str (string replace --all "+" ".*" $session)
+                set -l matching_sessions (tmux ls | awk '{print $1}' | sed 's/:$//' | grep -E "$glob_str")
                 set matched $matched $matching_sessions
             else
                 set matched $matched $session
