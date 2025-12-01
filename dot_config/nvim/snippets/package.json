@@ -63,6 +63,10 @@
         "path": "./javascript.json"
       },
       {
+        "language": "typescriptreact",
+        "path": "./typescriptreact.json"
+      },
+      {
         "language": "nix",
         "path": "./nix.json"
       },
