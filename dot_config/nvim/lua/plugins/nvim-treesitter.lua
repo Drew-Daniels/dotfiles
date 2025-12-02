@@ -63,6 +63,7 @@ return {
 			"kotlin",
 			"markdown",
 			"markdown_inline",
+      "mermaid",
 			"meson",
 			"muttrc",
 			"ninja",
