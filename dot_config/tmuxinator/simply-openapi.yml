@@ -1,0 +1,13 @@
+name: simply-openapi
+root: <%= ENV["PROJECTS_DIR"] %>/simply-openapi
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

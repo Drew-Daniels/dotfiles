@@ -1,0 +1,22 @@
+name: pharmacy_notifications
+root: <%= ENV["PROJECTS_DIR"] %>/kipu_pharmacy_notifications
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls
+  - app:
+      root: <%= ENV["PROJECTS_DIR"] %>/kipu_pharmacy_notifications/app
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls

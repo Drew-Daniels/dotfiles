@@ -1,0 +1,13 @@
+name: emr-csrf
+root: <%= ENV["PROJECTS_DIR"] %>/emr-csrf
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

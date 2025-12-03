@@ -1,0 +1,22 @@
+name: keet-umi
+root: <%= ENV["PROJECTS_DIR"] %>/keet-umi
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - tsc:
+            - fish
+            - cls
+  - 2)stack:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls

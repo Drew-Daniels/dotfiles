@@ -1,0 +1,13 @@
+name: payments-api
+root: <%= ENV["PROJECTS_DIR"] %>/payments-api
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

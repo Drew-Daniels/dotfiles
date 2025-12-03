@@ -1,0 +1,9 @@
+name: xxx-vault
+root: "~/vaults/xxx"
+windows:
+  - xxx-vault:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - nvim

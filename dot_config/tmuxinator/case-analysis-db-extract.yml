@@ -1,0 +1,24 @@
+name: case-analysis-db-extract
+root: <%= ENV["PROJECTS_DIR"] %>/case-analysis-db-extract
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - tsc:
+            - fish
+            - cls
+            - pnpm run dev
+  - 2)docker-compose:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker compose up

@@ -1,0 +1,13 @@
+name: java-comp
+root: <%= ENV["PROJECTS_DIR"] %>/java-comp
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

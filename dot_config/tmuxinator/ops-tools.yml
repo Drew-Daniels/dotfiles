@@ -1,0 +1,16 @@
+name: ops-tools
+root: <%= ENV["PROJECTS_DIR"] %>/ops-tools
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls

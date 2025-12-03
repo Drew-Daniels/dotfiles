@@ -1,0 +1,16 @@
+name: webpt-auth-client
+root: <%= ENV["PROJECTS_DIR"] %>/webpt-auth-client
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - tsc:
+            - fish
+            - cls

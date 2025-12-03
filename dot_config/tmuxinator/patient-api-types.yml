@@ -1,0 +1,13 @@
+name: patient-api-types
+root: <%= ENV["PROJECTS_DIR"] %>/patient-api-types
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

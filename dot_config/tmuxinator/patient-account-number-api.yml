@@ -1,0 +1,13 @@
+name: patient-account-number-api
+root: <%= ENV["PROJECTS_DIR"] %>/patient-account-number-api
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

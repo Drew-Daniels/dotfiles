@@ -1,0 +1,26 @@
+name: aidbox-api
+root: <%= ENV["PROJECTS_DIR"] %>/aidbox-api
+on_project_stop:
+  - docker compose stop
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev-server:
+            - fish
+            - cls
+            - pnpm start:dev
+  - 2)docker-compose:
+      layout: main-horizontal
+      panes:
+        - stack:
+            - fish
+            - cls
+            - docker compose up

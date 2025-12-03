@@ -1,0 +1,10 @@
+# Can't see album art in tmux for some reason?
+name: ♫ tunes ♫
+root: "~"
+windows:
+  - tunes:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cmus

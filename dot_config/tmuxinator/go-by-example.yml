@@ -1,0 +1,16 @@
+name: go-by-example
+root: "~/projects/go-by-example"
+windows:
+  - main:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+        - dev:
+            - fish
+            - cls

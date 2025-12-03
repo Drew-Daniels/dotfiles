@@ -1,0 +1,13 @@
+name: fhir-types-r4
+root: <%= ENV["PROJECTS_DIR"] %>/fhir-types-r4
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls

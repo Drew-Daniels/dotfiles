@@ -1,0 +1,90 @@
+name: elayne-platform
+root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform
+on_project_stop:
+  - docker compose stop db
+  - kill -15 $(lsof -ti :4200)
+  - kill -15 $(lsof -ti :3030)
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+  - web:
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/apps/employee-portal-new
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
+  - api:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/services/elayne-api
+      panes:
+        - editor:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls
+  - web server:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+            - fish
+            - yarn nx serve employee-portal-new
+  - api server:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+            - fish
+            - yarn nx serve elayne-api
+  - db server:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+            - fish
+            - docker compose up db
+            - yarn nx elayne-api
+  - aws-fluent-bit:
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/infrastructure/aws-fluent-bit
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls
+  - web-e2e:
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/apps/employee-portal-new-e2e
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls
+  - api-e2e:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      root: <%= ENV["PROJECTS_DIR"] %>/elayne-platform/services/elayne-api-e2e
+      panes:
+        - editor:
+            - fish
+            - cls
+        - devserver:
+            - fish
+            - cls
+        - cmd:
+            - fish
+            - cls

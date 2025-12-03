@@ -1,0 +1,13 @@
+name: home
+root: '~'
+windows:
+  - home:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd:
+            - fish
+            - cls
