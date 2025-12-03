@@ -120,7 +120,9 @@ return {
 				end,
 				go = { "gci", "golines", "gofmt" },
 				templ = { "templ" },
-				json = { "jq" },
+				-- json = { "jq" },
+				-- TODO: Figure out how to conditionally use `prettierd` in `medplum-` repos and `jq` otherwise
+				json = { "prettierd" },
 				jsonc = { "jq" },
 				json5 = { "fixjson" },
 				query = { "format-queries" },
