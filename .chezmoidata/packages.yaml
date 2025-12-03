@@ -247,7 +247,9 @@ packages:
         "Xcode": 497799835
     home:
       taps: []
-      head_brews: []
+      head_brews:
+        # taglib is required for navidrome development
+        - 'taglib'
       brews:
         - 'b2-tools'
         - 'podman'
