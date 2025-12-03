@@ -252,6 +252,8 @@ packages:
         - 'taglib'
       brews:
         - 'b2-tools'
+        # 'hugo' is required for navidrome development
+        - 'hugo'
         - 'podman'
         - 'podman-compose'
         - 'podman-tui'
