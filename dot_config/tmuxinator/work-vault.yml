@@ -1,9 +1,0 @@
-name: work-vault
-root: "~/vaults/work"
-windows:
-  - work-vault:
-      layout: <%= ENV["MUX_LAYOUT"] %>
-      panes:
-        - editor:
-            - fish
-            - nvim
