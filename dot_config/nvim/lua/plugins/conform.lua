@@ -180,7 +180,9 @@ return {
 						return { "prettierd", "injected" }
 					end
 				end,
-				makefile = { "bake" },
+				-- TODO: Create an issue: https://github.com/EbodShojaei/bake/issues
+				-- For some reason keep getting upgrade notice even when using the latest version, and no other versions installed
+				-- make = { "bake" },
 				nix = { "nixfmt" },
 				nginx = { "nginxfmt" },
 				-- NOTE: 'nufmt' is still in alpha state: https://github.com/nushell/nufmt/issues/62

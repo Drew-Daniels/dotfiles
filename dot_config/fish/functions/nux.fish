@@ -24,6 +24,7 @@
 # TODO: Enable users to specify alternative `projects` directory
 # TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
 # TODO: Figure out if there is a way to prevent nested tmux sessions
+# TODO: Add handling for running `nux stop conform.nvim` (i.e., replacing the `.` with `_`)
 
 function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to have functionality"
     set -l first_arg $argv[1]
