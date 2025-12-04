@@ -370,24 +370,36 @@ return {
 			capabilities = capabilities,
 			settings = {
 				yaml = {
-					-- TODO: Ensure both yaml file ext work with this regex pattern
-					schemas = {
-						["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
-							"/ops-tools/**/*.yaml",
-							"/ops-tools/**/*.yml",
-							".gitlab-ci.yaml",
-							".gitlab-ci.yml",
-						},
-						-- TODO: Would be nice for there to be a JSON schema created for auth0-deploy-cli tenant.yaml config, so yamlls would understand @ characters are not reserved in these files
-						-- https://github.com/auth0/auth0-deploy-cli/issues/732
-						-- ["http://json.schemastore.org/yaml-schema.json"] = "tenant.yaml"
+					schemaStore = {
+						-- You must disable built-in schemaStore support if you want to use
+						-- this plugin and its advanced options like `ignore`.
+						enable = false,
+						-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+						url = "",
 					},
-					-- TODO: Not sure if this is required
-					customTags = {
-						"!reference sequence",
-					},
+					schemas = require("schemastore").yaml.schemas(),
 				},
 			},
+			-- settings = {
+			-- 	yaml = {
+			-- 		-- TODO: Ensure both yaml file ext work with this regex pattern
+			-- 		schemas = {
+			-- 			["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
+			-- 				"/ops-tools/**/*.yaml",
+			-- 				"/ops-tools/**/*.yml",
+			-- 				".gitlab-ci.yaml",
+			-- 				".gitlab-ci.yml",
+			-- 			},
+			-- 			-- TODO: Would be nice for there to be a JSON schema created for auth0-deploy-cli tenant.yaml config, so yamlls would understand @ characters are not reserved in these files
+			-- 			-- https://github.com/auth0/auth0-deploy-cli/issues/732
+			-- 			-- ["http://json.schemastore.org/yaml-schema.json"] = "tenant.yaml"
+			-- 		},
+			-- 		-- TODO: Not sure if this is required
+			-- 		customTags = {
+			-- 			"!reference sequence",
+			-- 		},
+			-- 	},
+			-- },
 		})
 
 		vim.lsp.config("nil_ls", {
