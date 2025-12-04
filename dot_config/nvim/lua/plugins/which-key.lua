@@ -94,6 +94,14 @@ return {
 			{ "<leader>e", group = "Ex Commands" },
 			{ "<leader>el", "<cmd>FzfLua commands<cr>", desc = "List" },
 			{ "<leader>eh", "<cmd>FzfLua command_history<cr>", desc = "History" },
+			-- NPM Package Info
+			{
+				"<leader>i",
+				"<cmd>lua require('package-info').show()<cr>",
+				desc = "NPM Package Info",
+				silent = true,
+				noremap = true,
+			},
 			-- Files
 			{ "<leader>f", group = "Files" },
 			{ "<leader>fa", "<cmd>FzfLua autocommands<cr>", desc = "Autocommands" },
