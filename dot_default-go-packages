@@ -1,6 +1,5 @@
 github.com/sqls-server/sqls@latest
 github.com/nametake/golangci-lint-langserver@latest
-github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 github.com/bazelbuild/buildtools/buildifier@latest
 github.com/daixiang0/gci@latest
 github.com/antham/ghokin@latest

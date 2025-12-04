@@ -47,6 +47,7 @@
     // "gitlab-ci-ls",
     "glab",
     "gopls",
+    "golangci-lint",
     "grim",
     "hdparm",
     "helmfile",
