@@ -36,6 +36,7 @@ return {
 			"luap", -- lua_patterns
 			"vim",
 			"vimdoc",
+			"vhs",
 			"query",
 			"bash",
 			"clojure",
@@ -63,7 +64,7 @@ return {
 			"kotlin",
 			"markdown",
 			"markdown_inline",
-      "mermaid",
+			"mermaid",
 			"meson",
 			"muttrc",
 			"ninja",
