@@ -146,6 +146,7 @@ packages:
         - 'uncrustify'
         - 'wget'
         - 'vale'
+        - 'vhs'
         - 'xdotool'
         - 'xxhash'
         - 'yazi'
