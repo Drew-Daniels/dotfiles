@@ -104,29 +104,29 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 -- NOTE: References logic shown here: https://neovim.io/doc/user/lsp.html#lsp-attach
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("tinymist", {}),
-	callback = function(args)
-		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-		local bufnr = assert(args.buf)
-
-		vim.keymap.set("n", "<leader>tp", function()
-			client:exec_cmd({
-				title = "pin",
-				command = "tinymist.pinMain",
-				arguments = { vim.api.nvim_buf_get_name(0) },
-			}, { bufnr = bufnr })
-		end, { desc = "[T]inymist [P]in", noremap = true })
-
-		vim.keymap.set("n", "<leader>tu", function()
-			client:exec_cmd({
-				title = "unpin",
-				command = "tinymist.pinMain",
-				arguments = { vim.v.null },
-			}, { bufnr = bufnr })
-		end, { desc = "[T]inymist [U]npin", noremap = true })
-	end,
-})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	group = vim.api.nvim_create_augroup("tinymist", {}),
+-- 	callback = function(args)
+-- 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+-- 		local bufnr = assert(args.buf)
+--
+-- 		vim.keymap.set("n", "<leader>tp", function()
+-- 			client:exec_cmd({
+-- 				title = "pin",
+-- 				command = "tinymist.pinMain",
+-- 				arguments = { vim.api.nvim_buf_get_name(0) },
+-- 			}, { bufnr = bufnr })
+-- 		end, { desc = "[T]inymist [P]in", noremap = true })
+--
+-- 		vim.keymap.set("n", "<leader>tu", function()
+-- 			client:exec_cmd({
+-- 				title = "unpin",
+-- 				command = "tinymist.pinMain",
+-- 				arguments = { vim.v.null },
+-- 			}, { bufnr = bufnr })
+-- 		end, { desc = "[T]inymist [U]npin", noremap = true })
+-- 	end,
+-- })
 
 -- ── GENERAL ─────────────────────────────────────────────────────────
 
