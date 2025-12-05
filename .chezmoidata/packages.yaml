@@ -106,6 +106,7 @@ packages:
         - 'jless'
         - 'jq'
         - 'jqp'
+        - 'just'
         - 'JetBrains/utils/kotlin-lsp'
         - 'less'
         - 'libgit2@1.7'
