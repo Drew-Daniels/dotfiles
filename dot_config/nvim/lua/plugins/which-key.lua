@@ -308,7 +308,18 @@ return {
 			-- { "<leader>tp", "<cmd>FzfLua tags<cr>", desc = "Project" },
 			-- { "<leader>ts", "<cmd>FzfLua tags_live_grep<cr>", desc = "Search" },
 			-- Tabs
-			{ "<leader>T", "<cmd>FzfLua tabs<cr>", desc = "Tabs" },
+			{ "<leader>t", "<cmd>FzfLua tabs<cr>", desc = "Tabs" },
+			-- translate.nvim
+			{ "<leader>T", group = "Translate" },
+			{ "<leader>Te", "<cmd>Translate EN<cr>", desc = "Translate line into English" },
+			{ "<leader>Tc", "<cmd>Translate EN -comment<cr>", desc = "Translate comments into English" },
+			{ "<leader>Te", "<cmd>'<,'>Translate EN<cr>", desc = "Translate line into English", mode = { "v" } },
+			{
+				"<leader>Tc",
+				"<cmd>viw:Translate EN -comment<cr>",
+				desc = "Translate comments into English",
+				mode = { "v" },
+			},
 			-- URLs
 			{ "<leader>u", group = "URLs" },
 			{ "<leader>ua", "<cmd>UrlView<cr>", desc = "All URLs" },
