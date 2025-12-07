@@ -29,6 +29,7 @@ debian-upgrade.sh
 !.config/weechat/spell.conf
 !.config/weechat/typing.conf
 !.config/weechat/xfer.conf
+.gitleaksignore
 {{ if eq .chezmoi.os "darwin" -}}
 .bashrc
 */i3
