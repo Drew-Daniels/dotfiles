@@ -314,12 +314,7 @@ return {
 			{ "<leader>Te", "<cmd>Translate EN<cr>", desc = "Translate line into English" },
 			{ "<leader>Tc", "<cmd>Translate EN -comment<cr>", desc = "Translate comments into English" },
 			{ "<leader>Te", "<cmd>'<,'>Translate EN<cr>", desc = "Translate line into English", mode = { "v" } },
-			{
-				"<leader>Tc",
-				"<cmd>viw:Translate EN -comment<cr>",
-				desc = "Translate comments into English",
-				mode = { "v" },
-			},
+
 			-- URLs
 			{ "<leader>u", group = "URLs" },
 			{ "<leader>ua", "<cmd>UrlView<cr>", desc = "All URLs" },
