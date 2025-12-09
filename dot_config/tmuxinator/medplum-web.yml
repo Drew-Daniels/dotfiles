@@ -1,0 +1,23 @@
+name: medplum-web
+root: ~/projects/medplum-web
+windows:
+  - 1)editor:
+      layout: main-horizontal
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - cmd1:
+            - fish
+            - cls
+        - cmd2:
+            - fish
+            - cls
+            - npm run dev
+# - 2)stack:
+#     layout: main-horizontal
+#     panes:
+#       - stack:
+#           - fish
+#           - cls
