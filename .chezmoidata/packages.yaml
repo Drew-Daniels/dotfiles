@@ -42,6 +42,7 @@ packages:
         - 'bat'
         - 'bat-extras'
         - 'bazel'
+        - 'bottom'
         - 'cairo'
         - 'cljfmt'
         - 'codebook-lsp'

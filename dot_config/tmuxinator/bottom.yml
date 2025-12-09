@@ -1,0 +1,9 @@
+name: bottom
+windows:
+  - root:
+      layout: <%= ENV["MUX_LAYOUT"] %>
+      panes:
+        - cmd:
+            - fish
+            - cls
+            - btm
