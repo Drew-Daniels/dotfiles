@@ -275,7 +275,7 @@ packages:
         - 'libreoffice'
         - 'lmms'
         - 'trezor-suite'
-        - 'raspberry-pi-imager'
+        # - 'raspberry-pi-imager'
         - 'rekordbox'
         - 'signal'
         - 'whatsapp'
