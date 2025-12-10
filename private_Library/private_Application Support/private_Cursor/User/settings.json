@@ -3,6 +3,7 @@
   "workbench.colorTheme": "Cursor Dark Midnight",
   "workbench.preferredLightColorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
-  "window.systemColorTheme": "auto"
+  "window.systemColorTheme": "auto",
+  "explorer.confirmDelete": false
 }
 
