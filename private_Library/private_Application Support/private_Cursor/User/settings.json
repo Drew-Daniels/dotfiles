@@ -4,6 +4,7 @@
   "workbench.preferredLightColorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
   "window.systemColorTheme": "auto",
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false
 }
 
