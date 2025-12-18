@@ -224,6 +224,7 @@ packages:
         - 'flutter'
         - '1password-cli'
         - '1password'
+        - 'claude-code'
         - 'dbeaver-community'
         - 'drawio'
         # - 'espanso'
