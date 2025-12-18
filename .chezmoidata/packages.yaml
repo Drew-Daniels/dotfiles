@@ -34,6 +34,7 @@ packages:
         - 'golangci-lint'
         - 'golangci-lint-langserver'
         - 'golines'
+        - 'block-goose-cli'
         - 'groovy'
         - 'age'
         - 'ast-grep'
@@ -306,6 +307,7 @@ packages:
       casks:
         - 'confluent-cli'
         - 'cursor'
+        - 'cursor-cli'
         - 'rancher'
         - 'google-drive'
         - 'mysqlworkbench'
