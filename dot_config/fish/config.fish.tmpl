@@ -195,7 +195,7 @@ if status is-interactive
     # I.e., not sure if completions are included
     {{ if (and (eq .chezmoi.os "darwin") (eq .homeOrWork "home")) }}
     # docker
-    docker completion fish | source
+    # docker completion fish | source
     {{ end }}
 
     # keepassxc

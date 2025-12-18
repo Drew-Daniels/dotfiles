@@ -268,7 +268,6 @@ packages:
       no_quarantine_casks:
         - 'librewolf'
       casks:
-        - 'docker-desktop'
         - 'electrum'
         - 'element'
         - 'firefox'
