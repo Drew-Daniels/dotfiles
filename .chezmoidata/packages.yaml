@@ -91,6 +91,7 @@ packages:
         - 'git-gui'
         - 'gnupg'
         - 'gping'
+        - 'ollama'
         - 'opentofu'
         - 'libyaml'
         - 'llvm'
@@ -190,8 +191,6 @@ packages:
         - 'marksman'
         # TODO: Formula
         # - 'mutt-language-server'
-        # TODO: Formula
-        # - 'phpactor'
         # TODO: Formula
         # - 'postgrestools'
         # TODO: Formula
