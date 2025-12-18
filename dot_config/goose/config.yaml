@@ -80,3 +80,6 @@ extensions:
     timeout: 300
     bundled: true
     available_tools: []
+OLLAMA_HOST: localhost
+GOOSE_PROVIDER: ollama
+GOOSE_MODEL: qwen3-coder:latest
