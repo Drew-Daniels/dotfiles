@@ -1,19 +1,19 @@
 name: blog
 root: ~/projects/blog
+on_project_stop:
+  - just down
 windows:
   - 1)editor:
-      layout: main-horizontal
+      layout: main-vertical
       panes:
         - editor:
             - fish
             - cls
             - nvim
-        - cmd1:
+        - agent:
             - fish
             - cls
-        - cmd2:
-            - fish
-            - cls
+            - claude
   - 2)stack:
       layout: main-horizontal
       panes:
