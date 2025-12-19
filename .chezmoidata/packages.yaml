@@ -262,6 +262,7 @@ packages:
         - 'hugo'
         - 'podman'
         - 'podman-tui'
+        - 'docker-compose'
         - 'streamrip'
         - 'yt-dlp'
       no_quarantine_casks:
