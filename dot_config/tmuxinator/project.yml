@@ -19,11 +19,14 @@ windows:
       panes:
         - editor:
             - fish
+            - cls
             - nvim
         - cmd1:
             - fish
+            - cls
         - cmd2:
             - fish
+            - cls
   - 2)stack:
       layout: main-horizontal
       panes:
