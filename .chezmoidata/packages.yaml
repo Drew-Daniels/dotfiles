@@ -261,7 +261,6 @@ packages:
         # 'hugo' is required for navidrome development
         - 'hugo'
         - 'podman'
-        - 'podman-compose'
         - 'podman-tui'
         - 'streamrip'
         - 'yt-dlp'
