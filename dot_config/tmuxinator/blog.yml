@@ -21,3 +21,11 @@ windows:
             - fish
             - cls
             - just dev
+  - 3)repl:
+      layout: main-horizontal
+      root: ~/projects/blog/packages/blog-api
+      panes:
+        - stack:
+            - fish
+            - cls
+            - node ace repl
