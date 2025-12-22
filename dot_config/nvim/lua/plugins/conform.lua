@@ -1,6 +1,6 @@
 local function get_js_formatters()
 	local current_bfr_path = vim.api.nvim_buf_get_name(0)
-	if string.match(current_bfr_path, "redstone") ~= nil then
+	if string.match(current_bfr_path, "blog") ~= nil then
 		return { "eslint_d" }
 	else
 		return { "eslint_d", "prettierd" }
