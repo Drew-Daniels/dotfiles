@@ -66,3 +66,5 @@ qemu_*
 .classpath
 .zig-cache
 *.dSYM
+
+**/.claude/settings.local.json
