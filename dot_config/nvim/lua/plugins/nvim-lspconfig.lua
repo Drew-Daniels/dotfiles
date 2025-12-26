@@ -160,6 +160,9 @@ return {
 
 		vim.lsp.config("vacuum", {
 			capabilities = capabilities,
+			-- cmd = { "vacuum", "language-server" },
+			-- TODO: Create a bug ticket for the Vacuum LSP not automatically detecting and using vacuum ignore files in the current directory
+			-- cmd = { "vacuum", "language-server", "--ignore-file", ".vacuum-ignore.yaml" },
 		})
 
 		vim.lsp.config("vimls", {
