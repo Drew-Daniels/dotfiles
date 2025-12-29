@@ -62,9 +62,9 @@ set wrapdefault none
 set geometry(main) 1460x921+52+33
 set geometry(state) zoomed
 set geometry(topwidth) 1460
-set geometry(topheight) 165
+set geometry(topheight) 700
 set geometry(pwsash0) "731 1"
 set geometry(pwsash1) "1097 1"
 set geometry(botwidth) 906
-set geometry(botheight) 751
+set geometry(botheight) 216
 set permviews {}
