@@ -15,6 +15,11 @@ function nux -d "Wrapper function for tmuxinator with enhanced functionality"
     set -l subcommand $argv[1]
     set -l args $argv[2..-1]
 
+    if set -q TMUX
+        echo "Error: Already inside a tmux session. Detach first with Ctrl-b d" >&2
+        return 1
+    end
+
     # Helper: Sanitize session name (replace . with _)
     function __nux_sanitize_name
         string replace --all '.' _ $argv[1]
