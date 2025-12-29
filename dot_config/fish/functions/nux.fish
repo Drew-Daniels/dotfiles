@@ -5,119 +5,172 @@
 # | $$  | $$|  $$$$$$/ /$$/\  $$
 # |__/  |__/ \______/ |__/  \__/
 
-# Features:
-# Enhanced `start` functionality
-# Wrapper of `tmuxinator start` subcommand that allows you to start multiple tmux sessions at once by specifying the directory names for all the projects you want to start tmux sessions for
-# For every directory name listed, if there is a tmuxinator config with the same name, tmuxinator will start a tmux session using that config
-# Otherwise, tmuxinator will start a tmux session using the default tmuxinator project template, and start the session in that directory
-# Enhanced `stop` functionality
-# Wrapper of `tmuxinator stop` subcommand that allows you to stop multiple tmux sessions at once by name
-# For every session name, if there is a corresponding tmuxinator config with the same name, the tmux session will be stopped with `tmux stop` to ensure that on_project_stop hooks are called
-# Otherwise, tmux will just kill the session of that name as normal
-# Unified `start`/`stop` interface for all tmux sessions, regardless of whether or not they have a corresponding tmuxinator project configuration created for them
-# Enhancement to allow users to start (or attach to) a tmux session with a name matching the current directory, if no arguments are provided
-# Uses the same start_sessions logic to determine whether or not a project-specific tmuxinator template should be used or the default project template when creating the tmux session
+# nux - Enhanced tmuxinator wrapper
+# Unified interface for managing tmux sessions with or without tmuxinator configs
 
-# TODO: Add handling when project directory non-existent
-# TODO: Wrap `ls` command such that it outputs other metadata on project directories, such as
-# time of creation - so I can see which project folders that are old and can probably be removed, such as ones I'd only see when starting tmux sessions using glob patterns
-# TODO: Enable users to specify alternative `projects` directory
-# TODO: Figure out how to have this command still use fish shell completions for tmuxinator (if possible)
-# TODO: Figure out if there is a way to prevent nested tmux sessions
-# TODO: Add handling for running `nux stop conform.nvim` (i.e., replacing the `.` with `_`)
+set -g NUX_PROJECTS_DIR ~/projects
+set -g NUX_TMUXINATOR_DIR ~/.config/tmuxinator
 
-function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to have functionality"
-    set -l first_arg $argv[1]
-    set -l stop_regex '^(stop)$'
-    set -l builtin_regex '^(commands|completions|copy|cp|debug|delete|doctor|edit|implode|list|ls|local|new|open|start|version)$'
+function nux -d "Wrapper function for tmuxinator with enhanced functionality"
+    set -l subcommand $argv[1]
+    set -l args $argv[2..-1]
 
-    function start_sessions
-        for project in $argv
-            if test -e ~/.config/tmuxinator/$project.yml
-                tmuxinator $project --no-attach
-            else
-                # TODO: De-dupe this '.' replacement logic
-                set -l session_name (string replace . _ $project)
-                tmuxinator project -n $session_name d=$project --no-attach
-            end
-        end
-        set -l session_name (string replace . _ $argv[-1])
-        tmux attach -t $session_name
+    # Helper: Sanitize session name (replace . with _)
+    function __nux_sanitize_name
+        string replace --all '.' _ $argv[1]
     end
 
-    function stop_sessions
+    # Helper: Check if tmuxinator config exists
+    function __nux_has_config
+        test -e "$NUX_TMUXINATOR_DIR/$argv[1].yml"
+    end
+
+    # Helper: Expand glob patterns against a list
+    function __nux_expand_globs -a source_cmd
+        set -l result
+        for pattern in $argv[2..-1]
+            if string match -q -r '\+' "$pattern"
+                set -l regex (string replace --all '+' '.*' $pattern)
+                set -l matches (eval $source_cmd | grep -E "^$regex\$")
+                if test -z "$matches"
+                    echo "Warning: No matches for pattern '$pattern'" >&2
+                else
+                    set result $result $matches
+                end
+            else
+                set result $result $pattern
+            end
+        end
+        # Remove duplicates while preserving order
+        printf '%s\n' $result | awk '!seen[$0]++'
+    end
+
+    # Helper: Get running tmux sessions
+    function __nux_running_sessions
+        if tmux has-session 2>/dev/null
+            tmux ls -F '#{session_name}'
+        end
+    end
+
+    # Helper: Get available projects
+    # @fish-lsp-disable-next-line 4004
+    function __nux_available_projects
+        if test -d "$NUX_PROJECTS_DIR"
+            ls "$NUX_PROJECTS_DIR"
+        else
+            echo "Error: Projects directory not found: $NUX_PROJECTS_DIR" >&2
+            return 1
+        end
+    end
+
+    # Start one or more sessions
+    function __nux_start
+        set -l projects $argv
+        if test -z "$projects"
+            echo "No projects specified" >&2
+            return 1
+        end
+
+        for project in $projects
+            set -l session_name (__nux_sanitize_name $project)
+
+            # Check if session already exists
+            if tmux has-session -t "$session_name" 2>/dev/null
+                echo "Session '$session_name' already exists, skipping..."
+                continue
+            end
+
+            # Check if project directory exists (unless it has a tmuxinator config)
+            if not __nux_has_config $project
+                if not test -d "$NUX_PROJECTS_DIR/$project"
+                    echo "Error: Project directory not found: $NUX_PROJECTS_DIR/$project" >&2
+                    continue
+                end
+            end
+
+            if __nux_has_config $project
+                echo "Starting '$project' with tmuxinator config..."
+                tmuxinator start $project --no-attach
+            else
+                echo "Starting '$project' with default template..."
+                tmuxinator start project -n $session_name d=$project --no-attach
+            end
+        end
+
+        # Attach to the last session
+        set -l last_session (__nux_sanitize_name $projects[-1])
+        if tmux has-session -t "$last_session" 2>/dev/null
+            tmux attach -t "$last_session"
+        end
+    end
+
+    # Stop one or more sessions
+    function __nux_stop
         set -l sessions $argv
+        if test -z "$sessions"
+            echo "No sessions specified" >&2
+            return 1
+        end
+
         for session in $sessions
-            if test -e ~/.config/tmuxinator/$session.yml
+            set -l session_name (__nux_sanitize_name $session)
+
+            if not tmux has-session -t "$session_name" 2>/dev/null
+                echo "Session '$session_name' not found, skipping..."
+                continue
+            end
+
+            if __nux_has_config $session
+                echo "Stopping '$session_name' with tmuxinator (runs hooks)..."
                 tmuxinator stop $session
             else
-                tmux kill-session -t $session
+                echo "Killing session '$session_name'..."
+                tmux kill-session -t "$session_name"
             end
         end
-        return 0
     end
 
-    # `nux`
-    # @fish-lsp-disable-next-line 3001
-    if test -z $first_arg
-        set -l dir (path basename (pwd))
-        start_sessions $dir
-        return 0
-    end
+    # Main command routing
+    switch "$subcommand"
+        case '' # No args: start session for current directory
+            set -l current_dir (path basename (pwd))
+            __nux_start $current_dir
 
-    # `nux stop-all`
-    if string match -q -r '^(stop-all)$' "$first_arg"
-        set -l sessions (tmux ls | awk '{print $1}' | sed 's/:$//')
-        stop_sessions $sessions
-        return 0
-    end
-
-    # `nux stop <project1> <project2> ...`
-    # `nux stop project+` => `nux stop project-one project-two project-three`
-    # `nux stop +project+ => `nux stop 1project project2`
-    if string match -q -r "$stop_regex" "$first_arg"
-        set -l sessions $argv[2..-1]
-        # for each session, check to see if it has a glob character within it
-        # if it does, get a list of all running tmux sessions that match the glob pattern
-        # e.g., `nux stop project*` => `nux stop project-one project-two project-three`
-        set -l matched
-        for session in $sessions
-            if string match -q -r '\+' "$session"
-                # get a list of all running tmux sessions that match the glob pattern
-                set glob_str (string replace --all "+" ".*" $session)
-                set -l matching_sessions (tmux ls | awk '{print $1}' | sed 's/:$//' | grep -E "$glob_str")
-                set matched $matched $matching_sessions
-            else
-                set matched $matched $session
+        case stop
+            if test -z "$args"
+                echo "Usage: nux stop <session1> [session2] ..." >&2
+                return 1
             end
-        end
-        stop_sessions $matched
-        return 0
-    end
+            set -l expanded (__nux_expand_globs '__nux_running_sessions' $args)
+            __nux_stop $expanded
 
-    # `nux ls`
-    # pass through if another builtin tmuxinator command used
-    if string match -q -r "$builtin_regex" "$first_arg"
-        tmuxinator $argv
-        return 0
-    end
+        case stop-all
+            set -l sessions (__nux_running_sessions)
+            if test -z "$sessions"
+                echo "No tmux sessions running"
+                return 0
+            end
+            echo "Stopping all sessions: $sessions"
+            __nux_stop $sessions
 
-    # After verifying first (and potentially, only) argument is not a built-in command, it's assumed the arguments provided are a list of one or more projects
-    # `nux <project1> <project2> ...`
-    # `nux project+` => `nux project-one project-two project-three`
-    set -l projects $argv
-    # for each project, check to see if it has a glob character within it
-    # if it does, get a list of all projects in the projects directory that match the glob pattern
-    set -l matched
-    for project in $projects
-        if string match -q -r '\+' "$project"
-            # get a list of all projects in the projects directory that match the glob pattern
-            set glob_str (string replace "+" "*" $project)
-            set -l matching_projects (ls ~/projects | grep "$glob_str")
-            set matched $matched $matching_projects
-        else
-            set matched $matched $project
-        end
+        case status # New: show session status
+            if not tmux has-session 2>/dev/null
+                echo "No tmux sessions running"
+                return 0
+            end
+            echo "Running sessions:"
+            tmux ls
+            echo ""
+            echo "Available tmuxinator configs:"
+            ls "$NUX_TMUXINATOR_DIR"/*.yml 2>/dev/null | xargs -I{} basename {} .yml
+
+        case commands completions copy cp debug delete doctor \
+            edit implode list ls local new open start version
+            # Pass through to tmuxinator
+            tmuxinator $subcommand $args
+
+        case '*' # Assume arguments are project names
+            set -l expanded (__nux_expand_globs '__nux_available_projects' $argv)
+            __nux_start $expanded
     end
-    start_sessions $matched
 end
