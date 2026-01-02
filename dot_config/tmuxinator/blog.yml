@@ -19,7 +19,3 @@ windows:
             - fish
             - cls
             - npm run dev
-        - watcher:
-            - fish
-            - cls
-            - npm run generate:watch
