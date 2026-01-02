@@ -1,7 +1,5 @@
 name: blog
 root: ~/projects/blog
-on_project_stop:
-  - just dev-kill
 windows:
   - 1)editor:
       layout: main-vertical
@@ -20,7 +18,7 @@ windows:
         - stack:
             - fish
             - cls
-            - nx run-many -t dev --projects=blog-api,blog-editor,blog-viewer --parallel
+            - npm run dev
         - watcher:
             - fish
             - cls
