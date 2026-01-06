@@ -307,4 +307,5 @@ packages:
         - 'rancher'
         - 'google-drive'
         - 'mysqlworkbench'
+        - 'keepassxc'
       mas_apps: {}
