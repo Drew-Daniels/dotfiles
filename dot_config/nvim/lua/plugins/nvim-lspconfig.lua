@@ -5,15 +5,18 @@ return {
 		-- TODO: Modularize configuration so that 'capabilities = capabilities' setting is used for every lsp
 		--TODO: Deactivate eslint lsp when in an "ignored" directory so things are less noisy
 		-- https://github.com/neovim/nvim-lspconfig/issues/2508
-		local vue_language_server_path = vim.fn.exepath("vue-language-server")
 		local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+		local vls_bin = vim.fn.exepath("vue-language-server")
+		local vls_dir = vls_bin:gsub("/bin/vue%-language%-server", "/lib/node_modules/@vue/language-server")
+
 		local vue_plugin = {
 			name = "@vue/typescript-plugin",
-			location = vue_language_server_path,
+			location = vls_dir,
 			languages = { "vue" },
 			configNamespace = "typescript",
 		}
-		local vtsls_config = {
+
+		vim.lsp.config("vtsls", {
 			settings = {
 				vtsls = {
 					tsserver = {
@@ -25,13 +28,13 @@ return {
 			},
 			filetypes = tsserver_filetypes,
 			capabilities = capabilities,
-		}
+		})
 
-		local vue_ls_config = {
+		vim.lsp.config("vue_ls", {
 			capabilities = capabilities,
-		}
+		})
 
-		local ts_ls_config = {
+		vim.lsp.config("ts_ls", {
 			init_options = {
 				plugins = {
 					vue_plugin,
@@ -39,11 +42,7 @@ return {
 			},
 			filetypes = tsserver_filetypes,
 			capabilities = capabilities,
-		}
-
-		vim.lsp.config("vtsls", vtsls_config)
-		vim.lsp.config("vue_ls", vue_ls_config)
-		vim.lsp.config("ts_ls", ts_ls_config)
+		})
 
 		vim.lsp.config("svelte", {
 			capabilities = capabilities,
@@ -161,7 +160,7 @@ return {
 		vim.lsp.config("vacuum", {
 			capabilities = capabilities,
 			-- cmd = { "vacuum", "language-server" },
-      -- TODO: Create a bug ticket for the Vacuum LSP not automatically detecting and using vacuum ignore files in the current directory
+			-- TODO: Create a bug ticket for the Vacuum LSP not automatically detecting and using vacuum ignore files in the current directory
 			-- cmd = { "vacuum", "language-server", "--ignore-file", ".vacuum-ignore.yaml" },
 		})
 
