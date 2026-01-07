@@ -34,7 +34,7 @@ packages:
         - 'golangci-lint'
         - 'golangci-lint-langserver'
         - 'golines'
-        - 'block-goose-cli'
+        # - 'block-goose-cli'
         - 'groovy'
         - 'age'
         - 'ast-grep'
