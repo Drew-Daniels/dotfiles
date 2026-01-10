@@ -225,6 +225,7 @@ packages:
         - '1password-cli'
         - '1password'
         - 'claude-code'
+        - 'copilot-cli'
         - 'dbeaver-community'
         - 'drawio'
         # - 'espanso'
