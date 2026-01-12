@@ -136,6 +136,7 @@ packages:
         - 'starship'
         - 'stylua'
         - 'sops'
+        - 'sonar-scanner'
         - 'achannarasappa/tap/ticker'
         - 'hashicorp/tap/terraform'
         # - 'tex-fmt'
