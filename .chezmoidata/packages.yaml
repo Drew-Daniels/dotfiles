@@ -265,7 +265,7 @@ packages:
         - 'podman'
         - 'podman-tui'
         - 'docker-compose'
-        - 'streamrip'
+        # - 'streamrip'
         - 'yt-dlp'
       no_quarantine_casks: []
       # - 'librewolf'
