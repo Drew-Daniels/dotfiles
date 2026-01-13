@@ -16,12 +16,13 @@ packages:
         - 'JetBrains/utils'
         - 'mobile-dev-inc/tap'
         - 'anomalyco/tap'
+        - 'steveyegge/beads'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
         # - 'neovim'
       brews:
-        - 'steveyegge/beads/bd'
+        - 'bd'
         - 'beads_viewer'
         - 'opencode'
         - 'maestro'
