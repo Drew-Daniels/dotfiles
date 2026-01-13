@@ -1,0 +1,18 @@
+{
+  "name": "claude-code-like-dark",
+  "type": "custom",
+  "Background": "#1E1A17",
+  "Foreground": "#FFF5E1",
+  "LightBlue": "#FFA45C",
+  "AccentBlue": "#E67D22",
+  "AccentPurple": "#C15F3C",
+  "AccentCyan": "#B1ADA1",
+  "AccentGreen": "#D6D3C9",
+  "AccentYellow": "#FFB38A",
+  "AccentRed": "#C15F3C",
+  "Comment": "#847A6D",
+  "Gray": "#B1ADA1",
+  "DiffAdded": "#417D3C",
+  "DiffRemoved": "#6E0321",
+  "GradientColors": ["#C15F3C", "#E67D22", "#FFB38A"]
+}
