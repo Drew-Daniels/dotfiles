@@ -40,11 +40,19 @@
   dft = -c diff.external=difft diff
 [merge]
   conflictstyle = zdiff3
+{{ if eq .osid "darwin" -}}
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = /opt/homebrew/bin/git-lfs filter-process
+  required = true
+  clean = /opt/homebrew/bin/git-lfs clean -- %f
+  smudge = /opt/homebrew/bin/git-lfs smudge -- %f
+{{ else -}}
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+{{ end -}}
 [user]
 	name = Drew Daniels
 [init]

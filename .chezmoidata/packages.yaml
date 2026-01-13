@@ -15,10 +15,12 @@ packages:
         - 'alesbrelih/gitlab-ci-ls'
         - 'JetBrains/utils'
         - 'mobile-dev-inc/tap'
+        - 'MTG/essentia'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
         # - 'neovim'
+        - 'essentia'
       brews:
         - 'maestro'
         - 'pdfgrep'
@@ -30,6 +32,7 @@ packages:
         - 'dos2unix'
         - 'graphviz'
         - 'git'
+        - 'git-lfs'
         - 'gitleaks'
         - 'golangci-lint'
         - 'golangci-lint-langserver'
