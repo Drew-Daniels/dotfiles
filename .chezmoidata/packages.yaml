@@ -15,12 +15,15 @@ packages:
         - 'alesbrelih/gitlab-ci-ls'
         - 'JetBrains/utils'
         - 'mobile-dev-inc/tap'
+        - 'anomalyco/tap'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
         # - 'neovim'
       brews:
         - 'steveyegge/beads/bd'
+        - 'beads_viewer'
+        - 'opencode'
         - 'maestro'
         - 'pdfgrep'
         - 'dive'

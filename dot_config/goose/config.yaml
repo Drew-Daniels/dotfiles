@@ -83,3 +83,4 @@ extensions:
 OLLAMA_HOST: localhost
 GOOSE_PROVIDER: tetrate
 GOOSE_MODEL: claude-haiku-4-5
+GOOSE_CLI_MIN_PRIORITY: 0.0
