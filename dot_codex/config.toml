@@ -4,6 +4,8 @@ model_reasoning_summary = "auto"
 # Text verbosity for GPT-5 family (Responses API): low | medium | high (default: medium)
 model_verbosity = "medium"
 
+project_doc_fallback_filenames = ["RULE.md"]
+
 [tools]
 # Enable web search tool (alias: web_search_request). Default: false
 web_search = true
