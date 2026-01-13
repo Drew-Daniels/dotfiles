@@ -15,12 +15,10 @@ packages:
         - 'alesbrelih/gitlab-ci-ls'
         - 'JetBrains/utils'
         - 'mobile-dev-inc/tap'
-        - 'MTG/essentia'
       head_brews:
         - 'imagemagick'
         - 'utf8proc'
         # - 'neovim'
-        - 'essentia'
       brews:
         - 'maestro'
         - 'pdfgrep'
@@ -37,7 +35,7 @@ packages:
         - 'golangci-lint'
         - 'golangci-lint-langserver'
         - 'golines'
-        # - 'block-goose-cli'
+        - 'block-goose-cli'
         - 'groovy'
         - 'age'
         - 'ast-grep'
