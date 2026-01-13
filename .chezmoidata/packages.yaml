@@ -20,6 +20,7 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
+        - 'steveyegge/beads/bd'
         - 'maestro'
         - 'pdfgrep'
         - 'dive'
