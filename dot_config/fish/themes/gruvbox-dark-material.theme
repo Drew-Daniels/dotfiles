@@ -1,0 +1,122 @@
+# name: 'Gruvbox Dark Material'
+# Gruvbox Material Dark theme for Fish shell
+# Based on the Gruvbox Material color scheme by sainnhe
+# https://github.com/sainnhe/gruvbox-material
+
+[dark]
+# preferred_background: 282828
+
+# Syntax highlighting colors
+fish_color_normal d4be98
+fish_color_command a9b665
+fish_color_keyword d3869b
+fish_color_quote e78a4e
+fish_color_redirection 7daea3
+fish_color_end d3869b
+fish_color_error ea6962
+fish_color_param d4be98
+fish_color_option 89b482
+fish_color_comment 928374
+fish_color_selection --background=504945
+fish_color_operator e78a4e
+fish_color_escape d8a657
+fish_color_autosuggestion 928374
+fish_color_cwd d8a657
+fish_color_user 7daea3
+fish_color_host a9b665
+fish_color_host_remote d3869b
+fish_color_cancel --reverse
+fish_color_search_match --background=504945
+
+# Pager colors (completion menu)
+fish_pager_color_progress 928374 --background=3c3836
+fish_pager_color_background
+fish_pager_color_prefix a9b665 --bold
+fish_pager_color_completion d4be98
+fish_pager_color_description 928374
+fish_pager_color_selected_background --background=504945
+fish_pager_color_selected_prefix a9b665 --bold
+fish_pager_color_selected_completion d4be98
+fish_pager_color_selected_description 928374
+fish_pager_color_secondary_background
+fish_pager_color_secondary_prefix a9b665
+fish_pager_color_secondary_completion d4be98
+fish_pager_color_secondary_description 928374
+
+[light]
+# preferred_background: fbf1c7
+
+# Syntax highlighting colors
+fish_color_normal 654735
+fish_color_command 6c782e
+fish_color_keyword 945e80
+fish_color_quote c35e0a
+fish_color_redirection 4c7a5d
+fish_color_end 945e80
+fish_color_error c14a4a
+fish_color_param 654735
+fish_color_option 45707a
+fish_color_comment 928374
+fish_color_selection --background=ebdbb2
+fish_color_operator c35e0a
+fish_color_escape b47109
+fish_color_autosuggestion 928374
+fish_color_cwd b47109
+fish_color_user 4c7a5d
+fish_color_host 6c782e
+fish_color_host_remote 945e80
+fish_color_cancel --reverse
+fish_color_search_match --background=ebdbb2
+
+# Pager colors (completion menu)
+fish_pager_color_progress 928374 --background=d5c4a1
+fish_pager_color_background
+fish_pager_color_prefix 6c782e --bold
+fish_pager_color_completion 654735
+fish_pager_color_description 928374
+fish_pager_color_selected_background --background=ebdbb2
+fish_pager_color_selected_prefix 6c782e --bold
+fish_pager_color_selected_completion 654735
+fish_pager_color_selected_description 928374
+fish_pager_color_secondary_background
+fish_pager_color_secondary_prefix 6c782e
+fish_pager_color_secondary_completion 654735
+fish_pager_color_secondary_description 928374
+
+[unknown]
+# Fallback for terminals that don't report color support
+fish_color_normal normal
+fish_color_command green
+fish_color_keyword magenta
+fish_color_quote yellow
+fish_color_redirection cyan
+fish_color_end magenta
+fish_color_error red --bold
+fish_color_param normal
+fish_color_option cyan
+fish_color_comment brblack
+fish_color_selection --background=brblack
+fish_color_operator yellow
+fish_color_escape yellow
+fish_color_autosuggestion brblack
+fish_color_cwd yellow
+fish_color_user cyan
+fish_color_host green
+fish_color_host_remote magenta
+fish_color_cancel --reverse
+fish_color_search_match --background=brblack
+
+# Pager colors (completion menu)
+fish_pager_color_progress brblack --background=black
+fish_pager_color_background
+fish_pager_color_prefix green --bold
+fish_pager_color_completion normal
+fish_pager_color_description brblack
+fish_pager_color_selected_background --background=brblack
+fish_pager_color_selected_prefix green --bold
+fish_pager_color_selected_completion normal
+fish_pager_color_selected_description brblack
+fish_pager_color_secondary_background
+fish_pager_color_secondary_prefix green
+fish_pager_color_secondary_completion normal
+fish_pager_color_secondary_description brblack
