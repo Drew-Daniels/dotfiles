@@ -1,4 +1,4 @@
-function create_pr -d "Creates a PR"
+function create-pr -d "Creates a PR"
     set -l options b/base=
     argparse $options -- $argv
 

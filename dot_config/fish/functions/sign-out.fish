@@ -1,4 +1,4 @@
-function sign_out -d "Signs out"
+function sign-out -d "Signs out"
     echo "Signing out..."
     command curl -s -o /dev/null -X POST localhost:3000/users/sign_out
     if test $status -eq 0

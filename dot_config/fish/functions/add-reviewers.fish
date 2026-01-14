@@ -1,4 +1,4 @@
-function add_reviewers -d "Add reviewers to a pull request"
+function add-reviewers -d "Add reviewers to a pull request"
     set -l current_branch (git branch --show-current)
 
     if test -z $REVIEWERS

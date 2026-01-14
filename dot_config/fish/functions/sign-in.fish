@@ -1,4 +1,4 @@
-function sign_in -d "Signs in with curl and saves cookie"
+function sign-in -d "Signs in with curl and saves cookie"
     # get csrf token
     # TODO: Rename?
     set csrf_token (command curl -s localhost:3000/users/sign_in | rg "csrf-token" | sed -En 's/.*content="(.*)".*/\1/p')
