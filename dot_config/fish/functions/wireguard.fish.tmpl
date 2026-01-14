@@ -1,0 +1,31 @@
+# WireGuard helper functions
+
+function start-wg --description "Starts Wireguard Service"
+    # TODO: Ensure wireguard interface names are the same on all devices
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl start wg-quick-wg0.service
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl start wg-quick@wg0.service
+    {{ end }}
+end
+
+function stop-wg --description "Stops Wireguard Service"
+    # TODO: Ensure wireguard interface names are the same on all devices
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl stop wg-quick-wg0
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl stop wg-quick@wg0
+    {{ end }}
+end
+
+function status-wg --description "Wireguard Status"
+    # TODO: Ensure wireguard interface names are the same on all devices
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl status wg-quick-wg0.service
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl status wg-quick@wg0.service
+    {{ end }}
+end

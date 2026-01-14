@@ -1,9 +1,0 @@
-function start-wg -d "Starts Wireguard Service"
-    # TODO: Ensure wireguard interface names are the same on all devices
-    {{ if eq .osid "linux-nixos" }}
-    command sudo systemctl start wg-quick-wg0.service
-    {{ end }}
-    {{ if eq .osid "linux-arch" }}
-    command sudo systemctl start wg-quick@wg0.service
-    {{ end }}
-end
