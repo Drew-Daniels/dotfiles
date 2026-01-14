@@ -1,0 +1,45 @@
+# Tool initialization and configuration
+# This file is automatically loaded by fish shell
+
+if status is-interactive
+    # mise
+    if is-linux
+        if command -q mise
+            mise activate fish | source
+        end
+        # TODO: Add env vars req for NativeScript here: https://docs.nativescript.org/setup/linux
+    else if is-freebsd
+        if command -q mise
+            mise activate fish | source
+        end
+    else if is-macos
+        /opt/homebrew/bin/mise activate fish | source
+        set -gx MISE_ENV development
+    end
+
+    # starship
+    starship init fish | source
+
+    # fzf
+    set -gx FZF_DEFAULT_COMMAND "fd --type f"
+
+    # fzf.fish
+    fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
+
+    # zoxide
+    zoxide init --cmd j fish | source
+
+    # direnv
+    direnv hook fish | source
+
+    # pip fish completion
+    function __fish_complete_pip
+        set -lx COMP_WORDS (commandline -o) ""
+        set -lx COMP_CWORD ( \
+            math (contains -i -- (commandline -t) $COMP_WORDS)-1 \
+        )
+        set -lx PIP_AUTO_COMPLETE 1
+        string split \  -- (eval $COMP_WORDS[1])
+    end
+    complete -fa "(__fish_complete_pip)" -c pip
+end

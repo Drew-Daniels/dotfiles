@@ -1,0 +1,51 @@
+# Environment variables
+# This file is automatically loaded by fish shell
+
+if status is-interactive
+    # General
+    set -gx EDITOR nvim
+    set -gx VISUAL nvim
+    set -gx PROJECTS_DIR "$HOME/projects"
+
+    # Fish shell
+    set -g fish_greeting
+
+    # Neovim
+    set -gx VIMCONFIG "$HOME/.config/nvim"
+    set -gx VIMDATA "$HOME/.local/share/nvim"
+
+    # Tmuxinator
+    set -gx MUX_LAYOUT main-horizontal
+
+    # Vcpkg
+    set -gx VCPKG_ROOT "$PROJECTS_DIR/vcpkg"
+
+    # Solargraph
+    set -gx SOLARGRAPH_GLOBAL_CONFIG "$HOME/.config/solargraph/config.yml"
+
+    # Browser
+    {{ if eq .chezmoi.os "linux" }}
+    # set -gx BROWSER librewolf
+    set -gx BROWSER qutebrowser
+    {{ end }}
+
+    # Snacks.nvim
+    set -gx SNACKS_GHOSTTY true
+
+    # Podman
+    set -gx PODMAN_COMPOSE_WARNING_LOGS false
+
+    # Secrets
+    if test -f ~/.env.fish
+        source ~/.env.fish
+    else
+        echo "No ~/.env.fish found. Run ~/scripts/export_secrets.sh"
+    end
+
+    # TODO: Create a separate script to export these, similar to how is done in ~/scripts/export_secrets.sh
+    # set jira_data (op item get jira_webpt --fields=hostname,email,api_token --reveal)
+    #
+    # set -gx JIR_API_HOSTNAME (echo "$jira_data" | cut -d ',' -f1)
+    # set -gx JIRA_API_EMAIL (echo "$jira_data" | cut -d ',' -f2)
+    # set -gx JIRA_API_TOKEN (echo "$jira_data" | cut -d ',' -f3)
+end

@@ -1,0 +1,27 @@
+# Shell completions and aliases
+# This file is automatically loaded by fish shell
+
+if status is-interactive
+    # 1password
+    op completion fish | source
+
+    {{ if eq .homeOrWork "work" }}
+    # jira
+    jira completion fish | source
+    {{ end }}
+
+    # TODO: Deactivate for now, until I'm able to install Docker Desktop on Debian
+    # TODO: Figure out if this can also be enabled when using Rancher instead of Docker Desktop
+    # I.e., not sure if completions are included
+    {{ if (and (eq .chezmoi.os "darwin") (eq .homeOrWork "home")) }}
+    # docker
+    # docker completion fish | source
+    {{ end }}
+
+    # Aliases
+    {{ if eq .chezmoi.os "darwin" }}
+    alias bat "bat --theme 'auto:system' --theme-dark 'gruvbox-dark' --theme-light 'zenbones'"
+    {{ end }}
+
+    alias draw.io "/Applications/draw.io.app/Contents/MacOS/draw.io"
+end

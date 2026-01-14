@@ -1,0 +1,34 @@
+# PATH configuration
+# This file is automatically loaded by fish shell
+
+if status is-interactive
+    if is-macos
+        # homebrew
+        fish_add_path /opt/homebrew/bin
+        fish_add_path /usr/local/sbin
+
+        # vscode-xml lemminx
+        fish_add_path "$HOME/.config/vscode-xml"
+
+        # rancher desktop
+        fish_add_path $HOME/.rd/bin
+
+        # android studio
+        set -gx ANDROID_HOME $HOME/Library/Android/sdk
+        fish_add_path $ANDROID_HOME/platform-tools
+    end
+
+    {{ if eq .chezmoi.os "linux" }}
+    # neovim
+    fish_add_path /opt/nvim-linux-x86_64/bin
+    {{ end }}
+
+    # pnpm
+    fish_add_path $PNPM_HOME
+
+    # vcpkg
+    fish_add_path "$VCPKG_ROOT"
+
+    # java
+    fish_add_path "/opt/apache-maven-3.8.5/bin"
+end

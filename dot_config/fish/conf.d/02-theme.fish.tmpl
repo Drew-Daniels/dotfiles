@@ -1,0 +1,26 @@
+# Theme configuration
+# This file is automatically loaded by fish shell
+
+if status is-interactive
+    if is-linux
+        set computerName (hostnamectl hostname)
+        # TODO: Add handling for when this file doesn't exist - like on a new computer
+        # TODO: Check theme state file to get current theme
+        set theme (jq --raw-output '.theme' ~/.local/state/theme-toggle/state.json)
+        setup-theme $theme
+    else if is-freebsd
+        set computerName (hostname)
+    else if is-macos
+        set computerName (scutil --get ComputerName)
+        # TODO: Figure out how to do this on linux
+        # theme
+        defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
+        set -l os_theme_query_status $status
+        if test $os_theme_query_status -eq 1
+            # this setting is only set when using dark mode
+            setup-theme light
+        else
+            setup-theme dark
+        end
+    end
+end
