@@ -16,11 +16,11 @@ if status is-interactive
         # theme
         defaults read "Apple Global Domain" AppleInterfaceStyle &>/dev/null
         set -l os_theme_query_status $status
-        if test $os_theme_query_status -eq 1
-            # this setting is only set when using dark mode
-            setup-theme light
-        else
+        if test $os_theme_query_status -eq 0
+            # AppleInterfaceStyle is only set when using dark mode
             setup-theme dark
+        else
+            setup-theme light
         end
     end
 end

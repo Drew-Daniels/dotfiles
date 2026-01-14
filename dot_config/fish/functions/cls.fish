@@ -1,3 +1,3 @@
 function cls -d "Clear Screen"
-    command printf '\34c\e[3J'
+    printf '\33c\e[3J'
 end
