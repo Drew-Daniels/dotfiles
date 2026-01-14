@@ -1,0 +1,12 @@
+# Auto-generated completion files
+# These can be regenerated using: ./regenerate-completions.fish
+# See completions/README.md for details
+
+completions/delta.fish
+completions/alacritty.fish
+completions/restic.fish
+completions/spotify_player.fish
+
+# Note: terraform.fish is installed via `terraform -install-autocomplete`
+# and doesn't need to be in version control
+completions/terraform.fish
