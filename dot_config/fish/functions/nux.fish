@@ -26,7 +26,7 @@
 # TODO: Figure out if there is a way to prevent nested tmux sessions
 # TODO: Add handling for running `nux stop conform.nvim` (i.e., replacing the `.` with `_`)
 
-function _nux -d "Wrapper function for tmuxinator (mux) that adds some nice to have functionality"
+function nux -d "Wrapper function for tmuxinator (mux) that adds some nice to have functionality"
     set -l first_arg $argv[1]
     set -l stop_regex '^(stop)$'
     set -l builtin_regex '^(commands|completions|copy|cp|debug|delete|doctor|edit|implode|list|ls|local|new|open|start|version)$'
