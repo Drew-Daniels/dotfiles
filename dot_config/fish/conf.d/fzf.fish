@@ -9,9 +9,8 @@ end
 # This variable is global so that it can be referenced by fzf_configure_bindings and in tests
 set --global _fzf_search_vars_command '_fzf_search_variables (set --show | psub) (set --names | psub)'
 
-
-# Install the default bindings, which are mnemonic and minimally conflict with fish's preset bindings
-fzf_configure_bindings
+# Note: Custom keybindings are configured in 03-tools.fish.tmpl
+# Do not call fzf_configure_bindings here, as it would overwrite the custom bindings
 
 # Doesn't erase autoloaded _fzf_* functions because they are not easily accessible once key bindings are erased
 function _fzf_uninstall --on-event fzf_uninstall
