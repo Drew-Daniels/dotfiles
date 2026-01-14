@@ -16,10 +16,12 @@ if status is-interactive
                 set -gx OS_THEME_DARK 0
                 fish_config theme choose "$fish_light_theme"
                 alias jqp="jqp --theme='algol'"
+                set fzf_diff_highlighter delta --paging=never --width=20 --light
             else
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
                 alias jqp="jqp --theme='gruvbox'"
+                set fzf_diff_highlighter delta --paging=never --width=20 --dark
             end
             # TODO: Add env vars req for NativeScript here: https://docs.nativescript.org/setup/linux
         case FreeBSD
@@ -58,10 +60,12 @@ if status is-interactive
                 set -gx OS_THEME_DARK 0
                 fish_config theme choose "$fish_light_theme"
                 alias jqp="jqp --theme='algol'"
+                set fzf_diff_highlighter delta --paging=never --width=20 --light
             else
                 set -gx OS_THEME_DARK 1
                 fish_config theme choose "$fish_dark_theme"
                 alias jqp="jqp --theme='gruvbox'"
+                set fzf_diff_highlighter delta --paging=never --width=20 --dark
             end
 
     end
