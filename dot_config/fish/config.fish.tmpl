@@ -78,9 +78,6 @@ if status is-interactive
     # turn off greeting
     set -g fish_greeting
 
-    # general
-    alias cls "printf '\33c\e[3J'"
-
     # neovim
     {{ if eq .chezmoi.os "linux" }}
     fish_add_path /opt/nvim-linux-x86_64/bin
@@ -101,16 +98,8 @@ if status is-interactive
     # fzf.fish
     fzf_configure_bindings --directory=\cf --processes=\cp --git_status=\cs --git_log=\cl --variables=\cv --history=\ch
 
-    # tmux
-    alias tn="tmux new -s"
-    alias ta="tmux attach -t"
-    alias tl="tmux ls"
-    alias tk="tmux kill-session -t"
-
     # tmuxinator
     set -gx MUX_LAYOUT main-horizontal
-    alias mux="tmuxinator"
-    alias ts="mux start project"
 
     # vcpkg
     set -gx VCPKG_ROOT "$PROJECTS_DIR/vcpkg"
@@ -131,60 +120,18 @@ if status is-interactive
     complete -fa "(__fish_complete_pip)" -c pip
     # pip fish completion end
 
-    # jless
-    alias jless="jless --relative-line-numbers"
-    alias yless="jless --yaml"
-
     # zoxide
     zoxide init --cmd j fish | source
-
-    # bat
-    alias man="batman"
-    alias pb="prettybat"
 
     {{ if eq .chezmoi.os "darwin" }}
     alias bat "bat --theme 'auto:system' --theme-dark 'gruvbox-dark' --theme-light 'zenbones'"
     {{ end }}
 
-    # lsd
-    alias ls="lsd"
-
     # tabtab source for packages
     # uninstall by removing these lines
 
-    alias pn="pnpm"
-
-    # yazi
-    function ya
-        set tmp (mktemp -t "yazi-cwd.XXXXX")
-        yazi $argv --cwd-file="$tmp"
-        if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            cd -- "$cwd"
-        end
-        rm -f -- "$tmp"
-    end
-
     # java
     fish_add_path "/opt/apache-maven-3.8.5/bin"
-
-    # playwright
-    alias psr "npx playwright show-report"
-
-    # htmlbeautifier
-    alias hb htmlbeautifier
-
-    # spotify_player
-    alias sp spotify_player
-
-    # Run rubocop only on ruby files that have changed
-    alias rcdiff "git diff --name-only -- '***.rb' | xargs bundle exec rubocop --force-exclusion -a"
-    # Run rspec only on ruby files that have changed
-    alias rsdiff "git diff --name-only -- '***_spec.rb' | xargs bundle exec rspec"
-
-    # bundler
-    alias be "bundle exec"
-    # alias ber "bundle exec rspec"
-    alias ber "bundle exec rake"
 
     # 1password
     op completion fish | source
@@ -201,12 +148,6 @@ if status is-interactive
     # docker
     # docker completion fish | source
     {{ end }}
-
-    # keepassxc
-    alias kxc keepassxc-cli
-
-    # ollama
-    alias ol ollama
 
     # drawio
     alias draw.io "/Applications/draw.io.app/Contents/MacOS/draw.io"
