@@ -22,6 +22,7 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
+        - 'goreleaser'
         - 'bd'
         - 'beads_viewer'
         - 'opencode'
