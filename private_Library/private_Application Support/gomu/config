@@ -1,0 +1,60 @@
+
+
+module General {
+	# confirmation popup to add the whole playlist to the queue
+	confirm_bulk_add    = true
+	confirm_on_exit     = true
+	queue_loop          = false
+	load_prev_queue     = true
+	popup_timeout       = "5s"
+	sort_by_mtime       = false
+	# change this to directory that contains mp3 files
+	music_dir           = "~/Music"
+	# url history of downloaded audio will be saved here
+	history_path        = "~/.local/share/gomu/urls"
+	# some of the terminal supports unicode character
+	# you can set this to true to enable emojis
+	use_emoji           = true
+	# initial volume when gomu starts up
+	volume              = 80
+	# if you experiencing error using this invidious instance, you can change it
+	# to another instance from this list:
+	# https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md
+	invidious_instance  = "https://vid.puffyan.us"
+	# Prefered language for lyrics to be displayed, if not available, english version
+	# will be displayed.
+	# Available tags: en,el,ko,es,th,vi,zh-Hans,zh-Hant,zh-CN and can be separated with comma.
+	# find more tags: youtube-dl --skip-download --list-subs "url"
+	lang_lyric          = "en"
+	# When save tag, could rename the file by tag info: artist-songname-album
+	rename_bytag        = false
+}
+
+module Emoji {
+	# default emoji here is using awesome-terminal-fonts
+	# you can change these to your liking
+	playlist     = ""
+	file         = ""
+	loop         = "ﯩ"
+	noloop       = ""
+}
+
+module Color {
+	# you may choose colors by pressing 'c'
+	accent            = "darkcyan"
+	background        = "none"
+	foreground        = "white"
+	popup             = "black"
+
+	playlist_directory = "darkcyan"
+	playlist_highlight = "darkcyan"
+
+	queue_highlight    = "darkcyan"
+
+	now_playing_title = "darkgreen"
+	subtitle          = "darkgoldenrod"
+}
+
+# you can get the syntax highlighting for this language here:
+# https://github.com/mattn/anko/tree/master/misc/vim
+# vim: ft=anko
