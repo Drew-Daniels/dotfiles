@@ -22,6 +22,7 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
+        - 'git-cliff'
         - 'goreleaser'
         - 'bd'
         - 'beads_viewer'
