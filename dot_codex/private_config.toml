@@ -13,3 +13,6 @@ web_search = true
 [features]
 web_search_request = true
 shell_snapshot = true
+
+[projects."/Users/drew/projects/fjord"]
+trust_level = "trusted"
