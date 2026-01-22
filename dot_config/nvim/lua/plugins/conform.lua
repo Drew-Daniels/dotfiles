@@ -1,10 +1,11 @@
 local function get_js_formatters()
 	local current_bfr_path = vim.api.nvim_buf_get_name(0)
-	if string.match(current_bfr_path, "blog") ~= nil then
-		return { "eslint_d" }
-	else
-		return { "eslint_d", "prettierd" }
-	end
+	-- if string.match(current_bfr_path, "blog") ~= nil then
+	-- 	return { "eslint_d" }
+	-- else
+	-- 	return { "eslint_d", "prettierd" }
+	-- end
+  return { "eslint_d" }
 end
 
 return {
@@ -139,8 +140,8 @@ return {
 				java = { "astyle" },
 				javascript = get_js_formatters,
 				typescript = get_js_formatters,
-				javascriptreact = { "prettierd" },
-				typescriptreact = { "prettierd" },
+				-- javascriptreact = { "prettierd" },
+				-- typescriptreact = { "prettierd" },
 				-- javascript = { "biome", "biome-check" },
 				-- typescript = { "biome", "biome-check" },
 				-- javascriptreact = { "biome", "biome-check" },
