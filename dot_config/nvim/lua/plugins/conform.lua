@@ -5,7 +5,7 @@ local function get_js_formatters()
 	-- else
 	-- 	return { "eslint_d", "prettierd" }
 	-- end
-  return { "eslint_d" }
+	return { "eslint_d" }
 end
 
 return {
@@ -119,7 +119,7 @@ return {
 						return { "fish_indent" }
 					end
 				end,
-				go = { "gci", "golines", "gofmt" },
+				go = { "goimports", "gofmt", stop_after_first = true },
 				templ = { "templ" },
 				-- json = { "jq" },
 				-- TODO: Figure out how to conditionally use `prettierd` in `medplum-` repos and `jq` otherwise
