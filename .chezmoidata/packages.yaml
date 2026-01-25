@@ -267,6 +267,7 @@ packages:
         # taglib is required for navidrome development
         - 'taglib'
       brews:
+        - 'nginx'
         - 'b2-tools'
         # 'hugo' is required for navidrome development
         - 'hugo'
