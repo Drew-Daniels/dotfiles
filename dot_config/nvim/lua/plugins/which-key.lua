@@ -193,7 +193,7 @@ return {
 			{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
 			{ "<leader>li", "<cmd>FzfLua lsp_implementations<cr>", desc = "Implementations" },
 			{ "<leader>lI", "<cmd>LspInfo<cr>", desc = "Info" },
-			{ "<leader>ll", "<cmd>lua vim.diagnostic.loclist()<cr>", desc = "Set Location List" },
+			{ "<leader>ll", vim.lsp.codelens.run, desc = "Run Code Lens" },
 			{ "<leader>lo", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Open Float" },
 			{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
 			{ "<leader>lS", "<cmd>LspStart<cr>", desc = "Start LSP" },

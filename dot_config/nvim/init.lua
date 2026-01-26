@@ -245,13 +245,12 @@ vim.filetype.add({
 	},
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "nginx",
+vim.lsp.enable("nginx_ls")
+
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+	pattern = { "nginx.conf" },
 	callback = function()
-		vim.lsp.start({
-			name = "nginx-ls",
-			cmd = { "node", "/Users/drew/projects/nginx-ls/dist/server.js", "--stdio" },
-			root_dir = vim.fn.getcwd(),
-		})
+		vim.lsp.codelens.refresh({ bufnr = 0 })
 	end,
 })
+vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Run Code Lens" })
