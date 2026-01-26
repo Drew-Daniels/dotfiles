@@ -244,3 +244,14 @@ vim.filetype.add({
 		["helmfile.*%.ya?ml"] = "helm",
 	},
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "nginx",
+	callback = function()
+		vim.lsp.start({
+			name = "nginx-ls",
+			cmd = { "node", "/Users/drew/projects/nginx-ls/dist/server.js", "--stdio" },
+			root_dir = vim.fn.getcwd(),
+		})
+	end,
+})
