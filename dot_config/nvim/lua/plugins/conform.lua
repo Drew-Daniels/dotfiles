@@ -185,6 +185,9 @@ return {
 				-- For some reason keep getting upgrade notice even when using the latest version, and no other versions installed
 				-- make = { "bake" },
 				nix = { "nixfmt" },
+				sshconfig = { lsp_fallback = true },
+				sudoers = { lsp_fallback = true },
+				fail2ban = { lsp_fallback = true },
 				nginx = { lsp_fallback = true },
 				-- NOTE: 'nufmt' is still in alpha state: https://github.com/nushell/nufmt/issues/62
 				-- nu = { "nufmt" },

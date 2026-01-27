@@ -247,6 +247,12 @@ vim.filetype.add({
 
 vim.lsp.enable("nginx_ls")
 
+vim.lsp.enable("ssh_ls")
+
+vim.lsp.enable("sudoers_ls")
+
+vim.lsp.enable("fail2ban_ls")
+
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
 	pattern = { "nginx.conf" },
 	callback = function()
@@ -254,3 +260,65 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
 	end,
 })
 vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Run Code Lens" })
+
+vim.api.nvim_create_user_command("SSHTest", function(opts)
+	local hostname = opts.args ~= "" and opts.args or vim.fn.input("Hostname: ")
+	if hostname == "" then
+		return
+	end
+
+	local clients = vim.lsp.get_clients({ name = "ssh_ls" })
+	if #clients == 0 then
+		print("SSH language server not running")
+		return
+	end
+
+	clients[1].request("workspace/executeCommand", {
+		command = "ssh.testConnection",
+		arguments = { hostname },
+	}, function(err, result)
+		if err then
+			print("Error: " .. vim.inspect(err))
+			return
+		end
+
+		-- Show result in a floating window
+		local lines = vim.split(result.markdown or "No result", "\n")
+		local buf = vim.api.nvim_create_buf(false, true)
+		vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+		vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+
+		local width = math.min(80, vim.o.columns - 4)
+		local height = math.min(#lines, vim.o.lines - 4)
+
+		vim.api.nvim_open_win(buf, true, {
+			relative = "editor",
+			width = width,
+			height = height,
+			row = (vim.o.lines - height) / 2,
+			col = (vim.o.columns - width) / 2,
+			style = "minimal",
+			border = "rounded",
+		})
+
+		-- Press 'q' to close
+		vim.keymap.set("n", "q", ":close<CR>", { buffer = buf, silent = true })
+	end)
+end, { nargs = "?" })
+
+-- Detect fail2ban files
+vim.filetype.add({
+	filename = {
+		["jail.conf"] = "fail2ban",
+		["jail.local"] = "fail2ban",
+		["fail2ban.conf"] = "fail2ban",
+		["fail2ban.local"] = "fail2ban",
+	},
+	pattern = {
+		[".*/etc/fail2ban/.*%.conf"] = "fail2ban",
+		[".*/etc/fail2ban/.*%.local"] = "fail2ban",
+		[".*/filter%.d/.*%.conf"] = "fail2ban",
+		[".*/action%.d/.*%.conf"] = "fail2ban",
+		[".*/jail%.d/.*%.conf"] = "fail2ban",
+	},
+})
