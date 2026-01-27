@@ -20,7 +20,8 @@ return {
 				-- light = "catppuccin",
 				-- light = "onenord-light",
 				light = "zenbones",
-				dark = "gruvbox",
+				-- dark = "gruvbox",
+				dark = "vaporvim",
 			},
 		})
 	end,

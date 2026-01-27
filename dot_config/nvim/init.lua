@@ -35,11 +35,13 @@ if vim.loop.os_uname().sysname == "Linux" then
 			vim.cmd("colorscheme zenbones")
 			vim.cmd("set bg=light")
 		else
-			vim.cmd("colorscheme gruvbox")
+			-- vim.cmd("colorscheme gruvbox")
+			vim.cmd("colorscheme vaporvim")
 			vim.cmd("set bg=dark")
 		end
 	else
-		vim.cmd("colorscheme gruvbox")
+		-- vim.cmd("colorscheme gruvbox")
+		vim.cmd("colorscheme vaporvim")
 	end
 end
 
