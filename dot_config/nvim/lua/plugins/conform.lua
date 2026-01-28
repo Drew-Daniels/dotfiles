@@ -188,7 +188,9 @@ return {
 				sshconfig = { lsp_fallback = true },
 				sudoers = { lsp_fallback = true },
 				fail2ban = { lsp_fallback = true },
+				crontab = { lsp_fallback = true },
 				nginx = { lsp_fallback = true },
+				torrc = { lsp_fallback = true },
 				-- NOTE: 'nufmt' is still in alpha state: https://github.com/nushell/nufmt/issues/62
 				-- nu = { "nufmt" },
 				norg = { "typos-lsp" },
