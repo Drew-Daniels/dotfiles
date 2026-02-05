@@ -66,9 +66,10 @@ alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
 #   fi
 # fi
 
-MIRTH_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/mirth-cli/autocomplete/zsh_setup && test -f $MIRTH_AC_ZSH_SETUP_PATH && source $MIRTH_AC_ZSH_SETUP_PATH; # mirth autocomplete setup
-
-# initialise completions with ZSH's compinit
+# Add mirth-cli completions to fpath (if installed)
+[[ -d $HOME/Library/Caches/mirth-cli/autocomplete/functions/zsh ]] && \
+  fpath=($HOME/Library/Caches/mirth-cli/autocomplete/functions/zsh $fpath)
+# Initialize completions (once, after all fpath modifications)
 autoload -Uz compinit bashcompinit
 compinit
 bashcompinit
