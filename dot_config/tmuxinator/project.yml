@@ -15,12 +15,20 @@ name: project
 root: ~/projects/<%= @settings["d"] %>
 windows:
   - 1)editor:
-      layout: main-horizontal
+      # even-horizontal
+      # even-vertical
+      # main-horizontal
+      # main-vertical
+      # tiled
+      layout: tiled
       panes:
         - editor:
             - fish
             - cls
             - nvim
+        - agent:
+            - fish
+            - cls
         - cmd1:
             - fish
             - cls

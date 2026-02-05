@@ -66,6 +66,8 @@ alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
 #   fi
 # fi
 
+MIRTH_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/mirth-cli/autocomplete/zsh_setup && test -f $MIRTH_AC_ZSH_SETUP_PATH && source $MIRTH_AC_ZSH_SETUP_PATH; # mirth autocomplete setup
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit bashcompinit
 compinit
@@ -120,6 +122,4 @@ export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS
 
 # podman
 export PODMAN_COMPOSE_WARNING_LOGS=false
-
-MIRTH_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/mirth-cli/autocomplete/zsh_setup && test -f $MIRTH_AC_ZSH_SETUP_PATH && source $MIRTH_AC_ZSH_SETUP_PATH; # mirth autocomplete setup
 {{- end -}}
