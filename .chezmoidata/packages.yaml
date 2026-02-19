@@ -278,7 +278,6 @@ packages:
       # - 'librewolf'
       casks:
         - 'claude-code'
-        - 'block-goose-cli'
         - 'ollama'
         - 'electrum'
         - 'element'
