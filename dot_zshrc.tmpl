@@ -101,6 +101,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Claude
 # export CLAUDE_CODE_USE_BEDROCK=1
 
+# Increase shell file descriptor limit - default is 256 (low)
+ulimit -n 10240
+
 {{- if eq .homeOrWork "work" -}}
 # WORK
 # rancher desktop
