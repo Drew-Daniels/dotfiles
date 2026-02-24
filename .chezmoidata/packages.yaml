@@ -287,7 +287,7 @@ packages:
         - 'lmms'
         - 'trezor-suite'
         # - 'raspberry-pi-imager'
-        - 'rekordbox'
+        # - 'rekordbox'
         - 'signal'
         - 'whatsapp'
         - 'wireshark-app'
