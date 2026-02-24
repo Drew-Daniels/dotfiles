@@ -254,7 +254,7 @@ packages:
         - 'rectangle'
         # - 'tidal'
         - 'zulip'
-        - 'zoom'
+        # - 'zoom'
       mas_apps:
         "rcmd": 1596283165
         "Snippety": 1530751461
