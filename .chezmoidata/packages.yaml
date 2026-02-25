@@ -22,6 +22,7 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
+        - 'create-dmg'
         - 'glow'
         - 'git-cliff'
         - 'goreleaser'
