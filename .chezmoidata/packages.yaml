@@ -277,6 +277,7 @@ packages:
       no_quarantine_casks: []
       # - 'librewolf'
       casks:
+        - 'gimp'
         - 'claude-code'
         - 'ollama'
         - 'electrum'
