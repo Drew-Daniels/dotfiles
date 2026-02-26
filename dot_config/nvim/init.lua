@@ -246,12 +246,3 @@ vim.filetype.add({
 		["helmfile.*%.ya?ml"] = "helm",
 	},
 })
-
--- Application Resource Bundle filetype: https://github.com/google/app-resource-bundle/blob/main/docs/specification.md
-
-vim.filetype.add({
-	extension = {
-		arb = "arb",
-	},
-})
-vim.treesitter.language.register("json", "arb")
