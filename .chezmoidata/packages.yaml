@@ -2,6 +2,7 @@ packages:
   darwin:
     common:
       taps:
+        - '1jehuang/mmdr'
         - 'ariga/tap'
         - 'cormacrelf/tap'
         - 'jstkdng/programs'
@@ -23,6 +24,7 @@ packages:
         # - 'neovim'
       brews:
         - 'lcov'
+        - 'mmdr'
         - 'create-dmg'
         - 'glow'
         - 'git-cliff'
