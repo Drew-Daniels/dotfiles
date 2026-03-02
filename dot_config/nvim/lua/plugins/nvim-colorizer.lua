@@ -2,7 +2,7 @@ return {
 	"catgoose/nvim-colorizer.lua",
 	opts = {
 		user_default_options = {
-			names = false,
+			suppress_deprecation = true,
 		},
 	},
 	-- NOTE: If I want to attach nvim-colorizer to every buffer automatically, use 'config' instead of 'opts'
