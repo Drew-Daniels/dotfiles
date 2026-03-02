@@ -285,7 +285,7 @@ packages:
         - 'gimp'
         - 'codex'
         - 'claude-code'
-        - 'ollama'
+        - 'ollama-app'
         - 'electrum'
         - 'element'
         - 'firefox'
