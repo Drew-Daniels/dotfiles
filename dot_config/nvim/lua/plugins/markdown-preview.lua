@@ -1,9 +1,14 @@
 return {
-	"selimacerbas/markdown-preview.nvim",
-	dependencies = { "selimacerbas/live-server.nvim" },
-	opts = {
-		-- mermaid_renderer = "rust",
-		mermaid_renderer = "js",
-		scroll_sync = false,
-	},
+	-- "iamcco/markdown-preview.nvim",
+	"Drew-Daniels/markdown-preview.nvim",
+	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+	cond = function()
+		-- Only run on macos
+		return vim.fn.has("macunix") == 1
+	end,
+	build = "cd app && yarn install",
+	init = function()
+		vim.g.mkdp_filetypes = { "markdown" }
+	end,
+	ft = { "markdown" },
 }
