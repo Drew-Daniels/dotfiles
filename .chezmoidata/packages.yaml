@@ -283,7 +283,7 @@ packages:
       # - 'librewolf'
       casks:
         - 'gimp'
-        - 'codex'
+        # - 'codex'
         - 'claude-code'
         - 'ollama-app'
         - 'electrum'
