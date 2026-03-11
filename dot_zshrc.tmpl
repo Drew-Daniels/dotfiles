@@ -104,6 +104,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Increase shell file descriptor limit - default is 256 (low)
 ulimit -n 10240
 
+# Melos
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
 {{ if eq .homeOrWork "work" -}}
 # WORK
 # rancher desktop
