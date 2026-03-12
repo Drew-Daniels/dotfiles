@@ -91,6 +91,7 @@ return {
 				-- TODO: Re-enable once this is fixed: https://github.com/antham/ghokin/issues/76#issuecomment-3474465409
 				-- cucumber = { "ghokin" },
 				cucumber = { "reformat-gherkin" },
+				dart = { "dart_format" },
 				d2 = { "d2" },
 				-- lua = { "stylua" },
 				lua = function()
