@@ -19,7 +19,7 @@ windows:
             - fish
   - 2)anamnesis:
       layout: tiled
-      root: ~/projects/grotto
+      root: ~/projects/grotto/apps/anamnesis
       panes:
         - editor:
             - fish
