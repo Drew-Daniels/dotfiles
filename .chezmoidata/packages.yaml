@@ -282,6 +282,7 @@ packages:
       no_quarantine_casks: []
       # - 'librewolf'
       casks:
+        - 'logseq'
         - 'gimp'
         # - 'codex'
         - 'claude-code'
