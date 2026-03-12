@@ -12,6 +12,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -28,6 +29,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -45,6 +47,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -63,6 +66,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -81,6 +85,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -99,6 +104,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -117,6 +123,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
@@ -135,6 +142,7 @@ windows:
         - agent:
             - fish
             - cls
+            - claude
         - cmd1:
             - fish
             - cls
