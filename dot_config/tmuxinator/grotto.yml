@@ -124,3 +124,21 @@ windows:
             - fish
             - cls
             - cls
+  - 8)kist:
+      layout: tiled
+      root: ~/projects/grotto/apps/kist
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - agent:
+            - fish
+            - cls
+        - cmd1:
+            - fish
+            - cls
+        - cmd2:
+            - fish
+            - cls
+            - cls
