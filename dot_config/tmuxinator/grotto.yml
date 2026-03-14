@@ -150,3 +150,22 @@ windows:
             - fish
             - cls
             - cls
+  - 9)bookmarks:
+      layout: tiled
+      root: ~/projects/grotto/apps/grotto-bookmarks
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - agent:
+            - fish
+            - cls
+            - claude
+        - cmd1:
+            - fish
+            - cls
+        - cmd2:
+            - fish
+            - cls
+            - cls
