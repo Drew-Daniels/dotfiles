@@ -229,7 +229,7 @@ packages:
         - 'fish-lsp'
       no_quarantine_casks: []
       casks:
-        - 'expo-orbit'
+        # - 'expo-orbit'
         - 'android-studio'
         # NOTE: Not sure why installing command line tools here doesn't place it in a place that can be found by sdkmanager, but need to manually install this toolchain using the Android Studio app
         # - 'android-commandlinetools'
@@ -238,14 +238,14 @@ packages:
         - '1password'
         # - 'copilot-cli'
         - 'dbeaver-community'
-        - 'drawio'
+        # - 'drawio'
         # - 'espanso'
         - 'flutter'
         - 'font-jetbrains-mono-nerd-font'
         # Required dependency of yamlresume
         - 'font-linux-libertine'
         - 'google-chrome'
-        - 'keycastr'
+        # - 'keycastr'
         - 'ghostty'
         # - 'iterm2'
         # - 'itermbrowserplugin'
@@ -253,11 +253,11 @@ packages:
         - 'obs'
         - 'obsidian'
         - 'protonvpn'
-        - 'postgres-unofficial'
-        - 'postman'
+        - 'postgres-app'
+        # - 'postman'
         - 'rectangle'
         # - 'tidal'
-        - 'zulip'
+        # - 'zulip'
         # - 'zoom'
       mas_apps:
         "rcmd": 1596283165
@@ -282,8 +282,9 @@ packages:
       no_quarantine_casks: []
       # - 'librewolf'
       casks:
+        - 'open-pencil/tap/open-pencil'
         - 'logseq'
-        - 'gimp'
+        # - 'gimp'
         # - 'codex'
         - 'claude-code'
         - 'ollama-app'
@@ -307,7 +308,7 @@ packages:
       mas_apps:
         "Kiwix": 997079563
         "Paprika Recipe Manager 3": 1303222628
-        "Kindle": 302584613
+        # "Kindle": 302584613
         "Wireguard": 1451685025
     work:
       taps:

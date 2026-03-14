@@ -169,3 +169,22 @@ windows:
             - fish
             - cls
             - cls
+  - 10)design:
+      layout: tiled
+      root: ~/projects/grotto/design
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - agent:
+            - fish
+            - cls
+            - claude
+        - cmd1:
+            - fish
+            - cls
+        - cmd2:
+            - fish
+            - cls
+            - cls
