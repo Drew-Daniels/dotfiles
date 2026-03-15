@@ -36,9 +36,9 @@ windows:
         - cmd2:
             - fish
             - cls
-  - 3)books:
+  - 3)reader:
       layout: tiled
-      root: ~/projects/grotto/apps/grotto-books
+      root: ~/projects/grotto/apps/grotto-reader
       panes:
         - editor:
             - fish
@@ -112,26 +112,7 @@ windows:
             - fish
             - cls
             - cls
-  - 7)rss:
-      layout: tiled
-      root: ~/projects/grotto/apps/grotto-rss
-      panes:
-        - editor:
-            - fish
-            - cls
-            - nvim
-        - agent:
-            - fish
-            - cls
-            - claude
-        - cmd1:
-            - fish
-            - cls
-        - cmd2:
-            - fish
-            - cls
-            - cls
-  - 8)kist:
+  - 7)kist:
       layout: tiled
       root: ~/projects/grotto/apps/kist
       panes:
@@ -150,26 +131,7 @@ windows:
             - fish
             - cls
             - cls
-  - 9)bookmarks:
-      layout: tiled
-      root: ~/projects/grotto/apps/grotto-bookmarks
-      panes:
-        - editor:
-            - fish
-            - cls
-            - nvim
-        - agent:
-            - fish
-            - cls
-            - claude
-        - cmd1:
-            - fish
-            - cls
-        - cmd2:
-            - fish
-            - cls
-            - cls
-  - 10)design:
+  - 8)design:
       layout: tiled
       root: ~/projects/grotto/design
       panes:
