@@ -131,6 +131,25 @@ windows:
             - fish
             - cls
             - cls
+  - 8)cli:
+      layout: tiled
+      root: ~/projects/grotto/apps/grotto_cli
+      panes:
+        - editor:
+            - fish
+            - cls
+            - nvim
+        - agent:
+            - fish
+            - cls
+            - claude
+        - cmd1:
+            - fish
+            - cls
+        - cmd2:
+            - fish
+            - cls
+            - cls
   - 8)design:
       layout: tiled
       root: ~/projects/grotto/design
