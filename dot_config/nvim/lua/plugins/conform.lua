@@ -5,7 +5,7 @@ local function get_js_formatters()
 	-- else
 	-- 	return { "eslint_d", "prettierd" }
 	-- end
-	return { "eslint_d" }
+	return { "biome-check" }
 end
 
 return {
