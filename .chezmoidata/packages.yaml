@@ -284,7 +284,7 @@ packages:
       casks:
         - 'open-pencil/tap/open-pencil'
         - 'logseq'
-        # - 'gimp'
+        - 'gimp'
         # - 'codex'
         - 'claude-code'
         - 'ollama-app'
