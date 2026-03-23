@@ -1,8 +1,8 @@
 *~
 .*.swp
 .DS_Store
-/tags
-/tags.*
+tags
+!tags.*
 node_modules
 .clj-kondo
 .lsp
