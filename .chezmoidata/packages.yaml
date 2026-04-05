@@ -158,7 +158,7 @@ packages:
         - 'tree'
         - 'trufflehog'
         # - 'typst'
-        - 'tinymist'
+        # - 'tinymist'
         - 'uncrustify'
         - 'wget'
         - 'vale'
