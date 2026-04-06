@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
 	build = ":TSUpdate",
 	dependencies = {
 		"JoosepAlviste/nvim-ts-context-commentstring",
@@ -29,7 +30,7 @@ return {
 			-- https://github.com/ravsii/tree-sitter-d2
 			-- "d2",
 			"editorconfig",
-			"latex",
+			-- "latex",
 			"bibtex",
 			"lua",
 			"luadoc",
@@ -110,7 +111,7 @@ return {
 			"passwd",
 			"smithy",
 			"svelte",
-			"swift",
+			-- "swift",
 			"tmux",
 			"xcompose",
 			"xml",
