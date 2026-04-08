@@ -156,6 +156,7 @@ packages:
         # - 'texlab'
         - 'tmux'
         - 'tree'
+        - 'tree-sitter-cli'
         - 'trufflehog'
         # - 'typst'
         # - 'tinymist'
