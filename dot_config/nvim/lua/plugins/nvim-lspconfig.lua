@@ -1,5 +1,24 @@
 return {
 	"neovim/nvim-lspconfig",
+	init = function()
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(ev)
+				vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+				local opts = { buffer = ev.buf }
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { unpack(opts), desc = "declaration" })
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "definition" })
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "hover" })
+				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "implementation" })
+				vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { unpack(opts), desc = "signature help" })
+				vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { unpack(opts), desc = "type definition" })
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "references" })
+				vim.keymap.set("n", "gR", vim.lsp.buf.rename, { unpack(opts), desc = "rename" })
+			end,
+			desc = "Initialize LSP on LspAttach event",
+		})
+	end,
 	config = function(_, _)
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		-- TODO: Modularize configuration so that 'capabilities = capabilities' setting is used for every lsp
