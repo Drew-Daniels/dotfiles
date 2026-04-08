@@ -51,7 +51,7 @@ local parsers = {
 	"jsdoc",
 	"jq",
 	"json",
-	"jsonc",
+	-- "jsonc",
 	"json5",
 	"just",
 	"kotlin",
@@ -76,7 +76,7 @@ local parsers = {
 	"prisma",
 	"python",
 	"requirements", -- python_requirements
-	"robots", -- robots.txt
+	-- "robots", -- robots.txt
 	"vue",
 	"nix",
 	-- "nickel",
