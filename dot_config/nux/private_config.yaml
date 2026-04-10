@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Drew-Daniels/nux/main/schemas/global.schema.json
+# nux global configuration
+
+# Base directory for project discovery (supports ~ expansion).
+projects_dir: ~/projects
+
+# Fuzzy finder backend: fzf or gum.
+picker: fzf
+
+# Open the picker when nux is run with no arguments outside a project.
+picker_on_bare: true
+
+# Use zoxide for directory lookup when no config file matches.
+zoxide: true
+
+# Shell to set as tmux default-command for new sessions.
+# default_shell: /bin/zsh
+
+# Commands run in every pane before pane-specific commands.
+# pane_init:
+#   - eval "$(direnv hook zsh)"
+
+# Template for projects without a config file.
+# default_session:
+#   windows:
+#     - name: editor
+#       command: vim
+
+# Named groups for batch operations (e.g. nux @work).
+groups:
+  home:
+    - grotto
+    - findathing
+    - ocarina+
+    - itsyoursnow

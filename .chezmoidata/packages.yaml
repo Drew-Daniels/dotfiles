@@ -234,6 +234,7 @@ packages:
         - 'android-studio'
         # NOTE: Not sure why installing command line tools here doesn't place it in a place that can be found by sdkmanager, but need to manually install this toolchain using the Android Studio app
         # - 'android-commandlinetools'
+        - 'cursor-cli'
         - 'flutter'
         - '1password-cli'
         - '1password'
@@ -324,7 +325,6 @@ packages:
       casks:
         - 'confluent-cli'
         - 'cursor'
-        - 'cursor-cli'
         - 'rancher'
         - 'google-drive'
         - 'mysqlworkbench'
