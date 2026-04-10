@@ -17,19 +17,28 @@ zoxide: true
 # default_shell: /bin/zsh
 
 # Commands run in every pane before pane-specific commands.
-# pane_init:
-#   - eval "$(direnv hook zsh)"
+pane_init:
+  - fish
 
 # Template for projects without a config file.
-# default_session:
-#   windows:
-#     - name: editor
-#       command: vim
+default_session:
+  windows:
+    - name: editor
+      command: nvim
+      layout: tiled
+    - name: stack
 
 # Named groups for batch operations (e.g. nux @work).
 groups:
+  all:
+    - plumb
+    - nux
+    - studious
   home:
     - grotto
-    - findathing
+    - findathing+
+    - reprise+
     - ocarina+
-    - itsyoursnow
+    - neufm+
+    - towncrier
+    - whostheboss
