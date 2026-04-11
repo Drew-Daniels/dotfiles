@@ -21,6 +21,7 @@ zoxide: true
 # Commands run in every pane before pane-specific commands.
 pane_init:
   - fish
+  - cls
 
 # Template for projects without a config file.
 default_session:
