@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Drew-Daniels/nux/main/schemas/global.schema.json
+# yaml-language-server: $schema=file:///Users/drew/projects/nux/schemas/global.schema.json
 # nux global configuration
 
 # Base directory for project discovery (supports ~ expansion).
@@ -24,9 +24,15 @@ pane_init:
 default_session:
   windows:
     - name: editor
-      command: nvim
       layout: tiled
-    - name: stack
+      panes:
+        - nvim
+        - ""
+        - ""
+        - ""
+    - name: shell
+      panes:
+        - ""
 
 # Named groups for batch operations (e.g. nux @work).
 groups:
