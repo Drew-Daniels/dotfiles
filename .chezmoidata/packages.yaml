@@ -23,7 +23,7 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
-        - 'sw33tlie/macshot/macshot'
+        - 'macshot'
         - 'lcov'
         - 'mmdr'
         - 'create-dmg'
@@ -32,7 +32,7 @@ packages:
         - 'goreleaser'
         - 'bd'
         - 'beads_viewer'
-        - 'opencode'
+        # - 'opencode'
         # - 'maestro'
         - 'pdfgrep'
         - 'dive'
