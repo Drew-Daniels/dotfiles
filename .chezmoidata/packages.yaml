@@ -23,6 +23,7 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
+        - 'sw33tlie/macshot/macshot'
         - 'lcov'
         - 'mmdr'
         - 'create-dmg'
@@ -230,6 +231,7 @@ packages:
         - 'fish-lsp'
       no_quarantine_casks: []
       casks:
+        # - 'karabiner-elements'
         # - 'expo-orbit'
         - 'android-studio'
         # NOTE: Not sure why installing command line tools here doesn't place it in a place that can be found by sdkmanager, but need to manually install this toolchain using the Android Studio app
