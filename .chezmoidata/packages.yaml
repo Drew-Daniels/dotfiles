@@ -231,6 +231,7 @@ packages:
         - 'fish-lsp'
       no_quarantine_casks: []
       casks:
+        - 'tailscale-app'
         # - 'karabiner-elements'
         # - 'expo-orbit'
         - 'android-studio'
