@@ -2,6 +2,7 @@ packages:
   darwin:
     common:
       taps:
+        - 'sw33tlie/macshot'
         - '1jehuang/mmdr'
         - 'ariga/tap'
         - 'cormacrelf/tap'
@@ -23,7 +24,6 @@ packages:
         - 'utf8proc'
         # - 'neovim'
       brews:
-        - 'macshot'
         - 'lcov'
         - 'mmdr'
         - 'create-dmg'
@@ -39,7 +39,6 @@ packages:
         - 'asciinema'
         # - 'ariga/tap/atlas'
         - 'astyle'
-        - 'daveshanley/vacuum/vacuum'
         - 'dos2unix'
         - 'graphviz'
         - 'git'
@@ -231,6 +230,8 @@ packages:
         - 'fish-lsp'
       no_quarantine_casks: []
       casks:
+        - 'macshot'
+        - 'vacuum'
         - 'tailscale-app'
         # - 'karabiner-elements'
         # - 'expo-orbit'
