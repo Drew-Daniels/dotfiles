@@ -1,0 +1,6 @@
+{
+  "lastChangelogVersion": "0.66.1",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-3-5-haiku-20241022",
+  "defaultThinkingLevel": "medium"
+}
