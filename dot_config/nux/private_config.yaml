@@ -51,3 +51,7 @@ groups:
     - neufm+
     - towncrier
     - whostheboss
+  work:
+    - interoperability+
+    - mirth+
+    - lore+
