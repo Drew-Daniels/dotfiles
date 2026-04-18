@@ -288,6 +288,7 @@ packages:
       no_quarantine_casks: []
       # - 'librewolf'
       casks:
+        - 'figma'
         - 'quickbooks'
         - 'open-pencil/tap/open-pencil'
         - 'logseq'
