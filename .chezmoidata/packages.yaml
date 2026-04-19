@@ -275,6 +275,7 @@ packages:
         # taglib is required for navidrome development
         - 'taglib'
       brews:
+        - 'hcloud'
         - 'iamb'
         - 'ansible'
         - 'supabase/tap/supabase'
