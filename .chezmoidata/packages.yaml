@@ -275,6 +275,7 @@ packages:
         # taglib is required for navidrome development
         - 'taglib'
       brews:
+        - 'iamb'
         - 'ansible'
         - 'supabase/tap/supabase'
         - 'nginx'
@@ -289,6 +290,7 @@ packages:
       no_quarantine_casks: []
       # - 'librewolf'
       casks:
+        - 'element'
         - 'figma'
         - 'quickbooks'
         - 'open-pencil/tap/open-pencil'
