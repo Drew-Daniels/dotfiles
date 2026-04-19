@@ -11,8 +11,8 @@ return {
 		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/work/*.md",
 		"BufReadPre " .. vim.fn.expand("~") .. "/vaults/personal/*.md",
 		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/personal/*.md",
-		"BufReadPre " .. vim.fn.expand("~") .. "/vaults/XXX/*.md",
-		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/XXX/*.md",
+		"BufReadPre " .. vim.fn.expand("~") .. "/vaults/bela/*.md",
+		"BufNewFile " .. vim.fn.expand("~") .. "/vaults/bela/*.md",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -34,8 +34,8 @@ return {
 				path = "~/vaults/personal",
 			},
 			{
-				name = "xxx",
-				path = "~/vaults/xxx",
+				name = "bela",
+				path = "~/vaults/bela",
 			},
 			{
 				name = "work",
