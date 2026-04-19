@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Drew-Daniels/nux/main/schemas/project.schema.json
+# Optional: root, env, vars, on_start / on_ready / on_detach / on_stop — see project-config in the docs.
+
+root: ~/vaults/work
+windows:
+  - name: wnotes
+    layout: main-vertical
+    panes:
+      - command: nvim index.md
