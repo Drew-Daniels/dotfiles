@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=/Users/drew/projects/plumb/schemas/config.schema.json
+includes: []
+servers:
+  context7:
+    command: npx
+    args:
+      - -y
+      - '@upstash/context7-mcp'
+  dart:
+    command: dart
+    args:
+      - mcp-server
+  firecrawl:
+    command: npx
+    args:
+      - -y
+      - firecrawl-mcp
+    env:
+      FIRECRAWL_API_KEY: op://Personal/Firecrawl/API Key
+  github:
+    command: npx
+    args:
+      - -y
+      - '@modelcontextprotocol/server-github'
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: op://Personal/install-update-scripts-token/password
+  playwright:
+    command: npx
+    args:
+      - '@playwright/mcp@latest'
+  sequential-thinking:
+    command: npx
+    args:
+      - -y
+      - '@modelcontextprotocol/server-sequential-thinking'
+      # studious:
+      #   command: studious
+profiles:
+  default:
+    - firecrawl
+    - context7
+    - sequential-thinking
+    - playwright
+    - github
+    # - studious
+clients:
+  augment:
+    profile: default
+  claude-code:
+    profile: default
+    remove_unmanaged: true
+  codex:
+    profile: default
+  copilot-cli:
+    profile: default
+  cursor:
+    profile: default
+  gemini:
+    profile: default
+  goose:
+    profile: default
+  opencode:
+    profile: default
+  vscode:
+    profile: default
+registries: []
