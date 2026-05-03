@@ -1,0 +1,8 @@
+---
+- name: Install desktop apps on Debian
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_facts['distribution'] == 'Debian'
+
+- name: Install desktop apps on Fedora
+  ansible.builtin.include_tasks: fedora.yml
+  when: ansible_facts['distribution'] == 'Fedora'

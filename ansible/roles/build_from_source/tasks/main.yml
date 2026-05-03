@@ -1,0 +1,8 @@
+---
+- name: Build from source on Debian
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_facts['distribution'] == 'Debian'
+
+- name: Build from source on Fedora
+  ansible.builtin.include_tasks: fedora.yml
+  when: ansible_facts['distribution'] == 'Fedora'

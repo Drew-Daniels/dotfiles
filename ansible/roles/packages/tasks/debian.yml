@@ -1,0 +1,37 @@
+---
+- name: Update apt cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Upgrade all packages
+  become: true
+  ansible.builtin.apt:
+    upgrade: safe
+
+- name: Check sudo privileges
+  ansible.builtin.command:
+    cmd: sudo -l
+  register: sudo_check
+  changed_when: false
+  failed_when: sudo_check.rc != 0
+
+- name: Install all apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ debian_apt_packages + (debian_apt_packages_mapped | map(attribute='package') | list) + debian_ruby_build_deps }}"
+    state: present
+
+- name: Install crates
+  ansible.builtin.command:
+    cmd: "cargo install --locked {{ debian_crate_packages | join(' ') }}"
+  register: crate_result
+  changed_when: "'Compiling' in crate_result.stderr | default('')"
+  failed_when: crate_result.rc != 0
+
+- name: Clean up apt
+  become: true
+  ansible.builtin.apt:
+    autoremove: true
+    autoclean: true

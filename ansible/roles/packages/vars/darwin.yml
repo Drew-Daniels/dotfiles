@@ -1,0 +1,255 @@
+homebrew_taps:
+  - sw33tlie/macshot
+  - cormacrelf/tap
+  - teamookla/speedtest
+  - daveshanley/vacuum
+  - alesbrelih/gitlab-ci-ls
+  - JetBrains/utils
+  - anomalyco/tap
+
+homebrew_head_brews:
+  - imagemagick
+  - utf8proc
+
+homebrew_brews:
+  - lcov
+  - glow
+  - git-cliff
+  - pdfgrep
+  - dive
+  - dos2unix
+  - graphviz
+  - git
+  - git-lfs
+  - gitleaks
+  - golangci-lint
+  - golangci-lint-langserver
+  - golines
+  - age
+  - ast-grep
+  - automake
+  - awscli
+  - bat
+  - bat-extras
+  - bottom
+  - cljfmt
+  - codebook-lsp
+  - helmfile
+  - helm-ls
+  - hexyl
+  - chafa
+  - chezmoi
+  - cmake
+  - cmake-docs
+  - defaultbrowser
+  - alesbrelih/gitlab-ci-ls/gitlab-ci-ls
+  - ccache
+  - comby
+  - coreutils
+  - ctags
+  - curl
+  - d2
+  - deno
+  - direnv
+  - difftastic
+  - dust
+  - duti
+  - fd
+  - file-formula
+  - neovim
+  - ninja
+  - fish
+  - nushell
+  - fzf
+  - gh
+  - ghostscript
+  - git-credential-oauth
+  - git-delta
+  - git-gui
+  - gnupg
+  - gping
+  - opentofu
+  - llvm
+  - lnav
+  - lynx
+  - hurl
+  - sevenzip
+  - syft
+  - grype
+  - jc
+  - jdtls
+  - jless
+  - jq
+  - jqp
+  - just
+  - JetBrains/utils/kotlin-lsp
+  - less
+  - lsd
+  - ls-lint
+  - mas
+  - mkcert
+  - mpv
+  - gradle
+  - mergiraf
+  - mise
+  - newsraft
+  - pandoc
+  - pkgconf
+  - pngpaste
+  - pwgen
+  - rclone
+  - reattach-to-user-namespace
+  - resvg
+  - ripgrep
+  - speedtest
+  - starship
+  - stylua
+  - sonar-scanner
+  - tmux
+  - tree
+  - tree-sitter-cli
+  - wget
+  - vale
+  - vhs
+  - xxhash
+  - yazi
+  - yq
+  - zoxide
+  - zig
+  - zls
+  - cormacrelf/tap/dark-notify
+  - pgcli
+  - ruff
+  - basedpyright
+  - clang-format
+  - jsonlint
+  - shfmt
+  - shellcheck
+  - yamlfmt
+  - xmlstarlet
+  - gopls
+  - rust-analyzer
+  - lua-language-server
+  - marksman
+  - sql-language-server
+  - sqlfmt
+  - tailwindcss-language-server
+  - taplo
+  - terraform-ls
+  - tflint
+  - typos-cli
+  - typos-lsp
+  - vue-language-server
+  - yaml-language-server
+  - clojure-lsp
+  - fish-lsp
+  - ansible-lint
+  - bash-language-server
+  - dockerfile-language-server
+  - eslint_d
+  - gnu-sed
+  - make
+  - meson
+  - prettierd
+  - typescript-language-server
+  - vacuum
+  - vscode-langservers-extracted
+
+homebrew_no_quarantine_casks: []
+
+homebrew_casks:
+  - macshot
+  - android-studio
+  - flutter
+  - 1password-cli
+  - 1password
+  - dbeaver-community
+  - font-jetbrains-mono-nerd-font
+  - font-linux-libertine
+  - google-chrome
+  - ghostty
+  - sioyek
+  - obs
+  - obsidian
+  - protonvpn
+  - postgres-app
+  - rectangle
+
+homebrew_mas_apps:
+  rcmd: 1596283165
+  Xcode: 497799835
+
+# Home-specific packages
+homebrew_home_taps: []
+
+homebrew_home_head_brews:
+  - taglib
+
+homebrew_home_brews:
+  - atuin
+  - hcloud
+  - ansible
+  - b2-tools
+  - podman
+  - podman-tui
+  - docker-compose
+  - yt-dlp
+  - cmus
+  - fftw
+  - mpc
+  - mpd
+  - sops
+  - block-goose-cli
+  - forgejo
+  - opencode
+
+homebrew_home_no_quarantine_casks: []
+
+homebrew_home_casks:
+  - element
+  - figma
+  - quickbooks
+  - open-pencil/tap/open-pencil
+  - claude-code
+  - ollama-app
+  - firefox
+  - libreoffice
+  - lmms
+  - trezor-suite
+  - signal
+  - whatsapp
+  - vitalsource-bookshelf
+  - qutebrowser
+  - mixxx
+  - weasis
+  - rekordbox
+  - wireshark-app
+  - tailscale-app
+  - keepassxc
+
+homebrew_home_mas_apps:
+  Kiwix: 997079563
+  "Paprika Recipe Manager 3": 1303222628
+  Wireguard: 1451685025
+
+# Work-specific packages
+homebrew_work_taps:
+  - ankitpokhrel/jira-cli
+
+homebrew_work_head_brews: []
+
+homebrew_work_brews:
+  - ankitpokhrel/jira-cli/jira-cli
+  - glab
+
+homebrew_work_no_quarantine_casks: []
+
+homebrew_work_casks:
+  - confluent-cli
+  - cursor
+  - cursor-cli
+  - rancher
+  - slack
+  - zoom
+
+homebrew_work_mas_apps: {}

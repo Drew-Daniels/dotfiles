@@ -1,0 +1,280 @@
+---
+# ---- cosign ----
+- name: Check if cosign is installed
+  ansible.builtin.command:
+    cmd: which cosign
+  register: cosign_check
+  changed_when: false
+  failed_when: false
+
+- name: Install cosign
+  when: cosign_check.rc != 0
+  block:
+    - name: Get latest cosign release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/sigstore/cosign/releases/latest
+        return_content: true
+      register: cosign_release
+
+    - name: Set cosign version
+      ansible.builtin.set_fact:
+        cosign_version: "{{ cosign_release.json.tag_name | regex_replace('^v', '') }}"
+
+    - name: Download cosign RPM
+      ansible.builtin.get_url:
+        url: "https://github.com/sigstore/cosign/releases/latest/download/cosign-{{ cosign_version }}-1.x86_64.rpm"
+        dest: /tmp/cosign.rpm
+        mode: "0644"
+
+    - name: Install cosign RPM
+      become: true
+      ansible.builtin.dnf:
+        name: /tmp/cosign.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: Clean up cosign RPM
+      ansible.builtin.file:
+        path: /tmp/cosign.rpm
+        state: absent
+
+# ---- dbeaver ----
+- name: Check if dbeaver is installed
+  ansible.builtin.command:
+    cmd: which dbeaver
+  register: dbeaver_check
+  changed_when: false
+  failed_when: false
+
+- name: Install dbeaver
+  when: dbeaver_check.rc != 0
+  block:
+    - name: Download dbeaver RPM
+      ansible.builtin.get_url:
+        url: https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
+        dest: /tmp/dbeaver.rpm
+        mode: "0644"
+
+    - name: Install dbeaver RPM
+      become: true
+      ansible.builtin.dnf:
+        name: /tmp/dbeaver.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: Clean up dbeaver RPM
+      ansible.builtin.file:
+        path: /tmp/dbeaver.rpm
+        state: absent
+
+# ---- terraform-ls ----
+- name: Check if terraform-ls is installed
+  ansible.builtin.command:
+    cmd: which terraform-ls
+  register: terraform_ls_check
+  changed_when: false
+  failed_when: false
+
+- name: Install terraform-ls
+  when: terraform_ls_check.rc != 0
+  block:
+    - name: Download terraform-ls
+      ansible.builtin.get_url:
+        url: https://releases.hashicorp.com/terraform-ls/0.36.5/terraform-ls_0.36.5_linux_amd64.zip
+        dest: /tmp/terraform-ls.zip
+        mode: "0644"
+
+    - name: Extract terraform-ls
+      ansible.builtin.unarchive:
+        src: /tmp/terraform-ls.zip
+        dest: /tmp
+        remote_src: true
+
+    - name: Install terraform-ls
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/terraform-ls
+        dest: /usr/local/bin/terraform-ls
+        remote_src: true
+        mode: "0755"
+
+    - name: Clean up terraform-ls
+      ansible.builtin.file:
+        path: /tmp/terraform-ls.zip
+        state: absent
+
+# ---- typos-lsp ----
+- name: Install typos-lsp via cargo binstall
+  ansible.builtin.command:
+    cmd: cargo binstall --git https://github.com/tekumara/typos-lsp typos-lsp -y
+  register: typos_lsp_result
+  changed_when: "'Installed' in typos_lsp_result.stderr | default('')"
+  failed_when: false
+
+# ---- marksman ----
+- name: Check if marksman is installed
+  ansible.builtin.command:
+    cmd: which marksman
+  register: marksman_check
+  changed_when: false
+  failed_when: false
+
+- name: Install marksman
+  when: marksman_check.rc != 0
+  block:
+    - name: Get latest marksman release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/artempyanykh/marksman/releases/latest
+        return_content: true
+      register: marksman_release
+
+    - name: Download marksman
+      ansible.builtin.get_url:
+        url: "https://github.com/artempyanykh/marksman/releases/download/{{ marksman_release.json.tag_name }}/marksman-linux-x64"
+        dest: /tmp/marksman
+        mode: "0755"
+
+    - name: Install marksman
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/marksman
+        dest: /usr/local/bin/marksman
+        remote_src: true
+        mode: "0755"
+
+# ---- lua-language-server ----
+- name: Check if lua-language-server is installed
+  ansible.builtin.command:
+    cmd: which lua-language-server
+  register: lua_ls_check
+  changed_when: false
+  failed_when: false
+
+- name: Install lua-language-server
+  when: lua_ls_check.rc != 0
+  block:
+    - name: Get latest lua-language-server release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/LuaLS/lua-language-server/releases/latest
+        return_content: true
+      register: lua_ls_release
+
+    - name: Download lua-language-server
+      ansible.builtin.get_url:
+        url: "https://github.com/LuaLS/lua-language-server/releases/download/{{ lua_ls_release.json.tag_name }}/lua-language-server-{{ lua_ls_release.json.tag_name }}-linux-x64.tar.gz"
+        dest: /tmp/lua-ls.tar.gz
+        mode: "0644"
+
+    - name: Create extraction directory
+      ansible.builtin.file:
+        path: /tmp/lua-ls-extract
+        state: directory
+        mode: "0755"
+
+    - name: Extract lua-language-server
+      ansible.builtin.unarchive:
+        src: /tmp/lua-ls.tar.gz
+        dest: /tmp/lua-ls-extract
+        remote_src: true
+
+    - name: Install lua-language-server
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/lua-ls-extract/bin/lua-language-server
+        dest: /usr/local/bin/lua-language-server
+        remote_src: true
+        mode: "0755"
+
+    - name: Clean up lua-language-server
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /tmp/lua-ls.tar.gz
+        - /tmp/lua-ls-extract
+
+# ---- stylua ----
+- name: Check if stylua is installed
+  ansible.builtin.command:
+    cmd: which stylua
+  register: stylua_check
+  changed_when: false
+  failed_when: false
+
+- name: Install stylua
+  when: stylua_check.rc != 0
+  block:
+    - name: Download stylua
+      ansible.builtin.get_url:
+        url: https://github.com/JohnnyMorganz/StyLua/releases/download/v2.1.0/stylua-linux-x86_64.zip
+        dest: /tmp/stylua.zip
+        mode: "0644"
+
+    - name: Extract stylua
+      ansible.builtin.unarchive:
+        src: /tmp/stylua.zip
+        dest: /tmp
+        remote_src: true
+
+    - name: Install stylua
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/stylua
+        dest: /usr/local/bin/stylua
+        remote_src: true
+        mode: "0755"
+
+    - name: Clean up stylua
+      ansible.builtin.file:
+        path: /tmp/stylua.zip
+        state: absent
+
+# ---- phpactor ----
+- name: Check if phpactor is installed
+  ansible.builtin.command:
+    cmd: which phpactor
+  register: phpactor_check
+  changed_when: false
+  failed_when: false
+
+- name: Install phpactor
+  when: phpactor_check.rc != 0
+  block:
+    - name: Download phpactor
+      ansible.builtin.get_url:
+        url: https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar
+        dest: /tmp/phpactor.phar
+        mode: "0755"
+
+    - name: Install phpactor
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/phpactor.phar
+        dest: /usr/local/bin/phpactor
+        remote_src: true
+        mode: "0755"
+
+# ---- obsidian ----
+- name: Check if obsidian is installed
+  ansible.builtin.command:
+    cmd: which obsidian
+  register: obsidian_check
+  changed_when: false
+  failed_when: false
+
+- name: Install obsidian AppImage
+  when: obsidian_check.rc != 0
+  block:
+    - name: Download obsidian AppImage
+      ansible.builtin.get_url:
+        url: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.9.10/obsidian_1.9.10_amd64.AppImage
+        dest: /tmp/obsidian.AppImage
+        mode: "0755"
+
+    - name: Install obsidian
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/obsidian.AppImage
+        dest: /usr/local/bin/obsidian
+        remote_src: true
+        mode: "0755"

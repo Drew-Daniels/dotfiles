@@ -1,0 +1,455 @@
+---
+# ---- fish shell (needs external repo on Debian) ----
+- name: Check if fish is installed
+  ansible.builtin.command:
+    cmd: which fish
+  register: fish_check
+  changed_when: false
+  failed_when: false
+
+- name: Install fish shell
+  when: fish_check.rc != 0
+  become: true
+  block:
+    - name: Add fish shell repository key
+      ansible.builtin.shell:
+        cmd: >
+          curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:4/Debian_{{ ansible_facts['distribution_version'] }}/Release.key"
+          | gpg --dearmor
+          | tee "/etc/apt/trusted.gpg.d/shells_fish_release_4.gpg" >/dev/null
+        creates: /etc/apt/trusted.gpg.d/shells_fish_release_4.gpg
+
+    - name: Add fish shell repository
+      ansible.builtin.apt_repository:
+        repo: "deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_{{ ansible_facts['distribution_version'] }}/ /"
+        filename: "shells-fish-release-4"
+        state: present
+
+    - name: Install fish
+      ansible.builtin.apt:
+        name: fish
+        state: present
+        update_cache: true
+
+# ---- Docker ----
+- name: Check if docker is installed
+  ansible.builtin.command:
+    cmd: which docker
+  register: docker_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Docker
+  when: docker_check.rc != 0
+  become: true
+  block:
+    - name: Install Docker prerequisites
+      ansible.builtin.apt:
+        name:
+          - gnome-terminal
+          - ca-certificates
+          - curl
+        state: present
+
+    - name: Create Docker keyring directory
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: "0755"
+
+    - name: Add Docker GPG key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/debian/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: "0644"
+
+    - name: Add Docker repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ ansible_facts['architecture'] }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_facts['distribution_release'] }} stable"
+        filename: docker
+        state: present
+
+    - name: Install Docker packages
+      ansible.builtin.apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+        update_cache: true
+
+    - name: Download Docker Desktop
+      ansible.builtin.get_url:
+        url: https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb
+        dest: /tmp/docker-desktop.deb
+        mode: "0644"
+
+    - name: Install Docker Desktop
+      ansible.builtin.apt:
+        deb: /tmp/docker-desktop.deb
+
+    - name: Clean up Docker Desktop deb
+      ansible.builtin.file:
+        path: /tmp/docker-desktop.deb
+        state: absent
+
+# ---- brightnessctl (needs group membership) ----
+- name: Check if brightnessctl is installed
+  ansible.builtin.command:
+    cmd: which brightnessctl
+  register: brightnessctl_check
+  changed_when: false
+  failed_when: false
+
+- name: Install brightnessctl
+  when: brightnessctl_check.rc != 0
+  become: true
+  block:
+    - name: Add user to video group
+      ansible.builtin.user:
+        name: "{{ ansible_facts['env'].USER }}"
+        groups: video
+        append: true
+
+    - name: Install brightnessctl package
+      ansible.builtin.apt:
+        name: brightnessctl
+        state: present
+
+# ---- strawberry ----
+- name: Check if strawberry is installed
+  ansible.builtin.command:
+    cmd: which strawberry
+  register: strawberry_check
+  changed_when: false
+  failed_when: false
+
+- name: Install strawberry
+  when: strawberry_check.rc != 0
+  block:
+    - name: Get latest strawberry release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/strawberrymusicplayer/strawberry/releases/latest
+        return_content: true
+      register: strawberry_release
+
+    - name: Set strawberry version
+      ansible.builtin.set_fact:
+        strawberry_version: "{{ strawberry_release.json.tag_name | regex_replace('^v', '') }}"
+
+    - name: Download strawberry deb
+      ansible.builtin.get_url:
+        url: "https://github.com/strawberrymusicplayer/strawberry/releases/download/{{ strawberry_version }}/strawberry_{{ strawberry_version }}-{{ ansible_facts['distribution_release'] }}_amd64.deb"
+        dest: /tmp/strawberry.deb
+        mode: "0644"
+
+    - name: Install strawberry
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/strawberry.deb
+
+    - name: Clean up strawberry deb
+      ansible.builtin.file:
+        path: /tmp/strawberry.deb
+        state: absent
+
+# ---- AWS CLI ----
+- name: Check if AWS CLI is installed
+  ansible.builtin.command:
+    cmd: which aws
+  register: aws_check
+  changed_when: false
+  failed_when: false
+
+- name: Install AWS CLI
+  when: aws_check.rc != 0
+  block:
+    - name: Download AWS CLI
+      ansible.builtin.get_url:
+        url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        dest: /tmp/awscliv2.zip
+        mode: "0644"
+
+    - name: Extract AWS CLI
+      ansible.builtin.unarchive:
+        src: /tmp/awscliv2.zip
+        dest: /tmp
+        remote_src: true
+
+    - name: Install AWS CLI
+      become: true
+      ansible.builtin.command:
+        cmd: /tmp/aws/install
+
+    - name: Clean up AWS CLI
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /tmp/awscliv2.zip
+        - /tmp/aws
+
+# ---- librewolf ----
+- name: Check if librewolf is installed
+  ansible.builtin.command:
+    cmd: which librewolf
+  register: librewolf_check
+  changed_when: false
+  failed_when: false
+
+- name: Install librewolf
+  when: librewolf_check.rc != 0
+  become: true
+  block:
+    - name: Enable extrepo for librewolf
+      ansible.builtin.command:
+        cmd: extrepo enable librewolf
+
+    - name: Install librewolf
+      ansible.builtin.apt:
+        name: librewolf
+        state: present
+        update_cache: true
+
+# ---- mullvad ----
+- name: Check if mullvad is installed
+  ansible.builtin.command:
+    cmd: which mullvad
+  register: mullvad_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Mullvad VPN
+  when: mullvad_check.rc != 0
+  become: true
+  block:
+    - name: Download Mullvad signing key
+      ansible.builtin.get_url:
+        url: https://repository.mullvad.net/deb/mullvad-keyring.asc
+        dest: /usr/share/keyrings/mullvad-keyring.asc
+        mode: "0644"
+
+    - name: Add Mullvad repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch={{ ansible_facts['architecture'] }}] https://repository.mullvad.net/deb/stable {{ ansible_facts['distribution_release'] }} main"
+        filename: mullvad
+        state: present
+
+    - name: Install Mullvad VPN
+      ansible.builtin.apt:
+        name: mullvad-vpn
+        state: present
+        update_cache: true
+
+# ---- signal ----
+- name: Check if signal is installed
+  ansible.builtin.command:
+    cmd: which signal-desktop
+  register: signal_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Signal Desktop
+  when: signal_check.rc != 0
+  become: true
+  block:
+    - name: Add Signal GPG key
+      ansible.builtin.shell:
+        cmd: wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > /usr/share/keyrings/signal-desktop-keyring.gpg
+        creates: /usr/share/keyrings/signal-desktop-keyring.gpg
+
+    - name: Add Signal repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main"
+        filename: signal-xenial
+        state: present
+
+    - name: Install Signal Desktop
+      ansible.builtin.apt:
+        name: signal-desktop
+        state: present
+        update_cache: true
+
+# ---- zulip ----
+- name: Check if zulip is installed
+  ansible.builtin.command:
+    cmd: which zulip
+  register: zulip_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Zulip
+  when: zulip_check.rc != 0
+  become: true
+  block:
+    - name: Add Zulip GPG key
+      ansible.builtin.get_url:
+        url: https://download.zulip.com/desktop/apt/zulip-desktop.asc
+        dest: /etc/apt/trusted.gpg.d/zulip-desktop.asc
+        mode: "0644"
+
+    - name: Add Zulip repository
+      ansible.builtin.apt_repository:
+        repo: "deb https://download.zulip.com/desktop/apt stable main"
+        filename: zulip-desktop
+        state: present
+
+    - name: Install Zulip
+      ansible.builtin.apt:
+        name: zulip
+        state: present
+        update_cache: true
+
+# ---- Proton Mail ----
+- name: Check if Proton Mail is installed
+  ansible.builtin.command:
+    cmd: which proton-mail
+  register: protonmail_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Proton Mail Desktop
+  when: protonmail_check.rc != 0
+  block:
+    - name: Download Proton Mail deb
+      ansible.builtin.get_url:
+        url: https://proton.me/download/mail/linux/1.8.0/ProtonMail-desktop-beta.deb
+        dest: /tmp/protonmail.deb
+        mode: "0644"
+
+    - name: Install Proton Mail
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/protonmail.deb
+
+    - name: Clean up Proton Mail deb
+      ansible.builtin.file:
+        path: /tmp/protonmail.deb
+        state: absent
+
+# ---- Proton Mail Bridge ----
+- name: Check if Proton Mail Bridge is installed
+  ansible.builtin.command:
+    cmd: which protonmail-bridge
+  register: bridge_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Proton Mail Bridge
+  when: bridge_check.rc != 0
+  block:
+    - name: Download Proton Mail Bridge deb
+      ansible.builtin.get_url:
+        url: https://proton.me/download/bridge/protonmail-bridge_3.20.0-1_amd64.deb
+        dest: /tmp/protonmail-bridge.deb
+        mode: "0644"
+
+    - name: Install Proton Mail Bridge
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/protonmail-bridge.deb
+
+    - name: Clean up Proton Mail Bridge deb
+      ansible.builtin.file:
+        path: /tmp/protonmail-bridge.deb
+        state: absent
+
+# ---- usbimager ----
+- name: Check if usbimager is installed
+  ansible.builtin.command:
+    cmd: which usbimager
+  register: usbimager_check
+  changed_when: false
+  failed_when: false
+
+- name: Install usbimager
+  when: usbimager_check.rc != 0
+  block:
+    - name: Download usbimager deb
+      ansible.builtin.get_url:
+        url: https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.10-amd64.deb
+        dest: /tmp/usbimager.deb
+        mode: "0644"
+
+    - name: Install usbimager
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/usbimager.deb
+
+    - name: Clean up usbimager deb
+      ansible.builtin.file:
+        path: /tmp/usbimager.deb
+        state: absent
+
+# ---- Obsidian ----
+- name: Check if obsidian is installed
+  ansible.builtin.command:
+    cmd: which obsidian
+  register: obsidian_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Obsidian
+  when: obsidian_check.rc != 0
+  block:
+    - name: Download Obsidian deb
+      ansible.builtin.get_url:
+        url: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.9.10/obsidian_1.9.10_amd64.deb
+        dest: /tmp/obsidian.deb
+        mode: "0644"
+
+    - name: Install Obsidian
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/obsidian.deb
+
+    - name: Clean up Obsidian deb
+      ansible.builtin.file:
+        path: /tmp/obsidian.deb
+        state: absent
+
+# ---- HashiCorp terraform-ls ----
+- name: Check if terraform-ls is installed
+  ansible.builtin.command:
+    cmd: which terraform-ls
+  register: terraform_ls_check
+  changed_when: false
+  failed_when: false
+
+- name: Install terraform-ls on Debian
+  when: terraform_ls_check.rc != 0
+  become: true
+  block:
+    - name: Add HashiCorp GPG key
+      ansible.builtin.shell:
+        cmd: wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+        creates: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+    - name: Add HashiCorp repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ ansible_facts['architecture'] }} signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_facts['distribution_release'] }} main"
+        filename: hashicorp
+        state: present
+
+    - name: Install terraform-ls
+      ansible.builtin.apt:
+        name: terraform-ls
+        state: present
+        update_cache: true
+
+# ---- cryptsetup ----
+- name: Install cryptsetup
+  become: true
+  ansible.builtin.apt:
+    name: cryptsetup
+    state: present
+
+# ---- cargo-update ----
+- name: Install cargo-update
+  ansible.builtin.command:
+    cmd: cargo install cargo-update
+  register: cargo_update_result
+  changed_when: "'Installed' in cargo_update_result.stderr | default('')"
+  failed_when: false

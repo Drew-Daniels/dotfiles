@@ -1,0 +1,278 @@
+---
+# ---- bat-extras ----
+- name: Check if batgrep is installed
+  ansible.builtin.command:
+    cmd: which batgrep
+  register: batgrep_check
+  changed_when: false
+  failed_when: false
+
+- name: Install bat-extras
+  when: batgrep_check.rc != 0
+  block:
+    - name: Clone bat-extras
+      ansible.builtin.git:
+        repo: https://github.com/eth-p/bat-extras.git
+        dest: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
+        version: HEAD
+
+    - name: Build and install bat-extras
+      ansible.builtin.command:
+        cmd: ./build.sh --install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
+
+# ---- alacritty (no precompiled binaries for Linux) ----
+- name: Check if alacritty is installed
+  ansible.builtin.command:
+    cmd: which alacritty
+  register: alacritty_check
+  changed_when: false
+  failed_when: false
+
+- name: Build and install alacritty from source
+  when: alacritty_check.rc != 0
+  block:
+    - name: Install alacritty build dependencies
+      become: true
+      ansible.builtin.apt:
+        name:
+          - cmake
+          - g++
+          - pkg-config
+          - libfreetype6-dev
+          - libfontconfig1-dev
+          - libxcb-xfixes0-dev
+          - libxkbcommon-dev
+          - scdoc
+          - desktop-file-utils
+        state: present
+
+    - name: Clone alacritty
+      ansible.builtin.git:
+        repo: https://github.com/alacritty/alacritty.git
+        dest: "{{ ansible_facts['env'].HOME }}/projects/alacritty"
+        version: HEAD
+
+    - name: Set rustup to stable
+      ansible.builtin.command:
+        cmd: rustup override set stable
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/alacritty"
+
+    - name: Update rustup stable
+      ansible.builtin.command:
+        cmd: rustup update stable
+
+    - name: Build alacritty
+      ansible.builtin.command:
+        cmd: cargo build --release
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/alacritty"
+
+    - name: Install alacritty binary
+      become: true
+      ansible.builtin.copy:
+        src: "{{ ansible_facts['env'].HOME }}/projects/alacritty/target/release/alacritty"
+        dest: /usr/local/bin/alacritty
+        remote_src: true
+        mode: "0755"
+
+    - name: Install alacritty icon
+      become: true
+      ansible.builtin.copy:
+        src: "{{ ansible_facts['env'].HOME }}/projects/alacritty/extra/logo/alacritty-term.svg"
+        dest: /usr/share/pixmaps/Alacritty.svg
+        remote_src: true
+        mode: "0644"
+
+    - name: Install alacritty desktop file
+      become: true
+      ansible.builtin.command:
+        cmd: desktop-file-install extra/linux/Alacritty.desktop
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/alacritty"
+
+    - name: Update desktop database
+      become: true
+      ansible.builtin.command:
+        cmd: update-desktop-database
+
+# ---- yazi (installed via cargo on Debian due to glibc compat) ----
+- name: Check if yazi is installed
+  ansible.builtin.command:
+    cmd: which yazi
+  register: yazi_check
+  changed_when: false
+  failed_when: false
+
+- name: Install yazi from cargo
+  when: yazi_check.rc != 0
+  block:
+    - name: Install yazi dependencies
+      become: true
+      ansible.builtin.apt:
+        name:
+          - ffmpeg
+          - 7zip
+          - poppler-utils
+        state: present
+
+    - name: Install yazi via cargo
+      ansible.builtin.command:
+        cmd: cargo install --locked yazi-fm yazi-cli
+
+# ---- cmusfm ----
+- name: Check if cmusfm is installed
+  ansible.builtin.command:
+    cmd: which cmusfm
+  register: cmusfm_check
+  changed_when: false
+  failed_when: false
+
+- name: Build and install cmusfm
+  when: cmusfm_check.rc != 0
+  block:
+    - name: Install cmusfm build dependencies
+      become: true
+      ansible.builtin.apt:
+        name:
+          - libcurl4-openssl-dev
+          - libnotify-dev
+        state: present
+
+    - name: Clone cmusfm
+      ansible.builtin.git:
+        repo: https://github.com/arkq/cmusfm.git
+        dest: "{{ ansible_facts['env'].HOME }}/projects/cmusfm"
+        version: HEAD
+
+    - name: Run autoreconf for cmusfm
+      ansible.builtin.command:
+        cmd: autoreconf --install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmusfm"
+
+    - name: Create build directory
+      ansible.builtin.file:
+        path: "{{ ansible_facts['env'].HOME }}/projects/cmusfm/build"
+        state: directory
+        mode: "0755"
+
+    - name: Configure cmusfm
+      ansible.builtin.command:
+        cmd: ../configure --enable-libnotify
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmusfm/build"
+
+    - name: Build and install cmusfm
+      ansible.builtin.command:
+        cmd: make && make install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmusfm/build"
+
+# ---- waybar ----
+- name: Check if waybar is installed
+  ansible.builtin.command:
+    cmd: which waybar
+  register: waybar_check
+  changed_when: false
+  failed_when: false
+
+- name: Build and install waybar
+  when: waybar_check.rc != 0
+  block:
+    - name: Install waybar build dependencies
+      become: true
+      ansible.builtin.apt:
+        name:
+          - clang-tidy
+          - gobject-introspection
+          - libdbusmenu-gtk3-dev
+          - libevdev-dev
+          - libfmt-dev
+          - libgirepository1.0-dev
+          - libgtk-3-dev
+          - libgtkmm-3.0-dev
+          - libinput-dev
+          - libjsoncpp-dev
+          - libmpdclient-dev
+          - libnl-3-dev
+          - libnl-genl-3-dev
+          - libpulse-dev
+          - libsigc++-2.0-dev
+          - libspdlog-dev
+          - libwayland-dev
+          - scdoc
+          - upower
+          - libxkbregistry-dev
+          - meson
+          - ninja-build
+        state: present
+
+    - name: Clone waybar
+      ansible.builtin.git:
+        repo: https://github.com/Alexays/Waybar
+        dest: "{{ ansible_facts['env'].HOME }}/projects/Waybar"
+        version: HEAD
+
+    - name: Setup meson build
+      ansible.builtin.command:
+        cmd: meson setup build
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/Waybar"
+
+    - name: Build waybar
+      ansible.builtin.command:
+        cmd: ninja -C build
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/Waybar"
+
+    - name: Install waybar
+      become: true
+      ansible.builtin.command:
+        cmd: ninja -C build install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/Waybar"
+
+# ---- electrum ----
+- name: Check if electrum is installed
+  ansible.builtin.command:
+    cmd: which electrum
+  register: electrum_check
+  changed_when: false
+  failed_when: false
+
+- name: Install electrum
+  when: electrum_check.rc != 0
+  block:
+    - name: Import electrum signing keys
+      ansible.builtin.shell:
+        cmd: |
+          curl -sL https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys/ThomasV.asc | gpg --import
+          curl -sL https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys/sombernight_releasekey.asc | gpg --import
+          curl -sL https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys/Emzy.asc | gpg --import
+      changed_when: false
+
+    - name: Download electrum AppImage
+      ansible.builtin.get_url:
+        url: https://download.electrum.org/4.5.8/electrum-4.5.8-x86_64.AppImage
+        dest: /tmp/electrum.AppImage
+        mode: "0755"
+
+    - name: Download electrum signature
+      ansible.builtin.get_url:
+        url: https://download.electrum.org/4.5.8/electrum-4.5.8-x86_64.AppImage.asc
+        dest: /tmp/electrum.AppImage.asc
+        mode: "0644"
+
+    - name: Verify electrum signature
+      ansible.builtin.command:
+        cmd: gpg --verify /tmp/electrum.AppImage.asc /tmp/electrum.AppImage
+      changed_when: false
+
+    - name: Install electrum
+      become: true
+      ansible.builtin.copy:
+        src: /tmp/electrum.AppImage
+        dest: /usr/local/bin/electrum
+        remote_src: true
+        mode: "0755"
+
+    - name: Clean up electrum files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /tmp/electrum.AppImage
+        - /tmp/electrum.AppImage.asc

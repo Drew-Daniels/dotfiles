@@ -1,0 +1,75 @@
+---
+- name: Install 1Password on macOS
+  when: ansible_facts['os_family'] == 'Darwin'
+  block:
+    - name: Install 1Password Desktop via Homebrew
+      community.general.homebrew_cask:
+        name: 1password@nightly
+        state: present
+
+    - name: Install 1Password CLI via Homebrew
+      community.general.homebrew_cask:
+        name: 1password-cli
+        state: present
+
+- name: Install 1Password on Debian
+  when: ansible_facts['distribution'] == 'Debian'
+  become: true
+  block:
+    - name: Install prerequisites
+      ansible.builtin.apt:
+        name:
+          - curl
+          - gpg
+        state: present
+
+    - name: Add 1Password GPG key
+      ansible.builtin.shell:
+        cmd: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+        creates: /usr/share/keyrings/1password-archive-keyring.gpg
+
+    - name: Add 1Password apt repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=x86_64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/x86_64 stable main"
+        filename: 1password
+        state: present
+
+    - name: Create debsig policy directory
+      ansible.builtin.file:
+        path: /etc/debsig/policies/AC2D62742012EA22
+        state: directory
+        mode: "0755"
+
+    - name: Download debsig policy
+      ansible.builtin.get_url:
+        url: https://downloads.1password.com/linux/debian/debsig/1password.pol
+        dest: /etc/debsig/policies/AC2D62742012EA22/1password.pol
+        mode: "0644"
+
+    - name: Create debsig keyring directory
+      ansible.builtin.file:
+        path: /usr/share/debsig/keyrings/AC2D62742012EA22
+        state: directory
+        mode: "0755"
+
+    - name: Download debsig keyring
+      ansible.builtin.shell:
+        cmd: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+        creates: /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install 1Password Desktop
+      ansible.builtin.apt:
+        name: 1password
+        state: present
+
+    - name: Install 1Password CLI
+      ansible.builtin.apt:
+        name: 1password-cli
+        state: present
+
+# Arch Linux - TODO: implement AUR-based installation
+# NixOS - no-op (managed by NixOS config)

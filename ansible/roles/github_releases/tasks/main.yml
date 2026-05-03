@@ -1,0 +1,8 @@
+---
+- name: Install GitHub release tools on Debian
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_facts['distribution'] == 'Debian'
+
+- name: Install GitHub release tools on Fedora
+  ansible.builtin.include_tasks: fedora.yml
+  when: ansible_facts['distribution'] == 'Fedora'

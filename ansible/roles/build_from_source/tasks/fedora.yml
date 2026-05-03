@@ -1,0 +1,95 @@
+---
+# ---- bat-extras ----
+- name: Check if batgrep is installed
+  ansible.builtin.command:
+    cmd: which batgrep
+  register: batgrep_check
+  changed_when: false
+  failed_when: false
+
+- name: Install bat-extras
+  when: batgrep_check.rc != 0
+  block:
+    - name: Clone bat-extras
+      ansible.builtin.git:
+        repo: https://github.com/eth-p/bat-extras.git
+        dest: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
+        version: HEAD
+
+    - name: Build and install bat-extras
+      ansible.builtin.command:
+        cmd: ./build.sh --install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
+
+# ---- cmus (build from source on Fedora) ----
+- name: Check if cmus is installed
+  ansible.builtin.command:
+    cmd: which cmus
+  register: cmus_check
+  changed_when: false
+  failed_when: false
+
+- name: Build and install cmus
+  when: cmus_check.rc != 0
+  block:
+    - name: Clone cmus
+      ansible.builtin.git:
+        repo: https://github.com/cmus/cmus.git
+        dest: "{{ ansible_facts['env'].HOME }}/projects/cmus"
+        version: HEAD
+
+    - name: Configure cmus
+      ansible.builtin.command:
+        cmd: "./configure prefix={{ ansible_facts['env'].HOME }}/cmus"
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmus"
+
+    - name: Build and install cmus
+      community.general.make:
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmus"
+        target: install
+
+# ---- cmusfm ----
+- name: Check if cmusfm is installed
+  ansible.builtin.command:
+    cmd: which cmusfm
+  register: cmusfm_check
+  changed_when: false
+  failed_when: false
+
+- name: Build and install cmusfm
+  when: cmusfm_check.rc != 0
+  block:
+    - name: Install cmusfm build dependencies
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - libcurl4-openssl-dev
+          - libnotify-dev
+        state: present
+
+    - name: Clone cmusfm
+      ansible.builtin.git:
+        repo: https://github.com/arkq/cmusfm.git
+        dest: "{{ ansible_facts['env'].HOME }}/projects/cmusfm"
+        version: HEAD
+
+    - name: Run autoreconf
+      ansible.builtin.command:
+        cmd: autoreconf --install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmusfm"
+
+    - name: Create build directory
+      ansible.builtin.file:
+        path: "{{ ansible_facts['env'].HOME }}/projects/cmusfm/build"
+        state: directory
+        mode: "0755"
+
+    - name: Configure cmusfm
+      ansible.builtin.command:
+        cmd: ../configure --enable-libnotify
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmusfm/build"
+
+    - name: Build and install cmusfm
+      ansible.builtin.command:
+        cmd: make && make install
+        chdir: "{{ ansible_facts['env'].HOME }}/projects/cmusfm/build"

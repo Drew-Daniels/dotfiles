@@ -1,0 +1,40 @@
+---
+- name: Load Darwin vars
+  ansible.builtin.include_vars:
+    file: darwin.yml
+  when: ansible_facts['os_family'] == 'Darwin'
+  no_log: true
+
+- name: Load Archlinux vars
+  ansible.builtin.include_vars:
+    file: archlinux.yml
+  when: ansible_facts['distribution'] == 'Archlinux'
+  no_log: true
+
+- name: Load Debian vars
+  ansible.builtin.include_vars:
+    file: debian.yml
+  when: ansible_facts['distribution'] == 'Debian'
+  no_log: true
+
+- name: Load Fedora vars
+  ansible.builtin.include_vars:
+    file: fedora.yml
+  when: ansible_facts['distribution'] == 'Fedora'
+  no_log: true
+
+- name: Run Darwin package installation
+  ansible.builtin.include_tasks: darwin.yml
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Run Archlinux package installation
+  ansible.builtin.include_tasks: archlinux.yml
+  when: ansible_facts['distribution'] == 'Archlinux'
+
+- name: Run Debian package installation
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_facts['distribution'] == 'Debian'
+
+- name: Run Fedora package installation
+  ansible.builtin.include_tasks: fedora.yml
+  when: ansible_facts['distribution'] == 'Fedora'

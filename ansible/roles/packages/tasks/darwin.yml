@@ -1,0 +1,107 @@
+---
+- name: Generate Brewfile
+  ansible.builtin.copy:
+    dest: /tmp/Brewfile
+    mode: "0644"
+    content: |
+      {% for tap in homebrew_taps %}
+      tap "{{ tap }}"
+      {% endfor %}
+      {% if home_or_work == "home" %}
+      {% for tap in homebrew_home_taps %}
+      tap "{{ tap }}"
+      {% endfor %}
+      {% endif %}
+      {% if home_or_work == "work" %}
+      {% for tap in homebrew_work_taps %}
+      tap "{{ tap }}"
+      {% endfor %}
+      {% endif %}
+      {% for brew in homebrew_head_brews %}
+      brew "{{ brew }}", args: ["HEAD"]
+      {% endfor %}
+      {% if home_or_work == "home" %}
+      {% for brew in homebrew_home_head_brews %}
+      brew "{{ brew }}", args: ["HEAD"]
+      {% endfor %}
+      {% endif %}
+      {% if home_or_work == "work" %}
+      {% for brew in homebrew_work_head_brews %}
+      brew "{{ brew }}", args: ["HEAD"]
+      {% endfor %}
+      {% endif %}
+      {% for brew in homebrew_brews %}
+      brew "{{ brew }}"
+      {% endfor %}
+      {% if home_or_work == "home" %}
+      {% for brew in homebrew_home_brews %}
+      brew "{{ brew }}"
+      {% endfor %}
+      {% endif %}
+      {% if home_or_work == "work" %}
+      {% for brew in homebrew_work_brews %}
+      brew "{{ brew }}"
+      {% endfor %}
+      {% endif %}
+      {% for cask in homebrew_no_quarantine_casks %}
+      cask "{{ cask }}", args: { no_quarantine: true }
+      {% endfor %}
+      {% if home_or_work == "home" %}
+      {% for cask in homebrew_home_no_quarantine_casks %}
+      cask "{{ cask }}", args: { no_quarantine: true }
+      {% endfor %}
+      {% endif %}
+      {% if home_or_work == "work" %}
+      {% for cask in homebrew_work_no_quarantine_casks %}
+      cask "{{ cask }}", args: { no_quarantine: true }
+      {% endfor %}
+      {% endif %}
+      {% for cask in homebrew_casks %}
+      cask "{{ cask }}"
+      {% endfor %}
+      {% if home_or_work == "home" %}
+      {% for cask in homebrew_home_casks %}
+      cask "{{ cask }}"
+      {% endfor %}
+      {% endif %}
+      {% if home_or_work == "work" %}
+      {% for cask in homebrew_work_casks %}
+      cask "{{ cask }}"
+      {% endfor %}
+      {% endif %}
+      {% for name, id in homebrew_mas_apps.items() %}
+      mas "{{ name }}", id: {{ id }}
+      {% endfor %}
+      {% if home_or_work == "home" %}
+      {% for name, id in homebrew_home_mas_apps.items() %}
+      mas "{{ name }}", id: {{ id }}
+      {% endfor %}
+      {% endif %}
+      {% if home_or_work == "work" %}
+      {% for name, id in homebrew_work_mas_apps.items() %}
+      mas "{{ name }}", id: {{ id }}
+      {% endfor %}
+      {% endif %}
+
+- name: Install packages via brew bundle
+  ansible.builtin.command:
+    cmd: brew bundle --file=/tmp/Brewfile --cleanup --force --zap --verbose
+  environment:
+    HOMEBREW_NO_AUTO_UPDATE: "1"
+  register: brew_bundle_result
+  changed_when: "'Installing' in brew_bundle_result.stdout or 'Upgrading' in brew_bundle_result.stdout or 'Uninstalling' in brew_bundle_result.stdout"
+
+- name: Show brew bundle output
+  ansible.builtin.debug:
+    msg: "{{ brew_bundle_result.stdout_lines }}"
+  when: brew_bundle_result.stdout_lines | length > 0
+
+- name: Clean up Brewfile
+  ansible.builtin.file:
+    path: /tmp/Brewfile
+    state: absent
+
+- name: Remove stale homebrew gitconfig
+  ansible.builtin.file:
+    path: /opt/homebrew/etc/gitconfig
+    state: absent

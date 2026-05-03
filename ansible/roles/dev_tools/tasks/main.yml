@@ -1,0 +1,202 @@
+---
+# ---- rustup ----
+- name: Check if rustup is installed
+  ansible.builtin.command:
+    cmd: which rustup
+  register: rustup_check
+  changed_when: false
+  failed_when: false
+
+- name: Install rustup
+  when: rustup_check.rc != 0
+  ansible.builtin.shell:
+    cmd: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  args:
+    creates: "{{ ansible_facts['env'].HOME }}/.cargo/bin/rustup"
+
+# ---- mise ----
+- name: Check if mise is installed
+  ansible.builtin.command:
+    cmd: which mise
+  register: mise_check
+  changed_when: false
+  failed_when: false
+
+- name: Install mise on macOS
+  community.general.homebrew:
+    name: mise
+    state: present
+  when: mise_check.rc != 0 and ansible_facts['os_family'] == 'Darwin'
+
+- name: Install mise on Debian
+  when: mise_check.rc != 0 and ansible_facts['distribution'] == 'Debian'
+  become: true
+  block:
+    - name: Create apt keyrings directory
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: "0755"
+
+    - name: Add mise GPG key
+      ansible.builtin.shell:
+        cmd: wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | tee /etc/apt/keyrings/mise-archive-keyring.gpg 1>/dev/null
+        creates: /etc/apt/keyrings/mise-archive-keyring.gpg
+
+    - name: Add mise apt repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=x86_64] https://mise.jdx.dev/deb stable main"
+        filename: mise
+        state: present
+
+    - name: Install mise
+      ansible.builtin.apt:
+        name: mise
+        state: present
+        update_cache: true
+
+# mise is installed via COPR on Fedora (handled in packages role)
+# mise is installed via pacman on Arch (handled in packages role)
+
+- name: Run mise install
+  ansible.builtin.command:
+    cmd: mise install
+  environment:
+    PATH: "{{ ansible_facts['env'].HOME }}/.local/bin:{{ ansible_facts['env'].HOME }}/.cargo/bin:/opt/homebrew/bin:{{ ansible_facts['env'].PATH }}"
+  register: mise_install
+  changed_when: "'install' in mise_install.stdout | default('')"
+
+# ---- Lua 5.1 ----
+- name: Check current Lua version
+  ansible.builtin.shell:
+    cmd: lua -v 2>&1 | cut -d ' ' -f2
+  register: lua_version_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Lua 5.1.5 from source
+  when: lua_version_check.stdout != lua_version
+  block:
+    - name: Install Lua build dependencies (Debian)
+      become: true
+      ansible.builtin.apt:
+        name: libreadline-dev
+        state: present
+      when: ansible_facts['distribution'] == 'Debian'
+
+    - name: Download Lua source
+      ansible.builtin.get_url:
+        url: "https://www.lua.org/ftp/lua-{{ lua_version }}.tar.gz"
+        dest: "/tmp/lua-{{ lua_version }}.tar.gz"
+        mode: "0644"
+
+    - name: Extract Lua source
+      ansible.builtin.unarchive:
+        src: "/tmp/lua-{{ lua_version }}.tar.gz"
+        dest: /tmp
+        remote_src: true
+
+    - name: Determine Lua build target
+      ansible.builtin.set_fact:
+        lua_build_target: "{{ 'macosx' if ansible_facts['os_family'] == 'Darwin' else 'linux' }}"
+
+    - name: Build Lua
+      community.general.make:
+        chdir: "/tmp/lua-{{ lua_version }}"
+        target: "{{ lua_build_target }}"
+
+    - name: Install Lua
+      become: true
+      community.general.make:
+        chdir: "/tmp/lua-{{ lua_version }}"
+        target: install
+
+    - name: Clean up Lua build files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - "/tmp/lua-{{ lua_version }}.tar.gz"
+        - "/tmp/lua-{{ lua_version }}"
+
+# ---- Luarocks ----
+- name: Check if luarocks is installed
+  ansible.builtin.command:
+    cmd: which luarocks
+  register: luarocks_check
+  changed_when: false
+  failed_when: false
+
+- name: Install luarocks from source
+  when: luarocks_check.rc != 0 and ansible_facts['distribution'] != 'Archlinux' and ansible_facts['distribution'] != 'Fedora'
+  block:
+    - name: Download luarocks
+      ansible.builtin.get_url:
+        url: "https://luarocks.org/releases/luarocks-{{ luarocks_version }}.tar.gz"
+        dest: "/tmp/luarocks-{{ luarocks_version }}.tar.gz"
+        mode: "0644"
+
+    - name: Extract luarocks
+      ansible.builtin.unarchive:
+        src: "/tmp/luarocks-{{ luarocks_version }}.tar.gz"
+        dest: /tmp
+        remote_src: true
+
+    - name: Configure luarocks
+      ansible.builtin.command:
+        cmd: ./configure
+        chdir: "/tmp/luarocks-{{ luarocks_version }}"
+
+    - name: Build luarocks
+      community.general.make:
+        chdir: "/tmp/luarocks-{{ luarocks_version }}"
+
+    - name: Install luarocks
+      become: true
+      community.general.make:
+        chdir: "/tmp/luarocks-{{ luarocks_version }}"
+        target: install
+
+    - name: Install luasocket
+      become: true
+      ansible.builtin.command:
+        cmd: luarocks install luasocket
+
+    - name: Install magick (for image.nvim)
+      ansible.builtin.command:
+        cmd: luarocks install --local magick
+
+    - name: Clean up luarocks build files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - "/tmp/luarocks-{{ luarocks_version }}.tar.gz"
+        - "/tmp/luarocks-{{ luarocks_version }}"
+
+# luarocks is installed via pacman on Arch and dnf on Fedora (handled in packages role)
+
+# ---- Postgres.app (macOS only) ----
+- name: Install Postgres.app on macOS
+  when: ansible_facts['os_family'] == 'Darwin'
+  block:
+    - name: Check if Postgres is installed
+      ansible.builtin.command:
+        cmd: which postgres
+      register: postgres_check
+      changed_when: false
+      failed_when: false
+
+    - name: Install Postgres.app
+      community.general.homebrew_cask:
+        name: postgres-unofficial
+        state: present
+      when: postgres_check.rc != 0
+
+    - name: Add Postgres.app to PATH
+      become: true
+      ansible.builtin.copy:
+        content: "/Applications/Postgres.app/Contents/Versions/latest/bin"
+        dest: /etc/paths.d/postgresapp
+        mode: "0644"
+      when: postgres_check.rc != 0

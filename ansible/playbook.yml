@@ -1,0 +1,54 @@
+---
+- name: Bootstrap workstation
+  hosts: localhost
+  become: false
+
+  vars:
+    home_or_work: "{{ lookup('env', 'CHEZMOI_HOME_OR_WORK') | default('home') }}"
+    chezmoi_source_dir: "{{ ansible_facts['env'].HOME }}/.local/share/chezmoi"
+
+  pre_tasks:
+    - name: Gather OS facts
+      ansible.builtin.setup:
+        gather_subset:
+          - "!all"
+          - "!min"
+          - os_family
+          - distribution
+          - distribution_release
+          - architecture
+
+    - name: Detect OS ID
+      ansible.builtin.set_fact:
+        osid: >-
+          {%- if ansible_facts['os_family'] == 'Darwin' -%}
+            darwin
+          {%- elif ansible_facts['distribution'] == 'Debian' -%}
+            linux-debian
+          {%- elif ansible_facts['distribution'] == 'Archlinux' -%}
+            linux-arch
+          {%- elif ansible_facts['distribution'] == 'Fedora' -%}
+            linux-fedora
+          {%- elif ansible_facts['distribution'] == 'NixOS' -%}
+            linux-nixos
+          {%- else -%}
+            linux-unknown
+          {%- endif -%}
+
+  roles:
+    - role: packages
+      tags: packages
+    - role: password_manager
+      tags: password_manager
+    - role: dev_tools
+      tags: dev_tools
+    - role: github_releases
+      tags: github_releases
+    - role: desktop_apps
+      tags: desktop_apps
+    - role: build_from_source
+      tags: build_from_source
+    - role: debug_adapters
+      tags: debug_adapters
+    - role: feeds
+      tags: feeds

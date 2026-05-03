@@ -1,0 +1,106 @@
+fedora_dnf_packages:
+  - fuse
+  - fuse-libs
+  - automake
+  - wget
+  - beets
+  - beets-plugins
+  - beets-docs
+  - shfmt
+  - strawberry
+  - rustup
+  - git-credential-oauth
+  - ripgrep
+  - git-delta
+  - fish
+  - fzf
+  - fd-find
+  - bat
+  - ctags
+  - awscli
+  - compat-lua
+  - luarocks
+  - jetbrains-mono-fonts-all
+  - neovim
+  - tmux
+  - alacritty
+  - ImageMagick
+  - zoxide
+  - yq
+  - du-dust
+  - kiwix-desktop
+  - rofi
+  - speedtest-cli
+  - feh
+  - xmlstarlet
+  - nmap
+  - openvpn
+  - wireguard-tools
+  - plocate
+  - foliate
+  - gnome-disk-utility
+  - neomutt
+  - electrum
+  - nvme-cli
+  - obs-studio
+  - bemenu
+  - direnv
+  - gitleaks
+  - weechat
+  - hexyl
+  - qutebrowser
+  - gh
+  - glab
+  - ncmpcpp
+  - libmpd
+  - qt6ct
+  - mpv
+  - usbutils
+  - lsd
+  - pandoc
+  - zathura-pdf-mupdf
+  - mumble
+  - qalculate-qt
+  - isync
+  - urlscan
+  - msmtp
+  - abook
+  - tree-sitter
+  - clang-tools-extra
+  - difftastic
+  - libreoffice
+  - gnome-terminal
+  - dnf-plugins-core
+
+fedora_ruby_build_deps:
+  - autoconf
+  - gcc
+  - rust
+  - patch
+  - make
+  - bzip2
+  - openssl-devel
+  - libyaml-devel
+  - libffi-devel
+  - readline-devel
+  - gdbm-devel
+  - ncurses-devel
+  - perl-FindBin
+  - zlib-ng-compat-devel
+
+fedora_copr_repos:
+  - jdxcode/mise
+  - lihaohong/yazi
+
+fedora_copr_packages:
+  - mise
+  - yazi
+
+fedora_crate_packages:
+  - starship
+  - jless
+  - cargo_update
+  - mergiraf
+
+fedora_npm_packages:
+  - cssmodules-language-server

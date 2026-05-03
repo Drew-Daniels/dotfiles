@@ -1,0 +1,205 @@
+---
+# ---- codelldb ----
+- name: Install codelldb
+  when: ansible_facts['os_family'] == 'Darwin' or ansible_facts['distribution'] == 'Fedora'
+  block:
+    - name: Set codelldb architecture
+      ansible.builtin.set_fact:
+        codelldb_arch: "{{ 'darwin-arm64' if ansible_facts['os_family'] == 'Darwin' else 'linux-x64' }}"
+
+    - name: Check if codelldb is installed
+      ansible.builtin.stat:
+        path: "{{ ansible_facts['env'].HOME }}/.config/codelldb/extension"
+      register: codelldb_dir
+
+    - name: Download and install codelldb
+      when: not codelldb_dir.stat.exists
+      block:
+        - name: Download codelldb vsix
+          ansible.builtin.get_url:
+            url: "https://github.com/vadimcn/codelldb/releases/latest/download/codelldb-{{ codelldb_arch }}.vsix"
+            dest: /tmp/codelldb.vsix
+            mode: "0644"
+
+        - name: Create codelldb extraction directory
+          ansible.builtin.file:
+            path: /tmp/codelldb-extract
+            state: directory
+            mode: "0755"
+
+        - name: Extract codelldb vsix
+          ansible.builtin.unarchive:
+            src: /tmp/codelldb.vsix
+            dest: /tmp/codelldb-extract
+            remote_src: true
+
+        - name: Create codelldb config directory
+          ansible.builtin.file:
+            path: "{{ ansible_facts['env'].HOME }}/.config/codelldb"
+            state: directory
+            mode: "0755"
+
+        - name: Copy codelldb extension
+          ansible.builtin.copy:
+            src: /tmp/codelldb-extract/extension/
+            dest: "{{ ansible_facts['env'].HOME }}/.config/codelldb/extension/"
+            remote_src: true
+            mode: preserve
+
+        - name: Clean up codelldb temp files
+          ansible.builtin.file:
+            path: "{{ item }}"
+            state: absent
+          loop:
+            - /tmp/codelldb.vsix
+            - /tmp/codelldb-extract
+
+# ---- vscode-js-debug (macOS only) ----
+- name: Install vscode-js-debug
+  when: ansible_facts['os_family'] == 'Darwin'
+  block:
+    - name: Check if vscode-js-debug is installed
+      ansible.builtin.stat:
+        path: "{{ ansible_facts['env'].HOME }}/.config/vscode-js-debug/src/dapDebugServer.js"
+      register: js_debug_file
+
+    - name: Download and install vscode-js-debug
+      when: not js_debug_file.stat.exists
+      block:
+        - name: Get latest vscode-js-debug release
+          ansible.builtin.uri:
+            url: https://api.github.com/repos/microsoft/vscode-js-debug/releases/latest
+            return_content: true
+          register: js_debug_release
+
+        - name: Set vscode-js-debug version
+          ansible.builtin.set_fact:
+            js_debug_version: "{{ js_debug_release.json.tag_name | regex_replace('^v', '') }}"
+
+        - name: Download vscode-js-debug
+          ansible.builtin.get_url:
+            url: "https://github.com/microsoft/vscode-js-debug/releases/download/v{{ js_debug_version }}/js-debug-dap-v{{ js_debug_version }}.tar.gz"
+            dest: "/tmp/js-debug-dap.tar.gz"
+            mode: "0644"
+
+        - name: Create extraction directory
+          ansible.builtin.file:
+            path: /tmp/js-debug-extract
+            state: directory
+            mode: "0755"
+
+        - name: Extract vscode-js-debug
+          ansible.builtin.unarchive:
+            src: /tmp/js-debug-dap.tar.gz
+            dest: /tmp/js-debug-extract
+            remote_src: true
+
+        - name: Create vscode-js-debug config directory
+          ansible.builtin.file:
+            path: "{{ ansible_facts['env'].HOME }}/.config/vscode-js-debug"
+            state: directory
+            mode: "0755"
+
+        - name: Copy vscode-js-debug files
+          ansible.builtin.copy:
+            src: /tmp/js-debug-extract/js-debug/
+            dest: "{{ ansible_facts['env'].HOME }}/.config/vscode-js-debug/"
+            remote_src: true
+            mode: preserve
+
+        - name: Clean up vscode-js-debug temp files
+          ansible.builtin.file:
+            path: "{{ item }}"
+            state: absent
+          loop:
+            - /tmp/js-debug-dap.tar.gz
+            - /tmp/js-debug-extract
+
+# ---- vscode-chrome-debug (macOS only) ----
+- name: Install vscode-chrome-debug
+  when: ansible_facts['os_family'] == 'Darwin'
+  block:
+    - name: Check if vscode-chrome-debug is installed
+      ansible.builtin.stat:
+        path: "{{ ansible_facts['env'].HOME }}/projects/vscode-chrome-debug"
+      register: chrome_debug_dir
+
+    - name: Clone and build vscode-chrome-debug
+      when: not chrome_debug_dir.stat.exists
+      block:
+        - name: Clone vscode-chrome-debug
+          ansible.builtin.git:
+            repo: https://github.com/Microsoft/vscode-chrome-debug
+            dest: "{{ ansible_facts['env'].HOME }}/projects/vscode-chrome-debug"
+            version: HEAD
+
+        - name: Install npm dependencies
+          ansible.builtin.command:
+            cmd: npm install
+            chdir: "{{ ansible_facts['env'].HOME }}/projects/vscode-chrome-debug"
+
+        - name: Build vscode-chrome-debug
+          ansible.builtin.command:
+            cmd: npm run build
+            chdir: "{{ ansible_facts['env'].HOME }}/projects/vscode-chrome-debug"
+
+# ---- lemminx / vscode-xml (macOS only) ----
+- name: Install lemminx (vscode-xml LSP)
+  when: ansible_facts['os_family'] == 'Darwin'
+  block:
+    - name: Check if lemminx is installed
+      ansible.builtin.stat:
+        path: "{{ ansible_facts['env'].HOME }}/.config/vscode-xml/lemminx"
+      register: lemminx_file
+
+    - name: Download and install lemminx
+      when: not lemminx_file.stat.exists
+      block:
+        - name: Get latest vscode-xml release
+          ansible.builtin.uri:
+            url: https://api.github.com/repos/redhat-developer/vscode-xml/releases/latest
+            return_content: true
+          register: vscode_xml_release
+
+        - name: Set lemminx version
+          ansible.builtin.set_fact:
+            lemminx_version: "{{ vscode_xml_release.json.tag_name | regex_replace('^v', '') }}"
+
+        - name: Download lemminx
+          ansible.builtin.get_url:
+            url: "https://github.com/redhat-developer/vscode-xml/releases/download/{{ lemminx_version }}/lemminx-osx-x86_64.zip"
+            dest: /tmp/lemminx.zip
+            mode: "0644"
+
+        - name: Create extraction directory
+          ansible.builtin.file:
+            path: /tmp/lemminx-extract
+            state: directory
+            mode: "0755"
+
+        - name: Extract lemminx
+          ansible.builtin.unarchive:
+            src: /tmp/lemminx.zip
+            dest: /tmp/lemminx-extract
+            remote_src: true
+
+        - name: Create vscode-xml config directory
+          ansible.builtin.file:
+            path: "{{ ansible_facts['env'].HOME }}/.config/vscode-xml"
+            state: directory
+            mode: "0755"
+
+        - name: Copy lemminx binary
+          ansible.builtin.copy:
+            src: /tmp/lemminx-extract/lemminx-osx-x86_64
+            dest: "{{ ansible_facts['env'].HOME }}/.config/vscode-xml/lemminx"
+            remote_src: true
+            mode: "0755"
+
+        - name: Clean up lemminx temp files
+          ansible.builtin.file:
+            path: "{{ item }}"
+            state: absent
+          loop:
+            - /tmp/lemminx.zip
+            - /tmp/lemminx-extract

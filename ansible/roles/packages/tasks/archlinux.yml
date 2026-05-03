@@ -1,0 +1,22 @@
+---
+- name: Install official repository packages
+  become: true
+  community.general.pacman:
+    name: "{{ arch_repo_packages }}"
+    state: present
+    extra_args: --needed
+
+# NOTE: AUR packages require an AUR helper (yay) which must be installed first
+- name: Check if yay is installed
+  ansible.builtin.command:
+    cmd: which yay
+  register: yay_check
+  changed_when: false
+  failed_when: false
+
+- name: Install AUR packages via yay
+  ansible.builtin.command:
+    cmd: "yay -S --needed --noconfirm {{ arch_aur_packages | join(' ') }}"
+  register: yay_result
+  changed_when: "'there is nothing to do' not in yay_result.stdout | default('')"
+  when: yay_check.rc == 0

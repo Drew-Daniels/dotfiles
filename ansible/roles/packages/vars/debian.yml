@@ -1,0 +1,52 @@
+# Simple apt packages (command_name matches package_name)
+debian_apt_packages:
+  - wget
+  - curl
+  - gpg
+  - wl-clipboard
+  - sway
+  - swaylock
+  - wofi
+  - speedtest-cli
+  - feh
+  - xmlstarlet
+  - nmap
+  - plocate
+  - foliate
+  - pavucontrol
+  - neomutt
+  - cmus
+  - swayidle
+  - obs-studio
+  - bemenu
+  - direnv
+
+# Apt packages where command name differs from package name
+debian_apt_packages_mapped:
+  - { command: ssh, package: openssh-server }
+  - { command: dust, package: du-dust }
+  - { command: kiwix-desktop, package: kiwix }
+  - { command: uuidgen, package: uuid-runtime }
+  - { command: gnome-disks, package: gnome-disk-utility }
+  - { command: nvme, package: nvme-cli }
+
+# Crate installs
+debian_crate_packages:
+  - starship
+  - resvg
+  - jless
+  - mergiraf
+  - stylua
+  - swayr
+  - swayrbar
+
+# Ruby build deps for mise
+debian_ruby_build_deps:
+  - build-essential
+  - autoconf
+  - libssl-dev
+  - libyaml-dev
+  - zlib1g-dev
+  - libffi-dev
+  - libgmp-dev
+  - rustc

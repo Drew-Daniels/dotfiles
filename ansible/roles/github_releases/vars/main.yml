@@ -1,0 +1,185 @@
+---
+# GitHub release tools for Debian
+# Each entry defines: name, repo (owner/repo), binary detection command,
+# and download/install specifics
+
+github_release_tools_debian:
+  - name: cosign
+    repo: sigstore/cosign
+    check_cmd: cosign
+    asset_pattern: "cosign-linux-x86_64"
+    install_type: binary
+    install_dest: /usr/local/bin/cosign
+
+  - name: jq
+    repo: jqlang/jq
+    check_cmd: jq
+    asset_pattern: "jq-linux-amd64"
+    install_type: binary_with_checksum
+    checksum_file: "sha256sum.txt"
+    install_dest: /usr/local/bin/jq
+
+  - name: git-credential-oauth
+    repo: hickford/git-credential-oauth
+    check_cmd: git-credential-oauth
+    asset_pattern: "git-credential-oauth_{version}_linux_amd64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/git-credential-oauth
+
+  - name: ripgrep
+    repo: BurntSushi/ripgrep
+    check_cmd: rg
+    asset_pattern: "ripgrep_{version}-1_amd64.deb"
+    install_type: deb
+
+  - name: delta
+    repo: dandavison/delta
+    check_cmd: delta
+    asset_pattern: "git-delta_{version}_amd64.deb"
+    install_type: deb
+
+  - name: fzf
+    repo: junegunn/fzf
+    check_cmd: fzf
+    asset_pattern: "fzf-{version}-linux_amd64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/fzf
+
+  - name: fd
+    repo: sharkdp/fd
+    check_cmd: fd
+    asset_pattern: "fd_{version}_amd64.deb"
+    install_type: deb
+
+  - name: bat
+    repo: sharkdp/bat
+    check_cmd: bat
+    asset_pattern: "bat_{version}_amd64.deb"
+    install_type: deb
+
+  - name: neovim
+    repo: neovim/neovim
+    check_cmd: nvim
+    asset_pattern: "nvim-linux-x86_64.tar.gz"
+    install_type: tarball_opt
+    install_dest: /opt
+
+  - name: yq
+    repo: mikefarah/yq
+    check_cmd: yq
+    asset_pattern: "yq_linux_amd64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/yq
+    binary_name: yq_linux_amd64
+
+  - name: restic
+    repo: restic/restic
+    check_cmd: restic
+    asset_pattern: "restic_{version}_linux_amd64.bz2"
+    install_type: bzip2_binary
+    install_dest: /usr/local/bin/restic
+
+  - name: resticprofile
+    repo: creativeprojects/resticprofile
+    check_cmd: resticprofile
+    asset_pattern: "resticprofile_{version}_linux_amd64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/resticprofile
+
+  - name: gitleaks
+    repo: gitleaks/gitleaks
+    check_cmd: gitleaks
+    asset_pattern: "gitleaks_{version}_linux_x64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/gitleaks
+
+  - name: ctags
+    repo: universal-ctags/ctags-nightly-build
+    check_cmd: ctags
+    install_type: deb_nightly
+
+  - name: nerd-fonts
+    repo: ryanoasis/nerd-fonts
+    check_file: "{{ ansible_facts['env'].HOME }}/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf"
+    asset_pattern: "JetBrainsMono.zip"
+    install_type: font_zip
+
+  - name: imagemagick
+    repo: ImageMagick/ImageMagick
+    check_cmd: magick
+    install_type: appimage
+    asset_jq_filter: ".assets[] | select(.name | contains(\"clang-x86_64.AppImage\")) | .browser_download_url"
+    install_dest: /usr/local/bin/magick
+
+  - name: typos-lsp
+    repo: tekumara/typos-lsp
+    check_cmd: typos-lsp
+    asset_pattern: "typos-lsp-{version}-x86_64-unknown-linux-gnu.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/typos-lsp
+
+  - name: lua-language-server
+    repo: LuaLS/lua-language-server
+    check_cmd: lua-language-server
+    asset_pattern: "lua-language-server-{version}-linux-x64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/lua-language-server
+    binary_path: bin/lua-language-server
+
+  - name: marksman
+    repo: artempyanykh/marksman
+    check_cmd: marksman
+    asset_pattern: "marksman-linux-x64"
+    install_type: binary
+    install_dest: /usr/local/bin/marksman
+
+  - name: clangd
+    repo: clangd/clangd
+    check_cmd: clangd
+    asset_pattern: "clangd-linux-{version}.zip"
+    install_type: zip_binary
+    binary_path: "clangd_{version}/bin/clangd"
+    install_dest: /usr/local/bin/clangd
+
+# GitHub release tools for Fedora/QubesOS
+github_release_tools_fedora:
+  - name: cosign
+    repo: sigstore/cosign
+    check_cmd: cosign
+    asset_pattern: "cosign-{version}-1.x86_64.rpm"
+    install_type: rpm
+
+  - name: terraform-ls
+    repo: hashicorp/terraform-ls
+    check_cmd: terraform-ls
+    asset_pattern: "terraform-ls_{version}_linux_amd64.zip"
+    install_type: zip_binary
+    install_dest: /usr/local/bin/terraform-ls
+
+  - name: marksman
+    repo: artempyanykh/marksman
+    check_cmd: marksman
+    asset_pattern: "marksman-linux-x64"
+    install_type: binary
+    install_dest: /usr/local/bin/marksman
+
+  - name: lua-language-server
+    repo: LuaLS/lua-language-server
+    check_cmd: lua-language-server
+    asset_pattern: "lua-language-server-{version}-linux-x64.tar.gz"
+    install_type: tarball_binary
+    install_dest: /usr/local/bin/lua-language-server
+    binary_path: bin/lua-language-server
+
+  - name: stylua
+    repo: JohnnyMorganz/StyLua
+    check_cmd: stylua
+    asset_pattern: "stylua-linux-x86_64.zip"
+    install_type: zip_binary
+    install_dest: /usr/local/bin/stylua
+
+  - name: obsidian
+    repo: obsidianmd/obsidian-releases
+    check_cmd: obsidian
+    install_type: appimage
+    install_dest: /usr/local/bin/obsidian

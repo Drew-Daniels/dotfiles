@@ -1,0 +1,132 @@
+---
+# ---- Docker ----
+- name: Check if docker is installed
+  ansible.builtin.command:
+    cmd: which docker
+  register: docker_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Docker
+  when: docker_check.rc != 0
+  become: true
+  block:
+    - name: Add Docker repository
+      ansible.builtin.command:
+        cmd: dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+    - name: Install Docker packages
+      ansible.builtin.dnf:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+
+    - name: Enable and start Docker
+      ansible.builtin.systemd:
+        name: docker
+        enabled: true
+        state: started
+
+# ---- Mullvad ----
+- name: Check if mullvad is installed
+  ansible.builtin.command:
+    cmd: which mullvad
+  register: mullvad_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Mullvad VPN
+  when: mullvad_check.rc != 0
+  become: true
+  block:
+    - name: Add Mullvad repository
+      ansible.builtin.command:
+        cmd: dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
+
+    - name: Install Mullvad
+      ansible.builtin.dnf:
+        name: mullvad-vpn
+        state: present
+
+# ---- Signal ----
+- name: Check if signal is installed
+  ansible.builtin.command:
+    cmd: which signal-desktop
+  register: signal_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Signal Desktop
+  when: signal_check.rc != 0
+  become: true
+  block:
+    - name: Add Signal repository
+      ansible.builtin.command:
+        cmd: dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/network:im:signal/Fedora_42/network:im:signal.repo
+
+    - name: Install Signal Desktop
+      ansible.builtin.dnf:
+        name: signal-desktop
+        state: present
+
+# ---- Proton Mail ----
+- name: Check if protonmail is installed
+  ansible.builtin.command:
+    cmd: which protonmail
+  register: protonmail_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Proton Mail Desktop
+  when: protonmail_check.rc != 0
+  block:
+    - name: Download Proton Mail RPM
+      ansible.builtin.get_url:
+        url: https://proton.me/download/mail/linux/1.9.0/protonmail-desktop-beta.rpm
+        dest: /tmp/protonmail.rpm
+        mode: "0644"
+
+    - name: Install Proton Mail
+      become: true
+      ansible.builtin.dnf:
+        name: /tmp/protonmail.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: Clean up Proton Mail RPM
+      ansible.builtin.file:
+        path: /tmp/protonmail.rpm
+        state: absent
+
+# ---- Proton Mail Bridge ----
+- name: Check if protonmail-bridge is installed
+  ansible.builtin.command:
+    cmd: which protonmail-bridge
+  register: bridge_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Proton Mail Bridge
+  when: bridge_check.rc != 0
+  block:
+    - name: Download Proton Mail Bridge RPM
+      ansible.builtin.get_url:
+        url: https://proton.me/download/bridge/protonmail-bridge-3.21.2-1.x86_64.rpm
+        dest: /tmp/protonmail-bridge.rpm
+        mode: "0644"
+
+    - name: Install Proton Mail Bridge
+      become: true
+      ansible.builtin.dnf:
+        name: /tmp/protonmail-bridge.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: Clean up Proton Mail Bridge RPM
+      ansible.builtin.file:
+        path: /tmp/protonmail-bridge.rpm
+        state: absent

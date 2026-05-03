@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Ensure mise shims are on PATH for ansible to find tools
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate bash --shims)"
+fi
+
+# Also ensure cargo/rust tools are on PATH
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
+export CHEZMOI_HOME_OR_WORK="{{ .homeOrWork }}"
+
+echo "Running Ansible playbook..."
+ansible-playbook \
+  --inventory "$HOME/.local/share/chezmoi/ansible/inventory/localhost.yml" \
+  "$HOME/.local/share/chezmoi/ansible/playbook.yml" \
+  -v
