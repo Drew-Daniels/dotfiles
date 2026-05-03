@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.72.1",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultModel": "claude-sonnet-4-6",
   "defaultThinkingLevel": "medium",
   "enableInstallTelemetry": "false",
   "theme": "gruvbox-material",
