@@ -275,6 +275,7 @@ packages:
         # taglib is required for navidrome development
         - 'taglib'
       brews:
+        - 'atuin'
         - 'caddy'
         - 'hcloud'
         - 'iamb'

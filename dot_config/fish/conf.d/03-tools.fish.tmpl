@@ -42,4 +42,7 @@ if status is-interactive
         string split \  -- (eval $COMP_WORDS[1])
     end
     complete -fa "(__fish_complete_pip)" -c pip
+
+    # atuin
+    atuin init fish | source
 end
