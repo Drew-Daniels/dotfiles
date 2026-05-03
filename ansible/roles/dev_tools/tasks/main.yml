@@ -177,26 +177,17 @@
 # luarocks is installed via pacman on Arch and dnf on Fedora (handled in packages role)
 
 # ---- Postgres.app (macOS only) ----
-- name: Install Postgres.app on macOS
+# postgres-app cask is managed via the packages role (Brewfile)
+- name: Check if Postgres.app PATH is configured
   when: ansible_facts['os_family'] == 'Darwin'
-  block:
-    - name: Check if Postgres is installed
-      ansible.builtin.command:
-        cmd: which postgres
-      register: postgres_check
-      changed_when: false
-      failed_when: false
+  ansible.builtin.stat:
+    path: /etc/paths.d/postgresapp
+  register: postgresapp_path
 
-    - name: Install Postgres.app
-      community.general.homebrew_cask:
-        name: postgres-unofficial
-        state: present
-      when: postgres_check.rc != 0
-
-    - name: Add Postgres.app to PATH
-      become: true
-      ansible.builtin.copy:
-        content: "/Applications/Postgres.app/Contents/Versions/latest/bin"
-        dest: /etc/paths.d/postgresapp
-        mode: "0644"
-      when: postgres_check.rc != 0
+- name: Add Postgres.app to PATH
+  when: ansible_facts['os_family'] == 'Darwin' and not postgresapp_path.stat.exists
+  become: true
+  ansible.builtin.copy:
+    content: "/Applications/Postgres.app/Contents/Versions/latest/bin"
+    dest: /etc/paths.d/postgresapp
+    mode: "0644"

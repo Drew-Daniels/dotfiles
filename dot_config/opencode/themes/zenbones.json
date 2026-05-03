@@ -1,0 +1,251 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "zb_bg0_light": "#F0EDEC",
+    "zb_bg1_light": "#E9E4E2",
+    "zb_bg2_light": "#E3DDDB",
+    "zb_bg3_light": "#DCD6D4",
+    "zb_bg4_light": "#D0C9C6",
+    "zb_bg5_light": "#C4BCB9",
+    "zb_fg0_light": "#2C363C",
+    "zb_fg1_light": "#19262D",
+    "zb_red_light": "#A8334C",
+    "zb_orange_light": "#9B6B47",
+    "zb_yellow_light": "#B08A40",
+    "zb_green_light": "#4F6C31",
+    "zb_aqua_light": "#5A8A7C",
+    "zb_blue_light": "#286486",
+    "zb_purple_light": "#8B6D7E",
+    "zb_grey0_light": "#948985",
+    "zb_grey1_light": "#BBABA3",
+    "zb_grey2_light": "#D9CFCB",
+    "zb_brown_light": "#6A5549",
+    "zb_bg_diff_green_light": "#E9F0E3",
+    "zb_bg_diff_red_light": "#F6E4E7",
+    "zb_bg_diff_blue_light": "#E7EFF4",
+    "zb_bg0_dark": "#2C363C",
+    "zb_bg1_dark": "#36424B",
+    "zb_bg2_dark": "#404E5A",
+    "zb_bg3_dark": "#4B5A69",
+    "zb_bg4_dark": "#566778",
+    "zb_bg5_dark": "#627487",
+    "zb_fg0_dark": "#E8E4E2",
+    "zb_fg1_dark": "#F5F2F0",
+    "zb_red_dark": "#C96B78",
+    "zb_orange_dark": "#B88A67",
+    "zb_yellow_dark": "#CDAD66",
+    "zb_green_dark": "#799A44",
+    "zb_aqua_dark": "#75A89A",
+    "zb_blue_dark": "#5D94B0",
+    "zb_purple_dark": "#A98A9B",
+    "zb_grey0_dark": "#A09E9B",
+    "zb_grey1_dark": "#8A929C",
+    "zb_grey2_dark": "#747F8B",
+    "zb_brown_dark": "#9B8474",
+    "zb_bg_diff_green_dark": "#3D5040",
+    "zb_bg_diff_red_dark": "#4E3940",
+    "zb_bg_diff_blue_dark": "#36424B"
+  },
+  "theme": {
+    "primary": {
+      "dark": "zb_blue_dark",
+      "light": "zb_blue_light"
+    },
+    "secondary": {
+      "dark": "zb_grey1_dark",
+      "light": "zb_grey0_light"
+    },
+    "accent": {
+      "dark": "zb_brown_dark",
+      "light": "zb_brown_light"
+    },
+    "error": {
+      "dark": "zb_red_dark",
+      "light": "zb_red_light"
+    },
+    "warning": {
+      "dark": "zb_orange_dark",
+      "light": "zb_orange_light"
+    },
+    "success": {
+      "dark": "zb_green_dark",
+      "light": "zb_green_light"
+    },
+    "info": {
+      "dark": "zb_blue_dark",
+      "light": "zb_blue_light"
+    },
+    "text": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    },
+    "textMuted": {
+      "dark": "zb_grey0_dark",
+      "light": "zb_grey0_light"
+    },
+    "background": {
+      "dark": "zb_bg0_dark",
+      "light": "zb_bg0_light"
+    },
+    "backgroundPanel": {
+      "dark": "zb_bg2_dark",
+      "light": "zb_bg1_light"
+    },
+    "backgroundElement": {
+      "dark": "zb_bg1_dark",
+      "light": "zb_bg2_light"
+    },
+    "border": {
+      "dark": "zb_bg4_dark",
+      "light": "zb_grey1_light"
+    },
+    "borderActive": {
+      "dark": "zb_grey0_dark",
+      "light": "zb_grey0_light"
+    },
+    "borderSubtle": {
+      "dark": "zb_bg3_dark",
+      "light": "zb_grey2_light"
+    },
+    "diffAdded": {
+      "dark": "zb_green_dark",
+      "light": "zb_green_light"
+    },
+    "diffRemoved": {
+      "dark": "zb_red_dark",
+      "light": "zb_red_light"
+    },
+    "diffContext": {
+      "dark": "zb_grey0_dark",
+      "light": "zb_grey0_light"
+    },
+    "diffHunkHeader": {
+      "dark": "zb_blue_dark",
+      "light": "zb_blue_light"
+    },
+    "diffHighlightAdded": {
+      "dark": "zb_green_dark",
+      "light": "zb_green_light"
+    },
+    "diffHighlightRemoved": {
+      "dark": "zb_red_dark",
+      "light": "zb_red_light"
+    },
+    "diffAddedBg": {
+      "dark": "zb_bg_diff_green_dark",
+      "light": "zb_bg_diff_green_light"
+    },
+    "diffRemovedBg": {
+      "dark": "zb_bg_diff_red_dark",
+      "light": "zb_bg_diff_red_light"
+    },
+    "diffContextBg": {
+      "dark": "zb_bg1_dark",
+      "light": "zb_bg1_light"
+    },
+    "diffLineNumber": {
+      "dark": "zb_grey0_dark",
+      "light": "zb_grey0_light"
+    },
+    "diffAddedLineNumberBg": {
+      "dark": "zb_bg_diff_green_dark",
+      "light": "zb_bg_diff_green_light"
+    },
+    "diffRemovedLineNumberBg": {
+      "dark": "zb_bg_diff_red_dark",
+      "light": "zb_bg_diff_red_light"
+    },
+    "markdownText": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    },
+    "markdownHeading": {
+      "dark": "zb_brown_dark",
+      "light": "zb_brown_light"
+    },
+    "markdownLink": {
+      "dark": "zb_blue_dark",
+      "light": "zb_blue_light"
+    },
+    "markdownLinkText": {
+      "dark": "zb_aqua_dark",
+      "light": "zb_aqua_light"
+    },
+    "markdownCode": {
+      "dark": "zb_green_dark",
+      "light": "zb_green_light"
+    },
+    "markdownBlockQuote": {
+      "dark": "zb_grey0_dark",
+      "light": "zb_grey0_light"
+    },
+    "markdownEmph": {
+      "dark": "zb_yellow_dark",
+      "light": "zb_yellow_light"
+    },
+    "markdownStrong": {
+      "dark": "zb_orange_dark",
+      "light": "zb_orange_light"
+    },
+    "markdownHorizontalRule": {
+      "dark": "zb_bg4_dark",
+      "light": "zb_grey1_light"
+    },
+    "markdownListItem": {
+      "dark": "zb_aqua_dark",
+      "light": "zb_aqua_light"
+    },
+    "markdownListEnumeration": {
+      "dark": "zb_blue_dark",
+      "light": "zb_blue_light"
+    },
+    "markdownImage": {
+      "dark": "zb_purple_dark",
+      "light": "zb_purple_light"
+    },
+    "markdownImageText": {
+      "dark": "zb_aqua_dark",
+      "light": "zb_aqua_light"
+    },
+    "markdownCodeBlock": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    },
+    "syntaxComment": {
+      "dark": "zb_grey0_dark",
+      "light": "zb_grey0_light"
+    },
+    "syntaxKeyword": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    },
+    "syntaxFunction": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    },
+    "syntaxVariable": {
+      "dark": "zb_grey1_dark",
+      "light": "#44525B"
+    },
+    "syntaxString": {
+      "dark": "#A8B8C4",
+      "light": "#556570"
+    },
+    "syntaxNumber": {
+      "dark": "#A8B8C4",
+      "light": "#556570"
+    },
+    "syntaxType": {
+      "dark": "zb_brown_dark",
+      "light": "zb_brown_light"
+    },
+    "syntaxOperator": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    },
+    "syntaxPunctuation": {
+      "dark": "zb_fg0_dark",
+      "light": "zb_fg0_light"
+    }
+  }
+}

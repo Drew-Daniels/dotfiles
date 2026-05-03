@@ -1,16 +1,5 @@
 ---
-- name: Install 1Password on macOS
-  when: ansible_facts['os_family'] == 'Darwin'
-  block:
-    - name: Install 1Password Desktop via Homebrew
-      community.general.homebrew_cask:
-        name: 1password@nightly
-        state: present
-
-    - name: Install 1Password CLI via Homebrew
-      community.general.homebrew_cask:
-        name: 1password-cli
-        state: present
+# macOS: 1password and 1password-cli are managed via the packages role (Brewfile)
 
 - name: Install 1Password on Debian
   when: ansible_facts['distribution'] == 'Debian'
