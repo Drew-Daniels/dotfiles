@@ -12,7 +12,6 @@ homebrew_head_brews:
   - utf8proc
 
 homebrew_brews:
-  - gemini-cli
   - lcov
   - glow
   - git-cliff
@@ -187,6 +186,7 @@ homebrew_home_head_brews:
   - taglib
 
 homebrew_home_brews:
+  - gemini-cli
   - atuin
   - hcloud
   - ansible
