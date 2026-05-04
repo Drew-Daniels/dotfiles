@@ -1,0 +1,8 @@
+function start-wg --description "Starts Wireguard Service"
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl start wg-quick-wg0.service
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl start wg-quick@wg0.service
+    {{ end }}
+end

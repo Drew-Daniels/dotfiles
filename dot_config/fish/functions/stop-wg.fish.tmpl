@@ -1,0 +1,8 @@
+function stop-wg --description "Stops Wireguard Service"
+    {{ if eq .osid "linux-nixos" }}
+    command sudo systemctl stop wg-quick-wg0
+    {{ end }}
+    {{ if eq .osid "linux-arch" }}
+    command sudo systemctl stop wg-quick@wg0
+    {{ end }}
+end
