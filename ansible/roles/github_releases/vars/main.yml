@@ -1,12 +1,19 @@
 ---
 # GitHub release tools for Debian
 # Each entry defines: name, repo (owner/repo), binary detection command,
-# and download/install specifics
+# version_cmd for upgrade detection, and download/install specifics.
+#
+# version_cmd: shell command that outputs the currently installed version.
+#   The output is compared against the GitHub release tag (with optional v-prefix stripping)
+#   to determine whether an install/upgrade is needed.
+# tag_is_version: when true, the tag_name is used as-is for comparison (no v-prefix stripping).
+#   Default behavior strips a leading 'v' from the tag.
 
 github_release_tools_debian:
   - name: cosign
     repo: sigstore/cosign
     check_cmd: cosign
+    version_cmd: "cosign version 2>/dev/null | grep GitVersion | awk '{print $2}'"
     asset_pattern: "cosign-linux-x86_64"
     install_type: binary
     install_dest: /usr/local/bin/cosign
@@ -14,6 +21,8 @@ github_release_tools_debian:
   - name: jq
     repo: jqlang/jq
     check_cmd: jq
+    version_cmd: "jq --version"
+    tag_is_version: true
     asset_pattern: "jq-linux-amd64"
     install_type: binary_with_checksum
     checksum_file: "sha256sum.txt"
@@ -22,6 +31,7 @@ github_release_tools_debian:
   - name: git-credential-oauth
     repo: hickford/git-credential-oauth
     check_cmd: git-credential-oauth
+    version_cmd: "git-credential-oauth version | cut -d ' ' -f2"
     asset_pattern: "git-credential-oauth_{version}_linux_amd64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/git-credential-oauth
@@ -29,18 +39,21 @@ github_release_tools_debian:
   - name: ripgrep
     repo: BurntSushi/ripgrep
     check_cmd: rg
+    version_cmd: "rg --version | head -n1 | cut -d ' ' -f2"
     asset_pattern: "ripgrep_{version}-1_amd64.deb"
     install_type: deb
 
   - name: delta
     repo: dandavison/delta
     check_cmd: delta
+    version_cmd: "delta --version | cut -d ' ' -f2"
     asset_pattern: "git-delta_{version}_amd64.deb"
     install_type: deb
 
   - name: fzf
     repo: junegunn/fzf
     check_cmd: fzf
+    version_cmd: "fzf --version | cut -d ' ' -f1"
     asset_pattern: "fzf-{version}-linux_amd64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/fzf
@@ -48,18 +61,22 @@ github_release_tools_debian:
   - name: fd
     repo: sharkdp/fd
     check_cmd: fd
+    version_cmd: "fd --version | cut -d ' ' -f2"
     asset_pattern: "fd_{version}_amd64.deb"
     install_type: deb
 
   - name: bat
     repo: sharkdp/bat
     check_cmd: bat
+    version_cmd: "bat --version | cut -d ' ' -f2"
     asset_pattern: "bat_{version}_amd64.deb"
     install_type: deb
 
   - name: neovim
     repo: neovim/neovim
     check_cmd: nvim
+    version_cmd: "nvim --version | head -n1 | cut -d ' ' -f2"
+    tag_is_version: true
     asset_pattern: "nvim-linux-x86_64.tar.gz"
     install_type: tarball_opt
     install_dest: /opt
@@ -67,6 +84,8 @@ github_release_tools_debian:
   - name: yq
     repo: mikefarah/yq
     check_cmd: yq
+    version_cmd: "yq --version | cut -d ' ' -f4"
+    tag_is_version: true
     asset_pattern: "yq_linux_amd64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/yq
@@ -75,6 +94,7 @@ github_release_tools_debian:
   - name: restic
     repo: restic/restic
     check_cmd: restic
+    version_cmd: "restic version | cut -d ' ' -f2"
     asset_pattern: "restic_{version}_linux_amd64.bz2"
     install_type: bzip2_binary
     install_dest: /usr/local/bin/restic
@@ -82,6 +102,7 @@ github_release_tools_debian:
   - name: resticprofile
     repo: creativeprojects/resticprofile
     check_cmd: resticprofile
+    version_cmd: "resticprofile version | cut -d ' ' -f3"
     asset_pattern: "resticprofile_{version}_linux_amd64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/resticprofile
@@ -89,6 +110,7 @@ github_release_tools_debian:
   - name: gitleaks
     repo: gitleaks/gitleaks
     check_cmd: gitleaks
+    version_cmd: "gitleaks version"
     asset_pattern: "gitleaks_{version}_linux_x64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/gitleaks
@@ -96,6 +118,7 @@ github_release_tools_debian:
   - name: ctags
     repo: universal-ctags/ctags-nightly-build
     check_cmd: ctags
+    version_cmd: "ctags --version | head -n1 | sed 's/.*(\\.*//' | sed 's/).*//' | head -c7"
     install_type: deb_nightly
 
   - name: nerd-fonts
@@ -107,6 +130,8 @@ github_release_tools_debian:
   - name: imagemagick
     repo: ImageMagick/ImageMagick
     check_cmd: magick
+    version_cmd: "magick -version | head -n1 | cut -d ' ' -f3"
+    tag_is_version: true
     install_type: appimage
     asset_jq_filter: ".assets[] | select(.name | contains(\"clang-x86_64.AppImage\")) | .browser_download_url"
     install_dest: /usr/local/bin/magick
@@ -114,6 +139,8 @@ github_release_tools_debian:
   - name: typos-lsp
     repo: tekumara/typos-lsp
     check_cmd: typos-lsp
+    version_cmd: "typos-lsp --version 2>/dev/null | cut -d ' ' -f2"
+    tag_is_version: true
     asset_pattern: "typos-lsp-{version}-x86_64-unknown-linux-gnu.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/typos-lsp
@@ -121,6 +148,8 @@ github_release_tools_debian:
   - name: lua-language-server
     repo: LuaLS/lua-language-server
     check_cmd: lua-language-server
+    version_cmd: "lua-language-server --version 2>/dev/null"
+    tag_is_version: true
     asset_pattern: "lua-language-server-{version}-linux-x64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/lua-language-server
@@ -129,6 +158,8 @@ github_release_tools_debian:
   - name: marksman
     repo: artempyanykh/marksman
     check_cmd: marksman
+    version_cmd: "marksman --version 2>/dev/null"
+    tag_is_version: true
     asset_pattern: "marksman-linux-x64"
     install_type: binary
     install_dest: /usr/local/bin/marksman
@@ -136,6 +167,7 @@ github_release_tools_debian:
   - name: clangd
     repo: clangd/clangd
     check_cmd: clangd
+    version_cmd: "clangd --version 2>/dev/null | head -n1 | cut -d ' ' -f3"
     asset_pattern: "clangd-linux-{version}.zip"
     install_type: zip_binary
     binary_path: "clangd_{version}/bin/clangd"
@@ -146,12 +178,14 @@ github_release_tools_fedora:
   - name: cosign
     repo: sigstore/cosign
     check_cmd: cosign
+    version_cmd: "cosign version 2>/dev/null | grep GitVersion | awk '{print $2}'"
     asset_pattern: "cosign-{version}-1.x86_64.rpm"
     install_type: rpm
 
   - name: terraform-ls
     repo: hashicorp/terraform-ls
     check_cmd: terraform-ls
+    version_cmd: "terraform-ls version | head -n1 | cut -d ' ' -f2"
     asset_pattern: "terraform-ls_{version}_linux_amd64.zip"
     install_type: zip_binary
     install_dest: /usr/local/bin/terraform-ls
@@ -159,6 +193,8 @@ github_release_tools_fedora:
   - name: marksman
     repo: artempyanykh/marksman
     check_cmd: marksman
+    version_cmd: "marksman --version 2>/dev/null"
+    tag_is_version: true
     asset_pattern: "marksman-linux-x64"
     install_type: binary
     install_dest: /usr/local/bin/marksman
@@ -166,6 +202,8 @@ github_release_tools_fedora:
   - name: lua-language-server
     repo: LuaLS/lua-language-server
     check_cmd: lua-language-server
+    version_cmd: "lua-language-server --version 2>/dev/null"
+    tag_is_version: true
     asset_pattern: "lua-language-server-{version}-linux-x64.tar.gz"
     install_type: tarball_binary
     install_dest: /usr/local/bin/lua-language-server
@@ -174,6 +212,7 @@ github_release_tools_fedora:
   - name: stylua
     repo: JohnnyMorganz/StyLua
     check_cmd: stylua
+    version_cmd: "stylua --version | cut -d ' ' -f2"
     asset_pattern: "stylua-linux-x86_64.zip"
     install_type: zip_binary
     install_dest: /usr/local/bin/stylua
@@ -181,5 +220,6 @@ github_release_tools_fedora:
   - name: obsidian
     repo: obsidianmd/obsidian-releases
     check_cmd: obsidian
+    version_cmd: "obsidian --version 2>/dev/null"
     install_type: appimage
     install_dest: /usr/local/bin/obsidian

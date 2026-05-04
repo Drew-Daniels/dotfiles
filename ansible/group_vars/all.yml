@@ -1,3 +1,7 @@
 # Shared variables across all platforms
 lua_version: "5.1.5"
 luarocks_version: "3.11.1"
+
+# GitHub API auth header - uses GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN if set, empty dict otherwise.
+# Avoids GitHub API rate limits (60 req/hr unauthenticated vs 5000 authenticated).
+github_api_headers: "{{ {'Authorization': 'Bearer ' + lookup('env', 'GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN')} if lookup('env', 'GITHUB_DOTFILES_INSTALL_UPDATE_TOKEN') else {} }}"

@@ -1,58 +1,46 @@
 ---
 # ---- bat-extras ----
-- name: Check if batgrep is installed
+- name: Clone/update bat-extras
+  ansible.builtin.git:
+    repo: https://github.com/eth-p/bat-extras.git
+    dest: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
+    version: HEAD
+    update: true
+  register: bat_extras_git
+
+- name: Build and install bat-extras
+  when: bat_extras_git.changed
   ansible.builtin.command:
-    cmd: which batgrep
-  register: batgrep_check
-  changed_when: false
-  failed_when: false
-
-- name: Install bat-extras
-  when: batgrep_check.rc != 0
-  block:
-    - name: Clone bat-extras
-      ansible.builtin.git:
-        repo: https://github.com/eth-p/bat-extras.git
-        dest: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
-        version: HEAD
-
-    - name: Build and install bat-extras
-      ansible.builtin.command:
-        cmd: ./build.sh --install
-        chdir: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
+    cmd: ./build.sh --install
+    chdir: "{{ ansible_facts['env'].HOME }}/projects/bat-extras"
 
 # ---- alacritty (no precompiled binaries for Linux) ----
-- name: Check if alacritty is installed
-  ansible.builtin.command:
-    cmd: which alacritty
-  register: alacritty_check
-  changed_when: false
-  failed_when: false
+- name: Install alacritty build dependencies
+  become: true
+  ansible.builtin.apt:
+    name:
+      - cmake
+      - g++
+      - pkg-config
+      - libfreetype6-dev
+      - libfontconfig1-dev
+      - libxcb-xfixes0-dev
+      - libxkbcommon-dev
+      - scdoc
+      - desktop-file-utils
+    state: present
 
-- name: Build and install alacritty from source
-  when: alacritty_check.rc != 0
+- name: Clone/update alacritty
+  ansible.builtin.git:
+    repo: https://github.com/alacritty/alacritty.git
+    dest: "{{ ansible_facts['env'].HOME }}/projects/alacritty"
+    version: HEAD
+    update: true
+  register: alacritty_git
+
+- name: Build and install alacritty
+  when: alacritty_git.changed and (ansible_facts['env'].TERM | default('') != 'alacritty')
   block:
-    - name: Install alacritty build dependencies
-      become: true
-      ansible.builtin.apt:
-        name:
-          - cmake
-          - g++
-          - pkg-config
-          - libfreetype6-dev
-          - libfontconfig1-dev
-          - libxcb-xfixes0-dev
-          - libxkbcommon-dev
-          - scdoc
-          - desktop-file-utils
-        state: present
-
-    - name: Clone alacritty
-      ansible.builtin.git:
-        repo: https://github.com/alacritty/alacritty.git
-        dest: "{{ ansible_facts['env'].HOME }}/projects/alacritty"
-        version: HEAD
-
     - name: Set rustup to stable
       ansible.builtin.command:
         cmd: rustup override set stable

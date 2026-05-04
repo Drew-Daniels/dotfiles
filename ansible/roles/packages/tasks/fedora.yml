@@ -36,3 +36,8 @@
     cmd: "npm i -g {{ fedora_npm_packages | join(' ') }}"
   register: npm_result
   changed_when: "'added' in npm_result.stdout | default('')"
+
+- name: Clean up dnf
+  become: true
+  ansible.builtin.dnf:
+    autoremove: true

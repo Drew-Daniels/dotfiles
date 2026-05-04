@@ -1,64 +1,181 @@
 ---
 # ---- cosign ----
-- name: Check if cosign is installed
-  ansible.builtin.command:
-    cmd: which cosign
-  register: cosign_check
+- name: Get latest cosign release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/sigstore/cosign/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: cosign_release
+
+- name: Get current cosign version
+  ansible.builtin.shell:
+    cmd: "cosign version 2>/dev/null | grep GitVersion | awk '{print $2}'"
+  register: cosign_current
   changed_when: false
   failed_when: false
 
-- name: Install cosign
-  when: cosign_check.rc != 0
+- name: Set cosign version facts
+  ansible.builtin.set_fact:
+    cosign_latest: "{{ cosign_release.json.tag_name | regex_replace('^v', '') }}"
+    cosign_installed: "{{ cosign_current.stdout | default('') }}"
+
+- name: Install/upgrade cosign
+  when: cosign_installed != cosign_latest
   become: true
   block:
     - name: Download cosign binary
       ansible.builtin.get_url:
-        url: https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-x86_64
+        url: "https://github.com/sigstore/cosign/releases/download/v{{ cosign_latest }}/cosign-linux-x86_64"
         dest: /usr/local/bin/cosign
         mode: "0755"
+        force: true
 
-# ---- jq ----
-- name: Check if jq is installed
-  ansible.builtin.command:
-    cmd: which jq
-  register: jq_check
+# ---- chezmoi (requires cosign for signature verification) ----
+- name: Get latest chezmoi release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/twpayne/chezmoi/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: chezmoi_release
+
+- name: Get current chezmoi version
+  ansible.builtin.shell:
+    cmd: "chezmoi --version | cut -d ' ' -f3 | cut -d 'v' -f2 | cut -d ',' -f1"
+  register: chezmoi_current
   changed_when: false
   failed_when: false
 
-- name: Install jq
-  when: jq_check.rc != 0
+- name: Set chezmoi version facts
+  ansible.builtin.set_fact:
+    chezmoi_latest: "{{ chezmoi_release.json.tag_name | regex_replace('^v', '') }}"
+    chezmoi_installed: "{{ chezmoi_current.stdout | default('') }}"
+
+- name: Install/upgrade chezmoi
+  when: chezmoi_installed != chezmoi_latest
+  block:
+    - name: Download chezmoi deb and verification files
+      ansible.builtin.get_url:
+        url: "https://github.com/twpayne/chezmoi/releases/download/v{{ chezmoi_latest }}/{{ item }}"
+        dest: "/tmp/{{ item }}"
+        mode: "0644"
+      loop:
+        - "chezmoi_{{ chezmoi_latest }}_linux_amd64.deb"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt.sig"
+        - "chezmoi_cosign.pub"
+
+    - name: Verify cosign signature on chezmoi checksums
+      ansible.builtin.command:
+        cmd: >
+          cosign verify-blob
+          --key /tmp/chezmoi_cosign.pub
+          --signature /tmp/chezmoi_{{ chezmoi_latest }}_checksums.txt.sig
+          /tmp/chezmoi_{{ chezmoi_latest }}_checksums.txt
+      changed_when: false
+
+    - name: Verify chezmoi deb checksum
+      ansible.builtin.shell:
+        cmd: |
+          expected=$(grep linux_amd64.deb /tmp/chezmoi_{{ chezmoi_latest }}_checksums.txt)
+          actual=$(cd /tmp && sha256sum chezmoi_{{ chezmoi_latest }}_linux_amd64.deb)
+          [ "$actual" = "$expected" ]
+      changed_when: false
+
+    - name: Install chezmoi deb
+      become: true
+      ansible.builtin.apt:
+        deb: "/tmp/chezmoi_{{ chezmoi_latest }}_linux_amd64.deb"
+
+    - name: Clean up chezmoi files
+      ansible.builtin.file:
+        path: "/tmp/{{ item }}"
+        state: absent
+      loop:
+        - "chezmoi_{{ chezmoi_latest }}_linux_amd64.deb"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt.sig"
+        - "chezmoi_cosign.pub"
+
+# ---- jq ----
+- name: Get latest jq release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/jqlang/jq/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: jq_release
+
+- name: Get current jq version
+  ansible.builtin.shell:
+    cmd: "jq --version"
+  register: jq_current
+  changed_when: false
+  failed_when: false
+
+- name: Install/upgrade jq
+  when: jq_current.stdout | default('') != jq_release.json.tag_name
   become: true
   block:
     - name: Download jq binary
       ansible.builtin.get_url:
-        url: https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
-        dest: /usr/local/bin/jq
+        url: "https://github.com/jqlang/jq/releases/download/{{ jq_release.json.tag_name }}/jq-linux-amd64"
+        dest: /tmp/jq
         mode: "0755"
 
+    - name: Download jq checksums
+      ansible.builtin.get_url:
+        url: "https://github.com/jqlang/jq/releases/download/{{ jq_release.json.tag_name }}/sha256sum.txt"
+        dest: /tmp/jq-sha256sum.txt
+        mode: "0644"
+
+    - name: Verify jq checksum
+      ansible.builtin.shell:
+        cmd: |
+          expected=$(grep jq-linux-amd64 /tmp/jq-sha256sum.txt)
+          actual=$(cd /tmp && sha256sum jq)
+          [ "$actual" = "$expected" ]
+      changed_when: false
+
+    - name: Install jq
+      ansible.builtin.copy:
+        src: /tmp/jq
+        dest: /usr/local/bin/jq
+        remote_src: true
+        mode: "0755"
+
+    - name: Clean up jq
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /tmp/jq
+        - /tmp/jq-sha256sum.txt
+
 # ---- git-credential-oauth ----
-- name: Check if git-credential-oauth is installed
-  ansible.builtin.command:
-    cmd: which git-credential-oauth
-  register: gco_check
+- name: Get latest git-credential-oauth release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/hickford/git-credential-oauth/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: gco_release
+
+- name: Get current git-credential-oauth version
+  ansible.builtin.shell:
+    cmd: "git-credential-oauth version | cut -d ' ' -f2"
+  register: gco_current
   changed_when: false
   failed_when: false
 
-- name: Install git-credential-oauth
-  when: gco_check.rc != 0
+- name: Set git-credential-oauth version facts
+  ansible.builtin.set_fact:
+    gco_latest: "{{ gco_release.json.tag_name | regex_replace('^v', '') }}"
+    gco_installed: "{{ gco_current.stdout | default('') }}"
+
+- name: Install/upgrade git-credential-oauth
+  when: gco_installed != gco_latest
   block:
-    - name: Get latest git-credential-oauth release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/hickford/git-credential-oauth/releases/latest
-        return_content: true
-      register: gco_release
-
-    - name: Set git-credential-oauth version
-      ansible.builtin.set_fact:
-        gco_version: "{{ gco_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download git-credential-oauth
       ansible.builtin.get_url:
-        url: "https://github.com/hickford/git-credential-oauth/releases/download/v{{ gco_version }}/git-credential-oauth_{{ gco_version }}_linux_amd64.tar.gz"
+        url: "https://github.com/hickford/git-credential-oauth/releases/download/v{{ gco_latest }}/git-credential-oauth_{{ gco_latest }}_linux_amd64.tar.gz"
         dest: /tmp/git-credential-oauth.tar.gz
         mode: "0644"
 
@@ -82,59 +199,76 @@
         state: absent
 
 # ---- ripgrep ----
-- name: Check if ripgrep is installed
-  ansible.builtin.command:
-    cmd: which rg
-  register: rg_check
+- name: Get latest ripgrep release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: rg_release
+
+- name: Get current ripgrep version
+  ansible.builtin.shell:
+    cmd: "rg --version | head -n1 | cut -d ' ' -f2"
+  register: rg_current
   changed_when: false
   failed_when: false
 
-- name: Install ripgrep
-  when: rg_check.rc != 0
+- name: Set ripgrep version facts
+  ansible.builtin.set_fact:
+    rg_latest: "{{ rg_release.json.tag_name | regex_replace('^v?', '') }}"
+    rg_installed: "{{ rg_current.stdout | default('') }}"
+
+- name: Install/upgrade ripgrep
+  when: rg_installed != rg_latest
   block:
-    - name: Get latest ripgrep release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
-        return_content: true
-      register: rg_release
-
-    - name: Set ripgrep version
-      ansible.builtin.set_fact:
-        rg_version: "{{ rg_release.json.tag_name | regex_replace('^v?', '') }}"
-
     - name: Download ripgrep deb
       ansible.builtin.get_url:
-        url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ rg_version }}/ripgrep_{{ rg_version }}-1_amd64.deb"
-        dest: "/tmp/ripgrep.deb"
+        url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ rg_release.json.tag_name }}/ripgrep_{{ rg_latest }}-1_amd64.deb"
+        dest: /tmp/ripgrep.deb
         mode: "0644"
+
+    - name: Download ripgrep checksum
+      ansible.builtin.get_url:
+        url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ rg_release.json.tag_name }}/ripgrep_{{ rg_latest }}-1_amd64.deb.sha256"
+        dest: /tmp/ripgrep.deb.sha256
+        mode: "0644"
+
+    - name: Verify ripgrep checksum
+      ansible.builtin.shell:
+        cmd: "cd /tmp && sha256sum -c ripgrep.deb.sha256 --status"
+      changed_when: false
 
     - name: Install ripgrep deb
       become: true
       ansible.builtin.apt:
         deb: /tmp/ripgrep.deb
 
-    - name: Clean up ripgrep deb
+    - name: Clean up ripgrep
       ansible.builtin.file:
-        path: /tmp/ripgrep.deb
+        path: "{{ item }}"
         state: absent
+      loop:
+        - /tmp/ripgrep.deb
+        - /tmp/ripgrep.deb.sha256
 
 # ---- delta ----
-- name: Check if delta is installed
-  ansible.builtin.command:
-    cmd: which delta
-  register: delta_check
+- name: Get latest delta release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/dandavison/delta/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: delta_release
+
+- name: Get current delta version
+  ansible.builtin.shell:
+    cmd: "delta --version | cut -d ' ' -f2"
+  register: delta_current
   changed_when: false
   failed_when: false
 
-- name: Install delta
-  when: delta_check.rc != 0
+- name: Install/upgrade delta
+  when: delta_current.stdout | default('') != delta_release.json.tag_name
   block:
-    - name: Get latest delta release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/dandavison/delta/releases/latest
-        return_content: true
-      register: delta_release
-
     - name: Download delta deb
       ansible.builtin.get_url:
         url: "https://github.com/dandavison/delta/releases/download/{{ delta_release.json.tag_name }}/git-delta_{{ delta_release.json.tag_name }}_amd64.deb"
@@ -152,31 +286,47 @@
         state: absent
 
 # ---- fzf ----
-- name: Check if fzf is installed
-  ansible.builtin.command:
-    cmd: which fzf
-  register: fzf_check
+- name: Get latest fzf release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/junegunn/fzf/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: fzf_release
+
+- name: Get current fzf version
+  ansible.builtin.shell:
+    cmd: "fzf --version | cut -d ' ' -f1"
+  register: fzf_current
   changed_when: false
   failed_when: false
 
-- name: Install fzf
-  when: fzf_check.rc != 0
+- name: Set fzf version facts
+  ansible.builtin.set_fact:
+    fzf_latest: "{{ fzf_release.json.tag_name | regex_replace('^v', '') }}"
+    fzf_installed: "{{ fzf_current.stdout | default('') }}"
+
+- name: Install/upgrade fzf
+  when: fzf_installed != fzf_latest
   block:
-    - name: Get latest fzf release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/junegunn/fzf/releases/latest
-        return_content: true
-      register: fzf_release
-
-    - name: Set fzf version
-      ansible.builtin.set_fact:
-        fzf_version: "{{ fzf_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download fzf
       ansible.builtin.get_url:
-        url: "https://github.com/junegunn/fzf/releases/download/v{{ fzf_version }}/fzf-{{ fzf_version }}-linux_amd64.tar.gz"
+        url: "https://github.com/junegunn/fzf/releases/download/v{{ fzf_latest }}/fzf-{{ fzf_latest }}-linux_amd64.tar.gz"
         dest: /tmp/fzf.tar.gz
         mode: "0644"
+
+    - name: Download fzf checksums
+      ansible.builtin.get_url:
+        url: "https://github.com/junegunn/fzf/releases/download/v{{ fzf_latest }}/fzf_{{ fzf_latest }}_checksums.txt"
+        dest: /tmp/fzf_checksums.txt
+        mode: "0644"
+
+    - name: Verify fzf checksum
+      ansible.builtin.shell:
+        cmd: |
+          expected=$(grep linux_amd64.tar.gz /tmp/fzf_checksums.txt)
+          actual=$(cd /tmp && sha256sum fzf.tar.gz)
+          [ "$actual" = "$expected" ]
+      changed_when: false
 
     - name: Extract fzf
       ansible.builtin.unarchive:
@@ -194,33 +344,38 @@
 
     - name: Clean up fzf
       ansible.builtin.file:
-        path: /tmp/fzf.tar.gz
+        path: "{{ item }}"
         state: absent
+      loop:
+        - /tmp/fzf.tar.gz
+        - /tmp/fzf_checksums.txt
 
 # ---- fd ----
-- name: Check if fd is installed
-  ansible.builtin.command:
-    cmd: which fd
-  register: fd_check
+- name: Get latest fd release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/sharkdp/fd/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: fd_release
+
+- name: Get current fd version
+  ansible.builtin.shell:
+    cmd: "fd --version | cut -d ' ' -f2"
+  register: fd_current
   changed_when: false
   failed_when: false
 
-- name: Install fd
-  when: fd_check.rc != 0
+- name: Set fd version facts
+  ansible.builtin.set_fact:
+    fd_latest: "{{ fd_release.json.tag_name | regex_replace('^v', '') }}"
+    fd_installed: "{{ fd_current.stdout | default('') }}"
+
+- name: Install/upgrade fd
+  when: fd_installed != fd_latest
   block:
-    - name: Get latest fd release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/sharkdp/fd/releases/latest
-        return_content: true
-      register: fd_release
-
-    - name: Set fd version
-      ansible.builtin.set_fact:
-        fd_version: "{{ fd_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download fd deb
       ansible.builtin.get_url:
-        url: "https://github.com/sharkdp/fd/releases/download/v{{ fd_version }}/fd_{{ fd_version }}_amd64.deb"
+        url: "https://github.com/sharkdp/fd/releases/download/v{{ fd_latest }}/fd_{{ fd_latest }}_amd64.deb"
         dest: /tmp/fd.deb
         mode: "0644"
 
@@ -235,29 +390,31 @@
         state: absent
 
 # ---- bat ----
-- name: Check if bat is installed
-  ansible.builtin.command:
-    cmd: which bat
-  register: bat_check
+- name: Get latest bat release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/sharkdp/bat/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: bat_release
+
+- name: Get current bat version
+  ansible.builtin.shell:
+    cmd: "bat --version | cut -d ' ' -f2"
+  register: bat_current
   changed_when: false
   failed_when: false
 
-- name: Install bat
-  when: bat_check.rc != 0
+- name: Set bat version facts
+  ansible.builtin.set_fact:
+    bat_latest: "{{ bat_release.json.tag_name | regex_replace('^v', '') }}"
+    bat_installed: "{{ bat_current.stdout | default('') }}"
+
+- name: Install/upgrade bat
+  when: bat_installed != bat_latest
   block:
-    - name: Get latest bat release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/sharkdp/bat/releases/latest
-        return_content: true
-      register: bat_release
-
-    - name: Set bat version
-      ansible.builtin.set_fact:
-        bat_version: "{{ bat_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download bat deb
       ansible.builtin.get_url:
-        url: "https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}/bat_{{ bat_version }}_amd64.deb"
+        url: "https://github.com/sharkdp/bat/releases/download/v{{ bat_latest }}/bat_{{ bat_latest }}_amd64.deb"
         dest: /tmp/bat.deb
         mode: "0644"
 
@@ -272,26 +429,33 @@
         state: absent
 
 # ---- neovim ----
-- name: Check if neovim is installed
-  ansible.builtin.command:
-    cmd: which nvim
-  register: nvim_check
+- name: Get latest neovim release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/neovim/neovim/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: nvim_release
+
+- name: Get current neovim version
+  ansible.builtin.shell:
+    cmd: "nvim --version | head -n1 | cut -d ' ' -f2"
+  register: nvim_current
   changed_when: false
   failed_when: false
 
-- name: Install neovim
-  when: nvim_check.rc != 0
+- name: Install/upgrade neovim
+  when: nvim_current.stdout | default('') != nvim_release.json.tag_name
   block:
     - name: Download neovim tarball
       ansible.builtin.get_url:
-        url: https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+        url: "https://github.com/neovim/neovim/releases/download/{{ nvim_release.json.tag_name }}/nvim-linux-x86_64.tar.gz"
         dest: /tmp/nvim.tar.gz
         mode: "0644"
 
     - name: Remove old neovim installation
       become: true
       ansible.builtin.file:
-        path: /opt/nvim
+        path: /opt/nvim-linux-x86_64
         state: absent
 
     - name: Extract neovim to /opt
@@ -307,15 +471,22 @@
         state: absent
 
 # ---- tmux (build from source on Debian) ----
-- name: Check if tmux is installed
-  ansible.builtin.command:
-    cmd: which tmux
-  register: tmux_check
+- name: Get latest tmux release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/tmux/tmux/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: tmux_release
+
+- name: Get current tmux version
+  ansible.builtin.shell:
+    cmd: "tmux -V | cut -d ' ' -f2"
+  register: tmux_current
   changed_when: false
   failed_when: false
 
-- name: Install tmux from source
-  when: tmux_check.rc != 0
+- name: Install/upgrade tmux from source
+  when: tmux_current.stdout | default('') != tmux_release.json.tag_name
   block:
     - name: Install tmux build dependencies
       become: true
@@ -327,12 +498,6 @@
           - bison
           - pkg-config
         state: present
-
-    - name: Get latest tmux release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/tmux/tmux/releases/latest
-        return_content: true
-      register: tmux_release
 
     - name: Download tmux source
       ansible.builtin.get_url:
@@ -370,29 +535,46 @@
         - "/tmp/tmux-{{ tmux_release.json.tag_name }}"
 
 # ---- JetBrains Mono Nerd Font ----
-- name: Check if JetBrains Mono Nerd Font is installed
+- name: Get latest nerd-fonts release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: nerd_fonts_release
+
+- name: Check nerd font file
   ansible.builtin.stat:
     path: "{{ ansible_facts['env'].HOME }}/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf"
   register: nerd_font_check
 
-- name: Install JetBrains Mono Nerd Font
-  when: not nerd_font_check.stat.exists
+- name: Get nerd font file modification date
+  ansible.builtin.shell:
+    cmd: "date +%s -r {{ ansible_facts['env'].HOME }}/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf"
+  register: nerd_font_mtime
+  changed_when: false
+  failed_when: false
+  when: nerd_font_check.stat.exists
+
+- name: Set nerd font version facts
+  ansible.builtin.set_fact:
+    nf_version: "{{ nerd_fonts_release.json.tag_name | regex_replace('^v', '') }}"
+    nf_release_date: "{{ nerd_fonts_release.json.published_at | regex_replace('T.*', '') }}"
+    nf_installed: "{{ nerd_font_check.stat.exists }}"
+
+- name: Get nerd font release date as epoch
+  ansible.builtin.shell:
+    cmd: "date -d '{{ nf_release_date }}' +%s"
+  register: nf_release_epoch
+  changed_when: false
+
+- name: Install/upgrade JetBrains Mono Nerd Font
+  when: not nf_installed or (nerd_font_mtime.stdout | default('0') | int) < (nf_release_epoch.stdout | int)
   block:
     - name: Create fonts directory
       ansible.builtin.file:
         path: "{{ ansible_facts['env'].HOME }}/.local/share/fonts"
         state: directory
         mode: "0755"
-
-    - name: Get latest nerd-fonts release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest
-        return_content: true
-      register: nerd_fonts_release
-
-    - name: Set nerd fonts version
-      ansible.builtin.set_fact:
-        nf_version: "{{ nerd_fonts_release.json.tag_name | regex_replace('^v', '') }}"
 
     - name: Download JetBrainsMono Nerd Font
       ansible.builtin.get_url:
@@ -416,27 +598,45 @@
         state: absent
 
 # ---- yq ----
-- name: Check if yq is installed
-  ansible.builtin.command:
-    cmd: which yq
-  register: yq_check
+- name: Get latest yq release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/mikefarah/yq/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: yq_release
+
+- name: Get current yq version
+  ansible.builtin.shell:
+    cmd: "yq --version | cut -d ' ' -f4"
+  register: yq_current
   changed_when: false
   failed_when: false
 
-- name: Install yq
-  when: yq_check.rc != 0
+- name: Install/upgrade yq
+  when: yq_current.stdout | default('') != yq_release.json.tag_name
   block:
-    - name: Get latest yq release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/mikefarah/yq/releases/latest
-        return_content: true
-      register: yq_release
-
     - name: Download yq
       ansible.builtin.get_url:
         url: "https://github.com/mikefarah/yq/releases/download/{{ yq_release.json.tag_name }}/yq_linux_amd64.tar.gz"
         dest: /tmp/yq.tar.gz
         mode: "0644"
+
+    - name: Download yq checksum files
+      ansible.builtin.get_url:
+        url: "https://github.com/mikefarah/yq/releases/download/{{ yq_release.json.tag_name }}/{{ item }}"
+        dest: "/tmp/{{ item }}"
+        mode: "0644"
+      loop:
+        - checksums
+        - checksums_hashes_order
+        - extract-checksum.sh
+
+    - name: Verify yq checksum
+      ansible.builtin.shell:
+        cmd: |
+          chmod +x /tmp/extract-checksum.sh
+          cd /tmp && ./extract-checksum.sh SHA-256 yq_linux_amd64.tar.gz | awk '{ print $2 " " $1}' | sha256sum -c --status
+      changed_when: false
 
     - name: Extract yq
       ansible.builtin.unarchive:
@@ -454,26 +654,35 @@
 
     - name: Clean up yq
       ansible.builtin.file:
-        path: /tmp/yq.tar.gz
+        path: "/tmp/{{ item }}"
         state: absent
+      loop:
+        - yq.tar.gz
+        - yq_linux_amd64
+        - checksums
+        - checksums_hashes_order
+        - extract-checksum.sh
+        - yq.1
+        - install-man-page.sh
 
 # ---- ImageMagick ----
-- name: Check if ImageMagick is installed
-  ansible.builtin.command:
-    cmd: which magick
-  register: magick_check
+- name: Get latest ImageMagick release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: magick_release
+
+- name: Get current ImageMagick version
+  ansible.builtin.shell:
+    cmd: "magick -version | head -n1 | cut -d ' ' -f3"
+  register: magick_current
   changed_when: false
   failed_when: false
 
-- name: Install ImageMagick
-  when: magick_check.rc != 0
+- name: Install/upgrade ImageMagick
+  when: magick_current.stdout | default('') != magick_release.json.tag_name
   block:
-    - name: Get latest ImageMagick release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
-        return_content: true
-      register: magick_release
-
     - name: Find AppImage download URL
       ansible.builtin.set_fact:
         magick_url: "{{ magick_release.json.assets | selectattr('name', 'contains', 'clang-x86_64.AppImage') | map(attribute='browser_download_url') | first }}"
@@ -498,48 +707,57 @@
         state: absent
 
 # ---- zoxide ----
-- name: Check if zoxide is installed
-  ansible.builtin.command:
-    cmd: which zoxide
-  register: zoxide_check
+- name: Get latest zoxide release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/ajeetdsouza/zoxide/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: zoxide_release
+
+- name: Get current zoxide version
+  ansible.builtin.shell:
+    cmd: "zoxide --version | cut -d ' ' -f2"
+  register: zoxide_current
   changed_when: false
   failed_when: false
 
-- name: Install zoxide
-  when: zoxide_check.rc != 0
+- name: Install/upgrade zoxide
+  when: zoxide_current.stdout | default('') != (zoxide_release.json.tag_name | regex_replace('^v', ''))
   ansible.builtin.shell:
     cmd: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # ---- restic ----
-- name: Check if restic is installed
-  ansible.builtin.command:
-    cmd: which restic
-  register: restic_check
+- name: Get latest restic release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/restic/restic/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: restic_release
+
+- name: Get current restic version
+  ansible.builtin.shell:
+    cmd: "restic version | cut -d ' ' -f2"
+  register: restic_current
   changed_when: false
   failed_when: false
 
-- name: Install restic
-  when: restic_check.rc != 0
+- name: Set restic version facts
+  ansible.builtin.set_fact:
+    restic_latest: "{{ restic_release.json.tag_name | regex_replace('^v', '') }}"
+    restic_installed: "{{ restic_current.stdout | default('') }}"
+
+- name: Install/upgrade restic
+  when: restic_installed != restic_latest
   block:
-    - name: Get latest restic release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/restic/restic/releases/latest
-        return_content: true
-      register: restic_release
-
-    - name: Set restic version
-      ansible.builtin.set_fact:
-        restic_version: "{{ restic_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download restic
       ansible.builtin.get_url:
-        url: "https://github.com/restic/restic/releases/download/v{{ restic_version }}/restic_{{ restic_version }}_linux_amd64.bz2"
+        url: "https://github.com/restic/restic/releases/download/v{{ restic_latest }}/restic_{{ restic_latest }}_linux_amd64.bz2"
         dest: /tmp/restic.bz2
         mode: "0644"
 
     - name: Extract restic
       ansible.builtin.shell:
-        cmd: bunzip2 /tmp/restic.bz2
+        cmd: bunzip2 -f /tmp/restic.bz2
 
     - name: Install restic
       become: true
@@ -554,30 +772,37 @@
       ansible.builtin.shell:
         cmd: restic generate --bash-completion /usr/share/bash-completion/completions/restic
 
+    - name: Clean up restic
+      ansible.builtin.file:
+        path: /tmp/restic
+        state: absent
+
 # ---- resticprofile ----
-- name: Check if resticprofile is installed
-  ansible.builtin.command:
-    cmd: which resticprofile
-  register: resticprofile_check
+- name: Get latest resticprofile release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/creativeprojects/resticprofile/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: resticprofile_release
+
+- name: Get current resticprofile version
+  ansible.builtin.shell:
+    cmd: "resticprofile version | cut -d ' ' -f3"
+  register: resticprofile_current
   changed_when: false
   failed_when: false
 
-- name: Install resticprofile
-  when: resticprofile_check.rc != 0
+- name: Set resticprofile version facts
+  ansible.builtin.set_fact:
+    resticprofile_latest: "{{ resticprofile_release.json.tag_name | regex_replace('^v', '') }}"
+    resticprofile_installed: "{{ resticprofile_current.stdout | default('') }}"
+
+- name: Install/upgrade resticprofile
+  when: resticprofile_installed != resticprofile_latest
   block:
-    - name: Get latest resticprofile release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/creativeprojects/resticprofile/releases/latest
-        return_content: true
-      register: resticprofile_release
-
-    - name: Set resticprofile version
-      ansible.builtin.set_fact:
-        resticprofile_version: "{{ resticprofile_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download resticprofile
       ansible.builtin.get_url:
-        url: "https://github.com/creativeprojects/resticprofile/releases/download/v{{ resticprofile_version }}/resticprofile_{{ resticprofile_version }}_linux_amd64.tar.gz"
+        url: "https://github.com/creativeprojects/resticprofile/releases/download/v{{ resticprofile_latest }}/resticprofile_{{ resticprofile_latest }}_linux_amd64.tar.gz"
         dest: /tmp/resticprofile.tar.gz
         mode: "0644"
 
@@ -610,29 +835,31 @@
         - /tmp/resticprofile-extract
 
 # ---- gitleaks ----
-- name: Check if gitleaks is installed
-  ansible.builtin.command:
-    cmd: which gitleaks
-  register: gitleaks_check
+- name: Get latest gitleaks release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/gitleaks/gitleaks/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: gitleaks_release
+
+- name: Get current gitleaks version
+  ansible.builtin.shell:
+    cmd: "gitleaks version"
+  register: gitleaks_current
   changed_when: false
   failed_when: false
 
-- name: Install gitleaks
-  when: gitleaks_check.rc != 0
+- name: Set gitleaks version facts
+  ansible.builtin.set_fact:
+    gitleaks_latest: "{{ gitleaks_release.json.tag_name | regex_replace('^v', '') }}"
+    gitleaks_installed: "{{ gitleaks_current.stdout | default('') }}"
+
+- name: Install/upgrade gitleaks
+  when: gitleaks_installed != gitleaks_latest
   block:
-    - name: Get latest gitleaks release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/gitleaks/gitleaks/releases/latest
-        return_content: true
-      register: gitleaks_release
-
-    - name: Set gitleaks version
-      ansible.builtin.set_fact:
-        gitleaks_version: "{{ gitleaks_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download gitleaks
       ansible.builtin.get_url:
-        url: "https://github.com/gitleaks/gitleaks/releases/download/v{{ gitleaks_version }}/gitleaks_{{ gitleaks_version }}_linux_x64.tar.gz"
+        url: "https://github.com/gitleaks/gitleaks/releases/download/v{{ gitleaks_latest }}/gitleaks_{{ gitleaks_latest }}_linux_x64.tar.gz"
         dest: /tmp/gitleaks.tar.gz
         mode: "0644"
 
@@ -655,23 +882,65 @@
         path: /tmp/gitleaks.tar.gz
         state: absent
 
-# ---- typos-lsp ----
-- name: Check if typos-lsp is installed
-  ansible.builtin.command:
-    cmd: which typos-lsp
-  register: typos_lsp_check
+# ---- ctags (nightly build, compare abbreviated SHA) ----
+- name: Get latest ctags nightly release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/universal-ctags/ctags-nightly-build/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: ctags_release
+
+- name: Get current ctags SHA
+  ansible.builtin.shell:
+    cmd: "ctags --version | head -n1 | sed 's/.*\\(\\([a-z0-9]*\\)\\).*/\\1/' | head -c7"
+  register: ctags_current
   changed_when: false
   failed_when: false
 
-- name: Install typos-lsp
-  when: typos_lsp_check.rc != 0
-  block:
-    - name: Get latest typos-lsp release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/tekumara/typos-lsp/releases/latest
-        return_content: true
-      register: typos_lsp_release
+- name: Set ctags version facts
+  ansible.builtin.set_fact:
+    ctags_tag: "{{ ctags_release.json.tag_name }}"
+    ctags_release_date: "{{ ctags_release.json.tag_name.split('+')[0] }}"
+    ctags_latest_sha: "{{ ctags_release.json.tag_name.split('+')[1] | default('') }}"
+    ctags_installed_sha: "{{ ctags_current.stdout | default('') }}"
 
+- name: Install/upgrade ctags
+  when: ctags_installed_sha == '' or ctags_latest_sha[:7] != ctags_installed_sha
+  block:
+    - name: Download ctags deb
+      ansible.builtin.get_url:
+        url: "https://github.com/universal-ctags/ctags-nightly-build/releases/download/{{ ctags_release_date | urlencode }}%2B{{ ctags_latest_sha }}/uctags-{{ ctags_release_date }}-linux-x86_64.deb"
+        dest: /tmp/ctags.deb
+        mode: "0644"
+
+    - name: Install ctags deb
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/ctags.deb
+
+    - name: Clean up ctags deb
+      ansible.builtin.file:
+        path: /tmp/ctags.deb
+        state: absent
+
+# ---- typos-lsp ----
+- name: Get latest typos-lsp release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/tekumara/typos-lsp/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: typos_lsp_release
+
+- name: Get current typos-lsp version
+  ansible.builtin.shell:
+    cmd: "typos-lsp --version 2>/dev/null | cut -d ' ' -f2"
+  register: typos_lsp_current
+  changed_when: false
+  failed_when: false
+
+- name: Install/upgrade typos-lsp
+  when: typos_lsp_current.stdout | default('') != typos_lsp_release.json.tag_name
+  block:
     - name: Download typos-lsp
       ansible.builtin.get_url:
         url: "https://github.com/tekumara/typos-lsp/releases/download/{{ typos_lsp_release.json.tag_name }}/typos-lsp-{{ typos_lsp_release.json.tag_name }}-x86_64-unknown-linux-gnu.tar.gz"
@@ -707,22 +976,23 @@
         - /tmp/typos-lsp-extract
 
 # ---- lua-language-server ----
-- name: Check if lua-language-server is installed
-  ansible.builtin.command:
-    cmd: which lua-language-server
-  register: lua_ls_check
+- name: Get latest lua-language-server release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/LuaLS/lua-language-server/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: lua_ls_release
+
+- name: Get current lua-language-server version
+  ansible.builtin.shell:
+    cmd: "lua-language-server --version 2>/dev/null"
+  register: lua_ls_current
   changed_when: false
   failed_when: false
 
-- name: Install lua-language-server
-  when: lua_ls_check.rc != 0
+- name: Install/upgrade lua-language-server
+  when: lua_ls_current.stdout | default('') != lua_ls_release.json.tag_name
   block:
-    - name: Get latest lua-language-server release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/LuaLS/lua-language-server/releases/latest
-        return_content: true
-      register: lua_ls_release
-
     - name: Download lua-language-server
       ansible.builtin.get_url:
         url: "https://github.com/LuaLS/lua-language-server/releases/download/{{ lua_ls_release.json.tag_name }}/lua-language-server-{{ lua_ls_release.json.tag_name }}-linux-x64.tar.gz"
@@ -758,22 +1028,23 @@
         - /tmp/lua-ls-extract
 
 # ---- marksman ----
-- name: Check if marksman is installed
-  ansible.builtin.command:
-    cmd: which marksman
-  register: marksman_check
+- name: Get latest marksman release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/artempyanykh/marksman/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: marksman_release
+
+- name: Get current marksman version
+  ansible.builtin.shell:
+    cmd: "marksman --version 2>/dev/null"
+  register: marksman_current
   changed_when: false
   failed_when: false
 
-- name: Install marksman
-  when: marksman_check.rc != 0
+- name: Install/upgrade marksman
+  when: marksman_current.stdout | default('') != marksman_release.json.tag_name
   block:
-    - name: Get latest marksman release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/artempyanykh/marksman/releases/latest
-        return_content: true
-      register: marksman_release
-
     - name: Download marksman
       ansible.builtin.get_url:
         url: "https://github.com/artempyanykh/marksman/releases/download/{{ marksman_release.json.tag_name }}/marksman-linux-x64"
@@ -788,23 +1059,29 @@
         remote_src: true
         mode: "0755"
 
+    - name: Clean up marksman
+      ansible.builtin.file:
+        path: /tmp/marksman
+        state: absent
+
 # ---- clangd ----
-- name: Check if clangd is installed
-  ansible.builtin.command:
-    cmd: which clangd
-  register: clangd_check
+- name: Get latest clangd release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/clangd/clangd/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: clangd_release
+
+- name: Get current clangd version
+  ansible.builtin.shell:
+    cmd: "clangd --version 2>/dev/null | head -n1 | cut -d ' ' -f3"
+  register: clangd_current
   changed_when: false
   failed_when: false
 
-- name: Install clangd
-  when: clangd_check.rc != 0
+- name: Install/upgrade clangd
+  when: clangd_current.stdout | default('') != clangd_release.json.tag_name
   block:
-    - name: Get latest clangd release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/clangd/clangd/releases/latest
-        return_content: true
-      register: clangd_release
-
     - name: Download clangd
       ansible.builtin.get_url:
         url: "https://github.com/clangd/clangd/releases/download/{{ clangd_release.json.tag_name }}/clangd-linux-{{ clangd_release.json.tag_name }}.zip"

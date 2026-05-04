@@ -1,34 +1,52 @@
 ---
 # ---- fish shell (needs external repo on Debian) ----
-- name: Check if fish is installed
-  ansible.builtin.command:
-    cmd: which fish
-  register: fish_check
+- name: Get latest fish release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/fish-shell/fish-shell/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: fish_release
+
+- name: Get current fish major version
+  ansible.builtin.shell:
+    cmd: "fish --version | cut -d ' ' -f3 | cut -c1"
+  register: fish_current
   changed_when: false
   failed_when: false
 
-- name: Install fish shell
-  when: fish_check.rc != 0
+- name: Set fish version facts
+  ansible.builtin.set_fact:
+    fish_latest_major: "{{ fish_release.json.tag_name | regex_replace('^v?', '') | regex_replace('\\..*', '') }}"
+    fish_installed_major: "{{ fish_current.stdout | default('') }}"
+
+- name: Install/upgrade fish shell
+  when: fish_installed_major != fish_latest_major
   become: true
   block:
+    - name: Remove old fish repo if present
+      ansible.builtin.file:
+        path: "/etc/apt/sources.list.d/shells-fish-release-{{ fish_installed_major }}.list"
+        state: absent
+      when: fish_installed_major != ''
+
     - name: Add fish shell repository key
       ansible.builtin.shell:
         cmd: >
-          curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:4/Debian_{{ ansible_facts['distribution_version'] }}/Release.key"
+          curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:{{ fish_latest_major }}/Debian_{{ ansible_facts['distribution_version'] }}/Release.key"
           | gpg --dearmor
-          | tee "/etc/apt/trusted.gpg.d/shells_fish_release_4.gpg" >/dev/null
-        creates: /etc/apt/trusted.gpg.d/shells_fish_release_4.gpg
+          | tee "/etc/apt/trusted.gpg.d/shells_fish_release_{{ fish_latest_major }}.gpg" >/dev/null
+        creates: "/etc/apt/trusted.gpg.d/shells_fish_release_{{ fish_latest_major }}.gpg"
 
     - name: Add fish shell repository
       ansible.builtin.apt_repository:
-        repo: "deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_{{ ansible_facts['distribution_version'] }}/ /"
-        filename: "shells-fish-release-4"
+        repo: "deb http://download.opensuse.org/repositories/shells:/fish:/release:/{{ fish_latest_major }}/Debian_{{ ansible_facts['distribution_version'] }}/ /"
+        filename: "shells-fish-release-{{ fish_latest_major }}"
         state: present
 
     - name: Install fish
       ansible.builtin.apt:
         name: fish
-        state: present
+        state: latest
         update_cache: true
 
 # ---- Docker ----
@@ -119,29 +137,31 @@
         state: present
 
 # ---- strawberry ----
-- name: Check if strawberry is installed
-  ansible.builtin.command:
-    cmd: which strawberry
-  register: strawberry_check
+- name: Get latest strawberry release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/strawberrymusicplayer/strawberry/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: strawberry_release
+
+- name: Get current strawberry version
+  ansible.builtin.shell:
+    cmd: "strawberry --version | cut -d ' ' -f2"
+  register: strawberry_current
   changed_when: false
   failed_when: false
 
-- name: Install strawberry
-  when: strawberry_check.rc != 0
+- name: Set strawberry version facts
+  ansible.builtin.set_fact:
+    strawberry_latest: "{{ strawberry_release.json.tag_name | regex_replace('^v', '') }}"
+    strawberry_installed: "{{ strawberry_current.stdout | default('') }}"
+
+- name: Install/upgrade strawberry
+  when: strawberry_installed != strawberry_latest
   block:
-    - name: Get latest strawberry release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/strawberrymusicplayer/strawberry/releases/latest
-        return_content: true
-      register: strawberry_release
-
-    - name: Set strawberry version
-      ansible.builtin.set_fact:
-        strawberry_version: "{{ strawberry_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download strawberry deb
       ansible.builtin.get_url:
-        url: "https://github.com/strawberrymusicplayer/strawberry/releases/download/{{ strawberry_version }}/strawberry_{{ strawberry_version }}-{{ ansible_facts['distribution_release'] }}_amd64.deb"
+        url: "https://github.com/strawberrymusicplayer/strawberry/releases/download/{{ strawberry_latest }}/strawberry_{{ strawberry_latest }}-{{ ansible_facts['distribution_release'] }}_amd64.deb"
         dest: /tmp/strawberry.deb
         mode: "0644"
 
@@ -156,15 +176,21 @@
         state: absent
 
 # ---- AWS CLI ----
-- name: Check if AWS CLI is installed
-  ansible.builtin.command:
-    cmd: which aws
-  register: aws_check
+- name: Get latest AWS CLI version
+  ansible.builtin.shell:
+    cmd: "curl -sL {{ github_api_headers | ternary('--header \"Authorization: ' + github_api_headers.get('Authorization', '') + '\"', '') }} https://raw.githubusercontent.com/aws/aws-cli/v2/CHANGELOG.rst | sed '5!d'"
+  register: aws_latest
+  changed_when: false
+
+- name: Get current AWS CLI version
+  ansible.builtin.shell:
+    cmd: "aws --version 2>/dev/null | cut -d '/' -f2 | cut -d ' ' -f1"
+  register: aws_current
   changed_when: false
   failed_when: false
 
-- name: Install AWS CLI
-  when: aws_check.rc != 0
+- name: Install/upgrade AWS CLI
+  when: aws_current.stdout | default('') != aws_latest.stdout
   block:
     - name: Download AWS CLI
       ansible.builtin.get_url:
@@ -178,10 +204,10 @@
         dest: /tmp
         remote_src: true
 
-    - name: Install AWS CLI
+    - name: Install/upgrade AWS CLI
       become: true
       ansible.builtin.command:
-        cmd: /tmp/aws/install
+        cmd: /tmp/aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
 
     - name: Clean up AWS CLI
       ansible.builtin.file:
@@ -357,19 +383,26 @@
         state: absent
 
 # ---- usbimager ----
-- name: Check if usbimager is installed
-  ansible.builtin.command:
-    cmd: which usbimager
-  register: usbimager_check
+- name: Get latest usbimager version
+  ansible.builtin.shell:
+    cmd: "curl -sL https://gitlab.com/bztsrc/usbimager/-/releases.atom | xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry[1]/atom:title' | cut -d ' ' -f2"
+  register: usbimager_latest
   changed_when: false
   failed_when: false
 
-- name: Install usbimager
-  when: usbimager_check.rc != 0
+- name: Get current usbimager version
+  ansible.builtin.shell:
+    cmd: "usbimager --version 2>/dev/null"
+  register: usbimager_current
+  changed_when: false
+  failed_when: false
+
+- name: Install/upgrade usbimager
+  when: usbimager_current.stdout | default('') != usbimager_latest.stdout | default('')
   block:
     - name: Download usbimager deb
       ansible.builtin.get_url:
-        url: https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.10-amd64.deb
+        url: "https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_{{ usbimager_latest.stdout }}-amd64.deb"
         dest: /tmp/usbimager.deb
         mode: "0644"
 
@@ -384,19 +417,31 @@
         state: absent
 
 # ---- Obsidian ----
-- name: Check if obsidian is installed
-  ansible.builtin.command:
-    cmd: which obsidian
-  register: obsidian_check
+- name: Get latest Obsidian release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: obsidian_release
+
+- name: Get current Obsidian version
+  ansible.builtin.shell:
+    cmd: "dpkg -s obsidian 2>/dev/null | grep '^Version' | cut -d ' ' -f2"
+  register: obsidian_current
   changed_when: false
   failed_when: false
 
-- name: Install Obsidian
-  when: obsidian_check.rc != 0
+- name: Set Obsidian version facts
+  ansible.builtin.set_fact:
+    obsidian_latest: "{{ obsidian_release.json.tag_name | regex_replace('^v', '') }}"
+    obsidian_installed: "{{ obsidian_current.stdout | default('') }}"
+
+- name: Install/upgrade Obsidian
+  when: obsidian_installed != obsidian_latest
   block:
     - name: Download Obsidian deb
       ansible.builtin.get_url:
-        url: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.9.10/obsidian_1.9.10_amd64.deb
+        url: "https://github.com/obsidianmd/obsidian-releases/releases/download/v{{ obsidian_latest }}/obsidian_{{ obsidian_latest }}_amd64.deb"
         dest: /tmp/obsidian.deb
         mode: "0644"
 
@@ -453,3 +498,45 @@
   register: cargo_update_result
   changed_when: "'Installed' in cargo_update_result.stderr | default('')"
   failed_when: false
+
+# ---- tidal-dl-ng ----
+- name: Get latest tidal-dl-ng release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/exislow/tidal-dl-ng/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: tidal_release
+
+- name: Get current tidal-dl-ng version
+  ansible.builtin.shell:
+    cmd: "tidal-dl-ng --version 2>/dev/null"
+  register: tidal_current
+  changed_when: false
+  failed_when: false
+
+- name: Install/upgrade tidal-dl-ng
+  when: tidal_current.stdout | default('') != (tidal_release.json.tag_name | regex_replace('^v', ''))
+  ansible.builtin.pip:
+    name: "tidal-dl-ng[gui]"
+    state: latest
+
+# ---- beets ----
+- name: Get latest beets release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/beetbox/beets/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: beets_release
+
+- name: Get current beets version
+  ansible.builtin.shell:
+    cmd: "beet --version | head -n1 | cut -d ' ' -f3"
+  register: beets_current
+  changed_when: false
+  failed_when: false
+
+- name: Install/upgrade beets
+  when: beets_current.stdout | default('') != (beets_release.json.tag_name | regex_replace('^v', ''))
+  ansible.builtin.pip:
+    name: beets
+    state: latest

@@ -1,28 +1,30 @@
 ---
 # ---- cosign ----
-- name: Check if cosign is installed
-  ansible.builtin.command:
-    cmd: which cosign
-  register: cosign_check
+- name: Get latest cosign release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/sigstore/cosign/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: cosign_release
+
+- name: Get current cosign version
+  ansible.builtin.shell:
+    cmd: "cosign version 2>/dev/null | grep GitVersion | awk '{print $2}'"
+  register: cosign_current
   changed_when: false
   failed_when: false
 
-- name: Install cosign
-  when: cosign_check.rc != 0
+- name: Set cosign version facts
+  ansible.builtin.set_fact:
+    cosign_latest: "{{ cosign_release.json.tag_name | regex_replace('^v', '') }}"
+    cosign_installed: "{{ cosign_current.stdout | default('') }}"
+
+- name: Install/upgrade cosign
+  when: cosign_installed != cosign_latest
   block:
-    - name: Get latest cosign release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/sigstore/cosign/releases/latest
-        return_content: true
-      register: cosign_release
-
-    - name: Set cosign version
-      ansible.builtin.set_fact:
-        cosign_version: "{{ cosign_release.json.tag_name | regex_replace('^v', '') }}"
-
     - name: Download cosign RPM
       ansible.builtin.get_url:
-        url: "https://github.com/sigstore/cosign/releases/latest/download/cosign-{{ cosign_version }}-1.x86_64.rpm"
+        url: "https://github.com/sigstore/cosign/releases/download/v{{ cosign_latest }}/cosign-{{ cosign_latest }}-1.x86_64.rpm"
         dest: /tmp/cosign.rpm
         mode: "0644"
 
@@ -37,6 +39,74 @@
       ansible.builtin.file:
         path: /tmp/cosign.rpm
         state: absent
+
+# ---- chezmoi (requires cosign for signature verification) ----
+- name: Get latest chezmoi release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/twpayne/chezmoi/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: chezmoi_release
+
+- name: Get current chezmoi version
+  ansible.builtin.shell:
+    cmd: "chezmoi --version | cut -d ' ' -f3 | cut -d 'v' -f2 | cut -d ',' -f1"
+  register: chezmoi_current
+  changed_when: false
+  failed_when: false
+
+- name: Set chezmoi version facts
+  ansible.builtin.set_fact:
+    chezmoi_latest: "{{ chezmoi_release.json.tag_name | regex_replace('^v', '') }}"
+    chezmoi_installed: "{{ chezmoi_current.stdout | default('') }}"
+
+- name: Install/upgrade chezmoi
+  when: chezmoi_installed != chezmoi_latest
+  block:
+    - name: Download chezmoi RPM and verification files
+      ansible.builtin.get_url:
+        url: "https://github.com/twpayne/chezmoi/releases/download/v{{ chezmoi_latest }}/{{ item }}"
+        dest: "/tmp/{{ item }}"
+        mode: "0644"
+      loop:
+        - "chezmoi_{{ chezmoi_latest }}_linux_amd64.rpm"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt.sig"
+        - "chezmoi_cosign.pub"
+
+    - name: Verify cosign signature on chezmoi checksums
+      ansible.builtin.command:
+        cmd: >
+          cosign verify-blob
+          --key /tmp/chezmoi_cosign.pub
+          --signature /tmp/chezmoi_{{ chezmoi_latest }}_checksums.txt.sig
+          /tmp/chezmoi_{{ chezmoi_latest }}_checksums.txt
+      changed_when: false
+
+    - name: Verify chezmoi RPM checksum
+      ansible.builtin.shell:
+        cmd: |
+          expected=$(grep linux_amd64.rpm /tmp/chezmoi_{{ chezmoi_latest }}_checksums.txt)
+          actual=$(cd /tmp && sha256sum chezmoi_{{ chezmoi_latest }}_linux_amd64.rpm)
+          [ "$actual" = "$expected" ]
+      changed_when: false
+
+    - name: Install chezmoi RPM
+      become: true
+      ansible.builtin.dnf:
+        name: "/tmp/chezmoi_{{ chezmoi_latest }}_linux_amd64.rpm"
+        state: present
+        disable_gpg_check: true
+
+    - name: Clean up chezmoi files
+      ansible.builtin.file:
+        path: "/tmp/{{ item }}"
+        state: absent
+      loop:
+        - "chezmoi_{{ chezmoi_latest }}_linux_amd64.rpm"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt"
+        - "chezmoi_{{ chezmoi_latest }}_checksums.txt.sig"
+        - "chezmoi_cosign.pub"
 
 # ---- dbeaver ----
 - name: Check if dbeaver is installed
@@ -68,19 +138,31 @@
         state: absent
 
 # ---- terraform-ls ----
-- name: Check if terraform-ls is installed
-  ansible.builtin.command:
-    cmd: which terraform-ls
-  register: terraform_ls_check
+- name: Get latest terraform-ls release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/hashicorp/terraform-ls/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: terraform_ls_release
+
+- name: Get current terraform-ls version
+  ansible.builtin.shell:
+    cmd: "terraform-ls version | head -n1 | cut -d ' ' -f2"
+  register: terraform_ls_current
   changed_when: false
   failed_when: false
 
-- name: Install terraform-ls
-  when: terraform_ls_check.rc != 0
+- name: Set terraform-ls version facts
+  ansible.builtin.set_fact:
+    terraform_ls_latest: "{{ terraform_ls_release.json.tag_name | regex_replace('^v', '') }}"
+    terraform_ls_installed: "{{ terraform_ls_current.stdout | default('') }}"
+
+- name: Install/upgrade terraform-ls
+  when: terraform_ls_installed != terraform_ls_latest
   block:
     - name: Download terraform-ls
       ansible.builtin.get_url:
-        url: https://releases.hashicorp.com/terraform-ls/0.36.5/terraform-ls_0.36.5_linux_amd64.zip
+        url: "https://releases.hashicorp.com/terraform-ls/{{ terraform_ls_latest }}/terraform-ls_{{ terraform_ls_latest }}_linux_amd64.zip"
         dest: /tmp/terraform-ls.zip
         mode: "0644"
 
@@ -112,22 +194,23 @@
   failed_when: false
 
 # ---- marksman ----
-- name: Check if marksman is installed
-  ansible.builtin.command:
-    cmd: which marksman
-  register: marksman_check
+- name: Get latest marksman release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/artempyanykh/marksman/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: marksman_release
+
+- name: Get current marksman version
+  ansible.builtin.shell:
+    cmd: "marksman --version 2>/dev/null"
+  register: marksman_current
   changed_when: false
   failed_when: false
 
-- name: Install marksman
-  when: marksman_check.rc != 0
+- name: Install/upgrade marksman
+  when: marksman_current.stdout | default('') != marksman_release.json.tag_name
   block:
-    - name: Get latest marksman release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/artempyanykh/marksman/releases/latest
-        return_content: true
-      register: marksman_release
-
     - name: Download marksman
       ansible.builtin.get_url:
         url: "https://github.com/artempyanykh/marksman/releases/download/{{ marksman_release.json.tag_name }}/marksman-linux-x64"
@@ -142,23 +225,29 @@
         remote_src: true
         mode: "0755"
 
+    - name: Clean up marksman
+      ansible.builtin.file:
+        path: /tmp/marksman
+        state: absent
+
 # ---- lua-language-server ----
-- name: Check if lua-language-server is installed
-  ansible.builtin.command:
-    cmd: which lua-language-server
-  register: lua_ls_check
+- name: Get latest lua-language-server release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/LuaLS/lua-language-server/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: lua_ls_release
+
+- name: Get current lua-language-server version
+  ansible.builtin.shell:
+    cmd: "lua-language-server --version 2>/dev/null"
+  register: lua_ls_current
   changed_when: false
   failed_when: false
 
-- name: Install lua-language-server
-  when: lua_ls_check.rc != 0
+- name: Install/upgrade lua-language-server
+  when: lua_ls_current.stdout | default('') != lua_ls_release.json.tag_name
   block:
-    - name: Get latest lua-language-server release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/LuaLS/lua-language-server/releases/latest
-        return_content: true
-      register: lua_ls_release
-
     - name: Download lua-language-server
       ansible.builtin.get_url:
         url: "https://github.com/LuaLS/lua-language-server/releases/download/{{ lua_ls_release.json.tag_name }}/lua-language-server-{{ lua_ls_release.json.tag_name }}-linux-x64.tar.gz"
@@ -194,19 +283,31 @@
         - /tmp/lua-ls-extract
 
 # ---- stylua ----
-- name: Check if stylua is installed
-  ansible.builtin.command:
-    cmd: which stylua
-  register: stylua_check
+- name: Get latest stylua release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: stylua_release
+
+- name: Get current stylua version
+  ansible.builtin.shell:
+    cmd: "stylua --version | cut -d ' ' -f2"
+  register: stylua_current
   changed_when: false
   failed_when: false
 
-- name: Install stylua
-  when: stylua_check.rc != 0
+- name: Set stylua version facts
+  ansible.builtin.set_fact:
+    stylua_latest: "{{ stylua_release.json.tag_name | regex_replace('^v', '') }}"
+    stylua_installed: "{{ stylua_current.stdout | default('') }}"
+
+- name: Install/upgrade stylua
+  when: stylua_installed != stylua_latest
   block:
     - name: Download stylua
       ansible.builtin.get_url:
-        url: https://github.com/JohnnyMorganz/StyLua/releases/download/v2.1.0/stylua-linux-x86_64.zip
+        url: "https://github.com/JohnnyMorganz/StyLua/releases/download/v{{ stylua_latest }}/stylua-linux-x86_64.zip"
         dest: /tmp/stylua.zip
         mode: "0644"
 
@@ -255,19 +356,35 @@
         mode: "0755"
 
 # ---- obsidian ----
-- name: Check if obsidian is installed
-  ansible.builtin.command:
-    cmd: which obsidian
-  register: obsidian_check
+- name: Get latest obsidian release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest
+    headers: "{{ github_api_headers }}"
+    return_content: true
+  register: obsidian_release
+
+- name: Get current obsidian version
+  ansible.builtin.shell:
+    cmd: "obsidian --version 2>/dev/null"
+  register: obsidian_current
   changed_when: false
   failed_when: false
 
-- name: Install obsidian AppImage
-  when: obsidian_check.rc != 0
+- name: Set obsidian version facts
+  ansible.builtin.set_fact:
+    obsidian_latest: "{{ obsidian_release.json.tag_name | regex_replace('^v', '') }}"
+    obsidian_installed: "{{ obsidian_current.stdout | default('') }}"
+
+- name: Install/upgrade obsidian
+  when: obsidian_installed != obsidian_latest
   block:
+    - name: Find obsidian AppImage URL
+      ansible.builtin.set_fact:
+        obsidian_url: "{{ obsidian_release.json.assets | selectattr('name', 'contains', 'amd64.AppImage') | map(attribute='browser_download_url') | first }}"
+
     - name: Download obsidian AppImage
       ansible.builtin.get_url:
-        url: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.9.10/obsidian_1.9.10_amd64.AppImage
+        url: "{{ obsidian_url }}"
         dest: /tmp/obsidian.AppImage
         mode: "0755"
 
@@ -278,3 +395,8 @@
         dest: /usr/local/bin/obsidian
         remote_src: true
         mode: "0755"
+
+    - name: Clean up obsidian
+      ansible.builtin.file:
+        path: /tmp/obsidian.AppImage
+        state: absent

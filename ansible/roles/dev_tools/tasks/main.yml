@@ -14,6 +14,25 @@
   args:
     creates: "{{ ansible_facts['env'].HOME }}/.cargo/bin/rustup"
 
+- name: Update rustup toolchains
+  when: rustup_check.rc == 0
+  ansible.builtin.command:
+    cmd: rustup update
+  environment:
+    PATH: "{{ ansible_facts['env'].HOME }}/.cargo/bin:{{ ansible_facts['env'].PATH }}"
+  register: rustup_update
+  changed_when: "'updated' in rustup_update.stdout | default('')"
+
+- name: Update cargo packages
+  when: rustup_check.rc == 0
+  ansible.builtin.command:
+    cmd: cargo install-update --all --locked
+  environment:
+    PATH: "{{ ansible_facts['env'].HOME }}/.cargo/bin:{{ ansible_facts['env'].PATH }}"
+  register: cargo_update
+  changed_when: "'Updating' in cargo_update.stdout | default('')"
+  failed_when: false
+
 # ---- mise ----
 - name: Check if mise is installed
   ansible.builtin.command:
@@ -55,8 +74,8 @@
         state: present
         update_cache: true
 
-# mise is installed via COPR on Fedora (handled in packages role)
 # mise is installed via pacman on Arch (handled in packages role)
+# mise is NOT used on Fedora/QubesOS - runtimes are installed via dnf
 
 - name: Run mise install
   ansible.builtin.command:
@@ -65,6 +84,7 @@
     PATH: "{{ ansible_facts['env'].HOME }}/.local/bin:{{ ansible_facts['env'].HOME }}/.cargo/bin:/opt/homebrew/bin:{{ ansible_facts['env'].PATH }}"
   register: mise_install
   changed_when: "'install' in mise_install.stdout | default('')"
+  when: ansible_facts['distribution'] != 'Fedora'
 
 # ---- Lua 5.1 ----
 - name: Check current Lua version
