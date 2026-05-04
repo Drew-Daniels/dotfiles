@@ -210,6 +210,7 @@ homebrew_home_casks:
   - figma
   - quickbooks
   - open-pencil/tap/open-pencil
+  - codex
   - claude-code
   - ollama-app
   - firefox

@@ -1,10 +1,4 @@
 ---
-- name: Create newsboat directory
-  ansible.builtin.file:
-    path: "{{ ansible_facts['env'].HOME }}/.newsboat"
-    state: directory
-    mode: "0755"
-
 - name: Create newsraft directory
   ansible.builtin.file:
     path: "{{ ansible_facts['env'].HOME }}/.config/newsraft"
@@ -21,18 +15,6 @@
 - name: Fetch and install feed URLs from 1Password
   when: op_check.rc == 0
   block:
-    - name: Fetch newsboat URLs from 1Password
-      ansible.builtin.shell:
-        cmd: op item get newsboat_urls --fields=notesPlain | sed 's/"//g'
-      register: newsboat_urls
-      changed_when: false
-
-    - name: Write newsboat URLs
-      ansible.builtin.copy:
-        content: "{{ newsboat_urls.stdout }}"
-        dest: "{{ ansible_facts['env'].HOME }}/.newsboat/urls"
-        mode: "0644"
-
     - name: Fetch newsraft URLs from 1Password
       ansible.builtin.shell:
         cmd: op item get newsraft_urls --fields=notesPlain | sed 's/"//g'

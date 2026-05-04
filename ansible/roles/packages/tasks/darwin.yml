@@ -1,7 +1,7 @@
 ---
 - name: Generate Brewfile
   ansible.builtin.copy:
-    dest: /tmp/Brewfile
+    dest: "{{ ansible_facts['env'].HOME }}/.local/share/chezmoi/ansible/.Brewfile"
     mode: "0644"
     content: |
       {% for tap in homebrew_taps %}
@@ -82,6 +82,7 @@
       mas "{{ name }}", id: {{ id }}
       {% endfor %}
       {% endif %}
+  register: brewfile_result
 
 - name: Fix vacuum symlink conflict
   ansible.builtin.command:
@@ -90,9 +91,19 @@
   changed_when: "'symlinks created' in vacuum_link.stdout"
   failed_when: false
 
-- name: Install packages via brew bundle
+- name: Check if all brew dependencies are satisfied
   ansible.builtin.command:
-    cmd: brew bundle --file=/tmp/Brewfile --cleanup --force --zap
+    cmd: "brew bundle check --file={{ ansible_facts['env'].HOME }}/.local/share/chezmoi/ansible/.Brewfile"
+  environment:
+    HOMEBREW_NO_AUTO_UPDATE: "1"
+  register: brew_check
+  changed_when: false
+  failed_when: false
+
+- name: Install packages via brew bundle
+  when: brewfile_result.changed or brew_check.rc != 0
+  ansible.builtin.command:
+    cmd: "brew bundle --file={{ ansible_facts['env'].HOME }}/.local/share/chezmoi/ansible/.Brewfile --cleanup"
   environment:
     HOMEBREW_NO_AUTO_UPDATE: "1"
   register: brew_bundle_result
@@ -102,19 +113,17 @@
 - name: Show brew bundle activity
   ansible.builtin.debug:
     msg: "{{ brew_bundle_result.stdout_lines | select('search', 'Installing|Upgrading|Uninstalling') | list }}"
-  when: brew_bundle_result.stdout_lines | select('search', 'Installing|Upgrading|Uninstalling') | list | length > 0
+  when:
+    - brew_bundle_result is not skipped
+    - brew_bundle_result.stdout_lines | select('search', 'Installing|Upgrading|Uninstalling') | list | length > 0
 
 - name: Warn about brew bundle failures
   ansible.builtin.debug:
     msg: "{{ brew_bundle_result.stderr_lines }}"
   when:
+    - brew_bundle_result is not skipped
     - brew_bundle_result.rc != 0
     - brew_bundle_result.stderr_lines | default([]) | length > 0
-
-- name: Clean up Brewfile
-  ansible.builtin.file:
-    path: /tmp/Brewfile
-    state: absent
 
 - name: Remove stale homebrew gitconfig
   ansible.builtin.file:
