@@ -1,4 +1,10 @@
 ---
+- name: Get brew prefix
+  ansible.builtin.command:
+    cmd: brew --prefix
+  register: brew_prefix
+  changed_when: false
+
 - name: Generate Brewfile
   ansible.builtin.copy:
     dest: "{{ ansible_facts['env'].HOME }}/.local/share/chezmoi/ansible/.Brewfile"
@@ -129,3 +135,18 @@
   ansible.builtin.file:
     path: /opt/homebrew/etc/gitconfig
     state: absent
+
+# block-goose-cli installs a 'goose' binary that conflicts with other packages
+- name: Unlink block-goose-cli
+  ansible.builtin.command:
+    cmd: brew unlink block-goose-cli
+  changed_when: false
+  failed_when: false
+
+- name: Symlink goose as goose-cli
+  ansible.builtin.file:
+    src: "{{ brew_prefix.stdout }}/opt/block-goose-cli/bin/goose"
+    dest: "{{ brew_prefix.stdout }}/bin/goose-cli"
+    state: link
+    force: true
+  failed_when: false
