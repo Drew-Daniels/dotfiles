@@ -1,0 +1,58 @@
+@ last.fm
+https://lfm.xiffy.nl/dredani/recommended 
+https://lfm.xiffy.nl/dredani/topartists
+# period can be: 7day, 1month, 3month, 6month, 12month or overall
+https://lfm.xiffy.nl/dredani/topartists?period=7day 
+https://lfm.xiffy.nl/dredani/toptracks
+https://lfm.xiffy.nl/dredani/toptracks?period=6month 
+https://lfm.xiffy.nl/dredani/loved
+# recent
+https://lfm.xiffy.nl/dredani
+
+@ gemini
+https://geminiprotocol.net/news/atom.xml
+
+@ hyprland
+https://blog.vaxry.net/feed
+
+@ drew-devault
+https://drewdevault.com/blog/index.xml
+
+@ vhyrro
+https://vhyrro.github.io/rss.xml
+
+@qutebrowser
+https://blog.qutebrowser.org/feeds/all.atom.xml
+
+@ Hacker News
+https://hnrss.org/frontpage
+https://hnrss.org/bestcomments
+https://hnrss.org/bestcomments
+
+
+@ Where's your Ed at
+https://www.wheresyoured.at/rss
+
+@ Reuters
+https://news.google.com/rss/search?q=site%3Areuters.com&hl=en-US&gl=US&ceid=US%3Aen
+
+@ AP News
+https://news.google.com/rss/search?q=site%3Aapnews.com&hl=en-US&gl=US&ceid=US%3Aen
+
+@ Al Jazeera
+https://www.aljazeera.com/xml/rss/all.xml
+
+@ Andrew Kelley (Zig Creator)
+https://andrewkelley.me/rss.xml
+
+@ Armin Ronacher (Creator of Flask)
+https://lucumr.pocoo.org/feed.atom
+
+@ Mario Zechner (Creator of pi-mono)
+https://mariozechner.at/rss.xml
+
+@ Simon Willison (Co-Creator of Django)
+https://simonwillison.net/atom/entries/
+
+@ Craig Mod
+https://craigmod.com/index.xml

@@ -50,5 +50,3 @@
       tags: build_from_source
     - role: debug_adapters
       tags: debug_adapters
-    - role: feeds
-      tags: feeds
