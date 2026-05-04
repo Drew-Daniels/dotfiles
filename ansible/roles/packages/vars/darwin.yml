@@ -12,6 +12,7 @@ homebrew_head_brews:
   - utf8proc
 
 homebrew_brews:
+  - gemini-cli
   - lcov
   - glow
   - git-cliff
