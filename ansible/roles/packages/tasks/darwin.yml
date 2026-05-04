@@ -83,18 +83,33 @@
       {% endfor %}
       {% endif %}
 
+- name: Fix vacuum symlink conflict
+  ansible.builtin.command:
+    cmd: brew link --overwrite vacuum
+  register: vacuum_link
+  changed_when: "'symlinks created' in vacuum_link.stdout"
+  failed_when: false
+
 - name: Install packages via brew bundle
   ansible.builtin.command:
-    cmd: brew bundle --file=/tmp/Brewfile --cleanup --force --zap --verbose
+    cmd: brew bundle --file=/tmp/Brewfile --cleanup --force --zap
   environment:
     HOMEBREW_NO_AUTO_UPDATE: "1"
   register: brew_bundle_result
   changed_when: "'Installing' in brew_bundle_result.stdout or 'Upgrading' in brew_bundle_result.stdout or 'Uninstalling' in brew_bundle_result.stdout"
+  failed_when: false
 
-- name: Show brew bundle output
+- name: Show brew bundle activity
   ansible.builtin.debug:
-    msg: "{{ brew_bundle_result.stdout_lines }}"
-  when: brew_bundle_result.stdout_lines | length > 0
+    msg: "{{ brew_bundle_result.stdout_lines | select('search', 'Installing|Upgrading|Uninstalling') | list }}"
+  when: brew_bundle_result.stdout_lines | select('search', 'Installing|Upgrading|Uninstalling') | list | length > 0
+
+- name: Warn about brew bundle failures
+  ansible.builtin.debug:
+    msg: "{{ brew_bundle_result.stderr_lines }}"
+  when:
+    - brew_bundle_result.rc != 0
+    - brew_bundle_result.stderr_lines | default([]) | length > 0
 
 - name: Clean up Brewfile
   ansible.builtin.file:

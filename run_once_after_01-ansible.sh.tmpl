@@ -14,7 +14,7 @@ fi
 export CHEZMOI_HOME_OR_WORK="{{ .homeOrWork }}"
 
 echo "Running Ansible playbook..."
+export ANSIBLE_CONFIG="$HOME/.local/share/chezmoi/ansible/ansible.cfg"
 ansible-playbook \
   --inventory "$HOME/.local/share/chezmoi/ansible/inventory/localhost.yml" \
-  "$HOME/.local/share/chezmoi/ansible/playbook.yml" \
-  -v
+  "$HOME/.local/share/chezmoi/ansible/playbook.yml"
