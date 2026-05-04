@@ -1,105 +1,70 @@
 fedora_dnf_packages:
-  - fuse
-  - fuse-libs
-  - automake
+  # Core CLI tools
   - wget
-  - beets
-  - beets-plugins
-  - beets-docs
-  - shfmt
-  - strawberry
-  - rustup
-  - git-credential-oauth
+  - jq
   - ripgrep
-  - git-delta
-  - fish
-  - fzf
   - fd-find
   - bat
-  - ctags
-  - awscli
-  - compat-lua
-  - luarocks
-  - jetbrains-mono-fonts-all
-  - neovim
-  - tmux
-  - alacritty
-  - ImageMagick
+  - fzf
+  - git-delta
   - zoxide
   - yq
   - du-dust
-  - kiwix-desktop
-  - rofi
-  - speedtest-cli
-  - feh
-  - xmlstarlet
-  - nmap
-  - openvpn
-  - wireguard-tools
-  - plocate
-  - foliate
-  - gnome-disk-utility
-  - neomutt
-  - electrum
-  - nvme-cli
-  - obs-studio
-  - bemenu
-  - direnv
-  - gitleaks
-  - weechat
+  - tree-sitter
   - hexyl
-  - qutebrowser
-  - gh
-  - glab
-  - ncmpcpp
-  - libmpd
-  - qt6ct
-  - mpv
-  - usbutils
   - lsd
   - pandoc
-  - zathura-pdf-mupdf
-  - mumble
-  - qalculate-qt
-  - isync
-  - urlscan
-  - msmtp
-  - abook
-  - tree-sitter
-  - clang-tools-extra
   - difftastic
-  - libreoffice
-  - gnome-terminal
+  - plocate
+  # Shell & prompt
+  - fish
+  - shfmt
+  - ShellCheck
+  # Editor & dev tools
+  - neovim
+  - tmux
+  - ctags
+  - direnv
+  - gitleaks
+  - automake
+  - clang-tools-extra
+  # Git tools
+  - git-credential-oauth
+  - gh
+  - glab
+  # Language runtimes & build tools
+  - rust-analyzer
+  - compat-lua
+  - luarocks
+  - ImageMagick
+  - ImageMagick-devel
+  # Desktop & window management
+  - rofi
+  - bemenu
+  - feh
+  - qt6ct
+  - xclip
+  - chafa
+  - foliate
+  # Web & chat
+  - weechat
+  # Misc
   - dnf-plugins-core
 
-fedora_ruby_build_deps:
-  - autoconf
-  - gcc
-  - rust
-  - patch
-  - make
-  - bzip2
-  - openssl-devel
-  - libyaml-devel
-  - libffi-devel
-  - readline-devel
-  - gdbm-devel
-  - ncurses-devel
-  - perl-FindBin
-  - zlib-ng-compat-devel
+fedora_ruby_build_deps: []
 
 fedora_copr_repos:
-  - jdxcode/mise
   - lihaohong/yazi
+  - scottames/ghostty
 
 fedora_copr_packages:
-  - mise
   - yazi
+  - ghostty
 
 fedora_crate_packages:
   - starship
   - jless
-  - cargo_update
+  - cargo-update
   - mergiraf
 
 fedora_npm_packages:

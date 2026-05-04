@@ -78,4 +78,6 @@
     }
   },
   "model": "anthropic/claude-opus-4-6",
+  // Clobbers context
+  "lsp": false,
 }
