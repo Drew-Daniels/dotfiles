@@ -11,3 +11,4 @@ github.com/gohugoio/hugo
 github.com/Drew-Daniels/nux
 github.com/Drew-Daniels/plumb
 github.com/Drew-Daniels/studious
+github.com/go-delve/delve/cmd/dlv@latest
