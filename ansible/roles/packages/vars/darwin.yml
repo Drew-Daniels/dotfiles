@@ -187,7 +187,7 @@ homebrew_home_head_brews:
 
 homebrew_home_brews:
   - gemini-cli
-  - atuin
+  # - atuin
   - hcloud
   - ansible
   - b2-tools
