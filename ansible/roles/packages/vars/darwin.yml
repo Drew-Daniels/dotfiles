@@ -1,4 +1,5 @@
 homebrew_taps:
+  - danielgtaylor/restish
   - sw33tlie/macshot
   - cormacrelf/tap
   - teamookla/speedtest
@@ -12,6 +13,7 @@ homebrew_head_brews:
   - utf8proc
 
 homebrew_brews:
+  - restish
   - lcov
   - glow
   - git-cliff
