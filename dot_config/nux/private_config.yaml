@@ -60,3 +60,5 @@ groups:
     - mirth-configs
     - mirth-pipeline
     - mirth-integration
+    - mirth-client
+    - mirth-cli
