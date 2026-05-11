@@ -55,3 +55,7 @@ groups:
     - interoperability+
     - mirth+
     - lore+
+  work-lite:
+    - interoperability+
+    - mirth-configs
+    - mirth-integration
