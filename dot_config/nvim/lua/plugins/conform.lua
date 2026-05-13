@@ -137,7 +137,8 @@ return {
 						return { "shfmt", "shellcheck" }
 					end
 				end,
-				sql = { "sqlfmt" },
+				-- sql = { "sqlfmt" },
+				sql = { "pg_format" },
 				java = { "astyle" },
 				javascript = get_js_formatters,
 				typescript = get_js_formatters,

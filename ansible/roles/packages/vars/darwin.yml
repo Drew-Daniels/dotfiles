@@ -134,7 +134,7 @@ homebrew_brews:
   - lua-language-server
   - marksman
   - sql-language-server
-  - sqlfmt
+  - pgformatter
   - tailwindcss-language-server
   - taplo
   - terraform-ls

@@ -355,7 +355,7 @@ return {
 		-- 	capabilities = capabilities,
 		-- })
 
-		vim.lsp.config("sqls", {
+		vim.lsp.config("postgres_lsp", {
 			capabilities = capabilities,
 		})
 
@@ -501,7 +501,7 @@ return {
 			"ruff",
 			-- NOTE: Commenting out bc rustaceanvim handles enabling this
 			-- "rust_analyzer",
-			"sqls",
+			"postgres_lsp",
 			"standardrb",
 			"tailwindcss",
 			"terraformls",
