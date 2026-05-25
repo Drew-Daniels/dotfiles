@@ -69,7 +69,7 @@
   "schemastore.nvim": { "branch": "main", "commit": "68ba9015c0cc77a0fe954bd2578dfa7a5c24134f" },
   "scratch.nvim": { "branch": "main", "commit": "9ce75544825df5efe8c2f8930433f9c599393d14" },
   "smart-splits.nvim": { "branch": "master", "commit": "b24335c3186b6c35522fa108af63646a2f70b3b6" },
-  "snacks.nvim": { "branch": "main", "commit": "0770753c88228f7f15449c6a5b242e3f7cd0d71c" },
+  "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "translate.nvim": { "branch": "main", "commit": "1a841e56407ba02e919ed9af573dbe531404aebb" },
   "transparent.nvim": { "branch": "main", "commit": "8ac59883de84e9cd1850ea25cf087031c5ba7d54" },
   "tree-sitter-d2": { "branch": "main", "commit": "200434618a6bede20ebd4982aa4d4f1edeb0b5c1" },

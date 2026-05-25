@@ -11,6 +11,12 @@
       "command": "typescript-language-server",
       "args": ["--stdio"]
     }
+  },
+  "mcp": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp", "--headless"]
+    }
   }
 }
-
