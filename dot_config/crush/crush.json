@@ -17,6 +17,14 @@
       "type": "stdio",
       "command": "npx",
       "args": ["@playwright/mcp", "--headless"]
+    },
+    "firecrawl": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "$(op read 'op://Personal/Firecrawl/API Key')"
+      }
     }
   }
 }
