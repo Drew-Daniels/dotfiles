@@ -78,9 +78,6 @@
     }
   },
   "model": "anthropic/claude-opus-4-6",
-  "plugin": [
-    "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
   // Clobbers context
   "lsp": false,
 }
