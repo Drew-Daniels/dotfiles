@@ -256,5 +256,6 @@ homebrew_work_casks:
   - rancher
   - slack
   - zoom
+  - teleport-connect
 
 homebrew_work_mas_apps: {}
