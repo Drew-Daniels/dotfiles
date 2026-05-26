@@ -245,6 +245,7 @@ homebrew_work_head_brews: []
 homebrew_work_brews:
   - ankitpokhrel/jira-cli/jira-cli
   - glab
+  - teleport
 
 homebrew_work_no_quarantine_casks: []
 
