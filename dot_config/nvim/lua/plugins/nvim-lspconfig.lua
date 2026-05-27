@@ -108,6 +108,10 @@ return {
 		-- 	capabilities = capabilities,
 		-- })
 
+		vim.lsp.config("cue", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("cucumber_language_server", {
 			capabilities = capabilities,
 			settings = {
@@ -475,6 +479,7 @@ return {
 			-- "prismals",
 			-- "smithy_ls",
 			"vimls",
+			"cue",
 			"cucumber_language_server",
 			"bashls",
 			-- Disabling for now since I hardly use Python, and when I do, this gets noisy
