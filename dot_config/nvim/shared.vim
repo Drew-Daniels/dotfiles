@@ -16,10 +16,10 @@ set splitbelow
 set splitright
 set nohlsearch
 set wildignore=node_modules/*
-set syntax=on
+syntax on
 set virtualedit=block
 set foldopen-=search
-set shellcmdflag=-ic
+set shellcmdflag=-c
 
 autocmd FileType * set formatoptions-=ro
 
@@ -72,3 +72,8 @@ augroup shared_filetypes
   autocmd BufNewFile,BufRead */templates/NOTES.txt set filetype=helm
   autocmd BufNewFile,BufRead helmfile*.yml,helmfile*.yaml set filetype=helm
 augroup END
+
+" ── Theme ────────────────────────────────────────────────────────────
+
+set background=dark
+silent! colorscheme gruvbox
