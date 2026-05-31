@@ -115,7 +115,7 @@ return {
 			-- NOTE: Not as performant as live_grep_native, but might be more dependable.
 			-- { "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Live Search" },
 			{ "<leader>fs", "<cmd>FzfLua live_grep_native<cr>", desc = "Live Search (Native)" },
-			{ "<leader>fp", "<cmd>MarkdownPreview<cr>", desc = "File Preview (Markdown)" },
+			{ "<leader>fp", "<cmd>MdPreview<cr>", desc = "File Preview (Markdown)" },
 			{ "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Git-tracked File(s)" },
 			{ "<leader>fo", "<cmd>Oil<cr>", desc = "Oil" },
 			{ "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent File(s)" },
