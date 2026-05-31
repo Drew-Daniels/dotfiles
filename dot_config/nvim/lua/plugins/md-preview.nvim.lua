@@ -4,7 +4,11 @@ return {
 	dev = true,
 	ft = "markdown",
 	cmd = { "MdPreview", "MdPreviewStop", "MdPreviewToggle" },
-	config = function()
-		require("md-preview").setup()
-	end,
+	opts = {
+		-- theme = "gruvbox",
+		theme = {
+			light = "catppuccin",
+			dark = "gruvbox",
+		},
+	},
 }
