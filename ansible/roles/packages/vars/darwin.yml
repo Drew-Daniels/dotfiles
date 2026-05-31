@@ -14,6 +14,7 @@ homebrew_head_brews:
 
 homebrew_brews:
   - cmark
+  - cmark-gfm
   - crush
   - restish
   - lcov
