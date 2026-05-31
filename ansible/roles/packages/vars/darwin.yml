@@ -13,6 +13,7 @@ homebrew_head_brews:
   - utf8proc
 
 homebrew_brews:
+  - cmark
   - crush
   - restish
   - lcov
