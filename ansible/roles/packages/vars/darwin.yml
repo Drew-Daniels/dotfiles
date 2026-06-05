@@ -28,8 +28,6 @@ homebrew_brews:
   - git
   - git-lfs
   - gitleaks
-  - golangci-lint
-  - golangci-lint-langserver
   - golines
   - age
   - ast-grep
