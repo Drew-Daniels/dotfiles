@@ -201,6 +201,7 @@ return {
 				terraform = { "terraform_fmt" },
 				-- NOTE: Should be handled through tinymist: https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/README.md#configuration
 				-- typst = { "typstyle" },
+				saga = { lsp_fallback = true },
 				yaml = { "yamlfmt" },
 				xml = { "xmlstarlet" },
 				-- NOTE: If I want to use below formatters on every ft
