@@ -1,1 +1,0 @@
-/Users/drew/projects/towncrier-v2/tree-sitter-saga/queries/folds.scm
