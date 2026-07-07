@@ -1,3 +1,8 @@
+options.default_width = 10
+
+# Show row number by default: https://github.com/saulpw/visidata/issues/1536#issuecomment-1255709940
+options.disp_rstatus_fmt += '  {sheet.cursorRowIndex}/{sheet.nRows}'
+
 # https://github.com/saulpw/visidata/blob/stable/docs/customize.md#example-bind-i-to-edit-cell-globally
 TableSheet.unbindkey('i')
 TableSheet.bindkey('i', 'edit-cell')
