@@ -17,14 +17,14 @@ homebrew_brews:
   - cmark
   - cmark-gfm
   - crush
-  - restish
+  # - restish
   - lcov
   - glow
-  - git-cliff
-  - pdfgrep
+  # - git-cliff
+  # - pdfgrep
   - dive
   - dos2unix
-  - graphviz
+  # - graphviz
   - git
   - git-lfs
   - gitleaks
@@ -75,7 +75,7 @@ homebrew_brews:
   - opentofu
   - llvm
   - lnav
-  - lynx
+  # - lynx
   - hurl
   - sevenzip
   - syft
@@ -190,7 +190,7 @@ homebrew_home_head_brews:
   - taglib
 
 homebrew_home_brews:
-  - gemini-cli
+  # - gemini-cli
   # - atuin
   - hcloud
   - ansible
@@ -199,22 +199,22 @@ homebrew_home_brews:
   - podman-tui
   - docker-compose
   - yt-dlp
-  - cmus
+  # - cmus
   - fftw
   - mpc
-  - mpd
-  - sops
-  - block-goose-cli
+  # - mpd
+  # - sops
+  # - block-goose-cli
   - forgejo
-  - opencode
+  # - opencode
 
 homebrew_home_no_quarantine_casks: []
 
 homebrew_home_casks:
-  - element
-  - figma
-  - quickbooks
-  - open-pencil/tap/open-pencil
+  # - element
+  # - figma
+  # - quickbooks
+  # - open-pencil/tap/open-pencil
   - codex
   - claude-code
   - ollama-app
@@ -223,12 +223,12 @@ homebrew_home_casks:
   - lmms
   - trezor-suite
   - signal
-  - qutebrowser
-  - mixxx
-  - weasis
-  - rekordbox
-  - wireshark-app
-  - tailscale-app
+  # - qutebrowser
+  # - mixxx
+  # - weasis
+  # - rekordbox
+  # - wireshark-app
+  # - tailscale-app
   - keepassxc
 
 homebrew_home_mas_apps:
