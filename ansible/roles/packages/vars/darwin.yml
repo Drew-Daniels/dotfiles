@@ -176,7 +176,7 @@ homebrew_casks:
   - obs
   - obsidian
   - protonvpn
-  # - postgres-app
+  - postgres-app
   - rectangle
 
 homebrew_mas_apps:
