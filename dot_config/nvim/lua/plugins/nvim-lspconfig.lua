@@ -482,8 +482,7 @@ return {
 			"cue",
 			"cucumber_language_server",
 			"bashls",
-			-- Disabling for now since I hardly use Python, and when I do, this gets noisy
-			-- "basedpyright",
+			"basedpyright",
 			"clojure_lsp",
 			"cssls",
 			"taplo",

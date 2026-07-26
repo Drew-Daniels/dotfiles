@@ -96,6 +96,7 @@ homebrew_brews:
   - gradle
   - mergiraf
   - mise
+  - uv
   - newsraft
   - pandoc
   - pkgconf

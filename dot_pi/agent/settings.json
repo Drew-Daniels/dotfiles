@@ -11,8 +11,8 @@
   "packages": [
     "npm:@ollama/pi-web-search"
   ],
-  "defaultProvider": "openrouter",
-  "defaultModel": "anthropic/claude-opus-4.6",
+  "defaultProvider": "zai",
+  "defaultModel": "glm-5-turbo",
   "prompts": [
     "~/.pi/agent/prompts"
   ]
