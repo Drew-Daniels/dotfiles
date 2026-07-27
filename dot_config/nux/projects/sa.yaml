@@ -3,4 +3,4 @@ root: ~/projects
 windows:
   - name: main
     panes:
-      - python -m stay-awake
+      - caffeinate -dims
