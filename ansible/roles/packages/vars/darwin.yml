@@ -175,7 +175,7 @@ homebrew_casks:
   - ghostty
   - sioyek
   - obs
-  - obsidian
+  # - obsidian
   - protonvpn
   - postgres-app
   - rectangle
@@ -216,6 +216,7 @@ homebrew_home_casks:
   # - figma
   # - quickbooks
   # - open-pencil/tap/open-pencil
+  - obsidian
   - codex
   - claude-code
   - ollama-app
