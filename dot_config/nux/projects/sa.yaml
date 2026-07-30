@@ -3,4 +3,4 @@ root: ~/projects
 windows:
   - name: main
     panes:
-      - caffeinate -dims
+      - stay-awake
