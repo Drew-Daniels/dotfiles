@@ -191,6 +191,7 @@ homebrew_home_head_brews:
   - taglib
 
 homebrew_home_brews:
+  - mdb-tools
   # - gemini-cli
   # - atuin
   - hcloud
