@@ -89,11 +89,6 @@ return {
 				insert_tag = "<C-l>",
 			},
 		},
-		completion = {
-			nvim_cmp = false,
-			blink = true,
-			min_chars = 2,
-		},
 		-- TODO: This appears to be deprecated now
 		-- mappings = {
 		-- 	-- TODO: Figure out why this isn't working
