@@ -16,5 +16,8 @@ macos-titlebar-proxy-icon=hidden
 # To disable programming ligatures: https://ghostty.org/docs/config/reference#font-feature
 font-feature = -calt
 
+# Ghostty has a known issue - Ctrl+[ sends ^[[91;5u (kitty protocol encoding) instead of ^[ (raw escape)
+keybind = ctrl+[ = text:\x1b
+
 config-file=?macos-theme
 config-file=?linux-theme
