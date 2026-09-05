@@ -1,0 +1,279 @@
+/* Gruvbox Material Dark theme for Marimo */
+/* Based on https://github.com/sainnhe/gruvbox-material (medium contrast) */
+
+:root {
+  /* Gruvbox Material Dark palette */
+  /* bg: #282828, bg1: #32302f, bg2: #32302f, bg3: #45403d, bg4: #45403d, bg5: #5a524c */
+  /* fg: #d4be98, fg1: #ddc7a1 */
+  /* red: #ea6962, orange: #e78a4e, yellow: #d8a657, green: #a9b665 */
+  /* aqua: #89b482, blue: #7daea3, purple: #d3869b */
+  /* grey0: #7c6f64, grey1: #928374, grey2: #a89984 */
+
+  --background: #282828;
+  --foreground: #d4be98;
+  --muted: #32302f;
+  --muted-foreground: #a89984;
+  --popover: #32302f;
+  --popover-foreground: #d4be98;
+  --card: #32302f;
+  --card-foreground: #ddc7a1;
+  --border: #45403d;
+  --input: #5a524c;
+  --primary: #7daea3;
+  --primary-foreground: #282828;
+  --secondary: #32302f;
+  --secondary-foreground: #d4be98;
+  --accent: #45403d;
+  --accent-foreground: #d4be98;
+  --ring: #7daea3;
+  --destructive: #ea6962;
+  --destructive-foreground: #282828;
+  --error: #ea6962;
+  --error-foreground: #282828;
+  --success: #a9b665;
+  --success-foreground: #282828;
+  --action: #d8a657;
+  --action-hover: #e78a4e;
+  --action-foreground: #282828;
+  --link: #7daea3;
+  --link-visited: #d3869b;
+  --stale: #d8a65740;
+  --hover: #45403d;
+  --base-shadow: #1d202199;
+  --base-shadow-darker: #1d202199;
+  --cm-background: #282828;
+  --cm-comment: #928374;
+  --scrollbar-thumb: #5a524c;
+  --scrollbar-track: #282828;
+
+  /* Syntax highlighting - Pygments codehilite tokens */
+  --codehilite-hll: #45403d;
+  --codehilite-c: #928374;   /* comment */
+  --codehilite-ch: #928374;  /* comment.hashbang */
+  --codehilite-cm: #928374;  /* comment.multiline */
+  --codehilite-cp: #e78a4e;  /* comment.preproc */
+  --codehilite-cpf: #928374; /* comment.preprocfile */
+  --codehilite-cs: #928374;  /* comment.special */
+  --codehilite-err: #ea6962; /* error */
+  --codehilite-k: #ea6962;   /* keyword */
+  --codehilite-kc: #d3869b;  /* keyword.constant */
+  --codehilite-kd: #d3869b;  /* keyword.declaration */
+  --codehilite-kn: #ea6962;  /* keyword.namespace (import/from) */
+  --codehilite-kp: #d3869b;  /* keyword.pseudo */
+  --codehilite-kr: #d3869b;  /* keyword.reserved */
+  --codehilite-kt: #d8a657;  /* keyword.type */
+  --codehilite-l: #d8a657;   /* literal */
+  --codehilite-ld: #d8a657;  /* literal.date */
+  --codehilite-m: #d8a657;   /* number */
+  --codehilite-mb: #d8a657;  /* number.bin */
+  --codehilite-mf: #d8a657;  /* number.float */
+  --codehilite-mh: #d8a657;  /* number.hex */
+  --codehilite-mi: #d8a657;  /* number.integer */
+  --codehilite-mo: #d8a657;  /* number.oct */
+  --codehilite-il: #d8a657;  /* number.integer.long */
+  --codehilite-s: #a9b665;   /* string */
+  --codehilite-sa: #a9b665;  /* string.affix */
+  --codehilite-sb: #a9b665;  /* string.backtick */
+  --codehilite-sc: #a9b665;  /* string.char */
+  --codehilite-dl: #a9b665;  /* string.delimiter */
+  --codehilite-sd: #a9b665;  /* string.doc */
+  --codehilite-se: #e78a4e;  /* string.escape */
+  --codehilite-sh: #a9b665;  /* string.heredoc */
+  --codehilite-si: #7daea3;  /* string.interpol */
+  --codehilite-sr: #e78a4e;  /* string.regex */
+  --codehilite-ss: #a9b665;  /* string.symbol */
+  --codehilite-sx: #a9b665;  /* string.other */
+  --codehilite-n: #d4be98;   /* name */
+  --codehilite-na: #7daea3;  /* name.attribute */
+  --codehilite-nb: #d8a657;  /* name.builtin */
+  --codehilite-nc: #d8a657;  /* name.class */
+  --codehilite-nd: #89b482;  /* name.decorator */
+  --codehilite-ne: #ea6962;  /* name.exception */
+  --codehilite-nf: #a9b665;  /* name.function */
+  --codehilite-ni: #d4be98;  /* name.entity */
+  --codehilite-nl: #d4be98;  /* name.label */
+  --codehilite-nn: #d4be98;  /* name.namespace */
+  --codehilite-no: #d3869b;  /* name.constant */
+  --codehilite-nt: #ea6962;  /* name.tag */
+  --codehilite-nv: #7daea3;  /* name.variable */
+  --codehilite-nx: #d4be98;  /* name.other */
+  --codehilite-o: #e78a4e;   /* operator */
+  --codehilite-ow: #ea6962;  /* operator.word */
+  --codehilite-py: #d4be98;  /* punctuation */
+  --codehilite-bp: #d3869b;  /* name.builtin.pseudo (self/cls) */
+  --codehilite-fm: #a9b665;  /* name.function.magic */
+  --codehilite-vc: #7daea3;  /* name.variable.class */
+  --codehilite-vg: #7daea3;  /* name.variable.global */
+  --codehilite-vi: #7daea3;  /* name.variable.instance */
+  --codehilite-vm: #7daea3;  /* name.variable.magic */
+
+  /* Radix-style color scale overrides (used by tables, buttons, etc.) */
+  --gray-1: #282828;
+  --gray-2: #2e2c2b;
+  --gray-3: #32302f;
+  --gray-4: #3c3836;
+  --gray-5: #45403d;
+  --gray-6: #504945;
+  --gray-7: #5a524c;
+  --gray-8: #7c6f64;
+  --gray-9: #928374;
+  --gray-10: #a89984;
+  --gray-11: #bdae93;
+  --gray-12: #d4be98;
+
+  --green-1: #282828;
+  --green-2: #2e3228;
+  --green-3: #34381e;
+  --green-4: #3d4220;
+  --green-5: #4a5025;
+  --green-6: #5a6130;
+  --green-7: #6e7a3a;
+  --green-8: #8a944a;
+  --green-9: #a9b665;
+  --green-10: #b5c272;
+  --green-11: #c1ce80;
+  --green-12: #dde5b0;
+
+  --red-1: #282828;
+  --red-2: #322424;
+  --red-3: #442222;
+  --red-4: #5a2525;
+  --red-5: #6e2d2d;
+  --red-6: #833535;
+  --red-7: #a04040;
+  --red-8: #c05050;
+  --red-9: #ea6962;
+  --red-10: #ee7b74;
+  --red-11: #f29088;
+  --red-12: #f8c0bc;
+
+  --blue-1: #282828;
+  --blue-2: #282e30;
+  --blue-3: #233539;
+  --blue-4: #274045;
+  --blue-5: #2e4f55;
+  --blue-6: #3a6068;
+  --blue-7: #4d7a82;
+  --blue-8: #659692;
+  --blue-9: #7daea3;
+  --blue-10: #8dbab0;
+  --blue-11: #9ec6bd;
+  --blue-12: #c8e0da;
+
+  --yellow-1: #282828;
+  --yellow-2: #302c22;
+  --yellow-3: #3c3420;
+  --yellow-4: #4a3f20;
+  --yellow-5: #5c4e24;
+  --yellow-6: #70602c;
+  --yellow-7: #897638;
+  --yellow-8: #a68f45;
+  --yellow-9: #d8a657;
+  --yellow-10: #deb368;
+  --yellow-11: #e4c07a;
+  --yellow-12: #f0deb0;
+
+  --orange-1: #282828;
+  --orange-2: #302822;
+  --orange-3: #3e2e1e;
+  --orange-4: #50381e;
+  --orange-5: #644422;
+  --orange-6: #7a5528;
+  --orange-7: #946a32;
+  --orange-8: #b27e3c;
+  --orange-9: #e78a4e;
+  --orange-10: #eb9960;
+  --orange-11: #efa872;
+  --orange-12: #f5d0a8;
+
+  --purple-1: #282828;
+  --purple-2: #302830;
+  --purple-3: #3c2e3c;
+  --purple-4: #4a3548;
+  --purple-5: #5c4058;
+  --purple-6: #704d6a;
+  --purple-7: #886080;
+  --purple-8: #a87498;
+  --purple-9: #d3869b;
+  --purple-10: #d998a8;
+  --purple-11: #dfaab5;
+  --purple-12: #ecd0d8;
+
+  --amber-1: #282828;
+  --amber-2: #302c22;
+  --amber-3: #3c3420;
+  --amber-4: #4a3f20;
+  --amber-5: #5c4e24;
+  --amber-6: #70602c;
+  --amber-7: #897638;
+  --amber-8: #a68f45;
+  --amber-9: #d8a657;
+  --amber-10: #deb368;
+  --amber-11: #e4c07a;
+  --amber-12: #f0deb0;
+
+  --cyan-1: #282828;
+  --cyan-2: #282e2e;
+  --cyan-3: #233535;
+  --cyan-4: #274040;
+  --cyan-5: #2e5050;
+  --cyan-6: #3a6262;
+  --cyan-7: #4d7a7a;
+  --cyan-8: #659292;
+  --cyan-9: #89b482;
+  --cyan-10: #96c090;
+  --cyan-11: #a4cc9e;
+  --cyan-12: #c8e4c0;
+
+  --grass-1: #282828;
+  --grass-2: #2e3228;
+  --grass-3: #34381e;
+  --grass-4: #3d4220;
+  --grass-5: #4a5025;
+  --grass-6: #5a6130;
+  --grass-7: #6e7a3a;
+  --grass-8: #8a944a;
+  --grass-9: #a9b665;
+  --grass-10: #b5c272;
+  --grass-11: #c1ce80;
+  --grass-12: #dde5b0;
+
+  --lime-1: #282828;
+  --lime-2: #2e3228;
+  --lime-3: #343a1e;
+  --lime-4: #3d4420;
+  --lime-5: #4a5225;
+  --lime-6: #5a6430;
+  --lime-7: #6e7e3a;
+  --lime-8: #8a984a;
+  --lime-9: #a9b665;
+  --lime-10: #b5c272;
+  --lime-11: #c1ce80;
+  --lime-12: #dde5b0;
+
+  --sky-1: #282828;
+  --sky-2: #282e30;
+  --sky-3: #233539;
+  --sky-4: #274045;
+  --sky-5: #2e4f55;
+  --sky-6: #3a6068;
+  --sky-7: #4d7a82;
+  --sky-8: #659692;
+  --sky-9: #7daea3;
+  --sky-10: #8dbab0;
+  --sky-11: #9ec6bd;
+  --sky-12: #c8e0da;
+
+  --crimson-1: #282828;
+  --crimson-2: #302430;
+  --crimson-3: #3e2238;
+  --crimson-4: #502540;
+  --crimson-5: #642e50;
+  --crimson-6: #7a3862;
+  --crimson-7: #944578;
+  --crimson-8: #b45890;
+  --crimson-9: #d3869b;
+  --crimson-10: #d998a8;
+  --crimson-11: #dfaab5;
+  --crimson-12: #ecd0d8;
+}
