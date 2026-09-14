@@ -31,7 +31,7 @@
   "luarocks.nvim": { "branch": "main", "commit": "1db9093915eb16ba2473cfb8d343ace5ee04130a" },
   "lush.nvim": { "branch": "main", "commit": "9c60ec2279d62487d942ce095e49006af28eed6e" },
   "markdown-preview.nvim": { "branch": "master", "commit": "9589ae06a7a0cc105f669e06c2c6bff544bd60a6" },
-  "marksman": { "branch": "main", "commit": "4800225e828ac5a6d515af5e4b9392931d88e4a9" },
+  "marksman": { "branch": "main", "commit": "5cee45b225224e8d85a797157444949ffb6e726d" },
   "neogen": { "branch": "main", "commit": "23e7e9f883d01289ebd90e98025acc860ea26366" },
   "neomutt.vim": { "branch": "main", "commit": "2a4f2870560f20614dd22735a25670c7afe3d479" },
   "neorg": { "branch": "main", "commit": "fce940febd4444dcc44095e648105db2560dfee8" },
