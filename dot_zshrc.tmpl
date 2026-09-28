@@ -101,6 +101,12 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Claude
 # export CLAUDE_CODE_USE_BEDROCK=1
 
+# #69824
+# #68619
+# #32795
+# Workaround for a bug in Opus 4.6 where the model doesn't wait for subagents to finish and duplicates research.
+export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1
+
 # Increase shell file descriptor limit - default is 256 (low)
 ulimit -n 10240
 
