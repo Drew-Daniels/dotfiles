@@ -1,0 +1,17 @@
+{{ if eq .osid "darwin" -}}
+#!/bin/sh
+
+target="$HOME/.config/vscode-js-debug"
+
+if [ ! -f "$target/src/dapDebugServer.js" ]; then
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir" || exit
+  version=$(curl -sL https://api.github.com/repos/microsoft/vscode-js-debug/releases/latest | jq -r '.tag_name' | cut -d 'v' -f2)
+  curl -LO "https://github.com/microsoft/vscode-js-debug/releases/download/v${version}/js-debug-dap-v${version}.tar.gz"
+  tar xzf "js-debug-dap-v${version}.tar.gz"
+  mkdir -p "$target"
+  cp -R js-debug/ "$target"
+  cd "$HOME" || exit
+  rm -rf "$tmpdir"
+fi
+{{ end -}}

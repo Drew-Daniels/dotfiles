@@ -7,6 +7,7 @@ homebrew_taps:
   - alesbrelih/gitlab-ci-ls
   - JetBrains/utils
   - anomalyco/tap
+  - homebrew-zathura/zathura
 
 homebrew_head_brews:
   - imagemagick
@@ -17,14 +18,10 @@ homebrew_brews:
   - cmark
   - cmark-gfm
   - crush
-  # - restish
   - lcov
   - glow
-  # - git-cliff
-  # - pdfgrep
   - dive
   - dos2unix
-  # - graphviz
   - git
   - git-lfs
   - gitleaks
@@ -75,7 +72,6 @@ homebrew_brews:
   - opentofu
   - llvm
   - lnav
-  # - lynx
   - hurl
   - sevenzip
   - syft
@@ -86,7 +82,6 @@ homebrew_brews:
   - jq
   - jqp
   - just
-  - JetBrains/utils/kotlin-lsp
   - less
   - lsd
   - ls-lint
@@ -148,7 +143,6 @@ homebrew_brews:
   - yaml-language-server
   - clojure-lsp
   - fish-lsp
-  - ansible-lint
   - bash-language-server
   - dockerfile-language-server
   - eslint_d
@@ -159,6 +153,8 @@ homebrew_brews:
   - typescript-language-server
   - vacuum
   - vscode-langservers-extracted
+  - homebrew-zathura/zathura/zathura
+  - homebrew-zathura/zathura/zathura-pdf-mupdf
 
 homebrew_no_quarantine_casks: []
 
@@ -173,9 +169,8 @@ homebrew_casks:
   - font-linux-libertine
   - google-chrome
   - ghostty
-  - sioyek
+  - kotlin-lsp
   - obs
-  # - obsidian
   - protonvpn
   - postgres-app
   - rectangle
@@ -184,39 +179,26 @@ homebrew_mas_apps:
   rcmd: 1596283165
   Xcode: 497799835
 
-# Home-specific packages
 homebrew_home_taps: []
 
 homebrew_home_head_brews:
   - taglib
 
 homebrew_home_brews:
-  - mdb-tools
-  # - gemini-cli
-  # - atuin
+  - mdbtools
   - hcloud
-  - ansible
   - b2-tools
   - podman
   - podman-tui
   - docker-compose
   - yt-dlp
-  # - cmus
   - fftw
   - mpc
-  # - mpd
-  # - sops
-  # - block-goose-cli
   - forgejo
-  # - opencode
 
 homebrew_home_no_quarantine_casks: []
 
 homebrew_home_casks:
-  # - element
-  # - figma
-  # - quickbooks
-  # - open-pencil/tap/open-pencil
   - obsidian
   - codex
   - claude-code
@@ -226,20 +208,13 @@ homebrew_home_casks:
   - lmms
   - trezor-suite
   - signal
-  # - qutebrowser
-  # - mixxx
-  # - weasis
-  # - rekordbox
-  # - wireshark-app
-  # - tailscale-app
   - keepassxc
 
 homebrew_home_mas_apps:
   Kiwix: 997079563
-  "Paprika Recipe Manager 3": 1303222628
+  Paprika Recipe Manager 3: 1303222628
   Wireguard: 1451685025
 
-# Work-specific packages
 homebrew_work_taps:
   - ankitpokhrel/jira-cli
 
@@ -262,3 +237,116 @@ homebrew_work_casks:
   - teleport-connect
 
 homebrew_work_mas_apps: {}
+
+debian_apt_packages:
+  - wget
+  - curl
+  - gpg
+  - wl-clipboard
+  - sway
+  - swaylock
+  - wofi
+  - speedtest-cli
+  - feh
+  - xmlstarlet
+  - nmap
+  - plocate
+  - foliate
+  - pavucontrol
+  - neomutt
+  - cmus
+  - swayidle
+  - obs-studio
+  - bemenu
+  - direnv
+
+debian_apt_packages_mapped:
+  - package: openssh-server
+  - package: du-dust
+  - package: kiwix
+  - package: uuid-runtime
+  - package: gnome-disk-utility
+  - package: nvme-cli
+
+debian_crate_packages:
+  - starship
+  - resvg
+  - jless
+  - mergiraf
+  - stylua
+  - swayr
+  - swayrbar
+
+debian_ruby_build_deps:
+  - build-essential
+  - autoconf
+  - libssl-dev
+  - libyaml-dev
+  - zlib1g-dev
+  - libffi-dev
+  - libgmp-dev
+  - rustc
+
+fedora_dnf_packages:
+  - wget
+  - jq
+  - ripgrep
+  - fd-find
+  - bat
+  - fzf
+  - git-delta
+  - zoxide
+  - yq
+  - du-dust
+  - tree-sitter
+  - hexyl
+  - lsd
+  - pandoc
+  - difftastic
+  - plocate
+  - fish
+  - shfmt
+  - ShellCheck
+  - neovim
+  - tmux
+  - ctags
+  - direnv
+  - gitleaks
+  - automake
+  - clang-tools-extra
+  - git-credential-oauth
+  - gh
+  - glab
+  - rust-analyzer
+  - compat-lua
+  - luarocks
+  - ImageMagick
+  - ImageMagick-devel
+  - rofi
+  - bemenu
+  - feh
+  - qt6ct
+  - xclip
+  - chafa
+  - foliate
+  - weechat
+  - dnf-plugins-core
+
+fedora_ruby_build_deps: []
+
+fedora_copr_repos:
+  - lihaohong/yazi
+  - scottames/ghostty
+
+fedora_copr_packages:
+  - yazi
+  - ghostty
+
+fedora_crate_packages:
+  - starship
+  - jless
+  - cargo-update
+  - mergiraf
+
+fedora_npm_packages:
+  - cssmodules-language-server

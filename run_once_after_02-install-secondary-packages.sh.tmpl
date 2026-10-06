@@ -1,0 +1,174 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/zsh
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+brew bundle check --file=/dev/stdin <<EOF
+{{ range .homebrew_taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .homebrew_brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
+{{ range .homebrew_casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .homebrew_mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ if eq .homeOrWork "home" -}}
+{{ range .homebrew_home_taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_home_head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .homebrew_home_brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_home_no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
+{{ range .homebrew_home_casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .homebrew_home_mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ end -}}
+{{ if eq .homeOrWork "work" -}}
+{{ range .homebrew_work_taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_work_head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .homebrew_work_brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_work_no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
+{{ range .homebrew_work_casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .homebrew_work_mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ end -}}
+EOF
+
+if [ $? -ne 0 ]; then
+  brew bundle --file=/dev/stdin <<EOF
+{{ range .homebrew_taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .homebrew_brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
+{{ range .homebrew_casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .homebrew_mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ if eq .homeOrWork "home" -}}
+{{ range .homebrew_home_taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_home_head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .homebrew_home_brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_home_no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
+{{ range .homebrew_home_casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .homebrew_home_mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ end -}}
+{{ if eq .homeOrWork "work" -}}
+{{ range .homebrew_work_taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_work_head_brews -}}
+brew {{ . | quote }}, args: ["HEAD"]
+{{ end -}}
+{{ range .homebrew_work_brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .homebrew_work_no_quarantine_casks -}}
+cask {{ . | quote }}, args: {no_quarantine: true}
+{{ end -}}
+{{ range .homebrew_work_casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $key, $value := .homebrew_work_mas_apps -}}
+mas {{ $key | quote }}, id: {{ $value }}
+{{ end -}}
+{{ end -}}
+EOF
+fi
+
+brew link --overwrite vacuum || true
+rm -f "$(brew --prefix)/etc/gitconfig"
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/bash
+# archpackages.jsonc SHA: {{ include ".chezmoidata/archpackages.jsonc" | sha256sum }}
+
+sudo pacman -S --needed --noconfirm {{ range .archPackageRepositoryPackages -}}{{ printf "%s " . }}{{ end }}
+
+if command -v yay >/dev/null; then
+  yay -S --needed --noconfirm {{ range .aurPackages -}}{{ printf "%s " . }}{{ end }}
+fi
+{{ else if eq .osid "linux-debian" -}}
+#!/bin/bash
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y {{ range .debian_apt_packages -}}{{ printf "%s " . }}{{ end }}{{ range .debian_apt_packages_mapped -}}{{ printf "%s " .package }}{{ end }}{{ range .debian_ruby_build_deps -}}{{ printf "%s " . }}{{ end }}
+
+if command -v cargo >/dev/null; then
+  cargo install --locked {{ range .debian_crate_packages -}}{{ printf "%s " . }}{{ end }}
+fi
+
+sudo apt autoremove -y
+sudo apt autoclean
+{{ else if eq .osid "linux-fedora" -}}
+#!/bin/bash
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+sudo dnf upgrade -y
+sudo dnf install -y {{ range .fedora_dnf_packages -}}{{ printf "%s " . }}{{ end }}{{ range .fedora_ruby_build_deps -}}{{ printf "%s " . }}{{ end }}
+{{ range .fedora_copr_repos -}}
+sudo dnf copr enable -y {{ . }}
+{{ end -}}
+sudo dnf install -y {{ range .fedora_copr_packages -}}{{ printf "%s " . }}{{ end }}
+
+if command -v cargo >/dev/null; then
+  cargo install --locked {{ range .fedora_crate_packages -}}{{ printf "%s " . }}{{ end }}
+fi
+
+if command -v npm >/dev/null; then
+  npm i -g {{ range .fedora_npm_packages -}}{{ printf "%s " . }}{{ end }}
+fi
+
+sudo dnf autoremove -y
+{{ end -}}

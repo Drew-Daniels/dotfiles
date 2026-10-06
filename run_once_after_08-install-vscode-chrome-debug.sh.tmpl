@@ -1,0 +1,14 @@
+{{ if eq .osid "darwin" -}}
+#!/bin/sh
+
+target="$HOME/projects/vscode-chrome-debug"
+
+if [ ! -d "$target" ]; then
+  cd "$HOME/projects" || exit
+  git clone "https://github.com/Microsoft/vscode-chrome-debug"
+  cd vscode-chrome-debug || exit
+  npm install
+  npm run build
+  cd "$HOME" || exit
+fi
+{{ end -}}

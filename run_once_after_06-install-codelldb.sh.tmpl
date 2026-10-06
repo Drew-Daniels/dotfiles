@@ -1,0 +1,21 @@
+{{ if or (eq .osid "darwin") (eq .osid "linux-fedora") -}}
+#!/bin/sh
+
+target="$HOME/.config/codelldb/extension"
+
+if [ ! -d "$target" ]; then
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir" || exit
+{{ if eq .osid "darwin" -}}
+  pkg="codelldb-darwin-arm64.vsix"
+{{ else -}}
+  pkg="codelldb-linux-x64.vsix"
+{{ end -}}
+  curl -LO "https://github.com/vadimcn/codelldb/releases/latest/download/$pkg"
+  unzip "$pkg" -d codelldb
+  mkdir -p "$HOME/.config/codelldb"
+  cp -R codelldb/extension "$HOME/.config/codelldb/"
+  cd "$HOME" || exit
+  rm -rf "$tmpdir"
+fi
+{{ end -}}

@@ -97,6 +97,7 @@ return {
 
 		vim.lsp.config("kotlin_lsp", {
 			capabilities = capabilities,
+			cmd = { "kotlin-lsp", "--stdio" },
 		})
 
 		-- NOTE: Commenting out because no Nixpkgs for these language servers

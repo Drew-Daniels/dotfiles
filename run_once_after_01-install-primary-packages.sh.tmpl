@@ -1,0 +1,102 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/zsh
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+if ! command -v rustup >/dev/null; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+else
+  rustup update
+fi
+
+if ! command -v mise >/dev/null; then
+  brew install mise
+fi
+
+mise install
+
+version="5.1.5"
+current=$(lua -v 2>&1 | cut -d ' ' -f2)
+
+if [ "$current" != "$version" ]; then
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir" || exit
+  curl -sLO "https://www.lua.org/ftp/lua-${version}.tar.gz"
+  tar zxf "lua-${version}.tar.gz"
+  cd "lua-${version}" || exit
+  make macosx
+  make test
+  sudo make install
+  cd "$HOME" || exit
+  rm -rf "$tmpdir"
+fi
+
+if ! command -v luarocks >/dev/null; then
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir" || exit
+  curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+  tar zxpf luarocks-3.11.1.tar.gz
+  cd luarocks-3.11.1 || exit
+  ./configure && make && sudo make install
+  sudo luarocks install luasocket
+  luarocks install --local magick
+  cd "$HOME" || exit
+  rm -rf "$tmpdir"
+fi
+
+if [ ! -f "/etc/paths.d/postgresapp" ]; then
+  sudo mkdir -p /etc/paths.d
+  echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp >/dev/null
+fi
+{{ else if eq .osid "linux-debian" -}}
+#!/bin/bash
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+sudo apt update -y
+sudo apt upgrade -y
+
+if ! sudo -l >/dev/null 2>&1; then
+  echo "The current user does not have sudo privileges."
+  exit 1
+fi
+
+if ! command -v rustup >/dev/null; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+else
+  rustup update
+fi
+
+if ! command -v mise >/dev/null; then
+  sudo apt install -y build-essential autoconf libssl-dev libyaml-dev zlib1g-dev libffi-dev libgmp-dev rustc sudo wget gpg
+  sudo install -dm 755 /etc/apt/keyrings
+  wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg >/dev/null
+  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=x86_64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list >/dev/null
+  sudo apt update
+  sudo apt install -y mise
+fi
+
+mise install
+{{ else if eq .osid "linux-fedora" -}}
+#!/bin/bash
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+sudo dnf upgrade -y
+
+if ! command -v rustup >/dev/null; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+else
+  rustup update
+fi
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/bash
+# archpackages.jsonc SHA: {{ include ".chezmoidata/archpackages.jsonc" | sha256sum }}
+
+if ! command -v rustup >/dev/null; then
+  sudo pacman -S --needed --noconfirm rustup
+fi
+
+if ! command -v mise >/dev/null; then
+  sudo pacman -S --needed --noconfirm mise
+fi
+
+mise install
+{{ end -}}

@@ -1,0 +1,19 @@
+{{ if eq .osid "darwin" -}}
+#!/bin/sh
+
+target="$HOME/.config/vscode-xml"
+bin="$target/lemminx"
+
+if [ ! -f "$bin" ]; then
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir" || exit
+  version=$(curl -sL https://api.github.com/repos/redhat-developer/vscode-xml/releases/latest | jq -r '.tag_name' | cut -d 'v' -f2)
+  curl -LO "https://github.com/redhat-developer/vscode-xml/releases/download/${version}/lemminx-osx-x86_64.zip"
+  unzip lemminx-osx-x86_64.zip
+  mkdir -p "$target"
+  cp lemminx-osx-x86_64 "$bin"
+  chmod +x "$bin"
+  cd "$HOME" || exit
+  rm -rf "$tmpdir"
+fi
+{{ end -}}
