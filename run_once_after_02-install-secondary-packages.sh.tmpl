@@ -2,6 +2,13 @@
 #!/bin/zsh
 # packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
 
+{{ range .homebrew_trusted_formulae -}}
+brew trust --formula {{ . }} 2>/dev/null || true
+{{ end -}}
+{{ range .homebrew_trusted_casks -}}
+brew trust --cask {{ . }} 2>/dev/null || true
+{{ end -}}
+
 brew bundle check --file=/dev/stdin <<EOF
 {{ range .homebrew_taps -}}
 tap {{ . | quote }}

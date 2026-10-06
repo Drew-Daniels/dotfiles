@@ -1,3 +1,12 @@
+homebrew_trusted_formulae:
+  - alesbrelih/gitlab-ci-ls/gitlab-ci-ls
+  - ankitpokhrel/jira-cli/jira-cli
+  - cormacrelf/tap/dark-notify
+  - teamookla/speedtest/speedtest
+
+homebrew_trusted_casks:
+  - sw33tlie/macshot/macshot
+
 homebrew_taps:
   - danielgtaylor/restish
   - sw33tlie/macshot
