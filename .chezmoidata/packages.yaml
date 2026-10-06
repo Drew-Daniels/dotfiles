@@ -238,6 +238,14 @@ homebrew_work_casks:
 
 homebrew_work_mas_apps: {}
 
+uv_tools:
+  - ipython
+  - visidata
+
+uv_tools_local:
+  - name: stay-awake
+    path: projects/stay-awake
+
 debian_apt_packages:
   - wget
   - curl

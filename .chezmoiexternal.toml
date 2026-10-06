@@ -28,3 +28,7 @@ url = "https://codeberg.org/drewdaniels/jg.git"
 ["projects/dotfiles.wiki"]
 type = "git-repo"
 url = "https://github.com/Drew-Daniels/dotfiles.wiki.git"
+["projects/stay-awake"]
+type = "git-repo"
+url = "https://github.com/Drew-Daniels/stay-awake.git"
+refreshPeriod = "168h"

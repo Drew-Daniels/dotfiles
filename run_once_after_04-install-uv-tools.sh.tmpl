@@ -1,0 +1,13 @@
+{{ if or (gt (len .uv_tools) 0) (gt (len .uv_tools_local) 0) -}}
+#!/bin/sh
+# packages.yaml SHA: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+if command -v uv >/dev/null; then
+{{ range .uv_tools -}}
+  uv tool install {{ . }}
+{{ end -}}
+{{ range .uv_tools_local -}}
+  uv tool install --editable {{ joinPath $.chezmoi.homeDir .path | quote }}
+{{ end -}}
+fi
+{{ end -}}

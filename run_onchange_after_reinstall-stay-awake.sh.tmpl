@@ -1,0 +1,6 @@
+#!/bin/sh
+# {{ output "git" "-C" (joinPath .chezmoi.homeDir "projects/stay-awake") "rev-parse" "HEAD" }}
+
+if command -v uv >/dev/null; then
+  uv tool install --editable --force {{ joinPath .chezmoi.homeDir "projects/stay-awake" | quote }}
+fi
