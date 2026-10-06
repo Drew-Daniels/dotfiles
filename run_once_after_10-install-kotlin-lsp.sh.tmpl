@@ -27,8 +27,7 @@ if [ ! -f "$target/bin/intellij-server" ]; then
 
 {{ if eq .chezmoi.os "darwin" -}}
   mkdir -p extracted
-  cd extracted || exit
-  tar xf "../${pkg}"
+  unzip -q "${pkg}" -d extracted
 {{ else -}}
   mkdir -p extracted
   tar xzf "${pkg}" -C extracted
