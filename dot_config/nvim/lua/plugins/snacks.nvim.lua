@@ -1,9 +1,10 @@
 return {
 	"folke/snacks.nvim",
+	lazy = false,
+	priority = 1000,
 	---@type snacks.Config
 	opts = {
 		image = {
-			-- force = true,
 			env = {
 				SNACKS_GHOSTTY = true,
 			},
@@ -13,5 +14,15 @@ return {
 				end
 			end,
 		},
+		notifier = {
+			style = "compact",
+		},
+		input = {},
+		scroll = {
+			animate = {
+				easing = "inOutQuad",
+			},
+		},
+		indent = {},
 	},
 }
