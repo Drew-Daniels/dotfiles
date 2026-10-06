@@ -25,46 +25,8 @@ eval "$(zoxide init --cmd j zsh)"
 # starship
 eval "$(starship init zsh)"
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh ]] && . ~/projects/dotfiles/tabtab/zsh/__tabtab.zsh || true
-
-# go
-# TODO: Figure out why $GOPATH is unset when sourcing this file - likely because mise starts up after, but still, would be nice to not have to hard-code
-# export GOBIN="~/.local/share/mise/installs/go/1.21.1/packages/bin"
-
 # neovim
 alias upgrade_nvim="brew upgrade nvim --fetch-HEAD"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# iterm2
-# TODO: Look into using iTerm2 Python scripting functionality to do this logic, so this doesn't run every time I open a new shell, but just whenever opening a new iTerm2 window
-# iterm2_print_user_vars() {
-#   ip=$(curl -s ifconfig.me | awk '{print $1}')
-#   whois_response=$(whois "$ip")
-#   iterm2_set_user_var publicIP "$ip"
-#   iterm2_set_user_var status $(ping -c 1 google.com >/dev/null && echo "" || echo "OFFLINE")
-#   iterm2_set_user_var city $(echo "$whois_response" | sed -n 's/^City: \(.*\)/\1/p' | xargs)
-#   iterm2_set_user_var stateProv $(echo "$whois_response" | sed -n 's/^StateProv: \(.*\)/\1/p' | xargs)
-#   iterm2_set_user_var country $(echo "$whois_response" | sed -n 's/^Country: \(.*\)/\1/p' | xargs)
-#   iterm2_set_user_var orgName $(echo "$whois_response" | sed -n 's/^OrgName: \(.*\)/\1/p' | xargs)
-#
-#   home_ddns_hostname=$(op item get hfg6pheaifln27gpjqfygrgmsu --fields label=ddns_hostname)
-#   homeIP=$(nslookup $home_ddns_hostname 8.8.8.8 | grep "Address" | tail -1 | awk '{print $2}' | tr -d '\n')
-#   matches=$([ "$ip" = "$homeIP" ] && echo "HOME-NET" || echo "OUTSIDE-NET")
-#   iterm2_set_user_var using_home_ip $(echo "$matches")
-# }
-#
-# is_chezmoi_subshell=$(ps | rg $PPID -m1 | rg "chezmoi" | wc -l | awk '{print $1}')
-#
-# if [ "$TERM_PROGRAM" = 'iTerm.app' ] && [ -z "$TMUX" ] && [ "$is_chezmoi_subshell" -ne "1" ]; then
-#   if command -v op >/dev/null 2>&1; then
-#     iterm2_print_user_vars
-#   fi
-# fi
 
 # Add mirth-cli completions to fpath (if installed)
 [[ -d $HOME/Library/Caches/mirth-cli/autocomplete/functions/zsh ]] && \
@@ -76,10 +38,10 @@ bashcompinit
 
 # TODO: See about moving this either into base.sh.tmpl or another template file - since this needs to be called after compinit
 # aws cli
-complete -C '/usr/local/bin/aws_completer' aws
+complete -C '/opt/homebrew/bin/aws_completer' aws
 
-# terraform
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# opentofu
+complete -o nospace -C /opt/homebrew/bin/tofu tofu
 
 # 1password
 eval "$(op completion zsh)"
