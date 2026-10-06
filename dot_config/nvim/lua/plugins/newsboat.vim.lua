@@ -1,0 +1,3 @@
+return {
+	"sarmong/newsboat.vim",
+}

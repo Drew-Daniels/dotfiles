@@ -3,9 +3,12 @@ homebrew_trusted_formulae:
   - ankitpokhrel/jira-cli/jira-cli
   - cormacrelf/tap/dark-notify
   - teamookla/speedtest/speedtest
+  - homebrew-zathura/zathura/zathura
+  - homebrew-zathura/zathura/zathura-pdf-mupdf
 
 homebrew_trusted_casks:
   - sw33tlie/macshot/macshot
+  - daveshanley/vacuum/vacuum
 
 homebrew_taps:
   - danielgtaylor/restish
@@ -14,7 +17,6 @@ homebrew_taps:
   - teamookla/speedtest
   - daveshanley/vacuum
   - alesbrelih/gitlab-ci-ls
-  - JetBrains/utils
   - anomalyco/tap
   - homebrew-zathura/zathura
 
@@ -26,7 +28,6 @@ homebrew_brews:
   - semgrep
   - cmark
   - cmark-gfm
-  - crush
   - lcov
   - glow
   - dive
@@ -178,7 +179,6 @@ homebrew_casks:
   - font-linux-libertine
   - google-chrome
   - ghostty
-  - kotlin-lsp
   - obs
   - protonvpn
   - postgres-app
