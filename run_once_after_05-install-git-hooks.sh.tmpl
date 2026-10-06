@@ -1,4 +1,5 @@
 #!/bin/sh
 
+chmod +x "$HOME/projects/hooks/pre-commit"
 rm -rf "$HOME/.local/share/chezmoi/.git/hooks"
-cp -R "$HOME/hooks" "$HOME/.local/share/chezmoi/.git/hooks"
+cp -R "$HOME/projects/hooks" "$HOME/.local/share/chezmoi/.git/hooks"
