@@ -367,3 +367,4 @@ fedora_crate_packages:
 
 fedora_npm_packages:
   - cssmodules-language-server
+
