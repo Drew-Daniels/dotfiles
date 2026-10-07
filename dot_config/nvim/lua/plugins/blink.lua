@@ -34,7 +34,11 @@ return {
 			documentation = {
 				auto_show = true,
 			},
+			trigger = {
+				show_on_blocked_trigger_characters = {},
+			},
 		},
+		signature = { enabled = true },
 		sources = {
 			per_filetype = {
 				codecompanion = { "codecompanion" },
@@ -43,6 +47,15 @@ return {
 			default = { "lsp", "path", "snippets", "buffer", "lazydev" },
 			providers = {
 				-- codeium = { name = "Codeium", module = "codeium.blink", async = true },
+				lsp = {
+					override = {
+						get_trigger_characters = function(self)
+							local trigger_characters = self:get_trigger_characters()
+							vim.list_extend(trigger_characters, { "\n", "\t", " " })
+							return trigger_characters
+						end,
+					},
+				},
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
 				snippets = {
 					name = "Snippets",
