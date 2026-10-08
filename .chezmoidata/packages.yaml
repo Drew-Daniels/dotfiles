@@ -218,6 +218,7 @@ homebrew_home_casks:
   - trezor-suite
   - signal
   - keepassxc
+  - zotero
 
 homebrew_home_mas_apps:
   Kiwix: 997079563

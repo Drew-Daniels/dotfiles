@@ -14,35 +14,6 @@ fi
 
 mise install
 
-version="5.1.5"
-current=$(lua -v 2>&1 | cut -d ' ' -f2)
-
-if [ "$current" != "$version" ]; then
-  tmpdir=$(mktemp -d)
-  cd "$tmpdir" || exit
-  curl -sLO "https://www.lua.org/ftp/lua-${version}.tar.gz"
-  tar zxf "lua-${version}.tar.gz"
-  cd "lua-${version}" || exit
-  make macosx
-  make test
-  sudo make install
-  cd "$HOME" || exit
-  rm -rf "$tmpdir"
-fi
-
-if ! command -v luarocks >/dev/null; then
-  tmpdir=$(mktemp -d)
-  cd "$tmpdir" || exit
-  curl -LO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-  tar zxpf luarocks-3.11.1.tar.gz
-  cd luarocks-3.11.1 || exit
-  ./configure && make && sudo make install
-  sudo luarocks install luasocket
-  luarocks install --local magick
-  cd "$HOME" || exit
-  rm -rf "$tmpdir"
-fi
-
 if [ ! -f "/etc/paths.d/postgresapp" ]; then
   sudo mkdir -p /etc/paths.d
   echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp >/dev/null
