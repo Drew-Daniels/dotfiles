@@ -146,7 +146,6 @@ homebrew_brews:
   - tailwindcss-language-server
   - taplo
   - terraform-ls
-  - tflint
   - typos-cli
   - typos-lsp
   - vue-language-server
@@ -165,6 +164,7 @@ homebrew_brews:
   - vscode-langservers-extracted
   - homebrew-zathura/zathura/zathura
   - homebrew-zathura/zathura/zathura-pdf-mupdf
+  - poppler
 
 homebrew_no_quarantine_casks: []
 
@@ -204,6 +204,7 @@ homebrew_home_brews:
   - fftw
   - mpc
   - forgejo
+  - agent-browser
 
 homebrew_home_no_quarantine_casks: []
 
@@ -214,7 +215,6 @@ homebrew_home_casks:
   - ollama-app
   - firefox
   - libreoffice
-  - lmms
   - trezor-suite
   - signal
   - keepassxc

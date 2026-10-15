@@ -121,4 +121,12 @@ alias claude=claude --model "Opus 4.6 Max"
 # mysql-client (for mysqldump)
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
+# pnpm
+export PNPM_HOME='/Users/drew/Library/pnpm'
+case ":$PATH:" in
+  ":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
 {{- end -}}
