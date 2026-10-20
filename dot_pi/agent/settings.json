@@ -11,8 +11,8 @@
   "packages": [
     "npm:@ollama/pi-web-search"
   ],
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultProvider": "ollama",
+  "defaultModel": "qwen3-coder-next",
   "prompts": [
     "~/.pi/agent/prompts"
   ]
