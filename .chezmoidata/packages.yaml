@@ -165,6 +165,7 @@ homebrew_brews:
   - homebrew-zathura/zathura/zathura
   - homebrew-zathura/zathura/zathura-pdf-mupdf
   - poppler
+  - miller
 
 homebrew_no_quarantine_casks: []
 
