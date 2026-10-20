@@ -1,0 +1,16 @@
+{
+  "$schema": "https://pi.dev/schemas/models.schema.json",
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        { "id": "qwen3-coder-next", "contextWindow": 262144 },
+        { "id": "qwen3-coder", "contextWindow": 262144 },
+        { "id": "qwen3.5:27b", "contextWindow": 262144 },
+        { "id": "gemma4:12b", "contextWindow": 262144 }
+      ]
+    }
+  }
+}
