@@ -8,12 +8,8 @@
     "reserveTokens": 16384,
     "keepRecentTokens": 20000
   },
-  "packages": [
-    "npm:@ollama/pi-web-search"
-  ],
+  "packages": ["npm:@ollama/pi-web-search"],
   "defaultProvider": "ollama",
-  "defaultModel": "qwen3-coder-next",
-  "prompts": [
-    "~/.pi/agent/prompts"
-  ]
+  "defaultModel": "qwen3-coder",
+  "prompts": ["~/.pi/agent/prompts"]
 }
