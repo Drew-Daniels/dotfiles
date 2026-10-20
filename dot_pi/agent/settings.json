@@ -10,6 +10,12 @@
   },
   "packages": ["npm:@ollama/pi-web-search"],
   "defaultProvider": "ollama",
-  "defaultModel": "qwen3-coder",
+  "defaultModel": "qwen3.6:27b",
+  "enabledModels": [
+    "ollama/qwen3.6:27b",
+    "ollama/devstral-small-2",
+    "ollama/qwen3-coder-next",
+    "anthropic/claude-opus-4-6"
+  ],
   "prompts": ["~/.pi/agent/prompts"]
 }
