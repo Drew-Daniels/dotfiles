@@ -205,6 +205,7 @@ homebrew_home_brews:
   - mpc
   - forgejo
   - agent-browser
+  - sqlc
 
 homebrew_home_no_quarantine_casks: []
 
