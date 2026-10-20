@@ -16,7 +16,7 @@ Gather context by running these commands:
 
 ## Rules
 
-- Stage all changed files and create a single commit with an appropriate message
-- Files with mixed changes (related and unrelated) are ok to commit together - do NOT try to split them
+- Stage only the files you modified or deleted in this session. Use `git add <file> ...` with explicit paths. NEVER use `git add -A` or `git add .` - these sweep in untracked files from other work sessions.
+- Files with mixed changes (your changes plus unrelated changes) are ok to commit together - do NOT try to split them
 - Do NOT stash, pop, or touch unrelated files
 - Do NOT use any other tools or do anything else besides staging and committing
