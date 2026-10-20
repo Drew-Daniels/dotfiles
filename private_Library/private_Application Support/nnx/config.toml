@@ -1,0 +1,2 @@
+data_dir = "/Volumes/FilesSSD/towncrier/duckdb/irs_990s"
+index_threads = 8
