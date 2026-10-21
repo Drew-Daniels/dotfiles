@@ -22,10 +22,10 @@
   "defaultModel": "qwen3.6:27b",
   "enabledModels": [
     "ollama/qwen3.6:27b",
+    "ollama/qwen3.5:4b",
     "ollama/devstral-small-2",
     "ollama/qwen3-coder-next",
-    "anthropic/claude-opus-4-6",
-    "ollama/qwen3.5:4b"
+    "anthropic/claude-opus-4-6"
   ],
   "prompts": [
     "~/.pi/agent/prompts"
