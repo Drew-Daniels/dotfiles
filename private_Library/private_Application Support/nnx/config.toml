@@ -1,2 +1,2 @@
-data_dir = "/Volumes/FilesSSD/towncrier/duckdb/irs_990s"
+data_dir = "/Volumes/FilesSSD/towncrier/duckdb/irs_990"
 index_threads = 8
