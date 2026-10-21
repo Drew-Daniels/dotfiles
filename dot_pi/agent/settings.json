@@ -10,7 +10,13 @@
   },
   "packages": [
     "npm:@ollama/pi-web-search",
-    "npm:billion-context"
+    "npm:billion-context",
+    "npm:pi-lens",
+    "npm:pi-memory",
+    "npm:pi-background-tasks",
+    "npm:pi-btw",
+    "npm:@ff-labs/pi-fff",
+    "npm:timestamp-pi"
   ],
   "defaultProvider": "ollama",
   "defaultModel": "qwen3.6:27b",

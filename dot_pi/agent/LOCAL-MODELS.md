@@ -113,7 +113,25 @@ All local models are set to 128K context windows except qwen3-coder-next (64K, f
 
 ## Installed Extensions
 
-| Package | Purpose |
-|---|---|
-| `@ollama/pi-web-search` | Web search and fetch via Ollama cloud |
-| `billion-context` | Context compression (replaces simple compaction with layered model-driven compression) |
+| Package | Purpose | Commands |
+|---|---|---|
+| `@ollama/pi-web-search` | Web search and fetch via Ollama cloud | - |
+| `billion-context` | Context compression - layered model-driven compression, decompression on demand | `/acp`, `/acp-cache` |
+| `pi-lens` | Real-time code feedback - LSP diagnostics, ruff linting, type checking, ast-grep structural rules, read-guard, impact cascade | `/lens-health`, `/lens-map` |
+| `pi-memory` | Persistent memory across sessions - semantic search over daily logs and long-term memory | `/memory` |
+
+| `pi-background-tasks` | Durable background shell tasks - run long commands without blocking conversation | - |
+| `pi-btw` | Parallel side conversations - ask questions without interrupting the main run | `/btw`, `/btw:ask`, `/btw:inject` |
+| `@ff-labs/pi-fff` | SIMD-accelerated fuzzy file/content search - replaces fd/rg with pre-indexed, frecency-ranked search | `/fff-health`, `fffind`, `ffgrep` |
+
+### Why these extensions matter for local models
+
+**pi-lens** is the most impactful. Local models make more subtle mistakes than Claude (wrong imports, type mismatches, off-by-one errors). pi-lens catches these on every edit via LSP + ruff + pyright, before they compound across multiple files. The read-guard prevents edits to files the model hasn't read - a common local model failure mode.
+
+**pi-memory** compensates for shorter sessions. With 128K context on local models (vs 200K on Claude), you'll compact and start new sessions more often. Memory preserves project knowledge ("PA admin code uses section_id as PK", "the ETL default model is gemma4:12b") across those boundaries.
+
+**pi-background-tasks** lets you run `just run`, `just test`, or pipeline tasks without blocking the conversation - important when local model responses are slower than Claude.
+
+**pi-btw** adds `/btw` side conversations that run in parallel. While the main agent works on a multi-file refactor, ask a side question ("what does this function do?") without derailing the current task. The side thread uses its own sub-session and stays out of main context.
+
+**pi-fff** replaces pi's built-in `find`/`grep` (which spawn `fd`/`rg` subprocesses per call) with a Rust-native SIMD-accelerated search engine. Files are pre-indexed at session start, ranked by frecency (files you access often rank higher), and fuzzy-matched. In a 9,000-file codebase, the model finds the right file faster and wastes less context on search misses.
