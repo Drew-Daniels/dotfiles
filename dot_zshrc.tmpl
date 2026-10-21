@@ -129,4 +129,11 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# Ollama
+export OLLAMA_KV_CACHE_TYPE=q8_0      # Halve KV cache memory, negligible quality loss
+export OLLAMA_KEEP_ALIVE=30m           # Keep models loaded 30 min (avoid reload penalty)
+export OLLAMA_NUM_PARALLEL=1           # Serialize requests (bandwidth-bound, not compute-bound)
+export OLLAMA_MAX_LOADED_MODELS=2      # Two models resident (cheap memory, expensive reload)
+export PATH="$HOME/.local/bin:$PATH"   # billion-context bili CLI
+
 {{- end -}}
