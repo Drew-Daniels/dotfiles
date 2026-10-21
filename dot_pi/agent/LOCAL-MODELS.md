@@ -65,3 +65,55 @@ ollama list     See all downloaded models
 | qwen3.6 + devstral-small-2 + gemma4 + nomic-embed | ~41 GB | 64 GB free |
 
 Ollama auto-unloads idle models after 5 minutes by default. Two coding models can coexist for A/B testing.
+
+## Context Management
+
+### billion-context (installed)
+
+A context compression proxy (1.8M downloads/mo) that runs as a native pi plugin. Instead of pi's built-in compaction ("summarize everything before the cut point"), billion-context injects tools the model calls to compress/decompress conversation ranges with layered summaries.
+
+**How it works:**
+- Injects `compress`, `decompress`, `search_context`, `acp_status` tools
+- The model decides when to compress old context (nudged at ~40K token growth intervals)
+- Compressed ranges can be decompressed on demand if you need exact details
+- Keeps prefix cache intact (compressed summaries are stable prefixes)
+- Supports month-long single sessions (the author ran an 18.76B token study over 4.5 months)
+
+**Status commands:**
+```
+/acp              Show compression status, blocks, and usage
+/acp-cache        Cache hit rate report with attribution
+```
+
+**Config:** `~/.config/billion-context/billion-context.json`
+
+Current settings:
+- `nudgeGrowthTokens: 40000` - first compression ~40K tokens into session
+- `subagents: false` - built-in subagent tools disabled
+
+**Remove if needed:** `bili plugin remove pi` or delete `"npm:billion-context"` from packages in settings.json.
+
+### Compaction settings (pi native, as fallback)
+
+Pi's built-in compaction still acts as a safety net behind billion-context.
+
+| Setting | Value | What it does |
+|---|---|---|
+| `reserveTokens` | 8192 | Compaction fires when context exceeds `contextWindow - 8192` |
+| `keepRecentTokens` | 12000 | Recent tokens kept verbatim after compaction (rest summarized) |
+
+All local models are set to 128K context windows except qwen3-coder-next (64K, for speed at 51GB).
+
+### Tips for long sessions
+
+- **Start focused.** A narrow initial prompt means less context consumed by the goal/constraints summary.
+- **Use `/compact [instructions]`** manually when switching tasks mid-session to clean up irrelevant context.
+- **Watch the footer.** The percentage (e.g. `48.2%/128k`) shows context usage. If it climbs fast, the model is reading large files - consider trimming what you ask it to read.
+- **`Ctrl+P` to Claude** for tasks that genuinely need 200K+ context (huge codebase exploration). Local models cap at 128K.
+
+## Installed Extensions
+
+| Package | Purpose |
+|---|---|
+| `@ollama/pi-web-search` | Web search and fetch via Ollama cloud |
+| `billion-context` | Context compression (replaces simple compaction with layered model-driven compression) |

@@ -5,10 +5,13 @@
   "theme": "gruvbox-material",
   "compaction": {
     "enabled": true,
-    "reserveTokens": 16384,
-    "keepRecentTokens": 20000
+    "reserveTokens": 8192,
+    "keepRecentTokens": 12000
   },
-  "packages": ["npm:@ollama/pi-web-search"],
+  "packages": [
+    "npm:@ollama/pi-web-search",
+    "npm:billion-context"
+  ],
   "defaultProvider": "ollama",
   "defaultModel": "qwen3.6:27b",
   "enabledModels": [
@@ -17,5 +20,7 @@
     "ollama/qwen3-coder-next",
     "anthropic/claude-opus-4-6"
   ],
-  "prompts": ["~/.pi/agent/prompts"]
+  "prompts": [
+    "~/.pi/agent/prompts"
+  ]
 }
