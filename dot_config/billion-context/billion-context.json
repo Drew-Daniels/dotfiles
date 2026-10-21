@@ -1,0 +1,14 @@
+{
+  "providers": {
+    "ollama": {
+      "upstream": "http://localhost:11434",
+      "wire": "openai"
+    }
+  },
+  "compress": {
+    "nudgeGrowthTokens": 40000
+  },
+  "pi": {
+    "subagents": false
+  }
+}
