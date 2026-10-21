@@ -93,6 +93,17 @@ format = '[$symbol($version )]($style)'
 [ruby]
 format = '[$symbol($version )]($style)'
 
+[python]
+python_binary = [
+  [
+    "uv",
+    "run",
+    "--no-python-downloads",
+    "--no-project",
+    "python",
+  ],
+]
+
 [git_branch]
 style = 'bold green'
 
