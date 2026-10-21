@@ -8,7 +8,7 @@
       "models": [
         {
           "id": "qwen3.6:27b",
-          "contextWindow": 131072
+          "contextWindow": 65536
         },
         {
           "id": "qwen3-coder-next",
@@ -16,23 +16,23 @@
         },
         {
           "id": "devstral-small-2",
-          "contextWindow": 131072
+          "contextWindow": 65536
         },
         {
           "id": "qwen3-coder",
-          "contextWindow": 131072
+          "contextWindow": 65536
         },
         {
           "id": "qwen3.5:27b",
-          "contextWindow": 131072
+          "contextWindow": 65536
         },
         {
           "id": "gemma4:12b",
-          "contextWindow": 131072
+          "contextWindow": 65536
         },
         {
           "id": "qwen3.5:4b",
-          "contextWindow": 131072
+          "contextWindow": 65536
         }
       ]
     }

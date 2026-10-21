@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "1.3.0",
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "high",
   "enableInstallTelemetry": "false",
   "theme": "gruvbox-material",
   "compaction": {
@@ -11,7 +11,6 @@
   "packages": [
     "npm:@ollama/pi-web-search",
     "npm:billion-context",
-    "npm:pi-lens",
     "npm:pi-memory",
     "npm:pi-background-tasks",
     "npm:pi-btw",
@@ -21,13 +20,16 @@
   "defaultProvider": "ollama",
   "defaultModel": "qwen3.6:27b",
   "enabledModels": [
-    "ollama/qwen3.6:27b",
-    "ollama/qwen3.5:4b",
+    "anthropic/claude-opus-4-6",
     "ollama/devstral-small-2",
     "ollama/qwen3-coder-next",
-    "anthropic/claude-opus-4-6"
+    "ollama/qwen3.5:4b",
+    "ollama/qwen3.6:27b",
+    "openai-codex/gpt-6-luna",
+    "openai-codex/gpt-6-sol"
   ],
   "prompts": [
     "~/.pi/agent/prompts"
-  ]
+  ],
+  "deviceId": "f7eb3724-e6d2-471f-b215-9e92b60a4784"
 }
