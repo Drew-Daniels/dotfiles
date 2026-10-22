@@ -64,6 +64,7 @@ homebrew_brews:
   - direnv
   - difftastic
   - dust
+  - dua-cli
   - duti
   - fd
   - file-formula
