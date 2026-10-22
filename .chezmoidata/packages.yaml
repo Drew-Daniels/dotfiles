@@ -208,6 +208,7 @@ homebrew_home_brews:
   - forgejo
   - agent-browser
   - sqlc
+  - protobuf
 
 homebrew_home_no_quarantine_casks: []
 
