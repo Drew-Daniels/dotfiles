@@ -209,6 +209,7 @@ homebrew_home_brews:
   - agent-browser
   - sqlc
   - protobuf
+  - ffmpeg@7
 
 homebrew_home_no_quarantine_casks: []
 
