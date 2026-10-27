@@ -25,11 +25,10 @@
     "ollama/qwen3-coder-next",
     "ollama/qwen3.5:4b",
     "ollama/qwen3.6:27b",
+    "ollama/kimi-k2.7-code:cloud",
     "openai-codex/gpt-6-luna",
     "openai-codex/gpt-6-sol"
   ],
-  "prompts": [
-    "~/.pi/agent/prompts"
-  ],
+  "prompts": ["~/.pi/agent/prompts"],
   "deviceId": "f7eb3724-e6d2-471f-b215-9e92b60a4784"
 }

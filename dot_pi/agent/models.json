@@ -33,6 +33,9 @@
         {
           "id": "qwen3.5:4b",
           "contextWindow": 65536
+        },
+        {
+          "id": "kimi-k2.7-code:cloud"
         }
       ]
     }
