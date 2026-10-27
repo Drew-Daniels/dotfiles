@@ -24,7 +24,7 @@
       ],
       "enabled": true,
       "environment": {
-        "FIRECRAWL_API_KEY": "op://Personal/Firecrawl/API Key"
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
       },
       "type": "local"
     },
