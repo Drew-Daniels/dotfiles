@@ -2,20 +2,20 @@
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
   "mcp": {
-    "context7": {
-      "command": [
-        "npx",
-        "-y",
-        "@upstash/context7-mcp"
-      ],
-      "enabled": true,
-      "type": "local"
-    },
-    "deepwiki": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.deepwiki.com/mcp"
-    },
+    // "context7": {
+    //   "command": [
+    //     "npx",
+    //     "-y",
+    //     "@upstash/context7-mcp"
+    //   ],
+    //   "enabled": true,
+    //   "type": "local"
+    // },
+    // "deepwiki": {
+    //   "enabled": true,
+    //   "type": "remote",
+    //   "url": "https://mcp.deepwiki.com/mcp"
+    // },
     "firecrawl": {
       "command": [
         "npx",
@@ -28,54 +28,55 @@
       },
       "type": "local"
     },
-    "firecrawl-mcp": {
+    "peep": {
       "command": [
-        "npx",
-        "-y",
-        "firecrawl-mcp"
+        "/Users/drew/.local/bin/peep",
+        "mcp"
       ],
       "enabled": true,
       "environment": {
-        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+        "BROWSER_HEADLESS": "false",
+        "BROWSER_ENGINE": "firefox"
       },
       "type": "local"
     },
-    "github": {
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-github"
-      ],
-      "enabled": true,
-      "environment": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "op://Personal/install-update-scripts-token/password"
-      },
-      "type": "local"
-    },
-    "playwright": {
-      "command": [
-        "npx",
-        "@playwright/mcp@latest"
-      ],
-      "enabled": true,
-      "type": "local"
-    },
-    "sequential-thinking": {
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ],
-      "enabled": true,
-      "type": "local"
-    },
-    "studious": {
-      "command": [
-        "studious"
-      ],
-      "enabled": true,
-      "type": "local"
-    }
+
+    // "github": {
+    //   "command": [
+    //     "npx",
+    //     "-y",
+    //     "@modelcontextprotocol/server-github"
+    //   ],
+    //   "enabled": true,
+    //   "environment": {
+    //     "GITHUB_PERSONAL_ACCESS_TOKEN": "op://Personal/install-update-scripts-token/password"
+    //   },
+    //   "type": "local"
+    // },
+    // "playwright": {
+    //   "command": [
+    //     "npx",
+    //     "@playwright/mcp@latest"
+    //   ],
+    //   "enabled": true,
+    //   "type": "local"
+    // },
+    // "sequential-thinking": {
+    //   "command": [
+    //     "npx",
+    //     "-y",
+    //     "@modelcontextprotocol/server-sequential-thinking"
+    //   ],
+    //   "enabled": true,
+    //   "type": "local"
+    // },
+    // "studious": {
+    //   "command": [
+    //     "studious"
+    //   ],
+    //   "enabled": true,
+    //   "type": "local"
+    // }
   },
   "model": "anthropic/claude-opus-4-6",
   // Clobbers context
