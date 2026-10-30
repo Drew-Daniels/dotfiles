@@ -110,6 +110,9 @@ export PODMAN_COMPOSE_WARNING_LOGS=false
 
 {{ if eq .homeOrWork "home" -}}
 
+# home
+fpath=(~/.zsh/completions $fpath)
+
 alias docker=podman
 
 # Opus 4.7 is objectively worse
