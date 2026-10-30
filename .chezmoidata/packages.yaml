@@ -190,7 +190,8 @@ homebrew_mas_apps:
   rcmd: 1596283165
   Xcode: 497799835
 
-homebrew_home_taps: []
+homebrew_home_taps:
+  - wader/tap
 
 homebrew_home_head_brews:
   - taglib
@@ -210,6 +211,17 @@ homebrew_home_brews:
   - sqlc
   - protobuf
   - ffmpeg@7
+  # Data & network CLI tools
+  - htmlq
+  - xh
+  - gron
+  - fx
+  - wader/tap/fq
+  # Dev tooling
+  - hyperfine
+  - duckdb
+  - cargo-nextest
+  - graphviz
 
 homebrew_home_no_quarantine_casks: []
 
@@ -256,6 +268,10 @@ homebrew_work_mas_apps: {}
 uv_tools:
   - ipython
   - visidata
+  - vulture
+  - deptry
+  - pip-audit
+  - serena-agent
 
 uv_tools_local:
   - name: stay-awake
